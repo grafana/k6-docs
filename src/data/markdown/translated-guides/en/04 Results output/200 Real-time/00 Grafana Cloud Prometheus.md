@@ -47,9 +47,9 @@ Select the **Details** of your Prometheus service.
 Now, pass the Username, API key, and Remote Write Endpoint of the Grafana Cloud Prometheus Configuration to the k6 binary:
 
 ```bash
-K6_PROMETHEUS_RW_USERNAME=Your_Username \
-K6_PROMETHEUS_RW_PASSWORD=Your_API_KEY \
-K6_PROMETHEUS_RW_SERVER_URL=Your_REMOTE_WRITE_ENDPOINT \
+K6_PROMETHEUS_RW_USERNAME=USERNAME \
+K6_PROMETHEUS_RW_PASSWORD=API_KEY \
+K6_PROMETHEUS_RW_SERVER_URL=REMOTE_WRITE_ENDPOINT \
 k6 run -o experimental-prometheus-rw script.js
 ```
 

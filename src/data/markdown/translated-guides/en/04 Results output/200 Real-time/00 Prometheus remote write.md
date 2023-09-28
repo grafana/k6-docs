@@ -101,8 +101,8 @@ To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-rem
 
       ```bash
       K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
-      K6_PROMETHEUS_RW_USERNAME=foo \
-      K6_PROMETHEUS_RW_PASSWORD=bar \
+      K6_PROMETHEUS_RW_USERNAME=USERNAME \
+      K6_PROMETHEUS_RW_PASSWORD=PASSWORD \
       k6 run -o experimental-prometheus-rw script.js
       ```
 
@@ -136,8 +136,8 @@ To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-rem
       ```bash
       K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
       K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
-      K6_PROMETHEUS_RW_USERNAME=foo \
-      K6_PROMETHEUS_RW_PASSWORD=bar \
+      K6_PROMETHEUS_RW_USERNAME=USERNAME \
+      K6_PROMETHEUS_RW_PASSWORD=PASSWORD \
       k6 run -o experimental-prometheus-rw script.js
       ```
 
