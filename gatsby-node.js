@@ -1693,6 +1693,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/testing-guides/automated-performance-testing/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/examples/advanced-api-flow/',
+    toPath: '/examples/api-crud-operations/',
+    isPermanent: true,
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
