@@ -187,7 +187,7 @@ export function setup() {
         expect(resp.status, 'Authenticate status').to.equal(200);
         expect(resp, 'Authenticate valid json response').to.have.validJsonBody();
         authToken = resp.json('access');
-        expect(authToken, 'Authentication token', 'auth token').to.not.be.null;
+        expect(authToken, 'Authentication token').to.be.a('string');
     });
 
     return authToken;
