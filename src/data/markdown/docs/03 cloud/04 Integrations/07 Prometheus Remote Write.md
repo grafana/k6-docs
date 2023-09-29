@@ -4,6 +4,12 @@ slug: '/cloud/integrations/prometheus-remote-write/'
 excerpt: 'How to export metrics from k6 Cloud to a Prometheus instance using the Prometheus remote-write integration'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated. If you're using [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), we recommend using [Data source plugins for Grafana](https://grafana.com/grafana/plugins/data-source-plugins/) to visualize and correlate your Prometheus and k6 metrics.
+
+</Blockquote>
+
 With the Prometheus remote write integration, you can export metrics from k6 Cloud to a self-hosted or managed Prometheus instance.
 If you want to export local results over the remote write protocol, refer to [Prometheus remote write](https://k6.io/docs/results-output/real-time/prometheus-remote-write/).
 
