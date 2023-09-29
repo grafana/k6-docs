@@ -12,7 +12,7 @@ For each subsequent request to that hostname, it includes the stored cookie data
 
 You can then control more specific rules for whether to send the cookie data or not,
 including limiting it to specific subdomains or paths.
-You can also to set an expiry date on the cookie and tell the browser to send it only over encrypted (SSL/TLS) connections.
+You can also set an expiry date on the cookie and tell the browser to send it only over encrypted (SSL/TLS) connections.
 
 ## Cookies with k6
 
