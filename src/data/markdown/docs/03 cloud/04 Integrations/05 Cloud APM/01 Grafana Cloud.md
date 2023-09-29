@@ -5,7 +5,7 @@ excerpt: 'How to export metrics from k6 Cloud to Grafana Cloud'
 
 <Blockquote mod="attention" title="">
 
-This feature is being deprecated.
+This feature is being deprecated. If you're using [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), we recommend using [Data source plugins for Grafana](https://grafana.com/grafana/plugins/data-source-plugins/) to visualize and correlate your APM and k6 metrics.
 
 </Blockquote>
 
