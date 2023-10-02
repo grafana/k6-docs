@@ -52,7 +52,7 @@ import {
     SignatureV4,
     AMZ_CONTENT_SHA256_HEADER,
     UNSIGNED_PAYLOAD,
-} from 'https://jslib.k6.io/aws/0.9.0/kms.js'
+} from 'https://jslib.k6.io/aws/0.10.0/kms.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
