@@ -15,7 +15,7 @@ Both the dedicated `event-bridge.js` jslib bundle and the all-encompassing `aws.
 
 | Function                                                                                       | Description                                        |
 | :--------------------------------------------------------------------------------------------- | :------------------------------------------------- |
-| [putEvents(input)](/javascript-api/jslib/aws/eventbridgeclient/eventbridgeclient-putevents/) | Send custom events to Amazon EventBridge |
+| [putEvents(input)](/javascript-api/jslib/aws/eventbridgeclient/eventbridgeclient-putevents/) | Send custom events to Amazon EventBridge. |
 
 ### Throws
 
