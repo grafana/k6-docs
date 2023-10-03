@@ -3,6 +3,12 @@ title: 'Azure Monitor'
 excerpt: 'How to export metrics from k6 Cloud to Azure Monitor'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated. If you're using [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), we recommend using [Data source plugins for Grafana](https://grafana.com/grafana/plugins/data-source-plugins/) to visualize and correlate your APM and k6 metrics.
+
+</Blockquote>
+
 You can export test result metrics from the k6 Cloud to [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/),
 and use Azure Monitor to store and analyze all your data from your Azure and other environments.
 

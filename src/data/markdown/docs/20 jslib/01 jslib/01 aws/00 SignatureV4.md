@@ -68,6 +68,17 @@ export default function () {
             secretAccessKey: awsConfig.secretAccessKey,
             sessionToken: awsConfig.sessionToken,
         },
+
+        /**
+         * Whether the URI should be escaped or not.
+         */
+        uriEscapePath: false,
+
+        /**
+         * Whether or not the body's hash should be calculated and included
+         * in the request.
+         */
+        applyChecksum: false,
     })
 
     /**
@@ -105,17 +116,6 @@ export default function () {
              * The headers we will be sending in the request.
              */
             headers: {},
-
-            /**
-             * Whether the URI should be escaped or not.
-             */
-            uriEscapePath: false,
-
-            /**
-             * Whether or not the body's hash should be calculated and included
-             * in the request.
-             */
-            applyChecksum: false,
         },
 
         /**

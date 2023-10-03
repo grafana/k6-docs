@@ -674,7 +674,7 @@ function getDocPagesProps({
         slug = `javascript-api/${slug}`;
         if (slug.includes('xk6-disruptor/get-started/welcome')) {
           // make the section root out of the welcome page
-          slug = `javascript-api/xk6-disruptor/`;
+          slug = `/javascript-api/xk6-disruptor/`;
         }
 
         replacePathsInSidebarTree(
@@ -1693,6 +1693,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/testing-guides/automated-performance-testing/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/examples/advanced-api-flow/',
+    toPath: '/examples/api-crud-operations/',
+    isPermanent: true,
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
@@ -1855,6 +1860,8 @@ const createRedirects = ({ actions }) => {
       '/using-k6-browser/selecting-elements/',
     '/javascript-api/k6-browser/get-started/selecting-elements/':
       '/using-k6-browser/selecting-elements/',
+    '/javascript-api/xk6-disruptor/get-started/welcome/':
+      '/javascript-api/xk6-disruptor/',
     ...newJavascriptURLsRedirects,
   };
 

@@ -3,6 +3,12 @@ title: 'Cloud APM'
 excerpt: 'How to export metrics from k6 Cloud to APM platforms'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated. If you're using [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), we recommend using [Data source plugins for Grafana](https://grafana.com/grafana/plugins/data-source-plugins/) to visualize and correlate your APM and k6 metrics.
+
+</Blockquote>
+
 Cloud tests can export their metrics in near real-time to application performance monitoring (APM) platforms.
 By combining k6 Cloud with an APM, you can correlate and query testing metrics with other system metrics.
 

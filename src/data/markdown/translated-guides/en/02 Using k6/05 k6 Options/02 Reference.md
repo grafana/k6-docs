@@ -27,7 +27,7 @@ Each option has its own detailed reference in a separate section.
 | [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Exit on running](#exit-on-running)                       | Exits when test reaches the running status                                          |
-| [Extension options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
+| [Extension options](#extension-options)                   | An object used to set configuration options for cloud parameters and third-party collectors              |
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include system Env vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
@@ -351,7 +351,7 @@ export const options = {
 
 ## Extension options
 
-An object used to set configuration options for third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options/).
+An object used to set configuration options for cloud parameters and third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
