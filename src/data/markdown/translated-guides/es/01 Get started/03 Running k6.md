@@ -211,7 +211,7 @@ k6 soporta tres modelos de ejecución para ejecutar los tests: local, cluster, a
   k6 cloud script.js
   ```
 
-  Adicionalmente, k6 Cloud puede ejecutar cloud tests en tu [propia infraestructura cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/), y acepta los resultados de un test [local](/results-output/real-time/cloud/) o [distribuido en k8s](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Adicionalmente, k6 Cloud puede ejecutar cloud tests en tu [propia infraestructura cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/), y acepta los resultados de un test [local](/results-output/real-time/cloud/) o [distribuido en k8s](https://github.com/grafana/k6-operator#k6-cloud-output).
 
 
 

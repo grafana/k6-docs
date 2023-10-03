@@ -140,7 +140,7 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
                       Run tests on your own{' '}
                       <Link
                         to={
-                          'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/'
+                          'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/'
                         }
                       >
                         AWS EC2 instances
