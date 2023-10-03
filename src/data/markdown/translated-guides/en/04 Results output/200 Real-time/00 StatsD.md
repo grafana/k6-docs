@@ -3,6 +3,14 @@ title: 'StatsD'
 excerpt: 'k6 has a built-in output to a StatsD service.'
 ---
 
+<Blockquote mod="warning" title="">
+
+The built-in StatsD output has been deprecated on k6 v0.47.0. If you'd like to keep using this feature, you can use the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd).
+
+For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
+
+</Blockquote>
+
 k6 can also push the metrics to a [StatsD](https://github.com/statsd/statsd) service like:
 
 <CodeGroup labels={["StatsD"]}>
