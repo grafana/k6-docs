@@ -472,7 +472,7 @@ Si la API se encuentra en un entorno interno o restringido, se puede usar k6 par
 - Ejecute la prueba desde su red privada utilizando el comando "k6 run" o el [Kubernetes operator](https://github.com/grafana/k6-operator). Opcionalmente, almacene los resultados de la prueba en [k6 Cloud](https://k6.io/docs/results-output/real-time/cloud/) u otros [servicios externos](https://k6.io/docs/results-output/real-time/).
 - Para pruebas en la nube:
   - [Abra su firewall](https://k6.io/docs/cloud/creating-and-running-a-test/troubleshooting/#open-a-firewall-for-k6-cloud) para el tráfico de prueba desde la nube.
-  - Ejecute la prueba en la nube desde sus [clústers de Kubernetes](https://k6.io/docs/cloud/creating-and-running-a-test/private-load-zones/).
+  - Ejecute la prueba en la nube desde sus [clústers de Kubernetes](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/).
 
 ## Herramientas complementarias
 
