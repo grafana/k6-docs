@@ -1362,14 +1362,14 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/cloud/cloud-faq/private-load-zones/',
     toPath:
-      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/cloud/creating-and-running-a-test/private-load-zones/',
     toPath:
-      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/',
     isPermanent: true,
   });
 

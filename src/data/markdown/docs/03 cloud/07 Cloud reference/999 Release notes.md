@@ -108,7 +108,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v3.4.3.internal `(2022-4-26)`
 - Internal: improve cloud service stability and reliability.
-- Fix: [private load zones](/cloud/creating-and-running-a-test/private-load-zones/) authentication.
+- Fix: private load zones(/cloud/creating-and-running-a-test/private-load-zones/) authentication.
 
 ### `v0.3.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-4-25)`
 
