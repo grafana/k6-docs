@@ -103,7 +103,7 @@ k6 puede enviar datos de resultados más granulares a diferentes salidas para in
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --out statsd script.js
+$ k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>

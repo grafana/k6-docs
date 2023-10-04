@@ -52,7 +52,7 @@ Una vez que la integración esté lista, ejecute la prueba con k6 y envíe las m
 <CodeGroup labels={[""]}>
 
 ```bash
-$ k6 run --out statsd script.js
+$ k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>

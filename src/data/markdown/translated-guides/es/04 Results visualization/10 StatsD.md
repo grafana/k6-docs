@@ -8,7 +8,7 @@ k6 también puede mostrar las métricas con un servicio [StatsD](https://github.
 <CodeGroup labels={["StatsD"]}>
 
 ```bash
-$ k6 run --out statsd script.js
+$ k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>
