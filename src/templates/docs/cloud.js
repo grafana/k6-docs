@@ -143,7 +143,7 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
                           'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/'
                         }
                       >
-                        AWS EC2 instances
+                        Kubernetes clusters
                       </Link>
                       .
                     </Trait>
