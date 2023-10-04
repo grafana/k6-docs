@@ -3,7 +3,13 @@ title: 'New Relic'
 excerpt: 'You can send k6 output to New Relic. With this integration visualize load test results and correlate them your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
 ---
 
-> ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/new-relic).
+<Blockquote mod="warning" title="">
+
+The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
+
+For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
+
+</Blockquote>
 
 k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualized in dashboards and shared with others, used to compare load impact with system performance, and alert on metrics too.
 
@@ -12,6 +18,10 @@ This guide covers running the New Relic integration:
 - Run the New Relic StatsD integration
 - Run the k6 test
 - Visualize k6 telemetry in New Relic
+
+## Before you begin
+
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/results-output/real-time/statsd).
 
 ## Run the New Relic StatsD integration
 
@@ -66,12 +76,14 @@ Once the integration is running, run the k6 test and send the metrics to the int
 <CodeGroup labels={[""]}>
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
+$ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>
 
-Please look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
+Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
+
+You can look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualisation in New Relic
 

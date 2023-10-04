@@ -3,10 +3,23 @@ title: 'Netdata'
 excerpt: 'You can send k6 output to Netdata. With this integration, visualize test results with zero configuration, in seconds'
 ---
 
+<Blockquote mod="warning" title="">
+
+The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
+
+For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
+
+</Blockquote>
+
 k6 can send performance testing metrics to [Netdata](https://netdata.cloud). This enables the user to start monitoring their k6 experiments right away, as Netdata is a monitoring tool with:
-- auto-configuration and auto-detection of data sources
-- automatic organization of metrics into **meaningful** charts and visualization
-- per-second metric granularity
+
+- Auto-configuration and auto-detection of data sources
+- Automatic organization of metrics into **meaningful** charts and visualization
+- Per-second metric granularity
+
+## Before you begin
+
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/results-output/real-time/statsd).
 
 ## Run Netdata
 
@@ -24,8 +37,10 @@ Netdata runs a fully functional [StatsD](https://learn.netdata.cloud/docs/agent/
 ## Run the k6 test
 
 ```bash
-k6 run --out statsd script.js
+k6 run --out output-statsd script.js
 ```
+
+Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 
 **Caveat**: By default, Netdata binds the StatsD server to `localhost`. That means that if Netdata and k6 are in different hosts, you will need to edit the configuration file of Netdata.
 1. Visit [StatsD documentation](https://learn.netdata.cloud/docs/agent/collectors/statsd.plugin) for a reference on the configuration options. We are interested in `#bind to` option.

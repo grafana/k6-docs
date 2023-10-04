@@ -3,13 +3,25 @@ title: 'Amazon CloudWatch'
 excerpt: 'You can send k6 results output to Amazon CloudWatch and later visualize them.'
 ---
 
-k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html), which is effectively a StatsD integration. These metrics can then be visualized in dashboards.
+<Blockquote mod="warning" title="">
 
-This guide covers running the CloudWatch integration and visualizing the results:
+The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
+
+For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
+
+</Blockquote>
+
+k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). These metrics can then be visualized in dashboards.
+
+This guide covers how to:
 
 - Run the CloudWatch agent
 - Run the k6 test
 - Visualize k6 metrics in Amazon CloudWatch
+
+## Before you begin
+
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/results-output/real-time/statsd).
 
 ## Run the CloudWatch agent
 
@@ -60,18 +72,20 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 ## Run the k6 test
 
-Once the agent is running, [install](/get-started/installation) k6 and [run](/get-started/running-k6) the test, so that the metrics gets sent to the agent with the following command:
+Once the agent is running, you can run your test with:
 
 <CodeGroup labels={[]}>
 
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
+$ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>
 
-Please look at [StatsD](/results-output/real-time/statsd) output page for configuration options.
+Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
+
+You can look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualize k6 metrics in Amazon CloudWatch
 
