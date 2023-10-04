@@ -16,7 +16,7 @@ excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.10.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
