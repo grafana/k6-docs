@@ -1851,6 +1851,9 @@ const createRedirects = ({ actions }) => {
       '/using-k6-browser/selecting-elements/',
     '/javascript-api/k6-browser/get-started/selecting-elements/':
       '/using-k6-browser/selecting-elements/',
+    '/javascript-api/xk6-disruptor/': '/javascript-api/xk6-disruptor/about',
+    '/javascript-api/xk6-disruptor/get-started/welcome':
+      '/javascript-api/xk6-disruptor/about',
     ...newJavascriptURLsRedirects,
   };
 
