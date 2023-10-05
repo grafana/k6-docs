@@ -672,19 +672,10 @@ function getDocPagesProps({
       // add prefix to xk6-disruptor pages slugs and sidebar links
       if (slug.startsWith('xk6-disruptor/')) {
         slug = `javascript-api/${slug}`;
-        if (slug.includes('xk6-disruptor/get-started/first-steps')) {
-          // make the section root out of the welcome page
-          slug = `/javascript-api/xk6-disruptor/`;
-        }
 
         replacePathsInSidebarTree(
           sidebarTree,
           '/xk6-disruptor',
-          '/javascript-api/xk6-disruptor',
-        );
-        replacePathsInSidebarTree(
-          sidebarTree,
-          '/javascript-api/xk6-disruptor/get-started/first-steps',
           '/javascript-api/xk6-disruptor',
         );
 
@@ -1860,8 +1851,6 @@ const createRedirects = ({ actions }) => {
       '/using-k6-browser/selecting-elements/',
     '/javascript-api/k6-browser/get-started/selecting-elements/':
       '/using-k6-browser/selecting-elements/',
-    '/javascript-api/xk6-disruptor/get-started/first-steps/':
-      '/javascript-api/xk6-disruptor/',
     ...newJavascriptURLsRedirects,
   };
 
