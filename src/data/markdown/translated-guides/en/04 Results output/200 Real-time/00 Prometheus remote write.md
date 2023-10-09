@@ -165,11 +165,11 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_TREND_STATS` | list of `string` |  If Native Histogram is not enabled then it defines the stats functions to map for the all defined trend metrics. It's a comma-separated list of stats functions to include (e.g. `p(90),avg,sum`). Check the trend section to know the entire set of the supported stats. Default is `p(99)`. |
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY` | `boolean` | If true, the HTTP client skips TLS verification on the endpoint. Default is `false`. |
 | `K6_PROMETHEUS_RW_STALE_MARKERS` | `boolean` | If true, the output at the end of the test marks all the seen time series as stale. Default is `false`. |
-| `K6_PROMETHEUS_RW_USERNAME` | `string` | User for the HTTP Basic authentication at the Prometheus remote write endpoint. |
+| `K6_PROMETHEUS_RW_USERNAME` | `string` | Username for the HTTP Basic authentication at the Prometheus remote write endpoint. |
 | `K6_PROMETHEUS_RW_PASSWORD` | `string` | Password for the HTTP Basic authentication at the Prometheus remote write endpoint. |
-| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE` | `string` | Certifivate to authenticate via mTLS. |
+| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE` | `string` | Certificate to authenticate via mTLS. |
 | `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE_KEY` | `string` | Key to authenticate via mTLS. |
-| `K6_PROMETHEUS_RW_BEARER_TOKEN` | `string` | Set the Authorization header following the Bearer token format. |
+| `K6_PROMETHEUS_RW_BEARER_TOKEN` | `string` |  Sets the Authorization Bearer Token Header. |
 
 ### Stale trend metrics
 
