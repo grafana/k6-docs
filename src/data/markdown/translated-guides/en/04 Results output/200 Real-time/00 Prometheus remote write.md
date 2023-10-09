@@ -167,8 +167,8 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_STALE_MARKERS` | `boolean` | If true, the output at the end of the test marks all the seen time series as stale. Default is `false`. |
 | `K6_PROMETHEUS_RW_USERNAME` | `string` | Username for the HTTP Basic authentication at the Prometheus remote write endpoint. |
 | `K6_PROMETHEUS_RW_PASSWORD` | `string` | Password for the HTTP Basic authentication at the Prometheus remote write endpoint. |
-| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE` | `string` | Certificate to authenticate via mTLS. |
-| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE_KEY` | `string` | Key to authenticate via mTLS. |
+| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE` | `string` | A path to the PEM (Privacy-Enhanced Mail) formatted client certificate. |
+| `K6_PROMETHEUS_RW_CLIENT_CERTIFICATE_KEY` | `string` | A path to the PEM formatted client private key. |
 | `K6_PROMETHEUS_RW_BEARER_TOKEN` | `string` | Sets the Authorization Bearer Token Header. |
 
 ### Stale trend metrics
