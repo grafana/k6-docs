@@ -158,7 +158,7 @@ k6 has special options for remote write output.
 | Name | Type |  Description |
 | ---- | ---- |  ----------- |
 | `K6_PROMETHEUS_RW_SERVER_URL` | `string`  | URL of the Prometheus remote write implementation's endpoint. Default is ``http://localhost:9090/api/v1/write`` |
-| `K6_PROMETHEUS_RW_HEADERS_<header-key>` | `string` | Additional headers to include in the HTTP requests can be set using this described format. For example, `K6_PROMETHEUS_RW_HEADERS_MY-HEADER-CUSTOM-KEY=foo`. |
+| `K6_PROMETHEUS_RW_HEADERS_<header-key>` | `string` | An additional header to include in the HTTP requests can be set using this described format. For example, `K6_PROMETHEUS_RW_HEADERS_MY-HEADER-CUSTOM-KEY=foo`. |
 | `K6_PROMETHEUS_RW_HTTP_HEADERS` | comma-separated list of key values | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HTTP_HEADERS=key1:value1,key2:value2`. |
 | `K6_PROMETHEUS_RW_PUSH_INTERVAL` | `string` | Interval of the metrics' aggregation and upload to the endpoint. Default is `5s`. |
 | `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean` | If true, it maps the all defined trend metrics as [Native Histograms](#prometheus-native-histogram). Default is `false`. |
