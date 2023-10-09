@@ -294,11 +294,19 @@ Make sure not to introduce variance between test runs. If changes are necessary,
 
 Additionally, we recommend scheduling the execution of the same test twice and almost consecutively. This collects one extra test run result for better comparison and allows us to ignore a potentially unreliable test.
 
+### Establish how to stop automated and manual tests
+
+Certain performance tests, especially those involving heavy-load tests, might cause outages. Automating the execution of risky tests without supervision may not be desirable, but that doesn't mean you should avoid them.
+
+These tests require controlled test execution and real-time analysis of test results, allowing them to be stopped before the system becomes unresponsive.
+
+Similarly, you might want to stop a test when the system begins to produce a flood of errors. When a system becomes completely overloaded, continuing the test execution often doesn't provide more meaningful insights and merely consumes resources.
+
+To stop a k6 test, learn how to use the [`abortOnFail` threshold option](/using-k6/thresholds/#abort) or integrate with the k6 CLI or Grafana Cloud k6. 
+
 ### Complement automation with a repeatable QA process
 
 We mentioned this at the beginning of the guide: automation in performance testing is about establishing a repeatable and consistent testing process.
-
-Certain performance tests, especially heavy-load tests, might cause outages. These tests require a controlled execution and real-time analysis to prevent the system from becoming unresponsive. It may not be desirable to automate the execution of these tests without supervision, but it doesn't mean you should avoid them.
 
 You should also plan the frequency of tests that are manually triggered and require supervision of the system during their execution. To ensure these different cases are consistently tested, set reminders and document them as part of the QA process and release checklists. Common examples are:
 
