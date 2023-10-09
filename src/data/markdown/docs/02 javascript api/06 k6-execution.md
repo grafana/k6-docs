@@ -17,7 +17,7 @@ The `k6/execution` module provides the test execution information with the follo
 ```javascript
 import exec from 'k6/execution';
 
-const options = {
+export const options = {
   scenarios: {
     myscenario: {
       // this will be the returned name
@@ -134,7 +134,7 @@ The `name` property can be used for executing the logic based on which script is
 ```javascript
 import exec from 'k6/execution';
 
-const options = {
+export const options = {
   scenarios: {
     'the-first': {
       // ...
