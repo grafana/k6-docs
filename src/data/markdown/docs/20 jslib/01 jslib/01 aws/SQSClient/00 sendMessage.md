@@ -12,7 +12,16 @@ excerpt: "SQSClient.sendMessage sends a message to the specified Amazon SQS queu
 | :------------ | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `queueUrl`    | string            | The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive.                                                                                                                  |
 | `messageBody` | string            | The message to send. The minimum size is one character. The maximum size is 256 KB.                                                                                                                                   |
-| `options`     | object (optional) | Options for the request. Accepted properties are `messageDeduplicationId` (optional string) setting the message deduplication id, and `messageGroupId` (optional string) setting the message group ID for FIFO queues |
+| `options`     | [SendMessageOptions](#sendmessageoptions) (optional) | Options for the request. |
+
+#### SendMessageOptions
+
+| Name                      | Type   | Description                                                                                     |
+| :------------------------ | :----- | :---------------------------------------------------------------------------------------------- |
+| `messageDeduplicationId`  | string (optional) | his parameter applies only to FIFO (first-in-first-out) queues. The token used for deduplication of sent messages. If a message with a particular MessageDeduplicationId is sent successfully, any messages sent with the same MessageDeduplicationId are accepted successfully but aren't delivered during the 5-minute deduplication interval. |
+| `messageGroupId`          | string (optional) | The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner (however, messages in different message groups might be processed out of order). |
+| `messageAttributes`      | object (optional) | Each message attribute consists of a `Name`, `Type`, and `Value`. For more information, see [Amazon SQS Message Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html). |
+| `delaySeconds`            | number (optional) | The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive `delaySeconds` value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies. |
 
 ### Returns
 
@@ -47,7 +56,22 @@ export default async function () {
     }
 
     // Send message to test queue
-    await sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
+    await sqs.sendMessage(testQueue, 'test', {
+        messageAttributes: {
+            'test-string': {
+                type: 'String',
+                value: 'test'
+            },
+            'test-number': {
+                type: 'Number',
+                value: '23'
+            },
+            'test-binary': {
+                type: 'Binary',
+                value: 'dGVzdA=='
+            }
+        }
+    });
 }
 ```
 
