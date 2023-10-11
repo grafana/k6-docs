@@ -83,7 +83,7 @@ function retrieveIndividualCrocodilesInABatch(){
   });
 }
 
-function retieveAllPublicCrocodiles(){
+function retrieveAllPublicCrocodiles(){
 
   describe('[Crocs service] Fetch a list of crocs', () => {
     let response = session.get('/public/crocodiles');
@@ -162,7 +162,7 @@ function validateCrocodileCreation(){
 
 export default function testSuite() {
   retrieveIndividualCrocodilesInABatch();
-  retieveAllPublicCrocodiles();
+  retrieveAllPublicCrocodiles();
   validateAuthService();
   validateCrocodileCreation();
 }
