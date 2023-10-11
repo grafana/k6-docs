@@ -103,7 +103,9 @@ k6 puede enviar datos de resultados más granulares a diferentes salidas para in
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --out output-statsd script.js
+$ k6 run \
+--out json=test.json \
+--out influxdb=http://localhost:8086/k6
 ```
 
 </CodeGroup>
