@@ -1191,7 +1191,7 @@ const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: '/get-started/first-steps/',
+    fromPath: '/get-started/welcome/',
     toPath: '/',
     redirectInBrowser: true,
     isPermanent: true,
