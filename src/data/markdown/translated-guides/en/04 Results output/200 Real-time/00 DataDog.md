@@ -3,15 +3,25 @@ title: 'Datadog'
 excerpt: 'Send k6 output to Datadog to visualize load test results and correlate performance testing metrics in Datadog.'
 ---
 
-> ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/datadog).
+<Blockquote mod="warning" title="">
+
+The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
+
+For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
+
+</Blockquote>
 
 k6 can send metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
 
-This article outlines the instructions of the Datadog integration:
+This guide covers how to:
 
 - Run the Datadog Agent
 - Run the k6 test
 - Visualize in Datadog
+
+## Before you begin
+
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/results-output/real-time/statsd).
 
 ## Run the Datadog Agent
 
@@ -58,12 +68,14 @@ Once the Datadog Agent service is running, run the k6 test and send the metrics 
 <CodeGroup labels={[""]}>
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
+$ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
 
 </CodeGroup>
 
-Please look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
+Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
+
+You can look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualize in Datadog
 

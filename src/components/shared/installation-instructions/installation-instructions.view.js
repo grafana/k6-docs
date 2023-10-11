@@ -19,7 +19,7 @@ const InstallationInstructions = ({ extensionUrl }) => (
     <Blockquote>
       <p>
         To learn more about how to build custom k6 versions, check out{' '}
-        <a href="https://github.com/grafana/xk6">xk6</a>
+        <a href="https://github.com/grafana/xk6">xk6</a>.
       </p>
     </Blockquote>
   </>

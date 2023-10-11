@@ -24,7 +24,7 @@ Netdata runs a fully functional [StatsD](https://learn.netdata.cloud/docs/agent/
 ## Run the k6 test
 
 ```bash
-k6 run --out statsd script.js
+k6 run --out output-statsd script.js
 ```
 
 **Caveat**: By default, Netdata binds the StatsD server to `localhost`. That means that if Netdata and K6 are in different hosts, you will need to edit the configuration file of Netdata.
