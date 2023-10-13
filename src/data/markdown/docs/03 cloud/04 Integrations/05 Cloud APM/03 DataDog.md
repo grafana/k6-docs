@@ -4,6 +4,12 @@ head_title: 'Datadog integration with k6 Cloud'
 excerpt: 'How to export metrics from k6 Cloud to Datadog'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated. If you're using [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), we recommend using [Data source plugins for Grafana](https://grafana.com/grafana/plugins/data-source-plugins/) to visualize and correlate your APM and k6 metrics.
+
+</Blockquote>
+
 With this integration, you can export test-result metrics from the k6 Cloud to [Datadog](https://www.datadoghq.com/), where you can visualize and correlate k6 metrics with other monitored metrics.
 
 > ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.

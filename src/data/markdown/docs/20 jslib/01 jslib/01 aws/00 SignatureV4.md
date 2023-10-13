@@ -46,7 +46,7 @@ SignatureV4 methods throw errors on failure.
 ```javascript
 import http from 'k6/http'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.9.0/aws.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.11.0/aws.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
@@ -68,6 +68,17 @@ export default function () {
             secretAccessKey: awsConfig.secretAccessKey,
             sessionToken: awsConfig.sessionToken,
         },
+
+        /**
+         * Whether the URI should be escaped or not.
+         */
+        uriEscapePath: false,
+
+        /**
+         * Whether or not the body's hash should be calculated and included
+         * in the request.
+         */
+        applyChecksum: false,
     })
 
     /**
@@ -105,17 +116,6 @@ export default function () {
              * The headers we will be sending in the request.
              */
             headers: {},
-
-            /**
-             * Whether the URI should be escaped or not.
-             */
-            uriEscapePath: false,
-
-            /**
-             * Whether or not the body's hash should be calculated and included
-             * in the request.
-             */
-            applyChecksum: false,
         },
 
         /**

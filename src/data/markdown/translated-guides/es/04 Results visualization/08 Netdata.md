@@ -19,21 +19,21 @@ Alternatively, you can read more about installing and running Netdata in our [do
 
 ## Setup Netdata for K6
 
-Netdata runs a fully functional [StatsD](https://learn.netdata.cloud/docs/agent/collectors/statsd.plugin) server by default and we have included a default configuration file for k6 metrics. 
+Netdata runs a fully functional [StatsD](https://github.com/netdata/netdata/blob/master/collectors/statsd.plugin/README.md) server by default and we have included a default configuration file for k6 metrics. 
 
 ## Run the k6 test
 
 ```bash
-k6 run --out statsd script.js
+k6 run --out output-statsd script.js
 ```
 
 **Caveat**: By default, Netdata binds the StatsD server to `localhost`. That means that if Netdata and K6 are in different hosts, you will need to edit the configuration file of Netdata.
-1. Visit [StatsD documentation](https://learn.netdata.cloud/docs/agent/collectors/statsd.plugin) for a reference on the configuration options. We are interested in `#bind to` option.
+1. Visit [StatsD documentation](https://github.com/netdata/netdata/blob/master/collectors/statsd.plugin/README.md) for a reference on the configuration options. We are interested in `#bind to` option.
 2. Use `sudo ./edit-config netdata.conf` from inside the directory where Netdata stores it's configuration files (e.g `/etc/netdata/`) and add `bind to=udp:0.0.0.0:8125`.
 
 ## Visualize in Netdata
 
-Netdata will automatically create charts for your application, as illustrated in the [documentation](https://learn.netdata.cloud/docs/agent/collectors/statsd.plugin/k6). 
+Netdata will automatically create charts for your application, as illustrated in the [documentation](https://github.com/netdata/netdata/blob/master/collectors/statsd.plugin/k6.md). 
 
 Simply head over to `localhost:19999` (assuming that you are running Netdata on the same machine) and find the K6 section. If you had opened Netdata before running the experiment, you will need to refresh the dashboard page.
 

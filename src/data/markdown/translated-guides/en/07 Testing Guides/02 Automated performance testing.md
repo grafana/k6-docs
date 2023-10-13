@@ -26,9 +26,9 @@ Whether it’s a website loading in under a second, API responses in millisecond
 
 Performance is still intangible in many organizations, which react only when bad things happen. Automation changes this approach - **from reactive to proactive**. 
 
-In performance testing, it's crucial to establish routines to be consistent in our practices. Automation is necessary to create a performance testing habit, and boost some of its [benefits](https://k6.io/why-your-organization-should-perform-load-testing/):  
+In performance testing, it's crucial to establish routines to be consistent in our practices. Automation is necessary to create a performance testing habit, and boost some of its [benefits](https://k6.io/why-your-organization-should-perform-load-testing/), including:
 
-- **Increase test coverage**: Automation creates a constant and iterative process. It drives a continuous dedication in the performance testing practice that can result in broader test coverage and better test maintenance.
+- **Improve testing coverage, confidence, and maintenance**: Automation creates a constant and iterative process for various types of testing. This continuous effort in performance testing leads to expanded test coverage, enhanced test maintenance, and increased confidence in testing outcomes.
 - **Detect issues earlier**: Automating performance tests as part of the software delivery process can ensure applications meet reliability goals while catching issues earlier in the SDLC.
 - **Collaborate across teams**: Automation prompts teams to outline a strategy and plan across the SDLC and departments. It fosters engineering leaders to advocate for reliability and implement shared practices.
 
@@ -36,16 +36,16 @@ Without automation, the lack of a shared framework often leads to isolated and s
 
 ### More than CI/CD
 
-Automation often refers to running tests with pass/fail conditions as part of a release process, usually integrated into a continuous integration or continuous delivery pipeline (CI/CD). However, performance testing is not only about pass/fail results or being gatekeepers of the release process.
+Automation often refers to running tests with pass/fail conditions as part of the release process within CI/CD pipelines. However, not all performance tests are suited for CI/CD workflows, nor are they solely about providing a Pass/Fail (green/red) status and acting as a release gatekeeper.
 
-
-[Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests and that a complete strategy might include running tests using:
+[Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests in a frequent basis:
 
 - Cron and cron job runners.
 - Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/schedule-a-test/). 
 - Test management tools with automation capabilities.
 - Trigger manual tests. Include this as a step in your release checklist process.
 
+Running tests only from CI/CD tools on software changes limits the objectives of our performance tests. A complete performance testing strategy can include CI/CD tests, cron-based tests, or even manual tests to address various testing purposes: 
 
 ## Determine the purpose of the tests
 
@@ -294,11 +294,19 @@ Make sure not to introduce variance between test runs. If changes are necessary,
 
 Additionally, we recommend scheduling the execution of the same test twice and almost consecutively. This collects one extra test run result for better comparison and allows us to ignore a potentially unreliable test.
 
+### Establish how to stop automated and manual tests
+
+Certain performance tests, especially those involving heavy-load tests, might cause outages. Automating the execution of risky tests without supervision may not be desirable, but that doesn't mean you should avoid them.
+
+These tests require controlled test execution and real-time analysis of test results, allowing them to be stopped before the system becomes unresponsive.
+
+Similarly, you might want to stop a test when the system begins to produce a flood of errors. When a system becomes completely overloaded, continuing the test execution often doesn't provide more meaningful insights and merely consumes resources.
+
+To stop a k6 test, learn how to use the [`abortOnFail` threshold option](/using-k6/thresholds/#abort) or integrate with the k6 CLI or Grafana Cloud k6. 
+
 ### Complement automation with a repeatable QA process
 
 We mentioned this at the beginning of the guide: automation in performance testing is about establishing a repeatable and consistent testing process.
-
-Certain performance tests, especially heavy-load tests, might cause outages. These tests require a controlled execution and real-time analysis to prevent the system from becoming unresponsive. It may not be desirable to automate the execution of these tests without supervision, but it doesn't mean you should avoid them.
 
 You should also plan the frequency of tests that are manually triggered and require supervision of the system during their execution. To ensure these different cases are consistently tested, set reminders and document them as part of the QA process and release checklists. Common examples are:
 
