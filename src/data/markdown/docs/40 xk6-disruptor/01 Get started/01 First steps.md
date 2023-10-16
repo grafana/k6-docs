@@ -7,7 +7,7 @@ excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities
 
 [xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6.
 
-It provides a Javascript [API]((/javascript-api/xk6-disruptor/api)) to inject [faults](/javascript-api/xk6-disruptor/api/faults/) such as errors and delays into HTTP and gRPC requests served by selected Kubernetes [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
+It provides a Javascript [API](/javascript-api/xk6-disruptor/api) to inject [faults](/javascript-api/xk6-disruptor/api/faults/) such as errors and delays into HTTP and gRPC requests served by selected Kubernetes [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
 
 
 ```javascript
