@@ -181,7 +181,7 @@ k6 soporta tres modelos de ejecución para ejecutar los tests: local, cluster, a
   k6 run script.js
   ```
 
-2. [Distribuido](https://k6.io/blog/running-distributed-tests-on-k8s/): la ejecución del test es distribuida en un cluster de Kubernetes. 
+2. [Distribuido](/testing-guides/running-distributed-tests/): la ejecución del test es distribuida en un cluster de Kubernetes. 
   
   <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
 
