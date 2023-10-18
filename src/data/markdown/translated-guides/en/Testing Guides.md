@@ -10,3 +10,4 @@ This section provides a list of frequently-asked guides to help you set your tes
 - [Automated performance testing](/testing-guides/automated-performance-testing/)
 - [Load testing websites](/testing-guides/load-testing-websites/)
 - [Running large tests](/testing-guides/running-large-tests/)
+- [Running distributed tests](/testing-guides/running-distributed-tests/)
