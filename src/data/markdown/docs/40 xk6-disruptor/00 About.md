@@ -1,5 +1,5 @@
 ---
-title: 'Welcome'
+title: 'About'
 heading: 'xk6-disruptor Documentation'
 head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
@@ -21,24 +21,6 @@ It provides a Javascript API to inject different [faults](/javascript-api/xk6-di
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
-```javascript
-export default function () {
-    // Create a new pod disruptor with a selector
-    // that matches pods from the "default" namespace with the label "app=my-app"
-    const disruptor = new PodDisruptor({
-        namespace: "default",
-        select: { labels: { "app.kubernetes.io/name": "my-app" } },
-    });
-
-    // Disrupt the targets by injecting HTTP faults into them for 30 seconds
-    const fault = {
-        averageDelay: 500,
-        errorRate: 0.1,
-        errorCode: 500
-    }
-    disruptor.injectHTTPFaults(fault, "30s")
-}
-```
 
 ## Use cases
 
@@ -59,11 +41,15 @@ Common use cases are:
 
 ## Learn more
 
-Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements/), [installation](/javascript-api/xk6-disruptor/get-started/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application/) to get started with the disruptor.
+Lear more about [Fault injection](https://k6.io/blog/democratize-chaos-testing/) and [Building Resilience early in the development cycle](https://k6.io/blog/building-resilience-early-in-the-development-cycle/).
 
-This documentation presents a few [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
+Check the [first steps](/javascript-api/xk6-disruptor/get-started/first-steps) to get started with the disruptor.
 
-Also, an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) is available to use the k6 disruptor right away. You can fail the services of a demo application without having to install Kubernetes on your local machine.
+Follow the [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
+
+Visit the [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) and try the disruptor in a demo application without having to do any setup.
+
+## Contributing
 
 For any unexpected behavior, please search the [GitHub issues](https://github.com/grafana/xk6-disruptor/issues) first.
 
