@@ -11,5 +11,5 @@ excerpt: 'k6 Tutorials'
 - [Load test a GraphQL service](https://k6.io/blog/load-testing-graphql-with-k6)
 - [Use TypeScript in k6 scripts](https://github.com/k6io/template-typescript)
 - [Debug using a Web Proxy](https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/)
-- [Distributed k6 tests on K8s](https://k6.io/blog/running-distributed-tests-on-k8s/)
+- [Distributed k6 tests on K8s](/testing-guides/running-distributed-tests/)
 - [Create a k6 extension](https://k6.io/blog/extending-k6-with-xk6)
