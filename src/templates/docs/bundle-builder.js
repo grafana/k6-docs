@@ -66,16 +66,6 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           breadcrumbs={breadcrumbs}
         />
         <div className={classNames('container', docPageContent.inner)}>
-          <Blockquote mod="attention" title="Looking for Feedback">
-            Help us improve extensions by completing this{' '}
-            <Link
-              to="https://docs.google.com/forms/d/e/1FAIpQLSeL1RdxAyaoznGKLAdlMa5sLmVWoytpxRCZZVzBeFGSyqGI6A/viewform"
-              className="link"
-            >
-              short survey
-            </Link>
-            .
-          </Blockquote>
           <p>
             Extensions are composable; you can combine any extensions, or mix
             and match different test cases. To generate the command for your
