@@ -59,9 +59,6 @@ export const options = {
       },
     },
   },
-  thresholds: {
-    checks: ["rate==1.0"]
-  }
 }
 
 export default async function () {
@@ -242,9 +239,6 @@ export const options = {
       },
     },
   },
-  thresholds: {
-    checks: ["rate==1.0"]
-  }
 }
 
 export default async function () {
