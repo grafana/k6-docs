@@ -1,6 +1,7 @@
 ---
 title: 'Cookies'
 excerpt: 'k6 will transparently manage the receiving, storage and sending of cookies as described above, so that testing of your cookie-based web site or app will just work.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 HTTP Cookies are used by web sites and apps to store pieces of stateful information on user devices.

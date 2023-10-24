@@ -1,6 +1,7 @@
 ---
 title: 'StatsD'
 excerpt: 'k6 has a built-in output to a StatsD service.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

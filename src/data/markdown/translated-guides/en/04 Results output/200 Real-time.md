@@ -1,6 +1,7 @@
 ---
 title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Besides the [end-of-test summary](/results-output/end-of-test), you can also view metrics as granular data points.

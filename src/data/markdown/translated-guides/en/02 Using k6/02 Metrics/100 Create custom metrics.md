@@ -1,6 +1,7 @@
 ---
 title: Create custom metrics
 excerpt: How to build custom k6 metrics for each metric type.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Besides the [built-in metrics](/using-k6/metrics/reference), you can create custom metrics.

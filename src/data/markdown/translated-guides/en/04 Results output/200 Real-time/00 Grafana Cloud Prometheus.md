@@ -2,6 +2,7 @@
 title: 'Grafana Cloud Prometheus'
 excerpt: >
   How to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and the k6 output for Prometheus remote write'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention" title="">

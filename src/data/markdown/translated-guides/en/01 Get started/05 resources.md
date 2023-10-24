@@ -2,6 +2,7 @@
 title: k6 resources
 excerpt: 'An overview of the k6 resources beyond the k6 docs: videos, repositories, test servers, courses, and more'
 slug: '/get-started/resources/'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The docs aim to cover everything necessary to use the core k6 products in your daily operational work.

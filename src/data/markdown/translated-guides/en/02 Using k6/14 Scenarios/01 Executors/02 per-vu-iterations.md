@@ -1,6 +1,7 @@
 ---
 title: 'Per VU iterations'
 excerpt: 'Each VU executes an exact number of iterations.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 With the `per-vu-iterations` executor, each VU executes an exact number of iterations.

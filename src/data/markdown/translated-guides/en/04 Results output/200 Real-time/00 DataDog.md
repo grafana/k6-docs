@@ -1,6 +1,7 @@
 ---
 title: 'Datadog'
 excerpt: 'Send k6 output to Datadog to visualize load test results and correlate performance testing metrics in Datadog.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">
