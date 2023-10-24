@@ -1,6 +1,7 @@
 ---
 title: 'Build a k6 binary using Go'
 excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 To use an extension that you found on the [Extension page](/extensions/get-started/explore/) or the [xk6 GitHub topic](https://github.com/topics/xk6),

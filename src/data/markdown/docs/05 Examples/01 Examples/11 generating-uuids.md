@@ -1,6 +1,7 @@
 ---
 title: 'Generating UUIDs'
 excerpt: 'Scripting example on how to generate UUIDs in your load test.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 If you want to make a version 4 UUID,

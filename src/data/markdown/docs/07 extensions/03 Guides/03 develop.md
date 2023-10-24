@@ -1,6 +1,7 @@
 ---
 title: 'Create an extension'
 hideFromSidebar: true
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <!-- TODO: This url is referenced in k6 code (<= v0.37.0)!!! -->

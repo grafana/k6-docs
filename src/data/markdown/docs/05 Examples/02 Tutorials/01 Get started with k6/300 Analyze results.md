@@ -1,6 +1,7 @@
 ---
 title: Analyze results
 excerpt: Use k6 to write custom metrics and filter results.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 In this tutorial, learn how to:

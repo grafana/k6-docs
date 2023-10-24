@@ -1,6 +1,7 @@
 ---
 title: Reuse and re-run tests 
 excerpt: Modularize your k6 test logic and workload configuration. 
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 In the previous tutorials, you designed k6 scripts to assert performance and make comparing results easy.

@@ -2,6 +2,7 @@
 title: 'Functional testing'
 excerpt: |
   Use Chaijs library for functional and integration testing.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 ### Most basic integration test

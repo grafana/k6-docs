@@ -1,6 +1,7 @@
 ---
 title: 'JavaScript Extensions'
 excerpt: 'Follow these steps to build a JS extension for k6.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Take advantage of Go's speed, power, and efficiency while providing the flexibility of using JavaScript APIs
