@@ -112,6 +112,8 @@ Now, all that is needed is to specify the `browser.type` within the [scenario op
 
 With the removal of the `chromium.launch()` and `chromium.connect()` methods, setting browsers options is now done by using environment variables. For more information, refer to [Browser Module Options](/javascript-api/k6-experimental/browser/#browser-module-options).
 
+### Launching a browser
+
 Before:
 
 <CodeGroup lineNumbers={[true]}>
@@ -157,6 +159,56 @@ C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_TIMEOUT='60s' " && k6 
 
 ```bash
 PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 run script.js
+```
+
+</CodeGroup>
+
+### Connecting to a remote browser
+
+Before:
+
+<CodeGroup lineNumbers={[true]}>
+
+<!-- eslint-skip -->
+
+```javascript
+export default async function () {
+    const remoteURL = 'REMOTE_URL'
+    const browser = chromium.connect(remoteURL);
+    const page = browser.newPage();
+}
+```
+
+</CodeGroup>
+
+After:
+
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_BROWSER_WS_URL='REMOTE_URL' k6 run script.js
+```
+
+```bash
+# WARNING!
+# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
+# 'no-sandbox' argument. Only use it with trustworthy websites.
+#
+# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
+# Chrome arguments to not use 'no-sandbox' such as:
+# docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
+#
+# You can find an example of a hardened SECCOMP profile in:
+# https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
+docker run --rm -i -e K6_BROWSER_WS_URL='REMOTE_URL' grafana/k6:master-with-browser run - <script.js
+```
+
+```bash
+C:\k6> set "K6_BROWSER_WS_URL='REMOTE_URL'" && set "K6_BROWSER_TIMEOUT='60s' && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_WS_URL='REMOTE_URL' ; k6 run script.js
 ```
 
 </CodeGroup>

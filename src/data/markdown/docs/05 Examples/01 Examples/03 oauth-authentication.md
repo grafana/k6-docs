@@ -65,7 +65,7 @@ The following example shows how you can authenticate with Azure B2C using the [C
 
 This example is based on a JMeter example found at the [azure-ad-b2c/load-tests](https://github.com/azure-ad-b2c/load-tests) repository.
 
-TO use this script, you need to:
+To use this script, you need to:
 
 1. [Set up your own Azure B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
     * Copy the tenant name, it will be used in your test script.

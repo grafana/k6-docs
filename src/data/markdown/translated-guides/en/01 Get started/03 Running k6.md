@@ -204,7 +204,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   k6 run script.js
   ```
 
-- **Distributed**: the test execution is [distributed across a Kubernetes cluster](https://k6.io/blog/running-distributed-tests-on-k8s/). 
+- **Distributed**: the test execution is [distributed across a Kubernetes cluster](/testing-guides/running-distributed-tests/). 
   
   <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
 
@@ -234,5 +234,5 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   k6 cloud script.js
   ```
 
-  Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](/cloud/creating-and-running-a-test/private-load-zones/), and accept the test results from a [local](/results-output/real-time/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/), and accept the test results from a [local](/results-output/real-time/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 

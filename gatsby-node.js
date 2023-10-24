@@ -672,9 +672,9 @@ function getDocPagesProps({
       // add prefix to xk6-disruptor pages slugs and sidebar links
       if (slug.startsWith('xk6-disruptor/')) {
         slug = `javascript-api/${slug}`;
-        if (slug.includes('xk6-disruptor/get-started/welcome')) {
+        if (slug.includes('xk6-disruptor/get-started/first-steps')) {
           // make the section root out of the welcome page
-          slug = `javascript-api/xk6-disruptor/`;
+          slug = `/javascript-api/xk6-disruptor/`;
         }
 
         replacePathsInSidebarTree(
@@ -684,7 +684,7 @@ function getDocPagesProps({
         );
         replacePathsInSidebarTree(
           sidebarTree,
-          '/javascript-api/xk6-disruptor/get-started/welcome',
+          '/javascript-api/xk6-disruptor/get-started/first-steps',
           '/javascript-api/xk6-disruptor',
         );
 
@@ -1361,7 +1361,15 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/cloud/cloud-faq/private-load-zones/',
-    toPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/',
     isPermanent: true,
   });
 
@@ -1685,6 +1693,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/testing-guides/automated-performance-testing/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/examples/advanced-api-flow/',
+    toPath: '/examples/api-crud-operations/',
+    isPermanent: true,
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
@@ -1847,6 +1860,8 @@ const createRedirects = ({ actions }) => {
       '/using-k6-browser/selecting-elements/',
     '/javascript-api/k6-browser/get-started/selecting-elements/':
       '/using-k6-browser/selecting-elements/',
+    '/javascript-api/xk6-disruptor/get-started/first-steps/':
+      '/javascript-api/xk6-disruptor/',
     ...newJavascriptURLsRedirects,
   };
 

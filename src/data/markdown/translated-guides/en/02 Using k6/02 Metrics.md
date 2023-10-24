@@ -109,9 +109,9 @@ For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/r
 
 ## Metric name restrictions
 
-Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). The character limit is the same limit k6 had before restricting the character set down.
 
-That means they must not start with a number and a metric name can be 1 to 63 symbols of:
+That means they must not start with a number and a metric name can be 1 to 128 symbols of:
 1. any Unicode Letters
 2. any Unicode Number
 3. `_` (an underscore)

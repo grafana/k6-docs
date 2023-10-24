@@ -17,9 +17,6 @@ The first parameter of the `presign` method consists of an Object with the follo
 | hostname      | string                   | The hostname the request is sent to                                                                                                                                                                                                                                     |
 | path          | string                   | The path of the request                                                                                                                                                                                                                                                 |
 | headers       | Object                   | The headers of the HTTP request                                                                                                                                                                                                                                         |
-| uriEscapePath | boolean                  | Whether to uri-escape the request URI path as part of computing the canonical request string. This is required for every AWS service, except Amazon S3, as of late 2017.                                                                                                |
-| applyChecksum | boolean                  | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is required for AWS Glacier and Amazon S3 and optional for every other AWS service as of late 2017. |
-|               |                          |                                                                                                                                                                                                                                                                         |
 
 You can provide further options and override SignatureV4 options in the context of this specific request.
 To do this, pass a second parameter to the `presign` method, which is an Object with the following parameters.
@@ -55,7 +52,7 @@ import {
     SignatureV4,
     AMZ_CONTENT_SHA256_HEADER,
     UNSIGNED_PAYLOAD,
-} from 'https://jslib.k6.io/aws/0.9.0/kms.js'
+} from 'https://jslib.k6.io/aws/0.11.0/kms.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
@@ -75,6 +72,8 @@ export default function () {
             secretAccessKey: awsConfig.secretAccessKey,
             sessionToken: awsConfig.sessionToken,
         },
+        uriEscapePath: false,
+        applyChecksum: false,
     })
 
     // We can now use the signer to produce a pre-signed URL.
@@ -112,17 +111,6 @@ export default function () {
              * hash calculation, and communicate that value instead, as specified.
              */
             headers: { [AMZ_CONTENT_SHA256_HEADER]: 'UNSIGNED-PAYLOAD' },
-
-            /**
-             * Whether the URI should be escaped or not.
-             */
-            uriEscapePath: false,
-
-            /**
-             * Whether or not the body's hash should be calculated and included
-             * in the request.
-             */
-            applyChecksum: false,
         },
 
         /**

@@ -26,7 +26,7 @@ Estos recursos te ayudarán a escribir y ejecutar k6 tests en un entorno de test
 
 ## k6 + tu herramienta favorita
 
-- [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribuye la ejecución del test de carga a través de un cluster de Kubernetes.
+- [Kubernetes Operator](/testing-guides/running-distributed-tests/). Distribuye la ejecución del test de carga a través de un cluster de Kubernetes.
 - [xk6 extensions](/extensions). Extiende k6 con nuevas funcionalidades.
 - [The browser recorder](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/). Create un test desde una sesión en el navegador.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript).

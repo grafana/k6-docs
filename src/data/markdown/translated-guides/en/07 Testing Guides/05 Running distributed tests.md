@@ -17,8 +17,8 @@ For scenarios such as these, we've created the [k6-operator](https://github.com/
 [k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](/misc/glossary/#operator-pattern) in Kubernetes, defining [custom resources](/misc/glossary/#custom-resource) in Kubernetes.
 The intent is to automate tasks that a _human operator_ would normally do; tasks like provisioning new application components, changing configurations, or resolving run-time issues.
 
-The k6-operator defines the custom `K6` resource type and listens for changes to, or creation of, `K6` objects.
-Each `K6` object references a k6 test script, configures the environment, and specifies the number of instances, as `parallelism`, for a test run.
+The k6-operator defines the custom `TestRun` resource type and listens for changes to, or creation of, `TestRun` objects.
+Each `TestRun` object references a k6 test script, configures the environment, and specifies the number of instances, as `parallelism`, for a test run.
 Once a change is detected, the operator will react by modifying the cluster state, spinning up k6 test jobs as needed.
 
 ## Get started with k6-operator
@@ -181,15 +181,15 @@ When using a `PersistentVolume`, the operator will expect all test scripts to be
 To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` resources, review the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## 4. Create a custom resource
-During [installation](#install-the-operator), the `K6` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
-The data we provide in the custom resource `K6` object should contain all the information necessary for the k6-operator to start a distributed load test.
+During [installation](#install-the-operator), the `TestRun` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
+The data we provide in the custom resource `TestRun` object should contain all the information necessary for the k6-operator to start a distributed load test.
 
-Specifically, the main elements defined within the `K6` object relate to the name and location of the test script to run, and the amount of [parallelism](/misc/glossary/#parallelism) to utilize.
+Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](/misc/glossary/#parallelism) to utilize.
 
 <Blockquote mod="note" title="">
 
-The `K6` custom resource provides many configuration options to control the initialization and execution of tests.
-For the full listing of possible options, please refer to the project [source](https://github.com/grafana/k6-operator/blob/main/config/crd/bases/k6.io_k6s.yaml) and [README](https://github.com/grafana/k6-operator/blob/main/README.md).
+The `TestRun` custom resource provides many configuration options to control the initialization and execution of tests.
+For the full listing of possible options, please refer to the project [source](https://github.com/grafana/k6-operator/blob/main/config/crd/bases/k6.io_testruns.yaml) and [README](https://github.com/grafana/k6-operator/blob/main/README.md).
 
 </Blockquote>
 
@@ -205,7 +205,7 @@ Let's create the file `run-k6-from-configmap.yaml` with the following content:
 
 ```yaml
 apiVersion: k6.io/v1alpha1
-kind: K6
+kind: TestRun
 metadata:
   name: run-k6-from-configmap
 spec:
@@ -241,7 +241,7 @@ Assume we've created a `PersistentVolumeClaim` named `my-volume-claim` against a
 
 ```yaml
 apiVersion: k6.io/v1alpha1
-kind: K6
+kind: TestRun
 metadata:
   name: run-k6-from-volume
 spec:
@@ -267,13 +267,13 @@ Well written scripts will allow for variability to support multiple scenarios an
 These could be anything from passwords to target urls, in addition to system options.
 
 We can pass this data as [environment variables](/misc/glossary/#environment-variables) for use with each pod executing your script.
-This can be defined explicitly within the `K6` resource, or by referencing a `ConfigMap` or `Secret`.
+This can be defined explicitly within the `TestRun` resource, or by referencing a `ConfigMap` or `Secret`.
 
 <CodeGroup labels={["run-k6-with-vars.yaml"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```yaml
 apiVersion: k6.io/v1alpha1
-kind: K6
+kind: TestRun
 metadata:
   name: run-k6-with-vars
 spec:
@@ -318,7 +318,7 @@ Specifying options via command-line can still be accomplished when using the ope
 
 ```yaml
 apiVersion: k6.io/v1alpha1
-kind: K6
+kind: TestRun
 metadata:
   name: run-k6-with-args
 spec:
@@ -342,7 +342,7 @@ Be sure to visit the [options reference](https://k6.io/docs/using-k6/k6-options/
 
 ## 5. Run your test
 
-Tests are executed by applying the custom resource `K6` to a cluster where the operator is running.
+Tests are executed by applying the custom resource `TestRun` to a cluster where the operator is running.
 The test configuration is applied as in the following:
 
 ```shell
@@ -362,7 +362,7 @@ If you make use of [real-time results output](/results-output/real-time/), e.g. 
 
 ```yaml
 apiVersion: k6.io/v1alpha1
-kind: K6
+kind: TestRun
 metadata:
   name: run-k6-with-realtime
 spec:

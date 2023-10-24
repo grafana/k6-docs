@@ -40,11 +40,11 @@ You can also stream real-time metrics to the following services:
 - [Prometheus remote write](/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](/results-output/real-time/timescaledb)
 - [StatsD](/results-output/real-time/statsd)
+- [Other alternative with a custom output extension](/extensions/get-started/create/output-extensions/)
 
 </Glossary>
 
-> This list applies to local tests. To send k6 Cloud test results to an external service, refer to
-[Cloud APM](/cloud/integrations/cloud-apm/).
+> This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/k6/). 
 
 
 ## Read more

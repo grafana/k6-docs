@@ -55,10 +55,10 @@
       "to": "/examples/data-uploads"
     },
     {
-      "title": "Advanced API example",
-      "description": "This example covers the usage of different k6 APIs for API load testing.",
+      "title": "API CRUD Operations",
+      "description": "This example covers the usage of different k6 APIs for API CRUD operations testing.",
       "url": "",
-      "to": "/examples/advanced-api-flow"
+      "to": "/examples/api-crud-operations"
     },
     {
       "title": "Generating UUIDs",
@@ -192,7 +192,7 @@
       "title": "Distributed k6 tests on K8s",
       "description": "Deploy the k6 operator in your Kubernetes cluster to run distributed k6 tests.",
       "to": "",
-      "url": "https://k6.io/blog/running-distributed-tests-on-k8s/"
+      "url": "https://k6.io/docs/testing-guides/running-distributed-tests/"
     },
     {
       "title": "Create a k6 extension",

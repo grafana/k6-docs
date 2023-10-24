@@ -37,7 +37,7 @@ Note that these are shared testing environments - please avoid high-load tests. 
 
 ## k6 + your favorite tool
 
-- [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribute test execution across a Kubernetes cluster.
+- [Kubernetes Operator](/testing-guides/running-distributed-tests/). Distribute test execution across a Kubernetes cluster.
 - [xk6 extensions](/extensions). Custom k6 binaries to support the tool you need.
 - [The browser recorder](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/). Make test scripts from browser sessions.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)

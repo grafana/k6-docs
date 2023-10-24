@@ -27,7 +27,7 @@ import {
   // listBuckets,
   AWSConfig,
   S3Client,
-} from 'https://jslib.k6.io/aws/0.9.0/s3.js';
+} from 'https://jslib.k6.io/aws/0.11.0/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
