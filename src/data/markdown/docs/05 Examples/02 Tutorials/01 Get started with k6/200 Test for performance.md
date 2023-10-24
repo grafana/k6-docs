@@ -1,6 +1,7 @@
 ---
 title: Test for performance
 excerpt: Write thresholds to evaluate performance criteria, then increase load to see how the system performs.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 In the previous section, you made a working script to test an endpoint functionality.

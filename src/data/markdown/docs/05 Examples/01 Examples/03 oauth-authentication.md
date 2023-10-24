@@ -1,6 +1,7 @@
 ---
 title: 'OAuth Authentication'
 excerpt: 'Scripting examples on how to use OAuth authentication in your load test.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Scripting examples on how to use OAuth authentication in your load test.

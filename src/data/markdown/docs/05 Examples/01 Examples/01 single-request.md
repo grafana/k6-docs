@@ -2,6 +2,7 @@
 title: 'Single request'
 excerpt: 'Example of one HTTP GET request'
 draft: 'false'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <CodeGroup labels={["single-request.js"]} lineNumbers={[true]}>

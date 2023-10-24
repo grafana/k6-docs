@@ -2,6 +2,7 @@
 title: Distribute workloads across VUs
 excerpt: How to configure different amounts of traffic for different VU behaviors
 slug: /examples/distribute-workloads
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 k6 can schedule different load patterns for different VU functions.
