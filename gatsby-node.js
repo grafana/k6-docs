@@ -1255,6 +1255,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/extensions/guides/create-an-extension/',
+    toPath: '/extensions/get-started/create/javascript-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/misc/k6-extensions/',
     toPath: '/extensions/guides/',
     isPermanent: true,
