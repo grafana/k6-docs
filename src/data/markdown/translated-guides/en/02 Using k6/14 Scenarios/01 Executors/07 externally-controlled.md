@@ -1,6 +1,7 @@
 ---
 title: 'Externally controlled'
 excerpt: 'Control and scale execution at runtime via k6 REST API or the CLI.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or

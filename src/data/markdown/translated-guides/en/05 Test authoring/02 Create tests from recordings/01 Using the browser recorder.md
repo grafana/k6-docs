@@ -1,6 +1,7 @@
 ---
 title: 'Using the browser recorder'
 excerpt: 'The browser recorder allows generating a k6 script based on a web session. It is available as extensions for Chrome and Firefox.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The browser recorder lets you generate a k6 script based on a browser session.

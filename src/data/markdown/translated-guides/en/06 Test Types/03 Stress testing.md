@@ -2,6 +2,7 @@
 title: 'Stress testing'
 head_title: 'What is Stress Testing? How to create a Stress Test in k6'
 excerpt: 'Stress tests assess the limits of your system and stability under extreme conditions.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Stress testing assesses how the system performs when loads are heavier than usual.

@@ -1,6 +1,7 @@
 ---
 title: Grafana dashboards
 excerpt: With multiple k6 output formats, you also have multiple ways to visualize test results in a Grafana dashboard.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 You have multiple ways to query k6 results in Grafana. 

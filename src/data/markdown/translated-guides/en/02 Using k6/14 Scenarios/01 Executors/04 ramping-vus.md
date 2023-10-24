@@ -1,6 +1,7 @@
 ---
 title: 'Ramping VUs'
 excerpt: 'A variable number of VUs execute as many iterations as possible for a specified amount of time.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 With the `ramping-vus` executor, a variable number of VUs executes as many iterations as possible for a specified amount of time.

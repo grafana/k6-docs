@@ -1,6 +1,7 @@
 ---
 title: 'JSON'
 excerpt: 'You can also make k6 output detailed statistics in JSON format by using the --out option.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 You can output granular data points in JSON format.

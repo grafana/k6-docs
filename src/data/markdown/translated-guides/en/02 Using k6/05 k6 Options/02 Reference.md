@@ -2,6 +2,7 @@
 title: 'Options reference'
 slug: '/using-k6/k6-options/reference'
 excerpt: 'A complete list of all k6 options, with descriptions, defaults, and examples of how to set the option in your script, config files, environment variables, or CLI.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Options define test-run behavior.

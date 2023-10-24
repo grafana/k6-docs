@@ -1,6 +1,7 @@
 ---
 title: 'Test builder'
 excerpt: 'Use a graphical interface to create a k6 test.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The k6 Test Builder provides a graphical interface to generate a k6 test script based on your input. Then, you can copy the test script and [run the test from the CLI](/get-started/running-k6).

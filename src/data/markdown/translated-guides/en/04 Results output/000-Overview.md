@@ -1,6 +1,7 @@
 ---
 title: Overview
 excerpt: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 k6 emits [metrics](/using-k6/metrics) with timestamps at every point of the test.

@@ -1,6 +1,7 @@
 ---
 title: 'Constant arrival rate'
 excerpt: 'A fixed number of iterations are started in a specified period of time.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 With the `constant-arrival-rate` executor, k6 starts a fixed number of iterations over a specified period of time.

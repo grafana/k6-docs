@@ -1,6 +1,7 @@
 ---
 title: 'New Relic'
 excerpt: 'You can send k6 output to New Relic. With this integration visualize load test results and correlate them your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">
