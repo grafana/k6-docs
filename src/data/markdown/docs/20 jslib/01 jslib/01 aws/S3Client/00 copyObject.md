@@ -2,6 +2,7 @@
 title: 'S3Client.copyObject'
 description: 'S3Client.copyObject copies an object from a bucket to another'
 excerpt: 'S3Client.copyObject copies an object from a bucket to another'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `S3Client.copyObject` copies an object from one bucket to another.

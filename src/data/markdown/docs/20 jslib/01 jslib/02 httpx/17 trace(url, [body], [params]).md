@@ -2,6 +2,7 @@
 title: 'trace(url, [body], [params])'
 description: 'httpx.trace makes TRACE requests'
 excerpt: 'httpx.trace makes TRACE requests'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `session.trace(url, body, params)` makes a TRACE request. Only the first parameter is required

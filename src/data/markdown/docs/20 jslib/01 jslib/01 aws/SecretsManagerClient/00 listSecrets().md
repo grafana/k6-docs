@@ -2,6 +2,7 @@
 title: 'SecretsManagerClient.listSecrets()'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `S3Client.listSecrets` lists the secrets the authenticated user has access to in the region set by the `SecretsManagerClient` instance's configuration.

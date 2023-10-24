@@ -2,6 +2,7 @@
 title: 'SystemsManagerClient.getParameter()'
 description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `SystemsManagerClient.getParameter` gets a Systems Manager parameter in the caller's AWS account and region.

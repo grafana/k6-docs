@@ -1,6 +1,7 @@
 ---
 title: 'config'
 excerpt: 'Global configuration options for k6Chaijs'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Chai exposes a few options to change the library configuration.

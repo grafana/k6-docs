@@ -3,6 +3,7 @@ title: 'SecretsManagerClient'
 head_title: 'SecretsManagerClient'
 description: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 excerpt: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `SecretsManagerClient` interacts with the AWS Secrets Manager.

@@ -1,6 +1,7 @@
 ---
 title: "utils"
 excerpt: "A collection of small utility functions useful during load testing with k6. "
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `utils` module contains number of small utility functions useful in every day load testing.

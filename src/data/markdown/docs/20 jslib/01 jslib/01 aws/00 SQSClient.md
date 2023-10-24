@@ -3,6 +3,7 @@ title: 'SQSClient'
 head_title: 'SQSClient'
 description: 'SQSClient enables interaction with the AWS Simple Queue Service (SQS)'
 excerpt: 'SQSClient allows interacting with the AWS Simple Queue Service (SQS)'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `SQSClient` interacts with the AWS Simple Queue Service (SQS).
