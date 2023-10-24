@@ -1,6 +1,7 @@
 ---
 title: 'click([options])'
 excerpt: 'Browser module: locator.click method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

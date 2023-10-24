@@ -1,6 +1,7 @@
 ---
 title: 'Selection.last()'
 excerpt: 'Reduce the set of matched elements to the final one in the set.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Reduce the set of matched elements to the final one in the set.

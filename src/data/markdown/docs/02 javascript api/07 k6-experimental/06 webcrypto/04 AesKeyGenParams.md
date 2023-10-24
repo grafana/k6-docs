@@ -1,6 +1,7 @@
 ---
 title: 'AesKeyGenParams'
 excerpt: 'AesKeyGenParams represents the object that should be passed as the algorithm parameter into the generateKey operation, when generating an AES key.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `AesKeyGenParams` object represents the object that should be passed as the algorithm parameter into the [generateKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) operation when generating an AES key.

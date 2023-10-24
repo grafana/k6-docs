@@ -2,6 +2,7 @@
 title: 'b64encode( input, [encoding] )'
 description: 'Encode data in base64.'
 excerpt: 'Encode data in base64.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 | Parameter           | Type   | Description                                                              |

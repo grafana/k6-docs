@@ -1,6 +1,7 @@
 ---
 title: 'CookieJar.clear(url)'
 excerpt: 'Delete all cookies for the given URL.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 | Parameter | Type   | Description |

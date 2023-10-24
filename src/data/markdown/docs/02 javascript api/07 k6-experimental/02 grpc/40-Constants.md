@@ -1,6 +1,7 @@
 ---
 title: 'Constants'
 excerpt: 'Define constants to distinguish between gRPC Response'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Define constants to distinguish between [gRPC Response](/javascript-api/k6-experimental/grpc/response) statuses.

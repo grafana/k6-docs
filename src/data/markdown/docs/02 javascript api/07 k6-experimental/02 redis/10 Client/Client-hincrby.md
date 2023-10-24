@@ -1,6 +1,7 @@
 ---
 title: 'Client.hincrby(key, field, increment)'
 excerpt: 'Increments the value of a hash field by the given number.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Increments the integer value of `field` in the hash stored at `key` by `increment`. If `key` does not exist, a new key holding a hash is created. If `field` does not exist the value is set to 0 before the operation is set to 0 before the operation is performed.

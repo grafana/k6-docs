@@ -2,6 +2,7 @@
 title: 'file( data, [filename], [contentType] )'
 description: 'Create a file object that is used for building multi-part requests.'
 excerpt: 'Create a file object that is used for building multi-part requests.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Create a file object that is used for building [Multipart requests (file uploads)](/examples/data-uploads#multipart-request-uploading-a-file).

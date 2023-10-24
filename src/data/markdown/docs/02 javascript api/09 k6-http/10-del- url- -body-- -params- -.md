@@ -2,6 +2,7 @@
 title: 'del( url, [body], [params] )'
 description: 'Issue an HTTP DELETE request.'
 excerpt: 'Issue an HTTP DELETE request.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Make a DELETE request.

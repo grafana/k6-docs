@@ -1,6 +1,7 @@
 ---
 title: 'innerText([options])'
 excerpt: 'Browser module: locator.innerText method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the `element.innerText`.

@@ -1,6 +1,7 @@
 ---
 title: 'Socket.ping()'
 excerpt: 'Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <WsBlockquote />

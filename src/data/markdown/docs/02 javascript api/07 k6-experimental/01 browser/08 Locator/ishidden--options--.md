@@ -1,6 +1,7 @@
 ---
 title: 'isHidden([options])'
 excerpt: 'Browser module: locator.isHidden method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Checks if the element is `hidden`.

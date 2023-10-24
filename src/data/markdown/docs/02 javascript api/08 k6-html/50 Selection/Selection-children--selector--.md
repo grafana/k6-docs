@@ -1,6 +1,7 @@
 ---
 title: 'Selection.children([selector])'
 excerpt: 'Get the children of each element in the set of matched elements, optionally filtered by a selector.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the children of each element in the set of matched elements, optionally filtered by a selector.

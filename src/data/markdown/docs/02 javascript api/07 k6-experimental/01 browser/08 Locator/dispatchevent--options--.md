@@ -1,6 +1,7 @@
 ---
 title: 'dispatchEvent(type, eventInit, [options])'
 excerpt: 'Browser module: locator.dispatchEvent method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Dispatches HTML DOM event types e.g. `'click'`.

@@ -1,6 +1,7 @@
 ---
 title: 'Selection.data([key])'
 excerpt: 'Return the value at the named data store for the first element in the set of matched elements.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Return the value at the named data store for the first element in the set of matched elements.

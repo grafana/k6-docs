@@ -1,6 +1,7 @@
 ---
 title: 'Client.llen(key)'
 excerpt: 'Returns the length of the list stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the length of the list stored at `key`. If `key` does not exist, it is interpreted as an empty list and 0 is returned.

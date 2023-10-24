@@ -1,6 +1,7 @@
 ---
 title: 'fill(selector, value[, options])'
 excerpt: 'Browser module: page.fill(selector, value[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

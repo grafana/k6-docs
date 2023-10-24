@@ -1,6 +1,7 @@
 ---
 title: 'Client.randomKey()'
 excerpt: 'Returns a random key from the keyspace.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns a random key.

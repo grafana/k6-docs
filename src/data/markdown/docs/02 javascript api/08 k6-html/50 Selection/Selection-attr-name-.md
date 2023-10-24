@@ -1,6 +1,7 @@
 ---
 title: 'Selection.attr(name)'
 excerpt: 'Get the value of an attribute for the first element in the Selection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the value of an attribute for the first element in the Selection.

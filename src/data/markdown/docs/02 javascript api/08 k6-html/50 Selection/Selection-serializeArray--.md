@@ -1,6 +1,7 @@
 ---
 title: 'Selection.serializeArray()'
 excerpt: 'Encode a set of form elements as an array of names and values.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Encode a set of form elements as an array of names and values (`[{ name: "name", value: "value" }, ...]`).

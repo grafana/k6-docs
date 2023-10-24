@@ -1,6 +1,7 @@
 ---
 title: 'context()'
 excerpt: 'Browser module: context method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).

@@ -1,6 +1,7 @@
 ---
 title: 'Client.incrBy(key, increment)'
 excerpt: 'Increments the number stored at `key` by `increment`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Increments the number stored at `key` by `increment`. If the key does not exist, it is set to zero before performing the operation.

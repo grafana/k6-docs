@@ -1,6 +1,7 @@
 ---
 title: 'k6/http'
 excerpt: 'The k6/http module contains functionality for performing HTTP transactions.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The k6/http module contains functionality for performing HTTP transactions.

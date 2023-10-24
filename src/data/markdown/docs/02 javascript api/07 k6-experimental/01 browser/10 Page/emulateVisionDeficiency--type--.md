@@ -1,6 +1,7 @@
 ---
 title: 'emulateVisionDeficiency(type)'
 excerpt: 'Browser module: page.emulateVisionDeficiency(type) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 This emulates your website with the specified vision deficiency type.

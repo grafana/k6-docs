@@ -1,6 +1,7 @@
 ---
 title: 'getRandomValues'
 excerpt: 'getRandomValues fills the passed TypedArray with cryptographically sound random values.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `getRandomValues()` method fills the passed `TypedArray` with cryptographically sound random values.

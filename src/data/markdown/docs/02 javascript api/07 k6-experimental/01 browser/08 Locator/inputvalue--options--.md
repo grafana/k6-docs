@@ -1,6 +1,7 @@
 ---
 title: 'inputValue([options])'
 excerpt: 'Browser module: locator.inputValue method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns `input.value` for the selected `input`, `textarea` or `select` element.

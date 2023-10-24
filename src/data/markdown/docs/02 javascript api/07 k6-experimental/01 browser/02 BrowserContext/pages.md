@@ -1,6 +1,7 @@
 ---
 title: 'pages()'
 excerpt: 'Returns a list of pages inside this BrowserContext.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

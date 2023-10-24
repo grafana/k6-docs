@@ -1,6 +1,7 @@
 ---
 title: 'textContent(selector[, options])'
 excerpt: 'Browser module: locator.textContent(selector[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

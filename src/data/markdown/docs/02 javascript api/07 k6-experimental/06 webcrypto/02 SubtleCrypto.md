@@ -1,6 +1,7 @@
 ---
 title: 'SubtleCrypto'
 excerpt: 'SubtleCrypto offers low-level cryptographic functions.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `SubtleCrypto` interface provides a set of low-level cryptographic primitives such as encryption, decryption, digital signature generation and verification, and key generation and management. It is useful for using secure and efficient cryptographic operations within k6 scripts.

@@ -1,6 +1,7 @@
 ---
 title: "ElementHandle"
 excerpt: "Browser module: ElementHandle Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <BrowserDocsWIP/>

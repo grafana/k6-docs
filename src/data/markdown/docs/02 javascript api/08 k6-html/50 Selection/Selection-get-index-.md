@@ -1,6 +1,7 @@
 ---
 title: 'Selection.get(index)'
 excerpt: 'Retrieve the Element matched by the selector.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Retrieve the Element matched by the selector.

@@ -1,6 +1,7 @@
 ---
 title: 'frames()'
 excerpt: 'Browser module: page.frames method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns an array of [Frames](/javascript-api/k6-experimental/browser/frame/) on the page.

@@ -1,6 +1,7 @@
 ---
 title: "Stream.end()"
 excerpt: 'Signals to the server that the client has finished sending.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Signals to the server that the client has finished sending messages.

@@ -1,6 +1,7 @@
 ---
 title: "k6/experimental"
 excerpt: "k6 experimental APIs"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <ExperimentalBlockquote />

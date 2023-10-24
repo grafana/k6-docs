@@ -1,6 +1,7 @@
 ---
 title: 'title()'
 excerpt: 'Browser module: page.title method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the page's title.

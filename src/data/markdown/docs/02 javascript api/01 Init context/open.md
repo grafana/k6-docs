@@ -3,6 +3,7 @@ head_title: 'JavaScript API: open'
 title: 'open( filePath, [mode] )'
 description: 'Opens a file and reads all the contents into memory.'
 excerpt: 'Opens a file and reads all the contents into memory.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Opens a file, reading all its contents into memory for use in the script.

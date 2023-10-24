@@ -1,6 +1,7 @@
 ---
 title: 'isVisible([options])'
 excerpt: 'Browser module: locator.isVisible method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Checks if the element is `visible`.

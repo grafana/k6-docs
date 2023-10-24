@@ -2,6 +2,7 @@
 title: 'parseHTML( src )'
 description: 'Parse an HTML string and populate a Selection object.'
 excerpt: 'Parse an HTML string and populate a Selection object.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selection) object.

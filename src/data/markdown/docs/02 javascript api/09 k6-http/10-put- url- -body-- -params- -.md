@@ -2,6 +2,7 @@
 title: 'put( url, [body], [params] )'
 description: 'Issue an HTTP PUT request.'
 excerpt: 'Issue an HTTP PUT request.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 | Parameter         | Type                          | Description                                                                               |

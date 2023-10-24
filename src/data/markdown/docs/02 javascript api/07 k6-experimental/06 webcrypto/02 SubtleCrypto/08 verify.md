@@ -1,6 +1,7 @@
 ---
 title: 'verify'
 excerpt: 'verify verifies a digital signature.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `verify()` operation verifies a digital signature. It ensures that some data was signed by a known key and that the data has not been tampered with since it was signed.

@@ -1,6 +1,7 @@
 ---
 title: 'check([options])'
 excerpt: 'Browser module: locator.check method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

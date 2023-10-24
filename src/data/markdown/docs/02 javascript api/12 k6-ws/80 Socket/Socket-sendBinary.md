@@ -1,6 +1,7 @@
 ---
 title: 'Socket.sendBinary(data)'
 excerpt: 'Send binary data through the connection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <WsBlockquote />

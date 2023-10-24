@@ -1,6 +1,7 @@
 ---
 title: 'Client.hlen(key)'
 excerpt: 'Returns the number of fields in the hash stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the number of fields in the hash stored at `key`.

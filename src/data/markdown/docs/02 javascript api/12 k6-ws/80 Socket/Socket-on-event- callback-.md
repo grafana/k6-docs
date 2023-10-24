@@ -1,6 +1,7 @@
 ---
 title: 'Socket.on(event, callback)'
 excerpt: 'Set up callback functions for various events on the WebSocket connection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <WsBlockquote />

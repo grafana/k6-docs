@@ -1,6 +1,7 @@
 ---
 title: "Frame"
 excerpt: "Browser module: Frame Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <BrowserDocsWIP/>

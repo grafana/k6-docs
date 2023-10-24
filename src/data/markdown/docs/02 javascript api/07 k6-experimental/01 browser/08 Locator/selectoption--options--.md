@@ -1,6 +1,7 @@
 ---
 title: 'selectOption(values, [options])'
 excerpt: 'Browser module: locator.selectOption method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

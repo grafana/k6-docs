@@ -1,6 +1,7 @@
 ---
 title: "BrowserContext"
 excerpt: "Browser module: BrowserContext Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `BrowserContext`s provide a way to operate multiple independent sessions, with separate pages, cache, and cookies. A default `BrowserContext` is created when a browser is launched.

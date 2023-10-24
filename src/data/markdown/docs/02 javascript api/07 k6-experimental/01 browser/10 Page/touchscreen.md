@@ -1,6 +1,7 @@
 ---
 title: 'touchScreen'
 excerpt: 'Browser module: page.touchScreen method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the [Touchscreen](/javascript-api/k6-experimental/browser/touchscreen/) instance to interact with a virtual touchscreen on the page.

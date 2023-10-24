@@ -1,6 +1,7 @@
 ---
 title: 'Client.srem(key, members)'
 excerpt: 'Removes the specified members from the set stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Removes the specified members from the set stored at `key`. Specified members that are not a member of this set are ignored. If key does not exist, it is treated as an empty set and this command returns 0.

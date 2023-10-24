@@ -1,6 +1,7 @@
 ---
 title: 'Client.exists(keys)'
 excerpt: 'Returns the number of `key` arguments that exist.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the number of `key` arguments that exist. Note that if the same existing key is mentioned in the argument multiple times, it will be counted multiple times.

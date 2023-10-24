@@ -1,6 +1,7 @@
 ---
 title: 'selectOption(selector, values[, options])'
 excerpt: 'Browser module: page.selectOption(selector, values[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

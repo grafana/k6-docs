@@ -1,6 +1,7 @@
 ---
 title: 'type(selector, text[, options])'
 excerpt: 'Browser module: page.type(selector, text[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

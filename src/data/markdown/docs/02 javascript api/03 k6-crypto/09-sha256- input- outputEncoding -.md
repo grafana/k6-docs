@@ -2,6 +2,7 @@
 title: 'sha256( input, outputEncoding )'
 description: 'Use SHA-256 to hash input data.'
 excerpt: 'Use SHA-256 to hash input data.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <CryptoBlockquote />

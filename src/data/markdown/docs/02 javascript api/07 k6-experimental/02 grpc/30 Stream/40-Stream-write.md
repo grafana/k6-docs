@@ -1,6 +1,7 @@
 ---
 title: "Stream.write()"
 excerpt: 'Writes a message to the stream.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Writes a message to the stream.

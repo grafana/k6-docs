@@ -1,6 +1,7 @@
 ---
 title: 'browser'
 excerpt: 'An overview of the browser-level APIs from browser module.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <ExperimentalBlockquote />

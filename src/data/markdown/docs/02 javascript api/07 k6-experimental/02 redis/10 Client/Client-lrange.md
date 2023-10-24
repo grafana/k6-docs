@@ -1,6 +1,7 @@
 ---
 title: 'Client.lrange(key, start, stop)'
 excerpt: 'Returns the specified elements of the list stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the specified elements of the list stored at `key`. The offsets start and stop are zero-based indexes. These offsets can be negative numbers, where they indicate offsets starting at the end of the list.

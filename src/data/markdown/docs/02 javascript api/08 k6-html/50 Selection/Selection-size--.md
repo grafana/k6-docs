@@ -1,6 +1,7 @@
 ---
 title: 'Selection.size()'
 excerpt: 'Return the number of elements in the Selection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Return the number of elements in the Selection.

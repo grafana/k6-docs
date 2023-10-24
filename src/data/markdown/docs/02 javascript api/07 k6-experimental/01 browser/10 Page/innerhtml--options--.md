@@ -1,6 +1,7 @@
 ---
 title: 'innerHTML(selector[, options])'
 excerpt: 'Browser module: page.innerHTML(selector[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

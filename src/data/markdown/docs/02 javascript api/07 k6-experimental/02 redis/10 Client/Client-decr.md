@@ -1,6 +1,7 @@
 ---
 title: 'Client.decr(key)'
 excerpt: 'Decrements the number stored at `key` by one.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Decrements the number stored at `key` by one. If the key does not exist, it is set to zero before performing the operation.
