@@ -1,6 +1,7 @@
 ---
 title: 'Installation'
 excerpt: 'A step-by-step guide on how to install xk6-disruptor.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 xk6-disruptor is a [k6 extension](/extensions). You have to run a k6 version built with the disruptor extension to use the [disruptor APIs](/javascript-api/xk6-disruptor/api/) in your k6 tests.

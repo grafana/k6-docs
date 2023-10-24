@@ -2,6 +2,7 @@
 title: 'randomItem(array)'
 description: 'Random item from an array'
 excerpt: 'Random item from an array'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Function returns a random item from an array.

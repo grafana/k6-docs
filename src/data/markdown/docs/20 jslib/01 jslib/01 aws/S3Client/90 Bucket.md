@@ -2,6 +2,7 @@
 title: 'Bucket'
 description: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
 excerpt: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `listBuckets()` returns an array of Bucket objects. The Bucket object describes an Amazon S3 bucket.

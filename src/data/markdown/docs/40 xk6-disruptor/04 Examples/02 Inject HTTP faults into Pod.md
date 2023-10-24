@@ -1,6 +1,7 @@
 ---
 title: 'Inject HTTP faults into Pod'
 excerpt: 'This example shows how to test the effect of faults injected in the HTTP requests served by a pod.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 This example shows how [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.

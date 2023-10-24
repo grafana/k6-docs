@@ -1,6 +1,7 @@
 ---
 title: 'Expose your application'
 excerpt: 'How to make your applications accessible from the test scripts.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 To access your application from the test scripts, you must assign it an external IP in the cluster where it's running.

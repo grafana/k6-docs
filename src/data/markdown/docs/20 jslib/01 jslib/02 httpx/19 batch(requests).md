@@ -3,6 +3,7 @@ title: 'batch( requests )'
 head_title: 'httpx.batch(requests)'
 description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Batch multiple HTTP requests together, to issue them in parallel over multiple TCP connections.

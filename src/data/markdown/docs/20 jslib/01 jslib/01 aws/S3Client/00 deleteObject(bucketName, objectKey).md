@@ -2,6 +2,7 @@
 title: 'S3Client.deleteObject(bucketName, objectKey)'
 description: 'S3Client.deleteObject deletes an object from a bucket'
 excerpt: 'S3Client.deleteObject deletes an object from a bucket'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `S3Client.deleteObject` deletes an object from a bucket.

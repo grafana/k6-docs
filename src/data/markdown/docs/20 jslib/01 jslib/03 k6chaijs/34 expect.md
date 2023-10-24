@@ -1,6 +1,7 @@
 ---
 title: 'expect()'
 excerpt: 'BDD style to construct k6 assertions.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `expect` is a wrapper of [check](/javascript-api/k6/check/) to provide BDD style of assertions in k6. It implements the [Chai Expect API](https://www.chaijs.com/api/bdd/):

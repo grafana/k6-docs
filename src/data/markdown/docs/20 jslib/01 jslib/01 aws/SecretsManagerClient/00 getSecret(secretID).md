@@ -2,6 +2,7 @@
 title: 'SecretsManagerClient.getSecret(secretID)'
 description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
 excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `SecretsManagerClient.getSecret` downloads a secret from AWS secrets manager.

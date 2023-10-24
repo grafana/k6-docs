@@ -2,6 +2,7 @@
 title: 'S3Client.getObject(bucketName, objectKey)'
 description: 'S3Client.getObject downloads an object from a bucket'
 excerpt: 'S3Client.getObject downloads an object from a bucket'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `S3Client.getObject` downloads an object from a bucket.

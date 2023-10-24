@@ -2,6 +2,7 @@
 title: 'delete(url, [body], [params])'
 description: 'httpx.delete makes DELETE requests'
 excerpt: 'httpx.delete makes DELETE requests'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `session.delete(url, body, params)` makes a DELETE request. Only the first parameter is required. Body is discouraged. 

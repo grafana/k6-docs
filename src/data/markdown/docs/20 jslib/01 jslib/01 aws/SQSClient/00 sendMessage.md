@@ -2,6 +2,7 @@
 title: 'SQSClient.sendMessage()'
 description: "SQSClient.sendMessage sends a message to the specified Amazon SQS queue"
 excerpt: "SQSClient.sendMessage sends a message to the specified Amazon SQS queue"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `SQSClient.sendMessage(queueUrl, messageBody, options)` sends a message to the specified Amazon Simple Queue Service (SQS) queue.

@@ -3,6 +3,7 @@ title: 'About'
 heading: 'xk6-disruptor Documentation'
 head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 [xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6. It implements the principles of the Chaos Engineering discipline to test the reliability of our applications under turbulent conditions such as delays and response errors.

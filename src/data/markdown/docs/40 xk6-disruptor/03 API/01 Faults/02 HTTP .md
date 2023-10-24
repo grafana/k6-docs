@@ -1,6 +1,7 @@
 ---
 title: 'HTTP'
 excerpt: 'xk6-disruptor: HTTP Fault attributes'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 A HTTP Fault describes the characteristics of the faults to be injected in the HTTP requests served by a target.
