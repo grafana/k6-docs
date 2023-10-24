@@ -1,6 +1,7 @@
 ---
 title: 'Socket.setTimeout(callback, delay)'
 excerpt: 'Call a function at a later time, if the WebSocket connection is still open then.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <WsBlockquote />

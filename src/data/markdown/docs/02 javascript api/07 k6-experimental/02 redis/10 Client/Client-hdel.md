@@ -1,6 +1,7 @@
 ---
 title: 'Client.hdel(key, fields)'
 excerpt: 'Deletes fields from the hash stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Deletes the specified fields from the hash stored at `key`. The number of fields that were removed from the hash is returned on resolution (non including non existing fields). 

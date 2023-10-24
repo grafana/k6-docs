@@ -2,6 +2,7 @@
 title: 'Selection.next([selector])'
 excerpt: 'Get the immediately following sibling of each element in the set of matched elements
 Mimics jquery.next.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the immediately following sibling of each element in the set of matched elements

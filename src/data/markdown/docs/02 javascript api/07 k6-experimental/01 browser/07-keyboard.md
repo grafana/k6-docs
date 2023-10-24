@@ -1,6 +1,7 @@
 ---
 title: "Keyboard"
 excerpt: "Browser module: Keyboard Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <BrowserDocsWIP/>

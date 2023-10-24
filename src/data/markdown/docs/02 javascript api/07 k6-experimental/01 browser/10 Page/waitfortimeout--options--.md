@@ -1,6 +1,7 @@
 ---
 title: 'waitForTimeout(timeout)'
 excerpt: 'Browser module: waitForTimeout(timeout) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="note" title="">

@@ -1,6 +1,7 @@
 ---
 title: 'Client.persist(key)'
 excerpt: 'Remove the expiration from a key.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Removes the existing timeout on `key`.

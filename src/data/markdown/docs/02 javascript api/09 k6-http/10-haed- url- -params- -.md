@@ -2,6 +2,7 @@
 title: 'head( url, [params] )'
 description: 'Issue an HTTP HEAD request.'
 excerpt: 'Issue an HTTP HEAD request.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Make a HEAD request.

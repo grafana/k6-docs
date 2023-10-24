@@ -1,6 +1,7 @@
 ---
 title: 'WebSocket.close([code])'
 excerpt: 'Close the WebSocket connection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Close the WebSocket connection.

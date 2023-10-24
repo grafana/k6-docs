@@ -1,6 +1,7 @@
 ---
 title: 'Selection.html()'
 excerpt: 'Get the HTML contents of the first element in the set of matched elements.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the HTML contents of the first element in the set of matched elements.

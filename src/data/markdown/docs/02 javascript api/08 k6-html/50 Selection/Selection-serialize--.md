@@ -1,6 +1,7 @@
 ---
 title: 'Selection.serialize()'
 excerpt: 'Encode a set of form elements as a string in standard URL-encoded notation for submission.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Encode a set of form elements as a string in standard URL-encoded notation for submission.

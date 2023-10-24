@@ -2,6 +2,7 @@
 title: 'Params'
 description: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 excerpt: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 `Params` is an object used by the WebSocket constructor. The `Params` object contains request-specific options, such as headers that should be inserted into the connection initialization request.

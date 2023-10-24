@@ -1,6 +1,7 @@
 ---
 title: 'Client.srandmember(key)'
 excerpt: 'Returns a random member of the set stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns a random element from the set value stored at `key`.

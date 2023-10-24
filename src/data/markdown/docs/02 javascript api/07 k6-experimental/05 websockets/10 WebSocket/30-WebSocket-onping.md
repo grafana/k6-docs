@@ -1,6 +1,7 @@
 ---
 title: 'WebSocket.onping'
 excerpt: 'A handler function for WebSocket connection ping event.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 A handler for a WebSocket connection `ping` event.

@@ -1,6 +1,7 @@
 ---
 title: 'websockets'
 excerpt: "k6 websockets experimental API"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <ExperimentalBlockquote />

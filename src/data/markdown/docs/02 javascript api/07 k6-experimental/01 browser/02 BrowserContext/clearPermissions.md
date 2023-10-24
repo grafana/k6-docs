@@ -1,6 +1,7 @@
 ---
 title: 'clearPermissions()'
 excerpt: 'Clears all permission overrides for the BrowserContext.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

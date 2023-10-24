@@ -1,6 +1,7 @@
 ---
 title: 'dblclick(selector[, options])'
 excerpt: 'Browser module: page.dblclick(selector[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

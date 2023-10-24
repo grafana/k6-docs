@@ -1,6 +1,7 @@
 ---
 title: 'version()'
 excerpt: 'Browser module: version method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the browser application's version.

@@ -1,6 +1,7 @@
 ---
 title: 'grantPermissions(permissions[, options])'
 excerpt: 'Grants specified permissions to the BrowserContext.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Grants specified permissions to the `BrowserContext`. Only grants corresponding permissions to the given origin if specified.

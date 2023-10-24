@@ -1,6 +1,7 @@
 ---
 title: "Client.invoke(url, request [,params])"
 excerpt: 'Invokes an unary RPC request to the given method.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Invokes an unary RPC request to the given method.

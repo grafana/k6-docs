@@ -1,6 +1,7 @@
 ---
 title: 'Selection.text()'
 excerpt: 'Get the text content of the Selection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the text content of the Selection.

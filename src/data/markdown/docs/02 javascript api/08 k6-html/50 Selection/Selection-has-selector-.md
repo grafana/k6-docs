@@ -1,6 +1,7 @@
 ---
 title: 'Selection.has(selector)'
 excerpt: 'Reduce the set of matched elements to those that have a descendant that matches the selector.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Reduce the set of matched elements to those that have a descendant that matches the selector.

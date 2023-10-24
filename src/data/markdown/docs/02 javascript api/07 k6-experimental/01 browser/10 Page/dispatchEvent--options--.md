@@ -1,6 +1,7 @@
 ---
 title: 'dispatchEvent(selector, type, eventInit[, options])'
 excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

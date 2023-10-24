@@ -1,6 +1,7 @@
 ---
 title: 'Client.ttl(key)'
 excerpt: 'Returns the remaining time to live of a key.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the remaining time to live of a key that has a timeout.

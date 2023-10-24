@@ -1,6 +1,7 @@
 ---
 title: 'press(key, [options])'
 excerpt: 'Browser module: locator.press method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Press a single key on the keyboard or a combination of keys.

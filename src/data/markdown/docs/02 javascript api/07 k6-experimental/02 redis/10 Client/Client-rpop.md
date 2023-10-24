@@ -1,6 +1,7 @@
 ---
 title: 'Client.rpop(key)'
 excerpt: 'Removes and returns the last element of the list stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Removes and returns the last element of the list stored at `key`.

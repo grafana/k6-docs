@@ -1,6 +1,7 @@
 ---
 title: 'tap(selector[, options])'
 excerpt: 'Browser module: locator.tap(selector[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

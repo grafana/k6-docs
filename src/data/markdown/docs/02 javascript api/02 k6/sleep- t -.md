@@ -2,6 +2,7 @@
 title: 'sleep( t )'
 description: 'Suspends VU execution for the specified duration.'
 excerpt: 'Suspends VU execution for the specified duration.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Suspend VU execution for the specified duration.

@@ -1,6 +1,7 @@
 ---
 title: "k6/data"
 excerpt: "k6 data API"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The data module provides helpers to work with data.

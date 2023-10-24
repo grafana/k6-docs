@@ -1,6 +1,7 @@
 ---
 title: 'decrypt'
 excerpt: 'decrypt decrypts some encrypted data'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 The `decrypt()` method decrypts some encrypted data.

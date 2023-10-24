@@ -1,6 +1,7 @@
 ---
 title: 'focus([options])'
 excerpt: 'Browser module: locator.focus method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on the element, if it can be focused on.

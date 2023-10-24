@@ -1,6 +1,7 @@
 ---
 title: "ConsoleMessage"
 excerpt: "Browser module: ConsoleMessage Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <BrowserDocsWIP/>

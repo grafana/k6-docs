@@ -1,6 +1,7 @@
 ---
 title: 'setContent(html[, options])'
 excerpt: 'Browser module: page.setContent(html[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Sets the supplied HTML string to the current page.

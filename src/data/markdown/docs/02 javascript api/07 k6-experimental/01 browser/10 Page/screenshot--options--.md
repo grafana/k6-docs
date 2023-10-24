@@ -1,6 +1,7 @@
 ---
 title: 'screenshot([options])'
 excerpt: 'Browser module: page.screenshot([options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the buffer with the captured screenshot from the browser.

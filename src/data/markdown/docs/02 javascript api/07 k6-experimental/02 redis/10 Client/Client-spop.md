@@ -1,6 +1,7 @@
 ---
 title: 'Client.spop(key)'
 excerpt: 'Removes and returns a random member of the set stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Removes and returns a random element from the set value stored at `key`.

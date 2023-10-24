@@ -1,6 +1,7 @@
 ---
 title: 'url()'
 excerpt: 'Browser module: page.url method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the page's URL.

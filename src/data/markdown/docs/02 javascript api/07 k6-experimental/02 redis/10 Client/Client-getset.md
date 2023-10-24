@@ -1,6 +1,7 @@
 ---
 title: 'Client.getSet(key, value)'
 excerpt: 'Atomically sets `key` to `value` and returns the old value stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Atomically sets `key` to `value` and returns the value previously stored at `key`.

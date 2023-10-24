@@ -2,6 +2,7 @@
 title: 'request( method, url, [body], [params] )'
 description: 'Issue any type of HTTP request.'
 excerpt: 'Issue any type of HTTP request.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 | Parameter         | Type                          | Description                                                                               |

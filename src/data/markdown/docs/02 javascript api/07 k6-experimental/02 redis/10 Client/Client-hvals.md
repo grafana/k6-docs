@@ -1,6 +1,7 @@
 ---
 title: 'Client.hvals(key)'
 excerpt: 'Returns all values of the hash stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns all values of the hash stored at `key`.

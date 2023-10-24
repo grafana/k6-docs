@@ -1,6 +1,7 @@
 ---
 title: 'hover([options])'
 excerpt: 'Browser module: locator.hover method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="attention">

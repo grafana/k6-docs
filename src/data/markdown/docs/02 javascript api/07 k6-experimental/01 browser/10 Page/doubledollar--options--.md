@@ -1,6 +1,7 @@
 ---
 title: 'page.$$(selector)'
 excerpt: 'Browser module: page.$$(selector) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

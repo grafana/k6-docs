@@ -1,6 +1,7 @@
 ---
 title: "grpc"
 excerpt: "Experimental GRPC module"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <ExperimentalBlockquote />

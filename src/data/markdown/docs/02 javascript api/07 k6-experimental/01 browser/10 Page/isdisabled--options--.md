@@ -1,6 +1,7 @@
 ---
 title: 'isDisabled(selector[, options])'
 excerpt: 'Browser module: page.isDisabled(selector[, options]) method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <Blockquote mod="warning" title="">

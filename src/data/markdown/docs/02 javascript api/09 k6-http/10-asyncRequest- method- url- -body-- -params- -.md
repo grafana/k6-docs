@@ -2,6 +2,7 @@
 title: 'asyncRequest( method, url, [body], [params] )'
 description: 'Issue any type of HTTP request asynchronously.'
 excerpt: 'Issue any type of HTTP request asynchronously.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 | Parameter         | Type                          | Description                                                                               |

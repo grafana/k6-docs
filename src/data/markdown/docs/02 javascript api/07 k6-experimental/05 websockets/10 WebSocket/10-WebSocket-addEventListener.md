@@ -1,6 +1,7 @@
 ---
 title: 'WebSocket.addEventListener(event, handler)'
 excerpt: 'Set up handler functions for various events on the WebSocket connection.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Set up handler functions for various events on the WebSocket connection. You can define multiple handlers for the same event.

@@ -1,6 +1,7 @@
 ---
 title: 'innerHTML([options])'
 excerpt: 'Browser module: locator.innerHTML method'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the `element.innerHTML`.

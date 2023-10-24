@@ -1,6 +1,7 @@
 ---
 title: 'Client.mget(keys)'
 excerpt: 'Returns the values of all specified keys.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns the values of all specified keys.

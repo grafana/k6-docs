@@ -1,6 +1,7 @@
 ---
 title: 'Selection.first()'
 excerpt: 'Reduce the set of matched elements to the first in the set.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Reduce the set of matched elements to the first in the set.

@@ -1,6 +1,7 @@
 ---
 title: "JSHandle"
 excerpt: "Browser module: JSHandle Class"
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <BrowserDocsWIP/>

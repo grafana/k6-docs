@@ -1,6 +1,7 @@
 ---
 title: 'Client.getDel(key)'
 excerpt: 'Get the value of `key` and delete the key.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Get the value of `key` and delete the key. This functionality is similar to `get`, except for the fact that it also deletes the key on success.

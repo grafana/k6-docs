@@ -1,6 +1,7 @@
 ---
 title: 'Client.hgetall(key)'
 excerpt: 'Returns all fields and values of the hash stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Returns all fields and values of the hash stored at `key`.

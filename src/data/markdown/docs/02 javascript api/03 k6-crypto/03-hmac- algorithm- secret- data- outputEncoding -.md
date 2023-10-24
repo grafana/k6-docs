@@ -2,6 +2,7 @@
 title: 'hmac( algorithm, secret, data, outputEncoding )'
 description: 'Use HMAC to sign input data.'
 excerpt: 'Use HMAC to sign input data.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 <CryptoBlockquote />

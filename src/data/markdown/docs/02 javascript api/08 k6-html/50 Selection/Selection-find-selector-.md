@@ -1,6 +1,7 @@
 ---
 title: 'Selection.find(selector)'
 excerpt: 'Find the selection descendants, filtered by a selector.'
+canonicalUrl: https://grafana.com/docs/k6
 ---
 
 Find the selection descendants, filtered by a selector. It returns a [Selection](/javascript-api/k6-html/selection) object.
