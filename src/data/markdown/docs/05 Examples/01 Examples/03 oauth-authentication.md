@@ -61,35 +61,21 @@ export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, 
 
 ### Azure B2C
 
-The following example shows how to authenticate against Azure B2C using the [Client Credentials Flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code#client-credentials-flow).
+The following example shows how you can authenticate with Azure B2C using the [Client Credentials Flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code#client-credentials-flow).
 
-This example is build after a JMeter eyample: [Load Test Azure AD B2C Ciam Flows using Azure Load Testing Service](https://github.com/azure-ad-b2c/load-tests)
+This example is based on a JMeter example found at the [azure-ad-b2c/load-tests](https://github.com/azure-ad-b2c/load-tests) repository.
 
-For trying out this script, you need to do folow the instructions:
+TO use this script, you need to:
 
-1. [Set up your own tenant for Azure B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
-    * Note down the name of the tenant name into the settings section of the script.
+1. [Set up your own Azure B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
+    * Copy the tenant name, it will be used in your test script.
 2. [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga)
-    * We need to register a single page application, with the redirect url of: https://jwt.ms. This is needed for the flow to get a token.
-    * After the creation we can get the Application (client) ID, and the Directory (tenant) ID.
-    Note them down into the settings section of the script.
-3. [Create user flow so that you can sign up](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows)
-    * Note down the name of the user flow into the settings section of the script.
-    * Test the user flow, create a user, we can use to test the script with.
+    * Register a single page application with the redirect URL of: https://jwt.ms. That's needed for the flow to receive a token.
+    * After the creation, you can get the Application (client) ID, and the Directory (tenant) ID. Copy both of them, they'll be used in your test script.
+3. [Create a user flow so that you can sign up and create a user](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows)
+     * Create a new user, and copy the username and password. They'll be used in the test script.
 
-If you missed to note down any of the information, you can find then in the B2C settings in the Azure portal.
-
-Tenant Id and Client Id under App registrations, all apps and select the created single page application.
-
-Tenant Name is visible under Azure AD B2C overview, it is the first part of the domain name.
-
-
-Some troubles I had during the creation of the script:
-
-* In the self assert call the required data can have different names.
-Instead of email it could be Sign InName.
-If you followed the tutorial, you should be fine.
-
+If you missed copying any of the settings, you can find them in the B2C settings in the Azure portal.
 
 <CodeGroup labels={["azure-b2c.js"]} lineNumbers={[true]}>
 
