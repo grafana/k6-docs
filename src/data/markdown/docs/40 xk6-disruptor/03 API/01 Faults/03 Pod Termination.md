@@ -3,7 +3,7 @@ title: 'Pod Termination'
 excerpt: 'xk6-disruptor: Pod Termination Fault attributes'
 ---
 
-A Pod Termination Fault specifies that a number of the disruptor's target pods to be terminated .
+A Pod Termination Fault allows terminating either a fixed number or a percentage of the pods that matching a selector or back a service.
 
 A Pod Termination fault is defined by the following attributes:
 

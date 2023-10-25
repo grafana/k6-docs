@@ -3,7 +3,7 @@ title: 'terminatePods()'
 excerpt: 'xk6-disruptor: PodDisruptor.terminatePods method'
 ---
 
-`terminatePods` terminates a number of the disruptor's target pods.
+`terminatePods` terminates a number of the pods matching the selector configured in the PodDisruptor.
 
 | Parameter | Type   | Description |
 | --------- | ------ |------- |

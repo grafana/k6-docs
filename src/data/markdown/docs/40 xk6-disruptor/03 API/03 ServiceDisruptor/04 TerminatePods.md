@@ -3,7 +3,7 @@ title: 'terminatePods()'
 excerpt: 'xk6-disruptor: ServiceDisruptor.terminatePods method'
 ---
 
-`terminatePods` terminates a number of the disruptor's target pods.
+`terminatePods` terminates a number of pods that belong to the service specified in the ServiceDisruptor.
 
 | Parameter | Type   | Description |
 | --------- | ------ |------- |
