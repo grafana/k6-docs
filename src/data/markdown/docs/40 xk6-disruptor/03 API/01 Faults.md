@@ -9,3 +9,4 @@ A fault is as an abnormal condition that affects a system component and which ma
 | ---------- | ---------- |
 | [gRPC Fault](/javascript-api/xk6-disruptor/api/faults/grpc) | Fault affecting gRPC requests from a target |
 | [HTTP Fault](/javascript-api/xk6-disruptor/api/faults/http) | Fault affecting HTTP requests from a target |
+| [Pod Termination Fault](/javascript-api/xk6-disruptor/api/faults/pod-termination) | Fault terminating a number of target Pods |
