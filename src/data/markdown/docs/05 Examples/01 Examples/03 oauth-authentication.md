@@ -257,6 +257,7 @@ export default function () {
   console.log(token);
 }
 ```
+
 </CodeGroup>
 
 ### Okta
