@@ -59,6 +59,8 @@ export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, 
 }
 ```
 
+</CodeGroup>
+
 ### Azure B2C
 
 The following example shows how you can authenticate with Azure B2C using the [Client Credentials Flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code#client-credentials-flow).
