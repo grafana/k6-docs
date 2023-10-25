@@ -72,7 +72,7 @@ To use this script, you need to:
 1. [Set up your own Azure B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
     * Copy the tenant name, it will be used in your test script.
 2. [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga)
-    * Register a single page application with the redirect URL of: https://jwt.ms. That's needed for the flow to receive a token.
+    * Register a single page application with the redirect URL of: [https://jwt.ms](https://jwt.ms). That's needed for the flow to receive a token.
     * After the creation, you can get the Application (client) ID, and the Directory (tenant) ID. Copy both of them, they'll be used in your test script.
 3. [Create a user flow so that you can sign up and create a user](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows)
      * Create a new user, and copy the username and password. They'll be used in the test script.
