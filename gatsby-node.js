@@ -1705,6 +1705,28 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  [
+    '/',
+    '/describe/',
+    '/expect/',
+    '/and/',
+    '/as/',
+    '/toequal/',
+    '/tobegreaterthan/',
+    '/tobegreaterthanorequal/',
+    '/tobelessthan/',
+    '/tobelessthanorequal/',
+    '/tobebetween/',
+    '/tobetruthy/',
+    '/tohavevalidjson/',
+  ].forEach((item) => {
+    createRedirect({
+      fromPath: `/javascript-api/jslib/expect${item}`,
+      toPath: '/javascript-api/jslib/k6chaijs/',
+      isPermanent: true,
+    });
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
       '/javascript-api/k6-http/cookiejar/',
