@@ -1255,6 +1255,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/extensions/guides/create-an-extension/',
+    toPath: '/extensions/get-started/create/javascript-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/misc/k6-extensions/',
     toPath: '/extensions/guides/',
     isPermanent: true,
@@ -1697,6 +1703,28 @@ const createRedirects = ({ actions }) => {
     fromPath: '/examples/advanced-api-flow/',
     toPath: '/examples/api-crud-operations/',
     isPermanent: true,
+  });
+
+  [
+    '/',
+    '/describe/',
+    '/expect/',
+    '/and/',
+    '/as/',
+    '/toequal/',
+    '/tobegreaterthan/',
+    '/tobegreaterthanorequal/',
+    '/tobelessthan/',
+    '/tobelessthanorequal/',
+    '/tobebetween/',
+    '/tobetruthy/',
+    '/tohavevalidjson/',
+  ].forEach((item) => {
+    createRedirect({
+      fromPath: `/javascript-api/jslib/expect${item}`,
+      toPath: '/javascript-api/jslib/k6chaijs/',
+      isPermanent: true,
+    });
   });
 
   const redirects = {
