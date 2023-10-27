@@ -11,7 +11,7 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
-const SUPPORTED_LOCALES = ['es', 'en'];
+const SUPPORTED_LOCALES = ['en'];
 const DEFAULT_LOCALE = 'en';
 
 // create a container;

@@ -69,11 +69,7 @@ const BreadcrumbsStubPage = (props) => {
                           <a
                             href={meta.redirect}
                             className={'link'}
-                            target={
-                              meta.redirectTarget
-                                ? meta.redirectTarget
-                                : '_self'
-                            }
+                            target={'_self'}
                           >
                             {meta.title ? meta.title : name}
                           </a>

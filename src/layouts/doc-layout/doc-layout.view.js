@@ -177,7 +177,7 @@ const SidebarNode = (props) => {
       <a
         className={styles.sidebarNodeTitle}
         href={meta.redirect}
-        target={meta.redirectTarget ? meta.redirectTarget : '_self'}
+        target={'_self'}
       >
         {meta.title}
       </a>

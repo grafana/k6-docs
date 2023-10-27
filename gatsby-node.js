@@ -223,7 +223,6 @@ function generateSidebar({ nodes, type = 'docs' }) {
       frontmatter: {
         title,
         redirect,
-        redirectTarget,
         hideFromSidebar,
         draft,
         slug,
@@ -284,7 +283,6 @@ function generateSidebar({ nodes, type = 'docs' }) {
         ),
         title,
         redirect,
-        redirectTarget,
         hideFromSidebar: hideFromSidebar || false,
         isActiveSidebarLink: true,
       },
@@ -1017,7 +1015,6 @@ async function fetchDocPagesData(graphql) {
                   excerpt
                   heading
                   redirect
-                  redirectTarget
                   hideFromSidebar
                   draft
                   shouldCreatePage
@@ -1061,7 +1058,6 @@ async function fetchGuidesPagesData(graphql) {
                   excerpt
                   robots
                   redirect
-                  redirectTarget
                   hideFromSidebar
                   draft
                   shouldCreatePage
@@ -1105,7 +1101,6 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   excerpt
 
                   redirect
-                  redirectTarget
                   hideFromSidebar
                   draft
                   shouldCreatePage
@@ -1193,12 +1188,6 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/get-started/welcome/',
     toPath: '/',
-    redirectInBrowser: true,
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/es/empezando/bienvenido/',
-    toPath: '/es/',
     redirectInBrowser: true,
     isPermanent: true,
   });
@@ -1728,6 +1717,92 @@ const createRedirects = ({ actions }) => {
   });
 
   const redirects = {
+    '/es/empezando/bienvenido/': '/',
+    '/es/empezando/instalacion/': '/get-started/installation/',
+    '/es/empezando/instalacion/solucion-de-problemas/':
+      '/get-started/installation/troubleshooting/',
+    '/es/empezando/ejecucion-de-k6/': '/get-started/running-k6/',
+    '/es/empezando/recursos-de-k6/': '/get-started/resources/',
+    '/es/usando-k6/': '/using-k6/',
+    '/es/usando-k6/peticiones-http/': '/using-k6/http-requests/',
+    '/es/usando-k6/metricas/': '/using-k6/metrics/',
+    '/es/usando-k6/checks/': '/using-k6/thresholds/',
+    '/es/usando-k6/opciones/': '/using-k6/k6-options/',
+    '/es/usando-k6/thresholds/': '/using-k6/thresholds/',
+    '/es/usando-k6/etapas-de-un-test/': '/using-k6/test-lifecycle/',
+    '/es/usando-k6/modulos/': '/using-k6/modules/',
+    '/es/usando-k6/tags-y-groups/': '/using-k6/tags-and-groups/',
+    '/es/usando-k6/cookies/': '/using-k6/cookies/',
+    '/es/usando-k6/protocolos/': '/using-k6/protocols/',
+    '/es/usando-k6/protocolos/http-2/': '/using-k6/protocols/',
+    '/es/usando-k6/protocolos/websockets/': '/using-k6/protocols/',
+    '/es/usando-k6/protocolos/grpc/': '/using-k6/protocols/',
+    '/es/usando-k6/protocolos/ssl-tls/': '/using-k6/protocols/',
+    '/es/usando-k6/variables-de-entorno/': '/using-k6/environment-variables/',
+    '/es/usando-k6/variables-de-contexto/':
+      '/using-k6/execution-context-variables/',
+    '/es/usando-k6/escenarios/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/shared-iterations/':
+      '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/per-vu-iterations/':
+      '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/constant-vus/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/ramping-vus/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/constant-arrival-rate/':
+      '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/ramping-arrival-rate/':
+      '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/executors/externally-controlled/':
+      '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/ejemplos-avanzados/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/graceful-stop/': '/using-k6/scenarios/',
+    '/es/usando-k6/escenarios/arrival-rate/': '/using-k6/scenarios/',
+    '/es/creacion-de-pruebas/': '/test-authoring/',
+    '/es/creacion-de-pruebas/constructor-de-pruebas/':
+      '/test-authoring/test-builder/',
+    '/es/creacion-de-pruebas/grabar-una-sesion/':
+      '/test-authoring/create-tests-from-recordings/',
+    '/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/':
+      '/test-authoring/create-tests-from-recordings/',
+    '/es/creacion-de-pruebas/grabar-una-sesion/har-converter/':
+      '/test-authoring/create-tests-from-recordings/',
+    '/es/tipos-de-prueba/': '/test-types/',
+    '/es/tipos-de-prueba/introduccion/': '/test-types/',
+    '/es/tipos-de-prueba/smoke-testing/': '/test-types/smoke-testing/',
+    '/es/tipos-de-prueba/load-testing/': '/test-types/load-testing/',
+    '/es/tipos-de-prueba/stress-testing/': '/test-types/stress-testing/',
+    '/es/tipos-de-prueba/soak-testing/': '/test-types/soak-testing/',
+    '/es/visualizacion-de-resultados/': '/results-output/real-time/',
+    '/es/visualizacion-de-resultados/amazon-cloudwatch/':
+      '/results-output/real-time/amazon-cloudwatch/',
+    '/es/visualizacion-de-resultados/cloud/':
+      '/results-output/real-time/cloud/',
+    '/es/visualizacion-de-resultados/csv/': '/results-output/real-time/csv/',
+    '/es/visualizacion-de-resultados/datadog/':
+      '/results-output/real-time/datadog/',
+    '/es/visualizacion-de-resultados/json/': '/results-output/real-time/json/',
+    '/es/visualizacion-de-resultados/netdata/':
+      '/results-output/real-time/netdata/',
+    '/es/visualizacion-de-resultados/new-relic/':
+      '/results-output/real-time/new-relic/',
+    '/es/visualizacion-de-resultados/statsd/':
+      '/results-output/real-time/statsd/',
+    '/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/':
+      '/results-output/end-of-test/',
+    '/es/guias-de-prueba/': '/testing-guides/',
+    '/es/guias-de-prueba/pruebas-de-carga-de-sitios-web/':
+      '/testing-guides/load-testing-websites/',
+    '/es/guias-de-prueba/pruebas-a-gran-escala/':
+      '/testing-guides/running-large-tests/',
+    '/es/guias-de-prueba/pruebas-de-carga-para-apis/':
+      '/testing-guides/api-load-testing/',
+    '/es/misc/': '/misc/',
+    '/es/misc/recopilacion-de-datos-de-uso/': '/misc/usage-collection/',
+    '/es/misc/intellisense/': '/misc/intellisense/',
+    '/es/misc/optimizar-el-sistema-operativo/': '/misc/fine-tuning-os/',
+    '/es/misc/archivo-command/': '/misc/archive-command/',
+    '/es/misc/glosario/': '/misc/glossary/',
     '/javascript-api/k6-http/cookiejar-k6-http/':
       '/javascript-api/k6-http/cookiejar/',
     '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url/':
@@ -1772,7 +1847,7 @@ const createRedirects = ({ actions }) => {
     '/results-visualization/apache-kafka/':
       '/results-output/real-time/apache-kafka/',
     '/getting-started/results-output/cloud/': '/results-visualization/cloud/',
-    '/results-visualization/k6-cloud-test-results':
+    '/results-visualization/k6-cloud-test-results/':
       '/results-visualization/cloud/',
     '/getting-started/results-output/datadog/':
       '/results-visualization/datadog/',
@@ -1797,7 +1872,7 @@ const createRedirects = ({ actions }) => {
     '/cloud/creating-and-running-a-test/in-app-script-editor/':
       '/cloud/creating-and-running-a-test/script-editor/',
     '/cloud/creating-and-running-a-test/converters/': '/integrations/',
-    '/cloud/integrations/ci': '/integrations/',
+    '/cloud/integrations/ci/': '/integrations/',
     '/cloud/cloud-faq/what-is-data-retention/':
       '/cloud/billing-user-menu/data-retention/',
     '/cloud/cloud-faq/pricing-faq/': '/cloud/cloud-faq/pricing-questions/',
@@ -1900,11 +1975,14 @@ const createRedirects = ({ actions }) => {
       toPath: `${value}`,
       isPermanent: true,
     });
-    createRedirect({
-      fromPath: `${key}/`,
-      toPath: `${value}`,
-      isPermanent: true,
-    });
+
+    if (key.slice('-1') !== '/') {
+      createRedirect({
+        fromPath: `${key}/`,
+        toPath: `${value}`,
+        isPermanent: true,
+      });
+    }
   }
 
   // all redirects docs.k6.io

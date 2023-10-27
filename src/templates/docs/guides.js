@@ -50,10 +50,6 @@ const GuidesContent = ({
       path: '/',
       title: 'Guides',
     },
-    es: {
-      path: '/es/',
-      title: 'Guías',
-    },
   };
 
   const flatSidebar = flattenSidebarTree(sidebarTree);
