@@ -35,7 +35,7 @@ This executor is suitable when you want a specific number of VUs to complete a f
 number of total iterations, and the amount of iterations per VU is unimportant.
 If the **time to complete** a number of test iterations is your concern, this executor should perform best.
 
-An example use case is for quick performance tests in the developement build cycle.
+An example use case is for quick performance tests in the development build cycle.
 As developers make changes, they might run the test against the local code to test for performance regressions.
 Thus the executor works well with a _shift-left_ policy, where emphasizes testing performance early in the development cycle, when the cost of a fix is lowest.
 
