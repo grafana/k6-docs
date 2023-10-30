@@ -1,5 +1,5 @@
 ---
-title: Integrations
+title: Integrations & Tools
 weight: 01
 ---
 

@@ -3,7 +3,7 @@ title: 'Client.decrBy(key, decrement)'
 excerpt: 'Decrements the number stored at `key` by `decrement`.'
 ---
 
-# 'Client.decrBy(key, decrement)
+# Client.decrBy(key, decrement)
 
 Decrements the number stored at `key` by `decrement`. If the key does not exist, it is set to zero before performing the operation.
 

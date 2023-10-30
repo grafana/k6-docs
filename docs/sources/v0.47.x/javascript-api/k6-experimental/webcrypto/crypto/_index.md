@@ -19,5 +19,7 @@ weight: 01
 
 | Name                       | Type                                                                                                        | Description                                                 |
 | :------------------------- | :---------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
-| `Crypto.getRandomValues()` | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | Returns an array of cryptographically secure random values. |
-| `Crypto.randomUUID()`      | [ArrayBuffer]()                                                                                             | Returns a randomly generated, 36 character long v4 UUID.    |
+| `Crypto.getRandomValues()` | [ArrayBuffer]
+(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | Returns an array of cryptographically secure random values. |
+| `Crypto.randomUUID()`      | [ArrayBuffer]
+(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)                                                                                             | Returns a randomly generated, 36 character long v4 UUID.    |

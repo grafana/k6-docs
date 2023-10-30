@@ -199,7 +199,7 @@ To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` reso
 
 ## 4. Create a custom resource
 
-During [installation](#install-the-operator), the `TestRun` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
+During [installation](#1-install-the-operator), the `TestRun` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
 The data we provide in the custom resource `TestRun` object should contain all the information necessary for the k6-operator to start a distributed load test.
 
 Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](/docs/k6/<K6_VERSION>/misc/glossary#parallelism) to utilize.

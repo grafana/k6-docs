@@ -1473,7 +1473,7 @@ $ k6 run --verbose script.js
 
 ## VUs
 
-An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#options) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios).
+An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#duration) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
 Available in `k6 run` and `k6 cloud` commands.
 

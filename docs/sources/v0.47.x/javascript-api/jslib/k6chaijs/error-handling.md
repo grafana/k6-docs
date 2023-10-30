@@ -53,7 +53,7 @@ This might not be ideal because:
 
 It's possible to rewrite this test to be less fragile, but it can make our test code longer and less readable.
 
-# Handling exceptions
+## Handling exceptions
 
 Sometimes it's hard to predict how a SUT might fail. For those cases, [describe](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/describe) catches any internal exceptions and:
 

@@ -1,6 +1,7 @@
 .cache/
 public/
 node_modules/
+docs/sources/
 docs/sources/get-started/run-cloud-tests-from-the-CLI.md
 docs/sources/get-started/run-your-first-tests.md
 CONTRIBUTING_FILE_FORMAT.md

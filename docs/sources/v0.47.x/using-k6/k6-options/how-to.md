@@ -17,7 +17,7 @@ k6 provides multiple places to set options:
 Most likely, your use case will determine where you want to set the particular options for a particular test.
 You can also access option values as your test runs.
 
-## Order of precedence {#order-of-precedence}
+## Order of precedence
 
 ![Options passed as command-line flags override all other options: defaults < script options < environment variables < command-line flags](/media/docs/k6-oss/order-of-precedence.png)
 

@@ -31,14 +31,14 @@ As much as possible, k6 respects the [naming best practices](https://prometheus.
 | Counter | Counter                                                                                                 | `k6_*_total`         |
 | Gauge   | Gauge                                                                                                   | `k6_*_<unit-suffix>` |
 | Rate    | Gauge                                                                                                   | `k6_*_rate`          |
-| Trend   | [Counter and Gauges (default)](#counter-and-gauges) or [Native Histogram](#prometheus-native-histogram) | `k6_*_<unit-suffix>` |
+| Trend   | [Counter and Gauges (default)](#1-counter-and-gauges) or [Native Histogram](#2-prometheus-native-histogram) | `k6_*_<unit-suffix>` |
 
 ## Trend metric conversions
 
 This output provides two distinct mechanisms to send [k6 Trend metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) to Prometheus:
 
-1. [Counter and Gauge metrics](#counter-and-gauges) (default)
-1. [Prometheus Native histogram](#prometheus-native-histogram)
+1. [Counter and Gauge metrics](#1-counter-and-gauges) (default)
+1. [Prometheus Native histogram](#2-prometheus-native-histogram)
 
 Both options provide efficient storage of test results while providing high-precision queries.
 
@@ -159,7 +159,7 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_HEADERS_<header-key>`      | `string`                             | Additional header to include in the HTTP requests. It can be set using the described format, for example `K6_PROMETHEUS_RW_HEADERS_CUSTOM-HEADER-KEY=custom-header-value`.                                                                                                             |
 | `K6_PROMETHEUS_RW_HTTP_HEADERS`              | A comma-separated list of key-values | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HTTP_HEADERS=key1:value1,key2:value2`.                                                                                                                                                                           |
 | `K6_PROMETHEUS_RW_PUSH_INTERVAL`             | `string`                             | Interval between the metrics' aggregation and upload to the endpoint. Default is `5s`.                                                                                                                                                                                                 |
-| `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean`                            | If true, maps all the defined trend metrics as [Native Histograms](#prometheus-native-histogram). Default is `false`.                                                                                                                                                                  |
+| `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean`                            | If true, maps all the defined trend metrics as [Native Histograms](#2-prometheus-native-histogram). Default is `false`.                                                                                                                                                                  |
 | `K6_PROMETHEUS_RW_TREND_STATS`               | list of `string`                     | If Native Histogram is not enabled, then it defines the stats functions to map for all of the defined trend metrics. It's a comma-separated list of stats functions to include (e.g. `p(90),avg,sum`). Check the trend section to see the list of supported stats. Default is `p(99)`. |
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY`  | `boolean`                            | If true, the HTTP client skips TLS verification on the endpoint. Default is `false`.                                                                                                                                                                                                   |
 | `K6_PROMETHEUS_RW_STALE_MARKERS`             | `boolean`                            | If true, the output at the end of the test marks all the seen time series as stale. Default is `false`.                                                                                                                                                                                |

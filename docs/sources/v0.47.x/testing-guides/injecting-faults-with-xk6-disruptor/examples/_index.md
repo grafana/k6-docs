@@ -1,5 +1,5 @@
 ---
-title: 'Examples'
+title: 'xk6-disruptor examples'
 excerpt: 'Examples of how to use the xk6-disruptor extension to introduce faults in k6 tests.'
 weight: 06
 ---

@@ -18,7 +18,7 @@ For the Kubernetes manifests and the instructions on how to deploy it to a clust
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](< relref "/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor" >) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](< relref "/docs/k6/latest/javascript-api/k6-net-grpc/" >) module provides functions for executing gRPC requests. The [check](< relref "/docs/k6/latest/using-k6/checks/" >) function verifies the results from the requests.
+The initialization code imports the external dependencies required by the test. The [ServiceDisruptor]({{< relref "/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor" >}}) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc]({{< relref "/docs/k6/latest/javascript-api/k6-net-grpc" >}}) module provides functions for executing gRPC requests. The [check]({{< relref "/docs/k6/latest/using-k6/checks" >}}) function verifies the results from the requests.
 
 ```javascript
 import { ServiceDisruptor } from 'k6/x/disruptor';
@@ -91,7 +91,7 @@ This code makes the function return without injecting faults if the `SKIP_FAULTS
 
 ## Scenarios
 
-This test defines two [scenarios](< relref "/docs/k6/latest/using-k6/scenarios/" >) to be executed. The `load` scenario applies the test load to the `grpcpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the gRPC requests to the target application.
+This test defines two [scenarios]({{< relref "/docs/k6/latest/using-k6/scenarios" >}}) to be executed. The `load` scenario applies the test load to the `grpcpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the gRPC requests to the target application.
 
 ```javascript
     scenarios: {

@@ -46,31 +46,35 @@ As load increases, you need to pay attention to hardware constraints.
 
 <DescriptionList>
 
-Network
-: Network throughput of the machine is an important consideration when running large tests.
-Many AWS EC2 machines come with connections of 1Gbit/s, which may limit the load k6 can generate.
-: When running the test, use a tool like `iftop` in the terminal to view the amount of network traffic generated in real time.
+### Network
+
+Network throughput of the machine is an important consideration when running large tests. Many AWS EC2 machines come with connections of 1Gbit/s, which may limit the load k6 can generate.
+
+When running the test, use a tool like `iftop` in the terminal to view the amount of network traffic generated in real time.
 If the traffic is constant at 1Gbit/s, your test is probably limited by the network card. Consider upgrading to a different EC2 instance.
 
-CPU
-: k6 is heavily multi-threaded, and will effectively utilize all available CPU cores.
-: The amount of CPU you need depends on your test script and associated files.
+### CPU
+
+k6 is heavily multi-threaded, and will effectively utilize all available CPU cores.
+
+The amount of CPU you need depends on your test script and associated files.
 Regardless of the test file, you can assume that large tests require a significant amount of CPU power.
 We recommend that you size the machine to have at least 20% idle cycles (up to 80% used by k6, 20% idle).
 If k6 uses 100% of the CPU to generate load, the test will experience throttling limits, and this may
 cause the result metrics to have a much larger response time than in reality.
 
-Memory
-: k6 can use a lot of memory, though [more efficiently than some other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage).
+### Memory
+
+k6 can use a lot of memory, though [more efficiently than some other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage).
 Memory consumption heavily depends on your test scenarios. To estimate the memory requirement of your test,
 run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs.
-: Simple tests use ~1-5MB per VU. (1000VUs = 1-5GB).
+
+Simple tests use ~1-5MB per VU. (1000VUs = 1-5GB).
 Tests that use file uploads, or load large JS modules, can consume tens of megabytes per VU.
 Note that each VU has a copy of all JS modules your test uses.
 To share memory between VUs, consider using [SharedArray](/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), or an external data store, such as [Redis](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis).
-: If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Which likely will invalidate any test results as the load generator had different performance in different parts of the test. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
 
-</DescriptionList>
+If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Which likely will invalidate any test results as the load generator had different performance in different parts of the test. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
 
 ## Monitoring the load generator
 

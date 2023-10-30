@@ -90,7 +90,7 @@ To use a threshold, follow these steps:
 
 2. Define at least one threshold expression. You can do this in two ways:
    - The short format puts all threshold expressions as strings in an array.
-   - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort).
+   - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort-a-test-when-a-threshold-is-crossed).
 
    ```javascript
    export const options = {
@@ -379,7 +379,7 @@ export default function () {
 
 {{< /code >}}
 
-## Abort a test when a threshold is crossed {#abort}
+## Abort a test when a threshold is crossed
 
 If you want to abort a test as soon as a threshold is crossed,
 set the `abortOnFail` property to `true`.

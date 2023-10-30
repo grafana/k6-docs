@@ -3,7 +3,7 @@ title: 'isEditable([options])'
 excerpt: 'Browser module: locator.isEditable method'
 ---
 
-# 'isEditable([options])
+# isEditable([options])
 
 Checks if the element is `editable`.
 

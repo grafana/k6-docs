@@ -1,5 +1,5 @@
 ---
-title: 'Explore'
+title: 'Explore k6 extensions'
 menuTitle: 'Explore extensions'
 weight: 01
 ---

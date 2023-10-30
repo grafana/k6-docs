@@ -46,7 +46,7 @@ Lear more about [Fault injection](https://k6.io/blog/democratize-chaos-testing/)
 
 Check the [first steps](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps) to get started with the disruptor.
 
-Follow the [examples of injecting faults in different scenarios]({{< relref "docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/examples/" >}}).
+Follow the [examples of injecting faults in different scenarios]({{< relref "docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/examples" >}}).
 
 Visit the [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) and try the disruptor in a demo application without having to do any setup.
 

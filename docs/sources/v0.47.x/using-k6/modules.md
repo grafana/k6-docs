@@ -14,7 +14,7 @@ In k6, you can import three different kinds of modules:
 
 - [Built-in modules](#built-in-modules)
 - [Local filesystem modules](#local-filesystem-modules)
-- [Remote HTTP(S) modules](#remote-http-s-modules)
+- [Remote HTTP(S) modules](#remote-https-modules)
 
 ### Built-in modules
 
@@ -158,7 +158,7 @@ $ mkdir ./example-project && \
 
 {{< /code >}}
 
-<h4 id="installing-packages">Installing packages</h4>
+#### Installing packages
 
 Then, install the packages needed:
 
@@ -187,7 +187,7 @@ $ npm install --save-dev \
 | [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |
 | [core-js](https://github.com/zloirock/core-js)                                            | A modular standard library for JS including polyfills                                                                                                                                                                                                                 |
 
-<h4 id="configuring-webpack">Configuring Webpack</h4>
+#### Configuring Webpack
 
 Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
 
@@ -275,7 +275,7 @@ The `filename` key, as the name suggests, configures the name of the finished bu
 example, the [template string](https://webpack.js.org/configuration/output/#template-strings) `[name]`
 is used to add a dynamic part to the output filename.
 
-<h4 id="adding-a-bundle-command">Adding a bundle command</h4>
+#### Adding a bundle command
 
 Open the `package.json` file and add a new script entry, used for running the bundling process.
 

@@ -1,5 +1,5 @@
 ---
-title: 'First steps'
+title: 'xk6-disruptor first steps'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to k6.'
 weight: 01
 ---

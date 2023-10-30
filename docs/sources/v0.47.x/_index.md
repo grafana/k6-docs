@@ -7,7 +7,7 @@ title: Grafana k6 documentation
 weight: -10
 ---
 
-# Grafana k6
+# Grafana k6 documentation
 
 This documentation will help you go from a total beginner to a seasoned k6 expert!
 
