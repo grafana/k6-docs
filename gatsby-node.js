@@ -1717,6 +1717,7 @@ const createRedirects = ({ actions }) => {
   });
 
   const redirects = {
+    '/es/': '/',
     '/es/empezando/bienvenido/': '/',
     '/es/empezando/instalacion/': '/get-started/installation/',
     '/es/empezando/instalacion/solucion-de-problemas/':
