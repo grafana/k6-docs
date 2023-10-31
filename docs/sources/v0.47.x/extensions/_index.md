@@ -1,25 +1,25 @@
 ---
-title: k6 extensions
+title: Extensions
 description: 'The k6 extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.'
 weight: 09
 ---
 
-# k6 extensions
+# Extensions
 
 Expand the potential use cases for k6.
 
 ## Quickstart
 
 <div class="nav-cards">
-    <a href={{< relref "./extensions/explore" >}} target="_blank" class="nav-cards__item nav-cards__item--guide">
+    <a href={{< relref "./explore" >}} class="nav-cards__item nav-cards__item--guide">
         <h4>🔎 Explore</h4>
         <p>A list of more than 50 available extensions.</p>
     </a>
-    <a href={{< relref "./extensions/build-k6-binary-using-go" >}} target="_blank" class="nav-cards__item nav-cards__item--guide">
+    <a href={{< relref "./build-k6-binary-using-go" >}} class="nav-cards__item nav-cards__item--guide">
         <h4>🧩 Bundle</h4>
         <p>Combine multiple extensions into a custom k6 binary.</p>
     </a>
-    <a href={{< relref "./extensions/create/" >}} target="_blank" class="nav-cards__item nav-cards__item--guide">
+    <a href={{< relref "./create/" >}} class="nav-cards__item nav-cards__item--guide">
         <h4>🏗️ Create</h4>
         <p>Learn how to make your own k6 extension.</p>
     </a>
