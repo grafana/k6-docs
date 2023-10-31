@@ -11,6 +11,7 @@ cascade:
   labels:
     products:
       - oss
+  noindex: true
   breadcrumb_start: 4
   search_section: Grafana k6
   search_type: doc
