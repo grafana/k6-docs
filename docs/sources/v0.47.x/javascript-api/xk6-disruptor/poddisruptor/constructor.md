@@ -6,7 +6,7 @@ weight: 01
 
 # Constructor
 
-The `PodDisruptor()` constructor creates a new instance of a [PodDisruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor) class.
+The `PodDisruptor()` constructor creates a new instance of a [PodDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor) class.
 
 | Parameter          | Type   | Description                                                       |
 | ------------------ | ------ | ----------------------------------------------------------------- |

@@ -10,7 +10,7 @@ Example to execute a load test that will upload a file to the System Under Test 
 
 ## The open() function
 
-Using the built-in function [`open()`](/docs/k6/<K6_VERSION>/javascript-api/init-context/open),
+Using the built-in function [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open),
 we can read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
@@ -78,9 +78,9 @@ export default function () {
 
 {{< /code >}}
 
-In the example above we use the [http.file()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/file)
-API to wrap the file contents in a [FileData](/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) object.
-When passing a JS object as the body parameter to [http.post()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/post),
+In the example above we use the [http.file()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/file)
+API to wrap the file contents in a [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) object.
+When passing a JS object as the body parameter to [http.post()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post),
 or any of the other HTTP request functions, where one of the property values is a
 [FileData](/javascript-api/k6-http/filedata) a multipart request will be constructed
 and sent.

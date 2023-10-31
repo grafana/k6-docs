@@ -167,7 +167,7 @@ export function Homepage() {
 }
 ```
 
-[Recording browser traffic](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) helps you prototype to test websites on the protocol level.
+[Recording browser traffic](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) helps you prototype to test websites on the protocol level.
 
 ### Browser-based load testing
 
@@ -178,7 +178,7 @@ For example, a browser-based load testing script might include instructions to n
 Unlike protocol-based load testing, browser-based load testing scripts generate load by starting multiple instances of browsers and interacting with your application the way real users would. Testing at the browser level can also be the only option for testing Single-Page Applications where a lot of the application logic is executed by client-side scripts.
 
 Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level.
-However, k6 now has an experimental module called [k6 browser](/docs/k6/<K6_VERSION>/using-k6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
+However, k6 now has an experimental module called [k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
 
 #### Sample browser-based test script
 
@@ -229,9 +229,9 @@ The following steps can help you get started with a browser-level test script.
 
 **Identify unique selectors.** Once you have identified which page elements a user interacts with, use the Element Inspector for DevTools in your browser to find a unique, static, and simple way to identify each element. The script needs selectors to find the right element to interact with.
 
-**Use elements to verify responses.** After every action, use [locators](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
+**Use elements to verify responses.** After every action, use [locators](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
 
-**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) to save a visual image of what the script encountered for later troubleshooting.
+**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) to save a visual image of what the script encountered for later troubleshooting.
 
 ### Hybrid load testing
 
@@ -252,37 +252,37 @@ When you script a test for a website, consider these recommendations.
 
 ### Consider factors that affect script realism
 
-**Record your user journey.** Using the browser recorder can facilitate initial test script creation by capturing all the embedded resources on webpages. Check out the [Session Recording guide](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/) to learn more about how to auto-generate your load test from a user session.
+**Record your user journey.** Using the browser recorder can facilitate initial test script creation by capturing all the embedded resources on webpages. Check out the [Session Recording guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/) to learn more about how to auto-generate your load test from a user session.
 
-**Correlate data.** Recordings often don't take into account dynamic values that are generated anew each time a request is made. Go through the recorded requests and determine whether you need to [extract values from previous responses](/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data) and use parameters in subsequent requests. This practice ensures your VUs behave more like real users would.
+**Correlate data.** Recordings often don't take into account dynamic values that are generated anew each time a request is made. Go through the recorded requests and determine whether you need to [extract values from previous responses](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data) and use parameters in subsequent requests. This practice ensures your VUs behave more like real users would.
 
 **Include or exclude static resources.** Determine whether you should include or exclude static resources on pages such as images, JavaScript, etc. Consider including them if you want to measure overall user experience. Consider excluding them if you are using a Content Delivery Network (CDN) that is under a separate Service Level Agreement (SLA).
 
 **Exclude third-party requests.** Don't load test servers that you don't own. Many applications make calls to third-party providers for authentication, social sharing, and marketing analytics. Disable these requests unless you have permission to include them in your tests.
 
-**Use concurrent requests.** To mimic the way modern browsers download some requests in parallel, use [batching](/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch).
+**Use concurrent requests.** To mimic the way modern browsers download some requests in parallel, use [batching](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch).
 
 **Determine cache and cookie behaviour.** k6 automatically resets cookies between iterations, but you can also [change this behavior](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#no-cookies-reset) if maintaining cookies would be more realistic.
 
-**Use dynamic think time and pacing.** Consider adding varying [delays](/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) so you don't artificially stagger a script with completely uniform delays.
+**Use dynamic think time and pacing.** Consider adding varying [delays](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) so you don't artificially stagger a script with completely uniform delays.
 
-**Use test data.** Real users typically don't search for or submit the same data repeatedly. Consider adding a [test data file](/docs/k6/<K6_VERSION>/examples/data-parameterization) for the script to iterate through.
+**Use test data.** Real users typically don't search for or submit the same data repeatedly. Consider adding a [test data file](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-parameterization) for the script to iterate through.
 
-**Model test parameters and load profile after production.** In k6, you can use [test options](/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) to determine the exact shape and profile of your load test script. Select the appropriate [executors](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors) for the job.
+**Model test parameters and load profile after production.** In k6, you can use [test options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) to determine the exact shape and profile of your load test script. Select the appropriate [executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors) for the job.
 
 ### Create a reusable framework
 
-**Use tags and groups.** Organizing requests by [tagging and grouping them](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) helps you consolidate like metrics and makes your test scripts more understandable by others.
+**Use tags and groups.** Organizing requests by [tagging and grouping them](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) helps you consolidate like metrics and makes your test scripts more understandable by others.
 
-**Use scenarios.** When combining protocol-based and browser-based tests, use [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) to independently control their test parameters and [executors](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors).
+**Use scenarios.** When combining protocol-based and browser-based tests, use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to independently control their test parameters and [executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors).
 
-**Modularize scripts.** Use [modules](/docs/k6/<K6_VERSION>/using-k6/modules) to separate and organize functions for protocol-level testing and browser-level testing, and then use a test runner script to execute them. This approach means different scripts can be versioned and changed without affecting each other.
+**Modularize scripts.** Use [modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules) to separate and organize functions for protocol-level testing and browser-level testing, and then use a test runner script to execute them. This approach means different scripts can be versioned and changed without affecting each other.
 
 **Integrate your tests into your CI pipeline.** Adopting a "tests as code" approach enables you to tie your load tests more closely into your project's existing CI/CD processes, helping you get the most value out of every test.
 
 ### Test with thresholds in mind
 
-**Create thresholds for both types of testing.** Some browser-level and protocol-level metrics cannot be combined because they don't measure the same thing. Set [thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) for relevant metrics from both the browser-level script and the protocol-level one.
+**Create thresholds for both types of testing.** Some browser-level and protocol-level metrics cannot be combined because they don't measure the same thing. Set [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) for relevant metrics from both the browser-level script and the protocol-level one.
 
 ### When possible, use hybrid load testing
 
@@ -338,9 +338,9 @@ Load testing websites can be complex due to the number of viable testing approac
 
 ## Read more
 
-- [Browser testing with k6 browser](/docs/k6/<K6_VERSION>/using-k6-browser/)
-- [Load test types](/docs/k6/<K6_VERSION>/testing-guides/test-types/)
-- [Session recording guide](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/)
+- [Browser testing with k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/)
+- [Load test types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/)
+- [Session recording guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/)
 - [Determining concurrent users in your load tests]
 (https://k6.io/blog/monthly-visits-concurrent-users)
-- [Data correlation in your test script](/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data)
+- [Data correlation in your test script](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data)

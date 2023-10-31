@@ -13,8 +13,8 @@ For example, a check could validate that a POST request has a `response.status =
 Checks are similar to what many testing frameworks call an _assert_, but **failed checks do not cause the test to abort or finish with a failed status**.
 Instead, k6 keeps track of the rate of failed checks as the test continues to run
 
-Each check creates a [rate metric](/docs/k6/<K6_VERSION>/using-k6/metrics).
-To make a check abort or fail a test, you can combine it with a [Threshold](/docs/k6/<K6_VERSION>/using-k6/thresholds).
+Each check creates a [rate metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
+To make a check abort or fail a test, you can combine it with a [Threshold](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds).
 
 ## Check for HTTP response code
 
@@ -101,7 +101,7 @@ In this example, note that the check "is status 200" succeeded 100% of the times
 
 ## Add multiple checks
 
-You can also add multiple checks within a single [check()](/docs/k6/<K6_VERSION>/javascript-api/k6/check) statement:
+You can also add multiple checks within a single [check()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) statement:
 
 {{< code >}}
 
@@ -141,13 +141,13 @@ $ k6 run checks.js
 {{% admonition type="note" %}}
 
 When a check fails, the script will continue executing successfully and will not return a 'failed' exit status. 
-If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds#fail-a-load-test-using-checks).
+If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#fail-a-load-test-using-checks).
 This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
 {{% /admonition %}}
 
 ## Read more
 
-- [Check Javascript API](/docs/k6/<K6_VERSION>/javascript-api/k6/check)
-- [Failing a load test using checks](/docs/k6/<K6_VERSION>/using-k6/thresholds#fail-a-load-test-using-checks)
-- [k6chaijs](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs): use BDD assertions in k6
+- [Check Javascript API](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check)
+- [Failing a load test using checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#fail-a-load-test-using-checks)
+- [k6chaijs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs): use BDD assertions in k6

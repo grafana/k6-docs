@@ -16,18 +16,18 @@ To solve these issues, you can use _execution context variables_.
 
 ## k6/execution
 
-The [k6/execution](/docs/k6/<K6_VERSION>/javascript-api/k6-execution) module exposes details about the current execution state, such as _the name of the currently executed scenario_, _how many VUs are currently active_, and more.
+The [k6/execution](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution) module exposes details about the current execution state, such as _the name of the currently executed scenario_, _how many VUs are currently active_, and more.
 The module provides test-execution information via three properties:
 
 | Property                                                                   | Meta-information and execution details about |
 | -------------------------------------------------------------------------- | -------------------------------------------- |
-| [instance](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#instance) | The current running k6 instance              |
-| [scenario](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#scenario) | The current running scenario                 |
-| [vu](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#vu)             | The current VU and iteration                 |
+| [instance](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#instance) | The current running k6 instance              |
+| [scenario](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#scenario) | The current running scenario                 |
+| [vu](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#vu)             | The current VU and iteration                 |
 
 > k6 v0.34.0 introduced the **k6/execution** module.
 > If you are using a version k6 that does not have this module,
-> refer to the [\_\_VU and \_\_ITER](/docs/k6/<K6_VERSION>/using-k6/execution-context-variables#__vu-and-__iter-discouraged) section.
+> refer to the [\_\_VU and \_\_ITER](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/execution-context-variables#__vu-and-__iter-discouraged) section.
 
 ## Example: log all context variables
 
@@ -79,13 +79,13 @@ VU tags: ${exec.vu.tags}`);
 
 {{< /code >}}
 
-For detailed reference, refer to the [k6/execution module](/docs/k6/<K6_VERSION>/javascript-api/k6-execution).
+For detailed reference, refer to the [k6/execution module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution).
 
 ## Examples and use cases
 
-- [Getting unique data once](/docs/k6/<K6_VERSION>/examples/data-parameterization#retrieving-unique-data)
-- [Timing operations](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#timing-operations)
-- [Executing different code blocks](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#script-naming)
+- [Getting unique data once](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-parameterization#retrieving-unique-data)
+- [Timing operations](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#timing-operations)
+- [Executing different code blocks](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#script-naming)
 
 {{< collapse title="_VU and _ITER (discouraged)" >}}
 

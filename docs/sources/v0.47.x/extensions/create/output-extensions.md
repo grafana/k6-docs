@@ -6,7 +6,7 @@ weight: 02
 
 # Output Extensions
 
-k6 provides many [metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) and [output formats](/docs/k6/<K6_VERSION>/results-output/), but it cannot directly support all possibilities.
+k6 provides many [metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) and [output formats](https://grafana.com/docs/k6/<K6_VERSION>/results-output/), but it cannot directly support all possibilities.
 To store or alter metrics captured during an active k6 test,
 you can create a custom output extension.
 
@@ -17,7 +17,7 @@ Some potential reasons for a custom extension could include:
 - To add derived metrics data for storage
 - To filter metrics to only the data you care about
 
-Like [JavaScript extensions](/docs/k6/<K6_VERSION>/extensions/create/javascript-extensions),
+Like [JavaScript extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/javascript-extensions),
 output extensions rely on the extension author to implement specific APIs.
 
 ## Before you start:

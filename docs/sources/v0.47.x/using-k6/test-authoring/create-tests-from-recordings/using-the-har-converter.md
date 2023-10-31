@@ -7,7 +7,7 @@ weight: 02
 # Using the HAR converter
 
 The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool that generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
-It is an alternative to the [Browser recorder](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder).
+It is an alternative to the [Browser recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder).
 
 {{% admonition type="note" %}}
 
@@ -19,8 +19,8 @@ HAR is a file format used by all major browsers and various other tools to expor
 
 Before you start, consider the following:
 
-- [Be sure to record realistically](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#be-sure-to-record-realistically)
-- [A hybrid approach for load testing websites](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#consider-hybrid-approach-for-load-testing-websites)
+- [Be sure to record realistically](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#be-sure-to-record-realistically)
+- [A hybrid approach for load testing websites](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#consider-hybrid-approach-for-load-testing-websites)
 
 You'll need to choose a tool to record your HAR file.
 Multiple browsers and tools can export HTTP traffic in a HAR format.
@@ -102,7 +102,7 @@ k6 lets you configure this in several ways:
   };
   ```
 
-To learn more about how to configure the load options, read the [Adding more VUs guide](/docs/k6/<K6_VERSION>/get-started/running-k6#adding-more-vus) and the [Options guide](/docs/k6/<K6_VERSION>/using-k6/k6-options).
+To learn more about how to configure the load options, read the [Adding more VUs guide](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#adding-more-vus) and the [Options guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 
 ### Remove third-party content
 
@@ -152,7 +152,7 @@ For example, tokens expire quickly, and they are one of the most common things t
 
 ## 4. Run the test
 
-Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](/docs/k6/<K6_VERSION>/get-started/installation).
+Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation).
 
 Execute the `k6 run` command to run your k6 script:
 
@@ -160,4 +160,4 @@ Execute the `k6 run` command to run your k6 script:
 $ k6 run loadtest.js
 ```
 
-To learn about running k6, check out the [Running k6 tutorial](/docs/k6/<K6_VERSION>/get-started/running-k6).
+To learn about running k6, check out the [Running k6 tutorial](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6).

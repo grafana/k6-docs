@@ -31,8 +31,8 @@ Instantiating a new `SignatureV4` requires a single options object argument with
 
 | Method                                                                              | Description                                                                   |
 | :---------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
-| [sign()](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/signaturev4/00 sign())       | Signs an authenticated HTTP request using the AWS signature v4 algorithm      |
-| [presign()](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/signaturev4/00 presign()) | Produces an authenticated pre-signed URL using the AWS signature v4 algorithm |
+| [sign()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/signaturev4/00 sign())       | Signs an authenticated HTTP request using the AWS signature v4 algorithm      |
+| [presign()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/signaturev4/00 presign()) | Produces an authenticated pre-signed URL using the AWS signature v4 algorithm |
 
 <!-- vale on -->
 

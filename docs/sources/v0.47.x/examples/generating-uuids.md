@@ -7,7 +7,7 @@ weight: 11
 # Generating UUIDs
 
 If you want to make a version 4 UUID,
-you can use the [`uuidv4` function](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/uuidv4) from the [k6 JS lib repository](https://jslib.k6.io/).
+you can use the [`uuidv4` function](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/uuidv4) from the [k6 JS lib repository](https://jslib.k6.io/).
 
 {{< code >}}
 

@@ -19,7 +19,7 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 | Type   | Description                                                                  |
 | ------ | ---------------------------------------------------------------------------- |
-| object | A [Hasher](/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/hasher) object. |
+| object | A [Hasher](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/hasher) object. |
 
 ### Example
 

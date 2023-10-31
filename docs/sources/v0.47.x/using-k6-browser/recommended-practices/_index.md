@@ -10,4 +10,4 @@ weight: 100
 This section presents some examples and recommended practices when working with the `k6 browser` module to leverage browser automation as part of your k6 tests.
 
 - [Page object model pattern](/using-k6-browser/recommended-practices/page-object-model-pattern)
-- [Selecting elements](/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements)
+- [Selecting elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements)

@@ -24,7 +24,7 @@ This guide covers how to:
 
 ## Before you begin
 
-To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
 
 ## Run the Datadog Agent
 
@@ -78,7 +78,7 @@ $ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 
 Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 
-You can look at the [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd) output page for configuration options.
+You can look at the [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualize in Datadog
 
@@ -90,7 +90,7 @@ You can visualize k6 metrics in real-time with the [metrics explorer](https://do
 
 <blockquote>
 
-To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/docs/k6/<K6_VERSION>/using-k6/metrics)
+To learn more about all the types of k6 metrics, read the [k6 Metrics guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics)
 
 </blockquote>
 

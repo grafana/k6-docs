@@ -8,14 +8,14 @@ weight: 200
 
 In the previous section, you made a working script to test an endpoint functionality.
 The next step is to test how this system responds under load.
-This requires setting up a few [`options`](/docs/k6/<K6_VERSION>/using-k6/k6-options) to configure the parts of the test that don't deal with test logic.
+This requires setting up a few [`options`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) to configure the parts of the test that don't deal with test logic.
 
 In this tutorial, learn how to:
 
-- Use [thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) to assert for performance criteria
-- Configure load increases through [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios)
+- Use [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) to assert for performance criteria
+- Configure load increases through [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios)
 
-These examples build on the script from the [previous section](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-functional-behavior).
+These examples build on the script from the [previous section](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-functional-behavior).
 
 ## Context: meet service-level objectives
 
@@ -28,9 +28,9 @@ The service must meet these SLOs under different types of usual traffic.
 
 ## Assert for performance with thresholds
 
-To codify the SLOs, add [_thresholds_](/docs/k6/<K6_VERSION>/using-k6/thresholds) to test that your system performs to its goal criteria.
+To codify the SLOs, add [_thresholds_](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) to test that your system performs to its goal criteria.
 
-Thresholds are set in the [`options`](/docs/k6/<K6_VERSION>/using-k6/k6-options) object.
+Thresholds are set in the [`options`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) object.
 
 ```javascript
 export const options = {
@@ -111,9 +111,9 @@ Scenarios schedule load according to the number of VUs, number of iterations, VU
 
 ### Run a smoke test
 
-Start small. Run a [smoke test](/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing "a small test to confirm the script works properly") to check that your script can handle a minimal load.
+Start small. Run a [smoke test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing "a small test to confirm the script works properly") to check that your script can handle a minimal load.
 
-To do so, use the [`--iterations`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) flag with an argument of 10 or fewer.
+To do so, use the [`--iterations`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) flag with an argument of 10 or fewer.
 
 ```bash
 k6 run --iterations 10 api-test.js
@@ -156,7 +156,7 @@ export const options = {
 ```
 
 Since this is a learning environment, the stages are still quite short.
-Where the smoke test defined the load in terms of iterations, this configuration uses the [`ramping-vus` executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus) to express load through virtual users and duration.
+Where the smoke test defined the load in terms of iterations, this configuration uses the [`ramping-vus` executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus) to express load through virtual users and duration.
 
 Run the test with no command-line flags:
 
@@ -177,7 +177,7 @@ For ideas, read [Ways to visualize k6 results](https://k6.io/blog/ways-to-visual
 
 ### Ramp up until threshold fails
 
-Finally, run a [breakpoint test](/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing), where you probe the system's limits.
+Finally, run a [breakpoint test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing), where you probe the system's limits.
 In this case, run the test until the availability (error rate) threshold is crossed.
 
 To do this:
@@ -290,6 +290,6 @@ ERRO[0010] thresholds on metrics 'http_req_duration, http_req_failed' were breac
 
 ## Next steps
 
-In this tutorial, you used [thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) to assert performance and [Scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) to schedule different load patterns. To learn more about the usual load patterns and their goals, read [Load Test Types](/docs/k6/<K6_VERSION>/testing-guides/test-types/)
+In this tutorial, you used [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) to assert performance and [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to schedule different load patterns. To learn more about the usual load patterns and their goals, read [Load Test Types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/)
 
-The [next step of this tutorial shows how to interpret test results](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/analyze-results). This involves filtering results and adding custom metrics.
+The [next step of this tutorial shows how to interpret test results](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/analyze-results). This involves filtering results and adding custom metrics.

@@ -59,7 +59,7 @@ of the iterations currently in progress did not complete within this window and 
 
 ## The `gracefulRampDown`
 
-In addition to `gracefulStop`, the [ramping-vus](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus) executor also has a `gracefulRampDown`.
+In addition to `gracefulStop`, the [ramping-vus](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus) executor also has a `gracefulRampDown`.
 
 When the target value for a stage is lower than the target for the previous stage, k6 might need to stop some VUs that were started during the previous stages.
 The `gracefulRampDown` option controls how long these VUs have to finish currently before k6 interrupts them.

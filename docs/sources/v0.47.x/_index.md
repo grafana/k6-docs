@@ -43,9 +43,9 @@ k6 is developed by [Grafana Labs](https://grafana.com/) and the community.
 k6 is packed with features, which you can learn all about in the documentation.
 Key features include:
 
-- [CLI tool](/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) with developer-friendly APIs.
-- Scripting in JavaScript ES2015/ES6 - with support for [local and remote modules](/docs/k6/<K6_VERSION>/using-k6/modules)
-- [Checks](/docs/k6/<K6_VERSION>/using-k6/checks) and [Thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) - for goal-oriented, automation-friendly load testing
+- [CLI tool](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) with developer-friendly APIs.
+- Scripting in JavaScript ES2015/ES6 - with support for [local and remote modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules)
+- [Checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) and [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) - for goal-oriented, automation-friendly load testing
 
 ## Use cases
 
@@ -56,15 +56,15 @@ Common k6 use cases are:
 - **Load testing**
 
   k6 is optimized for minimal resource consumption and designed for running high load tests
-  ([spike](/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing), [stress](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), [soak tests](/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing)).
+  ([spike](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing), [stress](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), [soak tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing)).
 
 - **Browser testing**
 
-  Through [k6 browser](/docs/k6/<K6_VERSION>/using-k6-browser), you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.
+  Through [k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser), you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.
 
 - **Chaos and resilience testing**
 
-  You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with [xk6-disruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor).
+  You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor).
 
 - **Performance and synthetic monitoring**
 
@@ -91,11 +91,11 @@ k6 is a high-performing load testing tool, scriptable in JavaScript. The archite
   Browsers can consume significant system resources.
   Skipping the browser allows running more load within a single machine.
 
-  However, with [k6 browser](/docs/k6/<K6_VERSION>/using-k6-browser), you can interact with real browsers and collect frontend metrics as part of your k6 tests.
+  However, with [k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser), you can interact with real browsers and collect frontend metrics as part of your k6 tests.
 
 - **Does not run in NodeJS**
 
   JavaScript is not generally well suited for high performance.
   To achieve maximum performance, the tool itself is written in Go, embedding a JavaScript runtime allowing for easy test scripting.
 
-  If you want to import npm modules or libraries using NodeJS APIs, you can [bundle npm modules with webpack](/docs/k6/<K6_VERSION>/using-k6/modules#bundling-node-modules) and import them in your tests.
+  If you want to import npm modules or libraries using NodeJS APIs, you can [bundle npm modules with webpack](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules#bundling-node-modules) and import them in your tests.

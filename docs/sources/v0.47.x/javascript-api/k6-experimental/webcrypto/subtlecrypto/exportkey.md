@@ -6,7 +6,7 @@ weight: 04
 
 # exportKey
 
-The `exportKey()` method takes a [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object as input and exports it in an external, portable format.
+The `exportKey()` method takes a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object as input and exports it in an external, portable format.
 
 Note that for a key to be exportable, it must have been created with the `extractable` flag set to `true`.
 
@@ -21,7 +21,7 @@ exportKey(format, key)
 | Name     | Type                                                                                      | Description                                                                                       |
 | :------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
 | `format` | `string`                                                                                  | Defines the data format the key should be exported in. Currently supported formats: `raw`.        |
-| `key`    | [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export. |
+| `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export. |
 
 ## Return Value
 

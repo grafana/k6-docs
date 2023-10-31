@@ -10,8 +10,8 @@ The k6/http module contains functionality for performing HTTP transactions.
 
 | Function                                                                                                        | Description                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [batch( requests )](/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch)                                     | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).                                                 |
-| [cookieJar()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)                                       | Get active HTTP Cookie jar.                                                                                               |
+| [batch( requests )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch)                                     | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).                                                 |
+| [cookieJar()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)                                       | Get active HTTP Cookie jar.                                                                                               |
 | [del( url, [body], [params] )](/javascript-api/k6-http/del)                                                     | Issue an HTTP DELETE request.                                                                                             |
 | [file( data, [filename], [contentType] )](/javascript-api/k6-http/file)                                         | Create a file object that is used for building multi-part requests.                                                       |
 | [get( url, [params] )](/javascript-api/k6-http/get)                                                             | Issue an HTTP GET request.                                                                                                |
@@ -22,13 +22,13 @@ The k6/http module contains functionality for performing HTTP transactions.
 | [put( url, [body], [params] )](/javascript-api/k6-http/put)                                                     | Issue an HTTP PUT request.                                                                                                |
 | [request( method, url, [body], [params] )](/javascript-api/k6-http/request)                                     | Issue any type of HTTP request.                                                                                           |
 | [asyncRequest( method, url, [body], [params] )](/javascript-api/k6-http/asyncrequest)                           | Issue any type of HTTP request asynchronously.                                                                            |
-| [setResponseCallback(expectedStatuses)](/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback) | Sets a response callback to mark responses as expected.                                                                   |
-| [url\`url\`](/docs/k6/<K6_VERSION>/javascript-api/k6-http/url)                                              | Creates a URL with a name tag. Read more on [URL Grouping](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping). |
-| [expectedStatuses( statusCodes )](/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses)           | Create a callback for setResponseCallback that checks status codes.                                                       |
+| [setResponseCallback(expectedStatuses)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback) | Sets a response callback to mark responses as expected.                                                                   |
+| [url\`url\`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url)                                              | Creates a URL with a name tag. Read more on [URL Grouping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping). |
+| [expectedStatuses( statusCodes )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses)           | Create a callback for setResponseCallback that checks status codes.                                                       |
 
 | Class                                                                   | Description                                                                              |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [CookieJar](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar) | Used for storing cookies, set by the server and/or added by the client.                  |
-| [FileData](/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata)   | Used for wrapping data representing a file when doing multipart requests (file uploads). |
-| [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params)       | Used for setting various HTTP request-specific parameters such as headers, cookies, etc. |
-| [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)   | Returned by the http.\* methods that generate HTTP requests.                             |
+| [CookieJar](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar) | Used for storing cookies, set by the server and/or added by the client.                  |
+| [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata)   | Used for wrapping data representing a file when doing multipart requests (file uploads). |
+| [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params)       | Used for setting various HTTP request-specific parameters such as headers, cookies, etc. |
+| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)   | Returned by the http.\* methods that generate HTTP requests.                             |

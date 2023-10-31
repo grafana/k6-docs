@@ -25,7 +25,7 @@ This guide covers running the New Relic integration:
 
 ## Before you begin
 
-To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
 
 ## Run the New Relic StatsD integration
 
@@ -87,7 +87,7 @@ $ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 
 Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 
-You can look at the [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd) output page for configuration options.
+You can look at the [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualisation in New Relic
 

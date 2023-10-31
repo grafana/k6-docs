@@ -10,7 +10,7 @@ injectHTTPFaults injects HTTP faults in the requests served by a target Pod.
 
 | Parameter          | Type   | Description                                                                                                            |
 | ------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------- |
-| fault              | object | description of the [http faults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) to be injected |
+| fault              | object | description of the [http faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) to be injected |
 | duration           | string | duration of the disruption                                                                                             |
 | options (optional) | object | [options](#options) that control the injection of the fault                                                            |
 

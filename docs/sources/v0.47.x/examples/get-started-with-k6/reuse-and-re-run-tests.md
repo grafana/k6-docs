@@ -101,7 +101,7 @@ export default function () {
 
 ## Modularize logic
 
-With [modules](/docs/k6/<K6_VERSION>/using-k6/modules), you can use logic and variables from other files.
+With [modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules), you can use logic and variables from other files.
 Use modules to extract the functions to their own files.
 
 To do so, follow these steps:
@@ -317,7 +317,7 @@ Besides shortness, this modularity lets you compose scripts from many parts, or 
 ## Mix and match logic
 
 With modularized configuration and logic, you can mix and match logic.
-An easy way to configure this is through [environment variables](/docs/k6/<K6_VERSION>/using-k6/environment-variables).
+An easy way to configure this is through [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables).
 
 Change `main.js` and `config.js` so that it:
 
@@ -394,9 +394,9 @@ As your test suite grows and more people are involved in performance testing, yo
 
 Now you've seen examples to write tests, assert for performance, filter results, and modularize scripts.
 Notice how the tests progress in complexity: from single endpoints to holistic tests, from small to large loads, and from single tests to reusable modules. These progressions are typical in testing, with the next step being to automate. It might be impractical to automate a tutorial, but if you are interested,
-read the [Automated performance testing](/docs/k6/<K6_VERSION>/testing-guides/automated-performance-testing) guide.
+read the [Automated performance testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/automated-performance-testing) guide.
 
 More likely, you want to learn more about k6. The [k6-learn repository](https://github.com/grafana/k6-learn) has more details to practice.
-Or, you can read and explore the [testing guides](/docs/k6/<K6_VERSION>/testing-guides) and try to build out your testing strategy.
+Or, you can read and explore the [testing guides](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides) and try to build out your testing strategy.
 
 Happy testing!

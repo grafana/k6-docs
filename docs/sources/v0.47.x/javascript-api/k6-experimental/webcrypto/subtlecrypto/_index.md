@@ -13,14 +13,14 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 
 | Method                                                                                                     | Description                                                                                                          |
 | :--------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
-| [encrypt](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt)         | Encrypts the given plaintext data using the specified algorithm and key.                                             |
-| [decrypt](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt)         | Decrypts the given ciphertext data using the specified algorithm and key.                                            |
-| [sign](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign)               | Signs the given data using the specified algorithm and key.                                                          |
-| [verify](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify)           | Verifies the signature of the given data using the specified algorithm and key.                                      |
-| [digest](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/digest)           | Computes the digest (hash) of the given data using the specified algorithm.                                          |
-| [generateKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) | Generates a new cryptographic key for use with the specified algorithm.                                              |
-| [importKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey)     | Imports a raw key material into the Web Crypto API, generating a new key object to use with the specified algorithm. |
-| [exportKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey)     | Exports the raw key material of the given key object.                                                                |
+| [encrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt)         | Encrypts the given plaintext data using the specified algorithm and key.                                             |
+| [decrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt)         | Decrypts the given ciphertext data using the specified algorithm and key.                                            |
+| [sign](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign)               | Signs the given data using the specified algorithm and key.                                                          |
+| [verify](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify)           | Verifies the signature of the given data using the specified algorithm and key.                                      |
+| [digest](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/digest)           | Computes the digest (hash) of the given data using the specified algorithm.                                          |
+| [generateKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) | Generates a new cryptographic key for use with the specified algorithm.                                              |
+| [importKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey)     | Imports a raw key material into the Web Crypto API, generating a new key object to use with the specified algorithm. |
+| [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey)     | Exports the raw key material of the given key object.                                                                |
 
 ## Example
 

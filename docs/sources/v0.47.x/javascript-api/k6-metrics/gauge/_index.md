@@ -7,7 +7,7 @@ weight: 71
 
 # Gauge
 
-_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
+_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |

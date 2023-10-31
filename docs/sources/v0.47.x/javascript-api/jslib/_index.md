@@ -6,11 +6,11 @@ weight: 15
 
 # jslib
 
-The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](/docs/k6/<K6_VERSION>/using-k6/modules#remote-http-s-modules) in k6 scripts.
+The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules#remote-http-s-modules) in k6 scripts.
 
 | Library                                                             | Description                                                                                       |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [aws](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws)           | Library allowing to interact with Amazon AWS services                                             |
-| [httpx](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx)       | Wrapper around [k6/http](https://k6.io/docs/javascript-api/#k6-http) to simplify session handling |
-| [k6chaijs](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs) | BDD assertion style                                                                               |
-| [utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils)       | Small utility functions useful in every day load testing                                          |
+| [aws](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws)           | Library allowing to interact with Amazon AWS services                                             |
+| [httpx](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx)       | Wrapper around [k6/http](https://k6.io/docs/javascript-api/#k6-http) to simplify session handling |
+| [k6chaijs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs) | BDD assertion style                                                                               |
+| [utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils)       | Small utility functions useful in every day load testing                                          |

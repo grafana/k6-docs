@@ -338,4 +338,4 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
 </div>
 
 
-Don't see what you need? Learn how you can [create a custom extension](/docs/k6/<K6_VERSION>/extensions/create/).
+Don't see what you need? Learn how you can [create a custom extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/).

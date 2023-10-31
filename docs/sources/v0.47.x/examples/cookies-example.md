@@ -190,9 +190,9 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [http.cookieJar()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)
-- [http.CookieJar](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)
+- [http.cookieJar()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)
+- [http.CookieJar](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar)
 
 - [set(url, name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set)
-- [delete(url, name)](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar/cookiejar-delete)
-- [clear(url)](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar/cookiejar-clear)
+- [delete(url, name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar/cookiejar-delete)
+- [clear(url)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar/cookiejar-clear)

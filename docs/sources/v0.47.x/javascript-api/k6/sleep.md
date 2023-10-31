@@ -31,7 +31,7 @@ export default function () {
 
 {{< /code >}}
 
-Using the [k6-utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library to specify a range between a minimum and maximum:
+Using the [k6-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library to specify a range between a minimum and maximum:
 
 {{< code >}}
 

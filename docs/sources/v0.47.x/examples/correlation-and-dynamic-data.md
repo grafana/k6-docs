@@ -24,7 +24,7 @@ In a load testing scenario, correlation means extracting one or more values from
 of one request and then reusing them in subsequent requests. Often, this could be getting
 a token or some sort of ID necessary to fulfill a sequence of steps in a user journey.
 
-A [recording](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings) will capture session data such as CSRF tokens,
+A [recording](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings) will capture session data such as CSRF tokens,
 VIEWSTATES, nonce, etc. This type of data is unlikely to be valid when
 you run your test, meaning you'll need to handle the extraction of this data from the HTML/form
 to include it in subsequent requests. This issue is fairly common with any site that has forms
@@ -59,7 +59,7 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [Response.json()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)
+- [Response.json()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)
 
 - [JSON.parse()](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Global_Objects/JSON/parse)
   (An alternative API that can be used for parsing JSON data)
@@ -109,15 +109,15 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [Selection.find(selector)](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-find) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
+- [Selection.find(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-find) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
 docs are also a good resource on what possible selector queries can be made)
-- [Selection.attr(name)](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-attr)
+- [Selection.attr(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-attr)
 
 ### Generic extraction of values/tokens
 
 Sometimes, responses may be neither JSON nor HTML, in which case the above extraction methods would not apply. In these situations, you would likely want to operate directly on the `Response.body` string using a simple function capable of extracting a string at some known location. This is typically achieved by looking for the string "boundaries" immediately before (left) and after (right) the value needing extraction.
 
-The [jslib utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library contains an example of this kind of function,[findBetween](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/findbetween). The function uses the JavaScript built-in [String.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) and therefore doesn't depend on potentially expensive regular-expression operations.
+The [jslib utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library contains an example of this kind of function,[findBetween](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/findbetween). The function uses the JavaScript built-in [String.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) and therefore doesn't depend on potentially expensive regular-expression operations.
 
 #### Extracting a value/token using findBetween
 
@@ -145,5 +145,5 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [Response.body](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)
-- [findBetween(content, left, right)](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/findbetween)
+- [Response.body](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)
+- [findBetween(content, left, right)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/findbetween)

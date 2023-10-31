@@ -6,7 +6,7 @@ weight: 07
 
 # Externally controlled
 
-Control and scale execution at runtime via [k6's REST API](/docs/k6/<K6_VERSION>/misc/k6-rest-api) or
+Control and scale execution at runtime via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
 Previously, the `pause`, `resume`, and `scale` CLI commands were used to globally control
@@ -20,7 +20,7 @@ maximum VUs will only affect the externally controlled executor.
 
 **The `externally-controlled` executor has no graceful stop**.
 
-Besides that, this executor has all the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides that, this executor has all the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 and these particular ones:
 
 | Option                        | Type    | Description                                         | Default |

@@ -9,8 +9,8 @@ weight: 01
 
 Codeless tools to speed up the test creation.
 
-- [Test Builder](/docs/k6/<K6_VERSION>/using-k6/test-authoring/test-builder) - Inspired by the Postman API Builder. Codeless UI tool to generate a k6 test quickly.
-- [Browser Recorder](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) - Record a user journey to create your k6 test.
+- [Test Builder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/test-builder) - Inspired by the Postman API Builder. Codeless UI tool to generate a k6 test quickly.
+- [Browser Recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) - Record a user journey to create your k6 test.
 
 ## IDE extensions
 
@@ -18,7 +18,7 @@ Code k6 scripts in your IDE of choice. Empower your development workflow with ID
 
 - [Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6) - Run k6 tests from VS Code.
 - [IntelliJ IDEA](https://plugins.jetbrains.com/plugin/16141-k6) - Run k6 tests from IntelliJ IDEs.
-- [IntelliSense](/docs/k6/<K6_VERSION>/misc/intellisense) - Get code autocompletion and in-context documentation.
+- [IntelliSense](https://grafana.com/docs/k6/<K6_VERSION>/misc/intellisense) - Get code autocompletion and in-context documentation.
 
 ## Converters
 
@@ -32,22 +32,22 @@ Generate a k6 script quickly from an existing file.
 
 k6 can output test results to various formats and 3rd-party services.
 
-- [Amazon CloudWatch](/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
-- [Apache Kafka](/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
-- [CSV](/docs/k6/<K6_VERSION>/results-output/real-time/csv)
-- [Datadog](/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
-- [Dynatrace](/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
-- [Elasticsearch](/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
-- [Grafana Cloud k6](/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
-- [Grafana Cloud Prometheus](/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
-- [Grafana Dashboards](/docs/k6/<K6_VERSION>/results-output/grafana-dashboards)
-- [InfluxDB](/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
-- [JSON file](/docs/k6/<K6_VERSION>/results-output/real-time/json)
-- [Netdata](/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
-- [New Relic](/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
-- [Prometheus](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
-- [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
-- [TimescaleDB](/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
+- [Amazon CloudWatch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
+- [Apache Kafka](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
+- [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)
+- [Datadog](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
+- [Dynatrace](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
+- [Elasticsearch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
+- [Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
+- [Grafana Cloud Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
+- [Grafana Dashboards](https://grafana.com/docs/k6/<K6_VERSION>/results-output/grafana-dashboards)
+- [InfluxDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
+- [JSON file](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)
+- [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
+- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
+- [Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
+- [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
+- [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
 
 ## Continuous Integration and Continuous Delivery
 
@@ -69,7 +69,7 @@ By automating load testing with your CI / CD tools, you can quickly see when a c
 ## Chaos engineering
 
 - [Steadybit](https://k6.io/blog/chaos-engineering-with-k6-and-steadybit) - Using k6 and Steadybit for chaos engineering.
-- [xk6-disruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor) - A k6 extension for injecting faults into k6 tests.
+- [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor) - A k6 extension for injecting faults into k6 tests.
 - [ChaosToolkit](http://chaostoolkit.org/drivers/k6/) - A collection of k6 actions and probes.
 
 ## Test management

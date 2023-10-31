@@ -22,7 +22,7 @@ k6 can send performance testing metrics to [Netdata](https://netdata.cloud). Thi
 
 ## Before you begin
 
-To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
+To use the StatsD output option, you have to build a k6 binary using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). For more details, refer to [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd).
 
 ## Run Netdata
 

@@ -8,7 +8,7 @@ weight: 17
 
 # HTTP debugging
 
-Things don't always work as expected. For those cases, enabling the [--http-debug](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug) option will log HTTP requests and responses to help you debugging the script.
+Things don't always work as expected. For those cases, enabling the [--http-debug](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug) option will log HTTP requests and responses to help you debugging the script.
 
 - `--http-debug` logs the HTTP requests and responses, skipping the body.
 - `--http-debug="full"` logs the HTTP requests and responses, including the full body.

@@ -6,7 +6,7 @@ weight: 00
 
 # Cloud
 
-Besides [running cloud tests](/docs/k6/<K6_VERSION>/get-started/running-k6#execution-modes), you can also run a test locally and stream the results to [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/#run-locally-and-stream-to-the-cloud).
+Besides [running cloud tests](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#execution-modes), you can also run a test locally and stream the results to [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/#run-locally-and-stream-to-the-cloud).
 
 When streaming the results to the cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the cloud-based solution. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
@@ -104,7 +104,7 @@ before the network issue.
 
 ## Advanced settings
 
-A few [environment variables](/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `-o cloud`.
+A few [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `-o cloud`.
 
 When streaming, k6 will collect all data and send it to the cloud in batches.
 

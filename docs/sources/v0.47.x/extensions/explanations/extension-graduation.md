@@ -19,7 +19,7 @@ A _core-bound_ extension passes through the following phases:
 ### Extension
 
 Most extensions in the k6 ecosystem remain _extensions_ requiring [xk6](https://github.com/grafana/xk6) to incorporate the custom functionality.
-These extensions might be provided by Grafana or by the community, and _may_ be included in the [Extensions Registry](/docs/k6/<K6_VERSION>/extensions/explore).
+These extensions might be provided by Grafana or by the community, and _may_ be included in the [Extensions Registry](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore).
 
 {{% admonition type="note" %}}
 
@@ -32,8 +32,8 @@ Only Grafana-controlled extensions may progress beyond the _extension_ phase to 
 This phase is the first exposure to core k6.
 The extension is still maintained outside the core of k6 but imported as a Go module, no longer requiring xk6.
 
-Once an extension is promoted as an _experimental module_, the extension will be removed from the [extension listing](/docs/k6/<K6_VERSION>/extensions/explore).
-At this time, documentation for the functionality will be provided in [k6 API](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental) and [output](/docs/k6/<K6_VERSION>/results-output/real-time) for _JavaScript_ and _Output_ extensions, respectively.
+Once an extension is promoted as an _experimental module_, the extension will be removed from the [extension listing](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore).
+At this time, documentation for the functionality will be provided in [k6 API](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental) and [output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time) for _JavaScript_ and _Output_ extensions, respectively.
 
 There should be a reasonably high degree of quality and stability at this point.
 This phase makes the feature accessible to more users, which in turn gives k6 developers more chances to receive feedback.

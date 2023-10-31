@@ -12,7 +12,7 @@ Run them to verify that the system works well under minimal load and to gather b
 
 This test type consists of running tests with a few VUs — more than 5 VUs could be considered a mini-load test.
 
-Similarly, the test should execute for a short period, either a low number of [iterations](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) or a [duration](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#duration) from seconds to a few minutes maximum.
+Similarly, the test should execute for a short period, either a low number of [iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) or a [duration](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#duration) from seconds to a few minutes maximum.
 
 ![Overview of a smoke test](/media/docs/k6-oss/chart-smoke-test-overview.png)
 
@@ -67,7 +67,7 @@ export default () => {
 
 {{< /code >}}
 
-The following script is an example smoke test. You can copy it, change the endpoints, and start testing. For more comprehensive test logic, refer to [Examples](/docs/k6/<K6_VERSION>/examples).
+The following script is an example smoke test. You can copy it, change the endpoints, and start testing. For more comprehensive test logic, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 The VU chart of a smoke test should look similar to this.
 
 ![The shape of the smoke test as configured in the preceding script](/media/docs/k6-oss/chart-smoke-test-k6-script-example.png)

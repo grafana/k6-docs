@@ -10,15 +10,15 @@ weight: 10
 | Parameter         | Type                                                                             | Description                                                                                                        |
 | ----------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | method            | string                                                                           | Request method (e.g. `'POST'`). Must be uppercase.                                                                 |
-| url               | string /[HTTP URL](/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `'http://example.com'`).                                                                         |
+| url               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `'http://example.com'`).                                                                         |
 | body (optional)   | string / object / ArrayBuffer                                                    | Request body; Objects will be `x-www-form-urlencoded` encoded.                                                     |
-| params (optional) | object                                                                           | [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters. |
+| params (optional) | object                                                                           | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
 | Type     | Description                                                                       |
 | -------- | --------------------------------------------------------------------------------- |
-| Response | HTTP [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
+| Response | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example
 

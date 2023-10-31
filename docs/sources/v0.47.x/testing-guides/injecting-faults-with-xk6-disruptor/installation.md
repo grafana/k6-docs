@@ -6,7 +6,7 @@ weight: 03
 
 # Installation
 
-xk6-disruptor is a [k6 extension](/docs/k6/<K6_VERSION>/extensions). You have to run a k6 version built with the disruptor extension to use the [disruptor APIs](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/) in your k6 tests.
+xk6-disruptor is a [k6 extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions). You have to run a k6 version built with the disruptor extension to use the [disruptor APIs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/) in your k6 tests.
 
 The following sections explain the different options to get this custom binary.
 
@@ -18,7 +18,7 @@ The quickest way to get started is to [download a release binary from GitHub](ht
 
 You can also use [xk6](https://github.com/grafana/xk6) to build a k6 binary.
 
-To learn more about xk6, refer to [Build a k6 binary using Go](/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go).
+To learn more about xk6, refer to [Build a k6 binary using Go](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go).
 
 To build the k6 binary with the xk6-disruptor extension:
 

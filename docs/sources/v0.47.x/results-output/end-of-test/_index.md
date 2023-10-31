@@ -36,17 +36,17 @@ Besides this default summary, k6 can output the results in other formats at the 
 
 | On this page                                                                          | Result format            | Read about...                                                 |
 | ------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------- |
-| [Custom summary](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) | Aggregated               | Using the `handleSummary()` to make completely custom reports |
-| [CSV](/docs/k6/<K6_VERSION>/results-output/real-time/csv)                         | Time-stamped data points | Writing results as a CSV file, and the structure of the data  |
-| [JSON](/docs/k6/<K6_VERSION>/results-output/real-time/json)                       | Time-stamped data points | Writing results as a JSON file, and the structure of the data |
+| [Custom summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) | Aggregated               | Using the `handleSummary()` to make completely custom reports |
+| [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)                         | Time-stamped data points | Writing results as a CSV file, and the structure of the data  |
+| [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)                       | Time-stamped data points | Writing results as a JSON file, and the structure of the data |
 
 ## The default summary
 
 The end-of-test summary reports details and aggregated statistics for the primary aspects of the test:
 
-- Summary statistics about each built-in and custom [metric](/docs/k6/<K6_VERSION>/using-k6/metrics#built-in-metrics) (e.g. mean, median, p95, etc).
-- A list of the test's [groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) and [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios)
-- The pass/fail results of the test's [thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) and [checks](/docs/k6/<K6_VERSION>/using-k6/checks).
+- Summary statistics about each built-in and custom [metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics#built-in-metrics) (e.g. mean, median, p95, etc).
+- A list of the test's [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios)
+- The pass/fail results of the test's [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) and [checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks).
 
 {{< code >}}
 
@@ -97,15 +97,15 @@ Above's an example of a report that k6 generated after a test run.
 
 k6 provides some options to filter or silence summary output:
 
-- The [`--summary-trend-stats` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) defines which [Trend metric](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) statistics to calculate and show.
-- The [`--summary-time-unit` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
-- The [`--no-summary` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
+- The [`--summary-trend-stats` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) defines which [Trend metric](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) statistics to calculate and show.
+- The [`--summary-time-unit` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
+- The [`--no-summary` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
 
 {{< collapse title="Summary export to a JSON file (Discouraged)" >}}
 
 ### Summary export to a JSON file
 
-k6 also has the [`--summary-export=path/to/file.json` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-export), which exports some summary report data to a JSON file.
+k6 also has the [`--summary-export=path/to/file.json` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-export), which exports some summary report data to a JSON file.
 
 The format of `--summary-export` is similar to the `data` parameter of the `handleSummary()` function.
 Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.

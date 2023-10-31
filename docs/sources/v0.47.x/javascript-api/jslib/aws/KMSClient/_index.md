@@ -20,8 +20,8 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 | Function                                                                                                  | Description                                                                          |
 | :-------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| [listKeys](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 listkeys)               | List the all the Key Management Service keys in the caller's AWS account and region. |
-| [generateDataKey](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 generateDataKey) | Generate a symmetric data key for use outside of the AWS Key Management Service.     |
+| [listKeys](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 listkeys)               | List the all the Key Management Service keys in the caller's AWS account and region. |
+| [generateDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 generateDataKey) | Generate a symmetric data key for use outside of the AWS Key Management Service.     |
 
 ### Throws
 

@@ -13,8 +13,8 @@ It's available as an extension for [Chrome](https://chrome.google.com/webstore/d
 
 Before you start, consider the following:
 
-- [Be sure to record realistically](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#be-sure-to-record-realistically)
-- [A hybrid approach for load testing websites](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#consider-hybrid-approach-for-load-testing-websites)
+- [Be sure to record realistically](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#be-sure-to-record-realistically)
+- [A hybrid approach for load testing websites](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings#consider-hybrid-approach-for-load-testing-websites)
 
 > Note that the browser recorders **do not require a cloud account**. For cloud users, check out the [Grafana Cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/browser-recorder/) instructions.
 
@@ -28,13 +28,13 @@ Before you start, consider the following:
 1. Select **Start recording** to begin recording the current browser tab.
 1. When done, select **Stop recording**.
 1. Save the recorded script locally or in any of your cloud projects.
-1. Edit your script as necessary. Depending on the [type of load test](/docs/k6/<K6_VERSION>/testing-guides/test-types/), you might need to change different aspects of the script.
-   Typical changes are for [load options](/docs/k6/<K6_VERSION>/using-k6/k6-options) and to handle [correlation and dynamic data](/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data).
-1. Run the test from the CLI or Grafana Cloud k6. For more about running k6, refer to the [Running k6 guide](/docs/k6/<K6_VERSION>/get-started/running-k6).
+1. Edit your script as necessary. Depending on the [type of load test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/), you might need to change different aspects of the script.
+   Typical changes are for [load options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and to handle [correlation and dynamic data](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data).
+1. Run the test from the CLI or Grafana Cloud k6. For more about running k6, refer to the [Running k6 guide](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6).
 
 ## Troubleshooting. Try the HAR converter
 
-If you experience problems recording a request, try the [HAR converter](/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter).
+If you experience problems recording a request, try the [HAR converter](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter).
 
 The Browser recorder uses the HAR converter under the hood.
 Like the Browser Recorder, the HAR converter creates a k6 script from the HTTP requests included in a HAR file.

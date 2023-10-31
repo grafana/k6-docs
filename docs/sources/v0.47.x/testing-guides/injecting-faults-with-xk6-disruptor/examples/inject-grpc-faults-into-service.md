@@ -6,7 +6,7 @@ weight: 01
 
 # Inject gRPC faults into Service
 
-This example shows a way to use the [ServiceDisruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
+This example shows a way to use the [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
 
 The complete [source code](#source-code) is at the end of this document. The next sections examine the code in detail.
 
@@ -14,11 +14,11 @@ The example uses [grpcpbin](https://grpcbin.test.k6.io), a simple request/respon
 
 The test requires `grpcpbin` to be deployed in a cluster in the namespace `grpcbin` and exposed with an external IP. The IP address is expected in the environment variable `GRPC_HOST`.
 
-For the Kubernetes manifests and the instructions on how to deploy it to a cluster, refer to the [test setup](#test-setup) section at the end of this document. To learn more about how to get the external IP address, refer to [Expose your application](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application).
+For the Kubernetes manifests and the instructions on how to deploy it to a cluster, refer to the [test setup](#test-setup) section at the end of this document. To learn more about how to get the external IP address, refer to [Expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application).
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc) module provides functions for executing gRPC requests. The [check](/docs/k6/<K6_VERSION>/using-k6/checks) function verifies the results from the requests.
+The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc) module provides functions for executing gRPC requests. The [check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) function verifies the results from the requests.
 
 ```javascript
 import { ServiceDisruptor } from 'k6/x/disruptor';
@@ -60,7 +60,7 @@ export default function () {
 
 The `disrupt` function creates a `ServiceDisruptor` for the `grpcbin` service in the namespace `grpcbin`.
 
-The gRPC faults are injected by calling the [ServiceDisruptor.injectGrpcFaults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults) method using a fault definition that introduces a delay of `300ms` on each request and an error with status code `13` ("Internal error") in `10%` of the requests.
+The gRPC faults are injected by calling the [ServiceDisruptor.injectGrpcFaults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults) method using a fault definition that introduces a delay of `300ms` on each request and an error with status code `13` ("Internal error") in `10%` of the requests.
 
 ```javascript
 export function disrupt() {
@@ -91,7 +91,7 @@ This code makes the function return without injecting faults if the `SKIP_FAULTS
 
 ## Scenarios
 
-This test defines two [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `grpcpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the gRPC requests to the target application.
+This test defines two [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `grpcpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the gRPC requests to the target application.
 
 ```javascript
     scenarios: {
@@ -124,7 +124,7 @@ The `disrupt` scenario uses a `shared-iterations` executor with one iteration an
 
 {{% admonition type="note" %}}
 
-The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to [Installation](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
+The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to [Installation](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
 
  {{% /admonition %}}
 
@@ -362,7 +362,7 @@ service/grpcbin created
 
 You must set the environment variable `GRPC_HOST` with the external IP address and port used to access the `grpcbin` service from the test script.
 
-Learn more about how to get the external IP address in the [Expose your application](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application).
+Learn more about how to get the external IP address in the [Expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application).
 
 ### Manifests
 

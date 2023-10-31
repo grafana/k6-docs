@@ -51,7 +51,7 @@ Fundamentally, `handleSummary()` is just a function that can access a data objec
 As such, you can transform the summary data into any text format: JSON, HTML, console, XML, and so on.
 You can pipe your custom summary to [standard output or standard error](https://en.wikipedia.org/wiki/Standard_streams), write it to a file, or send it to a remote server.
 
-k6 calls `handleSummary()` at the end of the [test lifecycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+k6 calls `handleSummary()` at the end of the [test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 ## Use handleSummary()
 
@@ -301,7 +301,7 @@ the function can access the object about the `http_req_duration` metric at `data
 ### Metric schema
 
 The following table describes the schema for the metrics object.
-The specific values depend on the [metric type](/docs/k6/<K6_VERSION>/using-k6/metrics):
+The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics):
 
 <TableWithNestedRows>
 
@@ -318,7 +318,7 @@ The specific values depend on the [metric type](/docs/k6/<K6_VERSION>/using-k6/m
 
 {{% admonition type="note" %}}
 
-If you change the default trend metrics with the [`summaryTrendStats`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) option,
+If you change the default trend metrics with the [`summaryTrendStats`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) option,
 the keys for the values of the trend will change accordingly.
 
 {{% /admonition %}}

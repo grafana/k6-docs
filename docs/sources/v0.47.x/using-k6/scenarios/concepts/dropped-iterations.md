@@ -41,4 +41,4 @@ A few dropped iterations might indicate a quick network error.
 Many dropped iterations might indicate that your SUT has completely stopped responding.
 
 When you design your test, consider what an acceptable rate of dropped iterations is (the _error budget_).
-To assert that the SUT responds within this error budget, you can use the `dropped_iterations` metric in a [Threshold](/docs/k6/<K6_VERSION>/using-k6/thresholds).
+To assert that the SUT responds within this error budget, you can use the `dropped_iterations` metric in a [Threshold](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds).

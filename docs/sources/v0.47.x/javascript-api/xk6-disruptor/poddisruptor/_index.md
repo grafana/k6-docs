@@ -8,14 +8,14 @@ weight: 02
 
 The `PodDisruptor` class can inject different types of faults into the pods that match a selection criteria.
 
-To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/constructor).
+To construct a `PodDisruptor`, use the [PodDisruptor() constructor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/constructor).
 
 ## Methods
 
 | Method                                                                                                                      | Description                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| [PodDisruptor.injectGrpcFaults()](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injectgrpcfaults) | Inject [gRPC faults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc) in the target Pods |
-| [PodDisruptor.injectHTTPFaults()](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults) | Inject [HTTP faults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) in the target Pods |
+| [PodDisruptor.injectGrpcFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injectgrpcfaults) | Inject [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc) in the target Pods |
+| [PodDisruptor.injectHTTPFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults) | Inject [HTTP faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) in the target Pods |
 | PodDisruptor.targets()                                                                                                      | Returns the list of target Pods of the PodDisruptor                                                            |
 
 ## Example

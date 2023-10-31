@@ -17,7 +17,7 @@ It is commonly used by single-page apps (SPAs) and mobile apps, to add server-pu
 
 [xk6-websockets](https://github.com/grafana/xk6-websockets) is an experimental module with a more standard API than `k6/ws`. It implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/). While the implementation isn't complete, it uses a global event loop instead of local one.
 
-Currently, it's available as an experimental module [`k6/experimental/websockets`](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets). It's also likely that it will become part of the core of k6 in the future.
+Currently, it's available as an experimental module [`k6/experimental/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets). It's also likely that it will become part of the core of k6 in the future.
 
 {{% /admonition %}}
 
@@ -48,11 +48,11 @@ export default function () {
 
 {{< /code >}}
 
-In this example, the [connect()](/docs/k6/<K6_VERSION>/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter.
-That function should accept a [Socket](/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket) object as its only parameter.
+In this example, the [connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter.
+That function should accept a [Socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket) object as its only parameter.
 The run function forms the basis of the asynchronous event loop.
 
-When the WebSocket connection is created, the run function will be immediately called, all code inside it will be executed (usually code to set up event handlers), and then blocked until the WebSocket connection is closed (by the remote host or by using [socket.close()](/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-close)).
+When the WebSocket connection is created, the run function will be immediately called, all code inside it will be executed (usually code to set up event handlers), and then blocked until the WebSocket connection is closed (by the remote host or by using [socket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-close)).
 
 ## Error handling
 
@@ -88,7 +88,7 @@ export default function () {
 
 ## Timers
 
-To schedule a recurring action, use the [socket.setInterval](/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket#section-socketsetinterval) to specify a function to call at a particular interval.
+To schedule a recurring action, use the [socket.setInterval](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket#section-socketsetinterval) to specify a function to call at a particular interval.
 
 {{< code >}}
 
@@ -123,7 +123,7 @@ export default function () {
 
 ## Timeouts
 
-To add a timeout to the WebSocket connection, pass both a handler function and a timeout value (in milliseconds) to the [socket.setTimeout](/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-settimeout) function.
+To add a timeout to the WebSocket connection, pass both a handler function and a timeout value (in milliseconds) to the [socket.setTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-settimeout) function.
 
 {{< code >}}
 

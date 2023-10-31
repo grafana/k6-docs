@@ -22,21 +22,21 @@ Start with smoke tests, then progress to higher loads and longer durations.
 
 The main types are as follows. Each type has its own article outlining its essential concepts.
 
-- [**Smoke tests**](/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing) validate that your script works and that the system performs adequately under minimal load.
+- [**Smoke tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing) validate that your script works and that the system performs adequately under minimal load.
 
-- [**Average-load test**](/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing) assess how your system performs under expected normal conditions.
+- [**Average-load test**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing) assess how your system performs under expected normal conditions.
 
-- [**Stress tests**](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing) assess how a system performs at its limits when load exceeds the expected average.
+- [**Stress tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing) assess how a system performs at its limits when load exceeds the expected average.
 
-- [**Soak tests**](/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing) assess the reliability and performance of your system over extended periods.
+- [**Soak tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing) assess the reliability and performance of your system over extended periods.
 
-- [**Spike tests**](/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing) validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity.
+- [**Spike tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing) validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity.
 
-- [**Breakpoint tests**](/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing) gradually increase load to identify the capacity limits of the system.
+- [**Breakpoint tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing) gradually increase load to identify the capacity limits of the system.
 
 {{% admonition type="note" %}}
 
-In k6 scripts, configure the load configuration using [`options`](/docs/k6/<K6_VERSION>/get-started/running-k6#using-options) or [`scenarios`](/docs/k6/<K6_VERSION>/using-k6/scenarios). This separates workload configuration from iteration logic.
+In k6 scripts, configure the load configuration using [`options`](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#using-options) or [`scenarios`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios). This separates workload configuration from iteration logic.
 
  {{% /admonition %}}
 
@@ -46,12 +46,12 @@ The following table provides some broad comparisons.
 
 | Type                                                                  | VUs/Throughput        | Duration                   | When?                                                                                                              |
 | --------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [Smoke](/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing)           | Low                   | Short (seconds or minutes) | When the relevant system or application code changes. It checks functional logic, baseline metrics, and deviations |
-| [Load](/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing)             | Average production    | Mid (5-60 minutes)         | Often to check system maintains performance with average use                                                       |
-| [Stress](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing)         | High (above average)  | Mid (5-60 minutes)         | When system may receive above-average loads to check how it manages                                                |
-| [Soak](/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing)             | Average               | Long (hours)               | After changes to check system under prolonged continuous use                                                       |
-| [Spike](/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing)           | Very high             | Short (a few minutes)      | When the system prepares for seasonal events or receives frequent traffic peaks                                    |
-| [Breakpoint](/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing) | Increases until break | As long as necessary       | A few times to find the upper limits of the system                                                                 |
+| [Smoke](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing)           | Low                   | Short (seconds or minutes) | When the relevant system or application code changes. It checks functional logic, baseline metrics, and deviations |
+| [Load](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing)             | Average production    | Mid (5-60 minutes)         | Often to check system maintains performance with average use                                                       |
+| [Stress](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing)         | High (above average)  | Mid (5-60 minutes)         | When system may receive above-average loads to check how it manages                                                |
+| [Soak](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing)             | Average               | Long (hours)               | After changes to check system under prolonged continuous use                                                       |
+| [Spike](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing)           | Very high             | Short (a few minutes)      | When the system prepares for seasonal events or receives frequent traffic peaks                                    |
+| [Breakpoint](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing) | Increases until break | As long as necessary       | A few times to find the upper limits of the system                                                                 |
 
 ## General recommendations
 
@@ -59,7 +59,7 @@ When you write and run different test types in k6, consider the following.
 
 ### Start with a smoke test
 
-Start with a [smoke test](/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing).
+Start with a [smoke test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing).
 Before beginning larger tests, validate that your scripts work as expected and that your system performs well with a few users.
 
 After you know that the script works and the system responds correctly to minimal load,
@@ -70,7 +70,7 @@ From there, you can progress to more complex load patterns.
 
 Systems have different architectures and different user bases. As a result, the correct load testing strategy is highly dependent on the risk profile for your organization. Avoid thinking in absolutes.
 
-For example, k6 can model load by either number of VUs or by number of iterations per second ([open vs. closed](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
+For example, k6 can model load by either number of VUs or by number of iterations per second ([open vs. closed](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
 When you design your test, consider which pattern makes sense for the type.
 
 What's more, **no single test type eliminates all risk.**

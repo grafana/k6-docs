@@ -6,7 +6,7 @@ weight: 07
 
 # sign
 
-The `sign()` operation generates a digital signature of the provided `data`, using the given [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object.
+The `sign()` operation generates a digital signature of the provided `data`, using the given [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object.
 
 ## Usage
 
@@ -19,7 +19,7 @@ sign(algorithm, key, data)
 | Name        | Type                                                                                      | Description                                                  |
 | :---------- | :---------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
 | `algorithm` | `string` or object with a single `name` string property                                   | The signature algorithm to use. Currently supported: `HMAC`. |
-| `key`       | [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The key to use for signing.                                  |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The key to use for signing.                                  |
 | `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                | The data to be signed.                                       |
 
 ## Return Value

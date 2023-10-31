@@ -55,7 +55,7 @@ It's possible to rewrite this test to be less fragile, but it can make our test 
 
 ## Handling exceptions
 
-Sometimes it's hard to predict how a SUT might fail. For those cases, [describe](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/describe) catches any internal exceptions and:
+Sometimes it's hard to predict how a SUT might fail. For those cases, [describe](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/describe) catches any internal exceptions and:
 
 1. records them as failed assertions
 2. continues the execution (outside of its `describe()` function)

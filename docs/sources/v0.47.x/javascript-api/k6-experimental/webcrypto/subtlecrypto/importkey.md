@@ -6,7 +6,7 @@ weight: 06
 
 # importKey
 
-The `importKey()` imports a key from an external, portable format, and gives you a [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.
+The `importKey()` imports a key from an external, portable format, and gives you a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.
 
 ## Usage
 
@@ -21,12 +21,12 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 | `format`      | `string`                                                  | Defines the data format of the key to import. Currently supported formats: `raw`.                                                                                    |
 | `keyData`     | `ArrayBuffer`, `TypedArray` or `DataView`                 | the data to import the key from.                                                                                                                                     |
 | `algorithm`   | a `string` or object with a single `name` string property | The algorithm to use to import the key. Currently supported algorithms: `AES-CBC`, `AES-GCM`, `AES-CTR`, and `HMAC`.                                                 |
-| `extractable` | `boolean`                                                 | Indicates whether it will be possible to export the key using [exportKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey). |
+| `extractable` | `boolean`                                                 | Indicates whether it will be possible to export the key using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey). |
 | `keyUsages`   | `Array<string>`                                           | An array of strings describing what operations can be performed with the key. Currently supported usages include `encrypt`, `decrypt`, `sign`, and `verify`.         |
 
 ## Return Value
 
-A `Promise` that resolves with the imported key as a [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object.
+A `Promise` that resolves with the imported key as a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object.
 
 ## Throws
 

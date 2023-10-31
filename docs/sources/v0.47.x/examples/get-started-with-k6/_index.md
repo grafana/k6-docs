@@ -31,7 +31,7 @@ Finally, after you test the API and web application, break your scripts down int
 We encourage you to open your terminal and actively experiment with these examples.
 The tutorial requires the following:
 
-- [ ][k6 installed](/docs/k6/<K6_VERSION>/get-started/installation)
+- [ ][k6 installed](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation)
 - [ ] A clean directory to experiment in.
 - [ ] Something to do during the minute or two when k6 runs the longest example tests
 - [ ] Optional: [`jq`](https://stedolan.github.io/jq/) to filter some results
@@ -40,7 +40,7 @@ The tutorial requires the following:
 
 | In this tutorial                                                                                                              | Learn how to                                                       |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [Test for functional behavior](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
-| [Test for performance](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-performance)                 | Use k6 to increase load and find faults                            |
-| [Analyze results](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/analyze-results)                           | Filter results and make custom metrics                             |
-| [Reuse and re-run](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/reuse-and-re-run-tests)                   | Modularize and re-run tests                                        |
+| [Test for functional behavior](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
+| [Test for performance](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-performance)                 | Use k6 to increase load and find faults                            |
+| [Analyze results](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/analyze-results)                           | Filter results and make custom metrics                             |
+| [Reuse and re-run](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/reuse-and-re-run-tests)                   | Modularize and re-run tests                                        |

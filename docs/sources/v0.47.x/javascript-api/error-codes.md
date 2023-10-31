@@ -8,7 +8,7 @@ weight: 13
 
 Error codes are unique numbers that can be used to identify and handle different application and network errors more easily. For the moment, these error codes are applicable only for errors that happen during HTTP requests, but they will be reused and extended to support other protocols in future k6 releases.
 
-When an error occurs, its code is determined and returned as both the `error_code` field of the [`http.Response`](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object, and also attached as the `error_code` [tag](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) to any [metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) associated with that request. Additionally, for more details, the `error` metric tag and `http.Response` field will still contain the actual string error message.
+When an error occurs, its code is determined and returned as both the `error_code` field of the [`http.Response`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object, and also attached as the `error_code` [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) to any [metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) associated with that request. Additionally, for more details, the `error` metric tag and `http.Response` field will still contain the actual string error message.
 
 Error codes for different errors are as distinct as possible, but for easier handling and grouping, codes in different error categories are also grouped in broad ranges. The current error code ranges are:
 
@@ -29,7 +29,7 @@ The following specific error codes are currently defined:
 - 1100: A generic DNS error that isn't any of the ones listed below.
 - 1101: No IP for the provided host was found.
 - 1110: Blacklisted IP was resolved or a connection to such was tried to be established.
-- 1111: Blacklisted hostname using The [Block Hostnames](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option.
+- 1111: Blacklisted hostname using The [Block Hostnames](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option.
 - 1200: A generic TCP error that isn't any of the ones listed below.
 - 1201: A "broken pipe" on write - the other side has likely closed the connection.
 - 1202: An unknown TCP error - We got an error that we don't recognize but it is from the operating system and has `errno` set on it. The message in `error` includes the operation(write,read) and the errno, the OS, and the original message of the error.

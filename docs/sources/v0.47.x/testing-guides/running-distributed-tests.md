@@ -6,11 +6,11 @@ weight: 05
 
 # Running distributed tests
 
-It has already been established that k6 can [run large load tests](/docs/k6/<K6_VERSION>/testing-guides/running-large-tests) from a single instance, but what about _multiple instances running a single test_?
+It has already been established that k6 can [run large load tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/running-large-tests) from a single instance, but what about _multiple instances running a single test_?
 
 Several reasons why you may wish to run a distributed test include:
 
-- Your [system under test](/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT) should be accessed from multiple IP addresses.
+- Your [system under test](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT) should be accessed from multiple IP addresses.
 - A fully optimized node cannot produce the load required by your extremely large test.
 - Kubernetes is already your preferred operations environment.
 
@@ -18,7 +18,7 @@ For scenarios such as these, we've created the [k6-operator](https://github.com/
 
 ## Introducing k6-operator
 
-[k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](/docs/k6/<K6_VERSION>/misc/glossary#operator-pattern) in Kubernetes, defining [custom resources](/docs/k6/<K6_VERSION>/misc/glossary#custom-resource) in Kubernetes.
+[k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#operator-pattern) in Kubernetes, defining [custom resources](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#custom-resource) in Kubernetes.
 The intent is to automate tasks that a _human operator_ would normally do; tasks like provisioning new application components, changing configurations, or resolving run-time issues.
 
 The k6-operator defines the custom `TestRun` resource type and listens for changes to, or creation of, `TestRun` objects.
@@ -109,8 +109,8 @@ You are now ready to start create and execute test scripts!
 Creating k6 test scripts for Kubernetes is no different from creating the script for the command-line.
 If you haven’t already created test cases for your system, then we suggest having a read through one of our guides for creating tests for websites and APIs/microservices:
 
-- [Website testing guide](/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites)
-- [API testing guide](/docs/k6/<K6_VERSION>/testing-guides/api-load-testing)
+- [Website testing guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites)
+- [API testing guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/api-load-testing)
 
 In general, it is advised to start small and expand on your scripts over iterations.
 So let's start simple and create a `test.js` with the following content:
@@ -136,7 +136,7 @@ export default function () {
 
 {{% admonition type="note" %}}
 
-While creating scripts, [run them locally](/docs/k6/<K6_VERSION>/get-started/running-k6#running-local-tests) before publishing to your cluster.
+While creating scripts, [run them locally](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#running-local-tests) before publishing to your cluster.
 This can give you immediate feedback if you have errors in your script.
 
  {{% /admonition %}}
@@ -181,7 +181,7 @@ You should see confirmation with `configmap/my-test created`.
 Setting up a `PersistentVolume` is beyond the scope of this guide, but enables access to a shared filesystem from your Kubernetes cluster via `PersistentVolumeClaim`.
 
 When using this option, organize your test scripts in the applicable filesystem just as you would locally.
-This mechanism is ideal when breaking up monolithic scripts into reusable [modules](/docs/k6/<K6_VERSION>/using-k6/modules).
+This mechanism is ideal when breaking up monolithic scripts into reusable [modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules).
 
 {{% admonition type="note" %}}
 
@@ -202,7 +202,7 @@ To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` reso
 During [installation](#1-install-the-operator), the `TestRun` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
 The data we provide in the custom resource `TestRun` object should contain all the information necessary for the k6-operator to start a distributed load test.
 
-Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](/docs/k6/<K6_VERSION>/misc/glossary#parallelism) to utilize.
+Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#parallelism) to utilize.
 
 {{% admonition type="note" %}}
 
@@ -215,7 +215,7 @@ The following examples will show some common variations for the custom resource:
 
 ### Script in a ConfigMap
 
-When the test script to be executed is contained within a `ConfigMap` resource, we specify the script details within the `configMap` block of [YAML](/docs/k6/<K6_VERSION>/misc/glossary#yaml).
+When the test script to be executed is contained within a `ConfigMap` resource, we specify the script details within the `configMap` block of [YAML](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#yaml).
 The `name` is the name of the ConfigMap and the `file` is the key-value for the entry.
 
 Let's create the file `run-k6-from-configmap.yaml` with the following content:
@@ -242,7 +242,7 @@ We created the ConfigMap named `my-test`.
 The test script content was added to the map using the filename as the key-value, therefore the `file` value is `test.js`.
 
 The amount of `parallelism` is up to you; how many pods do you want to split the test amongst?
-The operator will split the workload between the pods using [execution segments](/docs/k6/<K6_VERSION>/misc/glossary#execution-segment).
+The operator will split the workload between the pods using [execution segments](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#execution-segment).
 
 {{% admonition type="caution" %}}
 
@@ -287,7 +287,7 @@ Not everything should be included directly in your scripts.
 Well written scripts will allow for variability to support multiple scenarios and to avoid hard-coding values that tend to change.
 These could be anything from passwords to target urls, in addition to system options.
 
-We can pass this data as [environment variables](/docs/k6/<K6_VERSION>/misc/glossary#environment-variables) for use with each pod executing your script.
+We can pass this data as [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#environment-variables) for use with each pod executing your script.
 This can be defined explicitly within the `TestRun` resource, or by referencing a `ConfigMap` or `Secret`.
 
 {{< code >}}
@@ -322,7 +322,7 @@ The above YAML introduces the `runner` section. This section applies to each pod
 
  {{% /admonition %}}
 
-Now, with the referenced resources, our test scripts can [use environment variables](/docs/k6/<K6_VERSION>/using-k6/environment-variables) as in the following:
+Now, with the referenced resources, our test scripts can [use environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) as in the following:
 
 ```javascript
 export function setup() {
@@ -353,11 +353,11 @@ spec:
 
 {{< /code >}}
 
-With the above arguments, we're adding a [test-wide custom tag](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](/docs/k6/<K6_VERSION>/misc/glossary#json).
+With the above arguments, we're adding a [test-wide custom tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#json).
 
 {{% admonition type="note" %}}
 
-Be sure to visit the [options reference](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference) for a listing of available options.
+Be sure to visit the [options reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference) for a listing of available options.
 
  {{% /admonition %}}
 
@@ -379,7 +379,7 @@ kubectl delete -f /path/to/your/k6-resource.yaml
 
 {{% admonition type="note" %}}
 
-If you make use of [real-time results output](/docs/k6/<K6_VERSION>/results-output/real-time), e.g. [Prometheus Remote Write](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), use the `cleanup` option to automatically remove resources upon test completion as with the following example:
+If you make use of [real-time results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time), e.g. [Prometheus Remote Write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), use the `cleanup` option to automatically remove resources upon test completion as with the following example:
 
 ```yaml
 apiVersion: k6.io/v1alpha1

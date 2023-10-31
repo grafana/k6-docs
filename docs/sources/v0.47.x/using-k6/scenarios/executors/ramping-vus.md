@@ -8,11 +8,11 @@ weight: 04
 
 With the `ramping-vus` executor, a variable number of VUs executes as many iterations as possible for a specified amount of time.
 
-For a shortcut to this executor, use the [stages](/docs/k6/<K6_VERSION>/using-k6/k6-options#stages) option.
+For a shortcut to this executor, use the [stages](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options#stages) option.
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option                      | Type    | Description                                                                                    | Default |
@@ -64,7 +64,7 @@ export default function () {
 
 {{% admonition type="note" %}}
 
-With [`gracefulRampDown`](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/graceful-stop#the-gracefulrampdown) set to 0 seconds, some iterations might be
+With [`gracefulRampDown`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/graceful-stop#the-gracefulrampdown) set to 0 seconds, some iterations might be
 interrupted during the ramp down stage.
 
  {{% /admonition %}}
@@ -86,7 +86,7 @@ Based upon our test scenario inputs and results:
 
 ## Get the stage index
 
-To get the current running stage index, use the `getCurrentStageIndex` helper function from the [k6-jslib-utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library. It returns a zero-based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
+To get the current running stage index, use the `getCurrentStageIndex` helper function from the [k6-jslib-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library. It returns a zero-based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
 
 ```javascript
 import { getCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
@@ -106,4 +106,4 @@ export default function () {
 }
 ```
 
-Using this feature, it is possible to automatically tag using the current running stage. Check the [Tagging stages](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tagging-stages) section for more details.
+Using this feature, it is possible to automatically tag using the current running stage. Check the [Tagging stages](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tagging-stages) section for more details.

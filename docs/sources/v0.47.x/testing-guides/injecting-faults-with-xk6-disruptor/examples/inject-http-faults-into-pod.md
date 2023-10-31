@@ -6,7 +6,7 @@ weight: 02
 
 # Inject HTTP faults into Pod
 
-This example shows how [PodDisruptor](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
+This example shows how [PodDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
 
 You will find the complete [source code](#source-code) at the end of this document. Next sections examine the code in detail.
 
@@ -14,11 +14,11 @@ The example uses [httpbin](https://httpbin.org), a simple request/response appli
 
 The test requires `httpbin` to be deployed in a cluster in the namespace `httpbin` and exposed with an external IP. the IP address is expected in the environment variable `SVC_IP`.
 
-You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document. You can learn more about how to get the external IP address in the [expose your application](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section.
+You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document. You can learn more about how to get the external IP address in the [expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section.
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The `PodDisruptor` class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/http](/docs/k6/<K6_VERSION>/javascript-api/k6-http) module provides functions for executing HTTP requests.
+The initialization code imports the external dependencies required by the test. The `PodDisruptor` class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/http](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) module provides functions for executing HTTP requests.
 
 ```javascript
 import { PodDisruptor } from 'k6/x/disruptor';
@@ -45,7 +45,7 @@ The test uses the `delay` endpoint which return after the requested delay. It re
 
 The `disrupt` function creates a `PodDisruptor` using a selector that matches pods in the namespace `httpbin` with the label `app: httpbin`.
 
-The http faults are injected by calling the [PodDisruptor.injectHTTPFaults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults) method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in `10%` of the requests.
+The http faults are injected by calling the [PodDisruptor.injectHTTPFaults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults) method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in `10%` of the requests.
 
 ```javascript
 export function disrupt(data) {
@@ -83,7 +83,7 @@ This code makes the function return without injecting faults if the `SKIP_FAULTS
 
 ## Scenarios
 
-This test defines two [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `httpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the HTTP requests of the target application.
+This test defines two [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `httpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the HTTP requests of the target application.
 
 ```javascript
     scenarios: {
@@ -116,7 +116,7 @@ Notice that the `disrupt` scenario uses a `shared-iterations` executor with one 
 
 {{% admonition type="note" %}}
 
-The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
+The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
 
  {{% /admonition %}}
 
@@ -350,7 +350,7 @@ service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   
 
 You must set the environment variable `SVC_IP` with the external IP address and port used to access the `httpbin` service from the test script.
 
-You can learn more about how to get the external IP address in the [expose your application](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section.
+You can learn more about how to get the external IP address in the [expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section.
 
 ### Manifests
 

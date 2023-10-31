@@ -7,7 +7,7 @@ weight: 01
 # About the Extensions Registry
 
 Did you create an extension and want to share it with your fellow k6 users?
-We'd love to spread word of this new feature adding to our [registry](/docs/k6/<K6_VERSION>/extensions/explore) of available extensions.
+We'd love to spread word of this new feature adding to our [registry](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) of available extensions.
 However, before an extension is added to the registry, we must ensure that it is maintained to the registry standard.
 
 Our desire is to provide the best developer experience when using k6.
@@ -61,7 +61,7 @@ Some extensions may be very specific, where others are more general.
 Multiple extensions may even be created for the same product with different levels of support based upon version.
 By adhering to typical naming conventions, your extension name can remove some doubts as to what is supported.
 
-For any extension, we recommend the `xk6-` prefix as well as an optional `output-` for [Output extensions](/docs/k6/<K6_VERSION>/extensions/create/output-extensions).
+For any extension, we recommend the `xk6-` prefix as well as an optional `output-` for [Output extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions).
 Next, provide the product or protocol name; don't be cryptic.
 Ensure the usage is explicit by adopting only well-known acronyms or abbreviations if necessary.
 If your extension supports only a specific version of a product, incorporate the version into the name, for example `v2`.

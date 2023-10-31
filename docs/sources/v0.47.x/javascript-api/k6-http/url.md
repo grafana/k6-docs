@@ -7,7 +7,7 @@ weight: 10
 
 # url\`url\`
 
-URLs that contain dynamic parts can introduce a large number of unique URLs in the metrics stream. You can use `http.url` to set a consistent name tag in your requests to remedy this issue. Read more on [URL Grouping](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping).
+URLs that contain dynamic parts can introduce a large number of unique URLs in the metrics stream. You can use `http.url` to set a consistent name tag in your requests to remedy this issue. Read more on [URL Grouping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping).
 
 | Parameter | Type             | Description                              |
 | --------- | ---------------- | ---------------------------------------- |

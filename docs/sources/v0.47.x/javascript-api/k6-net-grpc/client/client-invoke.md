@@ -8,7 +8,7 @@ weight: 30
 
 Invokes an unary RPC request to the given method.
 
-The given method to invoke must have its RPC schema previously loaded via the [Client.load()](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load) function, otherwise an
+The given method to invoke must have its RPC schema previously loaded via the [Client.load()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load) function, otherwise an
 error will be thrown.
 
 [Client.connect()](/javascript-api/k6-net-grpc/client/client-connect) must be called first before invoking a request, otherwise an error will be thrown.
@@ -17,13 +17,13 @@ error will be thrown.
 | ----------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | url               | string | The gRPC method url to invoke, in the form `/package.Service/Method`, e.g. `/google.cloud.language.v1.LanguageService/AnalyzeSentiment`. The leading slash `/` is optional. |
 | request           | object | The canonical request object, as-per the [Protobuf JSON Mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).                                          |
-| params (optional) | object | [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/params) object containing additional request parameters.                                                      |
+| params (optional) | object | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/params) object containing additional request parameters.                                                      |
 
 ### Returns
 
 | Type       | Description                                                                           |
 | ---------- | ------------------------------------------------------------------------------------- |
-| `Response` | gRPC [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) object. |
+| `Response` | gRPC [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) object. |
 
 ### Examples
 

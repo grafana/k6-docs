@@ -8,11 +8,11 @@ weight: 03
 
 With the `constant-vus` executor, a fixed number of VUs execute as many iterations as possible for a specified amount of time.
 
-For a shortcut to this executor, use the [VUs](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [duration](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#duration) options.
+For a shortcut to this executor, use the [VUs](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [duration](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#duration) options.
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option                        | Type    | Description                                         | Default |

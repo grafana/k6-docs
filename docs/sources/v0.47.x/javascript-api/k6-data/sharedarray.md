@@ -10,7 +10,7 @@ weight: 1
 The function executes only once, and its result is saved in memory once.
 When a script requests an element, k6 gives a _copy_ of that element.
 
-You must construct a `SharedArray` in the [`init` context](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+You must construct a `SharedArray` in the [`init` context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 Its constructor takes a name for the `SharedArray` and a function that needs to return an array object itself:
 
 ```javascript
@@ -39,7 +39,7 @@ Once constructed, a `SharedArray` is read-only, so **you can't use a SharedArray
 
 {{% admonition type="caution" %}}
 
-Attempting to instantiate a `SharedArray` outside of the [init context](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) results in the exception `new SharedArray must be called in the init context`.
+Attempting to instantiate a `SharedArray` outside of the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) results in the exception `new SharedArray must be called in the init context`.
 
 This limitation will eventually be removed, but for now, the implication is that you can use `SharedArray` to populate test data only at the very beginning of your test and not as a result of receiving data from a response (for example).
 

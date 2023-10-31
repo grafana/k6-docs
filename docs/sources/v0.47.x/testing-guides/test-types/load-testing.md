@@ -94,7 +94,7 @@ export default () => {
 
 {{< /code >}}
 
-This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to [Examples](/docs/k6/<K6_VERSION>/examples).
+This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 
 The VU or throughput chart of an average-load test looks similar to this:
 
@@ -106,4 +106,4 @@ An initial outcome for the average-load test appears during the ramp-up period t
 
 The test validates if the system's performance and resource consumption stay stable during the period of full load, as some systems may display erratic behavior in this period.
 
-Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as [Stress tests](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing).
+Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as [Stress tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing).

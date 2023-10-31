@@ -11,19 +11,19 @@ weight: 05
 
 This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on).
 
-The main difference between this module and [`k6/ws`](/docs/k6/<K6_VERSION>/javascript-api/k6-ws) is that this module uses a global event loop instead of a local one.
+The main difference between this module and [`k6/ws`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws) is that this module uses a global event loop instead of a local one.
 A global event loop lets a single VU have multiple concurrent connections, which improves performance.
 
-The `WebSocket API` is not fully implemented, and we're working on it, but we believe it's usable for most users. So whether you're writing a new WebSocket test, or currently using the `k6/ws` module, we invite you to give it a try, and report any issues in the project's [issue tracker](https://github.com/grafana/xk6-websockets/). Our midterm goal is to make this module part of k6 core, and long-term to replace the [`k6/ws`](/docs/k6/<K6_VERSION>/javascript-api/k6-ws) module.
+The `WebSocket API` is not fully implemented, and we're working on it, but we believe it's usable for most users. So whether you're writing a new WebSocket test, or currently using the `k6/ws` module, we invite you to give it a try, and report any issues in the project's [issue tracker](https://github.com/grafana/xk6-websockets/). Our midterm goal is to make this module part of k6 core, and long-term to replace the [`k6/ws`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws) module.
 
 | Class/Method                                                                                                                                           | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/params)                                                                   | Used for setting various WebSocket connection parameters such as headers, cookie jar, compression, etc. |
-| [WebSocket(url, protocols, params)](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket)                                     | Constructs a new WebSocket connection.                                                                  |
-| [WebSocket.close()](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-close)                                     | Close the WebSocket connection.                                                                         |
-| [WebSocket.ping()](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-ping)                                       | Send a ping.                                                                                            |
-| [WebSocket.send(data)](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-send)                                   | Send string data.                                                                                       |
-| [WebSocket.addEventListener(event, handler)](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event.                                             |
+| [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/params)                                                                   | Used for setting various WebSocket connection parameters such as headers, cookie jar, compression, etc. |
+| [WebSocket(url, protocols, params)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket)                                     | Constructs a new WebSocket connection.                                                                  |
+| [WebSocket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-close)                                     | Close the WebSocket connection.                                                                         |
+| [WebSocket.ping()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-ping)                                       | Send a ping.                                                                                            |
+| [WebSocket.send(data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-send)                                   | Send string data.                                                                                       |
+| [WebSocket.addEventListener(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event.                                             |
 
 A WebSocket instance also has the following properties:
 
@@ -35,19 +35,19 @@ A WebSocket instance also has the following properties:
 | WebSocket.url                                                                                                            | The URL of the connection as resolved by the constructor.                                                                                                                                      |
 | WebSocket.bufferedAmount                                                                                                 | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network.                                                                              |
 | WebSocket.binaryType                                                                                                     | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `"ArrayBuffer"`. Setting it throws an exception, as k6 does not support the Blob type. |
-| [WebSocket.onmessage](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | A handler for `message` events.                                                                                                                                                                |
-| [WebSocket.onerror](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onerror)     | A handler for `error` events.                                                                                                                                                                  |
-| [WebSocket.onopen](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onopen)       | A handler for `open` events.                                                                                                                                                                   |
-| [WebSocket.onclose](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onclose)     | A handler for `close` events.                                                                                                                                                                  |
-| [WebSocket.onping](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onping)       | A handler for `ping` events.                                                                                                                                                                   |
-| [WebSocket.onpong](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onpong)       | A handler for `pong` events.                                                                                                                                                                   |
+| [WebSocket.onmessage](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | A handler for `message` events.                                                                                                                                                                |
+| [WebSocket.onerror](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onerror)     | A handler for `error` events.                                                                                                                                                                  |
+| [WebSocket.onopen](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onopen)       | A handler for `open` events.                                                                                                                                                                   |
+| [WebSocket.onclose](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onclose)     | A handler for `close` events.                                                                                                                                                                  |
+| [WebSocket.onping](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onping)       | A handler for `ping` events.                                                                                                                                                                   |
+| [WebSocket.onpong](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onpong)       | A handler for `pong` events.                                                                                                                                                                   |
 
 <!-- vale on -->
 
 ## Websocket metrics
 
 k6 takes specific measurements for Websockets.
-For the complete list, refer to the [Metrics reference](/docs/k6/<K6_VERSION>/using-k6/metrics/reference#websockets).
+For the complete list, refer to the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference#websockets).
 
 ## Example
 

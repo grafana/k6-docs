@@ -12,7 +12,7 @@ A test with multiple workloads might better simulate traffic in the real world, 
 For example, most traffic to an e-commerce site might come from users who only search for items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
 The following sections provide examples of how to structure k6 scripts to split logic across VUs.
-To inspect the results for a certain behavior, you can [create a custom metric](/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) or use [Tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
+To inspect the results for a certain behavior, you can [create a custom metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) or use [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
 
 {{% admonition type="note" %}}
 
@@ -31,7 +31,7 @@ In this context, _workload_ refers to the traffic pattern simulated by a scenari
 
 One way to distribute traffic is to use scenarios to schedule different workloads for different functions.
 
-1. Define multiple scenarios in your [options](/docs/k6/<K6_VERSION>/using-k6/k6-options).
+1. Define multiple scenarios in your [options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 1. Use the scenario `exec` property to execute different VU functions with a workload.
 
 For example, imagine a social media site that typically receives 100 concurrent users.
@@ -71,12 +71,12 @@ export function news() {
 }
 ```
 
-To view granular results for a specific scenario, you can filter by the built-in scenario [tag](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
+To view granular results for a specific scenario, you can filter by the built-in scenario [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
 ## Distribute logic by VU ID
 
 In some cases, writing a scenario for each behavior might be inconvenient or impractical.
-As an alternative, you can distribute logic across a range of VUs with the [execution context variables](/docs/k6/<K6_VERSION>/using-k6/execution-context-variables) from the [`k6/execution`](/docs/k6/<K6_VERSION>/javascript-api/k6-execution) module.
+As an alternative, you can distribute logic across a range of VUs with the [execution context variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/execution-context-variables) from the [`k6/execution`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution) module.
 With the `exec` object, you can scope logic to a specific instance, scenario, or across all VUs.
 
 For example, this statement assigns behavior to the first 25 VUs in a test.
@@ -130,13 +130,13 @@ export default function () {
 }
 ```
 
-To view results for a specific request or group, you can define [tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
+To view results for a specific request or group, you can define [tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
 {{< /code >}}
 
 ## Randomize behavior
 
-To add a degree of random behavior, consider one of the randomizing functions from the [k6 utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils).
+To add a degree of random behavior, consider one of the randomizing functions from the [k6 utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils).
 
 For example, this script randomly assigns one behavior to happen one-third of the time, and another to happen all other times.
 

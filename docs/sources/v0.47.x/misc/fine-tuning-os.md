@@ -313,7 +313,7 @@ Depending on the particular k6 test: maximum number of VUs used, number and size
 
 As a baseline, count each VU instance to require between 1MB and 5MB of RAM, depending on your script complexity and dependencies. This is roughly between `GB and 5GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
 
-If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode).
+If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode).
 
 ### Virtual memory
 
@@ -342,5 +342,5 @@ For example, you can configure your application to run on ports :8080, :8081, :8
 
 ## Read more
 
-- [Running large tests](/docs/k6/<K6_VERSION>/testing-guides/running-large-tests)
-- [JavaScript Compatibility Mode](/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)
+- [Running large tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/running-large-tests)
+- [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)

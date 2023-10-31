@@ -141,8 +141,8 @@ For more advanced cases, check out the [jq Manual][jq_manual_url]
 ## Summary export
 
 If you want to see only the aggregated data, you can export the end-of-test summary to a JSON file.
-For more details, refer to the `handleSummary()` topic in the [end-of-test summary docs](/docs/k6/<K6_VERSION>/results-output/end-of-test).
+For more details, refer to the `handleSummary()` topic in the [end-of-test summary docs](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test).
 
 ## Read more
 
-- [Metrics](/docs/k6/<K6_VERSION>/using-k6/metrics)
+- [Metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics)

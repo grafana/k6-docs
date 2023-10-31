@@ -81,5 +81,5 @@ k6 provides a few options to help you configure your CSV output:
 
 ## Read more
 
-- [Metrics](/docs/k6/<K6_VERSION>/using-k6/metrics)
-- [Error codes](/docs/k6/<K6_VERSION>/javascript-api/error-codes)
+- [Metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics)
+- [Error codes](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/error-codes)

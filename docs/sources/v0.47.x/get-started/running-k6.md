@@ -109,7 +109,7 @@ export default function () {
 Init code runs first and is called only once per VU.
 The `default` code runs as many times or as long as is configured in the test options.
 
-To learn more about how k6 executes, read about the [Test lifecycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+To learn more about how k6 executes, read about the [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 ## Set options
 
@@ -175,7 +175,7 @@ export default function () {
 
 {{< /code >}}
 
-For more granular ramp configuration, you can use [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) and the `ramping-vus` executor.
+For more granular ramp configuration, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) and the `ramping-vus` executor.
 
 ## Execution modes
 
@@ -225,4 +225,4 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   k6 cloud script.js
   ```
 
-  Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/), and accept the test results from a [local](/docs/k6/<K6_VERSION>/results-output/real-time/cloud) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/), and accept the test results from a [local](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).

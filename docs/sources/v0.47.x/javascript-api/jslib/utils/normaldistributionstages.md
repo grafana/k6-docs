@@ -7,7 +7,7 @@ weight: 46
 
 # normalDistributionStages(maxVus, durationSeconds, [numberOfStages])
 
-Function to create [stages](/docs/k6/<K6_VERSION>/using-k6/k6-options#stages) producing a _normal distribution (bell-curve)_ of VUs for a test.
+Function to create [stages](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options#stages) producing a _normal distribution (bell-curve)_ of VUs for a test.
 
 | Parameter                 | Type | Description                                      |
 | ------------------------- | ---- | ------------------------------------------------ |

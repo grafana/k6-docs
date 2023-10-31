@@ -9,7 +9,7 @@ weight: 02
 
 Options define test-run behavior.
 Most options can be passed in multiple places.
-If an option is defined in multiple places, k6 chooses the value from the highest [order of precedence](/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence).
+If an option is defined in multiple places, k6 chooses the value from the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence).
 
 ## Quick reference of options
 
@@ -27,7 +27,7 @@ Each option has its own detailed reference in a separate section.
 | [Console output](#console-output)                            | Redirects logs logged by `console` methods to the provided output file                                                                                                                                                                                                                                             |
 | [Discard response bodies](#discard-response-bodies)          | Specify whether response bodies should be discarded                                                                                                                                                                                                                                                                |
 | [DNS](#dns)                                                  | Configure DNS resolution behavior                                                                                                                                                                                                                                                                                  |
-| [Duration](#duration)                                        | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus)                              |
+| [Duration](#duration)                                        | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus)                              |
 | [Execution segment](#execution-segment)                      | Limit execution to a segment of the total test                                                                                                                                                                                                                                                                     |
 | [Exit on running](#exit-on-running)                          | Exits when test reaches the running status                                                                                                                                                                                                                                                                         |
 | [Extension options](#extension-options)                      | An object used to set configuration options for cloud parameters and third-party collectors                                                                                                                                                                                                                        |
@@ -35,7 +35,7 @@ Each option has its own detailed reference in a separate section.
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                          |
 | [Insecure skip TLS verify](#insecure-skip-tls-verify)        | A boolean specifying whether k6 should ignore TLS verifications for connections established from code                                                                                                                                                                                                              |
-| [Iterations](#iterations)                                    | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) |
+| [Iterations](#iterations)                                    | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                            | A boolean specifying whether k6 should linger around after test run completion                                                                                                                                                                                                                                     |
 | [Local IPs](#local-ips)                                      | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                                                                                                                                                                                                                                        |
 | [Log output](#log-output)                                    | Configuration about where logs from k6 should be send                                                                                                                                                                                                                                                              |
@@ -45,7 +45,7 @@ Each option has its own detailed reference in a separate section.
 | [No color](#no-color)                                        | A boolean specifying whether colored output is disabled                                                                                                                                                                                                                                                            |
 | [No connection reuse](#no-connection-reuse)                  | A boolean specifying whether k6 should disable keep-alive connections                                                                                                                                                                                                                                              |
 | [No cookies reset](#no-cookies-reset)                        | This disables resetting the cookie jar after each VU iteration                                                                                                                                                                                                                                                     |
-| [No summary](#no-summary)                                    | disables the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                                            |
+| [No summary](#no-summary)                                    | disables the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                                            |
 | [No setup](#no-setup)                                        | A boolean specifying whether `setup()` function should be run                                                                                                                                                                                                                                                      |
 | [No teardown](#no-teardown)                                  | A boolean specifying whether `teardown()` function should be run                                                                                                                                                                                                                                                   |
 | [No thresholds](#no-thresholds)                              | Disables threshold execution                                                                                                                                                                                                                                                                                       |
@@ -54,16 +54,16 @@ Each option has its own detailed reference in a separate section.
 | [Paused](#paused)                                            | A boolean specifying whether the test should start in a paused state                                                                                                                                                                                                                                               |
 | [Quiet](#quiet)                                              | A boolean specifying whether to show the progress update in the console or not                                                                                                                                                                                                                                     |
 | [Results output](#results-output)                            | Specify the results output                                                                                                                                                                                                                                                                                         |
-| [RPS](#rps)                                                  | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) instead)                                                                                                                                |
+| [RPS](#rps)                                                  | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) instead)                                                                                                                                |
 | [Scenarios](#scenarios)                                      | Define advanced execution scenarios                                                                                                                                                                                                                                                                                |
 | [Setup timeout](#setup-timeout)                              | Specify how long the `setup()` function is allow to run before it's terminated                                                                                                                                                                                                                                     |
 | [Show logs](#show-logs)                                      | A boolean specifying whether the cloud logs are printed out to the terminal                                                                                                                                                                                                                                        |
-| [Stages](#stages)                                            | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus)                                                  |
+| [Stages](#stages)                                            | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus)                                                  |
 | [Supply environment variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                                                                                                                                                                                                                                                 |
 | [System tags](#system-tags)                                  | Specify which System Tags will be in the collected metrics                                                                                                                                                                                                                                                         |
-| [Summary export](#summary-export)                            | Output the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test) report to a JSON file (discouraged, use [handleSummary()](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) instead)                                                                                       |
-| [Summary trend stats](#summary-trend-stats)                  | Define stats for trend metrics in the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                   |
-| [Summary time unit](#summary-time-unit)                      | Time unit to be used for _all_ time values in the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                       |
+| [Summary export](#summary-export)                            | Output the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) report to a JSON file (discouraged, use [handleSummary()](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) instead)                                                                                       |
+| [Summary trend stats](#summary-trend-stats)                  | Define stats for trend metrics in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                   |
+| [Summary time unit](#summary-time-unit)                      | Time unit to be used for _all_ time values in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                       |
 | [Tags](#tags)                                                | Specify tags that should be set test-wide across all metrics                                                                                                                                                                                                                                                       |
 | [Teardown timeout](#teardown-timeout)                        | Specify how long the teardown() function is allowed to run before it's terminated                                                                                                                                                                                                                                  |
 | [Thresholds](#thresholds)                                    | Configure under what conditions a test is successful or not                                                                                                                                                                                                                                                        |
@@ -84,7 +84,7 @@ and `k6 cloud ...`, which you can use to override options specified in the code.
 
 Address of the API server. When executing scripts with `k6 run` an HTTP server with a REST API is spun up,
 which can be used to control some of the parameters of the test execution.
-By default, the server listens on `localhost:6565`. Read more on [k6 REST API](/docs/k6/<K6_VERSION>/misc/k6-rest-api).
+By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api).
 
 | Env | CLI               | Code / Config file | Default          |
 | --- | ----------------- | ------------------ | ---------------- |
@@ -193,7 +193,7 @@ $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 
 Support running scripts with different ECMAScript compatibility modes.
 
-Read about the different modes on the [JavaScript Compatibility Mode documentation](/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode).
+Read about the different modes on the [JavaScript Compatibility Mode documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode).
 
 | Env                     | CLI                    | Code / Config file | Default      |
 | ----------------------- | ---------------------- | ------------------ | ------------ |
@@ -253,7 +253,7 @@ $ k6 run --console-output "loadtest.log" script.js
 Specify if response bodies should be discarded by changing the default value of
 [responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
 to `true` and then only for the requests where the response body is needed for scripting
-to set [responseType](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
+to set [responseType](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
 required and the amount of GC - reducing the load on the testing machine, and probably producing
 more reliable test results.
 
@@ -333,7 +333,7 @@ export const options = {
 A string specifying the total duration a test run should be run for. During this time each
 VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
 
-Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus).
+Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus).
 
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
@@ -461,7 +461,7 @@ The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, kee
 Log all HTTP requests and responses. Excludes body by default, to include body use
 `--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
 
-Read more [here](/docs/k6/<K6_VERSION>/using-k6/http-debugging).
+Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging).
 
 | Env             | CLI                                     | Code / Config file | Default |
 | --------------- | --------------------------------------- | ------------------ | ------- |
@@ -479,7 +479,7 @@ export const options = {
 
 ## Include system env vars
 
-Pass the real system [environment variables](/docs/k6/<K6_VERSION>/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
+Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
 
 | Env | CLI                         | Code / Config file | Default                                                                                              |
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -518,11 +518,11 @@ export const options = {
 
 An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud` commands.
 
-Together with the [`vus` option](#vus), `iterations` is a shortcut for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations).
+Together with the [`vus` option](#vus), `iterations` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations).
 
 By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
 
-**Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
+**Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -780,8 +780,8 @@ export const options = {
 
 ## No summary
 
-Disables [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test) generation,
-including calls to [`handleSummary()`](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) and `--summary-export`.
+Disables [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) generation,
+including calls to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) and `--summary-export`.
 
 Available in the `k6 run` command.
 
@@ -849,7 +849,7 @@ $ k6 run --no-thresholds ~/script.js
 
 A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
 track how often people use it. If this option is set to true, no usage report will be made. To
-learn more, have a look at the [Usage reports](/docs/k6/<K6_VERSION>/misc/usage-collection) documentation. Available in
+learn more, have a look at the [Usage reports](https://grafana.com/docs/k6/<K6_VERSION>/misc/usage-collection) documentation. Available in
 `k6 run` commands.
 
 | Env                  | CLI                 | Config file       | Default |
@@ -924,7 +924,7 @@ $ k6 run script.js -d 20s --quiet
 
 Specify the results output.
 For information on all available outputs and how to configure them,
-refer to [Results output](/docs/k6/<K6_VERSION>/results-output/).
+refer to [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/).
 
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
@@ -954,7 +954,7 @@ For example, in the cloud or distributed execution, this option affects every k6
 That is, it is not sharded like VUs are.
 <br>
 <br>
-We strongly recommend the [arrival-rate executors](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) to simulate constant RPS instead of this option.
+We strongly recommend the [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) to simulate constant RPS instead of this option.
 
  {{% /admonition %}}
 
@@ -982,7 +982,7 @@ Define one or more execution patterns, with various VU and iteration scheduling
 settings, running different exported functions (besides `default`!), using different
 environment variables, tags, and more.
 
-See the [Scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) article for details and more examples.
+See the [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) article for details and more examples.
 
 Available in `k6 run` and `k6 cloud` commands.
 
@@ -1052,7 +1052,7 @@ $ k6 cloud --show-logs=false script.js
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
 ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands.
 
-It is a shortcut option for a single [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
+It is a shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -1109,8 +1109,8 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
-While this feature is not deprecated yet, [we now discourage it](/docs/k6/<K6_VERSION>/results-output/end-of-test#summary-export-to-a-json-file).
-For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, use the [`handleSummary()` function](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
+While this feature is not deprecated yet, [we now discourage it](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test#summary-export-to-a-json-file).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, use the [`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
 
 Available in the `k6 run` command.
 
@@ -1148,11 +1148,11 @@ C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 
 {{< /code >}}
 
-See an example file on the [Results Output](/docs/k6/<K6_VERSION>/get-started/results-output#summary-export) page.
+See an example file on the [Results Output](https://grafana.com/docs/k6/<K6_VERSION>/get-started/results-output#summary-export) page.
 
 ## Supply environment variables
 
-Add/override an [environment variable](/docs/k6/<K6_VERSION>/using-k6/environment-variables) with `VAR=value`in a k6 script. Available in `k6 run` and `k6 cloud` commands.
+Add/override an [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) with `VAR=value`in a k6 script. Available in `k6 run` and `k6 cloud` commands.
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
@@ -1181,7 +1181,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 ## System tags
 
-Specify which [system tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#system-tags) will be in the collected
+Specify which [system tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#system-tags) will be in the collected
 metrics. Some collectors like the `cloud` one may require that certain system tags be used.
 You can specify the tags as an array from the JS scripts or as a comma-separated list via the
 CLI. Available in `k6 run` and `k6 cloud` commands
@@ -1202,7 +1202,7 @@ export const options = {
 
 ## Summary time unit
 
-Define which time unit will be used for _all_ time values in the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
+Define which time unit will be used for _all_ time values in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
 
 | Env                    | CLI                   | Code / Config file | Default |
 | ---------------------- | --------------------- | ------------------ | ------- |
@@ -1220,9 +1220,9 @@ export const options = {
 
 ## Summary trend stats
 
-Define which stats for [`Trend` metrics](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+Define which stats for [`Trend` metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), use the [`handleSummary()` function](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), use the [`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
 
 | Env                      | CLI                     | Code / Config file  | Default                       |
 | ------------------------ | ----------------------- | ------------------- | ----------------------------- |
@@ -1291,7 +1291,7 @@ export const options = {
 
 A collection of threshold specifications to configure under what condition(s) a test is considered
 successful or not, when it has passed or failed, based on metric data. To learn more, have a look
-at the [Thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) documentation. Available in `k6 run` commands.
+at the [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) documentation. Available in `k6 run` commands.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1314,9 +1314,9 @@ export const options = {
 
 A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
 
-- Failing to make [HTTP requests](/docs/k6/<K6_VERSION>/javascript-api/k6-http), e.g. due to a network error.
-- Adding invalid values to [custom metrics](/docs/k6/<K6_VERSION>/using-k6/metrics#custom-metrics).
-- Setting invalid [per-VU metric tags](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#tags).
+- Failing to make [HTTP requests](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http), e.g. due to a network error.
+- Adding invalid values to [custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics#custom-metrics).
+- Setting invalid [per-VU metric tags](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#tags).
 
 Available in `k6 run` and `k6 cloud` commands.
 
@@ -1473,7 +1473,7 @@ $ k6 run --verbose script.js
 
 ## VUs
 
-An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#duration) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios).
+An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#duration) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
 Available in `k6 run` and `k6 cloud` commands.
 

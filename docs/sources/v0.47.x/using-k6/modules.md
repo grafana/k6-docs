@@ -21,7 +21,7 @@ In k6, you can import three different kinds of modules:
 k6 provides many built-in modules for core functionalities.
 For example, the `http` client make requests against the
 system under test.
-For the full list of built-in modules, refer to the [API documentation](/docs/k6/<K6_VERSION>/javascript-api).
+For the full list of built-in modules, refer to the [API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api).
 
 ```javascript
 import http from 'k6/http';
@@ -140,7 +140,7 @@ Usually, this is not a big problem as each application only allocates these reso
 
 By running code requiring additional features on top of ES5.1, we also need additional extensions to the JavaScript VM, further boosting the resource usage. This is the default mode of k6.
 
-When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode#performance-comparison).
+When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode#performance-comparison).
 
 ### Setting up the bundler
 

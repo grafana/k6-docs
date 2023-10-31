@@ -6,8 +6,8 @@ weight: 23
 
 # Get timings for an HTTP metric
 
-To access the timing information from an individual HTTP request, the [Response.timings](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`.
-One use case of this is to use the timings in a [Custom metric](/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) to make a trend for a specific endpoint.
+To access the timing information from an individual HTTP request, the [Response.timings](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`.
+One use case of this is to use the timings in a [Custom metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) to make a trend for a specific endpoint.
 
 The timings are as follows:
 

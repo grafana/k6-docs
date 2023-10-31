@@ -6,29 +6,29 @@ weight: 100
 
 # Create custom metrics
 
-Besides the [built-in metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/reference), you can create custom metrics.
-For example, you can compute a metric for your business logic, or use the [Response.timings](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
+Besides the [built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference), you can create custom metrics.
+For example, you can compute a metric for your business logic, or use the [Response.timings](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
 
 Each metric type has a [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) to create a custom metric.
 The constructor creates a metric object of the declared type. Each type has an `add` method to take metric measurements.
 
 If you need help constructing a custom metric, read the following sections of this document.
 They document the procedure and provide examples.
-If you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
-Each topic has examples to make a custom metric and create [thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) from it.
+If you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
+Each topic has examples to make a custom metric and create [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) from it.
 
 ## Create a custom metric
 
 {{% admonition type="note" %}}
 
-Custom metrics must be created in [init context](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+Custom metrics must be created in [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 This limits memory and ensures that k6 can validate that all thresholds are evaluating defined metrics.
 
  {{% /admonition %}}
 
 The generic procedure to create a custom metric is as follows:
 
-1. Import the [`k6/metrics`](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) module. Optionally, specify the type of metrics you want to create with a named import:
+1. Import the [`k6/metrics`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) module. Optionally, specify the type of metrics you want to create with a named import:
 
    ```javascript
    import { Counter } from 'k6/metrics';
@@ -67,9 +67,9 @@ export default function () {
 
 ## View custom metric results
 
-Custom metrics appear in [Results output](/docs/k6/<K6_VERSION>/results-output) in both the end-of-test summary and in the granular data points.
+Custom metrics appear in [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output) in both the end-of-test summary and in the granular data points.
 Each metric type has specific aggregation methods.
-You can also optionally [tag](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) any value for a custom metric.
+You can also optionally [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) any value for a custom metric.
 You can use these tags to filter test results.
 
 Here's how the output of the preceding script might look in the end-of-test summary.
@@ -100,9 +100,9 @@ For long-running scripts, custom metrics might appear only after the test runs a
 
 ## Read more
 
-The [`k6/metrics`](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) has examples for defining each type of custom metric, and for defining a threshold on the metric.
+The [`k6/metrics`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) has examples for defining each type of custom metric, and for defining a threshold on the metric.
 
-- [Counter](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter)
-- [Gauge](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge)
-- [Rate](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate)
-- [Trend](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend)
+- [Counter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter)
+- [Gauge](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge)
+- [Rate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate)
+- [Trend](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend)

@@ -6,7 +6,7 @@ weight: 02
 
 # Build a k6 binary using Go
 
-To use an extension that you found on the [Extension page](/docs/k6/<K6_VERSION>/extensions/explore) or the [xk6 GitHub topic](https://github.com/topics/xk6),
+To use an extension that you found on the [Extension page](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) or the [xk6 GitHub topic](https://github.com/topics/xk6),
 you need to build a binary using Go.
 
 {{% admonition type="note" %}}

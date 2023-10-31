@@ -8,7 +8,7 @@ weight: 10
 # batch( requests )
 
 Batch multiple HTTP requests together to issue them in parallel over multiple TCP connections.
-To set batch size, use the [batch per host](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#batch-per-host) option.
+To set batch size, use the [batch per host](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#batch-per-host) option.
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
@@ -40,9 +40,9 @@ Note the `Position` column for the correct order.
 | Array position | Name              | Type                                                                                    | Description                                                                                                                 |
 | -------------- | ----------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 1              | method            | string                                                                                  | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
-| 2              | url               | string /[HTTP URL](/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Mandatory. The URL to request.                                                                                              |
+| 2              | url               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Mandatory. The URL to request.                                                                                              |
 | 3              | body (optional)   | string / object / ArrayBuffer                                                           | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
-| 4              | params (optional) | object                                                                                  | [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) like auth, custom headers and tags.                |
+| 4              | params (optional) | object                                                                                  | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) like auth, custom headers and tags.                |
 
 #### String
 
@@ -52,7 +52,7 @@ If you pass an array of string values, k6 automatically parses them into a batch
 
 | Type   | Description                                                                                                                                                                                                                                                               |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object | The returned object contains [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests`, and is an ordinary object with string keys when named requests are used (see below). |
+| object | The returned object contains [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests`, and is an ordinary object with string keys when named requests are used (see below). |
 
 ### Example with arrays
 
@@ -80,7 +80,7 @@ export default function () {
 
 ### Example with request objects
 
-This example uses objects to define a batch of POST requests (along with custom HTTP headers in a [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object to the request):
+This example uses objects to define a batch of POST requests (along with custom HTTP headers in a [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object to the request):
 
 {{< code >}}
 

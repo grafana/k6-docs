@@ -54,7 +54,7 @@ Other times, the context of your test dictates the most sensible place to put yo
 
    For example, you could derive the option from a variable in your Docker container definition, CI UI, or vault&mdash;wherever you declare environment variables.
 
-   The [block hostnames](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
+   The [block hostnames](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
 
 ## Examples of setting options
 
@@ -143,11 +143,11 @@ export default function () {
 {{< /code >}}
 
 > **Note**: Though this method uses the `--env` flag, this is not the same as using an environment variable.
-> For an explanation, refer to the [environment variables document](/docs/k6/<K6_VERSION>/using-k6/environment-variables).
+> For an explanation, refer to the [environment variables document](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables).
 
 ### Set options with the --config flag
 
-k6 includes a [default configuration file](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#config) that you can edit, or you can create a new file and then use a CLI flag to point to that file.
+k6 includes a [default configuration file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#config) that you can edit, or you can create a new file and then use a CLI flag to point to that file.
 If you use it, the options take the _second lowest order of precedence_ (after defaults).
 If you set options anywhere else, they will override the `--config` flag options.
 
@@ -201,7 +201,7 @@ export const options = testConfig;
 
 ## Get an option value from the script
 
-The `k6/execution` API provides a [test.options](/docs/k6/<K6_VERSION>/javascript-api/k6-execution#test) object.
+The `k6/execution` API provides a [test.options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#test) object.
 With `test.options`, you can access the consolidated and derived options of your script as the test runs.
 
 A common use of this feature is to log the value of a tag, but there are many possibilities.

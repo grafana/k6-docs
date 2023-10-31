@@ -25,7 +25,7 @@ To run a simple local script:
 
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`.
 
-   Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](/docs/k6/<K6_VERSION>/using-k6/k6-options) and [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios) documentation for more information.
+   Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) documentation for more information.
 
    {{< code >}}
 
@@ -62,11 +62,11 @@ To run a simple local script:
 
    {{< /code >}}
 
-   The preceding code imports the `browser` [the browser module](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
+   The preceding code imports the `browser` [the browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
 
-   After getting the page, you can interact with it using the [Page](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page.
+   After getting the page, you can interact with it using the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page.
 
-   Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
+   Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
 
    {{% admonition type="note" %}}
 
@@ -106,7 +106,7 @@ To run a simple local script:
 
    {{< /code >}}
 
-   You can also use [the browser module options](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
+   You can also use [the browser module options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
 
    {{< code >}}
 
@@ -140,19 +140,19 @@ To run a simple local script:
 
    {{% admonition type="note" %}}
 
-   When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](/docs/k6/<K6_VERSION>/get-started/installation#docker) for more information.
+   When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation#docker) for more information.
 
    {{% /admonition %}}
 
 ## Interact with elements on your webpage
 
-You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) object, which you can later use to interact with the element.
+You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) object, which you can later use to interact with the element.
 
-To find out which selectors the browser module supports, check out [Selecting Elements](/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements).
+To find out which selectors the browser module supports, check out [Selecting Elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements).
 
 {{% admonition type="note" %}}
 
-You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator).
+You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator).
 
  {{% /admonition %}}
 
@@ -256,17 +256,17 @@ export default async function () {
 
 The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Since clicking the submit button causes page navigation, `page.waitForNavigation()` is needed because the page won't be ready until the navigation completes. This is required because there can be a race condition if these two actions don't happen simultaneously.
 
-Then, you can use [`check`](/docs/k6/<K6_VERSION>/javascript-api/k6/check) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
+Then, you can use [`check`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
 
 ## Run both browser-level and protocol-level tests in a single script
 
-The real power of the browser module shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events. This approach is what we refer to as [hybrid load testing](/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites#hybrid-load-testing) and provides advantages such as:
+The real power of the browser module shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events. This approach is what we refer to as [hybrid load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites#hybrid-load-testing) and provides advantages such as:
 
 - testing real user flows on the frontend while generating a higher load in the backend
 - measuring backend and frontend performance in the same test execution
 - increased collaboration between backend and frontend teams since the same tool can be used
 
-To run a browser-level and protocol-level test concurrently, you can use [scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios).
+To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
 {{% admonition type="note" %}}
 
@@ -330,6 +330,6 @@ export function news() {
 
 {{< /code >}}
 
-The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time.
+The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time.
 
 Since it's all in one script, this allows for greater collaboration amongst teams.

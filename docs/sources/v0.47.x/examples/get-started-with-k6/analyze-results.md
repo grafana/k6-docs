@@ -16,8 +16,8 @@ In this tutorial, learn how to:
 
 ## Context: k6 result outputs
 
-k6 provides many [result outputs](/docs/k6/<K6_VERSION>/results-output/).
-By default, the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test) provides the aggregated results of the test metrics.
+k6 provides many [result outputs](https://grafana.com/docs/k6/<K6_VERSION>/results-output/).
+By default, the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) provides the aggregated results of the test metrics.
 
 {{< code >}}
 
@@ -44,11 +44,11 @@ vus_max........................: 20     min=20     max=20
 
 {{< /code >}}
 
-For simplicity to learn about [k6 metric results](/docs/k6/<K6_VERSION>/using-k6/metrics/reference), this tutorial uses the [JSON output](/docs/k6/<K6_VERSION>/results-output/real-time/json) and [jq](https://jqlang.github.io/jq/) to filter results.
+For simplicity to learn about [k6 metric results](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference), this tutorial uses the [JSON output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json) and [jq](https://jqlang.github.io/jq/) to filter results.
 
 For other options to analyze test results such as storage and time-series visualizations in real-time, refer to:
 
-- [Results output](/docs/k6/<K6_VERSION>/results-output/)
+- [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/)
 
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
 
@@ -66,7 +66,7 @@ Then run this `jq` command to filter the latency results; `http_req_duration` me
 jq '. | select(.type == "Point" and .metric == "http_req_duration")' results.json
 ```
 
-k6 results have a number of [built-in tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#system-tags). For example, filter results to only results where the status is 200.
+k6 results have a number of [built-in tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#system-tags). For example, filter results to only results where the status is 200.
 
 ```bash
 jq '. | select(.type == "Point" and .data.tags.status == "200")' results.json
@@ -90,7 +90,7 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.valu
 
 ## Apply custom tags
 
-You can also apply [_Tags_](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to requests or code blocks. For example, this is how you can add a [`tags`](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to the [request params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
+You can also apply [_Tags_](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to requests or code blocks. For example, this is how you can add a [`tags`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to the [request params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
 
 ```javascript
 const params = {
@@ -148,7 +148,7 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration" and .data.tag
 
 ## Organize requests in groups
 
-You can also organize your test logic into [Groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups). Test logic inside a `group` tags all requests and metrics within its block.
+You can also organize your test logic into [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups). Test logic inside a `group` tags all requests and metrics within its block.
 Groups can help you organize the test as a series of logical transactions or blocks.
 
 ### Context: a new test to group test logic
@@ -166,7 +166,7 @@ To learn more about how to compare results and other k6 APIs, write a test for t
 >   - A POST request to `https://test.k6.io/flip_coin.php` with the query param `bet=heads`
 >   - Another POST to `https://test.k6.io/flip_coin.php` with the query param `bet=tails`
 
-Can you figure out how to [script the requests](/docs/k6/<K6_VERSION>/using-k6/http-requests)?
+Can you figure out how to [script the requests](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests)?
 If not, use the following script. Since this example simulates a human user rather than an API call, it has a sleep between each request. Run with `k6 run multiple-flows.js`.
 
 {{< code >}}
@@ -254,12 +254,12 @@ jq '. | select(.data.tags.group == "::Coinflip game")' results.json
 ## Add a custom metric
 
 As you have seen in the output, all k6 tests emit metrics.
-However, if the built-in metrics aren't enough, you can [create custom metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics).
+However, if the built-in metrics aren't enough, you can [create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics).
 A common use case is to collect metrics of a particular scope of your test.
 
 As an example, create a metric that collects latency results for each group:
 
-1. Import [`Trend`](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) from the k6 metrics module.
+1. Import [`Trend`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) from the k6 metrics module.
 1. Create two duration trend metric functions.
 1. In each group, add the `duration` time to the trend for requests to `contacts` and the `coin_flip` endpoints.
 
@@ -347,7 +347,7 @@ jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.valu
 In this tutorial, you looked at granular output and filtered by built-in and custom tags.
 Then you made a new script with groups.
 Finally, you added a new metric for each group.
-A next step would be to create a [Custom end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) or to [stream the results to a database](/docs/k6/<K6_VERSION>/results-output/real-time#service).
+A next step would be to create a [Custom end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) or to [stream the results to a database](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time#service).
 
 For ongoing operations, you can modularize your logic and configuration.
-That's the subject of the [next step of this tutorial](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/reuse-and-re-run-tests).
+That's the subject of the [next step of this tutorial](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/reuse-and-re-run-tests).

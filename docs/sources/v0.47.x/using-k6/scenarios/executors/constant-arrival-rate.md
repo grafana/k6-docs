@@ -13,7 +13,7 @@ It is an open-model executor, meaning iterations start independently of system r
 This executor continues to start iterations at the given rate as long as VUs are available.
 The time to execute an iteration can vary with test logic or the system-under-test response time.
 To compensate for this, the executor starts a varied number of VUs to meet the configured iteration rate.
-For explanations of how allocation works, read [Arrival-rate VU allocation](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
+For explanations of how allocation works, read [Arrival-rate VU allocation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
 {{% admonition type="note" %}}
 
@@ -25,7 +25,7 @@ At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option                               | Type    | Description                                                                    | Default                             |

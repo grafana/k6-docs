@@ -18,7 +18,7 @@ This guide provides general recommendations to help you plan and define a strate
 - What frequency and how to run tests?
 - How to analyze performance results?
 
-Please note that this guide assumes you are familiar with k6 and already have performance tests. If you are new to performance testing or k6, we recommend looking at our [get-started resources](/docs/k6/<K6_VERSION>/get-started/resources#learning).
+Please note that this guide assumes you are familiar with k6 and already have performance tests. If you are new to performance testing or k6, we recommend looking at our [get-started resources](https://grafana.com/docs/k6/<K6_VERSION>/get-started/resources#learning).
 
 Before we dive in, let's consider the "why" behind automation and how it unlocks the full benefits of your performance testing efforts.
 
@@ -69,7 +69,7 @@ Performance tests can generally be divided into two aspects:
 - Test scenario (test case): What is the test verifying?
 - Test workload (test load): How much traffic and which traffic pattern?
 
-Your test suite should incorporate a diverse range of tests that can verify critical areas of your system using distinct [load test types](/docs/k6/<K6_VERSION>/testing-guides/test-types/).
+Your test suite should incorporate a diverse range of tests that can verify critical areas of your system using distinct [load test types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/).
 
 Any existing test that you wish to run on a frequent basis is a candidate for automation. Fundamentally, automation is about running tests frequently and consistently, whether that's daily, weekly, or annually.
 
@@ -95,11 +95,11 @@ The next step is to identify the traffic the system under test (SUT) handles for
 
 Depending on the type of traffic, we can create different kinds of tests:
 
-- [Smoke](/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing): Test for script errors and verify SUT with minimal traffic.
-- [Average-Load](/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing): Test for regular/normal traffic.
-- [Stress](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing): Test for maximum expected traffic.
-- [Spike](/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing): Test for a surge of traffic.
-- [Soak](/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing): Test for a prolonged period of traffic.
+- [Smoke](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing): Test for script errors and verify SUT with minimal traffic.
+- [Average-Load](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing): Test for regular/normal traffic.
+- [Stress](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing): Test for maximum expected traffic.
+- [Spike](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing): Test for a surge of traffic.
+- [Soak](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing): Test for a prolonged period of traffic.
 
 In our example, we decided on the following workload for the two scenarios:
 
@@ -116,7 +116,7 @@ In our example, we have tests that use the same test scenario with distinct work
 - `load-get-api.js`:&nbsp;&nbsp;&nbsp;&nbsp; imports the common scenario and set 100 reqs/s during 3m.
 - `stress-get-api.js`: imports the common scenario and set 1500 reqs/s during 3m.
 
-_To learn more about configuring workloads in k6, check out [Scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios#scenario-executors)._
+_To learn more about configuring workloads in k6, check out [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#scenario-executors)._
 
 ## Decide the testing frequency for each environment
 
@@ -146,7 +146,7 @@ Run all the available smoke tests: end-to-end, integration, and unit test types.
 
 These environments are available to test upcoming releases, with each organization using them differently as part of their unique release process.
 
-As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can do that by using [Thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) in `options` as follows:
+As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can do that by using [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) in `options` as follows:
 
 ```javascript
 export const options = {
@@ -217,13 +217,13 @@ Also, consider scheduling nightly tests or when the system handles less traffic.
 
 Following the previous steps, you should now have an initial performance testing plan. Now, let’s see how we can analyze and interpret performance results.
 
-The first step is learning what options you have for outputting performance results. If you’re using k6, there are a few [options you can choose from](/docs/k6/<K6_VERSION>/results-output/). You can review those options and the [k6 metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) to decide on a long-term solution to analyze the results of your test automation plan.
+The first step is learning what options you have for outputting performance results. If you’re using k6, there are a few [options you can choose from](https://grafana.com/docs/k6/<K6_VERSION>/results-output/). You can review those options and the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to decide on a long-term solution to analyze the results of your test automation plan.
 
 Here are some questions to consider when creating your result analysis process.
 
 ### How to store your performance results
 
-In k6, you can get the [aggregated results](/docs/k6/<K6_VERSION>/results-output/end-of-test) at the end of a test, or [time series metrics in real-time](/docs/k6/<K6_VERSION>/results-output/real-time). Both options allow you to customize the output.
+In k6, you can get the [aggregated results](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) at the end of a test, or [time series metrics in real-time](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time). Both options allow you to customize the output.
 
 The process we recommend is:
 
@@ -237,7 +237,7 @@ The process we recommend is:
 
 Think about the goal of each particular test, and make sure you track the metrics that depend on your test goals.
 
-k6 provides [built-in metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/reference) that aggregate all the interactions against the SUT. You can also utilize [tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#user-defined-tags) and custom metrics to categorize and filter results for one interaction or particular types.
+k6 provides [built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference) that aggregate all the interactions against the SUT. You can also utilize [tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#user-defined-tags) and custom metrics to categorize and filter results for one interaction or particular types.
 
 Consider defining your own performance criteria and their visualization. For instance, set different colors for what is good, acceptable, slightly concerning, or wrong so you can quickly visualize if a particular set of performance results are ok.
 
@@ -255,7 +255,7 @@ Last but not least, set up proper instrumentation of the SUT and understand the 
 
 Performance testing results can highlight poor performance, such as slow responses. However, it does not show what happens internally on the SUT, such as a slow SQL query or CPU and memory saturation.
 
-To bridge the gap, work out a way to correlate testing results with how you instrument your infrastructure and application code. For instance, connecting or building custom dashboards with test results or using [trace data from your tests](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing).
+To bridge the gap, work out a way to correlate testing results with how you instrument your infrastructure and application code. For instance, connecting or building custom dashboards with test results or using [trace data from your tests](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing).
 
 Continuous testing helps detect issues and performance degradations, whether from test results or system data. Proper observability will help to find the root cause.
 
@@ -301,7 +301,7 @@ These tests require controlled test execution and real-time analysis of test res
 
 Similarly, you might want to stop a test when the system begins to produce a flood of errors. When a system becomes completely overloaded, continuing the test execution often doesn't provide more meaningful insights and merely consumes resources.
 
-To stop a k6 test, learn how to use the [`abortOnFail` threshold option](/docs/k6/<K6_VERSION>/using-k6/thresholds#abort) or integrate with the k6 CLI or Grafana Cloud k6.
+To stop a k6 test, learn how to use the [`abortOnFail` threshold option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#abort) or integrate with the k6 CLI or Grafana Cloud k6.
 
 ### Complement automation with a repeatable QA process
 
@@ -315,7 +315,7 @@ You should also plan the frequency of tests that are manually triggered and requ
 
 ### Quality gates in CI/CD may result in false assurance
 
-Quality gates in performance tests are often defined as [Pass/Fail criteria](/docs/k6/<K6_VERSION>/using-k6/thresholds) that verify the release meets its reliability goals.
+Quality gates in performance tests are often defined as [Pass/Fail criteria](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) that verify the release meets its reliability goals.
 
 However, setting up reliable quality gates is challenging when testing thousands or millions of interactions. The test script, the SLO for that particular environment, and the Pass/Fail criteria could easily be wrong.
 

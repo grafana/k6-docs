@@ -13,10 +13,10 @@ Maximizing the load a machine generates is a multi-faceted process, which includ
 - Changing operating system settings to increase the default network and user limits.
 - Monitoring the load-generator machine to ensure adequate resource usage.
 - Designing efficient tests, with attention to scripting, k6 options, and file uploads.
-- Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT).
+- Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT).
 
 A single k6 process efficiently uses all CPU cores on a load generator machine. Depending on the available resources, and with the guidelines described in this document, a single instance of k6 can run 30,000-40,000 simultaneous users (VUs).
-In some cases, this number of VUs can generate up to 300,000 HTTP [requests per second](/docs/k6/<K6_VERSION>/misc/glossary#requests-per-second) (RPS).
+In some cases, this number of VUs can generate up to 300,000 HTTP [requests per second](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#requests-per-second) (RPS).
 
 Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 is likely sufficient for your needs.
 Read on to learn about how to get the most load from a single machine.
@@ -38,7 +38,7 @@ These commands enable reusing network connections, increase the limit of network
 
 The `sysctl` commands apply immediately for the entire system, and will reset to their default values if you restart the network service or reboot the machine. The `ulimit` command applies only for the current shell session, and you'll need to run it again for it to be set in another shell instance.
 
-For detailed information about these settings, how to make them permanent, and instructions for macOS, check out our ["Fine tuning OS" article](/docs/k6/<K6_VERSION>/misc/fine-tuning-os).
+For detailed information about these settings, how to make them permanent, and instructions for macOS, check out our ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os).
 
 ## Hardware considerations
 
@@ -72,7 +72,7 @@ run the test on your development machine with 100VUs and multiply the consumed m
 Simple tests use ~1-5MB per VU. (1000VUs = 1-5GB).
 Tests that use file uploads, or load large JS modules, can consume tens of megabytes per VU.
 Note that each VU has a copy of all JS modules your test uses.
-To share memory between VUs, consider using [SharedArray](/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), or an external data store, such as [Redis](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis).
+To share memory between VUs, consider using [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), or an external data store, such as [Redis](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis).
 
 If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Which likely will invalidate any test results as the load generator had different performance in different parts of the test. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
 
@@ -108,8 +108,8 @@ As the test runs, these are good indicators to monitor:
 
 ## Error handling should be resilient
 
-When running [large stress tests](/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), your script shouldn't assume anything about the HTTP response.
-An oversight of some scripts is to test with only the [happy path](/docs/k6/<K6_VERSION>/misc/glossary#happy-path "The default behavior that happens when the system returns no errors") in mind.
+When running [large stress tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), your script shouldn't assume anything about the HTTP response.
+An oversight of some scripts is to test with only the [happy path](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#happy-path "The default behavior that happens when the system returns no errors") in mind.
 
 For example, in k6 scripts, we often see something like this _happy path_ check:
 
@@ -170,7 +170,7 @@ export const options = {
 };
 ```
 
-If you need the response body for some requests, override the option with [Params.responseType](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
+If you need the response body for some requests, override the option with [Params.responseType](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
 
 ### When streaming, use `--no-thresholds` and `--no-summary`
 
@@ -211,11 +211,11 @@ Custom metrics
 : Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) are recorded separately. Consider minimizing the usage of custom metrics.
 
 Thresholds with abortOnFail
-: If you have configured [abortOnFail thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
+: If you have configured [abortOnFail thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
 
 URL grouping
 : k6 v0.41.0 introduced a change to support time-series metrics. A side effect of this is that every unique URL creates a new time-series object, which may consume more RAM than expected.
-: To solve this, use the [URL grouping](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping) feature.
+: To solve this, use the [URL grouping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping) feature.
 
 </DescriptionList>
 
@@ -287,7 +287,7 @@ WARN[0057] Request Failed     error="Get http://test.k6.io/: dial tcp 52.18.24.2
 
 This error means that the load generator can't open TCP sockets because it reached the limit of open file descriptors.
 Make sure that your limit is set sufficiently high.
-Refer to the ["Fine tuning OS" article](/docs/k6/<K6_VERSION>/misc/fine-tuning-os#viewing-limits-configuration).
+Refer to the ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os#viewing-limits-configuration).
 
 ```bash
 WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.131:80: socket: too many open files"
@@ -317,7 +317,7 @@ Users often look for the distributed execution mode to run large-scale tests. Al
 - Simulate load from multiple locations simultaneously.
 - Scale the load of your test beyond what a single machine can handle.
 
-In k6, you can split the load of a test across multiple k6 instances using the [`execution-segment`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#execution-segment) option. For example:
+In k6, you can split the load of a test across multiple k6 instances using the [`execution-segment`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#execution-segment) option. For example:
 
 {{< code >}}
 
@@ -346,8 +346,8 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 However, at this moment, the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
-- k6 does not provide the functionality of a "primary" instance to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/docs/k6/<K6_VERSION>/misc/k6-rest-api) and [`--paused`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
-- Each k6 instance evaluates [Thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [`--no-thresholds`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-thresholds).
+- k6 does not provide the functionality of a "primary" instance to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) and [`--paused`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
+- Each k6 instance evaluates [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [`--no-thresholds`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
 With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/grafana/k6-operator) to distribute the load of a k6 test across a **Kubernetes cluster**. For further instructions, check out [the tutorial for running distributed k6 tests on Kubernetes](https://k6.io/blog/running-distributed-tests-on-k8s/).
@@ -362,8 +362,8 @@ If you aren't sure whether OSS or Cloud is a better fit for your project, we rec
 
 ## Read more
 
-- [Fine tuning OS](/docs/k6/<K6_VERSION>/misc/fine-tuning-os)
-- [JavaScript Compatibility Mode](/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)
+- [Fine tuning OS](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os)
+- [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)
 
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
 - [White paper: what to consider when building or buying a load testing solution](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)

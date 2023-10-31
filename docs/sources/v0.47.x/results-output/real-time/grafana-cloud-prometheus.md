@@ -15,7 +15,7 @@ For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud 
 
  {{% /admonition %}}
 
-With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
+With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
 With k6 metrics in Grafana, you can correlate k6 metrics with other metrics of your observability stack.
 
 While this topic uses Grafana Cloud as an example, this approach is compatible with any remote write capable Prometheus installation.
@@ -84,9 +84,9 @@ Additionally, you can also use the [Explore UI](https://grafana.com/docs/grafana
 ![Explore k6 metrics in Grafana Cloud](/media/docs/k6-oss/grafana_cloud_explore_k6_metrics_from_extension.png)
 
 All the k6 time series have a **k6\_** prefix.
-For more details, refer to the documentation on the [mapping of k6 metrics with Prometheus metrics](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#metrics-mapping).
+For more details, refer to the documentation on the [mapping of k6 metrics with Prometheus metrics](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#metrics-mapping).
 
-It's also important to understand the default [Trend metric conversion](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#trend-metric-conversions) process and the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#options) allows you to convert trend metrics to multiple Prometheus time series. For instance, `K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),max,min` transforms each k6 trend metric into four Prometheus metrics as follows:
+It's also important to understand the default [Trend metric conversion](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#trend-metric-conversions) process and the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write#options) allows you to convert trend metrics to multiple Prometheus time series. For instance, `K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),max,min` transforms each k6 trend metric into four Prometheus metrics as follows:
 
 - `k6_*_p95`
 - `k6_*_p99`

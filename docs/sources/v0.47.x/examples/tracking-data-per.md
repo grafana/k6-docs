@@ -7,7 +7,7 @@ weight: 20
 
 # Track transmitted data per URL
 
-By default, k6 collects automatically two [built-in metrics](/docs/k6/<K6_VERSION>/using-k6/metrics#built-in-metrics) related to the transmitted data during the test execution:
+By default, k6 collects automatically two [built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics#built-in-metrics) related to the transmitted data during the test execution:
 
 - `data_received`: the amount of received data.
 - `data_sent`: the amount of data sent.

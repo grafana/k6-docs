@@ -47,4 +47,4 @@ export default function () {
 
 {{< /code >}}
 
-To see the values that the `r.proto` field can have, refer to the documentation for [k6 HTTP](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response).
+To see the values that the `r.proto` field can have, refer to the documentation for [k6 HTTP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response).

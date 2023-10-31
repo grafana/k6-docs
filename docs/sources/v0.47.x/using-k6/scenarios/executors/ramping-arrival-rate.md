@@ -11,9 +11,9 @@ It is an open-model executor, meaning iterations start independently of system r
 [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)).
 
 This executor has _stages_ that configure target number of iterations and the time k6 takes to reach or stay at this target.
-Unlike the [ramping VUs executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus), which configures VUs,
+Unlike the [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus), which configures VUs,
 this executor dynamically changes the number of iterations to start, and starts these iterations as long as the test has enough allocated VUs.
-To learn how allocation works, read [Arrival-rate VU allocation](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
+To learn how allocation works, read [Arrival-rate VU allocation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
 {{% admonition type="note" %}}
 
@@ -25,7 +25,7 @@ At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option                               | Type    | Description                                                                                                                                                                                  | Default                             |
@@ -121,7 +121,7 @@ Based upon our test scenario inputs and results:
 
 ## Get the stage index
 
-To get the current running stage index, use the `getCurrentStageIndex` helper function from the [k6-jslib-utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library. It returns a zero-based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
+To get the current running stage index, use the `getCurrentStageIndex` helper function from the [k6-jslib-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library. It returns a zero-based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
 
 ```javascript
 import { getCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
@@ -141,4 +141,4 @@ export default function () {
 }
 ```
 
-Using this feature, it is possible to automatically tag using the current running stage. Check the [Tagging stages](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tagging-stages) section for more details.
+Using this feature, it is possible to automatically tag using the current running stage. Check the [Tagging stages](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tagging-stages) section for more details.

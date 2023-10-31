@@ -48,7 +48,7 @@ K6_INFLUXDB_ADDR="<INFLUXDB-HTTP-ADDRESS>" \
 ./k6 run script.js -o xk6-influxdb
 ```
 
-k6 runs the test script and sends the [k6 metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) in real-time to the InfluxDB instance. You can now select the bucket to [query](https://docs.influxdata.com/influxdb/v2.7/query-data/) and [visualize](https://docs.influxdata.com/influxdb/v2.7/visualize-data/) the stored k6 metrics, for example, using the [InfluxDB Data Explorer](https://docs.influxdata.com/influxdb/v2.7/query-data/execute-queries/data-explorer/).
+k6 runs the test script and sends the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) in real-time to the InfluxDB instance. You can now select the bucket to [query](https://docs.influxdata.com/influxdb/v2.7/query-data/) and [visualize](https://docs.influxdata.com/influxdb/v2.7/visualize-data/) the stored k6 metrics, for example, using the [InfluxDB Data Explorer](https://docs.influxdata.com/influxdb/v2.7/query-data/execute-queries/data-explorer/).
 
 <br/>
 
@@ -74,6 +74,6 @@ Here is the full list of options that can be configured and passed to the extens
 
 You can use Grafana to query and visualize data from an InfluxDB instance. The instructions are available on [InfluxDB](https://docs.influxdata.com/influxdb/v2.7/tools/grafana/) and [Grafana](https://grafana.com/docs/grafana/latest/datasources/influxdb/).
 
-You can also build a [custom Grafana dashboard](/docs/k6/<K6_VERSION>/results-output/grafana-dashboards) to visualize the testing results in your own way.
+You can also build a [custom Grafana dashboard](https://grafana.com/docs/k6/<K6_VERSION>/results-output/grafana-dashboards) to visualize the testing results in your own way.
 
 For testing purposes, the [influxdb extension](https://github.com/grafana/xk6-output-influxdb) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-influxdb#docker-compose) with two basic dashboards.

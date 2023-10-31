@@ -7,7 +7,7 @@ weight: 10
 
 # file( data, [filename], [contentType] )
 
-Create a file object that is used for building [Multipart requests (file uploads)](/docs/k6/<K6_VERSION>/examples/data-uploads#multipart-request-uploading-a-file).
+Create a file object that is used for building [Multipart requests (file uploads)](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-uploads#multipart-request-uploading-a-file).
 
 | Parameter   | Type                         | Description                                                                      |
 | ----------- | ---------------------------- | -------------------------------------------------------------------------------- |
@@ -19,7 +19,7 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 | Type                                                                  | Description        |
 | --------------------------------------------------------------------- | ------------------ |
-| [FileData](/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) | A FileData object. |
+| [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) | A FileData object. |
 
 ### Example
 

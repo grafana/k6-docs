@@ -6,9 +6,9 @@ weight: 33
 
 # describe( name, function )
 
-`describe` is a wrapper of [group](/docs/k6/<K6_VERSION>/javascript-api/k6/group) that adds the ability to:
+`describe` is a wrapper of [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group) that adds the ability to:
 
-- [Catch exceptions](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) to allow continuing the execution outside of the `describe` function.
+- [Catch exceptions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) to allow continuing the execution outside of the `describe` function.
 - Returns a boolean to indicate the success of all its `k6chaijs` assertions.
 
 {{< code >}}

@@ -14,7 +14,7 @@ This feature is not yet available but a threshold on `iteration_duration` or any
 It's based on the concept of creating thresholds for sub-metrics created by tags for the required scope and setting the criteria that always pass. It works with any enabled tags that already works with threshold, for example:
 
 - `iteration_duration{scenario:default}` generates a sub-metric collecting samples only for the default scenario's iteration. `scenario:default` is used because that's the internal k6 scenario name when we haven't specified `options. `scenarios` explicitly and are just using the execution shortcuts instead.
-- `iteration_duration{group:::setup}` or `iteration_duration{group:::teardown}` create sub-metrics collecting the duration only for `setup` and `teardown`. `k6` implicitly creates [groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) for `setup` and `teardown`, and `::` is the group separator.
+- `iteration_duration{group:::setup}` or `iteration_duration{group:::teardown}` create sub-metrics collecting the duration only for `setup` and `teardown`. `k6` implicitly creates [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) for `setup` and `teardown`, and `::` is the group separator.
 - `http_req_duration{scenario:default}` can be useful as well for isolating executed long-running requests.
 
 {{< code >}}

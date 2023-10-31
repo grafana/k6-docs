@@ -7,10 +7,10 @@ weight: 20
 
 # Element
 
-Represents a DOM element matched by a [Selection](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection),
+Represents a DOM element matched by a [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection),
 and provides an API to inspect the element content.
 
-Use [Selection.get(index)](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-get) to return an Element object.
+Use [Selection.get(index)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-get) to return an Element object.
 
 The Element object provides a similar API to the [DOM Element API](https://developer.mozilla.org/en-US/Web/API/Element) to retrieve element information.
 
@@ -22,21 +22,21 @@ The Element object provides a similar API to the [DOM Element API](https://devel
 | id                     | The id of the element.                                                                                                                                   |
 | innerHTML              | Is a DOMString representing the markup of the element's content.                                                                                         |
 | textContent            | The element content.                                                                                                                                     |
-| ownerDocument          | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| ownerDocument          | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
 | attributes             | An array of attributes.                                                                                                                                  |
-| firstChild             | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| lastChild              | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| firstChild             | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| lastChild              | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
 | childElementCount      | The number of children elements.                                                                                                                         |
-| firstElementChild      | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| lastElementChild       | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| previousSibling        | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| nextSibling            | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| previousElementSibling | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| nextElementSibling     | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| parentElement          | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| parentNode             | [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
-| childNodes             | Array of [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                              |
-| children               | Array of [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                              |
+| firstElementChild      | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| lastElementChild       | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| previousSibling        | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| nextSibling            | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| previousElementSibling | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| nextElementSibling     | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| parentElement          | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| parentNode             | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                                      |
+| childNodes             | Array of [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                              |
+| children               | Array of [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)                                                                              |
 | classList              | An array of class names.                                                                                                                                 |
 | className              | The class name string                                                                                                                                    |
 | lang                   | The value of the lang attribute.                                                                                                                         |
@@ -47,10 +47,10 @@ The Element object provides a similar API to the [DOM Element API](https://devel
 | hasChildNodes          | Boolean                                                                                                                                                  |
 | isSameNode             | Boolean                                                                                                                                                  |
 | isEqualNode            | Boolean                                                                                                                                                  |
-| getElementsByClassName | Return an array of [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element).                                                                   |
-| getElementsByTagName   | Return an array of [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element).                                                                   |
-| querySelector          | Returns the first [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element) which matches the specified selector string relative to the element |
-| querySelectorAll       | Returns all the [Element](/docs/k6/<K6_VERSION>/javascript-api/k6-html/element) which matches the specified selector string relative to the element   |
+| getElementsByClassName | Return an array of [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element).                                                                   |
+| getElementsByTagName   | Return an array of [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element).                                                                   |
+| querySelector          | Returns the first [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element) which matches the specified selector string relative to the element |
+| querySelectorAll       | Returns all the [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element) which matches the specified selector string relative to the element   |
 | contains               |                                                                                                                                                          |
 | matches                | Returns a Boolean indicating whether or not the element would be selected by the specified selector string                                               |
 | namespaceURI           | The namespace URI of the element.                                                                                                                        |

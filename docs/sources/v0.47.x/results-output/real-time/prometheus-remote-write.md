@@ -13,12 +13,12 @@ It has multiple compatible [implementations](https://prometheus.io/docs/concepts
 
 For instance, when using the `experimental-prometheus-rw` output, k6 can send test-result metrics to the remote-write endpoint and store them in Prometheus.
 
-The output, during the `k6 run` execution, gets all the generated time-series data points for the [k6 metrics](/docs/k6/<K6_VERSION>/using-k6/metrics).
+The output, during the `k6 run` execution, gets all the generated time-series data points for the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 It then generates the equivalent Prometheus time series and sends them to the Prometheus remote write endpoint.
 
 ## Metrics mapping
 
-All [k6 metric types](/docs/k6/<K6_VERSION>/using-k6/metrics) are converted into an equivalent [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/).
+All [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) are converted into an equivalent [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/).
 The output maps the metrics into time series with Name labels.
 As much as possible, k6 respects the [naming best practices](https://prometheus.io/docs/practices/naming) that the Prometheus project defines:
 
@@ -35,7 +35,7 @@ As much as possible, k6 respects the [naming best practices](https://prometheus.
 
 ## Trend metric conversions
 
-This output provides two distinct mechanisms to send [k6 Trend metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) to Prometheus:
+This output provides two distinct mechanisms to send [k6 Trend metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to Prometheus:
 
 1. [Counter and Gauge metrics](#1-counter-and-gauges) (default)
 1. [Prometheus Native histogram](#2-prometheus-native-histogram)
@@ -186,7 +186,7 @@ To visualize time series with Grafana, you can use the [Explore UI](https://graf
 - [k6 Prometheus (Native Histograms) dashboard by Grafana k6](https://grafana.com/grafana/dashboards/18030-k6-prometheus-native-histograms/)
 - [Other public dashboards available from the community](https://grafana.com/grafana/dashboards/?search=k6&dataSource=prometheus)
 
-If you are a Grafana Cloud user, please refer to the [Grafana Cloud Prometheus docs](/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus).
+If you are a Grafana Cloud user, please refer to the [Grafana Cloud Prometheus docs](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus).
 
 For a local environment, the [`xk6-output-prometheus-remote` repository](https://github.com/grafana/xk6-output-prometheus-remote) includes a docker-compose setup that provisions the `k6 Prometheus` and `k6 Prometheus (Native Histograms)` dashboards:
 

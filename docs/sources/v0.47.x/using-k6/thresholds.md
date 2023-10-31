@@ -17,9 +17,9 @@ For example, you can create thresholds for any combination of the following expe
 - 95% of requests have a response time below 200ms.
 - 99% of requests have a response time below 400ms.
 - A specific endpoint always responds within 300ms.
-- Any conditions for a [custom metric](/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics).
+- Any conditions for a [custom metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics).
 
-Thresholds are also essential for [load-testing automation](/docs/k6/<K6_VERSION>/testing-guides/automated-performance-testing):
+Thresholds are also essential for [load-testing automation](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/automated-performance-testing):
 
 1. Give your test a threshold.
 1. Automate your execution
@@ -132,7 +132,7 @@ Some examples of threshold expressions are as follows:
 
 ### Aggregation methods by type
 
-k6 aggregates metrics according to [their type](/docs/k6/<K6_VERSION>/using-k6/metrics).
+k6 aggregates metrics according to [their type](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 These aggregation methods form part of the threshold expressions.
 
 | Metric type | Aggregation methods                                                                                                                                                                                                |
@@ -208,14 +208,14 @@ export const options = {
 {{< /code >}}
 
 The rest will be **silently** ignored.
-If you want to set multiple thresholds for a metric, specify them with an [array for the same key](/docs/k6/<K6_VERSION>/using-k6/thresholds#multiple-thresholds-on-a-single-metric).
+If you want to set multiple thresholds for a metric, specify them with an [array for the same key](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#multiple-thresholds-on-a-single-metric).
 
 ## Threshold examples to copy and paste
 
-The quickest way to start with thresholds is to use the [built-in metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/reference).
+The quickest way to start with thresholds is to use the [built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference).
 Here are a few copy-paste examples that you can start using right away.
 
-For more specific threshold examples, refer to the [Counter](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
+For more specific threshold examples, refer to the [Counter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 ### A percentile of requests finishes in a specified duration
 
@@ -291,7 +291,7 @@ export default function () {
 
 ### Threshold on group duration
 
-You can set thresholds per [Group](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups).
+You can set thresholds per [Group](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups).
 This code has groups for individual requests and batch requests.
 For each group, there are different thresholds.
 
@@ -482,7 +482,7 @@ export default function () {
 
 {{< /code >}}
 
-In this example, the `threshold` is configured on the [checks metric](/docs/k6/<K6_VERSION>/using-k6/metrics/reference), establishing that the rate of successful checks is higher than 90%.
+In this example, the `threshold` is configured on the [checks metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference), establishing that the rate of successful checks is higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
 

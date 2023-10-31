@@ -8,7 +8,7 @@ weight: 01
 
 Before the k6 starts the test logic, code in the _init context_ prepares the script.
 A few functions are available only in init context.
-For details about the runtime, refer to the [Test lifecycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+For details about the runtime, refer to the [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 | Function                                                      | Description                                          |
 | ------------------------------------------------------------- | ---------------------------------------------------- |

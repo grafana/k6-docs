@@ -6,7 +6,7 @@ weight: 40
 
 # Constants
 
-Define constants to distinguish between [gRPC Response](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) statuses.
+Define constants to distinguish between [gRPC Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) statuses.
 
 | Constant                   | Description                                                                                                                                                                                                                  |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

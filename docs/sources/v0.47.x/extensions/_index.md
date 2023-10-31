@@ -77,4 +77,4 @@ The extensions ecosystem provides endless possibilities to expand the functional
   Perhaps your company uses OpenTelemetry to trace service requests through layers of microservices. Using [xk6-distributed-tracing](https://github.com/grafana/xk6-distributed-tracing), you can update the http client to link your test requests as the origin for your traces—no need to add JavaScript code to supply the required trace headers.
 
 
-Next, [Explore the available extensions](/docs/k6/<K6_VERSION>/extensions/explore) to see how you can expand your use of k6 right now.
+Next, [Explore the available extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) to see how you can expand your use of k6 right now.

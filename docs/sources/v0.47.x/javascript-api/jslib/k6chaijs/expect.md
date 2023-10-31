@@ -6,7 +6,7 @@ weight: 34
 
 # expect()
 
-`expect` is a wrapper of [check](/docs/k6/<K6_VERSION>/javascript-api/k6/check) to provide BDD style of assertions in k6. It implements the [Chai Expect API](https://www.chaijs.com/api/bdd/):
+`expect` is a wrapper of [check](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) to provide BDD style of assertions in k6. It implements the [Chai Expect API](https://www.chaijs.com/api/bdd/):
 
 <Glossary>
 

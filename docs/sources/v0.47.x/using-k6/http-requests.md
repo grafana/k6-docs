@@ -52,32 +52,32 @@ export default function () {
 
 ## Available methods
 
-The [http module](/docs/k6/<K6_VERSION>/javascript-api/k6-http) handles all kinds of HTTP requests and methods.
+The [http module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) handles all kinds of HTTP requests and methods.
 
 | Name                                                                  | Value                                                                     |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [batch()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch)     | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
-| [del()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/del)         | Issue an HTTP DELETE request.                                             |
-| [get()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/get)         | Issue an HTTP GET request.                                                |
-| [head()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/head)       | Issue an HTTP HEAD request.                                               |
-| [options()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/options) | Issue an HTTP OPTIONS request.                                            |
-| [patch()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/patch)     | Issue an HTTP PATCH request.                                              |
-| [post()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/post)       | Issue an HTTP POST request.                                               |
-| [put()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/put)         | Issue an HTTP PUT request.                                                |
-| [request()](/docs/k6/<K6_VERSION>/javascript-api/k6-http/request) | Issue any type of HTTP request.                                           |
+| [batch()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch)     | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
+| [del()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/del)         | Issue an HTTP DELETE request.                                             |
+| [get()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/get)         | Issue an HTTP GET request.                                                |
+| [head()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head)       | Issue an HTTP HEAD request.                                               |
+| [options()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/options) | Issue an HTTP OPTIONS request.                                            |
+| [patch()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/patch)     | Issue an HTTP PATCH request.                                              |
+| [post()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post)       | Issue an HTTP POST request.                                               |
+| [put()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/put)         | Issue an HTTP PUT request.                                                |
+| [request()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/request) | Issue any type of HTTP request.                                           |
 
 ## HTTP Request Tags
 
-k6 automatically applies [tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#section-tags) to your HTTP requests.
+k6 automatically applies [tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#section-tags) to your HTTP requests.
 You can use these tags to filter your results and organize your analysis.
 
 | Name              | Description                                                                                                                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| expected_response | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback). |
-| group             | When the request runs inside a [group](/docs/k6/<K6_VERSION>/javascript-api/k6/group), the tag value is the group name. Default is empty.                                                 |
+| expected_response | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback). |
+| group             | When the request runs inside a [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group), the tag value is the group name. Default is empty.                                                 |
 | name              | Defaults to URL requested                                                                                                                                                                    |
 | method            | Request method (`GET`, `POST`, `PUT` etc.)                                                                                                                                                   |
-| scenario          | When the request runs inside a [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios), the tag value is the scenario name. Default is `default`.                                            |
+| scenario          | When the request runs inside a [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios), the tag value is the scenario name. Default is `default`.                                            |
 | status            | response status                                                                                                                                                                              |
 | url               | defaults to URL requested                                                                                                                                                                    |
 

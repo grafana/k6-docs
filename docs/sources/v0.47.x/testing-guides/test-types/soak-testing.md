@@ -84,7 +84,7 @@ export default () => {
 
 {{< /code >}}
 
-For more complex behavior, refer to [Examples](/docs/k6/<K6_VERSION>/examples).
+For more complex behavior, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 
 Notice that, as in an average-load test, peak load plateaus at 100. VUs.
 The difference is in duration.

@@ -7,7 +7,7 @@ weight: 73
 
 # Trend
 
-_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [custom metrics](/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
+_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |
@@ -20,7 +20,7 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 
 ## Trend usage in Thresholds
 
-When `Trend` is used in a [threshold expression](/docs/k6/<K6_VERSION>/using-k6/thresholds), there are a range of variables that can be used.
+When `Trend` is used in a [threshold expression](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds), there are a range of variables that can be used.
 
 - `avg` for average
 - `min` for minimum

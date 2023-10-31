@@ -18,11 +18,11 @@ With it, you can perform several operations such as listing, creating and downlo
 
 | Function                                                                                                                                                                       | Description                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| [listSecrets()](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 listSecrets())                                                      | List secrets owned by the authenticated user |
-| [getSecret(secretID)](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 getSecret(secretID))                                                  | Download a secret                            |
+| [listSecrets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 listSecrets())                                                      | List secrets owned by the authenticated user |
+| [getSecret(secretID)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 getSecret(secretID))                                                  | Download a secret                            |
 | [createSecret(name, secretString, description, [versionID], [tags])](/javascript-api/jslib/aws/secretsmanagerclient/00 createSecret(name, secretString, description, [versionID], [tags])/)                        | Create a new secret                          |
 | [putSecretValue(secretID, secretString, [versionID])](/javascript-api/jslib/aws/secretsmanagerclient/00 putSecretValue(secretID, secretString, [versionID])/)                                     | Update a secret                              |
-| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 deleteSecret) | Delete a secret                              |
+| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 deleteSecret) | Delete a secret                              |
 
 ### Throws
 

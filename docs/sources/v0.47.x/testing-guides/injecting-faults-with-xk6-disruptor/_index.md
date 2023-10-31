@@ -11,14 +11,14 @@ weight: 06
 Key features include:
 
 - Everything as code. Facilitate test reuse and collaboration between teams without learning a new DSL.
-- Fast to adopt with no day-two surprises. [No need to deploy and maintain](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/how--it-works) a fleet of agents or operators.
+- Fast to adopt with no day-two surprises. [No need to deploy and maintain](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/how--it-works) a fleet of agents or operators.
 - Easy to extend and integrate with other types of k6 tests. No need to try to glue multiple tools together to get the job done.
 
 ## Capabilities
 
 Currently, the disruptor is intended to test applications running in Kubernetes. Other platforms are not supported at this time.
 
-It provides a Javascript API to inject different [faults](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/) or [Services](/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/).
+It provides a Javascript API to inject different [faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/) or [Services](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/).
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
@@ -44,9 +44,9 @@ Common use cases are:
 
 Lear more about [Fault injection](https://k6.io/blog/democratize-chaos-testing/) and [Building Resilience early in the development cycle](https://k6.io/blog/building-resilience-early-in-the-development-cycle/).
 
-Check the [first steps](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps) to get started with the disruptor.
+Check the [first steps](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps) to get started with the disruptor.
 
-Follow the [examples of injecting faults in different scenarios](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/examples).
+Follow the [examples of injecting faults in different scenarios](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/examples).
 
 Visit the [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) and try the disruptor in a demo application without having to do any setup.
 

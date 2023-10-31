@@ -7,7 +7,7 @@ weight: 200
 
 # Real time
 
-Besides the [end-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test), you can also view metrics as granular data points.
+Besides the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test), you can also view metrics as granular data points.
 k6 can stream the metrics in real time and either:
 
 - Write output to a file
@@ -19,8 +19,8 @@ Currently, k6 supports writing to the following file formats:
 
 <Glossary>
 
-- [CSV](/docs/k6/<K6_VERSION>/results-output/real-time/csv)
-- [JSON](/docs/k6/<K6_VERSION>/results-output/real-time/json)
+- [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)
+- [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)
 
 </Glossary>
 
@@ -30,20 +30,20 @@ You can also stream real-time metrics to the following services:
 
 <Glossary>
 
-- [Amazon CloudWatch](/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
-- [Apache Kafka](/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
-- [Cloud](/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
-- [Datadog](/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
-- [Dynatrace](/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
-- [Elasticsearch](/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
-- [Grafana Cloud Prometheus](/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
-- [InfluxDB](/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
-- [Netdata](/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
-- [New Relic](/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
-- [Prometheus remote write](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
-- [TimescaleDB](/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
-- [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
-- [Other alternative with a custom output extension](/docs/k6/<K6_VERSION>/extensions/create/output-extensions)
+- [Amazon CloudWatch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
+- [Apache Kafka](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
+- [Cloud](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
+- [Datadog](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
+- [Dynatrace](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
+- [Elasticsearch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
+- [Grafana Cloud Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
+- [InfluxDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
+- [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
+- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
+- [Prometheus remote write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
+- [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
+- [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
+- [Other alternative with a custom output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions)
 
 </Glossary>
 

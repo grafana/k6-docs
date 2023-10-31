@@ -16,7 +16,7 @@ Follow along to learn about:
 
 The k6 browser module emits metrics based on the [Core Web Vitals](https://web.dev/vitals/#core-web-vitals).
 This section provides some conceptual background about the core vitals.
-To review the complete list of browser metrics, refer to the section in the [Metrics reference](/docs/k6/<K6_VERSION>/using-k6/metrics/reference#browser).
+To review the complete list of browser metrics, refer to the section in the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference#browser).
 
 Google introduced these metrics to provided unified signals to assess user experience on the web.
 The vitals are composed of three important metrics to help user experience when using your web application.
@@ -60,7 +60,7 @@ You can also visualize these results in different ways depending on your team's 
 
 ## Set thresholds for your browser metrics
 
-The browser module can use all key k6 functionalities, such as [Thresholds](/docs/k6/<K6_VERSION>/using-k6/thresholds).
+The browser module can use all key k6 functionalities, such as [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds).
 
 To set thresholds for your browser metrics:
 

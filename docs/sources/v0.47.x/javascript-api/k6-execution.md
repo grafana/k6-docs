@@ -55,12 +55,12 @@ The instance object provides information associated with the load generator inst
 
 ### scenario
 
-Meta information and execution details about the current running [scenario](/docs/k6/<K6_VERSION>/using-k6/scenarios).
+Meta information and execution details about the current running [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
 | Property            | Type    | Description                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | name                | string  | The assigned name of the running scenario.                                                                                                                                                                                                                                                                                                                                           |
-| executor            | string  | The name of the running [Executor](/docs/k6/<K6_VERSION>/using-k6/scenarios#executors) type.                                                                                                                                                                                                                                                                                      |
+| executor            | string  | The name of the running [Executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#executors) type.                                                                                                                                                                                                                                                                                      |
 | startTime           | integer | The Unix timestamp in milliseconds when the scenario started.                                                                                                                                                                                                                                                                                                                        |
 | progress            | float   | Percentage in a 0 to 1 interval of the scenario progress.                                                                                                                                                                                                                                                                                                                            |
 | iterationInInstance | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the current instance.                                                                                                                                                                                                                                                                   |
@@ -73,7 +73,7 @@ Control the test execution.
 | Property        | Type     | Description                                                                                                                                                                                                                                                                                                                              |
 | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | abort([String]) | function | It aborts the test run with the exit code `108`, and an optional string parameter can provide an error message. Aborting the test will not prevent the `teardown()` execution.                                                                                                                                                           |
-| options         | Object   | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
+| options         | Object   | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
 
 ### vu
 
@@ -85,14 +85,14 @@ Meta information and execution details about the current vu.
 | iterationInScenario | integer | The identifier of the iteration in the current scenario for this VU. This is only unique for current VU and scenario it is currently executing.                                                                                                                                                                             |
 | idInInstance        | integer | The identifier of the VU across the instance. Not unique across multiple instances.                                                                                                                                                                                                                                         |
 | idInTest            | integer | The globally unique (across the whole test run) identifier of the VU.                                                                                                                                                                                                                                                       |
-| metrics.tags        | object  | The map that gives control over [VU's Tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
+| metrics.tags        | object  | The map that gives control over [VU's Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
 | metrics.metadata    | object  | The map that gives control over VU's Metadata. The Metadata will be included in every metric emitted by the VU and the Metadata's state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#metadata) below.                                          |
 
 {{< collapse title="Setting vu.metrics.tags" >}}
 
-Setting a Tag with the same key as a [system tag](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#system-tags) is allowed, but it requires attention to avoid unexpected results. Overwriting system tags will not throw an error, but in most cases will not actually change the value of the emitted metrics as expected. For example, trying to set the `url` tag value will not result in a changed tag value when `http.get()` is called, since the tag value is determined by the HTTP request itself. However, it will add the tag `url` to the metric samples emitted by a `check()` or `metric.add()`, which is probably not the desired behavior. On the other hand, setting the `name` tag will work as expected, since that was already supported for `http.*` methods, for the purposes of the [URL Grouping](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping) feature.
+Setting a Tag with the same key as a [system tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#system-tags) is allowed, but it requires attention to avoid unexpected results. Overwriting system tags will not throw an error, but in most cases will not actually change the value of the emitted metrics as expected. For example, trying to set the `url` tag value will not result in a changed tag value when `http.get()` is called, since the tag value is determined by the HTTP request itself. However, it will add the tag `url` to the metric samples emitted by a `check()` or `metric.add()`, which is probably not the desired behavior. On the other hand, setting the `name` tag will work as expected, since that was already supported for `http.*` methods, for the purposes of the [URL Grouping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping) feature.
 
-Not all the types are accepted as a tag value: k6 supports strings, numbers and boolean types. Under the hood, the `tags` object handles a Tag as a `String` key-value pair, so all the types will be implicitly converted into a string. If one of the denied types is used (e.g. Object or Array) and the [`throw` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#throw) is set, an exception will be thrown. Otherwise, only a warning is printed and the tag value will be discarded.
+Not all the types are accepted as a tag value: k6 supports strings, numbers and boolean types. Under the hood, the `tags` object handles a Tag as a `String` key-value pair, so all the types will be implicitly converted into a string. If one of the denied types is used (e.g. Object or Array) and the [`throw` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#throw) is set, an exception will be thrown. Otherwise, only a warning is printed and the tag value will be discarded.
 
 {{< /collapse >}}
 
@@ -100,7 +100,7 @@ Not all the types are accepted as a tag value: k6 supports strings, numbers and 
 
 ### Getting unique data once
 
-This is a common use case for data parameterization, you can read the [examples](/docs/k6/<K6_VERSION>/examples/data-parameterization#retrieving-unique-data) using `scenario.iterationInTest` and `vu.idInTest`.
+This is a common use case for data parameterization, you can read the [examples](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-parameterization#retrieving-unique-data) using `scenario.iterationInTest` and `vu.idInTest`.
 
 ### Timing operations
 
@@ -129,7 +129,7 @@ export default function () {
 The `name` property can be used for executing the logic based on which script is currently running.
 
 > **Tip**:
-> If you need to run [multiple scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios/advanced-examples#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
+> If you need to run [multiple scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/advanced-examples#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
 
 {{< code >}}
 
@@ -216,7 +216,7 @@ export default function () {
 
 ### Tags
 
-The `vu.metrics.tags` property can be used for getting or setting [VU's tags](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
+The `vu.metrics.tags` property can be used for getting or setting [VU's tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
 
 {{< code >}}
 

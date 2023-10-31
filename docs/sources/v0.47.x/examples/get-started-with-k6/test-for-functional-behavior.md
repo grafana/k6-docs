@@ -14,11 +14,11 @@ In this tutorial, learn how to write a test that does the following:
 ## Script the Request
 
 The first thing to do is to add logic for the endpoint.
-To do that, you need to make an [HTTP request](/docs/k6/<K6_VERSION>/using-k6/http-requests):
+To do that, you need to make an [HTTP request](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests):
 
 1. Import the HTTP module.
 2. Create a payload to authenticate the user.
-3. Use the [`http.post`](/docs/k6/<K6_VERSION>/javascript-api/k6-http/post) method to send your request with the payload to an endpoint.
+3. Use the [`http.post`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post) method to send your request with the payload to an endpoint.
 
 To test, copy this file and save it as `api-test.js`.
 
@@ -55,7 +55,7 @@ Run the script using the `k6 run` command:
 k6 run api-test.js
 ```
 
-After the test finishes, k6 reports the [default result summary](/docs/k6/<K6_VERSION>/results-output/end-of-test#the-default-summary).
+After the test finishes, k6 reports the [default result summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test#the-default-summary).
 
 ```bash
           /\      |‾‾| /‾‾/   /‾‾/
@@ -89,7 +89,7 @@ export default function () {
 
 ## Add response checks
 
-Once you're sure the request is well-formed, add a [check](/docs/k6/<K6_VERSION>/using-k6/checks) that validates whether the system responds with the expected status code.
+Once you're sure the request is well-formed, add a [check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) that validates whether the system responds with the expected status code.
 
 1. Update your script so it has the following check function.
 
@@ -143,7 +143,7 @@ k6 run api-test.js
 Under larger loads, this check will fail in some iterations.
 **Failed checks do not stop tests.**
 
-Rather, k6 tracks the success rate and presents it in your [end of test](/docs/k6/<K6_VERSION>/results-output/end-of-test) summary.
+Rather, k6 tracks the success rate and presents it in your [end of test](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) summary.
 
  {{% /admonition %}}
 
@@ -152,4 +152,4 @@ Rather, k6 tracks the success rate and presents it in your [end of test](/docs/k
 In this tutorial, you've used k6 to make a POST request and check that it responds with a `200` status.
 
 However, these tests make only one request, which doesn't say much about how the system will respond under load.
-For that, you need to [test under load](/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-performance).
+For that, you need to [test under load](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-performance).

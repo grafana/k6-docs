@@ -7,7 +7,7 @@ weight: 30
 # WebSocket.onpong
 
 A handler for a WebSocket connection `pong` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 ### Example
 

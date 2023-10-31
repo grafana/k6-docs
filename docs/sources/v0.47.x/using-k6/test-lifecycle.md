@@ -253,7 +253,7 @@ k6 has a few additional ways to use lifecycle functions:
 
 - **`handleSummary()`**. If you want to make a custom summary, k6 calls one more lifecycle function at the very end of the test.
 
-  For details, refer to [Custom summary](/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
+  For details, refer to [Custom summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
 
 - **Scenario functions**. Instead of the `default` function, you can also run VU code in scenario functions.
 

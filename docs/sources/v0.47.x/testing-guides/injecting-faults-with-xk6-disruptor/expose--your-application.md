@@ -23,7 +23,7 @@ Forwarding from 127.0.0.1:8080 -> 80
 
 ### Limitations using port forwarding
 
-To be able to inject faults, `xk6-disruptor` must [install an agent on each target](/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/how--it-works) that intercepts the requests and applies the desired disruptions. This process requires any existing connection to the targets to be redirected to the agent.
+To be able to inject faults, `xk6-disruptor` must [install an agent on each target](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/how--it-works) that intercepts the requests and applies the desired disruptions. This process requires any existing connection to the targets to be redirected to the agent.
 
 Due to an existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue happens only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there shouldn't be any issue.
 

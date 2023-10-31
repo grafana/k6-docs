@@ -7,7 +7,7 @@ weight: 11
 
 # expectedStatuses( statuses )
 
-Returns a callback to be used with [setResponseCallback](/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback) to mark responses as expected based only on their status codes.
+Returns a callback to be used with [setResponseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback) to mark responses as expected based only on their status codes.
 
 | Parameter | Type            | Description                                                                                                    |
 | --------- | --------------- | -------------------------------------------------------------------------------------------------------------- |

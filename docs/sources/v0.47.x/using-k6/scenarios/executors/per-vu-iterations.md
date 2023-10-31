@@ -11,7 +11,7 @@ The total number of completed iterations equals `vus * iterations`.
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option      | Type    | Description                                                                        | Default |
@@ -73,5 +73,5 @@ Based upon our test scenario inputs and results:
 - Maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`;
 - The maximum throughput is reached, but not maintained;
 - Because the distribution of iterations is even among VUs, a _fast_ VU may finish early and be idle for the remainder of the test, thereby lowering _efficiency_;
-- Total duration of 9 seconds is slightly longer than [shared iterations](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) due to lower efficiency;
+- Total duration of 9 seconds is slightly longer than [shared iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) due to lower efficiency;
 - Overall test duration lasts as long as the _slowest_ VU takes to complete 20 requests.

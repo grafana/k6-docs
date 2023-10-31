@@ -19,7 +19,7 @@ Set up handler functions for various events on the WebSocket connection. You can
 | message    | Emitted when a message is received from the server.                                                                                                                                                                                                      |
 | ping       | Emitted when a ping is received from the server. The client will automatically send back a `pong`.                                                                                                                                                       |
 | pong       | Emitted when a pong is received from the server.                                                                                                                                                                                                         |
-| close      | Emitted when the connection is closed by the client [WebSocket.close()](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-close) or when the server sends the `close` event with code status 1000 (normal closure). |
+| close      | Emitted when the connection is closed by the client [WebSocket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-close) or when the server sends the `close` event with code status 1000 (normal closure). |
 | error      | Emitted when an error occurs.                                                                                                                                                                                                                            |
 
 ### Example

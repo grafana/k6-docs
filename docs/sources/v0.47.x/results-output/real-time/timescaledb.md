@@ -38,13 +38,13 @@ To learn more about how to build custom k6 versions, check out [xk6](https://git
 
 Check that the TimescaleDB instance is running. Copy the Postgres connection string of the database, which will store the k6 metrics.
 
-Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#results-output) as follows:
+Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#results-output) as follows:
 
 ```bash
 k6 run script.js -o timescaledb=postgresql://<postgresql_user_name>:<password>@<ip>:<port>/<database>
 ```
 
-k6 runs the test script and sends the metrics in real-time to the TimescaleDB instance. You can now connect to TimescaleDB and query the [k6 metrics](/docs/k6/<K6_VERSION>/using-k6/metrics).
+k6 runs the test script and sends the metrics in real-time to the TimescaleDB instance. You can now connect to TimescaleDB and query the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 
 ```bash
 k6=# SELECT metric,AVG (value) FROM samples GROUP BY metric;

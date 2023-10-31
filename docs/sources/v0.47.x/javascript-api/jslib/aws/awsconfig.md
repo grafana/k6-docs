@@ -8,7 +8,7 @@ weight: 00
 
 # AWSConfig
 
-AWSConfig is used to configure an AWS service client instance, such as [S3Client](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client) or [SecretsManagerClient](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient). It effectively allows the user to select a [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) they wish to interact with, and the AWS credentials they wish to use to authenticate.
+AWSConfig is used to configure an AWS service client instance, such as [S3Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client) or [SecretsManagerClient](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient). It effectively allows the user to select a [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) they wish to interact with, and the AWS credentials they wish to use to authenticate.
 
 AWSConfig is included in the `aws.js` bundle, which includes all the content of the library. It is also included in the various services clients dedicated bundles such as `s3.js` and `secrets-manager.js`.
 

@@ -84,7 +84,7 @@ export default () => {
 
 {{< /code >}}
 
-For more complex behavior, refer to [Examples](/docs/k6/<K6_VERSION>/examples).
+For more complex behavior, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 
 The VU or throughput chart of a Stress test looks similar to this:
 
@@ -105,4 +105,4 @@ Like the average-load test, an initial outcome for the Stress test shows up duri
 During the full load period, verification is vital if the system's performance and resource consumption stays stable with a higher load.
 
 Now that you know that your system can handle outstanding load events, the teams generally check if the system performs well over extended periods.
-That is, they run a [Soak test](/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing).
+That is, they run a [Soak test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/soak-testing).

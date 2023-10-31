@@ -26,7 +26,7 @@ In some cases, though, you might want more control over cookies.
 k6 provides multiple options to do this.
 You can:
 
-- [Directly manipulate HTTP headers](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params),
+- [Directly manipulate HTTP headers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params),
 - Use the more ergonomic cookie API.
 
 The following section shows how to use the Cookie API.

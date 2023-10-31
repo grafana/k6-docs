@@ -18,7 +18,7 @@ To help you visualize, sort, and filter your test results, k6 adds the following
 Besides these granular tags, you can also use options to set test-wide tags.
 You can use these tags to compare results from multiple tests.
 
-In addition to filtering results, you can also [use tags to limit the operations that your thresholds analyze](/docs/k6/<K6_VERSION>/using-k6/thresholds#thresholds-on-tags).
+In addition to filtering results, you can also [use tags to limit the operations that your thresholds analyze](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#thresholds-on-tags).
 
 ## Tags
 
@@ -40,17 +40,17 @@ Currently, k6 automatically creates the following tags by default:
 | `status`            | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                               |
 | `method`            | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                              |
 | `url`               | the HTTP request URL                                                                                                                                                         |
-| `name`              | the HTTP [request name](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping)                                                                                        |
+| `name`              | the HTTP [request name](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping)                                                                                        |
 | `group`             | the full [group](#groups) path, see the preceding explanation for details about its value                                                                                    |
-| `check`             | the [Check](/docs/k6/<K6_VERSION>/using-k6/checks) name                                                                                                                   |
+| `check`             | the [Check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) name                                                                                                                   |
 | `error`             | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                           |
-| `error_code`        | A number specifying an error types; a list of current error codes can be found at the [Error Codes](/docs/k6/<K6_VERSION>/javascript-api/error-codes) page                |
-| `tls_version`       | the [TLS](/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls) version                                                                                                       |
+| `error_code`        | A number specifying an error types; a list of current error codes can be found at the [Error Codes](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/error-codes) page                |
+| `tls_version`       | the [TLS](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls) version                                                                                                       |
 | `scenario`          | the name of the scenario where the metric was emitted                                                                                                                        |
 | `service`           | the RPC service name for gRPC                                                                                                                                                |
-| `expected_response` | `true` or `false` based on the [responseCallback](/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback); by default checks whether the status is 2xx or 3xx |
+| `expected_response` | `true` or `false` based on the [responseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback); by default checks whether the status is 2xx or 3xx |
 
-To disable some of the preceding tags, use the [`systemTags` option](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#system-tags).
+To disable some of the preceding tags, use the [`systemTags` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#system-tags).
 Note that some data collectors, for example `cloud` runs, may require certain tags.
 
 The following system tags are optional. Enable them as needed:
@@ -60,7 +60,7 @@ The following system tags are optional. Enable them as needed:
 | `vu`          | the ID of the virtual user that executed the request                                                                                                       |
 | `iter`        | the iteration number                                                                                                                                       |
 | `ip`          | The IP address of the remote server                                                                                                                        |
-| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/online-certificate-status-protocol--ocsp) HTTPS status |
+| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/online-certificate-status-protocol--ocsp) HTTPS status |
 
 ## User-defined tags
 
@@ -170,7 +170,7 @@ export default function () {
 
 ## Tagging stages
 
-Thanks to some helper functions in the [k6-jslib-utils](/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) project, if an executor supports the `stages` option, you can add tags with the current ongoing stage.
+Thanks to some helper functions in the [k6-jslib-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) project, if an executor supports the `stages` option, you can add tags with the current ongoing stage.
 Similar to other tags tag, the tag is added to all samples collected during the iteration.
 
 One way to tag the executed operations is to invoke the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
@@ -259,14 +259,14 @@ The profile value based on the current stage can be one of the following options
 
 {{< /code >}}
 
-To see how tags affect your test-result output, refer to the [k6 results output syntax](/docs/k6/<K6_VERSION>/results-output/real-time/json).
+To see how tags affect your test-result output, refer to the [k6 results output syntax](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json).
 
 ## Groups
 
 For extra organization, use _groups_ to organize a load script by functions.
 You can also nest groups for BDD-style testing.
 
-All metrics emitted in a [group](/docs/k6/<K6_VERSION>/javascript-api/k6/group) have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
+All metrics emitted in a [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group) have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
 The root group uses the name '' (empty string).
 If you have a single group named `cool requests`, the actual value of the `group` is `::cool requests`.
 
@@ -300,10 +300,10 @@ export default function () {
 
 Groups do the following tasks internally:
 
-- For each `group()` function, k6 emits a [group_duration metric](/docs/k6/<K6_VERSION>/using-k6/metrics), which contains the total time to execute the group function.
+- For each `group()` function, k6 emits a [group_duration metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics), which contains the total time to execute the group function.
 
 - When a taggable resource&mdash;a check, request, or custom metric&mdash;runs within a group, k6 sets the tag `group` with the current group name.
-  For more info, refer to the [Tags section](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
+  For more info, refer to the [Tags section](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
 
 Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize complex test results. Check out how they work in your [k6 result output](https://grafana.com/docs/k6/latest/misc/integrations#result-store-and-visualization).
 
@@ -335,7 +335,7 @@ group('list posts', function () {
 
 If your code looks like the preceding snippet, consider the following strategies to write cleaner code:
 
-- For dynamic URLs, use the [URL grouping feature](/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping).
-- To provide a meaningful name to your request, set the value of [tags.name](/docs/k6/<K6_VERSION>/using-k6/http-requests#http-request-tags).
-- To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](/docs/k6/<K6_VERSION>/using-k6/modules#local-filesystem-modules) and import it into the test script.
-- To model advanced user patterns, check out [Scenarios](/docs/k6/<K6_VERSION>/using-k6/scenarios).
+- For dynamic URLs, use the [URL grouping feature](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping).
+- To provide a meaningful name to your request, set the value of [tags.name](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#http-request-tags).
+- To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules#local-filesystem-modules) and import it into the test script.
+- To model advanced user patterns, check out [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).

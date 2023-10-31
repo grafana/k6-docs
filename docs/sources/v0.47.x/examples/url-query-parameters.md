@@ -6,7 +6,7 @@ weight: 21
 
 # URLs with query parameters
 
-How to use **URL** and **URLSearchParams** imported from [jslib.k6.io](/docs/k6/<K6_VERSION>/using-k6/modules#the-jslib-repository) to construct URLs with/without query parameters.
+How to use **URL** and **URLSearchParams** imported from [jslib.k6.io](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules#the-jslib-repository) to construct URLs with/without query parameters.
 
 ## URL
 

@@ -313,7 +313,7 @@ curl -X GET \
 {{< /code >}}
 
 This endpoint will give you all the metrics in the current time. You can see more details on all
-metrics available and how to create new ones in [Metrics](/docs/k6/<K6_VERSION>/using-k6/metrics).
+metrics available and how to create new ones in [Metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 
 ## Get Metric
 
@@ -353,7 +353,7 @@ curl -X GET \
 
 This endpoint will give you details for the given metric in the current time.
 
-You can see more on all metrics available and how to create new ones in [Metrics](/docs/k6/<K6_VERSION>/using-k6/metrics).
+You can see more on all metrics available and how to create new ones in [Metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 
 ## List Groups
 
@@ -420,7 +420,7 @@ curl -X GET \
 
 This endpoint returns all groups available on the test.
 
-For more details on how to create groups please go to [Tags and Groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
+For more details on how to create groups please go to [Tags and Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
 ## Get Group
 
@@ -463,7 +463,7 @@ curl -X GET \
 
 This endpoint returns the Group with the given ID.
 
-For more details on how to create groups, please go to [Tags and Groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
+For more details on how to create groups, please go to [Tags and Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
 ## Get Setup Data
 
@@ -495,7 +495,7 @@ curl -X GET \
 
 This endpoint returns the current JSON-encoded setup data.
 
-For more detail about the setup stage please go to [Test life cycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+For more detail about the setup stage please go to [Test life cycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 ## Run Setup
 
@@ -527,7 +527,7 @@ curl -X POST \
 
 This endpoint executes the Setup stage and returns the result.
 
-For more detail about the setup stage please go to [Test life cycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+For more detail about the setup stage please go to [Test life cycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 ## Update Setup
 
@@ -572,7 +572,7 @@ curl -X PUT \
 
 This endpoint parses the JSON request body and sets the result as Setup data.
 
-For more detail about the setup stage please go to [Test life cycle](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+For more detail about the setup stage please go to [Test life cycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 ## Stop Test
 

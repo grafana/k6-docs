@@ -7,7 +7,7 @@ weight: 10
 
 # parseHTML( src )
 
-Parse an HTML string and populate a [Selection](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) object.
+Parse an HTML string and populate a [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) object.
 
 | Parameter | Type   | Description  |
 | --------- | ------ | ------------ |
@@ -17,7 +17,7 @@ Parse an HTML string and populate a [Selection](/docs/k6/<K6_VERSION>/javascript
 
 | Type                                                                    | Description         |
 | ----------------------------------------------------------------------- | ------------------- |
-| [Selection](/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection object. |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection object. |
 
 ### Example
 

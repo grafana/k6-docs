@@ -7,9 +7,9 @@ slug: 'client-connect'
 
 # Client.connect(address [,params])
 
-Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
-See [Client.close()](/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-close) to close the connection.
+See [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-close) to close the connection.
 
 | Parameter         | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

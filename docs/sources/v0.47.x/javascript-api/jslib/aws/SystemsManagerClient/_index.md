@@ -18,7 +18,7 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 | Function                                                                                                                  | Description                                        |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
-| [getParameter](/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/00 getParameter) | Retrieves a parameter from Amazon Systems Manager. |
+| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/00 getParameter) | Retrieves a parameter from Amazon Systems Manager. |
 
 ### Throws
 

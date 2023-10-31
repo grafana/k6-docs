@@ -9,20 +9,20 @@ weight: 01
 The `shared-iterations` executor shares iterations between the number of VUs.
 The test ends once k6 executes all iterations.
 
-For a shortcut to this executor, use the [vus](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [iterations](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
+For a shortcut to this executor, use the [vus](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
 
 {{% admonition type="note" %}}
 
 Iterations **are not guaranteed to be evenly distributed** with this executor.
 VU that executes faster will complete more iterations than slower VUs.
 
-To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
+To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
 
  {{% /admonition %}}
 
 ## Options
 
-Besides the [common configuration options](/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
+Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options),
 this executor has the following options:
 
 | Option      | Type    | Description                                                                        | Default |

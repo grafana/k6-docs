@@ -9,7 +9,7 @@ weight: 05
 ## What is an archive?
 
 When the complexity of a k6 test goes beyond a single JS file it quickly becomes cumbersome to
-find and bundle up all the dependencies (JS, [open()](/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files, TLS
+find and bundle up all the dependencies (JS, [open()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files, TLS
 client certs, etc.). k6 archives are a native way to bundle and distribute, or share, a test.
 
 A k6 archive is simply a [tar](https://en.wikipedia.org/wiki/Tar_%28computing%29) file with all
@@ -27,7 +27,7 @@ $ k6 run script.js
 
 {{< /code >}}
 
-Now if you replace `run` with `archive` k6 will run the [init stage](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) of
+Now if you replace `run` with `archive` k6 will run the [init stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) of
 the code to determine which JS files are being imported and what data files are being
 [`open()`](/javascript-api/init-context/open)'ed and bundles all of the files up
 into a tar file:
@@ -91,10 +91,10 @@ When a k6 test has multiple files, you can use the archive functionality to bund
 
 ## Contents of an archive file
 
-An archive contains the original source of the JS code, any [`open()`](/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed
-data files, [SSL/TLS client certificates](/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-client-certificates) as well as a
-`metadata.json` with all the options (a cascading of the options set on the [CLI](/docs/k6/<K6_VERSION>/using-k6/k6-options),
-via [Environment variables](/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](/docs/k6/<K6_VERSION>/using-k6/k6-options)
+An archive contains the original source of the JS code, any [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed
+data files, [SSL/TLS client certificates](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-client-certificates) as well as a
+`metadata.json` with all the options (a cascading of the options set on the [CLI](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
+via [Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options)
 (`export let options = {...}`)).
 
 Let's create an archive from the following sample test. Here is the layout in the filesystem
@@ -159,10 +159,10 @@ Breaking down the file structure we get:
 
 **data** contains the source code of the main JS file (`script.js` in this example).
 
-**files** contains the full original directory tree of all [`open()`](/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
+**files** contains the full original directory tree of all [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
 
-**metadata.json** The resolved "default" options for this test based on [CLI flags](/docs/k6/<K6_VERSION>/using-k6/k6-options),
-[Environment variables](/using-k6/k6-options) and [in-script options](/docs/k6/<K6_VERSION>/using-k6/k6-options).
+**metadata.json** The resolved "default" options for this test based on [CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
+[Environment variables](/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 

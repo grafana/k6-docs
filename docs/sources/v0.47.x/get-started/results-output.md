@@ -20,7 +20,7 @@ You can customize almost every aspect of result output:
 
 ## Metrics
 
-**Documentation**: [Using metrics](/docs/k6/<K6_VERSION>/using-k6/metrics)
+**Documentation**: [Using metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics)
 
 k6 comes with built-in metrics about the test load and the system response.
 Key metrics include:
@@ -31,7 +31,7 @@ Key metrics include:
 
 ## End-of-test summary
 
-**Documentation**: [End-of-test summary](/docs/k6/<K6_VERSION>/results-output/end-of-test)
+**Documentation**: [End-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)
 
 By default, k6 prints summarized results to `stdout`.
 
@@ -46,7 +46,7 @@ The end-of-test summary shows aggregated statistical values for your result metr
 - Minimum and maximum values
 - p90, p95, and p99 values
 
-You can configure the statistics to report with the [`--summary-trend-stats`](/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) option.
+You can configure the statistics to report with the [`--summary-trend-stats`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) option.
 For example, this command displays only median, p95, and p99.9 values.
 
 ```sh
@@ -63,7 +63,7 @@ The `handleSummary()` function can process this object into a custom report in a
 
 ## Time series and external outputs
 
-**Documentation**: [Real-time metrics](/docs/k6/<K6_VERSION>/results-output/real-time)
+**Documentation**: [Real-time metrics](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time)
 
 The condensed end-of-test summary provides a top-level view of the test.
 For deeper analysis, you need to look at granular time-series data,
@@ -87,19 +87,19 @@ The available built-in outputs include:
 
 <Glossary>
 
-- [Amazon CloudWatch](/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
-- [Cloud](/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
-- [CSV](/docs/k6/<K6_VERSION>/results-output/real-time/csv)
-- [Datadog](/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
-- [Dynatrace](/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
-- [Elasticsearch](/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
-- [Grafana Cloud Prometheus](/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
-- [InfluxDB](/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
-- [JSON](/docs/k6/<K6_VERSION>/results-output/real-time/json)
-- [Netdata](/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
-- [New Relic](/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
-- [Prometheus](/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
-- [TimescaleDB](/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb) 
-- [StatsD](/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
+- [Amazon CloudWatch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
+- [Cloud](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
+- [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)
+- [Datadog](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
+- [Dynatrace](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
+- [Elasticsearch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
+- [Grafana Cloud Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
+- [InfluxDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
+- [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)
+- [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
+- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
+- [Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
+- [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb) 
+- [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 
 </Glossary>

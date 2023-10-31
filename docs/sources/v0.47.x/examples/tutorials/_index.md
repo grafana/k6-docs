@@ -6,7 +6,7 @@ weight: 25
 
 # Tutorials
 
-- [Get started with k6](/docs/k6/<K6_VERSION>/examples/get-started-with-k6)
+- [Get started with k6](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6)
 - [8 basic tasks to learn k6](https://k6.io/blog/learning-js-through-load-testing/)
 - [k6 Learn](https://github.com/grafana/k6-learn)
 - [Swagger/OpenAPI integration](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6)

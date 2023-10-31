@@ -80,7 +80,7 @@ export default async function () {
 
 The preceding code launches a Chromium-based browser, visits the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
 
-After running the test, the following [browser metrics](/docs/k6/<K6_VERSION>/using-k6-browser/metrics) will be reported.
+After running the test, the following [browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics) will be reported.
 
 {{< code >}}
 

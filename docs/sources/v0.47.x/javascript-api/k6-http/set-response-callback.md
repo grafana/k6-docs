@@ -20,13 +20,13 @@ Due to implementation specifics:
 
 | Parameter | Type                                                                                   | Description                                                                                                   |
 | --------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| callback  | [expectedStatuses](/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) | an object returned from [expectedStatuses](/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) |
+| callback  | [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) | an object returned from [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) |
 
-Currently only the very special [expectedStatuses](/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
+Currently only the very special [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
 
 Setting the callback to `null` disables the tagging with `expected_response` and the emitting of `http_req_failed`.
 
-It is recommended that if a per request responseCallback is used with [Params](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) it is actually defined once and used instead of creating it on each request.
+It is recommended that if a per request responseCallback is used with [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) it is actually defined once and used instead of creating it on each request.
 
 ### Example
 

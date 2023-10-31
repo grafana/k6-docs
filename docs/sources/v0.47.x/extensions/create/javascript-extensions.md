@@ -333,16 +333,16 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 ## Things to keep in mind
 
 - The code in the `default` function (or another function specified by
-  [`exec`](/docs/k6/<K6_VERSION>/using-k6/scenarios#options)) will be executed many
+  [`exec`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#options)) will be executed many
   times during a test run and possibly in parallel by thousands of VUs.
   Any operation of your extension should therefore be performant
   and [thread-safe](https://en.wikipedia.org/wiki/Thread_safety).
-- Any _heavy_ initialization should be done in the [init context](/docs/k6/<K6_VERSION>/javascript-api/init-context),
+- Any _heavy_ initialization should be done in the [init context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context),
   if possible, and not as part of the `default` function execution.
 - Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create
   custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
-Next, create an [Output extension](/docs/k6/<K6_VERSION>/extensions/create/output-extensions) to publish test metrics
+Next, create an [Output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions) to publish test metrics
 to a destination not already supported by k6.

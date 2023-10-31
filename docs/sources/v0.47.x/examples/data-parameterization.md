@@ -28,13 +28,13 @@ array, but the difference is negligible compared to the time it takes to make re
 even less of an issue compared to not using it with large files, as k6 would otherwise use too much memory to run, which might lead to your script not being able to run at all or aborting in the middle if the system resources are exhausted.
 
 For example, the Cloud service allocates 8GB of memory for every 300 VUs. So if your files are large
-enough and you are not using [SharedArray](/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), that might mean that your script will run out of memory at
+enough and you are not using [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), that might mean that your script will run out of memory at
 some point. Additionally even if there is enough memory, k6 has a garbage collector (as it's written
 in golang) and it will walk through all accessible objects (including JS ones) and figure out which
 need to be garbage collected. For big JS arrays copied hundreds of times this adds quite a lot of
 additional work.
 
-A note on performance characteristics of `SharedArray` can be found within its [API documentation](/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray#performance-characteristics).
+A note on performance characteristics of `SharedArray` can be found within its [API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray#performance-characteristics).
 
 ## From a JSON file
 
@@ -175,7 +175,7 @@ export default function () {
 
 ## Retrieving unique data
 
-It is often a requirement not to use the same data more than once in a test. With the help of [k6/execution](/docs/k6/<K6_VERSION>/javascript-api/k6-execution), which includes a property `scenario.iterationInTest`, you can retrieve unique rows from your data set.
+It is often a requirement not to use the same data more than once in a test. With the help of [k6/execution](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution), which includes a property `scenario.iterationInTest`, you can retrieve unique rows from your data set.
 
 > ### ⚠️ Multiple scenarios
 >

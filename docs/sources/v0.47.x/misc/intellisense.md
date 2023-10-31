@@ -18,7 +18,7 @@ weight: 03
 
 k6 has its [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) that you can configure with your editor to unlock code editing features.
 
-In Visual Studio Code and IntelliJ IDEA Ultimate, you can configure IntelliSense to recognize the [k6 JavaScript API](/docs/k6/<K6_VERSION>/javascript-api) by installing the k6 Types with a package manager.
+In Visual Studio Code and IntelliJ IDEA Ultimate, you can configure IntelliSense to recognize the [k6 JavaScript API](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api) by installing the k6 Types with a package manager.
 
 ```bash
 # create a `package.json` file

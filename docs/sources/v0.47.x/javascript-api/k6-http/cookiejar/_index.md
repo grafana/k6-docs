@@ -13,7 +13,7 @@ Get the active cookie jar.
 
 | Type                                                                    | Description         |
 | ----------------------------------------------------------------------- | ------------------- |
-| [CookieJar](/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar) | A CookieJar object. |
+| [CookieJar](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar) | A CookieJar object. |
 
 ### Example
 

@@ -7,7 +7,7 @@ weight: 02
 
 # httpx
 
-The `httpx` module is an external JavaScript library that wraps around the native [k6/http](/docs/k6/<K6_VERSION>/javascript-api/k6-http) module.
+The `httpx` module is an external JavaScript library that wraps around the native [k6/http](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) module.
 It's a http client with features that are not yet available in the native module.
 
 - ability to set http options globally (such as timeout)
@@ -40,14 +40,14 @@ This documentation is for the only last version only. If you discover that some 
 | [put(url, [body], [params])](/javascript-api/jslib/httpx/put)                                  | Makes PUT request                                                  |
 | [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch)                              | Makes PATCH request                                                |
 | [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete)                            | Makes DELETE request                                               |
-| [batch(requests)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/batch)           | Batches multiple HTTP requests together to issue them in parallel. |
-| [setBaseUrl(url)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/setbaseurl)      | Sets the base URL for the session                                  |
-| [addHeader(key, value)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheader) | Adds a header to the session                                       |
-| [addHeaders(object)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheaders)   | Adds multiple headers to the session                               |
-| [clearHeader(name)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/clearheader)   | Removes header from the session                                    |
-| [addTag(key, value)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtag)       | Adds a tag to the session                                          |
-| [addTags(object)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtags)         | Adds multiple tags to the session                                  |
-| [clearTag(name)](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/cleartag)         | Removes tag from the session                                       |
+| [batch(requests)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/batch)           | Batches multiple HTTP requests together to issue them in parallel. |
+| [setBaseUrl(url)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/setbaseurl)      | Sets the base URL for the session                                  |
+| [addHeader(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheader) | Adds a header to the session                                       |
+| [addHeaders(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheaders)   | Adds multiple headers to the session                               |
+| [clearHeader(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/clearheader)   | Removes header from the session                                    |
+| [addTag(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtag)       | Adds a tag to the session                                          |
+| [addTags(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtags)         | Adds multiple tags to the session                                  |
+| [clearTag(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/cleartag)         | Removes tag from the session                                       |
 
 ### Example
 

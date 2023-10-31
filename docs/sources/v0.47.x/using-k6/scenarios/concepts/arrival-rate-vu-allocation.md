@@ -25,7 +25,7 @@ When planning a test, consider doing a trial initialization on a local machine t
 
 ## Pre-allocation in arrival-rate executors
 
-As [open-model](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed#open-model) scenarios, arrival-rate executors start iterations according to a configured rate.
+As [open-model](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed#open-model) scenarios, arrival-rate executors start iterations according to a configured rate.
 For example, you can configure arrival-rate executors to start 10 iterations each second, or minute, or hour.
 This behavior is opposed to the closed-model scenarios, in which VUs wait for one iteration to finish before starting another
 
@@ -68,7 +68,7 @@ and one of two things can happen:
 | If the executor       | Then..                                                                                                                                                  |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Has enough VUs        | the extra VUs are "idle," ready to be used when needed.                                                                                                 |
-| Has insufficient VUs. | k6 emits a [`dropped_iterations` metric](/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) for each iteration that it can't run. |
+| Has insufficient VUs. | k6 emits a [`dropped_iterations` metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) for each iteration that it can't run. |
 
 ## Iteration duration affects the necessary allocation
 

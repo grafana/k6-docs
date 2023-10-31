@@ -8,7 +8,7 @@ weight: 11
 
 Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.
 
-Must be called within the [`init` phase](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+Must be called within the [`init` phase](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 | Parameter    | Type   | Description                                                                                                                        |
 | ------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |

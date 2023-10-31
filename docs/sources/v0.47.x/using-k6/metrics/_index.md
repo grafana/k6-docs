@@ -17,14 +17,14 @@ Metrics fall into four broad types:
 - **Rates** track how frequently a non-zero value occurs.
 - **Trends** calculates statistics for multiple values (like mean, mode or percentile).
 
-To make a test fail a certain criteria, you can write a [Threshold](/docs/k6/<K6_VERSION>/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the metric type).
-To filter metrics, you can use [Tags and groups](/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
-You can also export metrics in various summary and granular formats, as documented in [Results output](/docs/k6/<K6_VERSION>/results-output).
+To make a test fail a certain criteria, you can write a [Threshold](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the metric type).
+To filter metrics, you can use [Tags and groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
+You can also export metrics in various summary and granular formats, as documented in [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output).
 
 | On this page...                                                                           | Read about...                                                                                   |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Built-in metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/reference)                  | Each built-in metric for each supported [protocol](/docs/k6/<K6_VERSION>/using-k6/protocols) |
-| [Create custom metrics](/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                               |
+| [Built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference)                  | Each built-in metric for each supported [protocol](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols) |
+| [Create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                               |
 
 ## What metrics to look at?
 
@@ -105,7 +105,7 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 {{< /code >}}
 
 In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
-For details of all metrics, refer to the [Metrics reference](/docs/k6/<K6_VERSION>/using-k6/metrics/reference).
+For details of all metrics, refer to the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference).
 
 ## Metric name restrictions
 

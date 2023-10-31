@@ -15,13 +15,13 @@ CRUD refers to the basic operations in a database: Create, Read, Update, and Del
 - _Update_: HTTP `PUT`or `PATCH` to change an existing resource.
 - _Delete_: HTTP `DELETE` to remove a resource.
 
-This document has two examples, one that uses the core k6 APIs (`k6/http` and `checks`) and another to show the more recent APIs [`httpx`](/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx) and [`k6chaijs`](/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs)).
+This document has two examples, one that uses the core k6 APIs (`k6/http` and `checks`) and another to show the more recent APIs [`httpx`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx) and [`k6chaijs`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs)).
 
 ## Test steps
 
-In the [setup() stage](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#setup-and-teardown-stages) we create a user for the [k6 HTTP REST API](https://test-api.k6.io/). We then retrieve and return a bearer token to authenticate the next CRUD requests.
+In the [setup() stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#setup-and-teardown-stages) we create a user for the [k6 HTTP REST API](https://test-api.k6.io/). We then retrieve and return a bearer token to authenticate the next CRUD requests.
 
-The steps implemented in the [VU stage](/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-vu-stage) are as follows:
+The steps implemented in the [VU stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-vu-stage) are as follows:
 
 1. _Create_ a new resource, a "croc".
 2. _Read_ the list of "crocs".

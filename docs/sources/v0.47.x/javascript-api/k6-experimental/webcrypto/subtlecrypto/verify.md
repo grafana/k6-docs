@@ -19,7 +19,7 @@ verify(algorithm, key, signature, data)
 | Name        | Type                                                                                      | Description                                        |
 | :---------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------- |
 | `algorithm` | `string` or object with a single `name` string property                                   | The algorithm to use. Currently supported: `HMAC`. |
-| `key`       | [CryptoKey](/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The key that will be used to verify the signature. |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The key that will be used to verify the signature. |
 | `signature` | `ArrayBuffer`                                                                             | The signature to verify.                           |
 | `data`      | `ArrayBuffer`                                                                             | The data whose signature is to be verified.        |
 

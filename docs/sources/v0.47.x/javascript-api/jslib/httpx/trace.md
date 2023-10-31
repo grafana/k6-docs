@@ -12,14 +12,14 @@ weight: 17
 | Parameter         | Type                                                                                                              | Description                                                                                                |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | url               | string                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                            |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                     |
-| params (optional) | null or object {}                                                                                                 | Additional [parameters](/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                     |
+| params (optional) | null or object {}                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
 
 ### Returns
 
 | Type                                                                  | Description                                                                       |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP [Response](/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
+| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example
 

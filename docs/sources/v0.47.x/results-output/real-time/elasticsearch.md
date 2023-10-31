@@ -66,7 +66,7 @@ export K6_ELASTICSEARCH_URL=http://localhost:9200
 Security and self-signed certificates for non-cloud clusters are not yet supported.
  {{% /admonition %}}
 
-You can now connect to Elasticsearch and query the [k6 metrics](/docs/k6/<K6_VERSION>/using-k6/metrics) stored in the `k6-metrics` index.
+You can now connect to Elasticsearch and query the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) stored in the `k6-metrics` index.
 The following example uses an unsecured local Elasticsearch, version `7.17.9`:
 
 ```bash
