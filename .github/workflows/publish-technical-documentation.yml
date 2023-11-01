@@ -25,8 +25,7 @@ jobs:
         id: publish-next
         with:
           repository: grafana/website
-          # To be changed to 'master' once 'jdb/2023-10-k6-docs-migration' is merged.
-          branch: jdb/2023-10-k6-docs-migration
+          branch: master
           host: github.com
           # PUBLISH_TO_WEBSITE_TOKEN is a fine-grained GitHub Personal Access Token that expires.
           # It must be regenerated in the grafanabot GitHub account and requires a Grafana organization
