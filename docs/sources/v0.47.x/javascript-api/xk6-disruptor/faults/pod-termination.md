@@ -12,7 +12,7 @@ A Pod Termination fault is defined by the following attributes:
 
 | Attribute     | Type   | Description |
 | ------------- | ------ | --------|
-| count         | integer or percentage | the number of pods to be terminated. It can be specified as a integer number or as a percentage (e.g. `30%`) that defines the fraction of target pods to be terminated|
+| count         | integer or percentage | the number of pods to be terminated. It can be specified as a integer number or as a percentage, for example `30%`, that defines the fraction of target pods to be terminated|
 
 {{% admonition type="note" %}}
 
