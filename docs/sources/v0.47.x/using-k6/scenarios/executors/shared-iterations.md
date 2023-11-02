@@ -9,7 +9,7 @@ weight: 01
 The `shared-iterations` executor shares iterations between the number of VUs.
 The test ends once k6 executes all iterations.
 
-For a shortcut to this executor, use the [vus](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
+For a shortcut to this executor, use the [`vus`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [`iterations`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
 
 {{% admonition type="note" %}}
 
