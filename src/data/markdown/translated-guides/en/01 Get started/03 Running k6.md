@@ -6,31 +6,36 @@ excerpt: 'Follow along to learn how to run a test, add virtual users, increase t
 Follow along to learn how to:
 1. Run a test.
 2. Add virtual users.
-3. Increase the test duration. 
+3. Increase the test duration.
 4. Ramp the number of requests up and down as the test runs.
 
 With these example snippets, you'll run the test with your machine's resources.
-But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers. 
+But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers.
 
 <!-- preserving  old anchor --->
 ## Run local tests {#running-local-tests}
 
 To run a simple local script:
-1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
+1. Create and initialize a new script by running the following command:
 
-  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
+    <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
-  ```javascript
-  import http from 'k6/http';
-  import { sleep } from 'k6';
+    ```bash
+    $ k6 new
+    ```
 
-  export default function () {
-    http.get('https://test.k6.io');
-    sleep(1);
-  }
-  ```
+    ```bash
+    $ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
+    ```
 
-  </CodeGroup>
+    ```bash
+    PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+    ```
+
+    </CodeGroup>
+
+    This command creates a new script file named `script.js` in the current directory.
+    You can also specify a different file name as an argument to the `k6 new` command, for example `k6 new my-test.js`.
 
 1. Run k6 with the following command:
 
@@ -196,17 +201,17 @@ You can run the same test in different modes with minimal changes.
 
 </Blockquote>
 
-k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
+k6 supports three execution modes to run a k6 test: local, distributed, and cloud.
 
-- **Local**: the test execution happens entirely on a single machine, container, or CI server. 
+- **Local**: the test execution happens entirely on a single machine, container, or CI server.
 
   ```bash
   k6 run script.js
   ```
 
-- **Distributed**: the test execution is [distributed across a Kubernetes cluster](/testing-guides/running-distributed-tests/). 
-  
-  <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
+- **Distributed**: the test execution is [distributed across a Kubernetes cluster](/testing-guides/running-distributed-tests/).
+
+  <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}>
 
   ```bash
   kubectl apply -f /path/k6-resource.yaml
