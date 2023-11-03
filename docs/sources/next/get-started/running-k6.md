@@ -20,17 +20,26 @@ But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to 
 
 To run a simple local script:
 
-1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
+1. Create and initialize a new script by running the following command:
 
-   ```javascript
-   import http from 'k6/http';
-   import { sleep } from 'k6';
+{{< code >}}
 
-   export default function () {
-     http.get('https://test.k6.io');
-     sleep(1);
-   }
-   ```
+```linux
+$ k6 new
+```
+
+```docker
+$ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
+```
+
+```windows
+PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+```
+
+{{< /code >}}
+
+This command creates a new script file named `script.js` in the current directory.
+You can also specify a different file name as an argument to the `k6 new` command, for example `k6 new my-test.js`.
 
 1. Run k6 with the following command:
 
