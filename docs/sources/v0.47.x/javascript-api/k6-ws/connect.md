@@ -7,7 +7,7 @@ weight: 10
 
 # connect( url, params, callback )
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Initiate a WebSocket connection to a remote host.
 

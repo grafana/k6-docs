@@ -6,7 +6,7 @@ weight: 06
 
 # JSHandle
 
-{{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 
 ## Supported APIs
 

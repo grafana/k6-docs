@@ -6,7 +6,7 @@ weight: 03
 
 # k6/crypto
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 The k6/crypto `module` provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
 

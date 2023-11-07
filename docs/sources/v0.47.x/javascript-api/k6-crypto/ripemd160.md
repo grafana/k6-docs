@@ -7,7 +7,7 @@ weight: 07
 
 # ripemd160( input, outputEncoding )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Use [ripemd160](https://pkg.go.dev/golang.org/x/crypto/ripemd160) to hash input data.
 

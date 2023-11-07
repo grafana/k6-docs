@@ -6,7 +6,7 @@ weight: 12
 
 # k6/ws
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 The ws module provides a [WebSocket](https://en.wikipedia.org/wiki/WebSocket) client implementing the [WebSocket protocol](http://www.rfc-editor.org/rfc/rfc6455.txt).
 

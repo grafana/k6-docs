@@ -5,7 +5,7 @@ excerpt: 'Send a ping. Ping messages can be used to verify that the remote endpo
 
 # Socket.ping()
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.
 

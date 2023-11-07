@@ -5,7 +5,7 @@ excerpt: 'Set up callback functions for various events on the WebSocket connecti
 
 # Socket.on(event, callback)
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Set up callback functions for various events on the WebSocket connection. Multiple handlers can be defined for the same event.
 

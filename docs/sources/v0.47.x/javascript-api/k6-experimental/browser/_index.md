@@ -6,7 +6,7 @@ weight: 01
 
 # browser
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 The browser module APIs aim for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright).
 

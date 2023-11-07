@@ -6,7 +6,7 @@ weight: 11
 
 # k6/net/grpc
 
-{{< docs/shared source="k6" lookup="grpc-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="grpc-module.md" version="<K6_VERSION>" >}}
 
 The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 

@@ -7,7 +7,7 @@ weight: 05
 
 # websockets
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on).
 

@@ -5,7 +5,7 @@ excerpt: 'Call a function repeatedly, while the WebSocket connection is open.'
 
 # Socket.setInterval(callback, interval)
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Call a function repeatedly, while the WebSocket connection is open.
 

@@ -5,7 +5,7 @@ excerpt: 'Send a data string through the connection.'
 
 # Socket.send(data)
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Send a data string through the connection.
 You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON string.

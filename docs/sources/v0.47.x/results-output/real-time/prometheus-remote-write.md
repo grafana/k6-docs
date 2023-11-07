@@ -6,7 +6,7 @@ weight: 00
 
 # Prometheus remote write
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 [Prometheus remote write](https://prometheus.io/docs/concepts/remote_write_spec/) is a protocol that makes it possible to reliably propagate data in real-time from a sender to a receiver.
 It has multiple compatible [implementations](https://prometheus.io/docs/concepts/remote_write_spec/#compatible-senders-and-receivers) and [storage integrations](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations).

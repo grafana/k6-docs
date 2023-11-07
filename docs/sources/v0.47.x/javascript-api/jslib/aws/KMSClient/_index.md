@@ -8,7 +8,7 @@ weight: 00
 
 # KMSClient
 
-{{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}}
 
 `KMSClient` interacts with the AWS Key Management Service.
 

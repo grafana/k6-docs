@@ -7,7 +7,7 @@ weight: 02
 
 # createHMAC( algorithm, secret )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Creates a HMAC hashing object that can then be fed with data repeatedly, and from which you can extract a signed hash digest whenever you want.
 

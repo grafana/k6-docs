@@ -7,7 +7,7 @@ weight: 02
 
 # redis
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 The [Redis](https://redis.io/) module provides a client library that makes it possible to interact with Redis directly from a k6 script.
 With this module, you can:

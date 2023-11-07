@@ -7,7 +7,7 @@ weight: 04
 
 # md4( input, outputEncoding )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Use [md4](https://pkg.go.dev/golang.org/x/crypto/md4) to hash input data.
 
