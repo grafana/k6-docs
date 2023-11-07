@@ -5,7 +5,7 @@ excerpt: 'Send binary data through the connection.'
 
 # Socket.sendBinary(data)
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Send binary data through the connection.
 

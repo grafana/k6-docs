@@ -7,7 +7,7 @@ weight: 05
 
 # md5( input, outputEncoding )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Use [md5](https://golang.org/pkg/crypto/md5/) to hash input data.
 

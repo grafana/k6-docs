@@ -7,7 +7,7 @@ weight: 06
 
 # webcrypto
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 With this experimental module, you can use the [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) in your k6 scripts. However, note that this API is not yet fully implemented and some algorithms and features might still be missing.
 

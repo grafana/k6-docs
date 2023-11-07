@@ -8,7 +8,7 @@ weight: 00
 
 # S3Client
 
-{{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}}
 
 `S3Client` interacts with the AWS Simple Storage Service (S3).
 

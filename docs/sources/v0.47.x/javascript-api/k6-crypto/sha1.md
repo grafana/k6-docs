@@ -7,7 +7,7 @@ weight: 08
 
 # sha1( input, outputEncoding )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash input data.
 

@@ -7,7 +7,7 @@ weight: 03
 
 # hmac( algorithm, secret, data, outputEncoding )
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
 
 Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) to sign a piece of data using a shared secret.
 

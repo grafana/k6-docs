@@ -5,7 +5,7 @@ excerpt: 'Close the WebSocket connection.'
 
 # Socket.close([code])
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Close the WebSocket connection.
 

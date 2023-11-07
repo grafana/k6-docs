@@ -8,7 +8,7 @@ weight: 03
 
 # Using k6 browser
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
 The [Browser module](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 

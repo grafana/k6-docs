@@ -5,7 +5,7 @@ excerpt: 'Call a function at a later time, if the WebSocket connection is still 
 
 # Socket.setTimeout(callback, delay)
 
-{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}} >}}
+{{< docs/shared source="k6" lookup="ws-module.md" version="<K6_VERSION>" >}}
 
 Call a function at a later time, if the WebSocket connection is still open then.
 
