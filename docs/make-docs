@@ -38,7 +38,7 @@
 #
 # - Imperfect implementation of container name.
 #
-#   Faciliates running `make vale` and `make docs` at once.
+#   Facilitates running `make vale` and `make docs` at once.
 #   Container names are convenient for recognition in `docker ps` but the current implementation has more downsides than upsides.
 #
 # - Forced platform specification now that multiple architecture images exist.
@@ -779,8 +779,7 @@ EOF
               -e '/website-proxy/ d' \
               -e '/rm -rf dist*/ d' \
               -e '/Press Ctrl+C to stop/ d' \
-              -e '/make/ d' \
-              -e '/WARNING: The manual_mount source directory/ d'
+              -e '/make/ d'
     fi
     ;;
 esac
