@@ -5,7 +5,7 @@ function usage {
 Apply the changes for directory SRC for commit COMMIT to directory DST.
 
 Usage:
-  $0 [--commit] <COMMIT> <SRC> <DST>
+  $0 <COMMIT> <SRC> <DST>
 
 Examples:
   $0 HEAD~ docs/sources/next docs/sources/v0.47.x
