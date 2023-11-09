@@ -1,7 +1,6 @@
 ---
 title: 'Migrating to k6 v0.46'
 excerpt: 'A migration guide to ease the process of transitioning to the new k6 browser module version'
-slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 weight: 04
 ---
 

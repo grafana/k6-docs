@@ -1,6 +1,5 @@
 ---
 title: 'Open and closed models'
-slug: '/using-k6/scenarios/concepts/open-vs-closed/'
 excerpt: 'k6 has two ways to schedule VUs, which can affect test results. k6 implements the open model in its arrival-rate executors.'
 weight: 00
 ---

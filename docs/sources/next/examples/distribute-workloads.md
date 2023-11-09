@@ -1,7 +1,7 @@
 ---
 title: Distribute workloads across VUs
 excerpt: How to configure different amounts of traffic for different VU behaviors
-slug: /examples/distribute-workloads
+slug: /distribute-workloads
 weight: 24
 ---
 
