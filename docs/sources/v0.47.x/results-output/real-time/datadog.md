@@ -54,9 +54,11 @@ Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadog
 
 If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
 
-<blockquote>
-For additional information, read the <a href="https://docs.datadoghq.com/agent/docker/">Datadog Docker Agent documentation</a>.
-</blockquote>
+{{% admonition type="note" %}}
+
+For additional information, refer to the <a href="https://docs.datadoghq.com/agent/docker/">Datadog Docker Agent documentation</a>.
+
+{{% /admonition %}}
 
 ### DogStatsD
 

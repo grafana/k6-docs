@@ -9,12 +9,15 @@ excerpt: 'Opens a file and reads all the contents into memory.'
 
 Opens a file, reading all its contents into memory for use in the script.
 
-> #### Use [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV and JSON files
->
-> `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
-> To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
+{{% admonition type="note" %}}
 
-<blockquote mod='attention' title='Function available only in init context'>
+`open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
+
+To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
+
+{{% /admonition %}}
+
+{{% admonition type="caution" %}}
 
 This function can only be called from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
 
@@ -22,7 +25,7 @@ By restricting it to the init context, we can easily determine what local files 
 
 See the example further down on this page. For a more in-depth description, see [Test lifecycle](/using-k6/test-lifecycle).
 
-</blockquote>
+{{% /admonition %}}
 
 | Parameter | Type   | Description                                                                                                                                       |
 | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
