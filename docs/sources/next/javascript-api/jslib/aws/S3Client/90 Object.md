@@ -7,8 +7,8 @@ description: "Object is returned by the S3Client.* methods who query S3 buckets'
 
 # Object
 
-Object is returned by the S3Client.\* methods that query S3 buckets' objects. Namely, [`listObjects`](/javascript-api/jslib/aws/s3client/s3client-listobjects), [`getObject`](/javascript-api/jslib/aws/s3client/s3client-getobject), [`putObject`](/javascript-api/jslib/aws/s3client/s3client-putobject),
-and [`deleteObject`](/javascript-api/jslib/aws/s3client/s3client-deleteobject). The Object construct describes an Amazon S3 object.
+Object is returned by the S3Client.\* methods that query S3 buckets' objects. Namely, [`listObjects`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-listobjects), [`getObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-getobject), [`putObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-putobject),
+and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-deleteobject). The Object construct describes an Amazon S3 object.
 
 | Name                  | Type                                                                                                                                      | Description                                                                                                                                                                               |
 | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

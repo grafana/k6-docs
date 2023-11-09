@@ -18,7 +18,7 @@ description: 'S3Client.createMultipartUpload creates a multipart upload for an o
 
 | Type                                                                     | Description                                                                                                       |
 | :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| Promise<[S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload)> | A Promise that fulfills with a [S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
+| Promise<[S3MultipartUpload](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3multipartupload)> | A Promise that fulfills with a [S3MultipartUpload](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
 
 ### Example
 

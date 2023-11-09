@@ -20,7 +20,7 @@ description: 'S3Client.listObjects lists the objects contained in a bucket'
 
 | Type                                                                | Description                                                                                           |
 | :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
-| Promise<Array<[Object](/javascript-api/jslib/aws/s3client/object)>> | A Promise that fulfills with an array of [Object](/javascript-api/jslib/aws/s3client/object) objects. |
+| Promise<Array<[Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object)>> | A Promise that fulfills with an array of [Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object) objects. |
 
 ### Example
 

@@ -3,7 +3,6 @@ title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID],
 head_title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])'
 slug: 'secretsmanagerclient-putsecretvalue'
 description: "SecretsManagerClient.putSecretValue updates an existing secret's value"
-excerpt: "SecretsManagerClient.putSecretValue updates an existing secret's value"
 ---
 
 # SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])
@@ -21,7 +20,7 @@ excerpt: "SecretsManagerClient.putSecretValue updates an existing secret's value
 
 | Type | Description |
 | :--- | ----------- |
-| Promise<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with the updated [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret). |
+| Promise<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with the updated [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret). |
 
 ### Example
 

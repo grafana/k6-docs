@@ -1,7 +1,6 @@
 ---
 title: 'normalDistributionStages(maxVus, durationSeconds, [numberOfStages])'
 description: 'normalDistributionStages function'
-excerpt: 'normalDistributionStages function'
 weight: 46
 ---
 

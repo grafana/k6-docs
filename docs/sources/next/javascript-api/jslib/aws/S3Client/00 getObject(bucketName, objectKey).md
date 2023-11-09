@@ -20,7 +20,7 @@ description: 'S3Client.getObject downloads an object from a bucket'
 
 | Type                                                         | Description                                                                                                                        |
 | :----------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| Promise<[Object](/javascript-api/jslib/aws/s3client/object)> | A Promise that fulfills with an [Object](/javascript-api/jslib/aws/s3client/object) describing and holding the downloaded content. |
+| Promise<[Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object)> | A Promise that fulfills with an [Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object) describing and holding the downloaded content. |
 
 ### Example
 

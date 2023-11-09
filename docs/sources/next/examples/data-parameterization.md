@@ -23,7 +23,7 @@ This will, in turn, make your test more realistic.
 ## Performance implications of `SharedArray`
 
 Each VU in k6 is a separate JS VM. To prevent multiple copies of the whole data file,
-[SharedArray](/javascript-api/k6-data/sharedarray) was added. It does have some CPU overhead in accessing elements compared to a normal non shared
+[SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) was added. It does have some CPU overhead in accessing elements compared to a normal non shared
 array, but the difference is negligible compared to the time it takes to make requests. This becomes
 even less of an issue compared to not using it with large files, as k6 would otherwise use too much memory to run, which might lead to your script not being able to run at all or aborting in the middle if the system resources are exhausted.
 

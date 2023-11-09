@@ -3,7 +3,6 @@ title: 'SystemsManagerClient.getParameter()'
 head_title: 'SystemsManagerClient.getParameter()'
 slug: 'systemsmanagerclient-getparameter'
 description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
-excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 ---
 
 # SystemsManagerClient.getParameter()
@@ -14,7 +13,7 @@ excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in 
 
 | Type                                                        | Description                                                               |
 | :---------------------------------------------------------- | :------------------------------------------------------------------------ |
-| [`Promise<SystemsManagerParameter[]>`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) | A Promise that fulfills with an array of [`SystemsManagerParameter`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) objects. |
+| [`Promise<SystemsManagerParameter[]>`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) | A Promise that fulfills with an array of [`SystemsManagerParameter`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) objects. |
 
 ### Example
 

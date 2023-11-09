@@ -13,7 +13,7 @@ Opens a file, reading all its contents into memory for use in the script.
 
 `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
 
-To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
+To reduce the memory consumption, we strongly advise the usage of [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) for CSV, JSON and other files intended for script parametrization.
 
 {{% /admonition %}}
 
@@ -23,7 +23,7 @@ This function can only be called from the init context (aka _init code_), code i
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
-See the example further down on this page. For a more in-depth description, see [Test lifecycle](/using-k6/test-lifecycle).
+See the example further down on this page. For a more in-depth description, see [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 {{% /admonition %}}
 

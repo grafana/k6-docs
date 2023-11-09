@@ -8,7 +8,7 @@ weight: 06
 
 With the `ramping-arrival-rate` executor, k6 starts iterations at a variable rate.
 It is an open-model executor, meaning iterations start independently of system response (for details, read
-[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)).
+[Open and Closed models](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
 
 This executor has _stages_ that configure target number of iterations and the time k6 takes to reach or stay at this target.
 Unlike the [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus), which configures VUs,

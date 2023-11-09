@@ -1,7 +1,6 @@
 ---
 title: 'randomString(length, [charset])'
 description: 'Random string'
-excerpt: 'Random string'
 weight: 43
 ---
 

@@ -3,7 +3,6 @@ title: 'SecretsManagerClient.getSecret(secretID)'
 head_title: 'SecretsManagerClient.getSecret(secretID)'
 slug: 'secretsmanagerclient-getsecret'
 description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
-excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
 ---
 
 # SecretsManagerClient.getSecret(secretID)
@@ -18,7 +17,7 @@ excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS s
 
 | Type                                                            | Description                                                                                                      |
 | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| Promise<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
+| Promise<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
 
 ### Example
 

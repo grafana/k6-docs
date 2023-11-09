@@ -162,7 +162,7 @@ Breaking down the file structure we get:
 **files** contains the full original directory tree of all [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
 
 **metadata.json** The resolved "default" options for this test based on [CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
-[Environment variables](/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
+[Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 
