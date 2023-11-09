@@ -3,7 +3,6 @@ title: 'S3Client.getObject(bucketName, objectKey)'
 head_title: 'S3Client.getObject(bucketName, objectKey)'
 slug: 's3client-getobject'
 description: 'S3Client.getObject downloads an object from a bucket'
-excerpt: 'S3Client.getObject downloads an object from a bucket'
 ---
 
 # S3Client.getObject(bucketName, objectKey)

@@ -3,7 +3,6 @@ title: 'S3Client.listBuckets()'
 head_title: 'S3Client.listBuckets()'
 slug: 's3client-listbuckets'
 description: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
-excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
 ---
 
 # S3Client.listBuckets()

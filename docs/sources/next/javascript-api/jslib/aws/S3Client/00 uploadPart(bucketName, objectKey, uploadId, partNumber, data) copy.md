@@ -3,7 +3,6 @@ title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 head_title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 slug: 's3client-uploadpart'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
-excerpt: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 ---
 
 # S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)

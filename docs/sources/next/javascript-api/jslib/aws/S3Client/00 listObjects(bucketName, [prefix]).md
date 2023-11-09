@@ -1,8 +1,8 @@
 ---
 title: 'S3Client.listObjects(bucketName, [prefix])'
 head_title: 'S3Client.listObjects(bucketName, [prefix])'
+slug: 's3client-listobjects'
 description: 'S3Client.listObjects lists the objects contained in a bucket'
-excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 ---
 
 # S3Client.listObjects(bucketName, [prefix])

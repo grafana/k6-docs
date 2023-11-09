@@ -1,8 +1,8 @@
 ---
 title: 'S3Part'
 head_title: 'S3Part'
+slug: 's3part'
 description: 'S3Part is returned by the S3Client.uploadPart method when uploading a part to a multipart upload.'
-excerpt: 'S3Part is returned by the S3Client.uploadPart method when uploading a part to a multipart upload.'
 ---
 
 # S3Part

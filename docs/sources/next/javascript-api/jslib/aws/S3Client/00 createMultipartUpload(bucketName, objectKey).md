@@ -3,7 +3,6 @@ title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 head_title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 slug: 's3client-createmultipartupload'
 description: 'S3Client.createMultipartUpload creates a multipart upload for an object key to a bucket'
-excerpt: 'S3Client.createMultipartUpload creates a multipart upload to a bucket'
 ---
 
 # S3Client.createMultipartUpload(bucketName, objectKey)

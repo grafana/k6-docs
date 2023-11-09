@@ -1,8 +1,8 @@
 ---
 title: 'Object'
 head_title: 'Object'
+slug: 'object'
 description: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
-excerpt: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
 ---
 
 # Object
