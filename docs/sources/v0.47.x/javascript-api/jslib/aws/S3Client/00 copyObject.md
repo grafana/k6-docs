@@ -3,7 +3,6 @@ title: 'S3Client.copyObject'
 head_title: 'S3Client.copyObject'
 slug: 's3client-copyobject'
 description: 'S3Client.copyObject copies an object from a bucket to another'
-excerpt: 'S3Client.copyObject copies an object from a bucket to another'
 ---
 
 # S3Client.copyObject

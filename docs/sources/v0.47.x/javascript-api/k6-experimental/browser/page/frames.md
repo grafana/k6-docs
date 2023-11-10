@@ -5,13 +5,13 @@ excerpt: 'Browser module: page.frames method'
 
 # frames()
 
-Returns an array of [Frames](/javascript-api/k6-experimental/browser/frame/) on the page.
+Returns an array of [Frames](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/) on the page.
 
 ### Returns
 
 | Type                                                       | Description                                    |
 | ---------------------------------------------------------- | ---------------------------------------------- |
-| [Frames](/javascript-api/k6-experimental/browser/frame/)[] | An array of `Frames` associated with the page. |
+| [Frames](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/)[] | An array of `Frames` associated with the page. |
 
 ### Example
 

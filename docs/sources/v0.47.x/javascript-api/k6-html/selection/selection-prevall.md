@@ -16,7 +16,7 @@ Mimics [jquery.prevAll](https://api.jquery.com/prevAll/).
 
 | Type                                           | Description  |
 | ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection. |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

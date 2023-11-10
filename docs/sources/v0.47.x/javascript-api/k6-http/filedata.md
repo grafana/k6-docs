@@ -8,8 +8,8 @@ weight: 60
 # FileData
 
 _FileData_ is an object for wrapping data representing a file when doing
-[multipart requests (file uploads)](/examples/data-uploads#multipart-request-uploading-a-file).
-You create it by calling [http.file( data, [filename], [contentType] )](/javascript-api/k6-http/file).
+[multipart requests (file uploads)](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-uploads#multipart-request-uploading-a-file).
+You create it by calling [http.file( data, [filename], [contentType] )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/file).
 
 | Name                  | Type                         | Description                                                        |
 | --------------------- | ---------------------------- | ------------------------------------------------------------------ |

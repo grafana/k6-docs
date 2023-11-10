@@ -1,6 +1,7 @@
 ---
 title: 'ConsoleMessage'
-excerpt: 'Browser module: ConsoleMessage Class'
+slug: 'consolemessage'
+description: 'Browser module: ConsoleMessage Class'
 weight: 03
 ---
 

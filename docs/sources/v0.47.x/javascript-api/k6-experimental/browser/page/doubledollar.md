@@ -1,6 +1,6 @@
 ---
 title: 'page.$$(selector)'
-slug: '/page-$$'
+slug: 'page-doubledollar'
 excerpt: 'Browser module: page.$$(selector) method'
 ---
 
@@ -8,7 +8,7 @@ excerpt: 'Browser module: page.$$(selector) method'
 
 {{% admonition type="warning" %}}
 
-Use locator-based [`page.locator(selector)`](/javascript-api/k6-experimental/browser/page/locator/) instead.
+Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/locator/) instead.
 
  {{% /admonition %}}
 
@@ -18,7 +18,7 @@ The method finds all elements matching the specified selector within the page. I
 
 | Type                                                                              | Description                                                                                    |
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| null \| [ElementHandle](/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`. |
+| null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`. |
 
 ### Example
 

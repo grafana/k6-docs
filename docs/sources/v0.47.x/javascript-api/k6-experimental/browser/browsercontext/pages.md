@@ -12,7 +12,7 @@ This feature has **known issues**. For details, refer to
 
  {{% /admonition %}}
 
-Returns all open [Page](/javascript-api/k6-experimental/browser/page/)s in the `BrowserContext`.
+Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/)s in the `BrowserContext`.
 
 ### Returns
 

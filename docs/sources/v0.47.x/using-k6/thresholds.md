@@ -448,7 +448,7 @@ Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
 
 ## Fail a load test using checks
 
-[Checks](/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` do not affect the exit status of k6.
+[Checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` do not affect the exit status of k6.
 
 If you use only `checks` to verify that things work as expected, you can't fail the whole test run based on the `check` results.
 

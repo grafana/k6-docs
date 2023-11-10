@@ -5,21 +5,21 @@ excerpt: 'Retrieves context cookies.'
 
 # cookies([urls])
 
-Returns a list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) from the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext) filtered by the provided `urls`. If no `urls` are provided, all cookies are returned.
+Returns a list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) from the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) filtered by the provided `urls`. If no `urls` are provided, all cookies are returned.
 
 | Parameter | Type  | Description                                                                                                                                                                                    |
 | --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| urls      | array | A string array of URLs to filter the [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext). |
+| urls      | array | A string array of URLs to filter the [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) in the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext). |
 
 ### Returns
 
 | Type  | Description                                                                         |
 | ----- | ----------------------------------------------------------------------------------- |
-| array | A list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie). |
+| array | A list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie). |
 
 {{% admonition type="note" %}}
 
-[Cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) can be added with [BrowserContext.addCookies](/javascript-api/k6-experimental/browser/browsercontext/addcookies/).
+[Cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) can be added with [BrowserContext.addCookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/addcookies/).
 
  {{% /admonition %}}
 

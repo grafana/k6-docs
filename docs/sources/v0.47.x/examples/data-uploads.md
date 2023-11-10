@@ -82,13 +82,13 @@ In the example above we use the [http.file()](https://grafana.com/docs/k6/<K6_VE
 API to wrap the file contents in a [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) object.
 When passing a JS object as the body parameter to [http.post()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post),
 or any of the other HTTP request functions, where one of the property values is a
-[FileData](/javascript-api/k6-http/filedata) a multipart request will be constructed
+[FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) a multipart request will be constructed
 and sent.
 
 ### Relevant k6 APIs
 
-- [open(filePath, [mode])](/javascript-api/init-context/open)
-- [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file)
+- [open(filePath, [mode])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)
+- [http.file(data, [filename], [contentType])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/file)
 
 ## Advanced multipart request
 

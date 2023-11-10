@@ -3,7 +3,6 @@ title: 'S3Client.abortMultipartUpload(bucketName, objectKey, uploadId)'
 head_title: 'S3Client.abortMultipartUpload(bucketName, objectKey, uploadId)'
 slug: 's3client-abortmultipartupload'
 description: 'S3Client.abortMultipartUpload aborts a multipart upload to a bucket'
-excerpt: 'S3Client.abortMultipartUpload aborts a multipart upload to a bucket'
 ---
 
 # S3Client.abortMultipartUpload(bucketName, objectKey, uploadId)

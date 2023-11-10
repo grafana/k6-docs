@@ -8,7 +8,7 @@ weight: 05
 
 With the `constant-arrival-rate` executor, k6 starts a fixed number of iterations over a specified period of time.
 It is an open-model executor, meaning iterations start independently of system response (for details, read
-[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)).
+[Open and Closed models](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
 
 This executor continues to start iterations at the given rate as long as VUs are available.
 The time to execute an iteration can vary with test logic or the system-under-test response time.

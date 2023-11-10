@@ -32,4 +32,4 @@ Waits for the event to fire and passes its value into the predicate function. Re
 
 | Type   | Description                                                  |
 | ------ | ------------------------------------------------------------ |
-| object | [Page](/javascript-api/k6-experimental/browser/page/) object |
+| object | [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object |

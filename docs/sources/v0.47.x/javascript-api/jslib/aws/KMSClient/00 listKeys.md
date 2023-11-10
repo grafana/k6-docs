@@ -14,7 +14,7 @@ excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account 
 
 | Type                                                            | Description                                                                                              |
 | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| Promise<[KMSKey[]](/javascript-api/jslib/aws/kmsclient/kmskey)> | A Promise that fulfills with an array of [`KMSKey`](/javascript-api/jslib/aws/kmsclient/kmskey) objects. |
+| Promise<[KMSKey[]](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey)> | A Promise that fulfills with an array of [`KMSKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey) objects. |
 
 ### Example
 

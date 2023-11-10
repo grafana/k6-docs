@@ -1,5 +1,6 @@
 ---
 title: 'ElementHandle'
+slug: 'elementhandle'
 excerpt: 'Browser module: ElementHandle Class'
 weight: 04
 ---

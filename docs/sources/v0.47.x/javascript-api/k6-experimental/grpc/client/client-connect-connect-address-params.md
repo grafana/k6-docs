@@ -1,5 +1,6 @@
 ---
 title: 'Client.connect(address [,params])'
+slug: 'client-connect'
 excerpt: 'Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown.'
 weight: 20
 ---

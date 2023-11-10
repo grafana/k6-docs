@@ -3,7 +3,6 @@ title: 'S3Client.putObject(bucketName, objectKey, data)'
 head_title: 'S3Client.putObject(bucketName, objectKey, data)'
 slug: 's3client-putobject'
 description: 'S3Client.putObject uploads an object to a bucket'
-excerpt: 'S3Client.putObject uploads an object to a bucket'
 ---
 
 # S3Client.putObject(bucketName, objectKey, data)
