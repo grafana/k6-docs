@@ -2,7 +2,6 @@
 title: Client
 excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
 weight: 10
-weight: 20
 ---
 
 # Client
@@ -12,9 +11,9 @@ weight: 20
 | Method                                                                                                                         | Description                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Client.load(importPaths, ...protoFiles)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-load)    | Loads and parses the given protocol buffer definitions to be made available for RPC requests.                                                   |
-| [Client.loadProtoset(protosetPath)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-load-protoset) | Loads and parses the given protoset file to be made available for RPC requests.                                                                 |
-| [Client.connect(address [,params])](/javascript-api/k6-experimental/grpc/client/client-connect)                                | Opens a connection to the given gRPC server.                                                                                                    |
-| [Client.invoke(url, request [,params])](/javascript-api/k6-experimental/grpc/client/client-invoke)                             | Makes a unary RPC for the given service/method and returns a [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/response). |
+| [Client.loadProtoset(protosetPath)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-loadprotoset) | Loads and parses the given protoset file to be made available for RPC requests.                                                                 |
+| [Client.connect(address [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-connect)                                | Opens a connection to the given gRPC server.                                                                                                    |
+| [Client.invoke(url, request [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-invoke)                             | Makes a unary RPC for the given service/method and returns a [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/response). |
 | [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-close)                            | Close the connection to the gRPC service.                                                                                                       |
 
 ### Examples

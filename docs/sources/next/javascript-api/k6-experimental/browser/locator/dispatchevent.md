@@ -14,7 +14,7 @@ Dispatches HTML DOM event types e.g. `'click'`.
 | type            | string | `''`     | DOM event type e.g. `'click'`.                                                                                                                                                                                                                                |
 | eventInit       | object | `null`   | Optional event specific properties. See [eventInit](#eventinit) for more details.                                                                                                                                                                             |
 | options         | object | `null`   |                                                                                                                                                                                                                                                               |
-| options.timeout | number | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) or [Page](/javascript-api/k6-experimental/browser/page/). |
+| options.timeout | number | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
 

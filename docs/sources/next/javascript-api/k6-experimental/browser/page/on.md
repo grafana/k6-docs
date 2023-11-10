@@ -14,7 +14,7 @@ Registers a handler to be called whenever the specified event occurs.
 
 {{% admonition type="caution" %}}
 
-When using the `page.on` method, the page has to be explicitly [closed](/javascript-api/k6-experimental/browser/page/close/) for the iteration to be able to finish.
+When using the `page.on` method, the page has to be explicitly [closed](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close/) for the iteration to be able to finish.
 
  {{% /admonition %}}
 
@@ -22,7 +22,7 @@ When using the `page.on` method, the page has to be explicitly [closed](/javascr
 
 | Event     | Description                                                                                                                                                                                                                               |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](/javascript-api/k6-experimental/browser/consolemessage) class. |
+| `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/consolemessage) class. |
 
 ### Example
 

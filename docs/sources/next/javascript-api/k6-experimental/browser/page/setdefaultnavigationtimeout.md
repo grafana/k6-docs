@@ -7,10 +7,10 @@ excerpt: 'Browser module: page.setDefaultNavigationTimeout(timeout) method'
 
 This setting will change the navigation timeout for the following methods:
 
-- [page.goto(url, [options])](/javascript-api/k6-experimental/browser/page/goto/)
-- [page.reload([options])](/javascript-api/k6-experimental/browser/page/reload/)
-- [page.setContent(html, [options])](/javascript-api/k6-experimental/browser/page/setcontent/)
-- [page.waitForNavigation([options])](/javascript-api/k6-experimental/browser/page/waitfornavigation/)
+- [page.goto(url, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/goto/)
+- [page.reload([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/reload/)
+- [page.setContent(html, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/setcontent/)
+- [page.waitForNavigation([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/waitfornavigation/)
 
 | Parameter | Type   | Default | Description              |
 | --------- | ------ | ------- | ------------------------ |

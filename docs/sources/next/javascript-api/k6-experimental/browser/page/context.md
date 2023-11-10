@@ -5,13 +5,13 @@ excerpt: 'Browser module: page.context method'
 
 # context()
 
-Gets the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) that the page belongs to.
+Gets the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) that the page belongs to.
 
 ### Returns
 
 | Type                                                                      | Description                                    |
 | ------------------------------------------------------------------------- | ---------------------------------------------- |
-| [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) | The `BrowserContext` that the page belongs to. |
+| [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) | The `BrowserContext` that the page belongs to. |
 
 ### Example
 

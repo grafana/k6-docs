@@ -7,7 +7,7 @@ excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options
 
 {{% admonition type="warning" %}}
 
-Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
+Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
 
  {{% /admonition %}}
 
@@ -22,7 +22,7 @@ Dispatches HTML DOM event types e.g. `'click'`.
 | eventInit       | object  | `null`   | Optional event specific properties. See [eventInit](#eventinit) for more details.                                                                                                                                                                             |
 | options         | object  | `null`   |                                                                                                                                                                                                                                                               |
 | options.strict  | boolean | `false`  | When `true`, the call requires selector to resolve to a single element. If given selector resolves to more than one element, the call throws an exception.                                                                                                    |
-| options.timeout | number  | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) or [Page](/javascript-api/k6-experimental/browser/page/). |
+| options.timeout | number  | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
 

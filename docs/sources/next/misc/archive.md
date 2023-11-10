@@ -29,7 +29,7 @@ $ k6 run script.js
 
 Now if you replace `run` with `archive` k6 will run the [init stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) of
 the code to determine which JS files are being imported and what data files are being
-[`open()`](/javascript-api/init-context/open)'ed and bundles all of the files up
+[`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed and bundles all of the files up
 into a tar file:
 
 {{< code >}}

@@ -11,7 +11,7 @@ Returns the page that opened the current page. The first page that is navigated 
 
 | Type                                                          | Description                                   |
 | ------------------------------------------------------------- | --------------------------------------------- |
-| null or [Page](/javascript-api/k6-experimental/browser/page/) | The `Page` instance. Else, it returns `null`. |
+| null or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) | The `Page` instance. Else, it returns `null`. |
 
 ### Example
 

@@ -16,7 +16,7 @@ Mimics [jquery.has](https://api.jquery.com/has/).
 
 | Type                                           | Description  |
 | ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection. |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

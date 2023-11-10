@@ -38,4 +38,4 @@ export default function () {
 
 {{< /code >}}
 
-- See also [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send)
+- See also [Socket.send(data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-send)

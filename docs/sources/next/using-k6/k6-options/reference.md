@@ -101,7 +101,7 @@ $ k6 run --address "localhost:3000" script.js
 ## Batch
 
 The maximum number of simultaneous/parallel connections in total that an
-[`http.batch()`](/javascript-api/k6-http/batch) call in a VU can make. If you have a
+[`http.batch()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch) call in a VU can make. If you have a
 `batch()` call that you've given 20 URLs to and `--batch` is set to 15, then the VU will make 15
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
 done and a slot opens. Available in both the `k6 run` and the `k6 cloud` commands
@@ -123,7 +123,7 @@ export const options = {
 ## Batch per host
 
 The maximum number of simultaneous/parallel connections for the same hostname that an
-[`http.batch()`](/javascript-api/k6-http/batch) call in a VU can make. If you have a
+[`http.batch()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch) call in a VU can make. If you have a
 `batch()` call that you've given 20 URLs to the _same_ hostname and `--batch-per-host` is set to 5, then the VU will make 5
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
 done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
@@ -251,7 +251,7 @@ $ k6 run --console-output "loadtest.log" script.js
 ## Discard response bodies
 
 Specify if response bodies should be discarded by changing the default value of
-[responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
+[responseType](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
 to `true` and then only for the requests where the response body is needed for scripting
 to set [responseType](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
 required and the amount of GC - reducing the load on the testing machine, and probably producing
