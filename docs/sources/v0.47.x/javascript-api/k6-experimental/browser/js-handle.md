@@ -1,6 +1,7 @@
 ---
 title: 'JSHandle'
-excerpt: 'Browser module: JSHandle Class'
+slug: 'jshandle'
+description: 'Browser module: JSHandle Class'
 weight: 06
 ---
 

@@ -5,13 +5,13 @@ excerpt: 'Parses response as HTML and populate a Selection.'
 
 # Response.html()
 
-Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selection) object.
+Parses response as HTML and populate a [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) object.
 
 ### Returns
 
 | Type                                           | Description        |
 | ---------------------------------------------- | ------------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection object |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection object |
 
 ### Example
 

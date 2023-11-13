@@ -11,7 +11,7 @@ Invokes an unary RPC request to the given method.
 The given method to invoke must have its RPC schema previously loaded via the [Client.load()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-load) function, otherwise an
 error will be thrown.
 
-[Client.connect()](/javascript-api/k6-experimental/grpc/client/client-connect) must be called first before invoking a request, otherwise an error will be thrown.
+[Client.connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-connect) must be called first before invoking a request, otherwise an error will be thrown.
 
 | Parameter         | Type   | Description                                                                                                                                                                 |
 | ----------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

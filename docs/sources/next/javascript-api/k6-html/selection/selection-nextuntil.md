@@ -10,14 +10,14 @@ Mimics [jquery.nextUntil](https://api.jquery.com/nextUntil/)
 
 | Parameter           | Type                                                               | Description                                                |
 | ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
-| selector (optional) | string \| [Selection](/javascript-api/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
+| selector (optional) | string \| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
 | filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
 
 ### Returns
 
 | Type                                           | Description  |
 | ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection. |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

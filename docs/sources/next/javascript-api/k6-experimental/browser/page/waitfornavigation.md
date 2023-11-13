@@ -12,7 +12,7 @@ Waits for the given navigation lifecycle event to occur and returns the main res
 | Parameter         | Type   | Default | Description                                                                                                                                                                                                                                                   |
 | ----------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | options           | object | `null`  |                                                                                                                                                                                                                                                               |
-| options.timeout   | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) or [Page](/javascript-api/k6-experimental/browser/page/). |
+| options.timeout   | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 | options.waitUntil | string | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                         |
 
 </TableWithNestedRows>
@@ -35,7 +35,7 @@ Events can be either:
 
 | Type                                                                           | Description                                                               |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| Promise<null \| [Response](/javascript-api/k6-experimental/browser/response/)> | The `Response` instance associated with the page. Else, it returns `null` |
+| Promise<null \| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/)> | The `Response` instance associated with the page. Else, it returns `null` |
 
 ### Example
 

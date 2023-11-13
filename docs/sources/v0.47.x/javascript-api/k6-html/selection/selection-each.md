@@ -5,7 +5,7 @@ excerpt: 'Iterate over a Selection, executing a function for each matched elemen
 
 # Selection.each(fn)
 
-Iterate over a [Selection](/javascript-api/k6-html/selection), executing a function for each matched element.
+Iterate over a [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection), executing a function for each matched element.
 Mimics [jquery.each](https://api.jquery.com/each/)
 
 | Parameter | Type     | Description                                               |

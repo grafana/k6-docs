@@ -5,17 +5,17 @@ excerpt: 'Browser module: newPage method'
 
 # newPage([options])
 
-Creates and returns a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) if a `BrowserContext` hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If a `BrowserContext` has already been initialized an error is thrown.
+Creates and returns a new [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) if a `BrowserContext` hasn't already been initialized for the [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser). If a `BrowserContext` has already been initialized an error is thrown.
 
 {{% admonition type="note" %}}
 
-A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [retrieved](/javascript-api/k6-experimental/browser/context) and [close](/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
+A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [retrieved](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/context) and [close](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
 
  {{% /admonition %}}
 
 {{% admonition type="caution" %}}
 
-Pages that have been opened ought to be closed using [`Page.close`](/javascript-api/k6-experimental/browser/page/close/). Pages left open could potentially distort the results of Web Vital metrics.
+Pages that have been opened ought to be closed using [`Page.close`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close/). Pages left open could potentially distort the results of Web Vital metrics.
 
  {{% /admonition %}}
 
@@ -41,8 +41,8 @@ Pages that have been opened ought to be closed using [`Page.close`](/javascript-
 | options.javaScriptEnabled                   | boolean | `true`                           | Whether to activate JavaScript support for the context.                                                                                                                                                                                          |
 | options.locale                              | string  | system                           | Specifies the user's locale, such as `'en-US'`, `'tr-TR'`, etc.                                                                                                                                                                                  |
 | options.offline                             | boolean | `false`                          | Whether to emulate an offline network.                                                                                                                                                                                                           |
-| options.permissions                         | Array   | `null`                           | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](/javascript-api/k6-experimental/browser/browsercontext/#browsercontext-grantpermissions-permissions-options) for the options.                              |
-| options.reducedMotion                       | string  | `'no-preference'`                | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](/javascript-api/k6-experimental/browser/page/emulatemedia) for the options. |
+| options.permissions                         | Array   | `null`                           | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/grantpermissions) for the options.                              |
+| options.reducedMotion                       | string  | `'no-preference'`                | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/emulatemedia) for the options. |
 | options.screen                              | object  | `{'width': 1280, 'height': 720}` | Sets a window screen size for all pages in the context. It can only be used when the viewport is set.                                                                                                                                            |
 | options.screen.width                        | number  | `1280`                           | Page width in pixels.                                                                                                                                                                                                                            |
 | options.screen.height                       | number  | `720`                            | Page height in pixels.                                                                                                                                                                                                                           |
@@ -58,7 +58,7 @@ Pages that have been opened ought to be closed using [`Page.close`](/javascript-
 
 | Type   | Description                                                  |
 | ------ | ------------------------------------------------------------ |
-| object | [Page](/javascript-api/k6-experimental/browser/page/) object |
+| object | [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object |
 
 ### deviceScaleFactor example
 

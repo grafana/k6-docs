@@ -3,7 +3,6 @@ title: 'S3Client.getObject(bucketName, objectKey)'
 head_title: 'S3Client.getObject(bucketName, objectKey)'
 slug: 's3client-getobject'
 description: 'S3Client.getObject downloads an object from a bucket'
-excerpt: 'S3Client.getObject downloads an object from a bucket'
 ---
 
 # S3Client.getObject(bucketName, objectKey)
@@ -21,7 +20,7 @@ excerpt: 'S3Client.getObject downloads an object from a bucket'
 
 | Type                                                         | Description                                                                                                                        |
 | :----------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| Promise<[Object](/javascript-api/jslib/aws/s3client/object)> | A Promise that fulfills with an [Object](/javascript-api/jslib/aws/s3client/object) describing and holding the downloaded content. |
+| Promise<[Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object)> | A Promise that fulfills with an [Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object) describing and holding the downloaded content. |
 
 ### Example
 

@@ -1,8 +1,8 @@
 ---
 title: 'SystemsManagerParameter'
 head_title: 'SystemsManagerParameter'
+slug: 'systemsmanagerparameter'
 description: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query parameters'
-excerpt: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query KMS parameters'
 ---
 
 # SystemsManagerParameter

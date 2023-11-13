@@ -5,9 +5,9 @@ excerpt: 'Browser module: page.evaluateHandle(pageFunction[, arg]) method'
 
 # evaluateHandle(pageFunction[, arg])
 
-Returns the value of the `pageFunction` invocation as a [JSHandle](/javascript-api/k6-experimental/browser/jshandle/).
+Returns the value of the `pageFunction` invocation as a [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/).
 
-The only difference between `page.evaluate()` and `page.evaluateHandle()` is that `page.evaluateHandle()` returns [JSHandle](/javascript-api/k6-experimental/browser/jshandle/).
+The only difference between `page.evaluate()` and `page.evaluateHandle()` is that `page.evaluateHandle()` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/).
 
 <TableWithNestedRows>
 
@@ -22,7 +22,7 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 
 | Type                                                          | Description                                       |
 | ------------------------------------------------------------- | ------------------------------------------------- |
-| [JSHandle](/javascript-api/k6-experimental/browser/jshandle/) | The `JSHandle` instance associated with the page. |
+| [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/) | The `JSHandle` instance associated with the page. |
 
 ### Example
 

@@ -1,6 +1,5 @@
 ---
 title: 'Open and closed models'
-slug: '/using-k6/scenarios/concepts/open-vs-closed/'
 excerpt: 'k6 has two ways to schedule VUs, which can affect test results. k6 implements the open model in its arrival-rate executors.'
 weight: 00
 ---
@@ -90,7 +89,7 @@ This reduces the influence of the target system's response time.
 ![Arrival rate closed/open models](/media/docs/k6-oss/arrival-rate-open-closed-model.png)
 
 k6 implements the open model with two _arrival rate_ executors:
-[constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate):
+[constant-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate):
 
 {{< code >}}
 

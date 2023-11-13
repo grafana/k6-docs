@@ -15,7 +15,7 @@ Returns when the `pageFunction` returns a truthy value.
 | arg             | string          | `''`    | Optional argument to pass to `pageFunction`                                                                                                                                                                                                                   |
 | options         | object          | `null`  |                                                                                                                                                                                                                                                               |
 | options.polling | number or `raf` | `raf`   | If `polling` is `'raf'`, then `pageFunction` is constantly executed in `requestAnimationFrame` callback. If `polling` is a number, then it is treated as an interval in milliseconds at which the function would be executed.                                 |
-| options.timeout | number          | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) or [Page](/javascript-api/k6-experimental/browser/page/). |
+| options.timeout | number          | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
 
@@ -23,7 +23,7 @@ Returns when the `pageFunction` returns a truthy value.
 
 | Type                                                                   | Description                                       |
 | ---------------------------------------------------------------------- | ------------------------------------------------- |
-| Promise<[JSHandle](/javascript-api/k6-experimental/browser/jshandle/)> | The `JSHandle` instance associated with the page. |
+| Promise<[JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/)> | The `JSHandle` instance associated with the page. |
 
 ### Example
 

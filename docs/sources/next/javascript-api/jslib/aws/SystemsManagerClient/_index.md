@@ -2,7 +2,6 @@
 title: 'SystemsManagerClient'
 head_title: 'SystemsManagerClient'
 description: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
-excerpt: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
 weight: 00
 ---
 
@@ -18,7 +17,7 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 | Function                                                                                                                  | Description                                        |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
-| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/00 getParameter) | Retrieves a parameter from Amazon Systems Manager. |
+| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerclient-getparameter) | Retrieves a parameter from Amazon Systems Manager. |
 
 ### Throws
 

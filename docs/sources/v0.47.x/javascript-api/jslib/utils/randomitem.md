@@ -1,7 +1,6 @@
 ---
 title: 'randomItem(array)'
 description: 'Random item from an array'
-excerpt: 'Random item from an array'
 weight: 42
 ---
 

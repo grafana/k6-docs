@@ -1,7 +1,6 @@
 ---
 title: 'uuidv4()'
 description: 'uuid v4 function'
-excerpt: 'uuid v4 function'
 weight: 44
 ---
 

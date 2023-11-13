@@ -16,7 +16,7 @@ Mimics [jquery.closest](https://api.jquery.com/closest/)
 
 | Type                                           | Description |
 | ---------------------------------------------- | ----------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection.  |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | Selection.  |
 
 ### Example
 

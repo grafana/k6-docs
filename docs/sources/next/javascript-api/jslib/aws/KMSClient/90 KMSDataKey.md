@@ -1,15 +1,15 @@
 ---
 title: 'KMSDataKey'
+slug: 'kmsdatakey'
 head_title: 'KMSDataKey'
 description: 'KMSDataKey is returned by the KMSClient.*DataKey methods that query KMS data keys'
-excerpt: 'KMSDataKey is returned by the KMSClient.*DataKey methods that query KMS data keys'
 ---
 
 # KMSDataKey
 
 `KMSClient.*DataKey` methods, querying Key Management Service data keys, return some KMSDataKey instances.
 The KMSDataKey object describes an Amazon Key Management Service data key.
-For instance, the [`generateDataKey`](/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/) returns the generated KMSDataKey object.
+For instance, the [`generateDataKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/) returns the generated KMSDataKey object.
 
 | Name                        | Type   | Description                                                                                                                     |
 | :-------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------ |

@@ -69,7 +69,7 @@ export function news() {
 
 The previous example sets tags on individual HTTP request metrics.
 But, you can also set tags per scenario, which applies them to other
-[taggable](/using-k6/tags-and-groups#tags) objects as well.
+[taggable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) objects as well.
 
 {{< code >}}
 

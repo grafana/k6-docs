@@ -1,6 +1,5 @@
 ---
 title: 'Redis options'
-slug: '/javascript-api/k6-experimental/redis/redis-options/'
 excerpt: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
 weight: 20
 ---

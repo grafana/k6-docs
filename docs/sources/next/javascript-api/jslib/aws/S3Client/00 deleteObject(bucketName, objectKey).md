@@ -3,7 +3,6 @@ title: 'S3Client.deleteObject(bucketName, objectKey)'
 head_title: 'S3Client.deleteObject(bucketName, objectKey)'
 slug: 's3client-deleteobject'
 description: 'S3Client.deleteObject deletes an object from a bucket'
-excerpt: 'S3Client.deleteObject deletes an object from a bucket'
 ---
 
 # S3Client.deleteObject(bucketName, objectKey)

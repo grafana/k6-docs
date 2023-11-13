@@ -12,7 +12,7 @@ Mimics [jquery.contents](https://api.jquery.com/contents/).
 
 | Type                                           | Description |
 | ---------------------------------------------- | ----------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection.  |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | Selection.  |
 
 ### Example
 

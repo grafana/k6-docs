@@ -3,7 +3,6 @@ title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noReco
 head_title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})'
 slug: 'secretsmanagerclient-deletesecret'
 description: 'SecretsManagerClient.deleteSecret deletes a secret'
-excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 ---
 
 # SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})

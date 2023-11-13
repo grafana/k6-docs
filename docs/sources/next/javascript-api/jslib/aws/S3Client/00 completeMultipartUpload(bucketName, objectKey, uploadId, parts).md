@@ -3,7 +3,6 @@ title: 'S3Client.completeMultipartUpload(bucketName, objectKey, uploadId, parts)
 head_title: 'S3Client.completeMultipartUpload(bucketName, objectKey, uploadId, parts)'
 slug: 's3client-completemultipartupload'
 description: 'S3Client.completeMultipartUpload uploads a multipar object to a bucket'
-excerpt: 'S3Client.completeMultipartUpload uploads a multipart object to a bucket'
 ---
 
 # S3Client.completeMultipartUpload(bucketName, objectKey, uploadId, parts)
@@ -17,7 +16,7 @@ excerpt: 'S3Client.completeMultipartUpload uploads a multipart object to a bucke
 | bucketName | string                                                         | Name of the bucket to delete the object to.                            |
 | objectKey  | string                                                         | Name of the uploaded object.                                           |
 | uploadId   | number                                                         | UploadId of the multipart upload to complete.                          |
-| parts      | Array<[S3Part](/javascript-api/jslib/aws/s3client/s3part)>     | The [S3Part](/javascript-api/jslib/aws/s3client/s3part)s to assemble.  |
+| parts      | Array<[S3Part](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3part)>     | The [S3Part](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3part)s to assemble.  |
 
 ### Returns
 

@@ -3,7 +3,6 @@ title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 head_title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 slug: 's3client-createmultipartupload'
 description: 'S3Client.createMultipartUpload creates a multipart upload for an object key to a bucket'
-excerpt: 'S3Client.createMultipartUpload creates a multipart upload to a bucket'
 ---
 
 # S3Client.createMultipartUpload(bucketName, objectKey)
@@ -19,7 +18,7 @@ excerpt: 'S3Client.createMultipartUpload creates a multipart upload to a bucket'
 
 | Type                                                                     | Description                                                                                                       |
 | :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| Promise<[S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload)> | A Promise that fulfills with a [S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
+| Promise<[S3MultipartUpload](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3multipartupload)> | A Promise that fulfills with a [S3MultipartUpload](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
 
 ### Example
 

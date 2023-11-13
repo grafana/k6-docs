@@ -8,7 +8,7 @@ weight: 07
 
 Scripting example on how to handle HTML forms.
 
-In many cases using the [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) API (jQuery API clone) to interact with HTML data is enough, but for some use cases, like with forms, we can make things easier providing a higher-level API like the [Response.submitForm( [params] )](/javascript-api/k6-http/response/response-submitform) API.
+In many cases using the [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) API (jQuery API clone) to interact with HTML data is enough, but for some use cases, like with forms, we can make things easier providing a higher-level API like the [Response.submitForm( [params] )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response/response-submitform) API.
 
 {{< code >}}
 
@@ -33,7 +33,7 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform)
+- [Response.submitForm([params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response/response-submitform)
 - [Selection.find(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-find)
   (the [jQuery Selector API](http://api.jquery.com/category/selectors/) docs are also a good
   resource on what possible selector queries can be made)

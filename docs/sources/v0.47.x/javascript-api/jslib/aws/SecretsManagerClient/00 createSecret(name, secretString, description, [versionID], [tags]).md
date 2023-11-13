@@ -3,7 +3,6 @@ title: 'SecretsManagerClient.createSecret(name, secretString, description, [vers
 head_title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
 slug: 'secretsmanagerclient-createsecret'
 description: 'SecretsManagerClient.createSecret creates a new secret'
-excerpt: 'SecretsManagerClient.createSecret creates a new secret'
 ---
 
 # SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])
@@ -24,7 +23,7 @@ excerpt: 'SecretsManagerClient.createSecret creates a new secret'
 
 | Type     | Description                                                                                                                                            |
 | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Promise<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) object that contains the details of the created secret. |
+| Promise<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret) object that contains the details of the created secret. |
 
 ### Example
 

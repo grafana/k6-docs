@@ -148,7 +148,7 @@ The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF 
 To run your load test correctly, you may need to replace some recorded data with dynamic data that k6 gets from previous requests.
 For example, tokens expire quickly, and they are one of the most common things that users will correlate from a recorded session.
 
-[Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
+[Here](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
 
 ## 4. Run the test
 

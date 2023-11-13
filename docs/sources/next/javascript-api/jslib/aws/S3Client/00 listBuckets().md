@@ -3,7 +3,6 @@ title: 'S3Client.listBuckets()'
 head_title: 'S3Client.listBuckets()'
 slug: 's3client-listbuckets'
 description: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
-excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
 ---
 
 # S3Client.listBuckets()
@@ -14,7 +13,7 @@ excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has acce
 
 | Type                                                                | Description                                                                                           |
 | :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
-| Promise<Array<[Bucket](/javascript-api/jslib/aws/s3client/bucket)>> | A Promise that fulfills with an array of [Bucket](/javascript-api/jslib/aws/s3client/bucket) objects. |
+| Promise<Array<[Bucket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/bucket)>> | A Promise that fulfills with an array of [Bucket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/bucket) objects. |
 
 ### Example
 

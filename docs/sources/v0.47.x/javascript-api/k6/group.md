@@ -62,4 +62,4 @@ export default function () {
 
 The above code will present the results separately depending on the group execution.
 
-Learn more on [Groups and Tags](/using-k6/tags-and-groups).
+Learn more on [Groups and Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).

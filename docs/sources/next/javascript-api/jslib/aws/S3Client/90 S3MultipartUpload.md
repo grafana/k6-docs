@@ -1,13 +1,13 @@
 ---
 title: 'S3MultipartUpload'
 head_title: 'S3MultipartUpload'
+slug: 's3multipartupload'
 description: 'S3MultipartUpload is returned by the S3Client.createMultipartUpload method when creating a multipart upload.'
-excerpt: 'S3MultipartUpload is returned by the S3Client.createMultipartUpload method when creating a multipart upload.'
 ---
 
 # S3MultipartUpload
 
-S3MultipartUpload is returned by the [`createMultipartUpload(bucketName, objectKey)`](/javascript-api/jslib/aws/s3client/s3client-createmultipartupload/) method when creating a [multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html).
+S3MultipartUpload is returned by the [`createMultipartUpload(bucketName, objectKey)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-createmultipartupload/) method when creating a [multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html).
 
 | Name                            | Type   | Description                    |
 | :------------------------------ | :----- | :----------------------------- |

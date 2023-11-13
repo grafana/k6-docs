@@ -3,7 +3,6 @@ title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 head_title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 slug: 's3client-uploadpart'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
-excerpt: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 ---
 
 # S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)
@@ -22,7 +21,7 @@ excerpt: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 
 | Type                                                         | Description                                                                                                       |
 | :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| Promise<[S3Part](/javascript-api/jslib/aws/s3client/s3part)> | A Promise that fulfills with a [S3Part](/javascript-api/jslib/aws/s3client/s3part) representing a S3 Part Upload. |
+| Promise<[S3Part](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3part)> | A Promise that fulfills with a [S3Part](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3part) representing a S3 Part Upload. |
 
 ### Example
 

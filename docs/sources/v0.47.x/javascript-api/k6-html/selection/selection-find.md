@@ -5,7 +5,7 @@ excerpt: 'Find the selection descendants, filtered by a selector.'
 
 # Selection.find(selector)
 
-Find the selection descendants, filtered by a selector. It returns a [Selection](/javascript-api/k6-html/selection) object.
+Find the selection descendants, filtered by a selector. It returns a [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) object.
 Mimics [jquery.find](https://api.jquery.com/find/)
 
 | Parameter | Type   | Description                                                          |
@@ -16,7 +16,7 @@ Mimics [jquery.find](https://api.jquery.com/find/)
 
 | Type                                           | Description       |
 | ---------------------------------------------- | ----------------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection object. |
+| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | Selection object. |
 
 ### Example
 

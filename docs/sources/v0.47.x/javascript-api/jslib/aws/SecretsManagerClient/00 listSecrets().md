@@ -3,7 +3,6 @@ title: 'SecretsManagerClient.listSecrets()'
 head_title: 'SecretsManagerClient.listSecrets()'
 slug: 'secretsmanagerclient-listsecrets'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
-excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 ---
 
 # SecretsManagerClient.listSecrets()
@@ -14,7 +13,7 @@ excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated u
 
 | Type                                                                   | Description                                                                          |
 | :--------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| Promise<Array<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)>> | A Promise that fulfills with an array of [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
+| Promise<Array<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)>> | A Promise that fulfills with an array of [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
 
 ### Example
 

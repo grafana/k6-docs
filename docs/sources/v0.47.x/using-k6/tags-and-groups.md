@@ -126,7 +126,7 @@ In the case, a user-defined tag with advanced logic for handling which tag to se
 
 To support advanced tagging workflows, it is also possible to directly set and get them from scripts' code.
 
-[k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
+[k6/execution.vu.tags](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
 ```javascript
 import http from 'k6/http';

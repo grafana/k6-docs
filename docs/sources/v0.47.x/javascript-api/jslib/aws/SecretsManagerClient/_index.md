@@ -2,7 +2,6 @@
 title: 'SecretsManagerClient'
 head_title: 'SecretsManagerClient'
 description: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
-excerpt: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 weight: 00
 ---
 
@@ -18,11 +17,11 @@ With it, you can perform several operations such as listing, creating and downlo
 
 | Function                                                                                                                                                                       | Description                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| [listSecrets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 listSecrets())                                                      | List secrets owned by the authenticated user |
-| [getSecret(secretID)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 getSecret(secretID))                                                  | Download a secret                            |
-| [createSecret(name, secretString, description, [versionID], [tags])](/javascript-api/jslib/aws/secretsmanagerclient/00 createSecret(name, secretString, description, [versionID], [tags])/)                        | Create a new secret                          |
-| [putSecretValue(secretID, secretString, [versionID])](/javascript-api/jslib/aws/secretsmanagerclient/00 putSecretValue(secretID, secretString, [versionID])/)                                     | Update a secret                              |
-| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/00 deleteSecret) | Delete a secret                              |
+| [listSecrets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets)                                                      | List secrets owned by the authenticated user |
+| [getSecret(secretID)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret)                                                  | Download a secret                            |
+| [createSecret(name, secretString, description, [versionID], [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret)                        | Create a new secret                          |
+| [putSecretValue(secretID, secretString, [versionID])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue)                                     | Update a secret                              |
+| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret) | Delete a secret                              |
 
 ### Throws
 

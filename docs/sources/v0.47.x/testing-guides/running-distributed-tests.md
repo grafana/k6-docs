@@ -332,7 +332,7 @@ export function setup() {
 
 ### Change command-line arguments
 
-[k6 options](/using-k6/k6-options/) can be specified in many ways, one being the command-line.
+[k6 options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/) can be specified in many ways, one being the command-line.
 Specifying options via command-line can still be accomplished when using the operator as shown with the following example:
 
 {{< code >}}

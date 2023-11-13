@@ -21,7 +21,7 @@ excerpt: 'KMSClient.generateDataKey generates a symmetric data key for use outsi
 
 | Type                                                                  | Description                                                                                     |
 | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
-| Promise<[KMSDataKey](/javascript-api/jslib/aws/kmsclient/kmsdatakey)> | A Promise that fulfills with a [KMSDataKey](/javascript-api/jslib/aws/kmsclient/kmskey) object. |
+| Promise<[KMSDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsdatakey)> | A Promise that fulfills with a [KMSDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey) object. |
 
 ### Example
 

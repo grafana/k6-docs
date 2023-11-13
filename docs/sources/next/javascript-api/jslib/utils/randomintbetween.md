@@ -1,7 +1,6 @@
 ---
 title: 'randomIntBetween(min, max)'
 description: 'Random integer'
-excerpt: 'Random integer'
 weight: 41
 ---
 

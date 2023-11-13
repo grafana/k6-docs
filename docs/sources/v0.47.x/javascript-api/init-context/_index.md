@@ -12,4 +12,4 @@ For details about the runtime, refer to the [Test lifecycle](https://grafana.com
 
 | Function                                                      | Description                                          |
 | ------------------------------------------------------------- | ---------------------------------------------------- |
-| [open( filePath, [mode] )](/javascript-api/init-context/open) | Opens a file and reads all the contents into memory. |
+| [open( filePath, [mode] )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open) | Opens a file and reads all the contents into memory. |

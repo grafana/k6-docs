@@ -15,7 +15,7 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 
 | Method                                                                       | Description                        |
 | ---------------------------------------------------------------------------- | ---------------------------------- |
-| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter/counter-add) | Add a value to the counter metric. |
+| [Counter.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter/counter-add) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
 

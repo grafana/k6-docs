@@ -66,7 +66,7 @@ Once the breakpoint runs and the system limits have been identified, you can rep
 The breakpoint test is straightforward. Load slowly ramps up to a considerably high level.
 It has no plateau, ramp-down, or other steps. And it generally fails before reaching the indicated point.
 
-k6 offers two ways to increase the activity: increasing VUs or increasing throughput [open and closed models](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
+k6 offers two ways to increase the activity: increasing VUs or increasing throughput ([open and closed models](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed)).
 Different from other load test types, which should be stopped when the system degrades to a certain point, breakpoint load increases even as the system starts to degrade.
 That makes it recommendable to use [ramping-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate) for a breakpoint test.
 

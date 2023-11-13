@@ -2,7 +2,6 @@
 title: 'Gauge'
 excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 weight: 71
-weight: 71
 ---
 
 # Gauge
@@ -16,7 +15,7 @@ _Gauge_ is an object for representing a custom metric holding only the latest va
 
 | Method                                                                 | Description                                                                |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Gauge.add(value, [tags])](/javascript-api/k6-metrics/gauge/gauge-add) | Add a value to the gauge metric. Only the latest value added will be kept. |
+| [Gauge.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge/gauge-add) | Add a value to the gauge metric. Only the latest value added will be kept. |
 
 ## Gauge usage in Thresholds
 

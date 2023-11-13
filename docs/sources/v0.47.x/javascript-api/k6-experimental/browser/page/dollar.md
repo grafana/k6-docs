@@ -1,6 +1,6 @@
 ---
 title: 'page.$(selector)'
-slug: '/page-$'
+slug: 'page-dollar'
 excerpt: 'Browser module: page.$(selector) method'
 ---
 
@@ -8,17 +8,17 @@ excerpt: 'Browser module: page.$(selector) method'
 
 {{% admonition type="warning" %}}
 
-Use locator-based [`page.locator(selector)`](/javascript-api/k6-experimental/browser/page/locator/) instead.
+Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/locator/) instead.
 
  {{% /admonition %}}
 
-The method finds an element matching the specified selector within the page. If no elements match the selector, the return value resolves to `null`. To wait for an element on the page, use [locator.waitFor([options])](/javascript-api/k6-experimental/browser/locator/waitfor/).
+The method finds an element matching the specified selector within the page. If no elements match the selector, the return value resolves to `null`. To wait for an element on the page, use [locator.waitFor([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/waitfor/).
 
 ### Returns
 
 | Type                                                                            | Description                                                                        |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| null \| [ElementHandle](/javascript-api/k6-experimental/browser/elementhandle/) | Returns `ElementHandle` when a matching element is found. Else, it returns `null`. |
+| null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/) | Returns `ElementHandle` when a matching element is found. Else, it returns `null`. |
 
 ### Example
 

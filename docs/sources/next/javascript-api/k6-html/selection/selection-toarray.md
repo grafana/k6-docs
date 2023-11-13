@@ -12,7 +12,7 @@ Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
 | Type                                                    | Description                 |
 | ------------------------------------------------------- | --------------------------- |
-| Array of [Selection](/javascript-api/k6-html/selection) | Array of Selection objects. |
+| Array of [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | Array of Selection objects. |
 
 ### Example
 

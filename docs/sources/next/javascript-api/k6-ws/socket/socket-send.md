@@ -34,4 +34,4 @@ export default function () {
 
 {{< /code >}}
 
-- See also [Socket.sendBinary(data)](/javascript-api/k6-ws/socket/socket-sendbinary)
+- See also [Socket.sendBinary(data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-sendbinary)

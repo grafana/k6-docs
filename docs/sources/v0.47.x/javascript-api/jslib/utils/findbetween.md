@@ -1,7 +1,6 @@
 ---
 title: 'findBetween(content, left, right, [repeat])'
 description: 'findBetween function'
-excerpt: 'findBetween function'
 weight: 45
 ---
 

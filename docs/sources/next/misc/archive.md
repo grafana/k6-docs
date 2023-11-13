@@ -29,7 +29,7 @@ $ k6 run script.js
 
 Now if you replace `run` with `archive` k6 will run the [init stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) of
 the code to determine which JS files are being imported and what data files are being
-[`open()`](/javascript-api/init-context/open)'ed and bundles all of the files up
+[`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed and bundles all of the files up
 into a tar file:
 
 {{< code >}}
@@ -162,7 +162,7 @@ Breaking down the file structure we get:
 **files** contains the full original directory tree of all [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
 
 **metadata.json** The resolved "default" options for this test based on [CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
-[Environment variables](/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
+[Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 

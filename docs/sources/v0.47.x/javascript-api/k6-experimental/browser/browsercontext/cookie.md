@@ -5,7 +5,7 @@ excerpt: 'Browser module: Cookie Class'
 
 # Cookie
 
-Cookie class represents a cookie in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext).
+Cookie class represents a cookie in the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext).
 
 See the [HTTP Cookies documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) on the Mozilla website for more details about cookies.
 

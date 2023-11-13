@@ -16,7 +16,8 @@ You can as also specify which cipher suites are allowed for that connection.
 ## Limiting SSL/TLS version
 
 To limit the k6 to a specific SSL/TLS version, use a global
-[configuration option](/using-k6/options):
+[configuration option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/options):
+
 {{< code >}}
 
 ```javascript
@@ -67,7 +68,7 @@ Here's the list of available SSL/TLS versions that you can choose from, ordered 
 ## Limiting cipher suites
 
 To limit the cipher suites that k6 is allowed to use, there's a global
-[configuration option](/using-k6/options).
+[configuration option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/options).
 You choose a list of allowed ciphers:
 
 {{< code >}}
