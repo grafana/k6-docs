@@ -19,7 +19,7 @@ cascade:
   github_repo: https://github.com/grafana/k6-docs/
   github_branch: main
   github_dir: /docs/sources
-  replace_dir: docs/k6/[^/]+?/
+  replace_dir: docs/k6/
 versioned: true
 versioned_next: true
 ---
