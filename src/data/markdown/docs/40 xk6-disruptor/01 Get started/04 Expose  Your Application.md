@@ -29,7 +29,10 @@ Until this issue is solved in `kubectl`, tests using port forwarding to access a
 
 The simplest way to accomplish this is to ensure the scenario that executes the load (#2) starts after the scenario that injects the faults (#1):
 
+<CodeGroup labels={["port forwarding options"]}>
+
 ```javascript
+export const options = {
     scenarios: {
         disrupt: {   // #1 inject faults
             executor: 'shared-iterations',
@@ -47,8 +50,11 @@ The simplest way to accomplish this is to ensure the scenario that executes the 
             startTime: '20s',  // give time for the agents to be installed
             duration: "30s",
         }
-     }
- ```
+    }
+}
+```
+
+</CodeGroup>
 
 ## As a LoadBalancer service
 
