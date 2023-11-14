@@ -1,35 +1,70 @@
 ---
 title: 'waitForEvent(event[, optionsOrPredicate])'
-excerpt: 'Waits for event to fire and passes its value into the predicate function.'
+excerpt: 'Waits for event to fire and returns its value.'
 ---
 
-# waitForEvent(event[, optionsOrPredicate])
-
-{{% admonition type="caution" %}}
-
-This method is a work in progress.
-It requires async functionality and returning a `Promise` to be useful in scripts.
-Refer to <a href="https://github.com/grafana/xk6-browser/issues/447">#447</a> for details.
-
-Consider using the sync methods `Page.waitForNavigation()` and `Page.waitForSelector()` instead.
-
- {{% /admonition %}}
-
-Waits for the event to fire and passes its value into the predicate function. Returns the event data value when the predicate returns `true`.
+Waits for the event to fire and returns its value. If a predicate function has been set it will pass the value to the predicate function, which must return `true` for the promise to resolve.
 
 <TableWithNestedRows>
 
-| Parameter                    | Type             | Default | Description                                                                                                                                        |
-| ---------------------------- | ---------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| event                        | string           | `null`  | Name of event to wait for. **NOTE**: Currently this argument is disregarded, and `waitForEvent` will always wait for `'close'` or `'page'` events. |
-| optionsOrPredicate           | function\|object | `null`  | Optional. If it's a function, the `'page'` event data will be passed to it and it must return `true` to continue.                                  |
-| optionsOrPredicate.predicate | function         | `null`  | Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue.        |
-| optionsOrPredicate.timeout   | number           | `30000` | Maximum time to wait in milliseconds. Pass `0` to disable timeout.                                                                                 |
+| Parameter                    | Type             | Default | Description                                                                                                                                           |
+|------------------------------|------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| event                        | string           | `null`  | Name of event to wait for. Currently the `'page'` event is the only one that is supported.                                                            |
+| optionsOrPredicate           | function\|object | `null`  | Optional. If it's a function, the `'page'` event data will be passed to it and it must return `true` to continue.                                     |
+| optionsOrPredicate.predicate | function         | `null`  | Optional. Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue. |
+| optionsOrPredicate.timeout   | number           | `30000` | Optional. Maximum time to wait in milliseconds.                                                                                                       |
 
 </TableWithNestedRows>
 
 ### Returns
 
-| Type   | Description                                                  |
-| ------ | ------------------------------------------------------------ |
-| object | [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object |
+| Type               | Description                                                                                           |
+|--------------------|-------------------------------------------------------------------------------------------------------|
+| `Promise<Object>` | At the moment a [Page](/javascript-api/k6-experimental/browser/page/) object is the only return value |
+
+### Example
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { browser } from 'k6/x/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
+
+export default async function() {
+  const context = browser.newContext()
+
+  // Call waitForEvent with a predicate which will return true once at least
+  // one page has been created.
+  let counter = 0
+  const promise = context.waitForEvent("page", { predicate: page => {
+    if (++counter >= 1) {
+      return true
+    }
+    return false
+  } })
+  
+  // Now we create a page.
+  const page = context.newPage()
+
+  // Wait for the predicate to pass.
+  await promise
+  console.log('predicate passed')
+
+  page.close()
+};
+
+```
+
+</CodeGroup>
