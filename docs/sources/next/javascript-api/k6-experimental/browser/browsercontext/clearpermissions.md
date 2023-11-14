@@ -5,13 +5,6 @@ excerpt: 'Clears all permission overrides for the BrowserContext.'
 
 # clearPermissions()
 
-{{% admonition type="caution" %}}
-
-This feature has known issues.
-For details, refer to [issue #443](https://github.com/grafana/xk6-browser/issues/443).
-
- {{% /admonition %}}
-
 Clears all permission overrides for the `BrowserContext`.
 
 ### Example
