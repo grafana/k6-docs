@@ -20,7 +20,7 @@ Waits for the event to fire and returns its value. If a predicate function has b
 
 | Type               | Description                                                                                           |
 |--------------------|-------------------------------------------------------------------------------------------------------|
-| `Promise<Object>` | At the moment a [Page](/javascript-api/k6-experimental/browser/page/) object is the only return value |
+| `Promise<Object>` | At the moment a [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) object is the only return value |
 
 ### Example
 
