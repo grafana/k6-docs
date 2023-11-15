@@ -27,15 +27,8 @@ Returns the value associated with `field` in the hash stored at `key`.
 ```javascript
 import redis from 'k6/experimental/redis';
 
-// Get the redis instance(s) address and password from the environment
-const redis_addrs = __ENV.REDIS_ADDRS || '';
-const redis_password = __ENV.REDIS_PASSWORD || '';
-
 // Instantiate a new redis client
-const redisClient = new redis.Client({
-  addrs: redis_addrs.split(',') || new Array('localhost:6379'), // in the form of 'host:port', separated by commas
-  password: redis_password,
-});
+const redisClient = new redis.Client('redis://localhost:6379');
 
 export default async function () {
   await redisClient.hset('myhash', 'myfield', 'myvalue');
