@@ -20,13 +20,10 @@ Select one of these and delete the others:
 If updating the documentation for the most recent release of k6: 
 - [ ] I have made my changes in the `docs/sources/v{most_recent_release}` folder of the documentation.
 - [ ] I have reflected my changes in the `docs/sources/next` folder of the documentation.
-- [ ] I have reflected my changes in the folders of the previous k6 versions of the documentation.
+- [ ] I have reflected my changes in the relevant (*e.g.*  when correcting a documentation error) folders of the previous k6 versions of the documentation.
 
 If updating the documentation for the next release of k6:
 - [ ] I have made my changes in the `docs/sources/next` folder of the documentation.
-
-If publishing the documentation of the freshly released version of k6:
-- [ ] I have made a copy of the `docs/sources/next` folder of the documentation and renamed it to `docs/sources/v{most_recent_release}`. 
 
 ## Related PR(s)/Issue(s)
 
