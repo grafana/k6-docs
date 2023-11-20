@@ -11,6 +11,7 @@ With over 50 available extensions, the k6 extension ecosystem has many options t
 Extensions are composable; you can combine any extensions, or mix and match different test cases. You can use [Go and xk6](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-go/) or [Docker](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-docker/) to build your custom k6 binary:
 
 {{< code >}}
+
 ```go-and-xk6
 xk6 build \
   --with github.com/grafana/xk6-sql@v0.0.1 \
@@ -22,19 +23,14 @@ docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
   --with github.com/grafana/xk6-sql@v0.0.1 \
   --with github.com/grafana/xk6-output-prometheus-remote
 ```
-{{< /code >}}
 
+{{< /code >}}
 
 <br/>
 
 Use the table to explore the many extensions. Questions? Feel free to join the discussion about extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
-
 <div class="nav-cards">
-    <a href="https://github.com/grafana/xk6-amqp" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-amqp</h4>
-        <p>AMQP plugin, tested with RabbitMQ</p>
-    </a>
     <a href="https://github.com/szkiba/xk6-ansible-vault" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-ansible-vault</h4>
         <p>Encrypt and decrypt Ansible Vault</p>
@@ -94,10 +90,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/grafana/xk6-disruptor" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-disruptor</h4>
         <p>Inject faults to test 💣</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-docker" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-docker</h4>
-        <p>Use the Docker CLI</p>
     </a>
     <a href="https://github.com/szkiba/xk6-dotenv" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-dotenv</h4>
@@ -336,6 +328,5 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <p>Encode and decode YAML values</p>
     </a>
 </div>
-
 
 Don't see what you need? Learn how you can [create a custom extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/).
