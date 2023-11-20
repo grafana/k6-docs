@@ -317,21 +317,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-docker",
-      "description": "Docker",
-      "url": "https://github.com/grafana/xk6-docker",
-      "logo": "",
-      "author": {
-        "name": "Alexey Kuznetsov",
-        "url": "https://github.com/lxkuz"
-      },
-      "stars": "12",
-      "type": ["JavaScript"],
-      "categories": ["Containers"],
-      "tiers": ["Official"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-ssh",
       "description": "SSH",
       "url": "https://github.com/grafana/xk6-ssh",
@@ -404,21 +389,6 @@
       "type": ["JavaScript"],
       "categories": ["Data"],
       "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-amqp",
-      "description": "AMQP plugin, tested with RabbitMQ",
-      "url": "https://github.com/grafana/xk6-amqp",
-      "logo": "",
-      "author": {
-        "name": "Alexey Kuznetsov",
-        "url": "https://github.com/lxkuz"
-      },
-      "stars": "15",
-      "type": ["JavaScript"],
-      "categories": ["Messaging"],
-      "tiers": ["Official"],
       "cloudEnabled": false
     },
     {
