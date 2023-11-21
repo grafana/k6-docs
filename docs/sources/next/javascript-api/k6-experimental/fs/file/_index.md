@@ -2,7 +2,6 @@
 title: 'File'
 excerpt: 'File represents a file with methods for reading, seeking, and obtaining file stats.'
 weight: 10
-weight: 10
 ---
 
 # File
