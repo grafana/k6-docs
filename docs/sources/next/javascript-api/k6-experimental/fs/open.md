@@ -6,11 +6,11 @@ weight: 20
 
 # open
 
-The `open` function opens a file and returns a promise that resolves to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file) instance. This function loads the file into shared memory space accessible by all Virtual Users (VUs). This approach significantly reduces the memory footprint, enabling the handling of large files without overwhelming memory resources.
+The `open` function opens a file and returns a promise that resolves to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file) instance. This function loads the file into shared memory space accessible by all Virtual Users (VUs). This approach significantly ~reduces the memory footprint~, enabling the handling of large files without overwhelming memory resources.
 
 ### Asynchronous Nature
 
-It's important to note that `open` is asynchronous and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). Due to k6's current limitation with the init context (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper like this:
+It's important to note that `open` is asynchronous and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). Due to k6's current limitation with the Init context (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper like this:
 
 {{< code >}}
 
