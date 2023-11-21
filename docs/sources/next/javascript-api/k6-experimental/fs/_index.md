@@ -12,7 +12,7 @@ The k6 filesystem experimental module provides a memory-efficient way to handle 
 
 ### Memory efficiency
 
-One of the key advantages of the filesystem module is its memory efficiency. Unlike the traditional [open](https://grafana.com/docs/k6/latest/javascript-api/init-context/open/) function, which loads a file multiple times into memory, the filesystem module reduces memory usage by loading the file as little possible, and sharing the same memory space between all VUs. This approach signally reduces the memory footprint of your test script, and lets you load and process large files without running out of memory.
+One of the key advantages of the filesystem module is its memory efficiency. Unlike the traditional [open](https://grafana.com/docs/k6/latest/javascript-api/init-context/open/) function, which loads a file multiple times into memory, the filesystem module reduces memory usage by loading the file as little possible, and sharing the same memory space between all VUs. This approach reduces the risk of encountering out-of-memory errors, especially in load tests involving large files.
 
 ### Notes on usage
 
