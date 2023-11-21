@@ -78,39 +78,22 @@ let file;
   file = await open('bonjour.txt');
 })();
 
-async function readAll(file, bufferSize = 128) {
-  // Obtain the size of the file
+async function readAll(file) {
   const fileInfo = await file.stat();
-  const fileSize = fileInfo.size;
+  const buffer = new Uint8Array(fileInfo.size);
 
-  // Prepare a buffer to store the file content
-  const fileContent = new Uint8Array(fileInfo.size);
-  let fileOffset = 0;
-
-  // Prepare a buffer to read the chunks of the file into
-  const buffer = new Uint8Array(Math.min(bufferSize, fileSize));
-
-  while (true) {
-    // Read a chunk of the file
-    const bytesRead = await file.read(buffer);
-    if (bytesRead == null || bytesRead === 0) {
-      // EOF
-      break;
-    }
-
-    // Copy the content of the buffer into the file content buffer
-    fileContent.set(buffer.slice(0, bytesRead), fileOffset);
-
-    // Do something useful with the content of the buffer
-    fileOffset += bytesRead;
-
-    // If bytesRead is less than the buffer size, we've read the whole file
-    if (bytesRead < buffer.byteLength) {
-      break;
-    }
+  const bytesRead = await file.read(buffer);
+  if (bytesRead !== fileInfo.size) {
+    throw new Error(
+      'unexpected number of bytes read; expected ' +
+        fileInfo.size +
+        ' but got ' +
+        bytesRead +
+        ' bytes'
+    );
   }
 
-  return fileContent;
+  return buffer;
 }
 
 export default async function () {

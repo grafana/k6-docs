@@ -33,7 +33,6 @@ export default async function () {
   if (fileinfo.name != 'bonjour.txt') {
     throw new Error('Unexpected file name');
   }
-
 }
 ```
 
