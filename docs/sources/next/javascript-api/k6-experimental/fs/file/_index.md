@@ -6,7 +6,7 @@ weight: 10
 
 # File
 
-The `File` class represents a file with methods for reading, seeking, and obtaining file stats. It's returned by the [open](link-to-open-doc) function.
+The `File` class represents a file with methods for reading, seeking, and obtaining file stats. It's returned by the [open](https://grafana.com/docs/k6/latest/javascript-api/init-context/open/) function.
 
 ## Properties
 

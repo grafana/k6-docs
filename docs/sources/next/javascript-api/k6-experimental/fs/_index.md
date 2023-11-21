@@ -16,7 +16,7 @@ One of the key advantages of the filesystem module is its memory efficiency. Unl
 
 ### Notes on usage
 
-An important consideration when using the filesystem module is its handling of external file modifications. Once a file is loaded in k6, it behaves like a "view" over the content of the file. This means that if the underlying file is modified externally during a test, those changes won't be reflected in the loaded [File]() instance.
+An important consideration when using the filesystem module is its handling of external file modifications. Once a file is loaded in k6, it behaves like a "view" over the content of the file. This means that if the underlying file is modified externally during a test, those changes won't be reflected in the loaded [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/) instance.
 
 ## API Overview
 
