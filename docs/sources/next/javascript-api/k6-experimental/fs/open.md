@@ -6,7 +6,7 @@ weight: 20
 
 # open
 
-The `open` function opens a file and returns a promise that resolves to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file) instance. This function loads the file into shared memory space accessible by all Virtual Users (VUs). This approach significantly ~reduces the memory footprint~, enabling the handling of large files without overwhelming memory resources.
+The `open` function opens a file and returns a promise that resolves to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file) instance. Unlike the traditional [open](https://grafana.com/docs/k6/latest/javascript-api/init-context/open/) function, which loads a file multiple times into memory, the filesystem module reduces memory usage by loading the file as little possible, and sharing the same memory space between all VUs. This approach signally reduces the memory footprint of your test script, and lets you load and process large files without running out of memory.
 
 ### Asynchronous Nature
 
