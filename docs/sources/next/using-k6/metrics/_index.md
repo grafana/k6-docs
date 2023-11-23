@@ -21,10 +21,10 @@ To make a test fail a certain criteria, you can write a [Threshold](https://graf
 To filter metrics, you can use [Tags and groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 You can also export metrics in various summary and granular formats, as documented in [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output).
 
-| On this page...                                                                           | Read about...                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| On this page...                                                                                          | Read about...                                                                                                   |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | [Built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference)                  | Each built-in metric for each supported [protocol](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols) |
-| [Create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                               |
+| [Create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                                               |
 
 ## What metrics to look at?
 
@@ -42,7 +42,7 @@ However, if you're unsure about the metrics to focus on, you can start with the 
 In other terminology, these metrics measure traffic (in requests), availability (in error rate), and latency (in request duration).
 SREs might recognize these metrics as three of the [four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Example output
 
@@ -111,8 +111,4 @@ For details of all metrics, refer to the [Metrics reference](https://grafana.com
 
 Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). The character limit is the same limit k6 had before restricting the character set down.
 
-That means they must not start with a number and a metric name can be 1 to 128 symbols of:
-
-1. any Unicode Letters
-2. any Unicode Number
-3. `_` (an underscore)
+That means metrics names must only include up to 128 ASCII letters, numbers, or underscores and start with a letter or an underscore.
