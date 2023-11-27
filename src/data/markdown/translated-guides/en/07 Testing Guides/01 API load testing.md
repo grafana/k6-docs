@@ -389,7 +389,7 @@ For example, consider a JSON file with a list of user info such as:
 {
 	"users": [
 	  { "username": "lorem", "surname": "ipsum" },
-	  { "username": "dolorem", "surname": "ipsum" },
+	  { "username": "dolorem", "surname": "ipsum" }
 	]
 }
 ```
