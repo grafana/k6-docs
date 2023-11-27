@@ -2,13 +2,12 @@
 title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 weight: 200
-weight: 200
 ---
 
 # Real time
 
 Besides the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test), you can also view metrics as granular data points.
-k6 can stream the metrics in real time and either:
+k6 can stream the metrics in real-time and either:
 
 - Write output to a file
 - Send output to an external service.
@@ -17,22 +16,19 @@ k6 can stream the metrics in real time and either:
 
 Currently, k6 supports writing to the following file formats:
 
-<Glossary>
-
 - [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)
 - [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)
 
-</Glossary>
-
 ## Stream to service {#service}
 
-You can also stream real-time metrics to the following services:
+You can also stream real-time metrics to:
 
-<Glossary>
+- [Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
+
+As well as the following third-party services:
 
 - [Amazon CloudWatch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
 - [Apache Kafka](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
-- [Cloud](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud)
 - [Datadog](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/datadog)
 - [Dynatrace](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/dynatrace)
 - [Elasticsearch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/elasticsearch)
@@ -45,9 +41,11 @@ You can also stream real-time metrics to the following services:
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 - [Other alternative with a custom output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions)
 
-</Glossary>
+{{% admonition type="note" %}}
 
-> This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/k6/).
+This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/k6/).
+
+{{% /admonition %}}
 
 ## Read more
 
