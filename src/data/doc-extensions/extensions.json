@@ -1129,7 +1129,7 @@
     },
     {
       "name": "xk6-plist",
-      "description": "Parse/serialize CVS payloads",
+      "description": "Parse/serialize property list (.plist) payloads",
       "url": "https://github.com/mcosta74/xk6-plist",
       "logo": "",
       "author": {
