@@ -1,7 +1,7 @@
 ---
 title: 'Executors'
 excerpt: 'Executors control how k6 schedules VUs and iterations. Choose the executor to model traffic you want to model to test your services'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/
 ---
 
 **Executors** control how k6 schedules VUs and iterations.

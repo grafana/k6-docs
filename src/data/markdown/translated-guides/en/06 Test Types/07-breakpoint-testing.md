@@ -1,7 +1,8 @@
 ---
 title: 'Breakpoint testing'
 excerpt: 'Breakpoint tests aim to find system limits. They increase load until the system fails.'
-canonicalUrl: https://grafana.com/docs/k6
+# // TODO: Point canonical to new URL once it's published
+# canonicalUrl: https://grafana.com/
 ---
 
 Breakpoint testing aims to find system limits. Reasons you might want to know the limits include: 

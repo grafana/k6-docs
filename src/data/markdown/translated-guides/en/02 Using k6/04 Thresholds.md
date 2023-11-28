@@ -1,7 +1,7 @@
 ---
 title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/thresholds/
 ---
 
 Thresholds are the pass/fail criteria that you define for your test metrics.

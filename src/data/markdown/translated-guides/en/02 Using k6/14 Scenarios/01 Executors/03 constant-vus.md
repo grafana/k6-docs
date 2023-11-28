@@ -1,7 +1,7 @@
 ---
 title: 'Constant VUs'
 excerpt: 'A fixed number of VUs execute as many iterations as possible for a specified amount of time.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/constant-vus/
 ---
 
 With the `constant-vus` executor, a fixed number of VUs execute as many iterations as possible for a specified amount of time.

@@ -2,7 +2,7 @@
 title: 'SSL/TLS version and ciphers'
 excerpt: 'To support testing specific client configurations, you can set a specific version or range
 of versions of SSL/TLS that should be allowed for a connection.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/
 ---
 
 To support testing specific client configurations, you can specify a version or range of versions of SSL/TLS that are allowed for a connection.

@@ -1,7 +1,7 @@
 ---
 title: 'Environment variables'
 excerpt: 'You can access any environment variables from your k6 script code and use this to supply your VUs with configuration information.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/environment-variables/
 ---
 
 Often, scripts need only minor tweaks to be reusable in different contexts.

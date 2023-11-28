@@ -1,7 +1,7 @@
 ---
 title: 'WebSockets'
 excerpt: 'Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings of k6.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/websockets/
 ---
 
 ## Overview

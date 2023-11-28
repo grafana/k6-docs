@@ -2,7 +2,7 @@
 title: 'Tags and Groups'
 excerpt: 'k6 provides the Tags and Groups APIs to help you during the analysis and easily visualize, sort and
 filter your test results.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/
 ---
 
 A load test usually targets a service with different subsystems and resources.
