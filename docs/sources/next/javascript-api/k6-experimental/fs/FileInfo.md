@@ -1,6 +1,6 @@
 ---
 title: 'FileInfo'
-excerpt: 'FileInfo represents information about a file.'
+description: 'FileInfo represents information about a file.'
 weight: 30
 ---
 
@@ -28,7 +28,7 @@ let file;
 })();
 
 export default async function () {
-  // About information about the file
+  // Retrieve information about the file
   const fileinfo = await file.stat();
   if (fileinfo.name != 'bonjour.txt') {
     throw new Error('Unexpected file name');

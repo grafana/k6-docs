@@ -1,6 +1,6 @@
 ---
 title: 'read'
-excerpt: 'the read method is used to read a chunk of the file.'
+description: 'the read method is used to read a chunk of the file.'
 weight: 20
 ---
 

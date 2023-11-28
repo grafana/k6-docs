@@ -1,6 +1,6 @@
 ---
 title: 'File'
-excerpt: 'File represents a file with methods for reading, seeking, and obtaining file stats.'
+description: 'File represents a file with methods for reading, seeking, and obtaining file stats.'
 weight: 10
 ---
 
@@ -20,7 +20,7 @@ The `File` class represents a file with methods for reading, seeking, and obtain
 | :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | [read](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/read) | Reads up to `buffer.byteLength` bytes from the file into the passed `buffer`. Returns a promise resolving to the number of bytes read. |
 | [seek](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/seek) | Sets the file position indicator for the file to the passed `offset` bytes. Returns a promise resolving to the new offset.             |
-| [stat](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/stat) | Returns a promise resolving to a [FileInfo](link-to-fileinfo-doc) object with information about the file.                              |
+| [stat](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/stat) | Returns a promise resolving to a [FileInfo](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/fileinfo/) object with information about the file.                              |
 
 ## Example
 

@@ -1,12 +1,12 @@
 ---
 title: 'SeekMode'
-excerpt: 'SeekMode is used to specify the position from which to seek in a file.'
+description: 'SeekMode is used to specify the position from which to seek in a file.'
 weight: 40
 ---
 
 # SeekMode
 
-The `SeekMode` enum is used to specify the position from which to [seek](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/seek) in a file.
+The `SeekMode` enum specifies the position from which to [seek](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/seek) in a file.
 
 ## Members
 

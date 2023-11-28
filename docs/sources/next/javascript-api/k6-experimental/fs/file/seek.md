@@ -1,6 +1,6 @@
 ---
 title: 'seek'
-excerpt: 'seek sets the file position indicator for the file to the passed offset bytes.'
+description: 'seek sets the file position indicator for the file to the passed offset bytes.'
 weight: 30
 ---
 

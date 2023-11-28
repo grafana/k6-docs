@@ -1,6 +1,6 @@
 ---
 title: 'fs'
-excerpt: 'k6 fs experimental API'
+description: 'k6 fs experimental API'
 weight: 10
 ---
 
@@ -8,7 +8,7 @@ weight: 10
 
 {{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
-The k6 filesystem experimental module provides a memory-efficient way to handle file interactions within your test scripts. It currently offers support for opening files, reading their content, and seeking through their content, and retrieving metadata about them.
+The k6 filesystem experimental module provides a memory-efficient way to handle file interactions within your test scripts. It currently offers support for opening files, reading their content, seeking through their content, and retrieving metadata about them.
 
 ### Memory efficiency
 
@@ -16,7 +16,7 @@ One of the key advantages of the filesystem module is its memory efficiency. Unl
 
 ### Notes on usage
 
-An important consideration when using the filesystem module is its handling of external file modifications. Once a file is loaded in k6, it behaves like a "view" over the content of the file. This means that if the underlying file is modified externally during a test, those changes won't be reflected in the loaded [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/) instance.
+An important consideration when using the filesystem module is its handling of external file modifications. Once k6 loads a file, it behaves like a "view" over its contents. If you modify the underlying file during a test, k6 will not reflect those changes in the loaded [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file/) instance.
 
 ## API Overview
 

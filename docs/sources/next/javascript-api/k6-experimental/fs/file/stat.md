@@ -1,6 +1,6 @@
 ---
 title: 'stat'
-excerpt: 'stat returns a promise resolving to a FileInfo object with information about the file.'
+description: 'stat returns a promise resolving to a FileInfo object with information about the file.'
 weight: 40
 ---
 
