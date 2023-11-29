@@ -1,7 +1,7 @@
 ---
 title: "k6chaijs"
 excerpt: "Assertion library for k6"
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/
 ---
 
 `k6chaijs` is a library to provide BDD assertions in k6 based on [ChaiJS](https://www.chaijs.com/). You can use `k6chaijs` as an alternative to [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/).

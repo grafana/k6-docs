@@ -2,7 +2,7 @@
 title: 'SQSClient.listQueues()'
 description: "SQSClient.listQueues retrieves a list of available Amazon SQS queues"
 excerpt: "SQSClient.listQueues retrieves a list of available Amazon SQS queues"
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/sqsclient/sqsclient-listqueues/
 ---
 
 `SQSClient.listQueues(options)` retrieves a list of available Amazon Simple Queue Service (SQS) queues.

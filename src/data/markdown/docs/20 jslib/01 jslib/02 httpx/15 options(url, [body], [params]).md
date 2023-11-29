@@ -2,7 +2,7 @@
 title: 'options(url, [body], [params])'
 description: 'httpx.options makes OPTIONS requests'
 excerpt: 'httpx.options makes OPTIONS requests'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/options/
 ---
 
 `session.options(url, body, params)` makes an OPTIONS request. Only the first parameter is required

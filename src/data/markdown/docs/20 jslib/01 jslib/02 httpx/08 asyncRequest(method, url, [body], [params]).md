@@ -3,7 +3,7 @@ title: 'asyncRequest(method, url, [body], [params])'
 head_title: 'httpx.asyncRequest()'
 description: 'Generic method for making asynchronous HTTP requests'
 excerpt: 'Generic method for making asynchronous HTTP requests'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/asyncrequest/
 ---
 
 Generic method for making arbitrary asynchronous HTTP requests. 

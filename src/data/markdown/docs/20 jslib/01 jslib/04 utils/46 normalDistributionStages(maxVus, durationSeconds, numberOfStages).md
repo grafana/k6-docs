@@ -2,7 +2,7 @@
 title: 'normalDistributionStages(maxVus, durationSeconds, [numberOfStages])'
 description: 'normalDistributionStages function'
 excerpt: 'normalDistributionStages function'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/normaldistributionstages/
 ---
 
 Function to create [stages](/using-k6/options/#stages) producing a _normal distribution (bell-curve)_ of VUs for a test.

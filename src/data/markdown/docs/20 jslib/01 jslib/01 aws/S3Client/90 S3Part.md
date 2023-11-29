@@ -2,7 +2,7 @@
 title: 'S3Part'
 description: 'S3Part is returned by the S3Client.uploadPart method when uploading a part to a multipart upload.'
 excerpt: 'S3Part is returned by the S3Client.uploadPart method when uploading a part to a multipart upload.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/s3part/
 ---
 
 S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumber, data)`](/javascript-api/jslib/aws/s3client/s3client-uploadpart/) method when uploading a part to a multipart upload. The S3Part object describes an Amazon S3 Part.

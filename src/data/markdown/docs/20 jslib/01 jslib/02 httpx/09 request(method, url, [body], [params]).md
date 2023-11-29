@@ -3,7 +3,7 @@ title: 'request(method, url, [body], [params])'
 head_title: 'httpx.request()'
 description: 'Generic method for making arbitrary HTTP requests'
 excerpt: 'Generic method for making arbitrary HTTP requests'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/request/
 ---
 
 Generic method for making arbitrary HTTP requests. 

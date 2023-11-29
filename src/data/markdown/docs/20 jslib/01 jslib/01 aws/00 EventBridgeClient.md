@@ -3,7 +3,7 @@ title: 'EventBridgeClient'
 head_title: 'EventBridgeClient'
 description: 'EventBridgeClient allows interacting with AWS EventBridge service'
 excerpt: 'EventBridgeClient class allows sending custom events to Amazon EventBridge so that they can be matched to rules.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/eventbridgeclient/
 ---
 
 `EventBridgeClient` interacts with the AWS EventBridge service.

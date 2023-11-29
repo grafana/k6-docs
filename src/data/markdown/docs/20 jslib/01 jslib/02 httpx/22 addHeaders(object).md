@@ -2,7 +2,7 @@
 title: 'addHeaders( object )'
 description: 'adds multiple headers to the session'
 excerpt: 'adds multiple headers to the session'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addheaders/
 ---
 
 

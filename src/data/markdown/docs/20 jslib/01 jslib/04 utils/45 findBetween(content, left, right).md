@@ -2,7 +2,7 @@
 title: 'findBetween(content, left, right, [repeat])'
 description: 'findBetween function'
 excerpt: 'findBetween function'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/findbetween/
 ---
 
 Function that returns a string from between two other strings.

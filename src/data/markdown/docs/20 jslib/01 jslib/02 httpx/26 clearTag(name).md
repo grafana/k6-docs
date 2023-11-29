@@ -2,7 +2,7 @@
 title: 'clearTag( name )'
 description: 'removes tag from the session'
 excerpt: 'removes tag from the session'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/cleartag/
 ---
 
 

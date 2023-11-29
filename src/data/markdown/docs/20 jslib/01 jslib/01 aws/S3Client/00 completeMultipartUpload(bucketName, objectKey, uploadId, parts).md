@@ -2,7 +2,7 @@
 title: 'S3Client.completeMultipartUpload(bucketName, objectKey, uploadId, parts)'
 description: 'S3Client.completeMultipartUpload uploads a multipar object to a bucket'
 excerpt: 'S3Client.completeMultipartUpload uploads a multipart object to a bucket'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/s3client-completemultipartupload/
 ---
 
 `S3Client.completeMultipartUpload` uploads a multipart object to an S3 bucket.
