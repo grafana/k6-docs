@@ -2,7 +2,7 @@
 title: 'md4( input, outputEncoding )'
 description: 'Use MD4 to hash input data.'
 excerpt: 'Use MD4 to hash input data.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/md4/
 ---
 
 <CryptoBlockquote />

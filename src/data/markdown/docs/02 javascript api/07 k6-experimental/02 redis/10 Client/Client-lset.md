@@ -1,7 +1,7 @@
 ---
 title: 'Client.lset(key, index, element)'
 excerpt: 'Sets the list element at index `index` of the list stored at `key` to `value`.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lset/
 ---
 
 Sets the list element at `index` to `element`.

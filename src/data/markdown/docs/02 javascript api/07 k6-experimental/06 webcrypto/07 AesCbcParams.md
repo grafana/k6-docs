@@ -1,7 +1,7 @@
 ---
 title: 'AesCbcParams'
 excerpt: 'AesCbcParams represents the object that should be passed as the algorithm parameter into the encrypt and decrypt operation when using the AES-CBC algorithm.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/aescbcparams/
 ---
 
 The `AesCbcParams` object represents the object that should be passed as the algorithm parameter into the [encrypt](/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt) and [decrypt](/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt) operation when using the AES-CBC algorithm.

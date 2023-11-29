@@ -1,7 +1,7 @@
 ---
 title: 'Client.expire(key, seconds)'
 excerpt: 'Sets an expiration date (a timeout) on the key `key`.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-expire/
 ---
 
 Sets a timeout on key, after which the key will automatically be deleted. Note that calling Expire with a non-positive timeout will result in the key being deleted rather than expired.

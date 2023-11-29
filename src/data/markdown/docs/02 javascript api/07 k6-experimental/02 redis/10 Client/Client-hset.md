@@ -1,7 +1,7 @@
 ---
 title: 'Client.hset(key, field, value)'
 excerpt: 'Sets the value of field in the hash stored at `key` to `value`.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hset/
 ---
 
 Sets the specified field in the hash stored at `key` to `value`. If the `key` does not exist, a new key holding a hash is created. If `field` already exists in the hash, it is overwritten.

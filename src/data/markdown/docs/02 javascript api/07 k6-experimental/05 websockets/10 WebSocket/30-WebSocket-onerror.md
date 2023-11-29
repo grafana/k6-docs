@@ -1,7 +1,7 @@
 ---
 title: 'WebSocket.onerror'
 excerpt: 'A handler function for WebSocket connection error event.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onerror/
 ---
 
 A handler for a WebSocket connection `error` event.

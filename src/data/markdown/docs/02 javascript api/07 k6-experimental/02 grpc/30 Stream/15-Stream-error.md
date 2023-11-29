@@ -2,7 +2,7 @@
 title: "Error"
 head_title: 'gRPC.Error'
 excerpt: 'The error object of a gRPC stream.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/stream/stream-error/
 ---
 
 The error object is the object that is passed to the `error` event handler function.

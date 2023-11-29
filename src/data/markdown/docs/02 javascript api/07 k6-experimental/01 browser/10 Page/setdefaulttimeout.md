@@ -1,7 +1,7 @@
 ---
 title: 'setDefaultTimeout(timeout)'
 excerpt: 'Browser module: page.setDefaultTimeout(timeout) method'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/setdefaulttimeout/
 ---
 
 This setting will change the timeout for all the methods accepting a `timeout` option.

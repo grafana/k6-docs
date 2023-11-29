@@ -1,7 +1,7 @@
 ---
 title: 'Client.sismember(key, member)'
 excerpt: 'Determines if a given value is a member of the set stored at `key`.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-sismember/
 ---
 
 Returns if member is a member of the set stored at `key`.

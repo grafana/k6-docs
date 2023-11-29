@@ -1,7 +1,7 @@
 ---
 title: "Response"
 excerpt: "Browser module: Response Class"
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/response/
 ---
 
 <BrowserDocsWIP/>

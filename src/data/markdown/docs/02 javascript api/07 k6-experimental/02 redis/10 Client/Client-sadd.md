@@ -1,7 +1,7 @@
 ---
 title: 'Client.sadd(key, members)'
 excerpt: 'Adds the specified members to the set stored at `key`.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-sadd/
 ---
 
 Adds the specified members to the set stored at `key`. Specified members that are already a member of this set are ignored. If key does not exist, a new set is created before adding the specified members.

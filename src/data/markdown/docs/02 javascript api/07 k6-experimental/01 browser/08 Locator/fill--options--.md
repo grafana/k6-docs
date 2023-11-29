@@ -1,7 +1,7 @@
 ---
 title: 'fill(value, [options])'
 excerpt: 'Browser module: locator.fill method'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/fill/
 ---
 
 Fill an `input`, `textarea` or `contenteditable` element with the provided value.

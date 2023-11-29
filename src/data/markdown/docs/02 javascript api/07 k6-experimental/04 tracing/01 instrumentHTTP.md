@@ -1,7 +1,7 @@
 ---
 title: 'instrumentHTTP'
 excerpt: 'instrumentHTTP instruments the k6 http module with tracing capabilities.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/tracing/instrumenthttp/
 ---
 
 The `instrumentHTTP` function instruments the k6 http module with tracing capabilities. It transparently replaces each of the k6 http module functions with versions that automatically attach a trace context to every request. Instrumented functions include [del](/javascript-api/k6-http/del), [get](/javascript-api/k6-http/get), [head](/javascript-api/k6-http/head), [options](/javascript-api/k6-http/options), [patch](/javascript-api/k6-http/patch), [post](/javascript-api/k6-http/post), [put](/javascript-api/k6-http/head), and [request](/javascript-api/k6-http/request).

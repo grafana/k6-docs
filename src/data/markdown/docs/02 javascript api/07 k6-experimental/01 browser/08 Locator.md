@@ -1,7 +1,7 @@
 ---
 title: "Locator"
 excerpt: "Browser module: Locator Class"
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/
 ---
 
 The Locator API makes it easier to work with dynamically changing elements. Some of the benefits of using it over existing ways to locate an element (e.g. `Page.$()`) include:

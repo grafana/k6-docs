@@ -1,7 +1,7 @@
 ---
 title: 'WebSocket.send(data)'
 excerpt: 'Send a data string through the connection.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-send/
 ---
 
 Send a data string through the connection.

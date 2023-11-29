@@ -2,7 +2,7 @@
 title: 'createHash( algorithm )'
 description: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 excerpt: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/createhash/
 ---
 
 <CryptoBlockquote />

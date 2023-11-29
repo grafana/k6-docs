@@ -1,7 +1,7 @@
 ---
 title: 'Client.incr(key)'
 excerpt: 'Increments the number stored at `key` by one.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-incr/
 ---
 
 Increments the number stored at `key` by one. If the key does not exist, it is set to zero before performing the operation.

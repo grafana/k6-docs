@@ -1,7 +1,7 @@
 ---
 title: 'exportKey'
 excerpt: 'exportKey exports a key in an external, portable format.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey/
 ---
 
 The `exportKey()` method takes a [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey) object as input and exports it in an external, portable format.

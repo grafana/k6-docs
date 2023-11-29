@@ -2,7 +2,7 @@
 title: 'Hasher'
 description: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
 excerpt: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/hasher/
 ---
 
 <CryptoBlockquote />

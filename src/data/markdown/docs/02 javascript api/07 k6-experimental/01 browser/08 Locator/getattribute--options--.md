@@ -1,7 +1,7 @@
 ---
 title: 'getAttribute(name, [options])'
 excerpt: 'Browser module: locator.getAttribute method'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/getattribute/
 ---
 
 Returns the element attribute value for the given attribute name.
