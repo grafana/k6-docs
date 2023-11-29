@@ -1,7 +1,7 @@
 ---
 title: 'injectGrpcFaults()'
 excerpt: 'xk6-disruptor: PodDisruptor.injectGrpcFaults method'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/injectgrpcfaults/
 ---
 
 injectGrpcFaults injects gRPC faults in the requests served by a target Pod.
