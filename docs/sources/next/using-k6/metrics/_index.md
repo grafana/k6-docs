@@ -111,4 +111,7 @@ For details of all metrics, refer to the [Metrics reference](https://grafana.com
 
 Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). The character limit is the same limit k6 had before restricting the character set down.
 
-That means metrics names must only include up to 128 ASCII letters, numbers, or underscores and start with a letter or an underscore.
+That means metrics names must:
+
+- Include up to 128 symbols (ASCII letters, numbers, or underscores).
+- Start with a letter or an underscore.
