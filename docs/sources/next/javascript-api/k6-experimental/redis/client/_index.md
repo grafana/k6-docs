@@ -7,7 +7,7 @@ weight: 10
 
 # Client
 
-`Client` is a [Redis](https://redis.io) client to interact with a Redis server, sentinel or cluster. It exposes a promise-based API, which users can interact with in an asynchronous manner.
+`Client` is a [Redis](https://redis.io) client to interact with a Redis server, sentinel, or cluster. It exposes a promise-based API, which users can interact with in an asynchronous manner.
 
 Though the API intends to be thorough and extensive, it does not expose the whole Redis API. Instead, the intent is to expose Redis for use cases most appropriate to k6.
 
@@ -15,10 +15,12 @@ Though the API intends to be thorough and extensive, it does not expose the whol
 
 ### Single-node server
 
-As shown in the above example, the simplest way to create a new `Client` instance that connects to a single Redis server is by passing a URL string.
+You can create a new `Client` instance that connects to a single Redis server by passing a URL string.
 It must be in the format:
 
-`redis[s]://[[username][:password]@][host][:port][/db-number]`
+```
+redis[s]://[[username][:password]@][host][:port][/db-number]
+```
 
 Here's an example of a URL string that connects to a Redis server running on localhost, on the default port (6379), and using the default database (0):
 
@@ -53,7 +55,7 @@ const client = new redis.Client({
 
 ### TLS
 
-A TLS connection can be established in a couple of ways.
+You can configure a TLS connection in a couple of ways.
 
 If the server has a certificate signed by a public Certificate Authority, you can use the `rediss` URL scheme:
 
@@ -87,7 +89,7 @@ const client = new redis.Client({
 
 {{< /code >}}
 
-Note that for self-signed certificates, k6's [**insecureSkipTLSVerify**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#insecure-skip-tls-verify) option must be enabled (set to `true`).
+Note that for self-signed certificates, k6's [insecureSkipTLSVerify](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#insecure-skip-tls-verify) option must be enabled (set to `true`).
 
 #### TLS client authentication (mTLS)
 
