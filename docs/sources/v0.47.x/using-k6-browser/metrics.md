@@ -98,3 +98,75 @@ When the test is run, you should see a similar output as the one below.
 ✓ browser_web_vital_lcp..........................: avg=460.1ms  min=460.1ms  med=460.1ms  max=460.1ms  p(90)=460.1ms  p(95)=460.1ms
   browser_web_vital_ttfb.........................: avg=339.3ms  min=258.9ms  med=339.3ms  max=419.7ms  p(90)=403.62ms p(95)=411.66ms
 ```
+
+## Measure custom metrics
+
+Through k6 browser's `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. As an example, if you want to measure the time it takes for your users to complete actions, such as a search feature, then you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline. 
+
+To measure the time difference between two performance markers, you can use the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method.
+
+The time duration that is returned by the performance measure can be added as custom metric in k6 browser using [Trends](https://k6.io/docs/javascript-api/k6-metrics/trend/).
+
+{{< code >}}
+
+```javascript
+import { browser } from "k6/experimental/browser";
+import { Trend } from "k6/metrics";
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: "shared-iterations",
+      options: {
+        browser: {
+          type: "chromium",
+        },
+      },
+    },
+  },
+};
+
+const myTrend = new Trend('total_action_time');
+
+export default async function () {
+  const page = browser.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/browser.php');
+    page.evaluate(() => window.performance.mark('page-visit'));
+
+    page.locator('#checkbox1').check();
+    page.locator('#counter-button"]').click();
+    page.locator('#text1').fill('This is a test');
+
+    page.evaluate(() => window.performance.mark('action-completed'));
+
+    // Get time difference between visiting the page and completing the actions
+    page.evaluate(() =>
+      window.performance.measure(
+        'total-action-time',
+        'page-visit',
+        'action-completed',
+      )
+    );
+
+    const totalActionTime = page.evaluate(() =>
+      JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0].duration
+    );
+
+    myTrend.add(total_action_time);
+  } finally {
+    page.close();
+  }
+}
+```
+
+{{< /code >}}
+
+When the test is run, you should see a similar output as the one below.
+
+```bash
+  iteration_duration..........: avg=1.06s    min=1.06s    med=1.06s    max=1.06s    p(90)=1.06s    p(95)=1.06s
+  iterations..................: 1      0.70866/s
+  total_action_time.............: avg=295.3    min=295.3    med=295.3    max=295.3    p(90)=295.3    p(95)=295.3
+```
