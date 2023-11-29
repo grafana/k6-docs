@@ -9,7 +9,7 @@ weight: 01
 The `shared-iterations` executor shares iterations between the number of VUs.
 The test ends once k6 executes all iterations.
 
-For a shortcut to this executor, use the [vus](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
+For a shortcut to this executor, use the [`vus`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#vus) and [`iterations`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) options.
 
 {{% admonition type="note" %}}
 
@@ -37,7 +37,7 @@ This executor is suitable when you want a specific number of VUs to complete a f
 number of total iterations, and the amount of iterations per VU is unimportant.
 If the **time to complete** a number of test iterations is your concern, this executor should perform best.
 
-An example use case is for quick performance tests in the developement build cycle.
+An example use case is for quick performance tests in the development build cycle.
 As developers make changes, they might run the test against the local code to test for performance regressions.
 Thus the executor works well with a _shift-left_ policy, where emphasizes testing performance early in the development cycle, when the cost of a fix is lowest.
 

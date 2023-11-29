@@ -1,7 +1,7 @@
 ---
 title: 'ServiceDisruptor'
 excerpt: 'xk6-disruptor: ServiceDisruptor class'
-weight: 03
+weight: 300
 ---
 
 # ServiceDisruptor
@@ -16,6 +16,8 @@ To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](http
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | [ServiceDisruptor.injectGrpcFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults) | Inject [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc) in the target Pods  |
 | [ServiceDisruptor.injectHTTPFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injecthttpfaults) | Inject [HTTTP faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) in the target Pods |
+| ServiceDisruptor.targets() | Returns the list of target Pods of the ServiceDisruptor |
+| [ServiceDisruptor.terminatePods()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/terminate-pods) | executes a [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/pod-termination) in the target Pods|
 
 ## Example
 
