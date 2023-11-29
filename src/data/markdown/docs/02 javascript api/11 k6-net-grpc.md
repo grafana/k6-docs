@@ -1,7 +1,7 @@
 ---
 title: "k6/net/grpc"
 excerpt: "k6 gRPC API"
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/
 ---
 
 <GrpcBlockquote />
