@@ -1,7 +1,7 @@
 ---
 title: 'Cookies Example'
 excerpt: 'Scripting examples on how you can interact with cookies during your load test if required.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/cookies-example/
 ---
 
 Scripting examples on how you can interact with cookies during your load test if required.

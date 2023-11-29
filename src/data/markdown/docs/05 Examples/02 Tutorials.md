@@ -1,7 +1,7 @@
 ---
 title: 'Tutorials'
 excerpt: 'k6 Tutorials'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/tutorials/
 ---
 
 - [Get started with k6](/examples/tutorials/get-started-with-k6/)

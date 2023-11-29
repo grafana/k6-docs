@@ -1,7 +1,7 @@
 ---
 title: 'Parse HTML'
 excerpt: 'Scripting examples parsing HTML content.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/parse-html/
 ---
 
 Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
