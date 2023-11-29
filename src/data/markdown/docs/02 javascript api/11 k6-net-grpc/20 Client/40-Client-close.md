@@ -1,7 +1,7 @@
 ---
 title: "Client.close()"
 excerpt: 'Close the connection to the gRPC service. Tear down all underlying connections.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/client/client-close/
 ---
 
 Close the connection to the gRPC service. Tear down all underlying connections.

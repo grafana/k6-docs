@@ -2,7 +2,7 @@
 title: 'get( url, [params] )'
 description: 'Issue an HTTP GET request.'
 excerpt: 'Issue an HTTP GET request.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/get/
 ---
 
 Make a GET request.

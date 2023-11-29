@@ -1,7 +1,7 @@
 ---
 title: 'Selection.slice(start [, end])'
 excerpt: 'Reduce the set of matched elements to a subset specified by a range of indices.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-slice/
 ---
 
 Reduce the set of matched elements to a subset specified by a range of indices.

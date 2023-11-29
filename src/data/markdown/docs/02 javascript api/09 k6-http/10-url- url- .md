@@ -2,7 +2,7 @@
 title: 'url`url`'
 description: 'Creates a URL with a name tag.'
 excerpt: 'Creates a URL with a name tag.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/url/
 ---
 
 URLs that contain dynamic parts can introduce a large number of unique URLs in the metrics stream. You can use `http.url` to set a consistent name tag in your requests to remedy this issue. Read more on [URL Grouping](/using-k6/http-requests#url-grouping).

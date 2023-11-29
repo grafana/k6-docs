@@ -1,7 +1,7 @@
 ---
 title: 'Selection.prevUntil([selector], [filter])'
 excerpt: 'Get all preceding siblings of each element up to but not including the element matched by the selector.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-prevuntil/
 ---
 
 Get all preceding siblings of each element up to but not including the element matched by the selector.

@@ -1,7 +1,7 @@
 ---
 title: "Rate.add(value, [tags])"
 excerpt: 'Set the value of the Rate metric.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/rate/rate-add/
 ---
 
 Set the value of the `Rate` metric.

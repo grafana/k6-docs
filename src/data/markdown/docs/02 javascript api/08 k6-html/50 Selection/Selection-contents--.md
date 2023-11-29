@@ -1,7 +1,7 @@
 ---
 title: 'Selection.contents()'
 excerpt: 'Get the children of each element in the set of matched elements, including text and comment nodes.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-contents/
 ---
 
 Get the children of each element in the set of matched elements, including text and comment nodes.

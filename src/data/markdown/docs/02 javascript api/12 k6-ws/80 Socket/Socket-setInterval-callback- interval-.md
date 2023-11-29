@@ -1,7 +1,7 @@
 ---
 title: 'Socket.setInterval(callback, interval)'
 excerpt: 'Call a function repeatedly, while the WebSocket connection is open.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/socket/socket-setinterval/
 ---
 
 <WsBlockquote />

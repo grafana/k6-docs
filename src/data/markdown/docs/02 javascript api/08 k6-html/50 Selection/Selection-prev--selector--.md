@@ -1,7 +1,7 @@
 ---
 title: 'Selection.prev([selector])'
 excerpt: 'Get the immediately preceding sibling of each element in the set of matched elements.'
-canonicalUrl: https://grafana.com/docs/k6
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-prev/
 ---
 
 Get the immediately preceding sibling of each element in the set of matched elements.
