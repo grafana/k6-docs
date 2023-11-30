@@ -8,13 +8,13 @@ weight: 01
 
 # Hybrid performance with k6 browser
 
-An alternative approach to [browser-based load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#browser-based-load-testing) that is much less resource-intensive is combining a low amount of virtual users for a browser test with a high amount of virtual users for a protocol-level test. 
+An alternative approach to [browser-based load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#browser-based-load-testing) that's much less resource-intensive is combining a small number of virtual users for a browser test with a large number of virtual users for a protocol-level test. 
 
-Hybrid performance can be achieved in multiple ways, often using different tools. To simplify the developer experience, k6 browser can be easily combined with core k6 features, so you can easily write hybrid tests in a single script. 
+You can achieve hybrid performance in multiple ways, often by using different tools. To simplify the developer experience, you can combine k6 browser with core k6 features to write hybrid tests in a single script. 
 
 ## Browser and HTTP test
 
-The code below shows an example of combining a browser and HTTP test in a single script. While the backend is exposed to the typical load, the frontend is also checked for any unexpected issues. Thresholds are defined to check both HTTP and browser metrics against pre-defined SLOs.
+The code below shows an example of combining a browser and HTTP test in a single script. While the script exposes the backend to the typical load, it also checks the frontend for any unexpected issues. It also defines thresholds to check both HTTP and browser metrics against pre-defined SLOs.
 
 {{< code >}}
 
@@ -106,11 +106,11 @@ export async function checkFrontend() {
 
 ## Browser and failure injection test
 
-A browser test can also be run with a failure injection test via the [xk6-disruptor](https://github.com/grafana/xk6-disruptor) extension. This approach lets you find issues in your front end if any services it depends on are suddenly injected with failures, such as delays or server errors.
+You can also run a browser test together with a failure injection test by using the [xk6-disruptor](https://github.com/grafana/xk6-disruptor) extension. This approach lets you find issues in your front end if any services it depends on are suddenly injected with failures, such as delays or server errors.
 
-The code below shows an example of introducing faults to a Kubernetes service. While this happens, the `browser` scenario is also executed, which checks the frontend application for unexpected errors that might not have been handled properly.
+The following code shows an example of how to introduce faults to a Kubernetes service. At the same time, the `browser` scenario runs to ensure the frontend application is free of any unexpected errors that may not have been handled properly.
 
-To find out more information about injecting faults to your service, check out our [get started guide with xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/get-started/).
+To find out more information about injecting faults to your service, check out the [Get started with xk6-disruptor guide](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/get-started/).
 
 {{< code >}}
 
@@ -192,6 +192,6 @@ export async function checkFrontend() {
 
 ## Recommended practices
 
-- **Do start small**. Start with a low amount of browser-based virtual users. A good starting point is to have 10% virtual users or less to monitor the user experience for your end-users, while around 90% of traffic should be emulated from the protocol level.
+- **Start small**. Start with a small number of browser-based virtual users. A good starting point is to have 10% virtual users or less to monitor the user experience for your end-users, while the script emulates around 90% of traffic from the protocol level.
 - **Combine browser test with different load testing types**. To fully understand the impact of different traffic patterns on your end-user experience, experiment with running your browser test with different [load testing types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/).
-- **Cover high-risk user journeys as a start**. Consider identifying the high-risk user journeys first so you can start to monitor the web performance metrics for these user journeys while your backend applications are being exposed to high traffic or service faults.
+- **Focus on high-risk user journeys as a start**. Identify the high-risk user journeys first so you can start monitoring the web performance metrics for them while your backend applications are being exposed to high traffic or service faults.
