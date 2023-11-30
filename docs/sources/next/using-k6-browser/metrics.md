@@ -101,11 +101,9 @@ When the test is run, you should see a similar output as the one below.
 
 ## Measure custom metrics
 
-Through k6 browser's `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. As an example, if you want to measure the time it takes for your users to complete actions, such as a search feature, then you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline. 
-
-To measure the time difference between two performance markers, you can use the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method.
-
-The time duration that is returned by the performance measure can be added as custom metric in k6 browser using [Trends](https://k6.io/docs/javascript-api/k6-metrics/trend/).
+When using the k6 browser `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. For example, if you want to measure the time it takes for your users to complete actions, such as a search feature, you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline. 
+		
+Using the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method, you can also measure the time difference between two performance markers. The time duration that `performance.measure` returns can be added as a custom metric in k6 browser using [Trends](https://k6.io/docs/javascript-api/k6-metrics/trend/).
 
 {{< code >}}
 
@@ -163,7 +161,7 @@ export default async function () {
 
 {{< /code >}}
 
-When the test is run, you should see a similar output as the one below.
+After you run the test, you should see a similar output as the one below.
 
 ```bash
   iteration_duration..........: avg=1.06s    min=1.06s    med=1.06s    max=1.06s    p(90)=1.06s    p(95)=1.06s
