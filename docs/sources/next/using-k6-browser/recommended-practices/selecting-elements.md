@@ -1,7 +1,7 @@
 ---
 title: 'Selecting elements'
 excerpt: 'A guide on how to select elements with the browser module.'
-weight: 02
+weight: 03
 ---
 
 # Selecting elements
