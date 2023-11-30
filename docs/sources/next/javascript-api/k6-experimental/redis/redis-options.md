@@ -1,55 +1,66 @@
 ---
-title: 'Redis options'
-excerpt: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
+title: 'Options'
+excerpt: 'Options allow you to fine-tune how a Redis client behaves and interacts with a Redis server or cluster.'
 weight: 20
 ---
 
 # Redis options
 
-You can configure the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client) at construction time with the [Options](#options) object.
-We recommend passing the options to the constructor as an argument, then passing the most common options, such as the `addrs` and `password`, to the constructor from the environment.
-
-The following snippet provides an example:
-
-```javascript
-import redis from 'k6/experimental/redis';
-
-// Get the redis instance(s) address and password from the environment
-const redis_addrs = __ENV.REDIS_ADDRS || '';
-const redis_password = __ENV.REDIS_PASSWORD || '';
-
-// Instantiate a new redis client
-const redisClient = new redis.Client({
-  addrs: redis_addrs.split(',') || new Array('localhost:6379'), // in the form of 'host:port', separated by commas
-  password: redis_password,
-});
-
-export default function () {
-  // do something with the redis client
-}
-```
+You can configure the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client) by using a Redis connection URL as demonstrated in the [client documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client#usage), or by using an [Options](#options) object to access more advanced configuration.
 
 ## Options
 
-| Option name          | type              | default           | description                                                                                                                                                                                                                                      |
-| :------------------- | :---------------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `addrs`              | string[]          |                   | Array of addresses in the 'host:port' defining which connect Redis to connect to. Supplying a single entry would connect the client to a single Redis instance. Supplying multiple entries would connect the client to a cluster/sentinel nodes. |
-| `db`                 | number (optional) | 0                 | The id of the database to be selected after connecting to the server. Only used when connecting to a single-node use.                                                                                                                            |
-| `username`           | string (optional) |                   | Username to authenticate the client connection with.                                                                                                                                                                                             |
-| `password`           | string (optional) |                   | Password to authenticate the client connection with.                                                                                                                                                                                             |
-| `sentinelUsername`   | string (optional) |                   | Username to authenticate the client connection with when connecting to a sentinel.                                                                                                                                                               |
-| `sentinelPassword`   | string (optional) |                   | Password to authenticate the client connection with when connecting to a sentinel.                                                                                                                                                               |
-| `masterName`         | string (optional) |                   | The name of the master to connect to when connecting to a Redis cluster.                                                                                                                                                                         |
-| `maxRetries`         | number (optional) | 0                 | The maximum number of retries to attempt when connecting to a Redis server before giving up.                                                                                                                                                     |
-| `minRetryBackoff`    | number (optional) | 8 (ms)            | The minimum amount of time to wait between retries when connecting to a Redis server.                                                                                                                                                            |
-| `maxRetryBackoff`    | number (optional) | 512 (ms)          | The maximum amount of time to wait between retries when connecting to a Redis server.                                                                                                                                                            |
-| `dialTimeout`        | number (optional) | 5 (seconds)       | The maximum amount of time to wait for a connection to a Redis server to be established.                                                                                                                                                         |
-| `readTimeout`        | number (optional) | 3 (seconds)       | The maximum amount of time to wait for socket reads to succeed. Use `-1` for no timeout.                                                                                                                                                         |
-| `writeTimeout`       | number (optional) | `readTimeout`     | The maximum amount of time to wait for a socket write to succeed. Use `-1` for no timeout.                                                                                                                                                       |
-| `poolSize`           | number (optional) | 10 (per CPU)      | The maximum number of socket connections to keep open in the connection pool.                                                                                                                                                                    |
-| `minIdleConns`       | number (optional) |                   | The minimum number of idle connections to keep open in the connection pool.                                                                                                                                                                      |
-| `maxIdleConns`       | number (optional) |                   | The maximum number of idle connections to keep open in the connection pool.                                                                                                                                                                      |
-| `maxConnAge`         | number (optional) | 0                 | The maximum amount of time a connection can be idle in the connection pool before being closed.                                                                                                                                                  |
-| `poolTimeout`        | number (optional) | `readTimeout + 1` | The maximum amount of time to wait for a connection to the Redis server to be returned from the pool.                                                                                                                                            |
-| `idleTimeout`        | number (optional) | `readTimeout + 1` | The maximum amount of time the client waits for a connection to become active before timing out.                                                                                                                                                 |
-| `idleCheckFrequency` | number (optional) | 1 (minute)        | The frequency at which the client checks for idle connections in the connection pool. Use `-1` to disable the checks.                                                                                                                            |
+The configuration for the overall Redis client, including authentication and connection settings.
+
+| Option Name      | Type                                                               | Description                                                             |
+| ---------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| socket           | [SocketOptions](#socket-connection-options)          | The configuration of the connection socket used to connect to the Redis server. |
+| username         | String (optional)                                                  | Username for client authentication.                                     |
+| password         | String (optional)                                                  | Password for client authentication.                                     |
+| clientName       | String (optional)                                                  | Name for the client connection.                                         |
+| database         | Number (optional)                                                  | Database ID to select after connecting.                                 |
+| masterName       | String (optional)                                                  | Master instance name for Sentinel.                                      |
+| sentinelUsername | String (optional)                                                  | Username for Sentinel authentication.                                   |
+| sentinelPassword | String (optional)                                                  | Password for Sentinel authentication.                                   |
+| cluster          | [ClusterOptions](#redis-cluster-options) (optional) | The configuration for Redis Cluster connections.                            |
+
+### Socket Connection Options
+
+Socket-level settings for connecting to a Redis server.
+
+| Option Name        | Type                                                           | Description                                                                            |
+| ------------------ | -------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| host               | String                                                         | IP address or hostname of the Redis server.                                            |
+| port               | Number (optional)                                              | Port number of the Redis server.                                                       |
+| tls                | [TLSOptions](#tls-configuration-options) (optional) | The configuration for TLS/SSL.                                                             |
+| dialTimeout        | Number (optional, default is _5_ (seconds))                     | Timeout for establishing a connection, in seconds.                           |
+| readTimeout        | Number (optional, default is _3_ (seconds))                     | Timeout for socket reads, in seconds. A value of `-1` disables the timeout.  |
+| writeTimeout       | Number (optional, default is `readTimeout`)                    | Timeout for socket writes, in seconds. A value of `-1` disables the timeout. |
+| poolSize           | Number (optional, default is _10_ (per CPU))                   | Number of socket connections in the pool per CPU.                                      |
+| minIdleConns       | Number (optional)                                              | Minimum number of idle connections in the pool.                                        |
+| maxConnAge         | Number (optional, default is _0_ (no maximum idle time))       | Maximum idle time before closing a connection.                                         |
+| poolTimeout        | Number (optional, `readTimeout + 1`)                           | Timeout for acquiring a connection from the pool.                                      |
+| idleTimeout        | Number (optional, `readTimeout + 1`)                           | Timeout for idle connections in the pool.                                              |
+| idleCheckFrequency | Number (optional, default is _1_ (minute))                     | Frequency of idle connection checks, in minutes. A value of `-1` disables the checks.  |
+
+#### TLS Configuration Options
+
+Options for establishing a secure TLS connection.
+
+| Option Name | Type                   | Description                                         |
+| ----------- | ---------------------- | --------------------------------------------------- |
+| ca          | ArrayBuffer[]          | Array of CA certificates.                           |
+| cert        | ArrayBuffer (optional) | Client certificate for mutual TLS.                  |
+| key         | ArrayBuffer (optional) | Private key associated with the client certificate. |
+
+### Redis Cluster Options
+
+Options for behavior in a Redis Cluster setup.
+
+| Option Name    | Type                                                                    | Description                                                                                 |
+| -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| maxRedirects   | Number (optional, default is _3_ retries)                               | Maximum number of command redirects.                                                        |
+| readOnly       | Boolean (optional)                                                      | Enables read-only mode for replicas.                                                        |
+| routeByLatency | Boolean (optional)                                                      | Route read commands by latency.                                                             |
+| routeRandomly  | Boolean (optional)                                                      | Random routing for read commands.                                                           |
+| nodes          | String[] or [SocketOptions](#socket-connection-options)[] | List of cluster nodes as URLs or [SocketOptions](#socket-connection-options). |

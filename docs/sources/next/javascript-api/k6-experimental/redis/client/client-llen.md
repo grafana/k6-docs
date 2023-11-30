@@ -26,15 +26,8 @@ Returns the length of the list stored at `key`. If `key` does not exist, it is i
 ```javascript
 import redis from 'k6/experimental/redis';
 
-// Get the redis instance(s) address and password from the environment
-const redis_addrs = __ENV.REDIS_ADDRS || '';
-const redis_password = __ENV.REDIS_PASSWORD || '';
-
 // Instantiate a new redis client
-const redisClient = new redis.Client({
-  addrs: redis_addrs.split(',') || new Array('localhost:6379'), // in the form of 'host:port', separated by commas
-  password: redis_password,
-});
+const redisClient = new redis.Client('redis://localhost:6379');
 
 export default function () {
   redisClient
