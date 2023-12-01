@@ -2,7 +2,6 @@
 title: Workaround to calculate iteration_duration
 excerpt: 'A threshold can calculate the value of a metric excluding the results of the setup and teardown functions'
 hideFromSidebar: true
-canonicalUrl: https://grafana.com/docs/k6
 ---
 
 A common requested case is to track the `iteration_duration` metric without including time spent for `setup` and `teardown` functions.
