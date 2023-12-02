@@ -152,7 +152,7 @@ export default async function () {
       JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0].duration
     );
 
-    myTrend.add(total_action_time);
+    myTrend.add(totalActionTime);
   } finally {
     page.close();
   }
