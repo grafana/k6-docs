@@ -72,6 +72,7 @@ Each option has its own detailed reference in a separate section.
 | [TLS auth](#tls-auth)                                        | A list of TLS client certificate configuration objects                                                                                                                                                                                                                                                                                             |
 | [TLS cipher suites](#tls-cipher-suites)                      | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server                                                                                                                                                                                                                                                                |
 | [TLS version](#tls-version)                                  | String or object representing the only SSL/TLS version allowed                                                                                                                                                                                                                                                                                     |
+| [Traces output](#traces-output)                              | Configuration about where traces from k6 should be sent                                                                                                                                                                                                                                                                                            |
 | [User agent](#user-agent)                                    | A string specifying the User-Agent header when sending HTTP requests                                                                                                                                                                                                                                                                               |
 | [Verbose](#verbose)                                          | A boolean specifying whether verbose logging is enabled                                                                                                                                                                                                                                                                                            |
 | [VUs](#vus)                                                  | A number specifying the number of VUs to run concurrently                                                                                                                                                                                                                                                                                          |
@@ -1432,6 +1433,48 @@ export const options = {
 ```
 
 {{< /code >}}
+
+## Traces output
+
+This option specifies where to send traces to. Available in the `k6 run` command.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_TRACES_OUTPUT` | `--traces-output` | N/A                | `none`  |
+
+{{< code >}}
+
+```bash
+$ k6 run --traces-output=otel script.js
+```
+
+{{< /code >}}
+
+Possible values are:
+
+- none - disable
+- otel - send traces to an OTEL compatible backend
+
+### OTEL
+
+Use the `traces-output` option to configure [Open Telemetry](https://opentelemetry.io/) compatible output as follows.
+
+{{< code >}}
+
+```bash
+$ k6 run --traces-output=otel=http://127.0.0.1:4318,proto=http,header.AdditionalHeader=example script.js
+```
+
+{{< /code >}}
+
+Where none of the options are required.
+The possible keys with their meanings and default values:
+
+| key                 | description                                                                                                            | default value           |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `nothing`           | the endpoint to which send traces to                                                                                   | `http://127.0.0.1:4317` |
+| proto               | the protocol to use when connecting with the traces backend                                                            | `grpc`                  |
+| header.`headerName` | adds an additional HTTP header with the provided header name and value to each HTTP request made to the traces backend | N/A                     |
 
 ## Upload Only
 
