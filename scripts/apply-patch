@@ -3,6 +3,7 @@
 function usage {
   cat <<EOF
 Apply the changes for directory SRC for commit COMMIT to directory DST.
+The script assumes it is run from the root of the repository.
 
 Usage:
   $0 <COMMIT> <SRC> <DST>
@@ -49,6 +50,14 @@ function path_components {
 
   echo "${n}"
 }
+
+GIT_ROOT="$(git rev-parse --show-toplevel)"
+if [[ "$(pwd)" != "${GIT_ROOT}" ]]; then
+  echo "ERROR: Script has not been run from the repository root ('${GIT_ROOT}')."
+  echo "Please change directory there and adjust argument paths to match the new working directory."
+
+  exit 1
+fi
 
 git diff "${COMMIT}" -- "${SRC}" > "${PATCH}"
 git apply -p "$(path_components "${SRC}")" --directory "${DST}" "${PATCH}"
