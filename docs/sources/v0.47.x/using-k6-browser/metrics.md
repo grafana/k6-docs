@@ -166,5 +166,5 @@ After you run the test, you should see a similar output as the one below.
 ```bash
   iteration_duration..........: avg=1.06s    min=1.06s    med=1.06s    max=1.06s    p(90)=1.06s    p(95)=1.06s
   iterations..................: 1      0.70866/s
-  total_action_time.............: avg=295.3s    min=295.3s    med=295.3s    max=295.3s    p(90)=295.3s    p(95)=295.3s
+  total_action_time.............: avg=295.3ms    min=295.3ms    med=295.3ms    max=295.3ms    p(90)=295.3ms    p(95)=295.3ms
 ```
