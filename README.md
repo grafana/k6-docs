@@ -12,6 +12,7 @@ Some key facts:
 - The docs are written in Markdown and built with Hugo.
 - The [Contributor's guide](./CONTRIBUTING) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
 - We have a [Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md).
+- We follow the Grafana Style Guide, and you can find more information about it in the [Writer's Toolkit](https://grafana.com/docs/writers-toolkit/).
 
 ## Contributing
 
@@ -24,12 +25,14 @@ Markdown files for the documentation are located in the [`docs/sources/`](docs/s
 
 For small changes and spelling fixes, the GitHub UI is the most convenient way to contribute.
 For larger contributions, consider running the project locally to see how the changes look like before making a pull request.
- 
+
 The following docs cover the different stages of the writing workflow:
 
 - [Local development](#local-development). For any large changes, being able to see a preview of the site can help make sure things are rendered correctly, and spot any issues before they're deployed to production.
 - [Writers' Toolkit](https://grafana.com/docs/writers-toolkit/). Learn more about the Grafana writing style guide, front matter properties, how to upload and add images, and much more.
 - [Preview and deploy](./CONTRIBUTING#deploy). Changes made to the files inside of `docs/sources` are automatically deployed to production once they're merged to the main branch.
+
+For more details, refer to the [CONTRIBUTING](./CONTRIBUTING/README.md) section.
 
 ## Local development
 
