@@ -12,7 +12,7 @@ Some key facts:
 - The docs are written in Markdown and built with Hugo.
 - The [Contributor's guide](./CONTRIBUTING) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
 - We have a [Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md).
-- We follow the Grafana Style Guide, and you can find more information about it in the [Writer's Toolkit](https://grafana.com/docs/writers-toolkit/).
+- We follow the Grafana Style Guide, and you can find more information about it in the [Writers' Toolkit](https://grafana.com/docs/writers-toolkit/).
 
 ## Contributing
 
