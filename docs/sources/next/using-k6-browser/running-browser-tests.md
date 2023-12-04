@@ -144,6 +144,30 @@ To run a simple local script:
 
    {{% /admonition %}}
 
+3. Optional Step: Running browser tests in Docker on M1/M2 Macs
+
+   1. Make sure you’re running [the latest Docker](https://docs.docker.com/engine/install/) version.
+
+   2. Update [Rosetta](https://en.wikipedia.org/wiki/Rosetta_(software)) and export an environment variable with the following:
+
+      ```bash
+       $ softwareupdate --install-rosetta
+       $ export DOCKER_DEFAULT_PLATFORM=linux/amd64
+       ```
+
+   3. Select VirtioFS in `Settings` > `General` > `VirtuoFS`.
+
+   4. Enable the Rosetta emulation in `Settings` > `Features in development` > `Use Rosetta for x86/amd64 emulation on Apple Silicon`.
+
+   5. Restart Docker.
+
+   6. Run the browser image with the following command (adds the `--platform` flag):
+
+      ```bash
+      $ docker run --rm -i --platform linux/amd64 -v $(pwd):/home/k6/screenshots -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
+      ```
+
+
 ## Interact with elements on your webpage
 
 You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) object, which you can later use to interact with the element.
