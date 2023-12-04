@@ -54,7 +54,7 @@ function path_components {
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 if [[ "$(pwd)" != "${GIT_ROOT}" ]]; then
   echo "ERROR: Script has not been run from the repository root ('${GIT_ROOT}')."
-  echo "Please change directory there and adjust argument paths to match the new working directory."
+  echo "Please move to the root directory and re-run the script."
 
   exit 1
 fi
