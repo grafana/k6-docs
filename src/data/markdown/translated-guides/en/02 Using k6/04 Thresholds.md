@@ -90,7 +90,7 @@ To use a threshold, follow these steps:
   export const options = {
     thresholds: {
       //short format
-      METRIC_NAME: ["THRESHOLD_EXPRESSION", `...`],
+      METRIC_NAME1: ["THRESHOLD_EXPRESSION", `...`],
       //long format
       METRIC_NAME2: [
         {
