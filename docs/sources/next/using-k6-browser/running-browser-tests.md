@@ -144,7 +144,7 @@ To run a simple local script:
 
    {{% /admonition %}}
 
-3. Optional Step: Running browser tests in Docker on M1/M2 Macs
+3. Optional step: running browser tests in Docker on M1/M2 Macs
 
    1. Make sure you’re running [the latest Docker](https://docs.docker.com/engine/install/) version.
 
@@ -155,7 +155,7 @@ To run a simple local script:
        $ export DOCKER_DEFAULT_PLATFORM=linux/amd64
        ```
 
-   3. Select VirtioFS in `Settings` > `General` > `VirtuoFS`.
+   3. Select VirtuoFS in `Settings` > `General` > `VirtuoFS`.
 
    4. Enable the Rosetta emulation in `Settings` > `Features in development` > `Use Rosetta for x86/amd64 emulation on Apple Silicon`.
 
