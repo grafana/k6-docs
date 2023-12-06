@@ -2,6 +2,7 @@
 title: 'Build a k6 binary using Docker'
 excerpt: ''
 hideFromSidebar: false
+canonicalUrl: https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-docker/
 ---
 
 Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify the process of creating a custom k6 binary. It avoids having to setup a local Go environment, and install xk6 manually.

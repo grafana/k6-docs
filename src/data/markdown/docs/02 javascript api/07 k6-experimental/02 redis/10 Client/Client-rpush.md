@@ -1,6 +1,7 @@
 ---
 title: 'Client.rpush(key, values)'
 excerpt: 'Adds the string `value` to the right of the list stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-rpush/
 ---
 
 Inserts all the specified values at the tail of the list stored at `key`. If `key` does not exist, it is created as empty list before performing the push operation.

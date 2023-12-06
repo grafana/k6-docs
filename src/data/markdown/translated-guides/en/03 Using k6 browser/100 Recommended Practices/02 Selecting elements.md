@@ -1,6 +1,7 @@
 ---
 title: 'Selecting elements'
 excerpt: 'A guide on how to select elements with the browser module.'
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/selecting-elements/
 ---
 
 Selectors are strings that represents a specific DOM element on the page. When writing browser-level tests, it's recommended to use selectors that are robust to avoid test flakiness when the DOM structure changes. 

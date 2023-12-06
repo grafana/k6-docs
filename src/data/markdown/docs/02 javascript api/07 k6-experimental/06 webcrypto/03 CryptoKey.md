@@ -1,6 +1,7 @@
 ---
 title: 'CryptoKey'
 excerpt: 'CryptoKey represents a cryptographic key used for encryption, decryption, signing, or verification.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/cryptokey/
 ---
 
 The `CryptoKey` object represents a cryptographic key used for [encryption](/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt), [decryption](/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt), [signing](/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign), or [verification](/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify) within the webcrypto module. The `CryptoKey` object is created using the SubtleCrypto.generateKey() or SubtleCrypto.importKey() methods.

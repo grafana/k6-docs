@@ -1,6 +1,7 @@
 ---
 title: 'InfluxDB'
 excerpt: 'k6 has an output extension to store k6 metrics in InfluxDB v2. This document shows you how to configure this integration.'
+canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/influxdb/
 ---
 
 Using the [InfluxDB extension](https://github.com/grafana/xk6-output-influxdb), you can store k6 metrics in [InfluxDB v2.0](https://docs.influxdata.com/influxdb/v2.0/) and analyze your performance results with Grafana or [other tools](https://docs.influxdata.com/influxdb/cloud-serverless/query-data/tools/).

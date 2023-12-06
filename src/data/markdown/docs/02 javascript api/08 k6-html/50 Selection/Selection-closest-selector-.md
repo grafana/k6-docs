@@ -1,6 +1,7 @@
 ---
 title: 'Selection.closest(selector)'
 excerpt: 'For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-closest/
 ---
 
 For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.

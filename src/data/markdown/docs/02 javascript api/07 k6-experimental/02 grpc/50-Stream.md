@@ -1,6 +1,7 @@
 ---
 title: Stream
 excerpt: 'GRPC Streams'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/stream/
 ---
 
 Using a GRPC client creates a stream. An important note that the client should be already connected (client.connect called) to the server before creating a stream.

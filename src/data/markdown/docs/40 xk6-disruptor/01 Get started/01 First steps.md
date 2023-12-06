@@ -3,6 +3,7 @@ title: 'First steps'
 heading: 'xk6-disruptor first steps'
 head_title: 'xk6-disruptor First steps'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to k6.'
+canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/first-steps/
 ---
 
 [xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6.

@@ -5,6 +5,7 @@ excerpt: |
   often required when using the Chrome Extension or HAR converter to generate your test script.
   This is due to the fact that those tools will capture session IDs, CSRF tokens, VIEWSTATE,
   wpnonce, and other dynamic values from your specific session.
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/correlation-and-dynamic-data/
 ---
 
 Scripting examples on how to correlate dynamic data in your test script. Correlation is often

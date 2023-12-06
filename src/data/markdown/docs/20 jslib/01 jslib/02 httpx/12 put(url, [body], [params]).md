@@ -3,6 +3,7 @@ title: 'put(url, [body], [params])'
 head_title: 'httpx.put'
 description: 'httpx.put makes PUT requests'
 excerpt: 'httpx.put makes PUT requests'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/put/
 ---
 
 `session.put(url, body, params)` makes a PUT request. Only the first parameter is required

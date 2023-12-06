@@ -1,6 +1,7 @@
 ---
 title: 'Response.html()'
 excerpt: 'Parses response as HTML and populate a Selection.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-html/
 ---
 
 Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selection) object.

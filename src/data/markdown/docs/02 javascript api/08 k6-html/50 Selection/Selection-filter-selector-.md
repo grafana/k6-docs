@@ -1,6 +1,7 @@
 ---
 title: 'Selection.filter(selector)'
 excerpt: 'Reduce the set of matched elements to those that match the selector or pass the function test.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-filter/
 ---
 
 Reduce the set of matched elements to those that match the selector or pass the function's test.

@@ -1,6 +1,7 @@
 ---
 title: 'HmacKeyGenParams'
 excerpt: 'HmacKeyGenParams represents the object that should be passed as the algorithm parameter into the generateKey operation, when generating an HMAC key.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/hmackeygenparams/
 ---
 
 The `HmacKeyGenParams` object represents the object that should be passed as the algorithm parameter into the [generateKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) operation when generating an HMAC key.

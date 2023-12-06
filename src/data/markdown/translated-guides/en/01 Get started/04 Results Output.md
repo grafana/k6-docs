@@ -1,6 +1,7 @@
 ---
 title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
+canonicalUrl: https://grafana.com/docs/k6/latest/get-started/results-output/
 ---
 
 As k6 generates load for your test, it also makes _metrics_ that measure the performance of the system.

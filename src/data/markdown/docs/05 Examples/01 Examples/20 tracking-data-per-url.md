@@ -1,6 +1,7 @@
 ---
 title: 'Track transmitted data per URL'
 excerpt: 'This example shows how to track data sent and received for a individual URL.'
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/track-transmitted-data-per-url/
 ---
 
 By default, k6 collects automatically two [built-in metrics](/using-k6/metrics#built-in-metrics) related to the transmitted data during the test execution:
