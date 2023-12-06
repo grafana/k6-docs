@@ -9,5 +9,6 @@ weight: 100
 
 This section presents some examples and recommended practices when working with the `k6 browser` module to leverage browser automation as part of your k6 tests.
 
+- [Hybrid approach to performance](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/hybrid-approach-to-performance)
 - [Page object model pattern](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/page-object-model-pattern)
 - [Selecting elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements)
