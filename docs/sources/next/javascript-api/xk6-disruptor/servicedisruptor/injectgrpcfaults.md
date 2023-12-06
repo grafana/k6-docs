@@ -1,18 +1,18 @@
 ---
 title: 'injectGrpcFaults'
 excerpt: 'xk6-disruptor: ServiceDisruptor.injectGrpcFaults method'
-weight: 02
+weight: 200
 ---
 
 # injectGrpcFaults
 
 injectGrpcFaults injects gRPC faults in the requests served by a target Service.
 
-| Parameters         | Type   | Description                                                                                                            |
-| ------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Parameters         | Type   | Description                                                                                                                        |
+| ------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | fault              | object | description of the [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc) to be injected |
-| duration           | string | duration of the disruption                                                                                             |
-| options (optional) | object | [options](#options) that control the injection of the fault                                                            |
+| duration           | string | duration of the disruption                                                                                                         |
+| options (optional) | object | [options](#options) that control the injection of the fault                                                                        |
 
 ## Options
 
