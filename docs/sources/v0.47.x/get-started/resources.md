@@ -32,8 +32,6 @@ If you need a place to learn k6 and test your scripts, you can use these playgro
 
 - [pizza.grafana.fun](https://pizza.grafana.fun/). A simple demo webapp. [grafana/quickpizza](https://github.com/grafana/quickpizza)
 - [k6-http.grafana.fun](https://k6-http.grafana.fun). A simple HTTP Request & Response Service. [grafana/httpbin](https://github.com/grafana/httpbin)
-- [k6-php.grafana.fun](https://k6-php.grafana.fun). A simple PHP website. [grafana/test.k6.io](https://github.com/grafana/test.k6.io)
-- [test-api.k6.io](https://test-api.k6.io). A demo HTTP REST API with some WebSocket support. [grafana/test-api.k6.io](https://github.com/grafana/test-api.k6.io)
 - [grpcbin.test.k6.io](https://grpcbin.test.k6.io/). A simple gRPC Request & Response Service. [grafana/k6-grpcbin](https://github.com/grafana/k6-grpcbin)
 
 Note that these are shared testing environments - please avoid high-load tests. Alternatively, you can deploy and host them on your infrastructure and run the examples in the repository.
