@@ -1,7 +1,7 @@
 ---
 title: 'Constructor'
 excerpt: 'xk6-disruptor: PodDisruptor constructor'
-weight: 01
+weight: 100
 ---
 
 # Constructor

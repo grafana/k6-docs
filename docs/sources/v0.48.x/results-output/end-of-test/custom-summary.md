@@ -72,7 +72,7 @@ They determine where k6 displays or saves the content:
 
 The value of a key can have a type of either `string` or [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer).
 
-You can return mutiple summary outputs in a script.
+You can return multiple summary outputs in a script.
 As an example, this `return` statement sends a report to standard output and writes the `data` object to a JSON file.
 
 {{< code >}}
