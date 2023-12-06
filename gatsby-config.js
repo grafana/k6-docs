@@ -7,7 +7,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const shouldAnnouncementBannerBeShown = false;
+const shouldAnnouncementBannerBeShown = true;
 
 const plugins = [
   'gatsby-transformer-sharp',
@@ -186,10 +186,10 @@ if (shouldAnnouncementBannerBeShown) {
       ),
       text:
         // eslint-disable-next-line max-len
-        '🎉 We are excited to announce that, starting on July 25th at 14:00 UTC, we will merge the k6 community forum with the Grafana community forum',
+        '🎉 We have migrated the docs to the Grafana website! To check out the docs for the latest version of k6, head over to grafana.com/docs/k6.',
       link:
         // eslint-disable-next-line max-len
-        'https://k6.io/blog/k6-forum-migration/',
+        'https://grafana.com/docs/k6/latest/',
       buttonText: 'Learn more',
     },
     // settings below have to match
@@ -204,7 +204,7 @@ if (shouldAnnouncementBannerBeShown) {
     },
     storage: {
       // changing storage name to force users to see the banner even if it was disabled
-      name: 'k6-sb-was-shown',
+      name: 'k6-db-was-shown',
     },
   };
   if (isProduction) {
