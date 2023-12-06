@@ -2,6 +2,8 @@
 title: 'Load test types'
 excerpt: 'A series of conceptual articles explaining the different types of load tests. Learn about planning, running, and interpreting different tests for different performance goals.'
 weight: -10
+cascade:
+  noindex: true
 ---
 
 # Load test types
@@ -38,14 +40,14 @@ The main types are as follows. Each type has its own article outlining its essen
 
 In k6 scripts, configure the load configuration using [`options`](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#using-options) or [`scenarios`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios). This separates workload configuration from iteration logic.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Test-type cheat sheet
 
 The following table provides some broad comparisons.
 
-| Type                                                                  | VUs/Throughput        | Duration                   | When?                                                                                                              |
-| --------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Type                                                                                                | VUs/Throughput        | Duration                   | When?                                                                                                              |
+| --------------------------------------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [Smoke](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing)           | Low                   | Short (seconds or minutes) | When the relevant system or application code changes. It checks functional logic, baseline metrics, and deviations |
 | [Load](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/load-testing)             | Average production    | Mid (5-60 minutes)         | Often to check system maintains performance with average use                                                       |
 | [Stress](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing)         | High (above average)  | Mid (5-60 minutes)         | When system may receive above-average loads to check how it manages                                                |

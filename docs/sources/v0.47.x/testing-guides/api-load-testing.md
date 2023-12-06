@@ -3,6 +3,7 @@ title: 'API load testing'
 head_title: 'Intro to API Load Testing: The k6 Guide'
 excerpt: 'Load testing APIs has many facets. This guide introduces you to performance testing and provides best practices to load test your APIs with k6.'
 weight: 01
+noindex: true
 ---
 
 # API load testing
@@ -106,7 +107,7 @@ But, even in this case, sleep can help you avoid overworking the load generator,
 
 When testing the API against normal, human-run workflows, add sleep as in a normal test.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Virtual users
 
