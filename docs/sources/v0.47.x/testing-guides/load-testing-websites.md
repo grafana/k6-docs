@@ -3,6 +3,7 @@ title: 'Load testing websites'
 head_title: 'How to Load Test a Website: The k6 Guide'
 excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
 weight: 03
+noindex: true
 ---
 
 # Load testing websites
@@ -206,7 +207,9 @@ export default async function () {
     sleep(4);
 
     // 02. View products
-    const element = page.locator('a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]');
+    const element = page.locator(
+      'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
+    );
     await element.click();
     page.waitForSelector('button[name="add-to-cart"]');
     page.screenshot({ path: 'screenshots/02_view-product.png' });
@@ -341,6 +344,5 @@ Load testing websites can be complex due to the number of viable testing approac
 - [Browser testing with k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/)
 - [Load test types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/)
 - [Session recording guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/)
-- [Determining concurrent users in your load tests]
-(https://k6.io/blog/monthly-visits-concurrent-users)
+- [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data)
