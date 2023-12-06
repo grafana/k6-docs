@@ -3,6 +3,7 @@ public/
 node_modules/
 docs/sources/get-started/run-cloud-tests-from-the-CLI.md
 docs/sources/get-started/run-your-first-tests.md
+/docs/sources/next/testing-guides/injecting-faults-with-xk6-disruptor/expose-your-application.md
 CONTRIBUTING_FILE_FORMAT.md
 src/data/markdown/docs/40 xk6-disruptor/01 Get started/01 First steps.md
 src/data/markdown/docs/40 xk6-disruptor/01 Get started/04 Expose Your Application.md
