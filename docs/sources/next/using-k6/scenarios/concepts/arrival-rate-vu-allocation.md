@@ -1,7 +1,7 @@
 ---
 title: Arrival-rate VU allocation
 excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
-weight: 02
+weight: 20
 ---
 
 # Arrival-rate VU allocation
@@ -21,7 +21,7 @@ In cloud tests, **`preAllocatedVUs` count against your subscription.**
 
 When planning a test, consider doing a trial initialization on a local machine to ensure you're allocating VUs efficiently.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Pre-allocation in arrival-rate executors
 
@@ -65,9 +65,9 @@ the number of available `preAllocatedVUs` determines how many iterations k6 can 
 k6 tries to reach the target iterations per second,
 and one of two things can happen:
 
-| If the executor       | Then..                                                                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Has enough VUs        | the extra VUs are "idle," ready to be used when needed.                                                                                                 |
+| If the executor       | Then..                                                                                                                                                                  |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Has enough VUs        | the extra VUs are "idle," ready to be used when needed.                                                                                                                 |
 | Has insufficient VUs. | k6 emits a [`dropped_iterations` metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) for each iteration that it can't run. |
 
 ## Iteration duration affects the necessary allocation
@@ -96,7 +96,7 @@ As dropped iterations can also indicate that the system performance is degrading
 In cloud tests, the number of `maxVUs` counts against your subscription,
 **overriding the number set by `preAllocatedVUs`**.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The arrival-rate executors also have a `maxVUs` property.
 If you set it, k6 runs in this sequence:

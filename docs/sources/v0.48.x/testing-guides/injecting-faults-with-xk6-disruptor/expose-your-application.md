@@ -2,6 +2,8 @@
 title: 'Expose your application'
 excerpt: 'How to make your applications accessible from the test scripts.'
 weight: 04
+aliases:
+  - ./expose--your-application/
 ---
 
 # Expose your application
@@ -31,7 +33,7 @@ Until this issue is solved in `kubectl`, tests using port forwarding to access a
 
 The simplest way to accomplish this is to ensure the scenario that executes the load (#2) starts after the scenario that injects the faults (#1):
 
-```javascript
+```js
     scenarios: {
         disrupt: {   // #1 inject faults
             executor: 'shared-iterations',
@@ -62,6 +64,7 @@ If your cluster is deployed in a public cloud, check your cloud provider documen
 If the service that you want your tests to access is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
 
 {{< code >}}
+
 ```bash
 kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
 ```
@@ -69,11 +72,13 @@ kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBala
 ```windows-powershell
 kubectl -n <name space> patch svc <service name> -p '{\"spec\": {\"type\": \"LoadBalancer\"}}'
 ```
+
 {{< /code >}}
 
 You can retrieve the external IP address and store it in an environment variable (`SVC_IP` in this example) using the following command:
 
 {{< code >}}
+
 ```bash
 SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
@@ -81,6 +86,7 @@ SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.st
 ```windows-powershell
 $Env:SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
+
 {{< /code >}}
 
 ### Configuring a LoadBalancer in Kind
