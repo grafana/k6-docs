@@ -123,7 +123,7 @@ const JavascriptAPI = ({
           description={
             'The list of k6 modules natively supported in your k6 scripts.'
           }
-          className={classNames(version !== LATEST_VERSION && jsApiStyles.info)}
+          className={classNames(jsApiStyles.info)}
         />
         <div className={docPageContent.inner}>
           <div ref={contentContainerRef} className={stickyContainerClasses}>

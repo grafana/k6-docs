@@ -27,7 +27,6 @@ import {
 import { childrenToList, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
-import { LATEST_VERSION } from 'utils/versioning';
 
 import styles from './doc-layout.module.scss';
 import ArrowLeft from './svg/arrow-left.inline.svg';
@@ -420,9 +419,7 @@ export const DocLayout = ({
             </div>
           </div>
         </Header>
-        {version && version !== LATEST_VERSION && (
-          <VersionBanner version={version} versions={pageVersions} />
-        )}
+        {version && <VersionBanner version={version} versions={pageVersions} />}
 
         {children}
         <MobileNav
