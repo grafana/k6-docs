@@ -155,9 +155,9 @@ To run a simple local script:
        $ export DOCKER_DEFAULT_PLATFORM=linux/amd64
        ```
 
-   3. Select VirtuoFS in `Settings` > `General` > `VirtuoFS`.
+   3. Select VirtuoFS in **Settings** > **General** > **VirtuoFS**.
 
-   4. Enable the Rosetta emulation in `Settings` > `Features in development` > `Use Rosetta for x86/amd64 emulation on Apple Silicon`.
+   4. Enable the Rosetta emulation in **Settings** > **Features in development** > **Use Rosetta for x86/amd64 emulation on Apple Silicon**.
 
    5. Restart Docker.
 
