@@ -190,11 +190,10 @@ The following is an example of a browser-based load testing script in k6 using t
 <!-- eslint-skip -->
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 import { sleep } from 'k6';
 
 export default async function () {
-  const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
   // 01. Go to the homepage
@@ -217,7 +216,6 @@ export default async function () {
     sleep(1);
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
