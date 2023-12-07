@@ -73,14 +73,13 @@ You can import the `Homepage` class within your test class and invoke the method
 {{< code >}}
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 import { expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.0/index.js';
 
 import { Homepage } from '../pages/homepage.js';
 import { bookingData } from '../data/booking-data.js';
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
 
   const { name } = bookingData;
@@ -92,7 +91,6 @@ export default async function () {
   expect(homepage.getVerificationMessage()).to.contain(name);
 
   page.close();
-  browser.close();
 }
 ```
 
