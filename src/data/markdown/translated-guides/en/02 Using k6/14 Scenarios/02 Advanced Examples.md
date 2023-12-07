@@ -1,6 +1,7 @@
 ---
 title: 'Advanced Examples'
 excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios, different environment variables and tags per scenario.'
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/advanced-examples/
 ---
 
 You can use multiple scenarios in one script, and these scenarios can be run in sequence or in parallel.

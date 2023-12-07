@@ -1,6 +1,7 @@
 ---
 title: 'SOAP'
 excerpt: 'Load Testing SOAP API.'
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/soap/
 ---
 
 Although k6 doesn't have any built-in APIs for working with SOAP or XML data in general, you

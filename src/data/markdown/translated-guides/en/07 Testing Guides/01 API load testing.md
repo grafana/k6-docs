@@ -2,6 +2,8 @@
 title: 'API load testing'
 head_title: 'Intro to API Load Testing: The k6 Guide'
 excerpt: 'Load testing APIs has many facets. This guide introduces you to performance testing and provides best practices to load test your APIs with k6.'
+# // TODO: Point canonical to new URL once it's published
+# canonicalUrl: https://grafana.com/
 ---
 
 An API load test generally starts with small loads on isolated components.

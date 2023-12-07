@@ -1,6 +1,7 @@
 ---
 title: 'Client.set(key, value, expiration)'
 excerpt: 'Set `key` to hold `value`, with a time to live equal to `expiration`.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-set/
 ---
 
 Set the value of a key, with a time to live equal to the expiration time parameter (in seconds). If the key already holds a value, it is overwritten.

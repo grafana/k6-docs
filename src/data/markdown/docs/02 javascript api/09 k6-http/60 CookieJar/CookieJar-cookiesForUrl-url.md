@@ -1,6 +1,7 @@
 ---
 title: 'CookieJar.cookiesForURL(url)'
 excerpt: 'Get object with all cookies for the given URL, where the key is the cookie name and the value is an array.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl/
 ---
 
 | Parameter | Type   | Description |

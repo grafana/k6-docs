@@ -1,6 +1,7 @@
 ---
 title: 'gRPC'
 excerpt: 'xk6-disruptor: gRPC Fault attributes'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/faults/grpc/
 ---
 
 A gRPC Fault describes the characteristics of the faults to be injected in the gRPC requests served by a target.

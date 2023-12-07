@@ -1,6 +1,7 @@
 ---
 title: 'setDefaultTimeout(timeout)'
 excerpt: 'Sets the default timeout in milliseconds.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/browsercontext/setdefaulttimeout/
 ---
 
 Sets the default maximum timeout for all methods accepting a `timeout` option in milliseconds.

@@ -1,6 +1,7 @@
 ---
 title: "Client.load(importPaths, ...protoFiles)"
 excerpt: 'Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/client/client-load/
 ---
 
 Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.

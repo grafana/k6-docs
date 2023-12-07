@@ -1,6 +1,7 @@
 ---
 title: 'Client.hget(key, field)'
 excerpt: 'Returns the value of field in the hash stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hget/
 ---
 
 Returns the value associated with `field` in the hash stored at `key`.

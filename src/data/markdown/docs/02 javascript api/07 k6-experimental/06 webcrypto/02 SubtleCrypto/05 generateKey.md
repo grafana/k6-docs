@@ -1,6 +1,7 @@
 ---
 title: 'generateKey'
 excerpt: 'generateKey generates a new key.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey/
 ---
 
 The `generateKey()` generates a new cryptographic key and returns it as a [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.

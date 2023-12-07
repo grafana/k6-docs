@@ -2,6 +2,7 @@
 title: 'KMSClient.listKeys()'
 description: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/kmsclient-listkeys/
 ---
 
 `KMSClient.listKeys()` lists all the Key Management Service keys in the caller's AWS account and region.

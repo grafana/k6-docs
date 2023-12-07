@@ -1,6 +1,7 @@
 ---
 title: 'Rate'
 excerpt: 'Rate is an object for representing a custom metric keeping track of the percentage of added values that are non-zero.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/rate/
 ---
 
 _Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/javascript-api/k6-metrics).

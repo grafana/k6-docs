@@ -1,6 +1,7 @@
 ---
 title: 'type(text, [options])'
 excerpt: 'Browser module: locator.type method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/type/
 ---
 
 Type in the text into the input field.

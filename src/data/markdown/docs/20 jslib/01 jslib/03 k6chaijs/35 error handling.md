@@ -1,6 +1,7 @@
 ---
 title: 'Error handling'
 excerpt: 'How to handle errors in k6chaijs.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/error-handling/
 ---
 
 When you execute a load test, your System Under Test (SUT) may often become over saturated and start responding with errors. In this case,  you need to consider what the iteration execution should do:

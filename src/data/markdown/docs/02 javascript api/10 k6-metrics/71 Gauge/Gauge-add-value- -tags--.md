@@ -1,6 +1,7 @@
 ---
 title: "Gauge.add(value, [tags])"
 excerpt: 'Set the value of the Gauge metric.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/gauge/gauge-add/
 ---
 
 Set the value of the `Gauge` metric.

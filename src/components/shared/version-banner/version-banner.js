@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import React from 'react';
 import { LATEST_VERSION } from 'utils/versioning';
 
@@ -9,14 +8,19 @@ export const VersionBanner = ({ version, versions }) => (
     <div className={'container'}>
       <div className={styles.inner}>
         <span className={styles.message}>
-          ⚠️ This is archived documentation for <b>{version}</b>.
+          ⚠️ This is the archived documentation for k6 <b>{version}</b>.
           {typeof versions[LATEST_VERSION] !== 'undefined' && (
             <span>
               {' '}
               Go to the{' '}
-              <Link className={'link'} to={versions[LATEST_VERSION].path}>
+              <a
+                href="https://grafana.com/docs/k6/latest/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 latest version
-              </Link>
+              </a>
+              .
             </span>
           )}
         </span>

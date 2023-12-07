@@ -1,6 +1,7 @@
 ---
 title: 'Selection.nextUntil([selector], [filter])'
 excerpt: 'Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-nextuntil/
 ---
 
 Get all following siblings of each element up to but not including the element matched by the selector.

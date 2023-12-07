@@ -1,6 +1,7 @@
 ---
 title: 'mouse'
 excerpt: 'Browser module: page.mouse method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/mouse/
 ---
 
 Returns the [Mouse](/javascript-api/k6-experimental/browser/mouse/) instance to interact with a virtual mouse on the page.

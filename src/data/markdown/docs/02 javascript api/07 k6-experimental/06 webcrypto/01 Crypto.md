@@ -1,6 +1,7 @@
 ---
 title: 'Crypto'
 excerpt: 'Crypto offers basic cryptography features.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/crypto/
 ---
 
 `Crypto` allows access to a cryptographically strong random number generator and to cryptographic primitives.

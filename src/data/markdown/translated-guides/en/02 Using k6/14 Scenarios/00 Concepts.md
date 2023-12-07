@@ -1,6 +1,7 @@
 ---
 title: "Concepts"
 excerpt: High-level explanations about how your executor configuration can change the test execution and test results
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/
 ---
 
 These topics explain the essential concepts of how scenarios and their executors work.

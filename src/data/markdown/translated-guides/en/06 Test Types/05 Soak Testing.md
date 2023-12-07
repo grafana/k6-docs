@@ -2,6 +2,8 @@
 title: 'Soak testing'
 head_title: 'What is Soak Testing? How to create a Soak Test in k6'
 excerpt: 'A Soak Test tests the reliability and performance of your system over extended periods of use.'
+# // TODO: Point canonical to new URL once it's published
+# canonicalUrl: https://grafana.com/
 ---
 
 Soak testing is another variation of the Average-Load test. It focuses on extended periods, analyzing the following: 

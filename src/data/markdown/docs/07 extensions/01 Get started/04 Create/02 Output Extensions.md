@@ -1,6 +1,7 @@
 ---
 title: 'Output Extensions'
 excerpt: 'Follow these steps to build an output extension for k6.'
+canonicalUrl: https://grafana.com/docs/k6/latest/extensions/create/output-extensions/
 ---
 
 k6 provides many [metrics](/using-k6/metrics) and [output formats](/results-output/overview/), but it cannot directly support all possibilities.

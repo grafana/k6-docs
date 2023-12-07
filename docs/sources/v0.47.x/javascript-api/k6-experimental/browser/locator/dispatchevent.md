@@ -9,11 +9,11 @@ Dispatches HTML DOM event types e.g. `'click'`.
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Defaults | Description                                                                                                                                                                                                                                                   |
-| --------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type            | string | `''`     | DOM event type e.g. `'click'`.                                                                                                                                                                                                                                |
-| eventInit       | object | `null`   | Optional event specific properties. See [eventInit](#eventinit) for more details.                                                                                                                                                                             |
-| options         | object | `null`   |                                                                                                                                                                                                                                                               |
+| Parameter       | Type   | Defaults | Description                                                                                                                                                                                                                                                                                                                                   |
+| --------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type            | string | `''`     | DOM event type e.g. `'click'`.                                                                                                                                                                                                                                                                                                                |
+| eventInit       | object | `null`   | Optional event specific properties. See [eventInit](#eventinit) for more details.                                                                                                                                                                                                                                                             |
+| options         | object | `null`   |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
@@ -35,15 +35,16 @@ Since eventInit is event-specific, please refer to the events documentation for 
 {{< code >}}
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
   const button = page.locator('#counter-button');
   button.dispatchEvent('click');
+
+  page.close();
 }
 ```
 

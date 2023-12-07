@@ -1,6 +1,7 @@
 ---
 title: 'viewportSize()'
 excerpt: 'Browser module: page.viewportSize method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/viewportsize/
 ---
 
 Returns the page's size (width and height).

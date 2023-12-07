@@ -1,6 +1,7 @@
 ---
 title: "Counter.add(value, [tags])"
 excerpt: 'Add a value to the Counter metric.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/counter/counter-add/
 ---
 
 Add a value to the `Counter` metric.

@@ -3,6 +3,7 @@ title: 'cookieJar()'
 slug: '/javascript-api/k6-http/cookiejar-method'
 description: 'Get active HTTP Cookie jar.'
 excerpt: 'Get active HTTP Cookie jar.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar-method/
 ---
 
 Get the active cookie jar.

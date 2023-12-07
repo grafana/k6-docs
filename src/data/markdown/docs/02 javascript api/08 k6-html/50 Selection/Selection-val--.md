@@ -1,6 +1,7 @@
 ---
 title: 'Selection.val()'
 excerpt: 'Get the current value of the first element in the set of matched elements.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-val/
 ---
 
 Get the current value of the first element in the set of matched elements.

@@ -1,6 +1,7 @@
 ---
 title: 'HTTP Requests'
 excerpt: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/http-requests/
 ---
 
 When testers create new load test, the first step is often to define the HTTP requests to test the system with.

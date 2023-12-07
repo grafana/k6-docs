@@ -1,6 +1,7 @@
 ---
-weight: 11
 title: Examples
+weight: 11
+noindex: true
 ---
 
 # Examples

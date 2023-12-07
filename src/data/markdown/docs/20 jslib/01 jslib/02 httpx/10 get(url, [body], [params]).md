@@ -2,6 +2,7 @@
 title: 'get(url, [body], [params])'
 description: 'httpx.get makes GET requests'
 excerpt: 'httpx.get makes GET requests'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/get/
 ---
 
 `session.get(url, body, params)` makes a GET request. Only the URL parameter is required
