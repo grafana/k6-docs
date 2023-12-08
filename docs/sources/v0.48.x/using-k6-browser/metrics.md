@@ -124,7 +124,7 @@ export const options = {
   },
 };
 
-const myTrend = new Trend('total_action_time');
+const myTrend = new Trend('total_action_time',true);
 
 export default async function () {
   const page = browser.newPage();
@@ -152,7 +152,7 @@ export default async function () {
       JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0].duration
     );
 
-    myTrend.add(total_action_time);
+    myTrend.add(totalActionTime);
   } finally {
     page.close();
   }
@@ -166,5 +166,5 @@ After you run the test, you should see a similar output as the one below.
 ```bash
   iteration_duration..........: avg=1.06s    min=1.06s    med=1.06s    max=1.06s    p(90)=1.06s    p(95)=1.06s
   iterations..................: 1      0.70866/s
-  total_action_time.............: avg=295.3    min=295.3    med=295.3    max=295.3    p(90)=295.3    p(95)=295.3
+  total_action_time.............: avg=295.3ms    min=295.3ms    med=295.3ms    max=295.3ms    p(90)=295.3ms    p(95)=295.3ms
 ```
