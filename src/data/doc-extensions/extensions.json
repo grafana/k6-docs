@@ -1111,6 +1111,21 @@
       "categories": ["Data"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-nostr",
+      "description": "Interact with Nostr relays",
+      "url": "https://github.com/akiomik/xk6-nostr",
+      "logo": "",
+      "author": {
+        "name": "Akiomi Kamakura",
+        "url": "https://github.com/akiomik"
+      },
+      "stars": "2",
+      "type": ["JavaScript"],
+      "categories": ["Messaging", "Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
