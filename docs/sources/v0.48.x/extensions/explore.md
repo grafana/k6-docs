@@ -195,6 +195,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-neo4j</h4>
         <p>Interact with Neo4J graph databases</p>
     </a>
+    <a href="https://github.com/akiomik/xk6-nostr" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-nostr</h4>
+        <p>Interact with Nostr relays</p>
+    </a>
     <a href="https://github.com/grafana/xk6-notification" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-notification</h4>
         <p>Create notifications</p>
@@ -254,6 +258,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/wosp-io/xk6-playwright" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-playwright</h4>
         <p>Browser automation and end-to-end web testing using Playwright</p>
+    </a>
+    <a href="https://github.com/mcosta74/xk6-plist" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-plist</h4>
+        <p>Parse/serialize property list (.plist) payloads</p>
     </a>
     <a href="https://github.com/szkiba/xk6-prometheus" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-prometheus</h4>
