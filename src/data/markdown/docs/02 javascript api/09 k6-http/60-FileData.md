@@ -2,6 +2,7 @@
 title: 'FileData'
 description: 'Used for wrapping data representing a file when doing multipart requests (file uploads).'
 excerpt: 'Used for wrapping data representing a file when doing multipart requests (file uploads).'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/filedata/
 ---
 
 _FileData_ is an object for wrapping data representing a file when doing

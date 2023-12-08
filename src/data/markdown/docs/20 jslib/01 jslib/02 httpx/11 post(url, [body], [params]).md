@@ -3,6 +3,7 @@ title: 'post(url, [body], [params])'
 head_title: 'httpx.post'
 description: 'httpx.post makes POST requests'
 excerpt: 'httpx.post makes POST requests'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/post/
 ---
 
 

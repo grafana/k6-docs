@@ -2,6 +2,7 @@
 title: 'randomString(length, [charset])'
 description: 'Random string'
 excerpt: 'Random string'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/randomstring/
 ---
 
 Function returns a random string of a given length, optionally selected from a custom character set.

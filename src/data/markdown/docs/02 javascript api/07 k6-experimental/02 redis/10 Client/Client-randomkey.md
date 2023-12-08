@@ -1,6 +1,7 @@
 ---
 title: 'Client.randomKey()'
 excerpt: 'Returns a random key from the keyspace.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-randomkey/
 ---
 
 Returns a random key.

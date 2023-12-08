@@ -1,6 +1,7 @@
 ---
 title: 'terminatePods()'
 excerpt: 'xk6-disruptor: ServiceDisruptor.terminatePods method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/terminate-pods/
 ---
 
 `terminatePods` terminates a number of pods that belong to the service specified in the ServiceDisruptor.

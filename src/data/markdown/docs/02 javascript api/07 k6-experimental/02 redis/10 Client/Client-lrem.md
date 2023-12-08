@@ -1,6 +1,7 @@
 ---
 title: 'Client.lrem(key, count, value)'
 excerpt: 'Removes the first count occurrences of elements equal to value from the list stored at `key`.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lrem/
 ---
 
 Removes the first `count` occurrences of `value` from the list stored at `key`. If `count` is positive, elements are removed from the beginning of the list. If `count` is negative, elements are removed from the end of the list. If `count` is zero, all elements matching `value` are removed.

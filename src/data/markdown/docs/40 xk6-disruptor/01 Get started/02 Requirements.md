@@ -1,6 +1,7 @@
 ---
 title: 'Requirements'
 excerpt: 'Requirements for using xk6-disruptor in your test scripts'
+canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/requirements/
 ---
 
 The xk6-disruptor is a k6 extension. 

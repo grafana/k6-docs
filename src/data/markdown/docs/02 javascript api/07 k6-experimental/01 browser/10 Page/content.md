@@ -1,6 +1,7 @@
 ---
 title: 'content()'
 excerpt: 'Browser module: page.content method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/content/
 ---
 
 Gets the HTML contents of the page.

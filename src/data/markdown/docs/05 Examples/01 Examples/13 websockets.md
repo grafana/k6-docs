@@ -2,6 +2,7 @@
 title: 'WebSockets'
 excerpt: |
   Scripting example on how to use WebSocket API in k6.
+canonicalUrl: https://grafana.com/docs/k6/latest/examples/websockets/
 ---
 
 Here's a load test for CrocoChat - a WebSocket chat API available on [https://test-api.k6.io/](https://test-api.k6.io/).

@@ -18,9 +18,10 @@ Please fill in this template:
 Select one of these and delete the others:
 
 If updating the documentation for the most recent release of k6: 
-- [ ] I have made my changes in the `docs/sources/v{most_recent_release}` folder of the documentation.
-- [ ] I have reflected my changes in the `docs/sources/next` folder of the documentation.
+- [ ] I have made my changes in the `docs/sources/next` folder of the documentation.
+- [ ] I have reflected my changes in the `docs/sources/v{most_recent_release}` folder of the documentation.
 - [ ] I have reflected my changes in the relevant (*e.g.*  when correcting a documentation error) folders of the previous k6 versions of the documentation.
+<!-- You can use the scripts/apply-patch scripts to help you port changes from one version folder to another. For more details, refer to [Use the `apply-patch` script](../CONTRIBUTING/README.md#use-the-apply-patch-script). -->
 
 If updating the documentation for the next release of k6:
 - [ ] I have made my changes in the `docs/sources/next` folder of the documentation.

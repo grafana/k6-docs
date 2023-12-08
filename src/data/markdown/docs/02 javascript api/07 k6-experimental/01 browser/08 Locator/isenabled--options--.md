@@ -1,6 +1,7 @@
 ---
 title: 'isEnabled([options])'
 excerpt: 'Browser module: locator.isEnabled method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/isenabled/
 ---
 
 Checks if the element is `enabled`.

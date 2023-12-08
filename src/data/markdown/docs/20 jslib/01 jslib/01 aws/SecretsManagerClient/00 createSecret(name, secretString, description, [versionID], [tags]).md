@@ -2,6 +2,7 @@
 title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
 description: 'SecretsManagerClient.createSecret creates a new secret'
 excerpt: 'SecretsManagerClient.createSecret creates a new secret'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret/
 ---
 
 `SecretsManagerClient.createSecret` creates a secret in AWS' secrets manager.

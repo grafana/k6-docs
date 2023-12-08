@@ -2,6 +2,7 @@
 title: 'connect( url, params, callback )'
 description: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
 excerpt: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/connect/
 ---
 
 <WsBlockquote />

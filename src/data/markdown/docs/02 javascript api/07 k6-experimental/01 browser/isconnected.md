@@ -1,6 +1,7 @@
 ---
 title: 'isConnected()'
 excerpt: 'Browser module: isConnected method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/isconnected/
 ---
 
 <Blockquote mod="attention">

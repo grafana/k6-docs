@@ -2,6 +2,7 @@
 title: 'addHeader( key, value )'
 description: 'adds a header to the session'
 excerpt: 'adds a header to the session'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addheader/
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 title: 'isChecked([options])'
 excerpt: 'Browser module: locator.isChecked method'
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/ischecked/
 ---
 
 Checks to see if the `checkbox` `input` type is selected or not.

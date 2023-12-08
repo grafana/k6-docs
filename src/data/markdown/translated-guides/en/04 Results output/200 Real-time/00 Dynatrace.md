@@ -1,6 +1,7 @@
 ---
 title: 'Dynatrace'
 excerpt: Send k6 output to Dynatrace to visualize load test results and correlate performance testing metrics in Dynatrace.
+canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/dynatrace/
 ---
 
 With the [Dynatrace k6 extension](https://github.com/Dynatrace/xk6-output-dynatrace),

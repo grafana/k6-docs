@@ -1,6 +1,7 @@
 ---
 title: Arrival-rate VU allocation
 excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/arrival-rate-vu-allocation/
 ---
 
 In arrival-rate executors, as long as k6 has VUs available, it starts iterations according to your target rate.
