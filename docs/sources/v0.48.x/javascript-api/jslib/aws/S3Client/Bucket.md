@@ -1,13 +1,12 @@
 ---
 title: 'Bucket'
 head_title: 'Bucket'
-slug: 'bucket'
 description: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
 ---
 
 # Bucket
 
-Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `listBuckets()` returns an array of Bucket objects. The Bucket object describes an Amazon S3 bucket.
+Bucket is returned by the S3Client.\* methods that query S3 buckets. Namely, `listBuckets()` returns an array of Bucket objects. The Bucket object describes an Amazon S3 bucket.
 
 | Name                  | Type   | Description                  |
 | :-------------------- | :----- | :--------------------------- |

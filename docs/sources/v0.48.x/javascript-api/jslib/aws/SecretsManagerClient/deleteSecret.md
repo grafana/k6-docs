@@ -1,7 +1,6 @@
 ---
-title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})'
+title: 'deleteSecret'
 head_title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})'
-slug: 'secretsmanagerclient-deletesecret'
 description: 'SecretsManagerClient.deleteSecret deletes a secret'
 ---
 
@@ -11,9 +10,9 @@ description: 'SecretsManagerClient.deleteSecret deletes a secret'
 
 ### Parameters
 
-| Parameter | Type                                      | Description                              |
-| :-------- | :---------------------------------------- | :--------------------------------------- |
-| secretID  | string                                    | The ARN or name of the secret to update. |
+| Parameter | Type                                      | Description                                                                                                                                                                                                                                                   |
+| :-------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| secretID  | string                                    | The ARN or name of the secret to update.                                                                                                                                                                                                                      |
 | options   | { recoveryWindow: 30, noRecovery: false } | Use options to control the deletion behavior. recoveryWindow defines how long a secret will remain “soft-deleted”, in days, before being hard-deleted. noRecovery set to true would hard-delete the secret immediately. Note that both options are exclusive. |
 
 ### Returns
@@ -55,4 +54,3 @@ export default async function () {
 _A k6 script that will delete a secret in AWS secrets manager_
 
 {{< /code >}}
-

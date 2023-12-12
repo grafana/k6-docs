@@ -11,10 +11,10 @@ description: 'KMSDataKey is returned by the KMSClient.*DataKey methods that quer
 The KMSDataKey object describes an Amazon Key Management Service data key.
 For instance, the [`generateDataKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/) returns the generated KMSDataKey object.
 
-| Name                        | Type   | Description                                                                                                                     |
-| :-------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------ |
-| `KMSDataKey.id`             | string | The identifier of the Key Management Service key that encrypted the data key.                                                                      |
-| `KMSDataKey.ciphertextBlob` | string | The base64-encoded encrypted copy of the data key.                                                                              |
+| Name                        | Type   | Description                                                                                                                                         |
+| :-------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `KMSDataKey.id`             | string | The identifier of the Key Management Service key that encrypted the data key.                                                                       |
+| `KMSDataKey.ciphertextBlob` | string | The base64-encoded encrypted copy of the data key.                                                                                                  |
 | `KMSDataKey.plaintext`      | string | The plain text data key. Use this data key to encrypt your data outside of Key Management Service. Then, remove it from memory as soon as possible. |
 
 ### Example
@@ -53,4 +53,3 @@ export default async function () {
 _A k6 script that generating a data key from an AWS Key Management Service key_
 
 {{< /code >}}
-

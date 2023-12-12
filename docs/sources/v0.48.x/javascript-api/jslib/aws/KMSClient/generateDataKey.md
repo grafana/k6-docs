@@ -1,7 +1,6 @@
 ---
-title: 'KMSClient.generateDataKey'
+title: 'generateDataKey'
 head_title: 'KMSClient.generateDataKey'
-slug: 'kmsclient-generatedatakey'
 description: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
 excerpt: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
 ---
@@ -12,15 +11,15 @@ excerpt: 'KMSClient.generateDataKey generates a symmetric data key for use outsi
 
 ### Parameters
 
-| Name | Type   | Description                                                                                                                                                                  |
-| :--- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name   | Type   | Description                                                                                                                                                                  |
+| :----- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`   | string | The identifier of the key. This can be either the key ID or the Amazon Resource Name (ARN) of the key.                                                                       |
 | `size` | number | The length of the data key. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For 256-bit (32-byte) data keys, use the value 32, instead. |
 
 ### Returns
 
-| Type                                                                  | Description                                                                                     |
-| :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| Type                                                                                                          | Description                                                                                                                             |
+| :------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------- |
 | Promise<[KMSDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsdatakey)> | A Promise that fulfills with a [KMSDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey) object. |
 
 ### Example
@@ -59,5 +58,3 @@ export default async function () {
 _A k6 script that generating a data key from an AWS Key Management Service key_
 
 {{< /code >}}
-
-

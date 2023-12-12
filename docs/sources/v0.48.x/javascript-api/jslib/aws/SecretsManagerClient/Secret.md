@@ -1,16 +1,15 @@
 ---
 title: 'Secret'
 head_title: 'Secret'
-slug: 'secret'
 description: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
 ---
 
 # Secret
 
-Secret is returned by the SecretsManagerClient.* methods that query secrets. Namely, [listSecrets](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/),
-[getSecret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret),
-[createSecret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret), and
-[putSecretValue](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue) returns either an instance or array of Secret objects. The Secret object describes an Amazon Secrets Manager secret.
+Secret is returned by the SecretsManagerClient.\* methods that query secrets. Namely, [listSecrets](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/listsecrets/),
+[getSecret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/getsecret),
+[createSecret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/createsecret), and
+[putSecretValue](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/putsecretvalue) returns either an instance or array of Secret objects. The Secret object describes an Amazon Secrets Manager secret.
 
 | Name                     | Type                    | Description                                                                                                                                   |
 | :----------------------- | :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,4 +57,3 @@ export default async function () {
 _A k6 script that will query the user's secrets and print a test secret's value_
 
 {{< /code >}}
-

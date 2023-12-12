@@ -1,7 +1,6 @@
 ---
-title: 'S3Client.listObjects(bucketName, [prefix])'
+title: 'listObjects'
 head_title: 'S3Client.listObjects(bucketName, [prefix])'
-slug: 's3client-listobjects'
 description: 'S3Client.listObjects lists the objects contained in a bucket'
 ---
 
@@ -18,8 +17,8 @@ description: 'S3Client.listObjects lists the objects contained in a bucket'
 
 ### Returns
 
-| Type                                                                | Description                                                                                           |
-| :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
+| Type                                                                                                        | Description                                                                                                                                   |
+| :---------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
 | Promise<Array<[Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object)>> | A Promise that fulfills with an array of [Object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/object) objects. |
 
 ### Example
