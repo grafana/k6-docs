@@ -1,7 +1,6 @@
 ---
-title: 'S3Client.deleteObject(bucketName, objectKey)'
+title: 'deleteObject'
 head_title: 'S3Client.deleteObject(bucketName, objectKey)'
-slug: 's3client-deleteobject'
 description: 'S3Client.deleteObject deletes an object from a bucket'
 ---
 
@@ -11,16 +10,16 @@ description: 'S3Client.deleteObject deletes an object from a bucket'
 
 ### Parameters
 
-| Parameter  | Type                  | Description                                  |
-| :--------- | :-------------------- | :------------------------------------------- |
-| bucketName | string                | Name of the bucket to delete the object from.|
-| objectKey  | string                | Name of the object to delete.                |
+| Parameter  | Type   | Description                                   |
+| :--------- | :----- | :-------------------------------------------- |
+| bucketName | string | Name of the bucket to delete the object from. |
+| objectKey  | string | Name of the object to delete.                 |
 
 ### Returns
 
-| Type            | Description                                                         |
-| :-------------- | :------------------------------------------------------------------ |
-| `Promise<void>` | A promise that fulfills when the object has been deleted from S3.  |
+| Type            | Description                                                       |
+| :-------------- | :---------------------------------------------------------------- |
+| `Promise<void>` | A promise that fulfills when the object has been deleted from S3. |
 
 ### Example
 

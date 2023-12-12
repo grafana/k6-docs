@@ -1,7 +1,6 @@
 ---
-title: 'KMSClient.listKeys()'
+title: 'listKeys'
 head_title: 'KMSClient.listKeys()'
-slug: 'kmsclient-listkeys'
 description: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 ---
@@ -12,8 +11,8 @@ excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account 
 
 ### Returns
 
-| Type                                                            | Description                                                                                              |
-| :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| Type                                                                                                    | Description                                                                                                                                      |
+| :------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Promise<[KMSKey[]](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey)> | A Promise that fulfills with an array of [`KMSKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmskey) objects. |
 
 ### Example
@@ -49,5 +48,3 @@ export default async function () {
 _A k6 script querying the user's Key Management Service keys and verifying their test key exists_
 
 {{< /code >}}
-
-

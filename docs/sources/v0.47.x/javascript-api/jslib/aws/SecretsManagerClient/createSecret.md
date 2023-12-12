@@ -1,7 +1,6 @@
 ---
-title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
+title: 'createSecret'
 head_title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
-slug: 'secretsmanagerclient-createsecret'
 description: 'SecretsManagerClient.createSecret creates a new secret'
 ---
 
@@ -16,13 +15,13 @@ description: 'SecretsManagerClient.createSecret creates a new secret'
 | name                 | string                   | The friendly name of the secret. You can use forward slashes in the name to represent a path hierarchy.                                               |
 | secretString         | string                   | The text data to encrypt and store in this new version of the secret. We recommend you use a JSON structure of key/value pairs for your secret value. |
 | description          | string                   | The description of the secret.                                                                                                                        |
-| versionID (optional) | string                   | Optional unique version identifier for the created secret. If no versionID is provided, an auto-generated UUID will be used instead.                   |
+| versionID (optional) | string                   | Optional unique version identifier for the created secret. If no versionID is provided, an auto-generated UUID will be used instead.                  |
 | tags (optional)      | Array<{"key": "value"},> | A list of tags to attach to the secret. Each tag is a key and value pair of strings in a JSON text string                                             |
 
 ### Returns
 
-| Type     | Description                                                                                                                                            |
-| :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type                                                                                                             | Description                                                                                                                                                                                    |
+| :--------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Promise<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret) object that contains the details of the created secret. |
 
 ### Example

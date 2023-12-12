@@ -1,7 +1,6 @@
 ---
-title: 'SecretsManagerClient.getSecret(secretID)'
+title: 'getSecret'
 head_title: 'SecretsManagerClient.getSecret(secretID)'
-slug: 'secretsmanagerclient-getsecret'
 description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
 ---
 
@@ -9,14 +8,14 @@ description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from A
 
 `SecretsManagerClient.getSecret` downloads a secret from AWS secrets manager.
 
-| Parameter  | Type   | Description                                  |
-| :--------- | :----- | :------------------------------------------- |
-| secretID   | string | The ARN or name of the secret to retrieve.   |
+| Parameter | Type   | Description                                |
+| :-------- | :----- | :----------------------------------------- |
+| secretID  | string | The ARN or name of the secret to retrieve. |
 
 ### Returns
 
-| Type                                                            | Description                                                                                                      |
-| :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| Type                                                                                                             | Description                                                                                                                                                                          |
+| :--------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Promise<[Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
 
 ### Example
@@ -54,4 +53,3 @@ export default async function () {
 _A k6 script that will download a user's secret from AWS secrets manager_
 
 {{< /code >}}
-
