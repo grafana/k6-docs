@@ -1,32 +1,18 @@
 ---
-title: 'SystemsManagerClient'
-head_title: 'SystemsManagerClient'
-description: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
-weight: 00
+title: 'getParameter'
+head_title: 'SystemsManagerClient.getParameter()'
+description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 ---
 
-# SystemsManagerClient
+# SystemsManagerClient.getParameter()
 
-`SystemsManagerClient` interacts with the AWS Systems Manager Service.
+`SystemsManagerClient.getParameter` gets a Systems Manager parameter in the caller's AWS account and region.
 
-With it, the user can get parameters from the Systems Manager Service in the caller's AWS account and region.
+### Returns
 
-Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundle include the `SystemsManagerClient`.
-
-### Methods
-
-| Function                                                                                                            | Description                                        |
-| :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
-| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/getparameter) | Retrieves a parameter from Amazon Systems Manager. |
-
-### Throws
-
-`SystemsManagerClient` methods throw errors in case of failure.
-
-| Error                        | Condition                                                 |
-| :--------------------------- | :-------------------------------------------------------- |
-| `InvalidSignatureError`      | when using invalid credentials                            |
-| `SystemsManagerServiceError` | when AWS replied to the requested operation with an error |
+| Type                                                                                                                                                    | Description                                                                                                                                                                                    |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`Promise<SystemsManagerParameter[]>`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) | A Promise that fulfills with an array of [`SystemsManagerParameter`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) objects. |
 
 ### Example
 

@@ -15,13 +15,13 @@ With it, you can perform several operations such as listing, creating and downlo
 
 ### Methods
 
-| Function                                                                                                                                                                       | Description                                  |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| [listSecrets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets)                                                      | List secrets owned by the authenticated user |
-| [getSecret(secretID)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret)                                                  | Download a secret                            |
-| [createSecret(name, secretString, description, [versionID], [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret)                        | Create a new secret                          |
-| [putSecretValue(secretID, secretString, [versionID])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue)                                     | Update a secret                              |
-| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret) | Delete a secret                              |
+| Function                                                                                                                                                                  | Description                                  |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------- |
+| [listSecrets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/listsecrets)                                                       | List secrets owned by the authenticated user |
+| [getSecret(secretID)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/getsecret)                                                   | Download a secret                            |
+| [createSecret(name, secretString, description, [versionID], [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/createsecret) | Create a new secret                          |
+| [putSecretValue(secretID, secretString, [versionID])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/putsecretvalue)              | Update a secret                              |
+| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/secretsmanagerclient/deletesecret)  | Delete a secret                              |
 
 ### Throws
 
