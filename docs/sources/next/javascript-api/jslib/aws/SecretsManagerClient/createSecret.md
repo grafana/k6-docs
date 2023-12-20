@@ -2,9 +2,10 @@
 title: 'createSecret'
 head_title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
 description: 'SecretsManagerClient.createSecret creates a new secret'
+weight: 10
 ---
 
-# SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])
+# createSecret
 
 `SecretsManagerClient.createSecret` creates a secret in AWS' secrets manager.
 

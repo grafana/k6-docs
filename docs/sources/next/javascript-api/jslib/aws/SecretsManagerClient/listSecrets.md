@@ -2,9 +2,10 @@
 title: 'listSecrets'
 head_title: 'SecretsManagerClient.listSecrets()'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
+weight: 10
 ---
 
-# SecretsManagerClient.listSecrets()
+# listSecrets
 
 `S3Client.listSecrets` lists the secrets the authenticated user has access to in the region set by the `SecretsManagerClient` instance's configuration.
 

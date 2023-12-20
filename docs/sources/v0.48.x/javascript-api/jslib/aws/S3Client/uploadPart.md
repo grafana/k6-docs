@@ -2,9 +2,10 @@
 title: 'uploadPart'
 head_title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
+weight: 10
 ---
 
-# S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)
+# uploadPart
 
 `S3Client.uploadPart` uploads a part to multipart upload in a bucket.
 

@@ -3,9 +3,10 @@ title: 'generateDataKey'
 head_title: 'KMSClient.generateDataKey'
 description: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
 excerpt: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
+weight: 10
 ---
 
-# KMSClient.generateDataKey
+# generateDataKey
 
 `KMSClient.generateDataKey` generates a symmetric data key for use outside of the AWS Key Management Service.
 

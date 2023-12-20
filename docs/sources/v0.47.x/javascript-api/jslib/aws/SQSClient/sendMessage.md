@@ -3,9 +3,10 @@ title: 'sendMessage'
 head_title: 'SQSClient.sendMessage()'
 description: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
 excerpt: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
+weight: 10
 ---
 
-# SQSClient.sendMessage()
+# sendMessage
 
 `SQSClient.sendMessage(queueUrl, messageBody, options)` sends a message to the specified Amazon Simple Queue Service (SQS) queue.
 

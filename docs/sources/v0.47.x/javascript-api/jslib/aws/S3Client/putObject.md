@@ -2,9 +2,10 @@
 title: 'putObject'
 head_title: 'S3Client.putObject(bucketName, objectKey, data)'
 description: 'S3Client.putObject uploads an object to a bucket'
+weight: 10
 ---
 
-# S3Client.putObject(bucketName, objectKey, data)
+# putObject
 
 `S3Client.putObject` uploads an object to a bucket.
 

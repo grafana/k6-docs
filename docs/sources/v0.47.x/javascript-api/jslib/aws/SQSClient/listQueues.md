@@ -3,9 +3,10 @@ title: 'listQueues'
 head_title: 'SQSClient.listQueues()'
 description: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
 excerpt: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
+weight: 10
 ---
 
-# SQSClient.listQueues()
+# listQueues
 
 `SQSClient.listQueues(options)` retrieves a list of available Amazon Simple Queue Service (SQS) queues.
 

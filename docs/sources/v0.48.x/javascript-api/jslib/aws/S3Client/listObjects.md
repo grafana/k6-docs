@@ -2,9 +2,10 @@
 title: 'listObjects'
 head_title: 'S3Client.listObjects(bucketName, [prefix])'
 description: 'S3Client.listObjects lists the objects contained in a bucket'
+weight: 10
 ---
 
-# S3Client.listObjects(bucketName, [prefix])
+# listObjects
 
 `S3Client.listObjects()` lists the objects contained in a bucket.
 

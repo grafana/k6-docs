@@ -2,9 +2,10 @@
 title: 'putSecretValue'
 head_title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])'
 description: "SecretsManagerClient.putSecretValue updates an existing secret's value"
+weight: 10
 ---
 
-# SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])
+# putSecretValue
 
 `SecretsManagerClient.putSecretValue` updates a secret's value in AWS' secrets manager.
 

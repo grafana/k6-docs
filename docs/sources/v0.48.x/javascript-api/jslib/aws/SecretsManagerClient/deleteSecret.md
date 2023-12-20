@@ -2,9 +2,10 @@
 title: 'deleteSecret'
 head_title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})'
 description: 'SecretsManagerClient.deleteSecret deletes a secret'
+weight: 10
 ---
 
-# SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})
+# deleteSecret
 
 `SecretsManagerClient.deleteSecret` deletes a secret from AWS' secrets manager.
 

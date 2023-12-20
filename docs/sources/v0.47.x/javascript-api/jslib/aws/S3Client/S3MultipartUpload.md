@@ -3,6 +3,7 @@ title: 'S3MultipartUpload'
 head_title: 'S3MultipartUpload'
 slug: 's3multipartupload'
 description: 'S3MultipartUpload is returned by the S3Client.createMultipartUpload method when creating a multipart upload.'
+weight: 20
 ---
 
 # S3MultipartUpload

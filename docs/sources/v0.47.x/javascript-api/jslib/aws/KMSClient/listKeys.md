@@ -3,9 +3,10 @@ title: 'listKeys'
 head_title: 'KMSClient.listKeys()'
 description: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
+weight: 10
 ---
 
-# KMSClient.listKeys()
+# listKeys()
 
 `KMSClient.listKeys()` lists all the Key Management Service keys in the caller's AWS account and region.
 

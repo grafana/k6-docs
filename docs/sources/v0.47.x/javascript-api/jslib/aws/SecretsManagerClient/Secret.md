@@ -3,6 +3,7 @@ title: 'Secret'
 head_title: 'Secret'
 slug: 'secret'
 description: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
+weight: 20
 ---
 
 # Secret

@@ -4,6 +4,7 @@ slug: 'kmskey'
 head_title: 'KMSKey'
 description: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 excerpt: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
+weight: 20
 ---
 
 # KMSKey

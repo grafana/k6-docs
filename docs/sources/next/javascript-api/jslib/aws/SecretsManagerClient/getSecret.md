@@ -2,9 +2,10 @@
 title: 'getSecret'
 head_title: 'SecretsManagerClient.getSecret(secretID)'
 description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
+weight: 10
 ---
 
-# SecretsManagerClient.getSecret(secretID)
+# getSecret
 
 `SecretsManagerClient.getSecret` downloads a secret from AWS secrets manager.
 

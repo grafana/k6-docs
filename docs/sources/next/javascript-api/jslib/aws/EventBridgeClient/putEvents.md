@@ -3,9 +3,10 @@ title: 'putEvents'
 head_title: 'EventBridgeClient.putEvents'
 description: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
 excerpt: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
+weight: 10
 ---
 
-# EventBridgeClient.putEvents
+# putEvents
 
 `EventBridgeClient.putEvents` sends custom events to Amazon EventBridge so that they can be matched to rules.
 

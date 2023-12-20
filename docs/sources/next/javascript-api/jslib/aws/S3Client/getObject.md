@@ -2,9 +2,10 @@
 title: 'getObject'
 head_title: 'S3Client.getObject(bucketName, objectKey)'
 description: 'S3Client.getObject downloads an object from a bucket'
+weight: 10
 ---
 
-# S3Client.getObject(bucketName, objectKey)
+# getObject
 
 `S3Client.getObject` downloads an object from a bucket.
 

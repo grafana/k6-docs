@@ -3,6 +3,7 @@ title: 'Bucket'
 head_title: 'Bucket'
 slug: 'bucket'
 description: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
+weight: 20
 ---
 
 # Bucket
