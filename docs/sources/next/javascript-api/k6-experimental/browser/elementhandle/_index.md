@@ -32,7 +32,7 @@ weight: 04
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-disabled" target="_blank" >elementHandle.isDisabled()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-editable" target="_blank" >elementHandle.isEditable()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-enabled" target="_blank" >elementHandle.isEnabled()</a>                                       | -                                   |
-| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-hidden" target="_blank" >elementHandle.isHidden()</a>                                         | -                                   |
+| [elementHandle.isHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ishidden/)                                         | Checks if the element is `hidden`.  |
 | [elementHandle.isVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/isvisible/)                                       | Checks if the element is `visible`. |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-owner-frame" target="_blank" >elementHandle.ownerFrame()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-press" target="_blank" >elementHandle.press(key[, options])</a>                                  | -                                   |
