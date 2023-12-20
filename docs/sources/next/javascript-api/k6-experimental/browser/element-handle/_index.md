@@ -19,7 +19,7 @@ weight: 04
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-check" target="_blank" >elementHandle.check([options])</a>                                       | -                                |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-click" target="_blank" >elementHandle.click([options])</a>                                       | -                                |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-content-frame" target="_blank" >elementHandle.contentFrame()</a>                                 | -                                |
-| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-dblclick" target="_blank" >elementHandle.dblclick([options])</a>                                 | -                                |
+| [elementHandle.dblclick([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/element-handle/dblclick)                                 | Double click on the element.     |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-dispatch-event" target="_blank" >elementHandle.dispatchEvent(type[, eventInit])</a>              | -                                |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-fill" target="_blank" >elementHandle.fill(value[, options])</a>                                  | -                                |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-focus" target="_blank" >elementHandle.focus()</a>                                                | -                                |
