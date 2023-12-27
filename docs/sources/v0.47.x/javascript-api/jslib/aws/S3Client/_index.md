@@ -18,18 +18,18 @@ Both the dedicated `s3.js` jslib bundle and the all-encompassing `aws.js` bundle
 
 ### Methods
 
-| Function                                                                                                                                                        | Description                                                 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
-| [listBuckets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 listBuckets())                                                               | List the buckets the authenticated user has access to       |
-| [listObjects(bucketName, [prefix])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-listobjects/)                                                                   | List the objects contained in a bucket                      |
-| [getObject(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 getObject(bucketName, objectKey))                                              | Download an object from a bucket                            |
-| [putObject(bucketName, objectKey, data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 putObject(bucketName, objectKey, data))                                        | Upload an object to a bucket                                |
-| [deleteObject(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 deleteObject(bucketName, objectKey))                                        | Delete an object from a bucket                              |
-| [copyObject(sourceBucket, sourceKey, destinationBucket, destinationKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 copyObject)       | Copy an object from one bucket to another                   |
-| [createMultipartUpload(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 createMultipartUpload(bucketName, objectKey))                      | Create a multipart upload for a given objectKey to a bucket |
-| [uploadPart(bucketName, objectKey, uploadId, partNumber, data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 uploadPart(bucketName, objectKey, uploadId, partNumber, data) copy)                | Upload a part in a multipart upload                         |
-| [completeMultipartUpload(bucketName, objectKey, uploadId, parts)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 completeMultipartUpload(bucketName, objectKey, uploadId, parts)) | Complete a previously assembled multipart upload            |
-| [abortMultipartUpload(bucketName, objectKey, uploadId)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/00 abortMultipartUpload(bucketName, objectKey, uploadId))              | Abort a multipart upload                                    |
+| Function                                                                                                                                                              | Description                                                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
+| [listBuckets()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/listbuckets)                                                               | List the buckets the authenticated user has access to       |
+| [listObjects(bucketName, [prefix])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/listobjects)                                           | List the objects contained in a bucket                      |
+| [getObject(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/getobject)                                              | Download an object from a bucket                            |
+| [putObject(bucketName, objectKey, data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/putobject)                                        | Upload an object to a bucket                                |
+| [deleteObject(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/deleteobject)                                        | Delete an object from a bucket                              |
+| [copyObject(sourceBucket, sourceKey, destinationBucket, destinationKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/copyobject)       | Copy an object from one bucket to another                   |
+| [createMultipartUpload(bucketName, objectKey)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/createmultipartupload)                      | Create a multipart upload for a given objectKey to a bucket |
+| [uploadPart(bucketName, objectKey, uploadId, partNumber, data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/uploadpart)                | Upload a part in a multipart upload                         |
+| [completeMultipartUpload(bucketName, objectKey, uploadId, parts)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/completemultipartupload) | Complete a previously assembled multipart upload            |
+| [abortMultipartUpload(bucketName, objectKey, uploadId)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/abortmultipartupload)              | Abort a multipart upload                                    |
 
 ### Throws
 
@@ -145,14 +145,29 @@ export default async function () {
 
   // Upload the first part
   const firstPartData = bigFile.slice(0, 6 * 1024 * 1024);
-  const firstPart = await s3.uploadPart(testBucketName, testFileKey, multipartUpload.uploadId, 1, firstPartData);
+  const firstPart = await s3.uploadPart(
+    testBucketName,
+    testFileKey,
+    multipartUpload.uploadId,
+    1,
+    firstPartData
+  );
 
   // Upload the second part
   const secondPartData = bigFile.slice(6 * 1024 * 1024, 12 * 1024 * 1024);
-  const secondPart = await s3.uploadPart(testBucketName, testFileKey, multipartUpload.uploadId, 2, secondPartData);
+  const secondPart = await s3.uploadPart(
+    testBucketName,
+    testFileKey,
+    multipartUpload.uploadId,
+    2,
+    secondPartData
+  );
 
   // Complete the multipart upload
-  await s3.completeMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId, [firstPart, secondPart]);
+  await s3.completeMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId, [
+    firstPart,
+    secondPart,
+  ]);
 
   // Let's redownload it verify it's correct, and delete it
   const obj = await s3.getObject(testBucketName, testFileKey);
