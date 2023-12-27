@@ -6,7 +6,7 @@ excerpt: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account 
 weight: 10
 ---
 
-# listKeys()
+# listKeys
 
 `KMSClient.listKeys()` lists all the Key Management Service keys in the caller's AWS account and region.
 
