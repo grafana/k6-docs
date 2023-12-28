@@ -1,7 +1,7 @@
 ---
 title: Built-in metrics
 excerpt: A reference of built-in metrics for different supported protocols.
-weight: 000
+weight: 100
 ---
 
 # Built-in metrics
@@ -13,16 +13,16 @@ Each supported protocol also has its specific metrics.
 
 k6 always collects the following metrics, no matter what protocol the test uses:
 
-| Metric Name        | Type    | Description                                                                                                                                                                                                                                                                   |
-| ------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                                        |
+| Metric Name        | Type    | Description                                                                                                                                                                                                                                                                                   |
+| ------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                                                        |
 | vus_max            | Gauge   | Max possible number of virtual users (VU resources are [pre-allocated](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation), to avoid affecting performance when scaling up load )                                                                |
-| iterations         | Counter | The aggregate number of times the VUs execute the JS script (the `default` function).                                                                                                                                                                                         |
+| iterations         | Counter | The aggregate number of times the VUs execute the JS script (the `default` function).                                                                                                                                                                                                         |
 | iteration_duration | Trend   | The time to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/workaround-iteration-duration)              |
 | dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). [About dropped iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) |
-| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per).                                                                                                                 |
-| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per) to track data for an individual URL.                                                                                                            |
-| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                                |
+| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per).                                                                                                                              |
+| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per) to track data for an individual URL.                                                                                                                         |
+| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                                                |
 
 ## HTTP-specific built-in metrics {#http}
 
@@ -33,7 +33,7 @@ These metrics are generated only when the test makes HTTP requests.
 For all `http_req_*` metrics, **the timestamp is emitted the end of the request.**
 In other words, the timestamp happens when k6 receives the end of the response body, or the request times out.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 | Metric Name              | Type    | Description                                                                                                                                                                                                                                  |
 | ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +45,7 @@ In other words, the timestamp happens when k6 receives the end of the response b
 | http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                           |
 | http_req_receiving       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
 | http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
-| http_req_failed          | Rate    | The rate of failed requests according to [setResponseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback).                                                                                                       |
+| http_req_failed          | Rate    | The rate of failed requests according to [setResponseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback).                                                                                       |
 
 ## Browser metrics {#browser}
 
@@ -105,4 +105,4 @@ k6 emits the following metrics when it interacts with a service through the [`gR
 
 Steams-related metrics (`grpc_streams*`) are available only when using the `k6/experimental/grpc` module which is available on `k6` version `0.45.0` or higher.
 
- {{% /admonition %}}
+{{% /admonition %}}
