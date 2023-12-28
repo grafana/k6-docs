@@ -39,7 +39,6 @@ The generic procedure to create a custom metric is as follows:
    For example, the following creates a custom trend. The object in the script is called `myTrend`, and its metric appears in the results output as `waiting_time`.
 
    ```javascript
-   // eslint-disable-next-line no-undef
    const myTrend = new Trend('waiting_time');
    ```
 
