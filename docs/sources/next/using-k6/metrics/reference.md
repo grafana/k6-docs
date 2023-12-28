@@ -55,11 +55,11 @@ These core metrics will evolve over time when technology changes, but for now, k
 
 <!-- vale off -->
 
-| Core Web Vital        | Description                                                                                                            |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| browser_web_vital_lcp | Measures a page's loading performance. Refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
-| browser_web_vital_fid | Measures a page's interactivity. Refer to [First Input Delay](https://web.dev/fid/) for more information.              |
-| browser_web_vital_cls | Measures a page's visual stability. Refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.     |
+| Core Web Vital        | Description                                                                                                                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| browser_web_vital_lcp | Measures the time it takes for the largest content element on a page to become visible. Refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information.                                                                |
+| browser_web_vital_fid | Measures the responsiveness of a web page by quantifying the delay between a user’s first interaction, such as clicking a button, and the browser’s response. Refer to [First Input Delay](https://web.dev/fid/) for more information. |
+| browser_web_vital_cls | Measures the visual stability on a webpage by quantifying the amount of unexpected layout shift of visible page content. Refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.                                |
 
 <!-- vale on -->
 
