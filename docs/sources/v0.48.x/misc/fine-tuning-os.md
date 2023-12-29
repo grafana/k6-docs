@@ -22,7 +22,7 @@ This way you can gauge the effect of the optimization, find any negative side-ef
 The following modifications have been tested for macOS Sierra 10.12 and above.
 If you're on an older version, the process for changing these settings might differ.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Network resource limit
 
@@ -250,7 +250,7 @@ In most cases these limits should be enough to run most of your simple tests loc
 
 Please be aware that all of these limitations are put in place to protect your operating system from files and applications that are poorly written and might leak memory like in huge quantities. We would suggest not going too overboard with the values, or you might find your system slowing down to a crawl if or when it runs out of RAM.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Local port range
 

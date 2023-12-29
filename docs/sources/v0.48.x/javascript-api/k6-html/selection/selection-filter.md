@@ -8,16 +8,16 @@ excerpt: 'Reduce the set of matched elements to those that match the selector or
 Reduce the set of matched elements to those that match the selector or pass the function's test.
 Mimics [jquery.filter](https://api.jquery.com/filter/)
 
-| Parameter | Type                                           | Description                                                          |
-| --------- | ---------------------------------------------- | -------------------------------------------------------------------- |
-| selector  | function                                       | A function used as a test for each element in the set.               |
-| selector  | string                                         | A string containing a selector expression to match elements against. |
+| Parameter | Type                                                                                   | Description                                                          |
+| --------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| selector  | function                                                                               | A function used as a test for each element in the set.               |
+| selector  | string                                                                                 | A string containing a selector expression to match elements against. |
 | selector  | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A selection to match elements against.                               |
 
 ### Returns
 
-| Type                                           | Description           |
-| ---------------------------------------------- | --------------------- |
+| Type                                                                                   | Description           |
+| -------------------------------------------------------------------------------------- | --------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The filter selection. |
 
 ### Example

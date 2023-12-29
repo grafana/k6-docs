@@ -15,8 +15,8 @@ Mimics [jquery.not](https://api.jquery.com/not/)
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
+| Type                                                                                   | Description  |
+| -------------------------------------------------------------------------------------- | ------------ |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example

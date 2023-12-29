@@ -9,16 +9,16 @@ weight: 14
 
 `session.delete(url, body, params)` makes a DELETE request. Only the first parameter is required. Body is discouraged.
 
-| Parameter         | Type                                                                                                              | Description                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| url               | string                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                            |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                     |
-| params (optional) | null or object {}                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
+| Parameter         | Type                                                                                                                              | Description                                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| url               | string                                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                                            |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                                     |
+| params (optional) | null or object {}                                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
 
 ### Returns
 
-| Type                                                                  | Description                                                                       |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Type                                                                                 | Description                                                                                       |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example

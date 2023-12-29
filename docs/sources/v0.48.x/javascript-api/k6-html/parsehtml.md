@@ -15,8 +15,8 @@ Parse an HTML string and populate a [Selection](https://grafana.com/docs/k6/<K6_
 
 ### Returns
 
-| Type                                                                    | Description         |
-| ----------------------------------------------------------------------- | ------------------- |
+| Type                                                                                   | Description         |
+| -------------------------------------------------------------------------------------- | ------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection object. |
 
 ### Example

@@ -19,8 +19,8 @@ To solve these issues, you can use _execution context variables_.
 The [k6/execution](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution) module exposes details about the current execution state, such as _the name of the currently executed scenario_, _how many VUs are currently active_, and more.
 The module provides test-execution information via three properties:
 
-| Property                                                                   | Meta-information and execution details about |
-| -------------------------------------------------------------------------- | -------------------------------------------- |
+| Property                                                                                  | Meta-information and execution details about |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------- |
 | [instance](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#instance) | The current running k6 instance              |
 | [scenario](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#scenario) | The current running scenario                 |
 | [vu](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#vu)             | The current VU and iteration                 |

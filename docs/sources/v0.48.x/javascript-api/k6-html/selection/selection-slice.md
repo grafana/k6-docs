@@ -8,16 +8,16 @@ excerpt: 'Reduce the set of matched elements to a subset specified by a range of
 Reduce the set of matched elements to a subset specified by a range of indices.
 Mimics [jquery.slice](https://api.jquery.com/slice/)
 
-| Parameter | Type                                           | Description                                                                            |
-| --------- | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
-| start     | Number                                         | An integer indicating the 0-based position at which the elements begin to be selected. |
-| end       | Number                                         | An integer indicating the 0-based position at which the elements stop being selected.  |
+| Parameter | Type                                                                                   | Description                                                                            |
+| --------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| start     | Number                                                                                 | An integer indicating the 0-based position at which the elements begin to be selected. |
+| end       | Number                                                                                 | An integer indicating the 0-based position at which the elements stop being selected.  |
 | selector  | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A selection.                                                                           |
 
 ### Returns
 
-| Type                                           | Description        |
-| ---------------------------------------------- | ------------------ |
+| Type                                                                                   | Description        |
+| -------------------------------------------------------------------------------------- | ------------------ |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The new selection. |
 
 ### Example

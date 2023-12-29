@@ -110,7 +110,7 @@ export default function () {
 **Relevant k6 APIs**:
 
 - [Selection.find(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-find) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
-docs are also a good resource on what possible selector queries can be made)
+  docs are also a good resource on what possible selector queries can be made)
 - [Selection.attr(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-attr)
 
 ### Generic extraction of values/tokens

@@ -13,8 +13,8 @@ _Gauge_ is an object for representing a custom metric holding only the latest va
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                 | Description                                                                |
-| ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Method                                                                                                         | Description                                                                |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | [Gauge.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge/gauge-add) | Add a value to the gauge metric. Only the latest value added will be kept. |
 
 ## Gauge usage in Thresholds
