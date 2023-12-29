@@ -70,30 +70,30 @@ This example is based on a JMeter example found at the [azure-ad-b2c/load-tests]
 To use this script, you need to:
 
 1. [Set up your own Azure B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
-    * Copy the tenant name, it will be used in your test script.
+   - Copy the tenant name, it will be used in your test script.
 1. [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga)
-    * Register a single page application with the redirect URL of: https://jwt.ms. That's needed for the flow to receive a token.
-    * After the creation, you can get the Application (client) ID, and the Directory (tenant) ID. Copy both of them, they'll be used in your test script.
+   - Register a single page application with the redirect URL of: https://jwt.ms. That's needed for the flow to receive a token.
+   - After the creation, you can get the Application (client) ID, and the Directory (tenant) ID. Copy both of them, they'll be used in your test script.
 1. [Create a user flow so that you can sign up and create a user](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows)
-     * Create a new user, and copy the username and password. They'll be used in the test script.
+   - Create a new user, and copy the username and password. They'll be used in the test script.
 
 You can find the settings in the B2C settings in the Azure portal if you need to refer to them later on. Make sure to fill out all the variables for the `B2CGraphSettings` object, as well as replace `USERNAME` and `PASSWORD` in `export default function`.
 
 {{< code >}}
 
 ```javascript
-import http from "k6/http";
-import crypto from "k6/crypto";
-import { randomString } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
+import http from 'k6/http';
+import crypto from 'k6/crypto';
+import { randomString } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 const B2CGraphSettings = {
   B2C: {
-    client_id: "", // Application ID in Azure
-    user_flow_name: "",
-    tenant_id: "", // Directory ID in Azure
-    tenant_name: "",
-    scope: "openid",
-    redirect_url: "https://jwt.ms",
+    client_id: '', // Application ID in Azure
+    user_flow_name: '',
+    tenant_id: '', // Directory ID in Azure
+    tenant_name: '',
+    scope: 'openid',
+    redirect_url: 'https://jwt.ms',
   },
 };
 
@@ -137,9 +137,9 @@ const GetToken = (code, codeVerifier) => {
     `&redirect_uri=${B2CGraphSettings.B2C.redirect_url}` +
     `&code_verifier=${codeVerifier}`;
 
-  const response = http.post(url, "", {
+  const response = http.post(url, '', {
     tags: {
-      b2c_login: "GetToken",
+      b2c_login: 'GetToken',
     },
   });
 
@@ -162,9 +162,9 @@ const CombinedSigninAndSignup = (state) => {
     `&tx=StateProperties=${state.stateProperty}` +
     `&p=${B2CGraphSettings.B2C.user_flow_name}`;
 
-  const response = http.get(url, "", {
+  const response = http.get(url, '', {
     tags: {
-      b2c_login: "CombinedSigninAndSignup",
+      b2c_login: 'CombinedSigninAndSignup',
     },
   });
   const codeRegex = '.*code=([^"]*)';
@@ -190,13 +190,13 @@ const SelfAsserted = (state, username, password) => {
 
   const params = {
     headers: {
-      "X-CSRF-TOKEN": `${state.csrfToken}`,
+      'X-CSRF-TOKEN': `${state.csrfToken}`,
     },
     tags: {
-      b2c_login: "SelfAsserted",
+      b2c_login: 'SelfAsserted',
     },
   };
-  http.post(url, "", params);
+  http.post(url, '', params);
 };
 
 /**
@@ -206,7 +206,7 @@ const SelfAsserted = (state, username, password) => {
  */
 const GetState = () => {
   const nonce = randomString(50);
-  const challenge = crypto.sha256(nonce.toString(), "base64rawurl");
+  const challenge = crypto.sha256(nonce.toString(), 'base64rawurl');
 
   const url =
     `https://${B2CGraphSettings.B2C.tenant_name}.b2clogin.com` +
@@ -222,9 +222,9 @@ const GetState = () => {
     `&code_challenge=${challenge}` +
     `&response_mode=fragment`;
 
-  const response = http.get(url, "", {
+  const response = http.get(url, '', {
     tags: {
-      b2c_login: "GetCookyAndState",
+      b2c_login: 'GetCookyAndState',
     },
   });
 
@@ -233,7 +233,7 @@ const GetState = () => {
 
   const b2cState = {};
   b2cState.codeVerifier = nonce;
-  b2cState.csrfToken = responseCookies["x-ms-cpim-csrf"][0];
+  b2cState.csrfToken = responseCookies['x-ms-cpim-csrf'][0];
   b2cState.stateProperty = response.body.match('.*StateProperties=([^"]*)')[1];
   return b2cState;
 };
@@ -248,14 +248,14 @@ export const GetAuthorizationHeaderForUser = (user) => {
 
   return {
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
     },
   };
 };
 
 export default function () {
-  const token = GetB2cIdToken("USERNAME", "PASSWORD");
+  const token = GetB2cIdToken('USERNAME', 'PASSWORD');
   console.log(token);
 }
 ```
@@ -280,7 +280,14 @@ import encoding from 'k6/encoding';
  * @param  {string} scope - Space-separated list of scopes
  * @param  {string|object} resource - Either a resource ID (as string) or an object containing username and password
  */
-export function authenticateUsingOkta(oktaDomain, authServerId, clientId, clientSecret, scope, resource) {
+export function authenticateUsingOkta(
+  oktaDomain,
+  authServerId,
+  clientId,
+  clientSecret,
+  scope,
+  resource
+) {
   if (authServerId === 'undefined' || authServerId == '') {
     authServerId = 'default';
   }

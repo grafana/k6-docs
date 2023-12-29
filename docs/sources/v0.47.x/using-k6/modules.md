@@ -79,7 +79,7 @@ k6 is not NodeJS, nor is it a browser. Packages that rely on APIs provided by No
 instance the `os` and `fs` modules, will not work in k6. The same goes for browser-specific
 APIs like the `window` object.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The steps of this tutorial are as follows:
 
@@ -94,7 +94,7 @@ The steps of this tutorial are as follows:
 
 A [ready-to-use Webpack and Babel starter](https://github.com/k6io/k6-es6) is avaialble in a repository.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 In a JavaScript project running NodeJS, modules are imported using either `import` or `require()`,
 using the node module resolution algorithm.

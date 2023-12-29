@@ -18,9 +18,9 @@ exportKey(format, key)
 
 ## Parameters
 
-| Name     | Type                                                                                      | Description                                                                                       |
-| :------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
-| `format` | `string`                                                                                  | Defines the data format the key should be exported in. Currently supported formats: `raw`.        |
+| Name     | Type                                                                                                     | Description                                                                                                       |
+| :------- | :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `format` | `string`                                                                                                 | Defines the data format the key should be exported in. Currently supported formats: `raw`.                        |
 | `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export. |
 
 ## Return Value
@@ -63,7 +63,10 @@ export default async function () {
   /**
    * Reimport the key in raw format to verfiy its integrity.
    */
-  const importedKey = await crypto.subtle.importKey('raw', exportedKey, 'AES-CBC', true, ['encrypt', 'decrypt']);
+  const importedKey = await crypto.subtle.importKey('raw', exportedKey, 'AES-CBC', true, [
+    'encrypt',
+    'decrypt',
+  ]);
 
   console.log(JSON.stringify(importedKey));
 }

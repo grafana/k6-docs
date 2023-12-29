@@ -8,12 +8,12 @@ weight: 45
 
 Function that returns a string from between two other strings.
 
-| Parameter         | Type    | Description                                                                                                   |
-| ----------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| Parameter         | Type    | Description                                                                                                                   |
+| ----------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | content           | string  | The string to search through (e.g. [Response.body](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)) |
-| left              | string  | The string immediately before the value to be extracted                                                       |
-| right             | string  | The string immediately after the value to be extracted                                                        |
-| repeat (optional) | boolean | If `true`, the result will be a string array containing all occurrences                                       |
+| left              | string  | The string immediately before the value to be extracted                                                                       |
+| right             | string  | The string immediately after the value to be extracted                                                                        |
+| repeat (optional) | boolean | If `true`, the result will be a string array containing all occurrences                                                       |
 
 ### Returns
 

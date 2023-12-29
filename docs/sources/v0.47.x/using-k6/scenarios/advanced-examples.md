@@ -121,7 +121,7 @@ You can combine these tags with thresholds, or use them to simplify results filt
 
 To disable scenario tags, use the [`--system-tags` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options#system-tags).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Run multiple scenario functions, with different thresholds
 

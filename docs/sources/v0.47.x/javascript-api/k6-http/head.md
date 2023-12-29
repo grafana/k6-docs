@@ -9,15 +9,15 @@ weight: 10
 
 Make a HEAD request.
 
-| Parameter         | Type                                                                             | Description                                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| url               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `http://example.com`).                                                                           |
-| params (optional) | object                                                                           | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type                                                                                            | Description                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| url               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `http://example.com`).                                                                                          |
+| params (optional) | object                                                                                          | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
-| Type                                                                  | Description           |
-| --------------------------------------------------------------------- | --------------------- |
+| Type                                                                                 | Description           |
+| ------------------------------------------------------------------------------------ | --------------------- |
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP Response object. |
 
 ### Example fetching a URL

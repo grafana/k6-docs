@@ -33,6 +33,6 @@ Each is worth discussing in more detail:
 
 - [TLS client certificates](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-client-certificates)
 - [TLS version and ciphers](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers) (restricting as
-well as checking what was used for a HTTP request by checking response object properties)
+  well as checking what was used for a HTTP request by checking response object properties)
 - [Online Certificate Status Protocol (OCSP)](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/online-certificate-status-protocol--ocsp)
 - [Response.timings.tls_handshaking](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)

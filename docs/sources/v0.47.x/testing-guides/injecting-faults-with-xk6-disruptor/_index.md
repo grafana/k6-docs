@@ -22,18 +22,18 @@ It provides a Javascript API to inject different [faults](https://grafana.com/do
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
-
 ## Use cases
 
 The disruptor lets you test the resiliency of distributed applications by introducing errors in the requests served by your services.
 
-The disruptor does not try to reproduce root causes, such as failed application instances or degraded computing or network resources. 
-It focuses on reproducing the side effects of such failures, so you can focus on understanding the propagation of errors between internal and public services and improving the error handling in your application. 
+The disruptor does not try to reproduce root causes, such as failed application instances or degraded computing or network resources.
+It focuses on reproducing the side effects of such failures, so you can focus on understanding the propagation of errors between internal and public services and improving the error handling in your application.
 
-This way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. 
+This way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius.
 These are essentials to test applications deployed on shared infrastructures such as pre-production and testing environments.
 
 Common use cases are:
+
 - Test resilient policies such as backoff, timeouts, retries, etc.
 - Test the fallback functionality when internal failures arise.
 - Test SLOs under common internal failures.

@@ -9,8 +9,8 @@ Returns the [Touchscreen](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 ### Returns
 
-| Type                                                                | Description                                          |
-| ------------------------------------------------------------------- | ---------------------------------------------------- |
+| Type                                                                                                        | Description                                          |
+| ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | [Touchscreen](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/touchscreen/) | The `Touchscreen` instance associated with the page. |
 
 ### Example

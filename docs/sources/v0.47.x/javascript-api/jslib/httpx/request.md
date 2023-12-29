@@ -12,17 +12,17 @@ Generic method for making arbitrary HTTP requests.
 
 Consider using specific methods for making common requests [get](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/get), [post](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/post), [put](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/put), [patch](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/patch).
 
-| Parameter         | Type                                                                                                              | Description                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| method            | string                                                                                                            | HTTP method. Must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc)                                 |
-| url               | string                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                            |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects are `x-www-form-urlencoded`. To omit body, set to `null`.                            |
-| params (optional) | null or object {}                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
+| Parameter         | Type                                                                                                                              | Description                                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| method            | string                                                                                                                            | HTTP method. Must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc)                                                 |
+| url               | string                                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                                            |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects are `x-www-form-urlencoded`. To omit body, set to `null`.                                            |
+| params (optional) | null or object {}                                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
 
 ### Returns
 
-| Type                                                                  | Description                                                                       |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Type                                                                                 | Description                                                                                       |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example

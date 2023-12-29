@@ -8,15 +8,15 @@ excerpt: 'Get the ancestors of each element in the current set of matched elemen
 Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.
 Mimics [jquery.parentsUntil](https://api.jquery.com/parentsUntil/)
 
-| Parameter           | Type                                                               | Description                                                |
-| ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| Parameter           | Type                                                                                                       | Description                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | selector (optional) | string \| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
-| filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
+| filter (optional)   | string \| `null`                                                                                           | A selector expression to filter matched elements.          |
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
+| Type                                                                                   | Description  |
+| -------------------------------------------------------------------------------------- | ------------ |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example

@@ -24,7 +24,7 @@ A gRPC fault is described by the following attributes:
 
 `averageDelay` and `delayVariation` are applied to all requests affected by the fault, regardless of the value of `errorRate`. `statusCode` is returned only to a fraction of requests defined by `errorRate`.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Example
 
