@@ -18,8 +18,8 @@ Due to implementation specifics:
 - Requests with authentication `digest` are always expected to first get 401 and then to get whatever was specified.
 - Requests with authentication `ntlm` will let a 401 status code on the first request as well as anything defined by `expectedStatuses`
 
-| Parameter | Type                                                                                   | Description                                                                                                   |
-| --------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Parameter | Type                                                                                                  | Description                                                                                                                   |
+| --------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | callback  | [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) | an object returned from [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) |
 
 Currently only the very special [expectedStatuses](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/expected-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".

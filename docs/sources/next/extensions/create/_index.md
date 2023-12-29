@@ -29,7 +29,7 @@ there's some background knowledge you should have:
 If you maintain a public xk6 repository and wish to have your extension listed in our [registry](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore),
 be sure to review the [requirements](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/extensions-registry#registry-requirements).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Avoid unneeded work
 

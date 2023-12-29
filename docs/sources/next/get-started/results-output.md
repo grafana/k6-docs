@@ -99,7 +99,7 @@ The available built-in outputs include:
 - [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
 - [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
 - [Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
-- [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb) 
+- [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 
 </Glossary>

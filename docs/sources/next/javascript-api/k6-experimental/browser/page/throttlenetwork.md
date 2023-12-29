@@ -8,7 +8,7 @@ excerpt: 'Browser module: page.throttleNetwork(networkProfile) method'
 Throttles the network in Chrome/Chromium to slow it down by the specified fields in the `networkProfile` object.
 
 | Parameter               | Type           | Default | Description                                                                            |
-|-------------------------|----------------|---------|----------------------------------------------------------------------------------------|
+| ----------------------- | -------------- | ------- | -------------------------------------------------------------------------------------- |
 | networkProfile          | NetworkProfile | `null`  | This is a mandatory parameter.                                                         |
 | networkProfile.latency  | number         | `0`     | Minimum latency from request sent to response headers received (ms).                   |
 | networkProfile.download | number         | `-1`    | Maximal aggregated download throughput (bytes/sec). `-1` disables download throttling. |
@@ -17,7 +17,7 @@ Throttles the network in Chrome/Chromium to slow it down by the specified fields
 To work with the most commonly tested network profiles, import `networkProfiles` from the browser module. There are three profiles available:
 
 | Name              | Notes                                                                                                                          |
-|-------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `'No Throttling'` | No throttling, which is the default before applying any network throttling. This can be used to remove the network throttling. |
 | `'Fast 3G'`       | Emulates a typical fast 3G connection                                                                                          |
 | `'Slow 3G'`       | Emulates a typical slow 3G connection                                                                                          |

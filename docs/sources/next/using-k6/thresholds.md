@@ -89,6 +89,7 @@ To use a threshold, follow these steps:
    ```
 
 2. Define at least one threshold expression. You can do this in two ways:
+
    - The short format puts all threshold expressions as strings in an array.
    - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort-a-test-when-a-threshold-is-crossed).
 
@@ -159,14 +160,14 @@ export const CounterErrors = new Counter('Errors');
 export const options = {
   thresholds: {
     // Count: Incorrect content cannot be returned more than 99 times.
-    Errors: ['count<100'],
+    'Errors': ['count<100'],
     // Gauge: returned content must be smaller than 4000 bytes
-    ContentSize: ['value<4000'],
+    'ContentSize': ['value<4000'],
     // Rate: content must be OK more than 95 times
     'Content OK': ['rate>0.95'],
     // Trend: Percentiles, averages, medians, and minimums
     // must be within specified milliseconds.
-    RTT: ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
+    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
   },
 };
 
@@ -189,7 +190,7 @@ export default function () {
 
 Do not specify multiple thresholds for the same metric by repeating the same object key.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 Since thresholds are defined as the properties of a JavaScript object, you can't specify multiple ones with the same property name.
 
@@ -370,7 +371,12 @@ export default function () {
 
   const responses = http.batch([
     ['GET', 'https://test-api.k6.io/static/favicon.ico', null, { tags: { type: 'staticContent' } }],
-    ['GET', 'https://test-api.k6.io/static/css/site.css', null, { tags: { type: 'staticContent' } }],
+    [
+      'GET',
+      'https://test-api.k6.io/static/css/site.css',
+      null,
+      { tags: { type: 'staticContent' } },
+    ],
   ]);
 
   sleep(1);
@@ -444,7 +450,7 @@ export default function () {
 When k6 runs in the cloud, thresholds are evaluated every 60 seconds.
 Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Fail a load test using checks
 

@@ -207,7 +207,7 @@ export default function () {
 }
 ```
 
-  {{< /code >}}
+{{< /code >}}
 
 1. Now, run the test.
 

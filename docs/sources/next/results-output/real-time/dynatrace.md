@@ -41,7 +41,7 @@ Create a Dynatrace API token to send the data.
 
 {{% admonition type="caution" %}}
 The Dynatrace API Token must have the scope name "metrics.ingest" (scope type `API v2`).
- {{% /admonition %}}
+{{% /admonition %}}
 
 You can use the Dynatrace UI:
 

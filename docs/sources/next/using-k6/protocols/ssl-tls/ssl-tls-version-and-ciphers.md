@@ -33,7 +33,7 @@ export default function () {
 ```
 
 {{< /code >}}
-      
+
 You can also accept a range of SSL/TLS versions:
 
 {{< code >}}
