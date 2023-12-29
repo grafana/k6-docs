@@ -7,7 +7,7 @@
     {
       "files": ["**/*.md"],
       "options": {
-        "parser": "babel"
+        "parser": "markdown"
       }
     }
   ]
