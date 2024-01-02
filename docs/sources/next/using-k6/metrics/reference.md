@@ -1,7 +1,7 @@
 ---
 title: Built-in metrics
 excerpt: A reference of built-in metrics for different supported protocols.
-weight: 000
+weight: 100
 ---
 
 # Built-in metrics
@@ -13,16 +13,16 @@ Each supported protocol also has its specific metrics.
 
 k6 always collects the following metrics, no matter what protocol the test uses:
 
-| Metric Name        | Type    | Description                                                                                                                                                                                                                                                                                   |
-| ------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                                                        |
-| vus_max            | Gauge   | Max possible number of virtual users (VU resources are [pre-allocated](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation), to avoid affecting performance when scaling up load )                                                                |
-| iterations         | Counter | The aggregate number of times the VUs execute the JS script (the `default` function).                                                                                                                                                                                                         |
-| iteration_duration | Trend   | The time to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/workaround-iteration-duration)              |
-| dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). [About dropped iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) |
-| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per).                                                                                                                              |
-| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/tracking-data-per) to track data for an individual URL.                                                                                                                         |
-| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                                                |
+| Metric Name        | Type    | Description                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                                                                             |
+| vus_max            | Gauge   | Max possible number of virtual users (VU resources are [pre-allocated](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation), to avoid affecting performance when scaling up load).                                                                                     |
+| iterations         | Counter | The aggregate number of times the VUs execute the JS script (the `default` function).                                                                                                                                                                                                                              |
+| iteration_duration | Trend   | The time to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/workaround-iteration-duration).                                  |
+| dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). Refer to [Dropped iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/dropped-iterations) for more details. |
+| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/track-transmitted-data-per-url).                                                                                                                                      |
+| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](https://grafana.com/docs/k6/<K6_VERSION>/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                 |
+| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                                                                     |
 
 ## HTTP-specific built-in metrics {#http}
 

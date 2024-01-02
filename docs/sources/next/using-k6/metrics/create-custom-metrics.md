@@ -1,7 +1,7 @@
 ---
 title: Create custom metrics
 excerpt: How to build custom k6 metrics for each metric type.
-weight: 100
+weight: 200
 ---
 
 # Create custom metrics
@@ -31,7 +31,7 @@ The generic procedure to create a custom metric is as follows:
 1. Import the [`k6/metrics`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) module. Optionally, specify the type of metrics you want to create with a named import:
 
    ```javascript
-   import { Counter } from 'k6/metrics';
+   import { Trend } from 'k6/metrics';
    ```
 
 1. In init context, construct a new custom-metric object.
