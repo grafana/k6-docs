@@ -1,7 +1,7 @@
 ---
 title: Create custom metrics
 excerpt: How to build custom k6 metrics for each metric type.
-weight: 100
+weight: 200
 ---
 
 # Create custom metrics
@@ -24,14 +24,14 @@ Each topic has examples to make a custom metric and create [thresholds](https://
 Custom metrics must be created in [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 This limits memory and ensures that k6 can validate that all thresholds are evaluating defined metrics.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The generic procedure to create a custom metric is as follows:
 
 1. Import the [`k6/metrics`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) module. Optionally, specify the type of metrics you want to create with a named import:
 
    ```javascript
-   import { Counter } from 'k6/metrics';
+   import { Trend } from 'k6/metrics';
    ```
 
 1. In init context, construct a new custom-metric object.
@@ -75,7 +75,7 @@ You can use these tags to filter test results.
 Here's how the output of the preceding script might look in the end-of-test summary.
 Since the metric is a trend, k6 calculates various trends based on the number of values and their summation.
 
-  {{< code >}}
+{{< code >}}
 
 ```bash
 $ k6 run script.js
@@ -96,7 +96,7 @@ $ k6 run script.js
 Custom metrics are collected from VU threads only at the end of a VU iteration.
 For long-running scripts, custom metrics might appear only after the test runs a while.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Read more
 

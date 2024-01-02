@@ -1,6 +1,5 @@
 ---
 title: 'randomSeed( int )'
-slug: 'randomseed'
 description: 'Set seed to get a reproducible pseudo-random number using `Math.random`.'
 excerpt: 'Set seed to get a reproducible pseudo-random number using `Math.random`.'
 ---
