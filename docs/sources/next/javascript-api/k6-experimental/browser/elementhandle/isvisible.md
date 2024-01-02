@@ -11,7 +11,7 @@ Checks if the element is `visible`.
 
 | Type | Description                                       |
 | ---- | ------------------------------------------------- |
-| bool | `true` if the element is `visible`, else `false`. |
+| bool | `true` if the element is `visible`, `false` otherwise. |
 
 ### Example
 

@@ -11,7 +11,7 @@ Checks if the element is `hidden`.
 
 | Type | Description                                      |
 | ---- | ------------------------------------------------ |
-| bool | `true` if the element is `hidden`, else `false`. |
+| bool | `true` if the element is `hidden`, `false` otherwise. |
 
 ### Example
 
