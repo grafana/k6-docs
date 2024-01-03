@@ -130,38 +130,38 @@ To do so, follow these steps:
 
    {{< /code >}}
 
-As is, this script won't work, since it has undeclared functions and variables.
+   As is, this script won't work, since it has undeclared functions and variables.
 
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
 1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
 
-{{< code >}}
+   {{< code >}}
 
-```javascript
-import http from 'k6/http';
-import { Trend } from 'k6/metrics';
-import { group, sleep } from 'k6';
+   ```javascript
+   import http from 'k6/http';
+   import { Trend } from 'k6/metrics';
+   import { group, sleep } from 'k6';
 
-const contactsLatency = new Trend('contact_duration');
+   const contactsLatency = new Trend('contact_duration');
 
-export function contacts(baseUrl) {
-  group('Contacts flow', function () {
-    // save response as variable
-    let res = http.get(`${baseUrl}/contacts.php`);
-    // add duration property to metric
-    contactsLatency.add(res.timings.duration);
-    sleep(1);
+   export function contacts(baseUrl) {
+     group('Contacts flow', function () {
+       // save response as variable
+       let res = http.get(`${baseUrl}/contacts.php`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
+   
+       res = http.get(`${baseUrl}/`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
+     });
+   }
+   ```
 
-    res = http.get(`${baseUrl}/`);
-    // add duration property to metric
-    contactsLatency.add(res.timings.duration);
-    sleep(1);
-  });
-}
-```
-
-{{< /code >}}
+   {{< /code >}}
 
 1. Repeat the process with the `coinflip` group in a file called `coinflip.js`.
    Use the tabs to see the final three files should (`options` moved to the bottom of `main.js` for better readability).
