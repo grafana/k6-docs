@@ -1,17 +1,17 @@
 ---
-title: 'isVisible()'
-excerpt: 'Browser module: locator.isVisible method'
+title: 'isHidden()'
+excerpt: 'Browser module: elementHandle.isHidden() method'
 ---
 
-# isVisible()
+# isHidden()
 
-Checks if the element is `visible`.
+Checks if the element is `hidden`.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the element is `visible`, else `false`. |
+| Type | Description                                           |
+| ---- | ----------------------------------------------------- |
+| bool | `true` if the element is `hidden`, `false` otherwise. |
 
 ### Example
 
@@ -35,10 +35,12 @@ export const options = {
 
 export default async function () {
   const page = browser.newPage();
+
   await page.goto('https://test.k6.io/browser.php');
-  const text = page.locator('#text1');
-  if (text.isVisible()) {
-    console.log('element is visible');
+
+  const elementHandle = page.$('#input-text-hidden');
+  if (elementHandle.isHidden()) {
+    console.log('element is hidden');
   }
 }
 ```

@@ -1,17 +1,17 @@
 ---
-title: 'isHidden(selector[, options])'
-excerpt: 'Browser module: page.isHidden(selector[, options) method'
+title: 'isVisible(selector[, options])'
+excerpt: 'Browser module: frame.isVisible(selector[, options]) method'
 ---
 
-# isHidden(selector[, options])
+# isVisible(selector[, options])
 
 {{% admonition type="warning" %}}
 
-Use locator-based [`locator.isHidden([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/ishidden/) instead.
+Use locator-based [`locator.isVisible([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/isvisible/) instead.
 
 {{% /admonition %}}
 
-Checks if the element is `hidden`.
+Checks if the element is `visible`.
 
 <TableWithNestedRows>
 
@@ -25,9 +25,9 @@ Checks if the element is `hidden`.
 
 ### Returns
 
-| Type | Description                                      |
-| ---- | ------------------------------------------------ |
-| bool | `true` if the element is `hidden`, else `false`. |
+| Type | Description                                            |
+| ---- | ------------------------------------------------------ |
+| bool | `true` if the element is `visible`, `false` otherwise. |
 
 ### Example
 
@@ -53,8 +53,11 @@ export default async function () {
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isHidden('#input-text-hidden')) {
-    console.log('element is hidden');
+
+  const frames = page.frames();
+
+  if (frames[0].isVisible('#text1')) {
+    console.log('element is visible');
   }
 }
 ```

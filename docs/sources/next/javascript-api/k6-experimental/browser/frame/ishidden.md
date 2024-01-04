@@ -1,6 +1,6 @@
 ---
 title: 'isHidden(selector[, options])'
-excerpt: 'Browser module: page.isHidden(selector[, options) method'
+excerpt: 'Browser module: frame.isHidden(selector[, options]) method'
 ---
 
 # isHidden(selector[, options])
@@ -25,9 +25,9 @@ Checks if the element is `hidden`.
 
 ### Returns
 
-| Type | Description                                      |
-| ---- | ------------------------------------------------ |
-| bool | `true` if the element is `hidden`, else `false`. |
+| Type | Description                                           |
+| ---- | ----------------------------------------------------- |
+| bool | `true` if the element is `hidden`, `false` otherwise. |
 
 ### Example
 
