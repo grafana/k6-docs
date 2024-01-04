@@ -38,6 +38,12 @@ k6 will help you to build resilient and performant applications that scale.
 
 k6 is developed by [Grafana Labs](https://grafana.com/) and the community.
 
+Watch the supplementary video below to learn more about k6 and why it could be the missing puzzle in your Grafana stack.
+
+<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+  <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/1mtYVDA2_iQ?si=VMIqNldoPwCb03eK" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ## Key features
 
 k6 is packed with features, which you can learn all about in the documentation.
