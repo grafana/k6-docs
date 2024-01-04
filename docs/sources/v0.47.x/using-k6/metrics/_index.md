@@ -21,10 +21,10 @@ To make a test fail a certain criteria, you can write a [Threshold](https://graf
 To filter metrics, you can use [Tags and groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 You can also export metrics in various summary and granular formats, as documented in [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output).
 
-| On this page...                                                                           | Read about...                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| On this page...                                                                                          | Read about...                                                                                                   |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | [Built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference)                  | Each built-in metric for each supported [protocol](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols) |
-| [Create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                               |
+| [Create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) | How to build your own metric for each metric type                                                               |
 
 ## What metrics to look at?
 
@@ -42,7 +42,7 @@ However, if you're unsure about the metrics to focus on, you can start with the 
 In other terminology, these metrics measure traffic (in requests), availability (in error rate), and latency (in request duration).
 SREs might recognize these metrics as three of the [four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Example output
 

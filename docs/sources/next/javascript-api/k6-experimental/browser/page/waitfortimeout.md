@@ -9,7 +9,7 @@ excerpt: 'Browser module: waitForTimeout(timeout) method'
 
 Never wait for timeout in production, use this only for debugging. Tests that wait for time are inherently flaky. Use [`Locator`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/) actions and web assertions that wait automatically.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 Waits for the given `timeout` in milliseconds.
 

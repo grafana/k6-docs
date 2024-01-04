@@ -15,8 +15,8 @@ From that point forward, all requests made by the HTTP module from that point fo
 
 ## Parameters
 
-| Name      | Type                                                                                  | Description                                                                                                                                    |
-| :-------- | :------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name      | Type                                                                                                 | Description                                                                                                                                                    |
+| :-------- | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `options` | [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/options) | Configures the tracing behavior with the provided [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/options) object. |
 
 ## Example

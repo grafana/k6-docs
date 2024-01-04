@@ -14,8 +14,8 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                 | Description                      |
-| ---------------------------------------------------------------------- | -------------------------------- |
+| Method                                                                                                         | Description                      |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | [Trend.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend/trend-add) | Add a value to the trend metric. |
 
 ## Trend usage in Thresholds

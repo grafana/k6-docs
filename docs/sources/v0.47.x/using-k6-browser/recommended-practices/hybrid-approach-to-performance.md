@@ -8,9 +8,9 @@ weight: 01
 
 # Hybrid performance with k6 browser
 
-An alternative approach to [browser-based load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#browser-based-load-testing) that's much less resource-intensive is combining a small number of virtual users for a browser test with a large number of virtual users for a protocol-level test. 
+An alternative approach to [browser-based load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#browser-based-load-testing) that's much less resource-intensive is combining a small number of virtual users for a browser test with a large number of virtual users for a protocol-level test.
 
-You can achieve hybrid performance in multiple ways, often by using different tools. To simplify the developer experience, you can combine k6 browser with core k6 features to write hybrid tests in a single script. 
+You can achieve hybrid performance in multiple ways, often by using different tools. To simplify the developer experience, you can combine k6 browser with core k6 features to write hybrid tests in a single script.
 
 ## Browser and HTTP test
 
@@ -19,9 +19,9 @@ The code below shows an example of combining a browser and HTTP test in a single
 {{< code >}}
 
 ```javascript
-import http from "k6/http";
-import { check } from "k6";
-import { browser } from "k6/experimental/browser";
+import http from 'k6/http';
+import { check } from 'k6';
+import { browser } from 'k6/experimental/browser';
 
 const BASE_URL = __ENV.BASE_URL;
 
@@ -42,18 +42,18 @@ export const options = {
       executor: 'constant-vus',
       vus: 1,
       duration: '30s',
-        options: {
-          browser: {
-            type: 'chromium',
-          },
+      options: {
+        browser: {
+          type: 'chromium',
+        },
       },
-    }
+    },
   },
   thresholds: {
     http_req_failed: ['rate<0.01'],
     http_req_duration: ['p(95)<500', 'p(99)<1000'],
-    browser_web_vital_fcp: ["p(95) < 1000"],
-    browser_web_vital_lcp: ["p(95) < 2000"],
+    browser_web_vital_fcp: ['p(95) < 1000'],
+    browser_web_vital_lcp: ['p(95) < 2000'],
   },
 };
 
@@ -64,8 +64,8 @@ export function getPizza() {
     excludedIngredients: ['pepperoni'],
     excludedTools: ['knife'],
     maxNumberOfToppings: 6,
-    minNumberOfToppings: 2
-  }
+    minNumberOfToppings: 2,
+  };
 
   let res = http.post(`${BASE_URL}/api/pizza`, JSON.stringify(restrictions), {
     headers: {
@@ -74,8 +74,8 @@ export function getPizza() {
     },
   });
 
-  check(res, { 
-    'status is 200': (res) => res.status === 200 
+  check(res, {
+    'status is 200': (res) => res.status === 200,
   });
 }
 
@@ -83,9 +83,9 @@ export async function checkFrontend() {
   const page = browser.newPage();
 
   try {
-    await page.goto(BASE_URL)
+    await page.goto(BASE_URL);
     check(page, {
-      'header': page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
+      header: page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
     });
 
     await page.locator('//button[. = "Pizza, Please!"]').click();
@@ -93,13 +93,12 @@ export async function checkFrontend() {
     page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     check(page, {
-      'recommendation': page.locator('div#recommendations').textContent() != '',
+      recommendation: page.locator('div#recommendations').textContent() != '',
     });
   } finally {
     page.close();
   }
 }
-
 ```
 
 {{< /code >}}
@@ -115,63 +114,63 @@ To find out more information about injecting faults to your service, check out t
 {{< code >}}
 
 ```javascript
-import http from "k6/http";
-import { check } from "k6";
-import { browser } from "k6/experimental/browser";
+import http from 'k6/http';
+import { check } from 'k6';
+import { browser } from 'k6/experimental/browser';
 
 const BASE_URL = __ENV.BASE_URL;
 
 export const options = {
   scenarios: {
     disrupt: {
-      executor: "shared-iterations",
+      executor: 'shared-iterations',
       iterations: 1,
       vus: 1,
-      exec: "disrupt",
+      exec: 'disrupt',
     },
     browser: {
-      executor: "constant-vus",
+      executor: 'constant-vus',
       vus: 1,
-      duration: "10s",
-      startTime: "10s",
-      exec: "browser",
+      duration: '10s',
+      startTime: '10s',
+      exec: 'browser',
       options: {
         browser: {
-          type: "chromium",
+          type: 'chromium',
         },
       },
     },
   },
   thresholds: {
-    browser_web_vital_fcp: ["p(95) < 1000"],
-    browser_web_vital_lcp: ["p(95) < 2000"],
+    browser_web_vital_fcp: ['p(95) < 1000'],
+    browser_web_vital_lcp: ['p(95) < 2000'],
   },
 };
 
 // Add faults to the service by introducing a delay of 1s and 503 errors to 10% of the requests.
 const fault = {
-  averageDelay: "1000ms",
+  averageDelay: '1000ms',
   errorRate: 0.1,
   errorCode: 503,
-}
+};
 
 export function disrupt() {
-  const disruptor = new ServiceDisruptor("pizza-info", "pizza-ns");
+  const disruptor = new ServiceDisruptor('pizza-info', 'pizza-ns');
   const targets = disruptor.targets();
   if (targets.length == 0) {
-    throw new Error("expected list to have one target");
+    throw new Error('expected list to have one target');
   }
 
-  disruptor.injectHTTPFaults(fault, "20s");
+  disruptor.injectHTTPFaults(fault, '20s');
 }
 
 export async function checkFrontend() {
   const page = browser.newPage();
 
   try {
-    await page.goto(BASE_URL)
+    await page.goto(BASE_URL);
     check(page, {
-      'header': page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
+      header: page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
     });
 
     await page.locator('//button[. = "Pizza, Please!"]').click();
@@ -179,13 +178,12 @@ export async function checkFrontend() {
     page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     check(page, {
-      'recommendation': page.locator('div#recommendations').textContent() != '',
+      recommendation: page.locator('div#recommendations').textContent() != '',
     });
   } finally {
     page.close();
   }
 }
-
 ```
 
 {{< /code >}}

@@ -19,16 +19,16 @@ The following events can close the connection:
 - [Socket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-close).
 - k6 VU interruption based on test configuration or CLI commands.
 
-| Parameter | Type     | Description                                                                                                                                                                                                                                                                                      |
-| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                                    |
-| params    | object   | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/params) object containing additional request parameters.                                                                                                                                                                                 |
+| Parameter | Type     | Description                                                                                                                                                                                                                                                                                                      |
+| --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                                                    |
+| params    | object   | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/params) object containing additional request parameters.                                                                                                                                                                                  |
 | callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
 
 ### Returns
 
-| Type                                                                  | Description           |
-| --------------------------------------------------------------------- | --------------------- |
+| Type                                                                                 | Description           |
+| ------------------------------------------------------------------------------------ | --------------------- |
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | HTTP Response object. |
 
 ### Example

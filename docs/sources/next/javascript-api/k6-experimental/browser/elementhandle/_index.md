@@ -19,7 +19,7 @@ weight: 04
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-check" target="_blank" >elementHandle.check([options])</a>                                       | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-click" target="_blank" >elementHandle.click([options])</a>                                       | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-content-frame" target="_blank" >elementHandle.contentFrame()</a>                                 | -                                   |
-| [elementHandle.dblclick([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/dblclick)                                 | Double click on the element.        |
+| [elementHandle.dblclick([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/dblclick)                                  | Double click on the element.        |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-dispatch-event" target="_blank" >elementHandle.dispatchEvent(type[, eventInit])</a>              | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-fill" target="_blank" >elementHandle.fill(value[, options])</a>                                  | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-focus" target="_blank" >elementHandle.focus()</a>                                                | -                                   |
@@ -32,8 +32,8 @@ weight: 04
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-disabled" target="_blank" >elementHandle.isDisabled()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-editable" target="_blank" >elementHandle.isEditable()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-enabled" target="_blank" >elementHandle.isEnabled()</a>                                       | -                                   |
-| [elementHandle.isHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ishidden/)                                         | Checks if the element is `hidden`.  |
-| [elementHandle.isVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/isvisible/)                                       | Checks if the element is `visible`. |
+| [elementHandle.isHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ishidden/)                                          | Checks if the element is `hidden`.  |
+| [elementHandle.isVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/isvisible/)                                        | Checks if the element is `visible`. |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-owner-frame" target="_blank" >elementHandle.ownerFrame()</a>                                     | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-press" target="_blank" >elementHandle.press(key[, options])</a>                                  | -                                   |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-screenshot" target="_blank" >elementHandle.screenshot([options])</a>                             | -                                   |

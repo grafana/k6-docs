@@ -10,7 +10,7 @@ excerpt: 'Returns a list of pages inside this BrowserContext.'
 This feature has **known issues**. For details, refer to
 [#444](https://github.com/grafana/xk6-browser/issues/444).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/)s in the `BrowserContext`.
 

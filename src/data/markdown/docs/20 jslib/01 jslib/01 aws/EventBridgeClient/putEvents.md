@@ -2,7 +2,7 @@
 title: 'EventBridgeClient.putEvents'
 description: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
 excerpt: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/eventbridgeclient/eventbridgeclient-putevents/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/eventbridgeclient/putevents/
 ---
 
 `EventBridgeClient.putEvents` sends custom events to Amazon EventBridge so that they can be matched to rules.

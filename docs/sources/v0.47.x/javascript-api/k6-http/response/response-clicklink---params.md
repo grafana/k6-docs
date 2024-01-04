@@ -10,15 +10,15 @@ Create and make a request corresponding to a link, found in the HTML of response
 
 This method takes an object argument where the following properties can be set:
 
-| Param    | Type   | Description                                                                                                                                                           |
-| -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Param    | Type   | Description                                                                                                                                                                                                   |
+| -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | selector | string | A selector string passed to [Selection.find(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection/selection-find) to locate the link to click. By default this is `"a[href]"`. |
 | params   | object | A [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object that will be forwarded to the link click request. Can be used to set headers, cookies etc.                          |
 
 ### Returns
 
-| Type                                         | Description             |
-| -------------------------------------------- | ----------------------- |
+| Type                                                                                 | Description             |
+| ------------------------------------------------------------------------------------ | ----------------------- |
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) | The link click response |
 
 ### Example

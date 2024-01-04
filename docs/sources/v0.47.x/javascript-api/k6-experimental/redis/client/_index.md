@@ -113,8 +113,8 @@ export function handleSummary(data) {
 
 ## key/value methods
 
-| Method                                                                                                                   | Redis command                                        | Description                                                                 |
-| :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :-------------------------------------------------------------------------- |
+| Method                                                                                                                                  | Redis command                                        | Description                                                                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :-------------------------------------------------------------------------- |
 | [`Client.set(key, value, expiration)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-set) | **[SET](https://redis.io/commands/set)**             | Set `key` to hold `value`, with a time to live equal to `expiration`.       |
 | [`Client.get(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-get)                    | **[GET](https://redis.io/commands/get)**             | Get the value of `key`.                                                     |
 | [`Client.getSet(key, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-getset)       | **[GETSET](https://redis.io/commands/getset)**       | Atomically sets `key` to `value` and returns the old value stored at `key`. |
@@ -133,8 +133,8 @@ export function handleSummary(data) {
 
 ## List methods
 
-| Method                                                                                                                   | Redis command                                  | Description                                                                     |
-| :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | :------------------------------------------------------------------------------ |
+| Method                                                                                                                                  | Redis command                                  | Description                                                                     |
+| :-------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | :------------------------------------------------------------------------------ |
 | [`Client.lpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lpush)        | **[LPSUH](https://redis.io/commands/lpush)**   | Inserts all the specified values at the head of the list stored at `key`.       |
 | [`Client.rpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-rpush)        | **[RPUSH](https://redis.io/commands/rpush)**   | Inserts all the specified values at the tail of the list stored at `key`.       |
 | [`Client.lpop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lpop)                  | **[LPOP](https://redis.io/commands/lpop)**     | Removes and returns the first element of the list stored at `key`.              |
@@ -147,8 +147,8 @@ export function handleSummary(data) {
 
 ## Hash methods
 
-| Method                                                                                                                          | Redis command                                    | Description                                                                                          |
-| :------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| Method                                                                                                                                         | Redis command                                    | Description                                                                                          |
+| :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
 | [`Client.hset(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hset)           | **[HSET](https://redis.io/commands/hset)**       | Sets the specified field in the hash stored at `key` to `value`.                                     |
 | [`Client.hsetnx(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hsetnx)       | **[HSETNX](https://redis.io/commands/hsetnx)**   | Sets the specified field in the hash stored at `key` to `value`, only if `field` does not yet exist. |
 | [`Client.hget(key, field)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hget)                  | **[HGET](https://redis.io/commands/hget)**       | Returns the value associated with `field` in the hash stored at `key`.                               |
@@ -161,8 +161,8 @@ export function handleSummary(data) {
 
 ## Set methods
 
-| Method                                                                                                                    | Redis command                                            | Description                                                              |
-| :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :----------------------------------------------------------------------- |
+| Method                                                                                                                                   | Redis command                                            | Description                                                              |
+| :--------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | :----------------------------------------------------------------------- |
 | [`Client.sadd(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sadd)          | **[SADD](https://redis.io/commands/sadd)**               | Adds the specified members to the set stored at `key`.                   |
 | [`Client.srem(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-srem)          | **[SREM](https://redis.io/commands/srem)**               | Removes the specified members from the set stored at `key`.              |
 | [`Client.sismember(key, member)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sismember) | **[SISMEMBER](https://redis.io/commands/sismember)**     | Returns if member is a member of the set stored at `key`.                |
@@ -172,6 +172,6 @@ export function handleSummary(data) {
 
 ## miscellaneous
 
-| Method                                                                                                                          | Description                         |
-| :------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------- |
+| Method                                                                                                                                         | Description                         |
+| :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
 | [`Client.sendCommand(command, args)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sendcommand) | Send a command to the Redis server. |

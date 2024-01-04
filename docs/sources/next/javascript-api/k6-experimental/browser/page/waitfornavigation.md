@@ -9,21 +9,21 @@ Waits for the given navigation lifecycle event to occur and returns the main res
 
 <TableWithNestedRows>
 
-| Parameter         | Type   | Default | Description                                                                                                                                                                                                                                                   |
-| ----------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options           | object | `null`  |                                                                                                                                                                                                                                                               |
+| Parameter         | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
+| ----------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options           | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout   | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
-| options.waitUntil | string | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                         |
+| options.waitUntil | string | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                                                                                                         |
 
 </TableWithNestedRows>
 
 ### Events
 
- {{% admonition type="caution" %}}
+{{% admonition type="caution" %}}
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 
-  {{% /admonition %}}
+{{% /admonition %}}
 
 Events can be either:
 
@@ -33,8 +33,8 @@ Events can be either:
 
 ### Returns
 
-| Type                                                                           | Description                                                               |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Type                                                                                                                   | Description                                                               |
+| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Promise<null \| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/)> | The `Response` instance associated with the page. Else, it returns `null` |
 
 ### Example

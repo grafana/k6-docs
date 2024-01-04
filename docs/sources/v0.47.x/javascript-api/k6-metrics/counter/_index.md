@@ -13,8 +13,8 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                       | Description                        |
-| ---------------------------------------------------------------------------- | ---------------------------------- |
+| Method                                                                                                               | Description                        |
+| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | [Counter.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter/counter-add) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
@@ -74,7 +74,7 @@ export const options = {
   vus: 1,
   duration: '1m',
   thresholds: {
-    error_counter: [
+    'error_counter': [
       'count < 10', // 10 or fewer total errors are tolerated
     ],
     'error_counter{errorType:authError}': [

@@ -1,6 +1,6 @@
 ---
-title: "k6/crypto"
-excerpt: "The k6/crypto module provides common hashing functionality available in the GoLang crypto."
+title: 'k6/crypto'
+excerpt: 'The k6/crypto module provides common hashing functionality available in the GoLang crypto.'
 weight: 03
 ---
 
@@ -10,8 +10,8 @@ weight: 03
 
 The k6/crypto `module` provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
 
-| Function                                                                                                 | Description                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Function                                                                                                                | Description                                                                                                                  |
+| ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | [createHash(algorithm)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/createhash)                   | Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.        |
 | [createHMAC(algorithm, secret)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/createhmac)           | Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way. |
 | [hmac(algorithm, secret, data, outputEncoding)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/hmac) | Use HMAC to sign an input string.                                                                                            |
@@ -26,6 +26,6 @@ The k6/crypto `module` provides common hashing functionality available in the Go
 | [sha512_224(input, outputEncoding)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/sha512_224)       | Use SHA-512/224 to hash an input string.                                                                                     |
 | [sha512_256(input, outputEncoding)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/sha512_256)       | Use SHA-512/256 to hash an input string.                                                                                     |
 
-| Class                                                               | Description                                                                                                                                                                           |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Class                                                                              | Description                                                                                                                                                                                           |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Hasher](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/hasher) | Object returned by [crypto.createHash()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto/createhash). It allows adding more data to be hashed and to extract digests along the way. |

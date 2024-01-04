@@ -19,8 +19,8 @@ A trace context generally consists of, at least, a `trace_id`, a `span_id`, and 
 
 ## API
 
-| Class/Function                                                                                    | Description                                                                                                               |
-| :------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------ |
+| Class/Function                                                                                                   | Description                                                                                                               |
+| :--------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | [instrumentHTTP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/instrumenthttp) | instruments the k6 http module with tracing capabilities.                                                                 |
 | [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/client)                 | configurable Client that exposes instrumented HTTP operations and allows selectively instrumenting requests with tracing. |
 

@@ -67,7 +67,7 @@ export default function () {
 With [`gracefulRampDown`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/graceful-stop#the-gracefulrampdown) set to 0 seconds, some iterations might be
 interrupted during the ramp down stage.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Observations
 

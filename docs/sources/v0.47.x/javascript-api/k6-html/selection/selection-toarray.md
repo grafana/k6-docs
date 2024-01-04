@@ -10,8 +10,8 @@ Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
 ### Returns
 
-| Type                                                    | Description                 |
-| ------------------------------------------------------- | --------------------------- |
+| Type                                                                                            | Description                 |
+| ----------------------------------------------------------------------------------------------- | --------------------------- |
 | Array of [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | Array of Selection objects. |
 
 ### Example

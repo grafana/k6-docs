@@ -11,7 +11,7 @@ Adds a list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api
 
 If a [cookie](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie)'s `url` property is not provided, both `domain` and `path` properties must be specified.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Example
 

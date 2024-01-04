@@ -17,7 +17,7 @@ Follow along to learn how to:
 
 With these example snippets, you'll run the test locally with your machine's resources. The browser module is not available within k6 cloud as of yet.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Run a test
 
@@ -31,7 +31,7 @@ To run a simple local script:
 
    ```javascript
    import { browser } from 'k6/experimental/browser';
-   
+
    export const options = {
      scenarios: {
        ui: {
@@ -47,10 +47,10 @@ To run a simple local script:
        checks: ['rate==1.0'],
      },
    };
-  
+
    export default async function () {
      const page = browser.newPage();
-  
+
      try {
        await page.goto('https://test.k6.io/');
        page.screenshot({ path: 'screenshots/screenshot.png' });
@@ -154,7 +154,7 @@ To find out which selectors the browser module supports, check out [Selecting El
 
 You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 {{< code >}}
 
@@ -272,7 +272,7 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 
 Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 {{< code >}}
 
@@ -312,7 +312,8 @@ export async function browserTest() {
     page.locator('#checkbox1').check();
 
     check(page, {
-      'checkbox is checked': page.locator('#checkbox-info-display').textContent() === 'Thanks for checking the box',
+      'checkbox is checked':
+        page.locator('#checkbox-info-display').textContent() === 'Thanks for checking the box',
     });
   } finally {
     page.close();

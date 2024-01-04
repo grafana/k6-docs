@@ -54,8 +54,8 @@ export default function () {
 
 The [http module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) handles all kinds of HTTP requests and methods.
 
-| Name                                                                  | Value                                                                     |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Name                                                                                 | Value                                                                     |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
 | [batch()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch)     | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
 | [del()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/del)         | Issue an HTTP DELETE request.                                             |
 | [get()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/get)         | Issue an HTTP GET request.                                                |
@@ -71,15 +71,15 @@ The [http module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-htt
 k6 automatically applies [tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#section-tags) to your HTTP requests.
 You can use these tags to filter your results and organize your analysis.
 
-| Name              | Description                                                                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name              | Description                                                                                                                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | expected_response | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback). |
 | group             | When the request runs inside a [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group), the tag value is the group name. Default is empty.                                                 |
-| name              | Defaults to URL requested                                                                                                                                                                    |
-| method            | Request method (`GET`, `POST`, `PUT` etc.)                                                                                                                                                   |
+| name              | Defaults to URL requested                                                                                                                                                                                    |
+| method            | Request method (`GET`, `POST`, `PUT` etc.)                                                                                                                                                                   |
 | scenario          | When the request runs inside a [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios), the tag value is the scenario name. Default is `default`.                                            |
-| status            | response status                                                                                                                                                                              |
-| url               | defaults to URL requested                                                                                                                                                                    |
+| status            | response status                                                                                                                                                                                              |
+| url               | defaults to URL requested                                                                                                                                                                                    |
 
 The following snippet shows a JSON example of how a test-result data point is logged.
 In this example, the metric is the duration of an HTTP request.

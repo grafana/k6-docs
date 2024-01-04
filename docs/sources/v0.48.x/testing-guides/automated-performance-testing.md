@@ -152,13 +152,13 @@ As a general rule on pre-release environments, we should run our larger tests wi
 export const options = {
   thresholds: {
     // http errors should be less than 1%
-    http_req_failed: ['rate<0.01'],
+    'http_req_failed': ['rate<0.01'],
     // 90% of requests should be below 600ms
-    http_req_duration: ['p(90)<600'],
+    'http_req_duration': ['p(90)<600'],
     // 95% of requests tagged as static content should be below 200ms
     'http_req_duration{type:staticContent}': ['p(99)<250'],
     // the error rate of my custom metric should be below 5%
-    my_custom_metric: ['rate<0.05'],
+    'my_custom_metric': ['rate<0.05'],
   },
 };
 ```

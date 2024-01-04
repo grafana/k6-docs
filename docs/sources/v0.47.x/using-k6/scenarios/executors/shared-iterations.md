@@ -18,7 +18,7 @@ VU that executes faster will complete more iterations than slower VUs.
 
 To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Options
 

@@ -9,8 +9,8 @@ Returns the [Mouse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-e
 
 ### Returns
 
-| Type                                                    | Description                                    |
-| ------------------------------------------------------- | ---------------------------------------------- |
+| Type                                                                                            | Description                                    |
+| ----------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Mouse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/) | The `Mouse` instance associated with the page. |
 
 ### Example

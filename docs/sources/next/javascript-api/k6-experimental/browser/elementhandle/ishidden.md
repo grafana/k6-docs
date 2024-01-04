@@ -9,8 +9,8 @@ Checks if the element is `hidden`.
 
 ### Returns
 
-| Type | Description                                      |
-| ---- | ------------------------------------------------ |
+| Type | Description                                           |
+| ---- | ----------------------------------------------------- |
 | bool | `true` if the element is `hidden`, `false` otherwise. |
 
 ### Example

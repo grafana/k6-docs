@@ -14,14 +14,14 @@ Set up callback functions for various events on the WebSocket connection. Multip
 | event     | string   | The event name to define a callback for.     |
 | callback  | function | The function to call when the event happens. |
 
-| Event name | Description                                                                                                                                                                                        |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open       | Emitted when the connection is established                                                                                                                                                         |
-| message    | Emitted when a message is received from the server.                                                                                                                                                |
-| ping       | Emitted when a ping is received from the server. The client will automatically send back a `pong`.                                                                                                 |
-| pong       | Emitted when a pong is received from the server.                                                                                                                                                   |
+| Event name | Description                                                                                                                                                                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| open       | Emitted when the connection is established                                                                                                                                                                                                 |
+| message    | Emitted when a message is received from the server.                                                                                                                                                                                        |
+| ping       | Emitted when a ping is received from the server. The client will automatically send back a `pong`.                                                                                                                                         |
+| pong       | Emitted when a pong is received from the server.                                                                                                                                                                                           |
 | close      | Emitted when the connection is closed by the client [Socket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-close) or when the server sends the `close` event with code status 1000 (normal closure). |
-| error      | Emitted when an error occurs. Non-normal closure errors will be forwarded.                                                                                                                         |
+| error      | Emitted when an error occurs. Non-normal closure errors will be forwarded.                                                                                                                                                                 |
 
 ### Example
 

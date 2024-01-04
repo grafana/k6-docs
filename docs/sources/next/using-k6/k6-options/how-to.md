@@ -39,22 +39,22 @@ Other times, the context of your test dictates the most sensible place to put yo
 
 - **Options in the script to version control and keep tests tidy**
 
-   The script `options` object is generally the best place to put your options.
-   This provides automatic version control, allows for easy reuse, and lets you modularize your script.
+  The script `options` object is generally the best place to put your options.
+  This provides automatic version control, allows for easy reuse, and lets you modularize your script.
 
 - **CLI flags to set options on the fly**
 
-   When you want to run a quick test, command-line flags are convenient.
+  When you want to run a quick test, command-line flags are convenient.
 
-   You can also use command-line flags to override files in your script (as determined by the [order of precedence](#order-of-precedence)).
-   For example, if your script file sets the test duration at 60 seconds, you could use a CLI flag to run a one-time shorter test.
-   With a flag like `--duration 30s`, the test would be half as long but otherwise identical.
+  You can also use command-line flags to override files in your script (as determined by the [order of precedence](#order-of-precedence)).
+  For example, if your script file sets the test duration at 60 seconds, you could use a CLI flag to run a one-time shorter test.
+  With a flag like `--duration 30s`, the test would be half as long but otherwise identical.
 
 - **Environment variables to set options from your build chain**
 
-   For example, you could derive the option from a variable in your Docker container definition, CI UI, or vault&mdash;wherever you declare environment variables.
+  For example, you could derive the option from a variable in your Docker container definition, CI UI, or vault&mdash;wherever you declare environment variables.
 
-   The [block hostnames](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
+  The [block hostnames](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
 
 ## Examples of setting options
 

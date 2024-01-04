@@ -5,7 +5,6 @@ excerpt: 'Browser module: close context method'
 
 Closes the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext). If there is no active browser context, because none has been created yet or because it has been previously closed, this method throws an error.
 
-
 ### Example
 
 ```javascript
@@ -17,12 +16,12 @@ export const options = {
       executor: 'shared-iterations',
       options: {
         browser: {
-            type: 'chromium',
+          type: 'chromium',
         },
       },
     },
   },
-}
+};
 
 export default async function () {
   const page1 = browser.newPage({

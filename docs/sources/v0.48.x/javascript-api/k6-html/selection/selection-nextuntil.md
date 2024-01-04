@@ -8,15 +8,15 @@ excerpt: 'Get all following siblings of each element in the set of matched eleme
 Get all following siblings of each element up to but not including the element matched by the selector.
 Mimics [jquery.nextUntil](https://api.jquery.com/nextUntil/)
 
-| Parameter           | Type                                                               | Description                                                |
-| ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| Parameter           | Type                                                                                                       | Description                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | selector (optional) | string \| [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
-| filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
+| filter (optional)   | string \| `null`                                                                                           | A selector expression to filter matched elements.          |
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
+| Type                                                                                   | Description  |
+| -------------------------------------------------------------------------------------- | ------------ |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example

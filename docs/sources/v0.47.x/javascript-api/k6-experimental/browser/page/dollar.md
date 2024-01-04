@@ -10,14 +10,14 @@ excerpt: 'Browser module: page.$(selector) method'
 
 Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/locator/) instead.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The method finds an element matching the specified selector within the page. If no elements match the selector, the return value resolves to `null`. To wait for an element on the page, use [locator.waitFor([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/waitfor/).
 
 ### Returns
 
-| Type                                                                            | Description                                                                        |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Type                                                                                                                    | Description                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/) | Returns `ElementHandle` when a matching element is found. Else, it returns `null`. |
 
 ### Example

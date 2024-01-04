@@ -9,8 +9,8 @@ Checks if the element is `visible`.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
+| Type | Description                                            |
+| ---- | ------------------------------------------------------ |
 | bool | `true` if the element is `visible`, `false` otherwise. |
 
 ### Example

@@ -74,7 +74,7 @@ Applying our conventions, we'd recommend naming this repository as `xk6-output-a
 
 Our goal is to quickly understand the intent of the extension.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Extension Tiers
 

@@ -64,8 +64,8 @@ export default () => {
 
 The `Client` class exposes the same API as the standard `http` module. Except for the `batch` method, which is absent from `Client`. The following table lists the `Client` methods which have an equivalent in the standard `http` module:
 
-| Method                                               | HTTP equivalent                                                                    | Description                                                                                                                                                                             |
-| :--------------------------------------------------- | :--------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Method                                               | HTTP equivalent                                                                                   | Description                                                                                                                                                                             |
+| :--------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Client.del(url, [body], [params])`                  | [http.del](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/del)                   | Performs an instrumented HTTP DELETE request. The method has the same prototype as the `http.del` function and should transparently act as a drop-in replacement for it.                |
 | `Client.get(url, [params])`                          | [http.get](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/get)                   | Performs an instrumented HTTP GET request. The method has the same prototype as the `http.get` function and should transparently act as a drop-in replacement for it.                   |
 | `Client.head(url, [params])`                         | [http.head](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head)                 | Performs an instrumented HTTP HEAD request. The method has the same prototype as the `http.head` function and should transparently act as a drop-in replacement for it.                 |
@@ -80,6 +80,6 @@ The `Client` class exposes the same API as the standard `http` module. Except fo
 
 `Client` instances support being reconfigured using the following API:
 
-| Method                      | Description                                                                                                                                     |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Method                      | Description                                                                                                                                                     |
+| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Client.configure(options)` | Reconfigures the tracing client instance with the provided [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/options) |
