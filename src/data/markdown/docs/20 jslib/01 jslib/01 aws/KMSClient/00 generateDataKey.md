@@ -2,7 +2,7 @@
 title: 'KMSClient.generateDataKey'
 description: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
 excerpt: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/generatedatakey/
 ---
 
 `KMSClient.generateDataKey` generates a symmetric data key for use outside of the AWS Key Management Service.
