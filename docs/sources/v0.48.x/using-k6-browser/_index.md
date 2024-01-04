@@ -20,6 +20,12 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
  {{% /admonition %}}
 
+Watch the supplementary video below to learn more about k6 browser.
+
+<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+  <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/N7VJ9X5yAKo?si=qVMF6niRHvZZLHl4" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ## Use case for browser testing
 
 The main use case for the browser module is to test performance on the browser level. Browser-level testing provides a way to measure user experience and find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
