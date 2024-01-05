@@ -20,6 +20,10 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 {{% /admonition %}}
 
+Watch the video below to learn more about k6 browser.
+
+{{< youtube id="N7VJ9X5yAKo" >}}
+
 ## Use case for browser testing
 
 The main use case for the browser module is to test performance on the browser level. Browser-level testing provides a way to measure user experience and find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
