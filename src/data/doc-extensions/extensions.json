@@ -1141,6 +1141,21 @@
       "categories": ["Data"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-fasthttp",
+      "description": "Enable RPS increase & file streaming on HTTP/1.1 requests",
+      "url": "https://github.com/domsolutions/xk6-fasthttp",
+      "logo": "",
+      "author": {
+        "name": "Dominic Riordan",
+        "url": "https://github.com/domsolutions"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
