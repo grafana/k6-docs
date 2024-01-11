@@ -7,6 +7,8 @@ weight: 20
 
 # Params
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 _Params_ is an object used by the gRPC methods that generate RPC requests. _Params_ contains request-specific options like headers that should be inserted into the request.
 
 | Name              | Type            | Description                                                                                                                                                                                                                                                              |

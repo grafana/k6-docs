@@ -6,6 +6,8 @@ weight: 40
 
 # Stream.end()
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Signals to the server that the client has finished sending messages.
 
 ### Example

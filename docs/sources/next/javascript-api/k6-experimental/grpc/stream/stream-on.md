@@ -6,6 +6,8 @@ weight: 10
 
 # Stream.on()
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Set up handler functions for various events on the GRPC stream.
 
 | Parameter | Type     | Description                                  |

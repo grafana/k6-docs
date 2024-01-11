@@ -7,6 +7,8 @@ weight: 20
 
 # Client.connect(address [,params])
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
 See [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-close) to close the connection.

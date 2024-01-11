@@ -6,6 +6,8 @@ weight: 10
 
 # Client.load(importPaths, ...protoFiles)
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.
 
 Must be called within the [`init` phase](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).

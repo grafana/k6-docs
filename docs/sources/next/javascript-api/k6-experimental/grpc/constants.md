@@ -6,6 +6,8 @@ weight: 40
 
 # Constants
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Define constants to distinguish between [gRPC Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/response) statuses.
 
 | Constant                   | Description                                                                                                                                                                                                                  |

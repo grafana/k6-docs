@@ -1,11 +1,12 @@
 ---
 title: Stream
 excerpt: 'GRPC Streams'
-weight: 50
 weight: 30
 ---
 
 # Stream
+
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
 
 Using a GRPC client creates a stream. An important note that the client should be already connected (client.connect called) to the server before creating a stream.
 
