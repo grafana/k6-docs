@@ -14,8 +14,8 @@ Mimics [jquery.children](https://api.jquery.com/children/)
 
 ### Returns
 
-| Type                                           | Description             |
-| ---------------------------------------------- | ----------------------- |
+| Type                                                                                   | Description             |
+| -------------------------------------------------------------------------------------- | ----------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The children Selection. |
 
 ### Example

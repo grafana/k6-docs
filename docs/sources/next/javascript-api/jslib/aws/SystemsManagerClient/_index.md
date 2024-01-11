@@ -15,9 +15,9 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 ### Methods
 
-| Function                                                                                                                  | Description                                        |
-| :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
-| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerclient-getparameter) | Retrieves a parameter from Amazon Systems Manager. |
+| Function                                                                                                            | Description                                        |
+| :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
+| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/getparameter) | Retrieves a parameter from Amazon Systems Manager. |
 
 ### Throws
 
@@ -63,7 +63,10 @@ export default async function () {
 
   // Let's get the secret value with decryption
   // destructure the parameter object to get to the values you want
-  const { value: encryptedParameterValue } = await systemsManager.getParameter(testParameterSecretName, true);
+  const { value: encryptedParameterValue } = await systemsManager.getParameter(
+    testParameterSecretName,
+    true
+  );
   if (encryptedParameterValue !== testParameterSecretValue) {
     exec.test.abort('encrypted test parameter not found');
   }

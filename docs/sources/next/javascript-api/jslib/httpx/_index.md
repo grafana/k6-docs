@@ -27,27 +27,27 @@ This library is stable enough to be useful, but pay attention to the new version
 
 This documentation is for the only last version only. If you discover that some of the following doesn't work, you might be using an older version.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Methods
 
-| Function                                                                                       | Description                                                        |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [asyncRequest(method, url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/asyncrequest)        | Generic method for making arbitrary, asynchronous HTTP requests.   |
-| [request(method, url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/request)                  | Generic method for making arbitrary HTTP requests.                 |
-| [get(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/get)                                  | Makes GET request                                                  |
-| [post(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/post)                                | Makes POST request                                                 |
-| [put(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/put)                                  | Makes PUT request                                                  |
-| [patch(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/patch)                              | Makes PATCH request                                                |
-| [delete(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/delete)                            | Makes DELETE request                                               |
-| [batch(requests)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/batch)           | Batches multiple HTTP requests together to issue them in parallel. |
-| [setBaseUrl(url)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/setbaseurl)      | Sets the base URL for the session                                  |
-| [addHeader(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheader) | Adds a header to the session                                       |
-| [addHeaders(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheaders)   | Adds multiple headers to the session                               |
-| [clearHeader(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/clearheader)   | Removes header from the session                                    |
-| [addTag(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtag)       | Adds a tag to the session                                          |
-| [addTags(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtags)         | Adds multiple tags to the session                                  |
-| [clearTag(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/cleartag)         | Removes tag from the session                                       |
+| Function                                                                                                                        | Description                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [asyncRequest(method, url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/asyncrequest) | Generic method for making arbitrary, asynchronous HTTP requests.   |
+| [request(method, url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/request)           | Generic method for making arbitrary HTTP requests.                 |
+| [get(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/get)                           | Makes GET request                                                  |
+| [post(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/post)                         | Makes POST request                                                 |
+| [put(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/put)                           | Makes PUT request                                                  |
+| [patch(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/patch)                       | Makes PATCH request                                                |
+| [delete(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/delete)                     | Makes DELETE request                                               |
+| [batch(requests)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/batch)                                    | Batches multiple HTTP requests together to issue them in parallel. |
+| [setBaseUrl(url)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/setbaseurl)                               | Sets the base URL for the session                                  |
+| [addHeader(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheader)                          | Adds a header to the session                                       |
+| [addHeaders(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addheaders)                            | Adds multiple headers to the session                               |
+| [clearHeader(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/clearheader)                            | Removes header from the session                                    |
+| [addTag(key, value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtag)                                | Adds a tag to the session                                          |
+| [addTags(object)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/addtags)                                  | Adds multiple tags to the session                                  |
+| [clearTag(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/httpx/cleartag)                                  | Removes tag from the session                                       |
 
 ### Example
 

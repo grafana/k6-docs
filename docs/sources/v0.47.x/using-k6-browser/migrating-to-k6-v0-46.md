@@ -22,7 +22,7 @@ The updated version introduces notable structural changes in its operation and A
 
 You no longer need to use the `K6_BROWSER_ENABLED` flag when running browser tests with the `k6` command.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Before and after comparison
 
@@ -219,7 +219,7 @@ PS C:\k6> $env:K6_BROWSER_WS_URL='REMOTE_URL' ; k6 run script.js
 
 The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. `slowMo` has been temporarily removed, and we're working on reintroducing it.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Scenario options
 
@@ -286,7 +286,7 @@ The `browser.close()` method has been removed, so you can remove that from your 
 
 Closing of the page is critical for the calculation of accurate Web Vital metrics. See the [browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics) for more details.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Browser context limit
 

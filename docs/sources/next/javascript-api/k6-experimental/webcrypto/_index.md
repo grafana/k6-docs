@@ -17,10 +17,10 @@ The Web Crypto API is a JavaScript API for performing cryptographic operations s
 
 The module exports a top-level `crypto` object with the following properties and methods:
 
-| Interface/Function                                                                                           | Description                                                                                                                                                                                                           |
-| :----------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [getRandomValues](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/crypto/getrandomvalues) | Fills the passed `TypedArray` with cryptographically sound random values.                                                                                                                                             |
-| [randomUUID](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/crypto/randomuuid)           | Returns a randomly generated, 36 character long v4 UUID.                                                                                                                                                              |
+| Interface/Function                                                                                                          | Description                                                                                                                                                                                                                           |
+| :-------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [getRandomValues](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/crypto/getrandomvalues) | Fills the passed `TypedArray` with cryptographically sound random values.                                                                                                                                                             |
+| [randomUUID](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/crypto/randomuuid)           | Returns a randomly generated, 36 character long v4 UUID.                                                                                                                                                                              |
 | [subtle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto)                    | The [SubtleCrypto](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto) interface provides access to common cryptographic primitives, such as hashing, signing, encryption, or decryption. |
 
 ## Example
@@ -72,7 +72,10 @@ export default async function () {
     ciphertext
   );
 
-  console.log('deciphered text == original plaintext: ', arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext));
+  console.log(
+    'deciphered text == original plaintext: ',
+    arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext)
+  );
 }
 
 function arrayBufferToHex(buffer) {

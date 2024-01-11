@@ -74,9 +74,12 @@ export default function () {
   // Passing username and password as part of URL plus the auth option will
   // authenticate using HTTP Digest authentication.
   const credentials = `${username}:${password}`;
-  const res = http.get(`https://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`, {
-    auth: 'digest',
-  });
+  const res = http.get(
+    `https://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`,
+    {
+      auth: 'digest',
+    }
+  );
 
   // Verify response (checking the echoed data from the httpbin.test.k6.io digest auth
   // test API endpoint)

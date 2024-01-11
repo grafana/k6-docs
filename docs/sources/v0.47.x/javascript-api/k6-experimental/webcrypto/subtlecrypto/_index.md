@@ -11,8 +11,8 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 
 ## Methods
 
-| Method                                                                                                     | Description                                                                                                          |
-| :--------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| Method                                                                                                                    | Description                                                                                                          |
+| :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------- |
 | [encrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt)         | Encrypts the given plaintext data using the specified algorithm and key.                                             |
 | [decrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt)         | Decrypts the given ciphertext data using the specified algorithm and key.                                            |
 | [sign](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign)               | Signs the given data using the specified algorithm and key.                                                          |
@@ -71,7 +71,10 @@ export default async function () {
     ciphertext
   );
 
-  console.log('deciphered text == original plaintext: ', arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext));
+  console.log(
+    'deciphered text == original plaintext: ',
+    arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext)
+  );
 }
 
 function arrayBufferToHex(buffer) {

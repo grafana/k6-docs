@@ -8,7 +8,7 @@ excerpt: 'To use client certificates, you specify global that tell k6 how to map
 Discussion about TLS certificates is usually about how clients authenticate servers.
 However, both TLS and k6 also support the reverse process, in which servers authenticate clients.
 
-To use client certificates, specify global [configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/options) that tell k6 how to map a public certificate and private key to the domains they are valid for.
+To use client certificates, specify global [configuration options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) that tell k6 how to map a public certificate and private key to the domains they are valid for.
 You can load the certificate and key from local files or embed them as strings in the script.
 
 ## Loading a certificate and a key from local files

@@ -16,10 +16,10 @@ With it, the user can send messages to specified queues and list available queue
 
 ### Methods
 
-| Function                                                                                            | Description                                          |
-| :-------------------------------------------------------------------------------------------------- | :--------------------------------------------------- |
-| [`sendMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/00 sendMessage) | Delivers a message to the specified queue.           |
-| [`listQueues`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/00 listQueues)   | Returns a list of your queues in the current region. |
+| Function                                                                                               | Description                                          |
+| :----------------------------------------------------------------------------------------------------- | :--------------------------------------------------- |
+| [sendMessage](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/sendmessage) | Delivers a message to the specified queue.           |
+| [listQueues](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/listqueues)   | Returns a list of your queues in the current region. |
 
 ### Throws
 

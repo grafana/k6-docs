@@ -19,7 +19,7 @@ To inspect the results for a certain behavior, you can [create a custom metric](
 These techniques can create very complex configurations.
 However, more complexity creates more ambiguity in result interpretation
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Split logic across scenarios
 
@@ -27,7 +27,7 @@ However, more complexity creates more ambiguity in result interpretation
 
 In this context, _workload_ refers to the traffic pattern simulated by a scenario.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 One way to distribute traffic is to use scenarios to schedule different workloads for different functions.
 

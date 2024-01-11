@@ -33,7 +33,7 @@ export const options = {
   vus: 10,
   thresholds: {
     // We can setup thresholds on these custom metrics, "count" means bytes in this case.
-    endpoint_data_sent: ['count < 2048'],
+    'endpoint_data_sent': ['count < 2048'],
 
     // The above threshold would look at all data points added to the custom metric.
     // If we want to only consider data points for a particular URL/endpoint we can filter by URL.

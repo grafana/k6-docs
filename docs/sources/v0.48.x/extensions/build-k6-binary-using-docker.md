@@ -13,6 +13,7 @@ Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify
 For example, to build a custom k6 binary with the latest versions of k6 and the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
 
 {{< code >}}
+
 ```linux
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
   --with github.com/mostafa/xk6-kafka \
@@ -39,6 +40,7 @@ docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
   --with github.com/mostafa/xk6-kafka ^
   --with github.com/grafana/xk6-output-influxdb
 ```
+
 {{< /code >}}
 
 This creates a `k6` (or `k6.exe`) binary in the current working directory.
@@ -46,6 +48,7 @@ This creates a `k6` (or `k6.exe`) binary in the current working directory.
 To build the binary with concrete versions, see the example below (k6 `v0.45.1`, xk6-kafka `v0.19.1`, and xk6-output-influxdb `v0.4.1`):
 
 {{< code >}}
+
 ```linux
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build v0.45.1 \
   --with github.com/mostafa/xk6-kafka@v0.19.1 \
@@ -72,6 +75,7 @@ docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
   --with github.com/mostafa/xk6-kafka@v0.19.1 ^
   --with github.com/grafana/xk6-output-influxdb@v0.4.1
 ```
+
 {{< /code >}}
 
 ## Breaking down the command
@@ -116,7 +120,7 @@ Flags:
 
 The use of `--replace` should be considered an advanced feature to be avoided unless required.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 Referring back to our executed command, note that:
 

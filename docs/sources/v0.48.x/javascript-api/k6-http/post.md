@@ -7,16 +7,16 @@ weight: 10
 
 # post( url, [body], [params] )
 
-| Parameter           | Type                                                                             | Description                                                                                                       |
-| ------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `url`               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `http://example.com`).                                                                          |
-| `body`              | string / object / ArrayBuffer                                                    | Request body; objects will be `x-www-form-urlencoded`.                                                            |
-| `params` (optional) | object                                                                           | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters |
+| Parameter           | Type                                                                                            | Description                                                                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `url`               | string /[HTTP URL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/url#returns) | Request URL (e.g. `http://example.com`).                                                                                         |
+| `body`              | string / object / ArrayBuffer                                                                   | Request body; objects will be `x-www-form-urlencoded`.                                                                           |
+| `params` (optional) | object                                                                                          | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters |
 
 ### Returns
 
-| Type       | Description                                                                       |
-| ---------- | --------------------------------------------------------------------------------- |
+| Type       | Description                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------- |
 | `Response` | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example

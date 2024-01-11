@@ -75,6 +75,7 @@ jq '. | select(.type == "Point" and .data.tags.status == "200")' results.json
 Or calculate the aggregated value of any metric with any particular tags.
 
 {{< code >}}
+
 ```average
 jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.value' results.json | jq -s 'add/length'
 ```
@@ -86,6 +87,7 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.valu
 ```max
 jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.value' results.json | jq -s max
 ```
+
 {{< /code >}}
 
 ## Apply custom tags
@@ -132,7 +134,7 @@ export default function () {
 }
 ```
 
-   {{< /code >}}
+{{< /code >}}
 
 Run the test:
 
@@ -193,8 +195,8 @@ export default function () {
   sleep(1);
 }
 ```
-{{< /code >}}
 
+{{< /code >}}
 
 ### Add Group functions
 
@@ -212,22 +214,22 @@ import { group, sleep } from 'k6';
 const baseUrl = 'https://test.k6.io';
 
 export default function () {
-// visit some endpoints in one group
-group('Contacts flow', function () {
-  http.get(`${baseUrl}/contacts.php`);
-  sleep(1);
-  // return to the home page
-  http.get(`${baseUrl}/`);
-  sleep(1);
-});
+  // visit some endpoints in one group
+  group('Contacts flow', function () {
+    http.get(`${baseUrl}/contacts.php`);
+    sleep(1);
+    // return to the home page
+    http.get(`${baseUrl}/`);
+    sleep(1);
+  });
 
-// Coinflip players in another group
-group('Coinflip game', function () {
-  http.get(`${baseUrl}/flip_coin.php?bet=heads`);
-  sleep(1);
-  http.get(`${baseUrl}/flip_coin.php?bet=tails`);
-  sleep(1);
-});
+  // Coinflip players in another group
+  group('Coinflip game', function () {
+    http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+    sleep(1);
+    http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+    sleep(1);
+  });
 }
 ```
 
@@ -279,35 +281,35 @@ const contactsLatency = new Trend('contacts_duration');
 const coinflipLatency = new Trend('coinflip_duration');
 
 export default function () {
-// Put visits to contact page in one group
-let res;
-group('Contacts flow', function () {
-  // save response as variable
-  res = http.get(`${baseUrl}/contacts.php`);
-  // add duration property to metric
-  contactsLatency.add(res.timings.duration);
-  sleep(1);
+  // Put visits to contact page in one group
+  let res;
+  group('Contacts flow', function () {
+    // save response as variable
+    res = http.get(`${baseUrl}/contacts.php`);
+    // add duration property to metric
+    contactsLatency.add(res.timings.duration);
+    sleep(1);
 
-  res = http.get(`${baseUrl}/`);
-  // add duration property to metric
-  contactsLatency.add(res.timings.duration);
-  sleep(1);
-});
+    res = http.get(`${baseUrl}/`);
+    // add duration property to metric
+    contactsLatency.add(res.timings.duration);
+    sleep(1);
+  });
 
-// Coinflip players in another group
+  // Coinflip players in another group
 
-group('Coinflip game', function () {
-  // save response as variable
-  let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
-  // add duration property to metric
-  coinflipLatency.add(res.timings.duration);
-  sleep(1);
+  group('Coinflip game', function () {
+    // save response as variable
+    let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+    // add duration property to metric
+    coinflipLatency.add(res.timings.duration);
+    sleep(1);
 
-  res = http.get(`${baseUrl}/flip_coin.php?bet=tails`);
-  // add duration property to metric
-  coinflipLatency.add(res.timings.duration);
-  sleep(1);
-});
+    res = http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+    // add duration property to metric
+    coinflipLatency.add(res.timings.duration);
+    sleep(1);
+  });
 }
 ```
 
@@ -329,6 +331,7 @@ contacts_duration..............: avg=125.76985 min=116.973  med=120.6735 max=200
 You can also query custom metric results from the JSON results. For example, to get the aggregated results as.
 
 {{< code >}}
+
 ```avg
 jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.value' results.json | jq -s 'add/length'
 ```
@@ -340,6 +343,7 @@ jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.valu
 ```max
 jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.value' results.json | jq -s max
 ```
+
 {{< /code >}}
 
 ## Next steps

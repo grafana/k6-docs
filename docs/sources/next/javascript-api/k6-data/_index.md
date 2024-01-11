@@ -1,6 +1,6 @@
 ---
-title: "k6/data"
-excerpt: "k6 data API"
+title: 'k6/data'
+excerpt: 'k6 data API'
 weight: 04
 ---
 
@@ -8,6 +8,6 @@ weight: 04
 
 The data module provides helpers to work with data.
 
-| Class/Method                                                                | Description                                                   |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Class/Method                                                                               | Description                                                   |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
 | [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | read-only array like structure that shares memory between VUs |

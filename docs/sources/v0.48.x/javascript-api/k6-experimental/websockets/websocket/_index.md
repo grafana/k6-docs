@@ -16,10 +16,10 @@ The following events can close the connection:
 - [WebSocket.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-close).
 - k6 VU interruption based on test configuration or CLI commands.
 
-| Parameter | Type   | Description                                                                                                                           |
-| --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| url       | string | The URL to which to connect (e.g. "ws://localhost:10000").                                                                            |
-| protocols | array  | Not yet implemented, reserved for the future use.                                                                                     |
+| Parameter | Type   | Description                                                                                                                                          |
+| --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url       | string | The URL to which to connect (e.g. "ws://localhost:10000").                                                                                           |
+| protocols | array  | Not yet implemented, reserved for the future use.                                                                                                    |
 | params    | object | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/params) object containing additional request parameters. |
 
 ### Returns

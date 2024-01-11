@@ -1,6 +1,6 @@
 ---
-title: "k6/experimental"
-excerpt: "k6 experimental APIs"
+title: 'k6/experimental'
+excerpt: 'k6 experimental APIs'
 weight: 07
 ---
 
@@ -8,8 +8,8 @@ weight: 07
 
 {{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
-| Modules                                                                           | Description                                                                                                              |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Modules                                                                                          | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)       | Provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests. |
 | [redis](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis)           | Functionality to interact with [Redis](https://redis.io/).                                                               |
 | [timers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/timers)         | `setTimeout`, `clearTimeout`, `setInterval`, `clearInterval`                                                             |

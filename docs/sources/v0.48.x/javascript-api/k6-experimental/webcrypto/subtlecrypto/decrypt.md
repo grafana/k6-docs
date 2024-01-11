@@ -16,11 +16,11 @@ decrypt(algorithm, key, data)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                                                                                                                                      | Description                                                                                                                                                 |
-| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name        | Type                                                                                                                                                                                                                                                                                                                                                    | Description                                                                                                                                                 |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `algorithm` | [AesCtrParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesctrparams),[AesCbcParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesgcmparams) object | Defines the algorithm to use and any extra-parameters. The values given for the extra parameters must match those used in the corresponding [encrypt] call. |
-| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                                 | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to use for decryption.                                               |
-| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                | The encrypted data to be decrypted (also known as _ciphertext_).                                                                                            |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                                                                | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to use for decryption.                               |
+| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                                                              | The encrypted data to be decrypted (also known as _ciphertext_).                                                                                            |
 
 ## Return Value
 
@@ -82,7 +82,10 @@ export default async function () {
     ciphertext
   );
 
-  console.log('deciphered text == original plaintext: ', arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext));
+  console.log(
+    'deciphered text == original plaintext: ',
+    arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext)
+  );
 }
 
 function arrayBufferToHex(buffer) {

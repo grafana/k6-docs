@@ -18,10 +18,10 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 ### Methods
 
-| Function                                                                                                  | Description                                                                          |
-| :-------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| [listKeys](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 listkeys)               | List the all the Key Management Service keys in the caller's AWS account and region. |
-| [generateDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/00 generateDataKey) | Generate a symmetric data key for use outside of the AWS Key Management Service.     |
+| Function                                                                                                       | Description                                                                          |
+| :------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
+| [listKeys](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/listkeys)               | List the all the Key Management Service keys in the caller's AWS account and region. |
+| [generateDataKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/generatedatakey) | Generate a symmetric data key for use outside of the AWS Key Management Service.     |
 
 ### Throws
 
@@ -63,7 +63,7 @@ export default async function (data) {
 
 export function handleSummary(data) {
   return {
-    stdout: textSummary(data, { indent: ' ', enableColors: true }),
+    'stdout': textSummary(data, { indent: ' ', enableColors: true }),
     './test-run.key': data.dataKey,
   };
 }

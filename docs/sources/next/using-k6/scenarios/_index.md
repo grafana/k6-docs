@@ -84,14 +84,14 @@ For the full list, refer to [Executors](https://grafana.com/docs/k6/<K6_VERSION>
 
 ## Scenario options {#options}
 
-| Option                          | Type   | Description                                                                                                                                                                               | Default     |
-| ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Option                          | Type   | Description                                                                                                                                                                                               | Default     |
+| ------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | executor<sup>(required)</sup> ️ | string | Unique executor name. See the list of possible values in the [executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors) section.                                                  | -           |
-| startTime                       | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                                                             | `"0s"`      |
+| startTime                       | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                                                                             | `"0s"`      |
 | gracefulStop                    | string | Time to wait for iterations to finish executing before stopping them forcefully. To learn more, read [Graceful stop](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/graceful-stop). | `"30s"`     |
-| exec                            | string | Name of exported JS function to execute.                                                                                                                                                  | `"default"` |
-| env                             | object | Environment variables specific to this scenario.                                                                                                                                          | `{}`        |
-| tags                            | object | [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) specific to this scenario.                                                                                                     | `{}`        |
+| exec                            | string | Name of exported JS function to execute.                                                                                                                                                                  | `"default"` |
+| env                             | object | Environment variables specific to this scenario.                                                                                                                                                          | `{}`        |
+| tags                            | object | [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) specific to this scenario.                                                                                                      | `{}`        |
 
 ## Scenario example
 

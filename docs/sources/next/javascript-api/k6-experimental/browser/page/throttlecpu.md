@@ -8,7 +8,7 @@ excerpt: 'Browser module: page.throttleCPU(cpuProfile) method'
 Throttles the CPU in Chrome/Chromium to slow it down by the specified `rate` in `cpuProfile`.
 
 | Parameter       | Type       | Default | Description                                                          |
-|-----------------|------------|---------|----------------------------------------------------------------------|
+| --------------- | ---------- | ------- | -------------------------------------------------------------------- |
 | cpuProfile      | CPUProfile | `null`  | This is a mandatory parameter.                                       |
 | cpuProfile.rate | number     | `1`     | rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc). |
 

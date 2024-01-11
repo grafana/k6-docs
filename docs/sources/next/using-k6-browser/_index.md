@@ -18,7 +18,11 @@ This module aims to provide rough compatibility with the Playwright API, so you 
 
 To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases), and install a Chromium-based browser on your machine (such as [Google Chrome](https://www.google.com/chrome/)).
 
- {{% /admonition %}}
+{{% /admonition %}}
+
+Watch the video below to learn more about k6 browser.
+
+{{< youtube id="N7VJ9X5yAKo" >}}
 
 ## Use case for browser testing
 

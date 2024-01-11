@@ -9,27 +9,27 @@ excerpt: 'Browser module: page.waitForLoadState(state[, options]) method'
 
 This method has **known issues**. For details, refer to [#880](https://github.com/grafana/xk6-browser/issues/880).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 This waits for the given load state to be reached. It will immediately unblock if that lifecycle event has already been received.
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                   |
-| --------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| state           | string | `load`  | Optional load state to wait for. See [Events](#events) for more details.                                                                                                                                                                                      |
-| options         | object | `null`  |                                                                                                                                                                                                                                                               |
+| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
+| --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| state           | string | `load`  | Optional load state to wait for. See [Events](#events) for more details.                                                                                                                                                                                                                                                                      |
+| options         | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
 
 ### Events
 
- {{% admonition type="caution" %}}
+{{% admonition type="caution" %}}
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 
-  {{% /admonition %}}
+{{% /admonition %}}
 
 Events can be either:
 

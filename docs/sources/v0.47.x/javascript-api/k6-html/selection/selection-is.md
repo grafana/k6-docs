@@ -8,16 +8,16 @@ excerpt: 'Check the current matched set of elements against a selector or elemen
 Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.
 Mimics [jquery.is](https://api.jquery.com/is/)
 
-| Parameter | Type                                           | Description                                                          |
-| --------- | ---------------------------------------------- | -------------------------------------------------------------------- |
-| selector  | function                                       | A function used as a test for each element in the set                |
-| selector  | string                                         | A string containing a selector expression to match elements against. |
+| Parameter | Type                                                                                   | Description                                                          |
+| --------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| selector  | function                                                                               | A function used as a test for each element in the set                |
+| selector  | string                                                                                 | A string containing a selector expression to match elements against. |
 | selector  | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | A selection.                                                         |
 
 ### Returns
 
-| Type                                           | Description           |
-| ---------------------------------------------- | --------------------- |
+| Type                                                                                   | Description           |
+| -------------------------------------------------------------------------------------- | --------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The filter selection. |
 
 ### Example

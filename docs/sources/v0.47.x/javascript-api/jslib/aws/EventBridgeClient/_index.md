@@ -16,8 +16,8 @@ Both the dedicated `event-bridge.js` jslib bundle and the all-encompassing `aws.
 
 ### Methods
 
-| Function                                                                                                             | Description                               |
-| :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
+| Function                                                                                                          | Description                               |
+| :---------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
 | [putEvents(input)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/eventbridgeclient/putevents) | Send custom events to Amazon EventBridge. |
 
 ### Throws

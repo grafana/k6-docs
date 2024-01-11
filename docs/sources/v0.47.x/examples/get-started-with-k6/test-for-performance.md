@@ -111,7 +111,7 @@ Scenarios schedule load according to the number of VUs, number of iterations, VU
 
 ### Run a smoke test
 
-Start small. Run a [smoke test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing "a small test to confirm the script works properly") to check that your script can handle a minimal load.
+Start small. Run a [smoke test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/smoke-testing 'a small test to confirm the script works properly') to check that your script can handle a minimal load.
 
 To do so, use the [`--iterations`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#iterations) flag with an argument of 10 or fewer.
 

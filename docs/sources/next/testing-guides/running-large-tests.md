@@ -109,7 +109,7 @@ As the test runs, these are good indicators to monitor:
 ## Error handling should be resilient
 
 When running [large stress tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), your script shouldn't assume anything about the HTTP response.
-An oversight of some scripts is to test with only the [happy path](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#happy-path "The default behavior that happens when the system returns no errors") in mind.
+An oversight of some scripts is to test with only the [happy path](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#happy-path 'The default behavior that happens when the system returns no errors') in mind.
 
 For example, in k6 scripts, we often see something like this _happy path_ check:
 
@@ -298,7 +298,7 @@ WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.1
 Decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Benchmarking k6
 

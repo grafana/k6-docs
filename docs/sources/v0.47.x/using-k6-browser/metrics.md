@@ -41,7 +41,7 @@ The following snippet is an example:
 
 As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ```bash
   browser_data_received.......: 2.6 kB  2.0 kB/s
@@ -73,14 +73,14 @@ As the following example shows, you can also pass in different URLs if you're go
 
 Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 {{< code >}}
 
 ```javascript
 export const options = {
   thresholds: {
-    browser_web_vital_lcp: ['p(90) < 1000'],
+    'browser_web_vital_lcp': ['p(90) < 1000'],
     'browser_web_vital_inp{url:https://test.k6.io/}': ['p(90) < 80'],
     'browser_web_vital_inp{url:https://test.k6.io/my_messages.php}': ['p(90) < 100'],
   },
@@ -101,30 +101,29 @@ When the test is run, you should see a similar output as the one below.
 
 ## Measure custom metrics
 
-When using the k6 browser `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. For example, if you want to measure the time it takes for your users to complete actions, such as a search feature, you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline. 
-		
+When using the k6 browser `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. For example, if you want to measure the time it takes for your users to complete actions, such as a search feature, you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline.
 Using the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method, you can also measure the time difference between two performance markers. The time duration that `performance.measure` returns can be added as a custom metric in k6 browser using [Trends](https://k6.io/docs/javascript-api/k6-metrics/trend/).
 
 {{< code >}}
 
 ```javascript
-import { browser } from "k6/experimental/browser";
-import { Trend } from "k6/metrics";
+import { browser } from 'k6/experimental/browser';
+import { Trend } from 'k6/metrics';
 
 export const options = {
   scenarios: {
     ui: {
-      executor: "shared-iterations",
+      executor: 'shared-iterations',
       options: {
         browser: {
-          type: "chromium",
+          type: 'chromium',
         },
       },
     },
   },
 };
 
-const myTrend = new Trend('total_action_time');
+const myTrend = new Trend('total_action_time', true);
 
 export default async function () {
   const page = browser.newPage();
@@ -141,18 +140,16 @@ export default async function () {
 
     // Get time difference between visiting the page and completing the actions
     page.evaluate(() =>
-      window.performance.measure(
-        'total-action-time',
-        'page-visit',
-        'action-completed',
-      )
+      window.performance.measure('total-action-time', 'page-visit', 'action-completed')
     );
 
-    const totalActionTime = page.evaluate(() =>
-      JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0].duration
+    const totalActionTime = page.evaluate(
+      () =>
+        JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0]
+          .duration
     );
 
-    myTrend.add(total_action_time);
+    myTrend.add(totalActionTime);
   } finally {
     page.close();
   }
@@ -166,5 +163,5 @@ After you run the test, you should see a similar output as the one below.
 ```bash
   iteration_duration..........: avg=1.06s    min=1.06s    med=1.06s    max=1.06s    p(90)=1.06s    p(95)=1.06s
   iterations..................: 1      0.70866/s
-  total_action_time.............: avg=295.3    min=295.3    med=295.3    max=295.3    p(90)=295.3    p(95)=295.3
+  total_action_time.............: avg=295.3ms    min=295.3ms    med=295.3ms    max=295.3ms    p(90)=295.3ms    p(95)=295.3ms
 ```

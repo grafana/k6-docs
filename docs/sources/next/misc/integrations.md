@@ -44,7 +44,7 @@ k6 can output test results to various formats and 3rd-party services.
 - [InfluxDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
 - [JSON file](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)
 - [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
-- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
+- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/new-relic)
 - [Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 - [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)

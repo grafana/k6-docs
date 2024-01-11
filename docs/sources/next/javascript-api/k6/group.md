@@ -30,7 +30,7 @@ To avoid confusion, `async` functions are forbidden as `group()` arguments. This
 
 For more information, refer to [k6 #2728](https://github.com/grafana/k6/issues/2728), which tracks possible solutions and provides detailed explanations.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Example
 

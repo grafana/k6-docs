@@ -14,7 +14,7 @@ With this library, you get the following:
 - BDD style of assertions for more expressive language
 - chainable assertions
 - more powerful assertions functions such as: `deep`, `nested`, `ordered`, etc.
-- automatic assertion messages  
+- automatic assertion messages
 - [exception handling](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) for better test stability
 
 ## Installation
@@ -67,9 +67,9 @@ If you are familiar with k6, the result is the same as using [check](https://gra
 
 ## API
 
-| API                                                                          | Description                                                                                                                                                                                                           |
-| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [config](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/config)     | Options to change `k6chaijs` behaviour.                                                                                                                                                                               |
+| API                                                                                         | Description                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [config](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/config)     | Options to change `k6chaijs` behaviour.                                                                                                                                                                                               |
 | [describe](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/describe) | A wrapper of [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group) that catches exceptions to allow continuing the test execution. It returns a boolean to indicate the success of all its `k6chaijs` assertions. |
 | [expect](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/expect)     | A wrapper of [check](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) that provides BDD style of assertions.                                                                                                         |
 

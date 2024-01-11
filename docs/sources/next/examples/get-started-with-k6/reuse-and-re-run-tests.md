@@ -130,136 +130,140 @@ To do so, follow these steps:
 
    {{< /code >}}
 
-As is, this script won't work, since it has undeclared functions and variables.
+   As is, this script won't work, since it has undeclared functions and variables.
 
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
 1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
 
-  {{< code >}}
-  ```javascript
-  import http from 'k6/http';
-  import { Trend } from 'k6/metrics';
-  import { group, sleep } from 'k6';
+   {{< code >}}
 
-  const contactsLatency = new Trend('contact_duration');
+   ```javascript
+   import http from 'k6/http';
+   import { Trend } from 'k6/metrics';
+   import { group, sleep } from 'k6';
 
-  export function contacts(baseUrl) {
-    group('Contacts flow', function () {
-      // save response as variable
-      let res = http.get(`${baseUrl}/contacts.php`);
-      // add duration property to metric
-      contactsLatency.add(res.timings.duration);
-      sleep(1);
+   const contactsLatency = new Trend('contact_duration');
 
-      res = http.get(`${baseUrl}/`);
-      // add duration property to metric
-      contactsLatency.add(res.timings.duration);
-      sleep(1);
-    });
-  }
-  ```
-  {{< /code >}}
+   export function contacts(baseUrl) {
+     group('Contacts flow', function () {
+       // save response as variable
+       let res = http.get(`${baseUrl}/contacts.php`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
+
+       res = http.get(`${baseUrl}/`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
+     });
+   }
+   ```
+
+   {{< /code >}}
 
 1. Repeat the process with the `coinflip` group in a file called `coinflip.js`.
    Use the tabs to see the final three files should (`options` moved to the bottom of `main.js` for better readability).
 
-  {{< code >}}
-  ```main
-  import { contacts } from './contacts.js';
-  import { coinflip } from './coinflip.js';
+   {{< code >}}
 
-  const baseUrl = 'https://test.k6.io';
+   ```main
+   import { contacts } from './contacts.js';
+   import { coinflip } from './coinflip.js';
 
-  export default function () {
-    // Put visits to contact page in one group
-    contacts(baseUrl);
-    // Coinflip players in another group
-    coinflip(baseUrl);
-  }
+   const baseUrl = 'https://test.k6.io';
 
-  //define configuration
-  export const options = {
-    scenarios: {
-      //arbitrary name of scenario:
-      breaking: {
-        executor: 'ramping-vus',
-        stages: [
-          { duration: '10s', target: 20 },
-          { duration: '50s', target: 20 },
-          { duration: '50s', target: 40 },
-          { duration: '50s', target: 60 },
-          { duration: '50s', target: 80 },
-          { duration: '50s', target: 100 },
-          { duration: '50s', target: 120 },
-          { duration: '50s', target: 140 },
-          //....
-        ],
-      },
-    },
-    //define thresholds
-    thresholds: {
-      http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }], // availability threshold for error rate
-      http_req_duration: ['p(99)<1000'], // Latency threshold for percentile
-    },
-  };
-  ```
+   export default function () {
+     // Put visits to contact page in one group
+     contacts(baseUrl);
+     // Coinflip players in another group
+     coinflip(baseUrl);
+   }
 
-  ```contacts
-  import http from 'k6/http';
-  import { Trend } from 'k6/metrics';
-  import { group, sleep } from 'k6';
+   //define configuration
+   export const options = {
+     scenarios: {
+       //arbitrary name of scenario:
+       breaking: {
+         executor: 'ramping-vus',
+         stages: [
+           { duration: '10s', target: 20 },
+           { duration: '50s', target: 20 },
+           { duration: '50s', target: 40 },
+           { duration: '50s', target: 60 },
+           { duration: '50s', target: 80 },
+           { duration: '50s', target: 100 },
+           { duration: '50s', target: 120 },
+           { duration: '50s', target: 140 },
+           //....
+         ],
+       },
+     },
+     //define thresholds
+     thresholds: {
+       http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }], // availability threshold for error rate
+       http_req_duration: ['p(99)<1000'], // Latency threshold for percentile
+     },
+   };
+   ```
 
-  const contactsLatency = new Trend('contact_duration');
+   ```contacts
+   import http from 'k6/http';
+   import { Trend } from 'k6/metrics';
+   import { group, sleep } from 'k6';
 
-  export function contacts(baseUrl) {
-    group('Contacts flow', function () {
-      // save response as variable
-      let res = http.get(`${baseUrl}/contacts.php`);
-      // add duration property to metric
-      contactsLatency.add(res.timings.duration);
-      sleep(1);
+   const contactsLatency = new Trend('contact_duration');
 
-      res = http.get(`${baseUrl}/`);
-      // add duration property to metric
-      contactsLatency.add(res.timings.duration);
-      sleep(1);
-    });
-  }
-  ```
+   export function contacts(baseUrl) {
+     group('Contacts flow', function () {
+       // save response as variable
+       let res = http.get(`${baseUrl}/contacts.php`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
 
-  ```coinflip
-  import http from 'k6/http';
-  import { Trend } from 'k6/metrics';
-  import { group, sleep } from 'k6';
+       res = http.get(`${baseUrl}/`);
+       // add duration property to metric
+       contactsLatency.add(res.timings.duration);
+       sleep(1);
+     });
+   }
+   ```
 
-  const coinflipLatency = new Trend('coinflip_duration');
+   ```coinflip
+   import http from 'k6/http';
+   import { Trend } from 'k6/metrics';
+   import { group, sleep } from 'k6';
 
-  export function coinflip(baseUrl) {
-    group('Coinflip game', function () {
-      // save response as variable
-      let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
-      // add duration property to metric
-      coinflipLatency.add(res.timings.duration);
-      sleep(1);
-      // mutate for new request
-      res = http.get(`${baseUrl}/flip_coin.php?bet=tails`);
-      // add duration property to metric
-      coinflipLatency.add(res.timings.duration);
-      sleep(1);
-    });
-  }
-  ```
-  {{< /code >}}
+   const coinflipLatency = new Trend('coinflip_duration');
 
-Run the test:
+   export function coinflip(baseUrl) {
+     group('Coinflip game', function () {
+       // save response as variable
+       let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+       // add duration property to metric
+       coinflipLatency.add(res.timings.duration);
+       sleep(1);
+       // mutate for new request
+       res = http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+       // add duration property to metric
+       coinflipLatency.add(res.timings.duration);
+       sleep(1);
+     });
+   }
+   ```
 
-```bash
-# setting the workload to 10 iterations to limit run time
-k6 run main.js --iterations 10
-```
+   {{< /code >}}
 
-The results should be very similar to running the script in a combined file, since these are the same test.
+   Run the test:
+
+   ```bash
+   # setting the workload to 10 iterations to limit run time
+   k6 run main.js --iterations 10
+   ```
+
+   The results should be very similar to running the script in a combined file, since these are the same test.
 
 ## Modularize workload
 
@@ -268,6 +272,7 @@ Now that the iteration code is totally modularized, you might modularize your `o
 The following example creates a module `config.js` to export the threshold and workload settings.
 
 {{< code >}}
+
 ```main
 import { coinflip } from './coinflip.js';
 import { contacts } from './contacts.js';
@@ -307,6 +312,7 @@ export const breakingWorkload = {
   ],
 };
 ```
+
 {{< /code >}}
 
 Notice the length of this final script and compare it with the script at the beginning of this page.
@@ -327,65 +333,69 @@ Change `main.js` and `config.js` so that it:
 To do this, follow these steps:
 
 1. Add the workload settings for configuring the smoke test to `config.js`:
-      
-  {{< code >}}
 
-  ```javascript
-  export const smokeWorkload = {
-    executor: 'shared-iterations',
-    iterations: 5,
-    vus: 1,
-  };
+   {{< code >}}
 
-  export const thresholdsSettings = {
-    http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }],
-    http_req_duration: ['p(99)<1000'],
-  };
+   ```javascript
+   export const smokeWorkload = {
+     executor: 'shared-iterations',
+     iterations: 5,
+     vus: 1,
+   };
 
-  export const breakingWorkload = {
-    executor: 'ramping-vus',
-    stages: [
-      { duration: '10s', target: 20 },
-      { duration: '50s', target: 20 },
-      { duration: '50s', target: 40 },
-      { duration: '50s', target: 60 },
-      { duration: '50s', target: 80 },
-      { duration: '50s', target: 100 },
-      { duration: '50s', target: 120 },
-      { duration: '50s', target: 140 },
-      //....
-    ],
-  };
-  ```
-  {{< /code >}}
+   export const thresholdsSettings = {
+     http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }],
+     http_req_duration: ['p(99)<1000'],
+   };
 
-2. Edit `main.js` to choose the workload settings depending on the `WORKLOAD` environment variable. For example:
+   export const breakingWorkload = {
+     executor: 'ramping-vus',
+     stages: [
+       { duration: '10s', target: 20 },
+       { duration: '50s', target: 20 },
+       { duration: '50s', target: 40 },
+       { duration: '50s', target: 60 },
+       { duration: '50s', target: 80 },
+       { duration: '50s', target: 100 },
+       { duration: '50s', target: 120 },
+       { duration: '50s', target: 140 },
+       //....
+     ],
+   };
+   ```
 
-  {{< code >}}
-  ```javascript
-  import { coinflip } from './coinflip.js';
-  import { contacts } from './contacts.js';
-  import { thresholdsSettings, breakingWorkload, smokeWorkload } from './config.js';
+   {{< /code >}}
 
-  export const options = {
-    scenarios: {
-      my_scenario: __ENV.WORKLOAD === 'breaking' ? breakingWorkload : smokeWorkload,
-    },
-    thresholds: thresholdsSettings,
-  };
+1. Edit `main.js` to choose the workload settings depending on the `WORKLOAD` environment variable. For example:
 
-  const baseUrl = 'https://test.k6.io';
+   {{< code >}}
 
-  export default function () {
-    contacts(baseUrl);
-    coinflip(baseUrl);
-  }
-  ```
-  {{< /code >}}
-  
-3. Run the script with and without the `-e` flag.
-  - What happens when you run `k6 run main.js`?
-  - What about `k6 run main.js -e WORKLOAD=breaking`?
+   ```javascript
+   import { coinflip } from './coinflip.js';
+   import { contacts } from './contacts.js';
+   import { thresholdsSettings, breakingWorkload, smokeWorkload } from './config.js';
+
+   export const options = {
+     scenarios: {
+       my_scenario: __ENV.WORKLOAD === 'breaking' ? breakingWorkload : smokeWorkload,
+     },
+     thresholds: thresholdsSettings,
+   };
+
+   const baseUrl = 'https://test.k6.io';
+
+   export default function () {
+     contacts(baseUrl);
+     coinflip(baseUrl);
+   }
+   ```
+
+   {{< /code >}}
+
+1. Run the script with and without the `-e` flag.
+
+   - What happens when you run `k6 run main.js`?
+   - What about `k6 run main.js -e WORKLOAD=breaking`?
 
 This was a simple example to showcase how you can modularize a test.
 As your test suite grows and more people are involved in performance testing, your modularization strategy becomes essential to building and maintaining an efficient testing suite.
