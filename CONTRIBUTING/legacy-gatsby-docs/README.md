@@ -66,7 +66,7 @@ To build locally:
 4. Run the docs locally.
 
   ```bash
-  npm start  # or yarn start
+  npm run start:gatsby
   ```
 
 If everything works, a live preview should be serving on http://localhost:8000.

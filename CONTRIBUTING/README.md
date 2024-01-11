@@ -47,10 +47,10 @@ Clone the repository to your machine:
 git clone https://github.com/grafana/k6-docs.git
 ```
 
-Navigate to the `docs` directory and run `make docs`:
+Run `npm start`:
 
 ```bash
-cd docs && make docs
+npm start
 ```
 
 You should see an output similar to this when the site finishes building:
