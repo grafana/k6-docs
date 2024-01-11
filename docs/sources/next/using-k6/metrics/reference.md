@@ -36,7 +36,7 @@ In other words, the timestamp happens when k6 receives the end of the response b
 {{% /admonition %}}
 
 | Metric Name              | Type    | Description                                                                                                                                                                                                                                  |
-| ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | http_req_blocked         | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
 | http_req_connecting      | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
 | http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
@@ -45,7 +45,7 @@ In other words, the timestamp happens when k6 receives the end of the response b
 | http_req_sending         | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
 | http_req_tls_handshaking | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
 | http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                           |
-| http_reqs                | Counter | How many total HTTP requests k6 generated.                                                                                                                                                                                                   |     |
+| http_reqs                | Counter | How many total HTTP requests k6 generated.                                                                                                                                                                                                   |
 
 ## Browser metrics {#browser}
 
