@@ -38,8 +38,8 @@ The tutorial requires the following:
 
 ## Tutorials
 
-| In this tutorial                                                                                                              | Learn how to                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| In this tutorial                                                                                                                   | Learn how to                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [Test for functional behavior](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
 | [Test for performance](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/test-for-performance)                 | Use k6 to increase load and find faults                            |
 | [Analyze results](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6/analyze-results)                           | Filter results and make custom metrics                             |

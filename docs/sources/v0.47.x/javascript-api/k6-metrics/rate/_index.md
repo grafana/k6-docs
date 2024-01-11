@@ -13,8 +13,8 @@ _Rate_ is an object for representing a custom metric keeping track of the percen
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                | Description                     |
-| --------------------------------------------------------------------- | ------------------------------- |
+| Method                                                                                                      | Description                     |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | [Rate.add(value, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate/rate-add) | Add a value to the rate metric. |
 
 ## Rate usage in Thresholds

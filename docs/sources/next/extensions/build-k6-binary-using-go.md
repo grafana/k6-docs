@@ -13,7 +13,7 @@ you need to build a binary using Go.
 
 Not interested in setting up a Go environment? You can [use Docker instead](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-docker/).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Before you start
 

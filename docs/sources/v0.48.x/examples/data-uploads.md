@@ -118,7 +118,11 @@ const txt = open('/path/to/text.txt');
 export default function () {
   const fd = new FormData();
   fd.append('someTextField', 'someValue');
-  fd.append('aBinaryFile', { data: new Uint8Array(img1).buffer, filename: 'logo.png', content_type: 'image/png' });
+  fd.append('aBinaryFile', {
+    data: new Uint8Array(img1).buffer,
+    filename: 'logo.png',
+    content_type: 'image/png',
+  });
   fd.append('anotherTextField', 'anotherValue');
   fd.append('images', http.file(img1, 'image1.png', 'image/png'));
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));

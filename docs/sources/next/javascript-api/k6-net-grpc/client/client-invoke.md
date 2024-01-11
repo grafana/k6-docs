@@ -17,12 +17,12 @@ error will be thrown.
 | ----------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | url               | string | The gRPC method url to invoke, in the form `/package.Service/Method`, e.g. `/google.cloud.language.v1.LanguageService/AnalyzeSentiment`. The leading slash `/` is optional. |
 | request           | object | The canonical request object, as-per the [Protobuf JSON Mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).                                          |
-| params (optional) | object | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/params) object containing additional request parameters.                                                      |
+| params (optional) | object | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/params) object containing additional request parameters.                                       |
 
 ### Returns
 
-| Type       | Description                                                                           |
-| ---------- | ------------------------------------------------------------------------------------- |
+| Type       | Description                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------- |
 | `Response` | gRPC [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) object. |
 
 ### Examples

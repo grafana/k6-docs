@@ -16,11 +16,11 @@ encrypt(algorithm, key, data)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                                                                                                                                      | Description                                                                                                   |
-| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
-| `algorithm` | [AesCtrParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesctrparams),[AesCbcParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesgcmparams) object | Defines the algorithm to use and any extra-parameters.                                                        |
-| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                                 | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to use for encryption. |
-| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                | The data to be encrypted (also known as "plaintext").                                                         |
+| Name        | Type                                                                                                                                                                                                                                                                                                                                                    | Description                                                                                                                   |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------- |
+| `algorithm` | [AesCtrParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesctrparams),[AesCbcParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aesgcmparams) object | Defines the algorithm to use and any extra-parameters.                                                                        |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                                                                | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to use for encryption. |
+| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                                                              | The data to be encrypted (also known as "plaintext").                                                                         |
 
 ## Return Value
 
@@ -82,7 +82,10 @@ export default async function () {
     ciphertext
   );
 
-  console.log('deciphered text == original plaintext: ', arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext));
+  console.log(
+    'deciphered text == original plaintext: ',
+    arrayBufferToHex(deciphered) === arrayBufferToHex(plaintext)
+  );
 }
 
 function arrayBufferToHex(buffer) {

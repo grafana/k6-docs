@@ -16,12 +16,12 @@ Registers a handler to be called whenever the specified event occurs.
 
 When using the `page.on` method, the page has to be explicitly [closed](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close/) for the iteration to be able to finish.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Events
 
-| Event     | Description                                                                                                                                                                                                                               |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Event     | Description                                                                                                                                                                                                                                                                       |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/consolemessage) class. |
 
 ### Example
@@ -58,7 +58,8 @@ export default async function () {
       check(msg, {
         assertConsoleMessageType: (msg) => msg.type() == 'log',
         assertConsoleMessageText: (msg) => msg.text() == 'this is a console.log message 42',
-        assertConsoleMessageArgs0: (msg) => msg.args()[0].jsonValue() == 'this is a console.log message',
+        assertConsoleMessageArgs0: (msg) =>
+          msg.args()[0].jsonValue() == 'this is a console.log message',
         assertConsoleMessageArgs1: (msg) => msg.args()[1].jsonValue() == 42,
       });
     });

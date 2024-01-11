@@ -33,21 +33,21 @@ k6 provides two types of tags:
 
 Currently, k6 automatically creates the following tags by default:
 
-| Tag                 | Description                                                                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `proto`             | the name of the protocol used (e.g. `HTTP/1.1`)                                                                                                                              |
-| `subproto`          | the subprotocol name (used by websockets)                                                                                                                                    |
-| `status`            | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                               |
-| `method`            | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                              |
-| `url`               | the HTTP request URL                                                                                                                                                         |
+| Tag                 | Description                                                                                                                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `proto`             | the name of the protocol used (e.g. `HTTP/1.1`)                                                                                                                                              |
+| `subproto`          | the subprotocol name (used by websockets)                                                                                                                                                    |
+| `status`            | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                                               |
+| `method`            | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                                              |
+| `url`               | the HTTP request URL                                                                                                                                                                         |
 | `name`              | the HTTP [request name](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests#url-grouping)                                                                                        |
-| `group`             | the full [group](#groups) path, see the preceding explanation for details about its value                                                                                    |
+| `group`             | the full [group](#groups) path, see the preceding explanation for details about its value                                                                                                    |
 | `check`             | the [Check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) name                                                                                                                   |
-| `error`             | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                           |
+| `error`             | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                                           |
 | `error_code`        | A number specifying an error types; a list of current error codes can be found at the [Error Codes](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/error-codes) page                |
 | `tls_version`       | the [TLS](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls) version                                                                                                       |
-| `scenario`          | the name of the scenario where the metric was emitted                                                                                                                        |
-| `service`           | the RPC service name for gRPC                                                                                                                                                |
+| `scenario`          | the name of the scenario where the metric was emitted                                                                                                                                        |
+| `service`           | the RPC service name for gRPC                                                                                                                                                                |
 | `expected_response` | `true` or `false` based on the [responseCallback](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/set-response-callback); by default checks whether the status is 2xx or 3xx |
 
 To disable some of the preceding tags, use the [`systemTags` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#system-tags).
@@ -55,11 +55,11 @@ Note that some data collectors, for example `cloud` runs, may require certain ta
 
 The following system tags are optional. Enable them as needed:
 
-| Tag           | Description                                                                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vu`          | the ID of the virtual user that executed the request                                                                                                       |
-| `iter`        | the iteration number                                                                                                                                       |
-| `ip`          | The IP address of the remote server                                                                                                                        |
+| Tag           | Description                                                                                                                                                                |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vu`          | the ID of the virtual user that executed the request                                                                                                                       |
+| `iter`        | the iteration number                                                                                                                                                       |
+| `ip`          | The IP address of the remote server                                                                                                                                        |
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/online-certificate-status-protocol--ocsp) HTTPS status |
 
 ## User-defined tags

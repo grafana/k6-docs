@@ -13,8 +13,8 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 
 ### Returns
 
-| Type                                                        | Description                                     |
-| ----------------------------------------------------------- | ----------------------------------------------- |
+| Type                                                                                                | Description                                     |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/) | The element `Locator` associated with the page. |
 
 ### Example

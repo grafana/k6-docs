@@ -199,7 +199,18 @@ Breaking down the file structure we get:
     "noConnectionReuse": null,
     "ext": null,
     "summaryTrendStats": null,
-    "systemTags": ["url", "name", "check", "error", "tls_version", "method", "subproto", "status", "group", "proto"],
+    "systemTags": [
+      "url",
+      "name",
+      "check",
+      "error",
+      "tls_version",
+      "method",
+      "subproto",
+      "status",
+      "group",
+      "proto"
+    ],
     "tags": null
   },
   "filename": "/home/johndoe/tests/api-test/script.js",

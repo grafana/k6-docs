@@ -9,8 +9,8 @@ Uses the `BrowserContext` to create a new [Page](https://grafana.com/docs/k6/<K6
 
 ### Returns
 
-| Type   | Description                                                         |
-| ------ | ------------------------------------------------------------------- |
+| Type   | Description                                                                                                 |
+| ------ | ----------------------------------------------------------------------------------------------------------- |
 | object | A new [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object. |
 
 ### Example

@@ -8,8 +8,8 @@ weight: 06
 
 Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
 
-| Name                                                                         | Type     | Description                                           |
-| ---------------------------------------------------------------------------- | -------- | ----------------------------------------------------- |
+| Name                                                                                        | Type     | Description                                           |
+| ------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection)      | Class    | A jQuery-like API for accessing HTML DOM elements.    |
 | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)          | Class    | An HTML DOM element as returned by the Selection API. |
 | [parseHTML(src)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/parsehtml) | function | Parse an HTML string and populate a Selection object. |

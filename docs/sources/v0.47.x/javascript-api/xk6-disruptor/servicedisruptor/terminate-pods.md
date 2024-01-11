@@ -7,8 +7,8 @@ description: 'xk6-disruptor: ServiceDisruptor.terminatePods method'
 
 `terminatePods` terminates a number of pods that belong to the service specified in the ServiceDisruptor.
 
-| Parameter | Type   | Description |
-| --------- | ------ |------- |
+| Parameter | Type   | Description                                                                                                                              |
+| --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | fault     | object | description of the [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/pod-termination) |
 
 ## Example
@@ -16,8 +16,8 @@ description: 'xk6-disruptor: ServiceDisruptor.terminatePods method'
 <!-- eslint-skip -->
 
 ```javascript
-    const fault = {
-        count: 2,
-    }
-    disruptor.terminatePods(fault)
+const fault = {
+  count: 2,
+};
+disruptor.terminatePods(fault);
 ```

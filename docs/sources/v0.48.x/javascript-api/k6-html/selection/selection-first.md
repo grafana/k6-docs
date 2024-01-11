@@ -10,8 +10,8 @@ Mimics [jquery.first](https://api.jquery.com/first/).
 
 ### Returns
 
-| Type                                           | Description                         |
-| ---------------------------------------------- | ----------------------------------- |
+| Type                                                                                   | Description                         |
+| -------------------------------------------------------------------------------------- | ----------------------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The first element of the Selection. |
 
 ### Example

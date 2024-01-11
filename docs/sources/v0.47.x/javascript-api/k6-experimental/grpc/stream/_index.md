@@ -9,9 +9,9 @@ weight: 30
 
 Using a GRPC client creates a stream. An important note that the client should be already connected (client.connect called) to the server before creating a stream.
 
-| Method                                                                                                      | Description                                                     |
-| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [Stream(client, url, [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream)                               | Using a GRPC client creates a stream.                           |
+| Method                                                                                                                     | Description                                                     |
+| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [Stream(client, url, [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream)      | Using a GRPC client creates a stream.                           |
 | [Stream.write(message)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-write)  | Writes a message to the stream.                                 |
 | [Stream.on(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-on) | Set up handler functions for various events on the GRPC stream. |
 | [Stream.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-end)             | Signals to the server that the client has finished sending.     |

@@ -11,17 +11,17 @@ weight: 08
 Generic method for making arbitrary asynchronous HTTP requests.
 Note, this method returns a Promise. You must use the `await` keyword to resolve it.
 
-| Parameter         | Type                                                                                                              | Description                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| method            | string                                                                                                            | HTTP method. Must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc)                                 |
-| url               | string                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                            |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                     |
-| params (optional) | null or object {}                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
+| Parameter         | Type                                                                                                                              | Description                                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| method            | string                                                                                                                            | HTTP method. Must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc)                                                 |
+| url               | string                                                                                                                            | HTTP URL. If baseURL is set, provide only path.                                                                            |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.                                     |
+| params (optional) | null or object {}                                                                                                                 | Additional [parameters](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) for this specific request. |
 
 ### Returns
 
-| Type                  | Description                                                                       |
-| --------------------- | --------------------------------------------------------------------------------- |
+| Type                  | Description                                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
 | Promise with Response | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
 ### Example

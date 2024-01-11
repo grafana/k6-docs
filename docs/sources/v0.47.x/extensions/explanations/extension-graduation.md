@@ -25,7 +25,7 @@ These extensions might be provided by Grafana or by the community, and _may_ be 
 
 Only Grafana-controlled extensions may progress beyond the _extension_ phase to become _experimental_ or _core modules_.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Experimental Module
 
@@ -44,7 +44,7 @@ The key will be to achieve a balance between usability and stability.
 Not all experimental modules will progress to become a core module!
 The k6 team reserves the right to discontinue and remove any experimental module if is no longer deemed desirable.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Core Module
 

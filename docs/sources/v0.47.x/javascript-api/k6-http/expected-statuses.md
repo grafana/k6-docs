@@ -23,7 +23,9 @@ You can have as many arguments as wanted in any order.
 import http from 'k6/http';
 
 // setting some pretty strange status codes as expected
-http.setResponseCallback(http.expectedStatuses(406, 500, { min: 200, max: 204 }, 302, { min: 305, max: 405 }));
+http.setResponseCallback(
+  http.expectedStatuses(406, 500, { min: 200, max: 204 }, 302, { min: 305, max: 405 })
+);
 
 export default () => {
   // this one will actually be marked as failed as it doesn't match any of the above listed status

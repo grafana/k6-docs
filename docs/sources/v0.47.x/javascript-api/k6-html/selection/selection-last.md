@@ -10,8 +10,8 @@ Mimics [jquery.last](https://api.jquery.com/last/).
 
 ### Returns
 
-| Type                                           | Description                         |
-| ---------------------------------------------- | ----------------------------------- |
+| Type                                                                                   | Description                         |
+| -------------------------------------------------------------------------------------- | ----------------------------------- |
 | [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) | The final element of the Selection. |
 
 ### Example

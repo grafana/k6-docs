@@ -9,8 +9,8 @@ weight: 10
 
 Get the active cookie jar.
 
-| Type                                                                    | Description         |
-| ----------------------------------------------------------------------- | ------------------- |
+| Type                                                                                   | Description         |
+| -------------------------------------------------------------------------------------- | ------------------- |
 | [CookieJar](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/cookiejar) | A CookieJar object. |
 
 ### Example

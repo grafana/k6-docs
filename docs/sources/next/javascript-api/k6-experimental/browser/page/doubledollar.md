@@ -10,14 +10,14 @@ excerpt: 'Browser module: page.$$(selector) method'
 
 Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/locator/) instead.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`.
 
 ### Returns
 
-| Type                                                                              | Description                                                                                    |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Type                                                                                                                      | Description                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`. |
 
 ### Example

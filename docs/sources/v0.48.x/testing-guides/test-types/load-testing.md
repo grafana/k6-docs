@@ -56,7 +56,7 @@ When you prepare an average-load test, consider the following:
 
 If this is your first time running load tests, we recommend starting small or configuring the ramp-up to be slow. Your application and infrastructure might not be as rock solid as you think. We've had thousands of users run load tests that quickly crash their applications (or staging environments).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 The goal of an average-load test is to simulate the average amount of activity on a typical day in production. The pattern follows this sequence:
 

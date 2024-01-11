@@ -9,8 +9,8 @@ Returns an array of [Frames](https://grafana.com/docs/k6/<K6_VERSION>/javascript
 
 ### Returns
 
-| Type                                                       | Description                                    |
-| ---------------------------------------------------------- | ---------------------------------------------- |
+| Type                                                                                               | Description                                    |
+| -------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Frames](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/)[] | An array of `Frames` associated with the page. |
 
 ### Example

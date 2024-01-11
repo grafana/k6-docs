@@ -10,9 +10,9 @@ A Pod Termination Fault allows terminating either a fixed number or a percentage
 
 A Pod Termination fault is defined by the following attributes:
 
-| Attribute     | Type   | Description |
-| ------------- | ------ | --------|
-| count         | integer or percentage | the number of pods to be terminated. It can be specified as a integer number or as a percentage, for example `30%`, that defines the fraction of target pods to be terminated|
+| Attribute | Type                  | Description                                                                                                                                                                   |
+| --------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| count     | integer or percentage | the number of pods to be terminated. It can be specified as a integer number or as a percentage, for example `30%`, that defines the fraction of target pods to be terminated |
 
 {{% admonition type="note" %}}
 
@@ -28,6 +28,6 @@ This example defines a PorTermination fault that will terminate `30%` of target 
 
 ```javascript
 const fault = {
-    count: '30%'
+  count: '30%',
 };
 ```

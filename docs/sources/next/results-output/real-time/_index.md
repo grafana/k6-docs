@@ -35,7 +35,7 @@ As well as the following third-party services:
 - [Grafana Cloud Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus)
 - [InfluxDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/influxdb)
 - [Netdata](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/netdata)
-- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/newrelic)
+- [New Relic](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/new-relic)
 - [Prometheus remote write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)

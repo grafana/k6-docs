@@ -22,24 +22,24 @@ To run a simple local script:
 
 1. Create and initialize a new script by running the following command:
 
-{{< code >}}
+   {{< code >}}
 
-```linux
-$ k6 new
-```
+   ```linux
+   $ k6 new
+   ```
 
-```docker
-$ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
-```
+   ```docker
+   $ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
+   ```
 
-```windows
-PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
-```
+   ```windows
+   PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+   ```
 
-{{< /code >}}
+   {{< /code >}}
 
-This command creates a new script file named `script.js` in the current directory.
-You can also specify a different file name as an argument to the `k6 new` command, for example `k6 new my-test.js`.
+   This command creates a new script file named `script.js` in the current directory.
+   You can also specify a different file name as an argument to the `k6 new` command, for example `k6 new my-test.js`.
 
 1. Run k6 with the following command:
 

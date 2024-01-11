@@ -21,7 +21,7 @@ a script always runs through these stages in the same order:
 Except for init code, each stage occurs in a _lifecycle function_,
 a function called in a specific sequence in the k6 runtime.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 {{< code >}}
 

@@ -17,8 +17,8 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 ### Returns
 
-| Type                                                                  | Description        |
-| --------------------------------------------------------------------- | ------------------ |
+| Type                                                                                 | Description        |
+| ------------------------------------------------------------------------------------ | ------------------ |
 | [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) | A FileData object. |
 
 ### Example

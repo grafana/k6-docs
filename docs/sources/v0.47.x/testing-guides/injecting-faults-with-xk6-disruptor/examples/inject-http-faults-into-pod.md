@@ -39,7 +39,7 @@ export default function (data) {
 
 The test uses the `delay` endpoint which return after the requested delay. It requests a `0.1s` (`100ms`) delay to ensure the baseline scenario (see scenarios below) has meaningful statistics for the request duration. If we were simply calling a locally deployed http server (for example `nginx`), the response time would exhibit a large variation between a few microseconds to a few milliseconds. Having `100ms` as baseline response time has proved to offer more consistent results.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Fault injection
 
@@ -106,11 +106,11 @@ This test defines two [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using
     }
 ```
 
- {{% admonition type="note" %}}
+{{% admonition type="note" %}}
 
 Notice that the `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Executions
 
@@ -118,13 +118,14 @@ Notice that the `disrupt` scenario uses a `shared-iterations` executor with one 
 
 The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ### Baseline execution
 
 We will first execute the test without introducing faults to have an baseline using the following command:
 
 {{< code >}}
+
 ```bash
 xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP disrupt-pod.js
 ```
@@ -132,6 +133,7 @@ xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP disrupt-pod.js
 ```windows-powershell
 xk6-disruptor run --env SKIP_FAULTS=1 --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
 ```
+
 {{< /code >}}
 
 Notice the argument `--env SKIP_FAULT=1`, which makes the `disrupt` function return without injecting any fault as explained in the [fault injection](#fault-injection) section. Also notice the `--env SVC_IP` argument, which passes the external IP used to access the `httpbin` application.
@@ -186,6 +188,7 @@ load    ✓ [======================================] 000/013 VUs  30s           
 We repeat the execution injecting the faults. Notice we have removed the `--env SKIP_FAULTS=1` argument.
 
 {{< code >}}
+
 ```bash
 xk6-disruptor run --env SVC_IP=$SVC_IP disrupt-pod.js
 ```
@@ -193,6 +196,7 @@ xk6-disruptor run --env SVC_IP=$SVC_IP disrupt-pod.js
 ```windows-powershell
 xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
 ```
+
 {{< /code >}}
 
 {{< code >}}
@@ -253,7 +257,7 @@ Let's take a closer look at the results for the requests on each scenario. We ca
 
 Notice we have used the average response time reported as `expected_response:true` because this metric only consider successful requests while `http_req_duration` considers all requests, including those returning a fault.
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 ## Source Code
 

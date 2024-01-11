@@ -11,13 +11,13 @@ weight: 20
 
 `Client` is a gRPC client that can interact with a gRPC server. Only unary RPCs are currently supported in this module.
 
-| Method                                                                                                                | Description                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [Client.load(importPaths, ...protoFiles)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load)    | Loads and parses the given protocol buffer definitions to be made available for RPC requests.                                           |
-| [Client.loadProtoset(protosetPath)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-loadprotoset) | Loads and parses the given protoset file to be made available for RPC requests.                                                         |
-| [Client.connect(address [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-connect)                                | Opens a connection to the given gRPC server.                                                                                            |
-| [Client.invoke(url, request [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-invoke)                             | Makes an unary RPC for the given service/method and returns a [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response). |
-| [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-close)                            | Close the connection to the gRPC service.                                                                                               |
+| Method                                                                                                                              | Description                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Client.load(importPaths, ...protoFiles)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load)   | Loads and parses the given protocol buffer definitions to be made available for RPC requests.                                                           |
+| [Client.loadProtoset(protosetPath)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-loadprotoset) | Loads and parses the given protoset file to be made available for RPC requests.                                                                         |
+| [Client.connect(address [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-connect)      | Opens a connection to the given gRPC server.                                                                                                            |
+| [Client.invoke(url, request [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-invoke)   | Makes an unary RPC for the given service/method and returns a [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response). |
+| [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-close)                           | Close the connection to the gRPC service.                                                                                                               |
 
 ### Examples
 

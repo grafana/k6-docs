@@ -10,14 +10,14 @@ excerpt: 'Browser module: isConnected method'
 This feature has **known issues**.
 For details, refer to [#453](https://github.com/grafana/xk6-browser/issues/453).
 
- {{% /admonition %}}
+{{% /admonition %}}
 
 Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.
 
 ### Returns
 
-| Type    | Description                                                                                                                                          |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type    | Description                                                                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | boolean | Returns `true` if the [browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) is connected to the browser application. Otherwise, returns `false`. |
 
 ### Example
