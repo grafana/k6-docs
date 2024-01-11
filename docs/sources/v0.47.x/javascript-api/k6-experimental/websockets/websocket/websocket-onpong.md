@@ -23,7 +23,12 @@ export default function () {
 
   ws.onpong = () => {
     console.log('A pong happened!');
+    ws.close();
   };
+
+  ws.onopen = () => {
+    ws.ping();
+  }
 }
 ```
 
