@@ -7,6 +7,8 @@ weight: 30
 
 # Response
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 | Name                | Type   | Description                                                                                                                                                               |
 | ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Response.status`   | number | The response gRPC status code. Use the gRPC [status constants](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/constants) to check equality. |

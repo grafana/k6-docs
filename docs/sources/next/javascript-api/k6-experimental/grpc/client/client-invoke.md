@@ -6,6 +6,8 @@ weight: 30
 
 # Client.invoke(url, request [,params])
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Invokes an unary RPC request to the given method.
 
 The given method to invoke must have its RPC schema previously loaded via the [Client.load()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-load) function, otherwise an

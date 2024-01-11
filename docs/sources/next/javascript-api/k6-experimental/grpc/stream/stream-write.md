@@ -6,6 +6,8 @@ weight: 40
 
 # Stream.write()
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Writes a message to the stream.
 
 ### Example

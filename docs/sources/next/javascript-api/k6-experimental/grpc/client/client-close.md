@@ -6,6 +6,8 @@ weight: 40
 
 # Client.close()
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 Close the connection to the gRPC service. Tear down all underlying connections.
 
 ### Examples

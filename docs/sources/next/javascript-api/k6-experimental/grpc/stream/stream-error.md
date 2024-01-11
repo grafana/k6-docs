@@ -7,6 +7,8 @@ weight: 15
 
 # Error
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 The error object is the object that is passed to the `error` event handler function.
 
 | Name            | Type   | Description                           |

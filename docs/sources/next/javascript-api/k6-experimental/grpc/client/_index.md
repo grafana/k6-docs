@@ -6,6 +6,8 @@ weight: 10
 
 # Client
 
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
+
 `Client` is a gRPC client that can interact with a gRPC server.
 
 | Method                                                                                                                                       | Description                                                                                                                                                     |
