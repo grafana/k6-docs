@@ -103,6 +103,6 @@ k6 emits the following metrics when it interacts with a service through the [`gR
 
 {{% admonition type="note" %}}
 
-Steams-related metrics (`grpc_streams*`) are available only when using the `k6/experimental/grpc` module which is available on `k6` version `0.45.0` or higher.
+Steams-related metrics (`grpc_streams*`) are available only on `k6` version `0.49.0` or higher or when using the `k6/experimental/grpc` module which is available on `k6` version `0.45.0`.
 
 {{% /admonition %}}

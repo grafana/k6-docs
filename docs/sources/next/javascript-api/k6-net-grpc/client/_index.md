@@ -2,14 +2,11 @@
 title: Client
 excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
 weight: 10
-weight: 20
 ---
 
 # Client
 
-{{< docs/shared source="k6" lookup="grpc-module.md" version="<K6_VERSION>" >}}
-
-`Client` is a gRPC client that can interact with a gRPC server. Only unary RPCs are currently supported in this module.
+`Client` is a gRPC client that can interact with a gRPC server.
 
 | Method                                                                                                                              | Description                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
