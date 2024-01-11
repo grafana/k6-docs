@@ -23,11 +23,12 @@ Clears text boxes and input fields (`input`, `textarea` or `contenteditable` ele
 {{< code >}}
 
 ```javascript
+import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
 
 export const options = {
   scenarios: {
-    browser: {
+    ui: {
       executor: 'shared-iterations',
       options: {
         browser: {
@@ -39,11 +40,26 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const context = browser.newContext();
+  const page = context.newPage();
 
-  await page.goto('https://test.k6.io/browser.php');
+  await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
 
-  page.locator('#text1').clear();
+  // Fill an input element with some text that we will later clear.
+  page.locator('input[name="login"]').type('admin');
+
+  // This checks that the element has been filled with text.
+  check(page, {
+    not_empty: (p) => p.locator('input[name="login"]').inputValue() != '',
+  });
+
+  // Now clear the text from the element.
+  page.locator('input[name="login"]').clear();
+
+  // This checks that the element is now empty.
+  check(page, {
+    empty: (p) => p.locator('input[name="login"]').inputValue() == '',
+  });
 
   page.close();
 }
