@@ -19,22 +19,24 @@ _A k6 script that initiates a WebSocket connection and sets up a handler for the
 import { WebSocket } from 'k6/experimental/websockets';
 
 export default function () {
-  const ws = new WebSocket('ws://localhost:10000');
+  const ws = new WebSocket('wss://test-api.k6.io/ws/crocochat/publicRoom/');
 
   ws.onping = () => {
     console.log('A ping happened!');
+    ws.close();
   };
+
+  ws.onclose = () => {
+      console.log('WebSocket connection closed!');
+  }
+
+  ws.onopen = () => {
+      ws.send(JSON.stringify({ 'event': 'SET_NAME', 'new_name': `Croc ${__VU}` }));
+  }
+  ws.onerror = (err) => {
+      console.log(err)
+  }
 }
-```
-
-{{< /code >}}
-
-The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-{{< code >}}
-
-```bash
-$ docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
 
 {{< /code >}}
