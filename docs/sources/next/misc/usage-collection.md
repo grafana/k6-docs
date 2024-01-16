@@ -6,7 +6,7 @@ weight: 02
 
 # Usage collection
 
-By default, k6 sends a usage report each time it is run, so that we can track relevant information to be able to build the product making better data-driven decisions. Prioritizing the features that benefit the most and reducing the impact of changes.
+By default, k6 sends an anonymous usage report each time it is run, so that we can track relevant information to be able to build the product making better data-driven decisions. Prioritizing the features that benefit the most and reducing the impact of changes.
 
 The report can be turned off by setting the [no usage report](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#no-usage-report) option setting the environment variable `K6_NO_USAGE_REPORT` or by adding the flag `--no-usage-report` when executing k6.
 
