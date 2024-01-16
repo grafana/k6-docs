@@ -24,6 +24,6 @@ The usage report does not contain any information about what you are testing. Th
 
 > Only k6 built-in JavaScript modules and outputs are considered. Private modules and custom extensions are excluded.
 
-This report is sent to an HTTP server that collects statistics on k6 usage.
+This report is sent to an HTTPS server that collects statistics on k6 usage.
 
 k6 is an open-source project and for those interested, the actual code that generates and sends the usage report can be directly reviewed [here](https://github.com/grafana/k6/blob/d031d2b65e9e28143742b4b109f383e6b103ab31/cmd/report.go).
