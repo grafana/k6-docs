@@ -11,17 +11,21 @@ Some executors use the _closed model_, while the arrival-rate executors use the 
 
 In short, in the closed model, VU iterations start only when the last iteration finishes.
 In the open model, on the other hand, VUs arrive independently of iteration completion.
-Different models suit different test aims.
+Different models suit different test aims. See [Open vs Closed Model](#open-vs-closed-model) below
+for a brief discussion of this.
 
 ## Closed Model
 
-In a closed model, the execution time of each iteration dictates the
-number of iterations executed in your test.
-The next iteration doesn't start until the previous one finishes.
+In a closed model, the next iteration for a VU doesn't start until the previous one finishes.
+Therefore, the execution time of each iteration dictates the number of iterations executed in
+your test.
 
-Thus, in a closed model, the start or arrival rate of
-new VU iterations is tightly coupled with the iteration duration (that is, time from start
-to finish of the VU's `exec` function, by default the `export default function`):
+In a closed model, the start or arrival rate of new VU iterations is tightly coupled with the
+iteration duration (that is, time from start to finish of the VU's `exec` function, by default
+the `export default function`). Since the load generator's behavior is in a way controlled by
+the system being tested, this problem is sometimes called _coordinated omission_.
+
+Here is an example:
 
 {{< code >}}
 
@@ -58,22 +62,7 @@ Running this script would result in something like:
 
 running (1m01.5s), 0/1 VUs, 10 complete and 0 interrupted iterations
 closed_model ✓ [======================================] 1 VUs  1m0s
-
 ```
-
-### Drawbacks of using the closed model
-
-When the duration of the VU iteration is tightly coupled to the start of new VU iterations,
-the target system's response time can influence the throughput of the test.
-Slower response times means longer iterations and a lower arrival rate of new iterations―and vice versa for faster response times.
-In some testing literature, this problem is known as _coordinated omission._
-
-In other words, when the target system is stressed and starts to respond more
-slowly, a closed model load test will wait, resulting in increased
-iteration durations and a tapering off of the arrival rate of new VU iterations.
-
-This effect is not ideal when the goal is to simulate a certain arrival rate of new VUs,
-or more generally throughput (e.g. requests per second).
 
 ## Open model
 
@@ -82,9 +71,10 @@ the iteration duration.
 The response times of the target system no longer
 influence the load on the target system.
 
-To fix this problem of coordination, you can use an open model,
-which decouples the start of new VU iterations from the iteration duration.
-This reduces the influence of the target system's response time.
+To fix the problem of the load generator coordinating its load generation
+with the system under test, use the open model. It decouples the
+start of new VU iterations from the iteration duration. This reduces the 
+influence of the target system's response time.
 
 ![Arrival rate closed/open models](/media/docs/k6-oss/arrival-rate-open-closed-model.png)
 
@@ -125,3 +115,25 @@ Running this script would result in something like:
 running (1m09.3s), 000/011 VUs, 60 complete and 0 interrupted iterations
 open_model ✓ [======================================] 011/011 VUs  1m0s  1 iters/s
 ```
+
+## Open vs Closed Model
+
+In the closed model, when the target system is stressed and starts to respond more
+slowly, a closed model load test will wait for it, resulting in a tapering off of the
+arrival rate of new VU iterations and fewer iterations.
+
+When a request is pending, the "waiting time" for previous requests to finish before
+the pending request is sent is therefore not included in the measurements. As mentioned
+above, this problem is known as _coordinated omission_.
+
+This effect is not ideal when the goal is to simulate a certain arrival rate of new VUs,
+or more generally measuring latency (e.g. time per request) under the presence of some
+known/expected load. In reality a user clicking on a web page will not patiently wait for
+the server to be available!
+
+Therefore, when measuring the behavior of a system as a function of some known load
+(i.e. a certain number of users or load per unit of time), the open model is more appropriate.
+
+When measuring the maximum throughput of a system e.g. lets say a batch processing system
+that needs to get through a million items in a certain amount of time, the closed model is
+more appropriate.
