@@ -1,7 +1,7 @@
 ---
 title: 'Error'
 head_title: 'gRPC.Error'
-excerpt: 'The error object of a gRPC stream.'
+description: 'The error object of a gRPC stream.'
 weight: 15
 ---
 
@@ -12,5 +12,5 @@ The error object is the object that is passed to the `error` event handler funct
 | Name            | Type   | Description                           |
 | --------------- | ------ | ------------------------------------- |
 | `Error.code`    | number | A gRPC error code.                    |
-| `Error.details` | array  | A list details attached to the error. |
+| `Error.details` | array  | A list of details attached to the error. |
 | `Error.message` | string | An original error message.            |

@@ -10,7 +10,7 @@ weight: 02
 
 The `k6/experimental/grpc` module is an extension of the [`k6/net/grpc`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc). It provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
-Prior k6 `v0.49` the key-difference between the two modules was streaming support, but it has been added to the `k6/net/grpc` module as well. We recommend using the `k6/net/grpc` module.
+Starting on k6 v0.49, the `k6/net/grpc` module provides streaming support. We recommend using the `k6/net/grpc` module instead of `k6/experimental/grpc`.
 
 | Class/Method                                                                                                                               | Description                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |

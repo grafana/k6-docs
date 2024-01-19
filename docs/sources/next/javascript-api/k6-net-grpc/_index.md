@@ -6,7 +6,7 @@ weight: 11
 
 # k6/net/grpc
 
-The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2. It supports unary and streaming (starting [v0.49](https://github.com/grafana/k6/releases/tag/v0.49.0)) RPCs.
+The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2. It supports unary and streaming (starting on [v0.49](https://github.com/grafana/k6/releases/tag/v0.49.0)) RPCs.
 
 | Class/Method                                                                                                                      | Description                                                                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,9 +19,9 @@ The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote P
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response)                                          | Returned by RPC requests.                                                                                                                               |
 | [Constants](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/constants)                                        | Define constants to distinguish between [gRPC Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) statuses.         |
 | [Stream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream)                                              | Creates a new GRPC stream.                                                                                                                              |
-| [Stream.on(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on)                 | Adds a new listener to one of the possible stream event's.                                                                                              |
+| [Stream.on(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on)                 | Adds a new listener to one of the possible stream events.                                                                                              |
 | [Stream.write(message)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-write)                  | Writes a message to the stream.                                                                                                                         |
-| [Stream.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-end)                             | Signals to server that client finished sending.                                                                                                         |
+| [Stream.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-end)                             | Signals to the server that the client has finished sending.                                                                                                         |
 
 ## gRPC metrics
 
