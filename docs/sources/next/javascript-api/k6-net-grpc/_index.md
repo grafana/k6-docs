@@ -1,6 +1,6 @@
 ---
 title: 'k6/net/grpc'
-excerpt: 'k6 gRPC API'
+description: 'k6 gRPC API'
 weight: 11
 ---
 
@@ -19,9 +19,9 @@ The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote P
 | [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response)                                          | Returned by RPC requests.                                                                                                                               |
 | [Constants](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/constants)                                        | Define constants to distinguish between [gRPC Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) statuses.         |
 | [Stream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream)                                              | Creates a new GRPC stream.                                                                                                                              |
-| [Stream.on(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on)                 | Adds a new listener to one of the possible stream events.                                                                                              |
+| [Stream.on(event, handler)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on)                 | Adds a new listener to one of the possible stream events.                                                                                               |
 | [Stream.write(message)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-write)                  | Writes a message to the stream.                                                                                                                         |
-| [Stream.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-end)                             | Signals to the server that the client has finished sending.                                                                                                         |
+| [Stream.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-end)                             | Signals to the server that the client has finished sending.                                                                                             |
 
 ## gRPC metrics
 
