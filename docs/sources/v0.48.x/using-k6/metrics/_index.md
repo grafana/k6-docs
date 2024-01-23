@@ -35,7 +35,7 @@ However, if you're unsure about the metrics to focus on, you can start with the 
 
 - `http_reqs`, to measure requests
 - `http_req_failed`, to measure error rate
-- `req_duration`, to measure duration
+- `http_req_duration`, to measure duration
 
 {{% admonition type="note" %}}
 
