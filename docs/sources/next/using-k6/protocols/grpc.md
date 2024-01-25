@@ -19,13 +19,13 @@ The messages and services used for gRPC are described in `.proto` files, contain
 
 ## Load testing gRPC services with k6
 
-Support of the unary gRPC requests was added to k6 in v0.29.0, streaming support was initially introduced in k6 v0.45.0 as an experimental module and with k6 v0.49.0 became a part [core's module `k6/net/grpc`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/).
+Starting on k6 v0.49.0, k6 supports unary gRPC requests and streaming as part of the `k6/net/grpc` core module.
 
 ### gRPC definitions
 
 Before interacting with a gRPC service, k6 needs to learn the definitions of the messages and services.
 
-One way to do that is to explicitly use `Client.load()` method and load definitions to client from local file system. The method accepts a list of import paths and a list of `.proto` files. The k6 will load all the definitions from the files and their dependencies.
+One way to do that is to explicitly use the `Client.load()` method and load the client definitions from the local file system. The method accepts a list of import paths and a list of `.proto` files. k6 then loads all the definitions from the files and their dependencies.
 
 {{< code >}}
 
@@ -38,9 +38,9 @@ client.load(['definitions'], 'hello.proto');
 
 {{< /code >}}
 
-Alternatively, the definitions could be dynamically loaded by using gRPC reflection protocol. To enable reflection, pass `reflect: true` option to `Client.connect()` method. k6 will load all the definitions from the server and their dependencies.
+Alternatively, you can dynamically load the definitions by using the gRPC reflection protocol. To enable reflection, you can pass the `reflect: true` option to `Client.connect()`. k6 then loads all the definitions from the server and their dependencies.
 
-This is only possible if the server has been instrumented with reflection support, which is not always the case.
+This option is only possible if the server has been instrumented with reflection support.
 
 {{< code >}}
 
@@ -55,7 +55,7 @@ client.connect('127.0.0.1:10000', { reflect: true });
 
 ### Unary gRPC requests
 
-Unary calls work the same way as regular HTTP requests. A single request sent to a server and the server replies with a single response.
+Unary calls work the same way as regular HTTP requests. A single request is sent to a server, and the server replies with a single response.
 
 {{< code >}}
 
@@ -87,7 +87,7 @@ export default () => {
 
 ### Server gRPC streaming
 
-In server streaming mode, the client sends a single request to the server, which in turn replies with multiple responses.
+In server streaming mode, the client sends a single request to the server, and the server replies with multiple responses.
 
 The example below demonstrates client streaming.
 
@@ -140,11 +140,11 @@ export default () => {
 
 {{< /code >}}
 
-It connects to a gRPC server, creates a stream, and sends a message to the server with latitude and longitude coordinates. When the server sends data back, it logs the feature name and its location. When the server finishes sending data, it closes the client connection and logs a completion message.
+In the example script, k6 connects to a gRPC server, creates a stream, and sends a message to the server with latitude and longitude coordinates. When the server sends data back, it logs the feature name and its location. When the server finishes sending data, it closes the client connection and logs a completion message.
 
 ### Client gRPC streaming
 
-The client streaming mode is the opposite of the server streaming mode. The client sends multiple requests to the server, which in turn replies with a single response.
+The client streaming mode is the opposite of the server streaming mode. The client sends multiple requests to the server, and the server replies with a single response.
 
 The example below demonstrates client streaming.
 
@@ -226,11 +226,11 @@ const pointSender = (stream, point) => {
 
 {{< /code >}}
 
-It establishes a connection to a gRPC server, creates a stream, and sends three random points. The server responds with statistics about the trip, which are logged to the console. The code also handles the end of the stream, closing the client and logging a completion message.
+In the example script, k6 establishes a connection to a gRPC server, creates a stream, and sends three random points. The server responds with statistics about the trip, which are logged to the console. The code also handles the end of the stream, closing the client and logging a completion message.
 
 ### Bidirectional gRPC streaming
 
-In bi-directional streaming mode, both the client and the server may send multiple messages.
+In bi-directional streaming mode, the client and the server may send multiple messages.
 
 From the API perspective, it combines the client and server streaming modes, so the code is similar to the examples above.
 
@@ -256,9 +256,9 @@ stream.on('error', function (e) {
 
 {{< /code >}}
 
-### Handling special cases in message Marshaling/Unmarshaling
+### Handle special cases in message Marshaling/Unmarshaling
 
-It is worth mentioning that for encoding and decoding of the messages, k6 uses [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package.
+k6 uses the [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package for encoding and decoding of messages.
 
 Certain gRPC well-known types or wrappers have specific marshaling/unmarshaling rules.
 
