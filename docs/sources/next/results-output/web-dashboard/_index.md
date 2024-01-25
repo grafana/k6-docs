@@ -14,13 +14,23 @@ The dashboard provides a real-time overview of the performance observed by k6 wh
 
 ## Generate HTML test reports
 
-You can generate detailed, downloadable HTML reports directly from the dashboard. These reports are self-contained, making them ideal for sharing with your team.
+You can generate detailed, downloadable HTML reports directly from the web dashboard or the command line. These reports are self-contained, making them ideal for sharing with your team.
 
 ![HTML test report screenshot](/media/docs/k6-oss/web-dashboard-report.png)
 
-You can access the HTML test report by clicking the "Report" button on the dashboard's menu.
+### Generate report from web dashboard
+
+To generate a report from the web dashboard, click **Report** on the dashboard's menu.
 
 ![HTML test report generation button](/media/docs/k6-oss/web-dashboard-report-button.png)
+
+### Generate report from the command line
+
+To automatically generate a report from the command line once the test finishes running, use the `K6_WEB_DASHBOARD_EXPORT` option. For example:
+
+```shell
+K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run script.js
+```
 
 ## How to use
 
