@@ -7,13 +7,13 @@ excerpt: 'Retrieve the Selection matching this element.'
 
 Retrieve the Selection matching this element.
 
-Mimics `$(element)`
+Mimics `$(element)`.
 
 ### Returns
 
 | Type    | Description                          |
 | ------- | ------------------------------------ |
-| Selection | The Selection mathing this element. |
+| Selection | The Selection matching this element. |
 
 ### Example
 

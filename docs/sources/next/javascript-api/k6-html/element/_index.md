@@ -16,7 +16,7 @@ The Element object provides a similar API to the [DOM Element API](https://devel
 
 | Method                 | Description                                                                                                                                                              |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element/element-selection) | The selection that is matching the element                                                                                                                       |
+| [selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element/element-selection) | The selection matching the element.                                                                                                                       |
 | nodeName               | The name of the element.                                                                                                                                                 |
 | nodeType               | The type of the element.                                                                                                                                                 |
 | nodeValue              | The element value.                                                                                                                                                       |
