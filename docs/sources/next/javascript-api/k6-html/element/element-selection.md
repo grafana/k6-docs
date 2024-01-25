@@ -1,6 +1,6 @@
 ---
 title: 'Element.selection()'
-excerpt: 'Retrieve the Selection matching this element.'
+description: 'Retrieve the Selection matching this element.'
 ---
 
 # Element.selection()
