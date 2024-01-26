@@ -1,6 +1,6 @@
 ---
 title: Test authoring
-weight: 15
+weight: 14
 ---
 
 # Test authoring
