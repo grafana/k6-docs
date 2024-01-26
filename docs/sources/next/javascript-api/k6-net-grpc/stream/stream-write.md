@@ -6,7 +6,7 @@ weight: 40
 
 # Stream.write()
 
-Writes a message to the stream.
+Writes a message to the stream. The message is a canonical request object, as-per the [Protobuf JSON Mapping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/grpc/#protocol-buffers-json-mapping).
 
 ### Example
 
