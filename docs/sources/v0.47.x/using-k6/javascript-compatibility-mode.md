@@ -6,39 +6,71 @@ _build:
 weight: 19
 ---
 
-# JavaScript Compatibility Mode
+# JavaScript compatibility mode
 
-You can run test scripts with different ECMAScript compatibility modes with the
-`run --compatibility-mode` CLI option or `K6_COMPATIBILITY_MODE` environment variable.
+You can write k6 scripts in various ECMAScript versions:
 
-Currently two modes are available:
+- ES6+ JavaScript with ES modules (ESM).
+- Plain old JavaScript (ES5.1+) with CommonJS modules.
 
-## Base
+k6 supports both module types and most ES6+ features in all k6 execution modes: local, distributed, and cloud.
+
+Yet, to enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to transform ESM to CommonJS. This process is as follows:
+
+![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
+
+Since large tests can consume significant resources, some users prefer to bundle and **optimize their test code outside k6 for better performance**. For this reason, k6 offers two JavaScript Compatibility modes:
+
+- [Extended mode](#extended-mode): The default, supporting ESM and most ES6+ features.
+- [Base mode](#base-mode): Limited to plain old JavaScript (ES5.1) and CommonJS, excluding the Babel step.
+
+When running tests, you can change the mode through the `--compatibility-mode` option:
+
+| Env                     | CLI                    | Code / Config file | Default      |
+| ----------------------- | ---------------------- | ------------------ | ------------ |
+| `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
+
+## Extended mode
+
+By default, k6 uses the `--compatibility-mode=extended` mode:
 
 {{< code >}}
 
-```bash
+```default
+$ k6 run script.js
+```
+
+{{< /code >}}
+
+As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
+
+This k6 Babel transformation enables the k6 JavaScript VM to execute the test. Also, it may increase startup time (refer to [Performance comparison](#performance-comparison)) and produces code with slightly different line/column numbers.
+
+## Base mode
+
+{{< code >}}
+
+```cli
 $ k6 run --compatibility-mode=base script.js
 ```
 
-```bash
+```env
 $ K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
 {{< /code >}}
 
-Pure Golang JavaScript VM supporting ES5.1+. Use this mode if your scripts are already written
-using only ES5.1 features, or were previously transformed by [Babel](https://babeljs.io/),
-to reduce startup time, RAM usage and improve performance. See the [k6-es6 project](https://github.com/k6io/k6-es6)
-for an example [Webpack](https://webpack.js.org/) setup that does this
-transformation outside of k6.
+This mode omits the Babel transformation step, supporting only ES5.1+ code.
 
-> ### ⚠️ Disclaimer
->
-> Your mileage may vary while running `--compatibility-mode=base` and also importing external dependencies. For instance,
-> `xml2js` and `cheerio` currently do not work, while `lodash` does.
+Use this mode if your scripts are already written using only ES5.1 features, or were previously transformed by Babel. This mode can lead to reduce startup time, RAM usage, and overall improved performance.
 
-### Basic Example
+The examples below demonstrate the use of Babel with bundlers like [Webpack](https://webpack.js.org/) and [Rollup](https://rollupjs.org/):
+
+- [k6-template-es6](https://github.com/grafana/k6-template-es6)
+- [k6-template-typescript](https://github.com/grafana/k6-template-typescript)
+- [k6-rollup-example](https://github.com/grafana/k6-rollup-example)
+
+### CommonJS Example
 
 {{< code >}}
 
@@ -69,72 +101,13 @@ module.exports.default = function () {
 > but it does _not_ support the
 > [Node.js module resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together).
 
-### Advanced Example
-
-{{< code >}}
-
-```javascript
-const http = require('k6/http');
-const metrics = require('k6/metrics');
-const k6 = require('k6');
-
-module.exports.options = {
-  stages: [
-    { duration: '30s', target: 20 },
-    { duration: '1m30s', target: 10 },
-    { duration: '20s', target: 0 },
-  ],
-  thresholds: {
-    'failed requests': ['rate<0.1'],
-  },
-};
-
-const myFailRate = new metrics.Rate('failed requests');
-
-module.exports.default = function () {
-  const res = http.get('https://httpbin.test.k6.io/');
-  const checkRes = k6.check(res, {
-    'status was 200': function (r) {
-      return r.status == 200;
-    },
-  });
-  if (!checkRes) {
-    myFailRate.add(1);
-  }
-  k6.sleep(1);
-};
-```
-
-{{< /code >}}
-
-## Extended
-
-{{< code >}}
-
-```bash
-$ k6 run --compatibility-mode=extended script.js
-```
-
-```bash
-$ K6_COMPATIBILITY_MODE=extended k6 run script.js
-```
-
-{{< /code >}}
-
-In case of syntax/parsing errors, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers.
-
-Before v0.31.0, k6 included [core.js](https://github.com/zloirock/core-js) v2 and even more Babel plugins in extended mode.
-This added around 2MB extra memory usage per VU and some of the transformations (generators, async/await) of Babel were still insufficient to get k6 working with these features.
-
 ## Performance Comparison
 
-There's a substantial difference in performance between both modes, as shown by
-[GNU time](https://www.gnu.org/software/time/) below, especially when running tests with a large
-number of VUs:
+There might be a notable performance difference between both compatibility modes, particularly influenced by the script code and the number of VUs. The following [GNU time](https://www.gnu.org/software/time/) metrics provide insights about their differences:
 
 {{< code >}}
 
-```bash
+```base
 $ /usr/bin/time -v k6 run \
     --compatibility-mode=base \
     --vus 3500 \
@@ -166,7 +139,7 @@ Page size (bytes): 4096
 Exit status: 0
 ```
 
-```bash
+```extended
 $ /usr/bin/time -v k6 run \
     --compatibility-mode=extended \
     --vus 3500 \
@@ -199,3 +172,14 @@ Exit status: 0
 ```
 
 {{< /code >}}
+
+<b>&nbsp;</b>
+
+## Read more
+
+- [Native ESM support](https://github.com/grafana/k6/issues/3265): GitHub issue for native ESM support in k6. This feature aims to eliminate the Babel transformation step within k6.
+- [k6-template-es6](https://github.com/grafana/k6-template-es6): Template using Webpack and Babel to bundle k6 tests into CommonJS modules.
+- [k6-rollup-example](https://github.com/grafana/k6-rollup-example): Example using Rollup and Babel to bundle a testing project.
+- [Running large tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/running-large-tests): Optimize k6 for better performance.
+- [k6 Modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules): Different options to import modules in k6.
+- [k6 Archive Command](https://grafana.com/docs/k6/<K6_VERSION>/misc/archive): The `k6 archive` command bundles all k6 test dependencies into a `tar` file, which can then be used for execution. It may also reduce the execution startup time.

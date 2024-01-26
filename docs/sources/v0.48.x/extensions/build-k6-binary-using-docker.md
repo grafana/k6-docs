@@ -8,6 +8,12 @@ weight: 03
 
 Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify the process of creating a custom k6 binary. It avoids having to setup a local Go environment, and install xk6 manually.
 
+{{% admonition type="note" %}}
+
+This tutorial is about creating a custom k6 binary (using Docker). If you want to create a Docker image with a custom k6 binary, refer instead to [Using modules with Docker](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules/#using-modules-with-docker).
+
+{{% /admonition %}}
+
 ## Building your first extension
 
 For example, to build a custom k6 binary with the latest versions of k6 and the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
