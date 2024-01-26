@@ -2,8 +2,7 @@
 title: 'Load testing'
 head_title: 'What is Load Testing? How to create a Load Test in k6'
 excerpt: 'An average load test assesses the performance of your system in terms of concurrent users or requests per second.'
-# // TODO: Point canonical to new URL once it's published
-# canonicalUrl: https://grafana.com/
+canonicalUrl: https://grafana.com/blog//load-testing-types/
 ---
 
 An average-load test assesses how the system performs under typical load. Typical load might be a regular day in production or an average moment.
