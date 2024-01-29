@@ -2,8 +2,7 @@
 title: "Smoke testing"
 head_title: 'What is Smoke Testing? How to create a Smoke Test in k6'
 excerpt: "A Smoke test is a minimal load test to run when you create or modify a script."
-# // TODO: Point canonical to new URL once it's published
-# canonicalUrl: https://grafana.com/
+canonicalUrl: https://grafana.com/blog/2024/01/30/smoke-testing/
 ---
 
 Smoke tests have a minimal load.
