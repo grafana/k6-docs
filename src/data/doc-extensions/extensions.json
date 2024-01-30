@@ -1156,6 +1156,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-webtransport",
+      "description": "Add support for webtransport protocol",
+      "url": "https://github.com/kelseyaubrecht/xk6-webtransport",
+      "logo": "",
+      "author": {
+        "name": "Kelsey Aubrecht",
+        "url": "https://github.com/kelseyaubrecht"
+      },
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Messaging, Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
