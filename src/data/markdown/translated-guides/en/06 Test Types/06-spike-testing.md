@@ -1,7 +1,7 @@
 ---
 title: 'Spike testing'
 excerpt: 'Spike tests simulate moments of short, extreme load'
-# canonicalUrl: https://grafana.com/
+canonicalUrl: https://grafana.com/blog/2024/01/30/spike-testing/
 ---
 
 A spike test verifies whether the system survives and performs under sudden and massive rushes of utilization.
