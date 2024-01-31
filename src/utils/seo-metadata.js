@@ -44,8 +44,7 @@ export default {
   examples: {
     data: {
       title: 'k6 Examples & Tutorials',
-      // TODO: Point canonical to new URL once it's published
-      // canonicalUrl: 'https://grafana.com/load-testing/load-testing-examples/',
+      canonicalUrl: 'https://grafana.com/docs/k6/latest/examples/',
       description:
         'The k6 Examples & Tutorials is a directory with common k6 examples and the most popular tutorials using k6.',
     },
