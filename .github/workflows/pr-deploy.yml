@@ -21,10 +21,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
-      - name: Use Node.js 16.xs
+      - name: Use Node.js 20.xs
         uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
       - name: Restore cache
@@ -71,10 +71,10 @@ jobs:
           echo "GATSBY_DEFAULT_BLOG_URL: $GATSBY_DEFAULT_BLOG_URL"
           echo "GATSBY_DEFAULT_APP_URL: $GATSBY_DEFAULT_APP_URL"
 
-      - name: Use Node.js 16.xs
+      - name: Use Node.js 20.xs
         uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
