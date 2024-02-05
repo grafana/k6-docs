@@ -258,9 +258,9 @@ stream.on('error', function (e) {
 
 ### Protocol Buffers JSON Mapping
 
-It is worth mentioning how k6 handles requests/messages. First, it tries to marshal the request/message into a JSON. Then k6 uses the [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package for encoding/decoding to Protobuf message.
+It's important to note how k6 handles requests and messages. First, it tries to marshal the request/message in JSON format. Then, k6 uses the [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package to encode or decode to a Protobuf message.
 
-The limitation of that is that the object that you passed as a request/message should be serializable, so unfortunately, structs like `Map` won't fit.
+A limitation during this process is that the object you pass as a request/message must be serializable. That means structs like `Map` don't work.
 
 The benefit of using `protojson` is the canonical JSON encoding support. The [Protocol Buffers documentation](https://protobuf.dev/programming-guides/proto3/#json) describes this mapping.
 
