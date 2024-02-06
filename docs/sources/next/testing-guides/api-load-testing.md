@@ -113,9 +113,9 @@ When testing the API against normal, human-run workflows, add sleep as in a norm
 
 When you model load according to VUs, the basic load options are:
 
-- [`vus`](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#vus)
-- [`duration`](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#duration)
-- [`iterations`](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#iterations)
+- [`vus`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#vus)
+- [`duration`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#duration)
+- [`iterations`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#iterations)
 
 You can define these options in the test script. In the following test, 50 concurrent users continuously run the `default` flow for 30 seconds.
 
@@ -496,14 +496,14 @@ The process of creating a new load test goes like this:
 1. Configure the specific load and other options.
 1. Import the scenario.
 
-As your testing matures, consider creating tests that [combine multiple scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/advanced-examples/#combine-scenarios) to simulate more diverse traffic.
+As your testing matures, consider creating tests that [combine multiple scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/advanced-examples/#combine-scenarios) to simulate more diverse traffic.
 
 ### Dynamic URLs for one endpoint
 
 By default, when you access the same API endpoint with different URLs―for example, `http://example.com/posts/${id}`―k6 reports the endpoint results separately.
 This may create an unnecessary amount of metrics.
 
-To group the results of the endpoint, use [URL grouping](https://grafana.com/docs/k6/latest/using-k6/http-requests/#url-grouping).
+To group the results of the endpoint, use [URL grouping](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests/#url-grouping).
 
 ## Load generator locations
 

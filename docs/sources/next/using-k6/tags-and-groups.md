@@ -305,7 +305,7 @@ Groups do the following tasks internally:
 - When a taggable resource&mdash;a check, request, or custom metric&mdash;runs within a group, k6 sets the tag `group` with the current group name.
   For more info, refer to the [Tags section](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
 
-Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize complex test results. Check out how they work in your [k6 result output](https://grafana.com/docs/k6/latest/misc/integrations#result-store-and-visualization).
+Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize complex test results. Check out how they work in your [k6 result output](https://grafana.com/docs/k6/<K6_VERSION>/misc/integrations#result-store-and-visualization).
 
 ### Discouraged: one group per request
 

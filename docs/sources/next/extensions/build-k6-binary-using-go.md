@@ -11,7 +11,7 @@ you need to build a binary using Go.
 
 {{% admonition type="note" %}}
 
-Not interested in setting up a Go environment? You can [use Docker instead](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-docker/).
+Not interested in setting up a Go environment? You can [use Docker instead](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-docker/).
 
 {{% /admonition %}}
 

@@ -263,7 +263,7 @@ When you script a test for a website, consider these recommendations.
 
 **Use concurrent requests.** To mimic the way modern browsers download some requests in parallel, use [batching](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch).
 
-**Determine cache and cookie behaviour.** k6 automatically resets cookies between iterations, but you can also [change this behavior](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#no-cookies-reset) if maintaining cookies would be more realistic.
+**Determine cache and cookie behaviour.** k6 automatically resets cookies between iterations, but you can also [change this behavior](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#no-cookies-reset) if maintaining cookies would be more realistic.
 
 **Use dynamic think time and pacing.** Consider adding varying [delays](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) so you don't artificially stagger a script with completely uniform delays.
 
