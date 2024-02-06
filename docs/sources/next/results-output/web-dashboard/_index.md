@@ -65,7 +65,11 @@ To automatically generate a report from the command line once the test finishes 
 K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run script.js
 ```
 
-The report only includes graphs if the test duration is over thirty seconds.
+{{< admonition type="note" >}}
+
+The report only includes graphs if the test duration is greater than three times the aggregation period value, set by the `K6_WEB_DASHBOARD_PERIOD` variable.
+
+{{< /admonition >}}
 
 ## Dashboard options
 
