@@ -71,7 +71,7 @@ As the following example shows, you can also pass in different URLs if you're go
 
 {{% admonition type="caution" %}}
 
-Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
+Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
 
 {{% /admonition %}}
 
@@ -102,7 +102,7 @@ When the test is run, you should see a similar output as the one below.
 ## Measure custom metrics
 
 When using the k6 browser `page.evaluate` function, you can call the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) to measure the performance of web applications. For example, if you want to measure the time it takes for your users to complete actions, such as a search feature, you can use the [`performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) method to add a timestamp in your browser's performance timeline.
-Using the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method, you can also measure the time difference between two performance markers. The time duration that `performance.measure` returns can be added as a custom metric in k6 browser using [Trends](https://k6.io/docs/javascript-api/k6-metrics/trend/).
+Using the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) method, you can also measure the time difference between two performance markers. The time duration that `performance.measure` returns can be added as a custom metric in k6 browser using [Trends](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend/).
 
 {{< code >}}
 
