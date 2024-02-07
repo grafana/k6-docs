@@ -39,9 +39,9 @@ By default, the web dashboard is available on localhost port `5665`. You can cha
 
 {{% admonition type="note" %}}
 
-The k6 process waits to exit as long as there is at least one open browser window for the dashboard extension. In this way, the report can be downloaded, for example, even after the test has been completed.
+The k6 process waits to exit as long as there's at least one open browser window for the dashboard extension.
 
-In certain environments, it is not allowed that the k6 process does not exit after the test run (_e.g_ CI/CD pipeline). In this case, it is advisable to disable the HTTP port (with the `-1` value of port parameter).
+In certain environments, such as a CI/CD pipeline, the k6 process has to exit after the test run completes. In that case, it's advisable to disable the HTTP port by setting it to `-1`.
 
 {{% /admonition %}}
 
@@ -64,6 +64,12 @@ To automatically generate a report from the command line once the test finishes 
 ```shell
 K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run script.js
 ```
+
+{{< admonition type="note" >}}
+
+The report only includes graphs if the test duration is greater than three times the aggregation period value, set by the `K6_WEB_DASHBOARD_PERIOD` variable.
+
+{{< /admonition >}}
 
 ## Dashboard options
 
