@@ -40,7 +40,7 @@ When they connect, users will be directed to the correct k6 organization and hav
 k6 suggests the following IdPs:
 
 - [Okta](https://www.okta.com)
-- [Azure Active Directory](https://azure.microsoft.com/en-au/products/active-directory/). Azure is supported, but Azure passes only _group IDs_ to k6 Cloud, not _group names_. This means that for anything more advanced, you need to manually create Teams or Projects in k6 Cloud side, then contact us to map them to the IDs sent from Azure AD.
+- [Azure Active Directory](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id). Azure is supported, but Azure passes only _group IDs_ to k6 Cloud, not _group names_. This means that for anything more advanced, you need to manually create Teams or Projects in k6 Cloud side, then contact us to map them to the IDs sent from Azure AD.
 - [Auth0](https://auth0.com/) is tested, but not supported, because it can't map [custom attributes](https://community.auth0.com/t/adding-custom-saml-attribute-when-auth0-is-idp/45691) in assertions.
 - Since we support the open [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0) standard, you can connect k6 Cloud to practically any SAML 2.0 identity provider, not just the ones documented here. For further assistance, please contact support.
 
