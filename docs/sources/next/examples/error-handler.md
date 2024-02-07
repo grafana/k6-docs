@@ -1,7 +1,6 @@
 ---
 title: 'Error handler'
-excerpt: |
-  Using a custom error handler to store errors in custom metrics or logs.
+description: Using a custom error handler to store errors in custom metrics or logs.
 weight: 25
 ---
 
