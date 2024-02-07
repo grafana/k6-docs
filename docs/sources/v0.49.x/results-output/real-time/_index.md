@@ -50,3 +50,4 @@ This list applies to local tests, not to [cloud tests](https://grafana.com/docs/
 ## Read more
 
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
+- [k6 data collection pipeline](https://grafana.com/blog/2023/08/10/understanding-grafana-k6-a-simple-guide-to-the-load-testing-tool/)
