@@ -20,7 +20,7 @@ To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to 
 
 ![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
 
-The k6 Babel transformation may slightly delay the startup for executing large scripts. Thus, some users prefer to bundle their test code outside k6. For this reason, k6 offers two JavaScript Compatibility modes:
+When executing large scripts, the k6 Babel transformation can slightly delay the startup time. Because of that, some users prefer to bundle their test code outside k6. For this reason, k6 offers two JavaScript compatibility modes:
 
 - [Extended mode](#extended-mode): The default, supporting ESM and most ES6+ features.
 - [Base mode](#base-mode): Limited to plain old JavaScript (ES5.1) and CommonJS, excluding the Babel step.
