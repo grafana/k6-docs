@@ -63,7 +63,7 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 
 The base mode omits the Babel transformation step, supporting only ES5.1+ code. You may want to enable this mode if your scripts are already written using only ES5.1 features or were previously transformed by Babel.
 
-In general, this mode is not recommended as it offers minor benefits in reducing startup time.
+Generally, this mode is not recommended as it offers minor benefits in reducing startup time.
 
 ### CommonJS Example
 
