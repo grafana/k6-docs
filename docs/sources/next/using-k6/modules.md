@@ -102,7 +102,7 @@ export default function () {
 }
 ```
 
-How do k6 extensions (Go-to-JS modules) work? For enhanced performance, the k6 engine is written Go and embeds a JavaScript VM ([goja](https://github.com/dop251/goja)) to execute JavaScript test code. Thus, you can build your modules in Go code and import them as JavaScript as usual.
+How do k6 extensions (Go-to-JS modules) work? For enhanced performance, the k6 engine is written in Go and embeds a JavaScript VM ([goja](https://github.com/dop251/goja)) to execute JavaScript test code. That allows you to build your modules in Go code and import them as JavaScript as usual.
 
 To learn more about using or creating k6 extensions, refer to the [Extension documentation](https://grafana.com/docs/k6/<K6_VERSION>/extensions).
 
