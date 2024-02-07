@@ -110,7 +110,11 @@ To learn more about using or creating k6 extensions, refer to the [Extension doc
 
 As mentioned previously, users can import custom JavaScript libraries by loading either local or remote modules. Because of that, we have two options to import JavaScript modules, along with various methods to distribute them.
 
-> The following options for distributing and sharing JavaScript libraries are available for both custom and other public libraries.
+{{< admonition type="note" >}}
+
+The following options for distributing and sharing JavaScript libraries are available for both custom and other public libraries.
+
+{{< /admonition >}}
 
 **As remote modules**
 
