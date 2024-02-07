@@ -32,7 +32,7 @@ import http from 'k6/http';
 
 These modules are stored on the local filesystem, and accessed either through relative or absolute filesystem paths.
 
-k6 adopts a **brower-like module resolution** and does not support [Node.js module resolution](https://nodejs.org/api/modules.html#modules_all_together). File names for `imports` must be fully specified, such as `./helpers.js`.
+k6 adopts a **brower-like module resolution** and doesn't support [Node.js module resolution](https://nodejs.org/api/modules.html#modules_all_together). File names for `imports` must be fully specified, such as `./helpers.js`.
 
 ```javascript
 //my-test.js
@@ -102,15 +102,19 @@ export default function () {
 }
 ```
 
-How do k6 extensions (Go-to-JS modules) work? For enhanced performance, the k6 engine is written Go and embeds a JavaScript VM ([goja](https://github.com/dop251/goja)) to execute JavaScript test code. Thus, you can build your modules in Go code and import them as JavaScript as usual.
+How do k6 extensions (Go-to-JS modules) work? For enhanced performance, the k6 engine is written in Go and embeds a JavaScript VM ([goja](https://github.com/dop251/goja)) to execute JavaScript test code. That allows you to build your modules in Go code and import them as JavaScript as usual.
 
 To learn more about using or creating k6 extensions, refer to the [Extension documentation](https://grafana.com/docs/k6/<K6_VERSION>/extensions).
 
 ## Sharing JavaScript modules
 
-As mentioned previously, users can import custom Javascript libraries by loading either local or remote modules. Thus, we have two options to import JavaScript modules, along with various methods to distributed them.
+As mentioned previously, users can import custom JavaScript libraries by loading either local or remote modules. Because of that, we have two options to import JavaScript modules, along with various methods to distribute them.
 
-> The following options for distributing and sharing JavaScript libraries are available for both custom and other public libraries.
+{{< admonition type="note" >}}
+
+The following options for distributing and sharing JavaScript libraries are available for both custom and other public libraries.
+
+{{< /admonition >}}
 
 **As remote modules**
 
@@ -136,7 +140,7 @@ Be aware that k6 automatically executes remote modules, making it crucial to tru
 
 **As local modules**
 
-In this example, we've downloaded the previous remote modules in the `lib` folder of the testing project and imported them as follows:
+In this example, the previous remote modules have been downloaded to the `lib` folder of the testing project and imported as follows:
 
 ```javascript
 import { WorkloadConfig, sayHello } from './libs/test-commons.js';
