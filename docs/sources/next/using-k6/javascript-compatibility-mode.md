@@ -37,7 +37,7 @@ By default, k6 uses the `--compatibility-mode=extended` mode:
 
 {{< code >}}
 
-```default
+```bash
 $ k6 run script.js
 ```
 
