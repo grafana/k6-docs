@@ -16,7 +16,7 @@ In k6, there are two common approaches to store additional error information:
 
 When deciding what error data to store, consider whether it is an general or specific error, and be aware that high-load tests may generate a substantial volume of error data.
 
-Below is an example using an ErrorHandler to log error information. It accepts a callback that instructs how to log errors. The example provides instructions for both previously mentioned options: console logs and custom metrics.
+Below is an example using an `ErrorHandler` class to log error information. It accepts a callback that instructs how to log errors. The example provides instructions for both previously mentioned options: console logs and custom metrics.
 
 ```javascript
 import http from 'k6/http';
