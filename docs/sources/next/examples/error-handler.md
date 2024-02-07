@@ -7,7 +7,7 @@ weight: 25
 
 # Error handler
 
-When encountering errors from the backend, it's often necessary to gather additional error information, such as error messages, tracing data, or request and response bodies. Our first suggestion is to leverage your observability solution to find these errors. However, capturing error details directly in k6 can also be useful for troubleshooting.
+When encountering errors from an application's backend, gathering additional error information, such as error messages, tracing data, or request and response bodies, is often necessary. The initial suggestion is to leverage your observability solution to find these errors. However, capturing error details directly in k6 can also be useful for troubleshooting.
 
 In k6, there are two common approaches to store additional error information:
 
