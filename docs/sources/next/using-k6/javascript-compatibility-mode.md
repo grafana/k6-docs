@@ -16,7 +16,7 @@ You can write k6 scripts in various ECMAScript versions:
 
 k6 supports both module types and most ES6+ features in all k6 execution modes: local, distributed, and cloud.
 
-Yet, to enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to transform ESM to CommonJS. This process is as follows:
+To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to transform ESM to CommonJS. The process is as follows:
 
 ![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
 
