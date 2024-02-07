@@ -89,7 +89,7 @@ export default () => {
 
 In server streaming mode, the client sends a single request to the server, and the server replies with multiple responses.
 
-The example below demonstrates client streaming.
+The example below demonstrates server streaming.
 
 {{< code >}}
 
@@ -256,11 +256,15 @@ stream.on('error', function (e) {
 
 {{< /code >}}
 
-### Handle special cases in message Marshaling/Unmarshaling
+### Protocol Buffers JSON Mapping
 
-k6 uses the [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package for encoding and decoding of messages.
+It's important to note how k6 handles requests and messages. First, it tries to marshal the request/message in JSON format. Then, k6 uses the [protojson](https://pkg.go.dev/google.golang.org/protobuf/encoding/protojson) package to encode or decode to a Protobuf message.
 
-Certain gRPC well-known types or wrappers have specific marshaling/unmarshaling rules.
+A limitation during this process is that the object you pass as a request/message must be serializable. That means structs like `Map` don't work.
+
+The benefit of using `protojson` is the canonical JSON encoding support. The [Protocol Buffers documentation](https://protobuf.dev/programming-guides/proto3/#json) describes this mapping.
+
+#### Examples
 
 For instance, if you import `"google/protobuf/wrappers.proto"` and your proto-definitions look like this:
 
@@ -301,7 +305,7 @@ if (respInt.message !== '6') {
 
 {{< /code >}}
 
-Another special case could be usage of `oneof`. Let's say you have a proto-definition like this:
+Another example could be usage of `oneof`. Let's say you have a proto-definition like this:
 
 ```proto
 syntax = "proto3";
