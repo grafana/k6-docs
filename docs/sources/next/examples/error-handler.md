@@ -13,7 +13,7 @@ In k6, there are two common approaches to store additional error information:
 - Console logs and output [k6 logs to Loki](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/), a file, or use [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/analyze-results/inspect-test-results/inspect-logs/).
 - Using [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/) in a [custom counter metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) to track error data.
 
-When deciding what error data to store, consider whether it is an general or specific error, and be aware that high-load tests may generate a substantial volume of error data.
+When deciding what error data to store, consider whether it's a general or specific error, and be aware that high-load tests may generate a substantial volume of error data.
 
 Below is an example using an `ErrorHandler` class to log error information. It accepts a callback that instructs how to log errors. The example provides instructions for both previously mentioned options: console logs and custom metrics.
 
