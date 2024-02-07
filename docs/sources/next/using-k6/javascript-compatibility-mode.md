@@ -25,7 +25,7 @@ When executing large scripts, the k6 Babel transformation can slightly delay the
 - [Extended mode](#extended-mode): The default option, supporting ESM and most ES6+ features.
 - [Base mode](#base-mode): Limited to plain old JavaScript (ES5.1) and CommonJS, excluding the Babel step.
 
-When running tests, you can change the mode through the `--compatibility-mode` option:
+When running tests, you can change the mode by using the `--compatibility-mode` option:
 
 | Env                     | CLI                    | Code / Config file | Default      |
 | ----------------------- | ---------------------- | ------------------ | ------------ |
