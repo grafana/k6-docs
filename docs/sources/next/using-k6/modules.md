@@ -140,7 +140,7 @@ Be aware that k6 automatically executes remote modules, making it crucial to tru
 
 **As local modules**
 
-In this example, we've downloaded the previous remote modules in the `lib` folder of the testing project and imported them as follows:
+In this example, the previous remote modules have been downloaded to the `lib` folder of the testing project and imported as follows:
 
 ```javascript
 import { WorkloadConfig, sayHello } from './libs/test-commons.js';
