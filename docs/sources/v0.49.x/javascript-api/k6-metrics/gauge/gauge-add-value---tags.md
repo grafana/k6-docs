@@ -1,7 +1,7 @@
 ---
 title: 'Gauge.add(value, [tags])'
 slug: 'gauge-add'
-excerpt: 'Set the value of the Gauge metric.'
+description: 'Set the value of the Gauge metric.'
 ---
 
 # Gauge.add(value, [tags])

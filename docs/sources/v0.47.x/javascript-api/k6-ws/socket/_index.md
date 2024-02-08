@@ -1,6 +1,6 @@
 ---
 title: 'Socket'
-excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
+description: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 weight: 80
 weight: 80
 ---

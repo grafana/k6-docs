@@ -1,7 +1,7 @@
 ---
 title: 'Track transmitted data per URL'
 slug: '/track-transmitted-data-per-url'
-excerpt: 'This example shows how to track data sent and received for a individual URL.'
+description: 'This example shows how to track data sent and received for a individual URL.'
 weight: 20
 ---
 

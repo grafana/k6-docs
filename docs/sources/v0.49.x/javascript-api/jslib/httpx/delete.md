@@ -1,7 +1,7 @@
 ---
 title: 'delete(url, [body], [params])'
 description: 'httpx.delete makes DELETE requests'
-excerpt: 'httpx.delete makes DELETE requests'
+description: 'httpx.delete makes DELETE requests'
 weight: 14
 ---
 

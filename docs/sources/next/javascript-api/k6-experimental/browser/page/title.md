@@ -1,6 +1,6 @@
 ---
 title: 'title()'
-excerpt: 'Browser module: page.title method'
+description: 'Browser module: page.title method'
 ---
 
 # title()

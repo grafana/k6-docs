@@ -1,6 +1,6 @@
 ---
 title: 'setViewportSize(viewportSize)'
-excerpt: 'Browser module: page.setViewportSize(viewportSize) method'
+description: 'Browser module: page.setViewportSize(viewportSize) method'
 ---
 
 # setViewportSize(viewportSize)

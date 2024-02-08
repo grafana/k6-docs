@@ -1,6 +1,6 @@
 ---
 title: 'Client.persist(key)'
-excerpt: 'Remove the expiration from a key.'
+description: 'Remove the expiration from a key.'
 ---
 
 # Client.persist(key)

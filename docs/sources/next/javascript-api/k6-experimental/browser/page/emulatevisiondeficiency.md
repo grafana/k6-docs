@@ -1,6 +1,6 @@
 ---
 title: 'emulateVisionDeficiency(type)'
-excerpt: 'Browser module: page.emulateVisionDeficiency(type) method'
+description: 'Browser module: page.emulateVisionDeficiency(type) method'
 ---
 
 # emulateVisionDeficiency(type)

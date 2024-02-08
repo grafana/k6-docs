@@ -1,6 +1,6 @@
 ---
 title: 'Graceful stop'
-excerpt: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
+description: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
 weight: 10
 ---
 

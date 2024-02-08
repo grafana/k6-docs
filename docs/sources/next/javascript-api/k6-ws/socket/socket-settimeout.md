@@ -1,6 +1,6 @@
 ---
 title: 'Socket.setTimeout(callback, delay)'
-excerpt: 'Call a function at a later time, if the WebSocket connection is still open then.'
+description: 'Call a function at a later time, if the WebSocket connection is still open then.'
 ---
 
 # Socket.setTimeout(callback, delay)

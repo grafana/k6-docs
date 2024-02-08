@@ -1,6 +1,6 @@
 ---
 title: About the Go-to-JS bridge
-excerpt: Technical details about how JavaScript works in the goja engine.
+description: Technical details about how JavaScript works in the goja engine.
 weight: 02
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Crypto'
-excerpt: 'Crypto offers basic cryptography features.'
+description: 'Crypto offers basic cryptography features.'
 weight: 01
 weight: 01
 ---

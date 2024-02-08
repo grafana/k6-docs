@@ -1,6 +1,6 @@
 ---
 title: 'Client.del(keys)'
-excerpt: ''
+description: ''
 ---
 
 # Client.del(keys)

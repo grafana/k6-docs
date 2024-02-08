@@ -1,6 +1,6 @@
 ---
 title: 'Functional testing'
-excerpt: |
+description: |
   Use Chaijs library for functional and integration testing.
 weight: 19
 ---

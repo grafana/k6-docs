@@ -1,6 +1,6 @@
 ---
 title: 'setExtraHTTPHeaders(headers)'
-excerpt: 'Browser module: page.setExtraHTTPHeaders(headers) method'
+description: 'Browser module: page.setExtraHTTPHeaders(headers) method'
 ---
 
 # setExtraHTTPHeaders(headers)

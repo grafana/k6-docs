@@ -1,7 +1,7 @@
 ---
 title: 'clearTag( name )'
 description: 'removes tag from the session'
-excerpt: 'removes tag from the session'
+description: 'removes tag from the session'
 weight: 26
 ---
 

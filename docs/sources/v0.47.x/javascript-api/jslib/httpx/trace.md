@@ -1,7 +1,7 @@
 ---
 title: 'trace(url, [body], [params])'
 description: 'httpx.trace makes TRACE requests'
-excerpt: 'httpx.trace makes TRACE requests'
+description: 'httpx.trace makes TRACE requests'
 weight: 17
 ---
 

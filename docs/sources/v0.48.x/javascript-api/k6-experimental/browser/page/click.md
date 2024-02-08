@@ -1,6 +1,6 @@
 ---
 title: 'click(selector[, options])'
-excerpt: 'Browser module: page.click(selector[, options]) method'
+description: 'Browser module: page.click(selector[, options]) method'
 ---
 
 # click(selector[, options])

@@ -1,7 +1,7 @@
 ---
 title: 'Smoke testing'
 head_title: 'What is Smoke Testing? How to create a Smoke Test in k6'
-excerpt: 'A Smoke test is a minimal load test to run when you create or modify a script.'
+description: 'A Smoke test is a minimal load test to run when you create or modify a script.'
 weight: 01
 ---
 

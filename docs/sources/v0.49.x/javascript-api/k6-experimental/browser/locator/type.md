@@ -1,6 +1,6 @@
 ---
 title: 'type(text, [options])'
-excerpt: 'Browser module: locator.type method'
+description: 'Browser module: locator.type method'
 ---
 
 # type(text, [options])

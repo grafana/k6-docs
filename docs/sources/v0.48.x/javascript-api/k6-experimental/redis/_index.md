@@ -1,6 +1,6 @@
 ---
 title: "redis"
-excerpt: "k6 Redis experimental API"
+description: "k6 Redis experimental API"
 weight: 02
 weight: 02
 ---

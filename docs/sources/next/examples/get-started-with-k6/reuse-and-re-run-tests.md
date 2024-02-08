@@ -1,6 +1,6 @@
 ---
 title: Reuse and re-run tests
-excerpt: Modularize your k6 test logic and workload configuration.
+description: Modularize your k6 test logic and workload configuration.
 weight: 400
 ---
 

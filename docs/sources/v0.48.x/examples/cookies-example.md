@@ -1,6 +1,6 @@
 ---
 title: 'Cookies Example'
-excerpt: 'Scripting examples on how you can interact with cookies during your load test if required.'
+description: 'Scripting examples on how you can interact with cookies during your load test if required.'
 weight: 08
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'frames()'
-excerpt: 'Browser module: page.frames method'
+description: 'Browser module: page.frames method'
 ---
 
 # frames()

@@ -1,6 +1,6 @@
 ---
 title: 'CookieJar.clear(url)'
-excerpt: 'Delete all cookies for the given URL.'
+description: 'Delete all cookies for the given URL.'
 ---
 
 # CookieJar.clear(url)

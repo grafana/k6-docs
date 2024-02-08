@@ -1,6 +1,6 @@
 ---
 title: 'throttleNetwork(networkProfile)'
-excerpt: 'Browser module: page.throttleNetwork(networkProfile) method'
+description: 'Browser module: page.throttleNetwork(networkProfile) method'
 ---
 
 # throttleNetwork(networkProfile)

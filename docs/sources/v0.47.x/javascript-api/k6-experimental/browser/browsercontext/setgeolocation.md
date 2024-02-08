@@ -1,6 +1,6 @@
 ---
 title: 'setGeolocation(geolocation)'
-excerpt: "Sets the BrowserContext's geolocation."
+description: "Sets the BrowserContext's geolocation."
 ---
 
 # setGeolocation(geolocation)

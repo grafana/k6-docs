@@ -1,6 +1,6 @@
 ---
 title: 'check(selector[, options])'
-excerpt: 'Browser module: page.check(selector[, options]) method'
+description: 'Browser module: page.check(selector[, options]) method'
 ---
 
 # check(selector[, options])

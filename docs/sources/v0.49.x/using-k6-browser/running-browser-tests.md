@@ -1,6 +1,6 @@
 ---
 title: 'Running browser tests'
-excerpt: 'Follow along to learn how to run a browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level tests in a single script.'
+description: 'Follow along to learn how to run a browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level tests in a single script.'
 weight: 02
 ---
 

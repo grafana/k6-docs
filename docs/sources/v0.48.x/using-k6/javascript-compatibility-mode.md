@@ -1,6 +1,6 @@
 ---
 title: JavaScript Compatibility Mode
-excerpt: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
+description: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
 _build:
   list: false
 weight: 19

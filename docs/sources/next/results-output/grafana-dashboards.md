@@ -1,6 +1,6 @@
 ---
 title: Grafana dashboards
-excerpt: With multiple k6 output formats, you also have multiple ways to visualize test results in a Grafana dashboard.
+description: With multiple k6 output formats, you also have multiple ways to visualize test results in a Grafana dashboard.
 weight: 300
 ---
 

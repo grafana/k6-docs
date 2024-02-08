@@ -1,6 +1,6 @@
 ---
 title: 'setDefaultNavigationTimeout(timeout)'
-excerpt: 'Sets the default navigation timeout in milliseconds.'
+description: 'Sets the default navigation timeout in milliseconds.'
 ---
 
 # setDefaultNavigationTimeout(timeout)

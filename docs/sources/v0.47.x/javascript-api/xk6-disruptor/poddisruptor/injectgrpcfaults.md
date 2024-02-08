@@ -1,6 +1,6 @@
 ---
 title: 'injectGrpcFaults()'
-excerpt: 'xk6-disruptor: PodDisruptor.injectGrpcFaults method'
+description: 'xk6-disruptor: PodDisruptor.injectGrpcFaults method'
 weight: 02
 ---
 

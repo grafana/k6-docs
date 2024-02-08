@@ -1,6 +1,6 @@
 ---
 title: 'k6/execution'
-excerpt: "Get information about the current test's execution state."
+description: "Get information about the current test's execution state."
 weight: 06
 ---
 

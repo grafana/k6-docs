@@ -1,6 +1,6 @@
 ---
 title: 'Grafana Cloud k6'
-excerpt: 'When streaming the results to the cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.'
+description: 'When streaming the results to the cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.'
 weight: 00
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'exportKey'
-excerpt: 'exportKey exports a key in an external, portable format.'
+description: 'exportKey exports a key in an external, portable format.'
 weight: 04
 ---
 

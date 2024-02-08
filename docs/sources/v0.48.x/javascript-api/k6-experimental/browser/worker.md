@@ -1,6 +1,6 @@
 ---
 title: 'Worker'
-excerpt: 'Browser module: Worker Class'
+description: 'Browser module: Worker Class'
 weight: 14
 ---
 

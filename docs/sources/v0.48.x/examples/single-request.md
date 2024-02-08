@@ -1,6 +1,6 @@
 ---
 title: 'Single request'
-excerpt: 'Example of one HTTP GET request'
+description: 'Example of one HTTP GET request'
 draft: 'false'
 weight: 01
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'HTTP/2'
-excerpt: 'When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would.'
+description: 'When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would.'
 weight: 01
 ---
 

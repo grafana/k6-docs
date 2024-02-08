@@ -1,7 +1,7 @@
 ---
 title: 'Selection'
 description: 'A jQuery-like API for accessing HTML DOM elements.'
-excerpt: 'A jQuery-like API for accessing HTML DOM elements.'
+description: 'A jQuery-like API for accessing HTML DOM elements.'
 weight: 50
 weight: 50
 ---

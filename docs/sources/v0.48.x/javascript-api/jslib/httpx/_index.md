@@ -1,6 +1,6 @@
 ---
 title: "httpx"
-excerpt: "httpx is a wrapper library around the native k6 http module"
+description: "httpx is a wrapper library around the native k6 http module"
 weight: 02
 weight: 02
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'Touchscreen'
-excerpt: 'Browser module: Touchscreen Class'
+description: 'Browser module: Touchscreen Class'
 weight: 13
 ---
 

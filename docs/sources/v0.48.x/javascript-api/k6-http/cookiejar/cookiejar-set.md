@@ -1,6 +1,6 @@
 ---
 title: 'CookieJar.set(url, name, value, [options])'
-excerpt: 'Set a cookie in the jar by specifying url, name, value and some other optional settings like domain, path, etc.'
+description: 'Set a cookie in the jar by specifying url, name, value and some other optional settings like domain, path, etc.'
 ---
 
 # CookieJar.set(url, name, value, [options])

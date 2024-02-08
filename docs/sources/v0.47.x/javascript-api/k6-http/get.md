@@ -1,7 +1,7 @@
 ---
 title: 'get( url, [params] )'
 description: 'Issue an HTTP GET request.'
-excerpt: 'Issue an HTTP GET request.'
+description: 'Issue an HTTP GET request.'
 weight: 10
 ---
 

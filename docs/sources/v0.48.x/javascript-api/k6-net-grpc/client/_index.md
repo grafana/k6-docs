@@ -1,6 +1,6 @@
 ---
 title: Client
-excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
+description: 'Client is a gRPC client that can interact with a gRPC server.'
 weight: 10
 weight: 20
 ---

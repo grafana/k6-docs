@@ -1,6 +1,6 @@
 ---
 title: 'PodDisruptor'
-excerpt: 'xk6-disruptor: PodDisruptor class'
+description: 'xk6-disruptor: PodDisruptor class'
 weight: 200
 ---
 

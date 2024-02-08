@@ -1,6 +1,6 @@
 ---
 title: 'expect()'
-excerpt: 'BDD style to construct k6 assertions.'
+description: 'BDD style to construct k6 assertions.'
 weight: 34
 ---
 

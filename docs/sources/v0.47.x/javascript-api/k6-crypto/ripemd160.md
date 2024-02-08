@@ -1,7 +1,7 @@
 ---
 title: 'ripemd160( input, outputEncoding )'
 description: 'Use RIPEMD-160 to hash input data.'
-excerpt: 'Use RIPEMD-160 to hash input data.'
+description: 'Use RIPEMD-160 to hash input data.'
 weight: 07
 ---
 

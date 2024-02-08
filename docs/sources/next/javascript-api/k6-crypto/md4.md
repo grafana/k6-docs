@@ -1,7 +1,7 @@
 ---
 title: 'md4( input, outputEncoding )'
 description: 'Use MD4 to hash input data.'
-excerpt: 'Use MD4 to hash input data.'
+description: 'Use MD4 to hash input data.'
 weight: 04
 ---
 

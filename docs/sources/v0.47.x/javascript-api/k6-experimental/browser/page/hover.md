@@ -1,6 +1,6 @@
 ---
 title: 'hover(selector[, options])'
-excerpt: 'Browser module: page.hover(selector[, options]) method'
+description: 'Browser module: page.hover(selector[, options]) method'
 ---
 
 # hover(selector[, options])

@@ -1,6 +1,6 @@
 ---
 title: 'setContent(html[, options])'
-excerpt: 'Browser module: page.setContent(html[, options]) method'
+description: 'Browser module: page.setContent(html[, options]) method'
 ---
 
 # setContent(html[, options])

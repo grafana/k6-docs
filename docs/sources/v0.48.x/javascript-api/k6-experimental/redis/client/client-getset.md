@@ -1,6 +1,6 @@
 ---
 title: 'Client.getSet(key, value)'
-excerpt: 'Atomically sets `key` to `value` and returns the old value stored at `key`.'
+description: 'Atomically sets `key` to `value` and returns the old value stored at `key`.'
 ---
 
 # Client.getSet(key, value)

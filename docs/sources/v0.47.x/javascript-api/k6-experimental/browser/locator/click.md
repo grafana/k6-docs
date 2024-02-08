@@ -1,6 +1,6 @@
 ---
 title: 'click([options])'
-excerpt: 'Browser module: locator.click method'
+description: 'Browser module: locator.click method'
 ---
 
 # click([options])

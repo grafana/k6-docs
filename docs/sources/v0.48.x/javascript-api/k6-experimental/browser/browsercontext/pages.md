@@ -1,6 +1,6 @@
 ---
 title: 'pages()'
-excerpt: 'Returns a list of pages inside this BrowserContext.'
+description: 'Returns a list of pages inside this BrowserContext.'
 ---
 
 # pages()

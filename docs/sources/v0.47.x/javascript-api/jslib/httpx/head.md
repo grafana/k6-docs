@@ -1,7 +1,7 @@
 ---
 title: 'head(url, [body], [params])'
 description: 'httpx.head makes HEAD requests'
-excerpt: 'httpx.head makes HEAD requests'
+description: 'httpx.head makes HEAD requests'
 weight: 16
 ---
 

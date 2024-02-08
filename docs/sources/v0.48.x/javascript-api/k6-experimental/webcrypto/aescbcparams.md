@@ -1,6 +1,6 @@
 ---
 title: 'AesCbcParams'
-excerpt: 'AesCbcParams represents the object that should be passed as the algorithm parameter into the encrypt and decrypt operation when using the AES-CBC algorithm.'
+description: 'AesCbcParams represents the object that should be passed as the algorithm parameter into the encrypt and decrypt operation when using the AES-CBC algorithm.'
 weight: 07
 ---
 

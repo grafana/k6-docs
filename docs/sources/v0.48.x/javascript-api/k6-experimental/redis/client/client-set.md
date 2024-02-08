@@ -1,6 +1,6 @@
 ---
 title: 'Client.set(key, value, expiration)'
-excerpt: 'Set `key` to hold `value`, with a time to live equal to `expiration`.'
+description: 'Set `key` to hold `value`, with a time to live equal to `expiration`.'
 ---
 
 # Client.set(key, value, expiration)

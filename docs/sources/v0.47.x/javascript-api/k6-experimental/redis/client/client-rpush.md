@@ -1,6 +1,6 @@
 ---
 title: 'Client.rpush(key, values)'
-excerpt: 'Adds the string `value` to the right of the list stored at `key`.'
+description: 'Adds the string `value` to the right of the list stored at `key`.'
 ---
 
 # Client.rpush(key, values)

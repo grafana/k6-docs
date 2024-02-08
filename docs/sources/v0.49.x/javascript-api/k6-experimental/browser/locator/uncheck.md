@@ -1,6 +1,6 @@
 ---
 title: 'uncheck([options])'
-excerpt: 'Browser module: locator.uncheck method'
+description: 'Browser module: locator.uncheck method'
 ---
 
 # uncheck([options])

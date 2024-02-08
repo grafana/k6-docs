@@ -1,6 +1,6 @@
 ---
 title: 'Test lifecycle'
-excerpt: 'The four distinct lifecycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
+description: 'The four distinct lifecycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 weight: 06
 ---
 

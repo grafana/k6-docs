@@ -1,6 +1,6 @@
 ---
 title: 'workers()'
-excerpt: 'Browser module: page.workers method'
+description: 'Browser module: page.workers method'
 ---
 
 # workers()

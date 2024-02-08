@@ -1,7 +1,7 @@
 ---
 title: 'batch( requests )'
 description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
-excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
+description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 weight: 10
 ---
 

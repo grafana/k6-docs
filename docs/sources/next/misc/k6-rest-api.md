@@ -1,6 +1,6 @@
 ---
 title: 'k6 REST API'
-excerpt: 'With this API you can see and control different execution aspects like
+description: 'With this API you can see and control different execution aspects like
 number of VUs, pause or resume the test, list groups, set and get the
 setup data and more.'
 _build:

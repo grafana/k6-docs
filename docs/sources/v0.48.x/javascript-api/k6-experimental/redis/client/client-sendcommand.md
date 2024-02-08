@@ -1,6 +1,6 @@
 ---
 title: 'Client.sendCommand(command, args)'
-excerpt: 'Issue a command to the Redis server.'
+description: 'Issue a command to the Redis server.'
 ---
 
 # Client.sendCommand(command, args)

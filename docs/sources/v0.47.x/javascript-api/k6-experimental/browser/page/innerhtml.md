@@ -1,6 +1,6 @@
 ---
 title: 'innerHTML(selector[, options])'
-excerpt: 'Browser module: page.innerHTML(selector[, options]) method'
+description: 'Browser module: page.innerHTML(selector[, options]) method'
 ---
 
 # innerHTML(selector[, options])

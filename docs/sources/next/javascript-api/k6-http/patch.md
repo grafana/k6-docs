@@ -1,7 +1,7 @@
 ---
 title: 'patch( url, [body], [params] )'
 description: 'Issue an HTTP PATCH request.'
-excerpt: 'Issue an HTTP PATCH request.'
+description: 'Issue an HTTP PATCH request.'
 weight: 10
 ---
 

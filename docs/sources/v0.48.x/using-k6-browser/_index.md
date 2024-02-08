@@ -2,7 +2,7 @@
 title: Using k6 browser
 heading: 'Browser Module Documentation'
 head_title: 'Browser Module Documentation'
-excerpt: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
+description: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
 weight: 03
 ---
 

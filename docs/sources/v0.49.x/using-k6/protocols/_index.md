@@ -1,6 +1,6 @@
 ---
 title: 'Protocols'
-excerpt: 'Out of the box k6 comes with support for a few protocols: HTTP / WebSockets / gRPC / ...'
+description: 'Out of the box k6 comes with support for a few protocols: HTTP / WebSockets / gRPC / ...'
 weight: 10
 ---
 

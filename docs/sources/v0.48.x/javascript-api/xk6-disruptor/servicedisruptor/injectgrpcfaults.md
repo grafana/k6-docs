@@ -1,6 +1,6 @@
 ---
 title: 'injectGrpcFaults'
-excerpt: 'xk6-disruptor: ServiceDisruptor.injectGrpcFaults method'
+description: 'xk6-disruptor: ServiceDisruptor.injectGrpcFaults method'
 weight: 200
 ---
 

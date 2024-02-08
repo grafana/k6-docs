@@ -1,6 +1,6 @@
 ---
 title: 'mouse'
-excerpt: 'Browser module: page.mouse method'
+description: 'Browser module: page.mouse method'
 ---
 
 # mouse

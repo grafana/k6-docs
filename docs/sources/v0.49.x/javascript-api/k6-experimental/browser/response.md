@@ -1,6 +1,6 @@
 ---
 title: 'Response'
-excerpt: 'Browser module: Response Class'
+description: 'Browser module: Response Class'
 weight: 12
 ---
 

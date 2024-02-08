@@ -1,6 +1,6 @@
 ---
 title: 'Load test types'
-excerpt: 'A series of conceptual articles explaining the different types of load tests. Learn about planning, running, and interpreting different tests for different performance goals.'
+description: 'A series of conceptual articles explaining the different types of load tests. Learn about planning, running, and interpreting different tests for different performance goals.'
 weight: -10
 cascade:
   noindex: true

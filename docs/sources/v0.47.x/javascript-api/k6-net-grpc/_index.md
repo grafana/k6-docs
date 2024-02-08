@@ -1,6 +1,6 @@
 ---
 title: 'k6/net/grpc'
-excerpt: 'k6 gRPC API'
+description: 'k6 gRPC API'
 weight: 11
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'Element'
 description: 'An HTML DOM element as returned by the Selection API.'
-excerpt: 'An HTML DOM element as returned by the Selection API.'
+description: 'An HTML DOM element as returned by the Selection API.'
 weight: 20
 ---
 

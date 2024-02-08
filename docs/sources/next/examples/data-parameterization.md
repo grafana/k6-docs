@@ -1,6 +1,6 @@
 ---
 title: 'Data Parameterization'
-excerpt: |
+description: |
   Scripting examples on how to parameterize data in a test script. Parameterization is typically
   necessary when Virtual Users(VUs) will make a POST, PUT, or PATCH request in a test.
 

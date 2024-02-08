@@ -1,6 +1,6 @@
 ---
 title: 'Client.lindex(key)'
-excerpt: 'Returns the element at index `index` of the list stored at `key`.'
+description: 'Returns the element at index `index` of the list stored at `key`.'
 ---
 
 # Client.lindex(key)

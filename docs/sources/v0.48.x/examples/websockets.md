@@ -1,6 +1,6 @@
 ---
 title: 'WebSockets'
-excerpt: |
+description: |
   Scripting example on how to use WebSocket API in k6.
 weight: 13
 ---

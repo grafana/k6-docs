@@ -1,6 +1,6 @@
 ---
 title: 'websockets'
-excerpt: "k6 websockets experimental API"
+descriptiontion: "k6 websockets experimental API"
 weight: 05
 weight: 05
 ---

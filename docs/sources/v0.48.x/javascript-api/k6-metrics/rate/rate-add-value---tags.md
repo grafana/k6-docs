@@ -1,7 +1,7 @@
 ---
 title: 'Rate.add(value, [tags])'
 slug: 'rate-add'
-excerpt: 'Set the value of the Rate metric.'
+description: 'Set the value of the Rate metric.'
 ---
 
 # Rate.add(value, [tags])

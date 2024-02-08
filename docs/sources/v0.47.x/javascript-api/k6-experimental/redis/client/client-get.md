@@ -1,6 +1,6 @@
 ---
 title: 'Client.get(key)'
-excerpt: 'Get the value of `key`.'
+description: 'Get the value of `key`.'
 ---
 
 # Client.get(key)

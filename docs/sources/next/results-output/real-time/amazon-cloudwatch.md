@@ -1,6 +1,6 @@
 ---
 title: 'Amazon CloudWatch'
-excerpt: 'You can send k6 results output to Amazon CloudWatch and later visualize them.'
+description: 'You can send k6 results output to Amazon CloudWatch and later visualize them.'
 weight: 00
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'injectHTTPFaults'
-excerpt: 'xk6-disruptor: ServiceDisruptor.injectHTTPFaults method'
+description: 'xk6-disruptor: ServiceDisruptor.injectHTTPFaults method'
 weight: 03
 ---
 

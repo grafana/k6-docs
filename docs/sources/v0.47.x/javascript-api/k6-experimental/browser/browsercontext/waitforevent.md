@@ -1,6 +1,6 @@
 ---
 title: 'waitForEvent(event[, optionsOrPredicate])'
-excerpt: 'Waits for event to fire and passes its value into the predicate function.'
+description: 'Waits for event to fire and passes its value into the predicate function.'
 ---
 
 # waitForEvent(event[, optionsOrPredicate])

@@ -1,6 +1,6 @@
 ---
 title: 'Running large tests'
-excerpt: 'How to run large-scale k6 tests without distributed-execution'
+description: 'How to run large-scale k6 tests without distributed-execution'
 weight: 04
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Test builder'
-excerpt: 'Use a graphical interface to create a k6 test.'
+description: 'Use a graphical interface to create a k6 test.'
 weight: 01
 ---
 

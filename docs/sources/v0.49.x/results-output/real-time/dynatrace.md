@@ -1,6 +1,6 @@
 ---
 title: 'Dynatrace'
-excerpt: Send k6 output to Dynatrace to visualize load test results and correlate performance testing metrics in Dynatrace.
+description: Send k6 output to Dynatrace to visualize load test results and correlate performance testing metrics in Dynatrace.
 weight: 00
 ---
 

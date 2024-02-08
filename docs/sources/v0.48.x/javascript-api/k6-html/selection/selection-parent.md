@@ -1,6 +1,6 @@
 ---
 title: 'Selection.parent([selector])'
-excerpt: 'Get the parent of each element in the current set of matched elements, optionally filtered by a selector.'
+description: 'Get the parent of each element in the current set of matched elements, optionally filtered by a selector.'
 ---
 
 # Selection.parent([selector])

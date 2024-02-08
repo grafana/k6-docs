@@ -1,7 +1,7 @@
 ---
 title: 'Response.submitForm( [params] )'
 slug: 'response-submitform'
-excerpt: 'Fill in and submit form found in HTML of response.'
+descriptiontion: 'Fill in and submit form found in HTML of response.'
 ---
 
 # Response.submitForm( [params] )

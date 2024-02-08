@@ -1,7 +1,7 @@
 ---
 title: 'Trend.add(value, [tags])'
 slug: 'trend-add'
-excerpt: 'Add a value to the Trend metric.'
+description: 'Add a value to the Trend metric.'
 ---
 
 # Trend.add(value, [tags])

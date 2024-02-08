@@ -1,6 +1,6 @@
 ---
 title: 'gRPC'
-excerpt: 'xk6-disruptor: gRPC Fault attributes'
+description: 'xk6-disruptor: gRPC Fault attributes'
 weight: 01
 ---
 

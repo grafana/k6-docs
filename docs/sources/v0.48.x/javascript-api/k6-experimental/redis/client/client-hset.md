@@ -1,6 +1,6 @@
 ---
 title: 'Client.hset(key, field, value)'
-excerpt: 'Sets the value of field in the hash stored at `key` to `value`.'
+description: 'Sets the value of field in the hash stored at `key` to `value`.'
 ---
 
 # Client.hset(key, field, value)

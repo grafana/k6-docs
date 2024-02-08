@@ -1,7 +1,7 @@
 ---
 title: 'put( url, [body], [params] )'
 description: 'Issue an HTTP PUT request.'
-excerpt: 'Issue an HTTP PUT request.'
+description: 'Issue an HTTP PUT request.'
 weight: 10
 ---
 

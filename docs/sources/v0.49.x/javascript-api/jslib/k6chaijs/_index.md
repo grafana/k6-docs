@@ -1,6 +1,6 @@
 ---
 title: "k6chaijs"
-excerpt: "Assertion library for k6"
+description: "Assertion library for k6"
 weight: 03
 weight: 03
 ---

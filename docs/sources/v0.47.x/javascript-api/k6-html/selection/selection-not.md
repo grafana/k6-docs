@@ -1,6 +1,6 @@
 ---
 title: 'Selection.not(selector)'
-excerpt: 'Remove elements from the set of matched elements.'
+description: 'Remove elements from the set of matched elements.'
 ---
 
 # Selection.not(selector)

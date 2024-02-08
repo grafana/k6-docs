@@ -1,6 +1,6 @@
 ---
 title: 'Client.hlen(key)'
-excerpt: 'Returns the number of fields in the hash stored at `key`.'
+description: 'Returns the number of fields in the hash stored at `key`.'
 ---
 
 # Client.hlen(key)

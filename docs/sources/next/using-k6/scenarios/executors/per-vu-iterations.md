@@ -1,6 +1,6 @@
 ---
 title: 'Per VU iterations'
-excerpt: 'Each VU executes an exact number of iterations.'
+description: 'Each VU executes an exact number of iterations.'
 weight: 02
 ---
 

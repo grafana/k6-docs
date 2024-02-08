@@ -1,6 +1,6 @@
 ---
 title: 'describe( name, function )'
-excerpt: 'Entry point for creating test cases.'
+description: 'Entry point for creating test cases.'
 weight: 33
 ---
 

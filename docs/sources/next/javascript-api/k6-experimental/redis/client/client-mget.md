@@ -1,6 +1,6 @@
 ---
 title: 'Client.mget(keys)'
-excerpt: 'Returns the values of all specified keys.'
+description: 'Returns the values of all specified keys.'
 ---
 
 # Client.mget(keys)

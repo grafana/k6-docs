@@ -1,6 +1,6 @@
 ---
 title: 'Results output'
-excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
+description: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 weight: 04
 ---
 

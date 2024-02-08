@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onping'
-excerpt: 'A handler function for WebSocket connection ping event.'
+description: 'A handler function for WebSocket connection ping event.'
 weight: 30
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Client.spop(key)'
-excerpt: 'Removes and returns a random member of the set stored at `key`.'
+description: 'Removes and returns a random member of the set stored at `key`.'
 ---
 
 # Client.spop(key)

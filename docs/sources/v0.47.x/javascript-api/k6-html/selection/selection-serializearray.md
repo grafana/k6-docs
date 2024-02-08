@@ -1,6 +1,6 @@
 ---
 title: 'Selection.serializeArray()'
-excerpt: 'Encode a set of form elements as an array of names and values.'
+description: 'Encode a set of form elements as an array of names and values.'
 ---
 
 # Selection.serializeArray()

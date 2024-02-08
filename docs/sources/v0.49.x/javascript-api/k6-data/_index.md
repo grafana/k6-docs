@@ -1,6 +1,6 @@
 ---
 title: 'k6/data'
-excerpt: 'k6 data API'
+description: 'k6 data API'
 weight: 04
 ---
 

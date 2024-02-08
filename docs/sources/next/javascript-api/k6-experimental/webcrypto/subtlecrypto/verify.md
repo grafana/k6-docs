@@ -1,6 +1,6 @@
 ---
 title: 'verify'
-excerpt: 'verify verifies a digital signature.'
+description: 'verify verifies a digital signature.'
 weight: 08
 ---
 

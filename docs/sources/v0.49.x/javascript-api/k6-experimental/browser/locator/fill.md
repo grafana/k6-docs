@@ -1,6 +1,6 @@
 ---
 title: 'fill(value, [options])'
-excerpt: 'Browser module: locator.fill method'
+description: 'Browser module: locator.fill method'
 ---
 
 # fill(value, [options])

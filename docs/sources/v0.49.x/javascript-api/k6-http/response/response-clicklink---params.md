@@ -1,7 +1,7 @@
 ---
 title: 'Response.clickLink( [params] )'
 slug: 'response-clicklink'
-excerpt: 'Create and make a request corresponding to a link, found in the HTML of response, being clicked.'
+description: 'Create and make a request corresponding to a link, found in the HTML of response, being clicked.'
 ---
 
 # Response.clickLink( [params] )

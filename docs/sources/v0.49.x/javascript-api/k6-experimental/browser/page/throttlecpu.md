@@ -1,6 +1,6 @@
 ---
 title: 'throttleCPU(cpuProfile)'
-excerpt: 'Browser module: page.throttleCPU(cpuProfile) method'
+description: 'Browser module: page.throttleCPU(cpuProfile) method'
 ---
 
 # throttleCPU(cpuProfile)

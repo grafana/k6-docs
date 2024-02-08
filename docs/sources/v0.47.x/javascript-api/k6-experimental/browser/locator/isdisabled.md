@@ -1,6 +1,6 @@
 ---
 title: 'isDisabled([options])'
-excerpt: 'Browser module: locator.isDisabled method'
+description: 'Browser module: locator.isDisabled method'
 ---
 
 # isDisabled([options])

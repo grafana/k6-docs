@@ -1,6 +1,6 @@
 ---
 title: 'Transport Layer Security (TLS)'
-excerpt: |
+description: |
   TLS is the mechanism through which encrypted connections can be established between clients and
   servers on the web and through which data can flow with integrity intact.
 weight: 15

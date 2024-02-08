@@ -1,7 +1,7 @@
 ---
 title: 'url\`url\`'
 description: 'Creates a URL with a name tag.'
-excerpt: 'Creates a URL with a name tag.'
+description: 'Creates a URL with a name tag.'
 weight: 10
 ---
 

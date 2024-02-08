@@ -1,6 +1,6 @@
 ---
 title: 'focus([options])'
-excerpt: 'Browser module: locator.focus method'
+description: 'Browser module: locator.focus method'
 ---
 
 # focus([options])

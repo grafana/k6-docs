@@ -1,7 +1,7 @@
 ---
 title: 'sha1( input, outputEncoding )'
 description: 'Use SHA-1 to hash input data.'
-excerpt: 'Use SHA-1 to hash input data.'
+description: 'Use SHA-1 to hash input data.'
 weight: 08
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'b64encode( input, [encoding] )'
 description: 'Encode data in base64.'
-excerpt: 'Encode data in base64.'
+description: 'Encode data in base64.'
 slug: 'b64encode'
 ---
 

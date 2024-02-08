@@ -1,7 +1,7 @@
 ---
 title: 'setBaseUrl( url )'
 description: 'sets the base URL for the session'
-excerpt: 'sets the base URL for the session'
+description: 'sets the base URL for the session'
 weight: 20
 ---
 

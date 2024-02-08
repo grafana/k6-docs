@@ -1,6 +1,6 @@
 ---
 title: 'Client.hsetnx(key, field, value)'
-excerpt: 'Sets the value of field in the hash stored at `key` to `value` only if field does not exist in the hash.'
+description: 'Sets the value of field in the hash stored at `key` to `value` only if field does not exist in the hash.'
 ---
 
 # Client.hsetnx(key, field, value)

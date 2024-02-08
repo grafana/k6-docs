@@ -1,6 +1,6 @@
 ---
 title: End of test
-excerpt: When a test finishes, k6 prints a summary of results, with aggregated metrics and meta-data about the test. You can customize this, or configure the test to write granular metrics to a file.
+description: When a test finishes, k6 prints a summary of results, with aggregated metrics and meta-data about the test. You can customize this, or configure the test to write granular metrics to a file.
 weight: 100
 weight: 100
 ---

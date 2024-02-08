@@ -1,6 +1,6 @@
 ---
 title: 'Inject gRPC faults into Service'
-excerpt: 'This example shows how to test the effect of faults injected in the gRPC requests served by a service.'
+description: 'This example shows how to test the effect of faults injected in the gRPC requests served by a service.'
 weight: 01
 ---
 

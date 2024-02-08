@@ -1,6 +1,6 @@
 ---
 title: 'HmacKeyGenParams'
-excerpt: 'HmacKeyGenParams represents the object that should be passed as the algorithm parameter into the generateKey operation, when generating an HMAC key.'
+description: 'HmacKeyGenParams represents the object that should be passed as the algorithm parameter into the generateKey operation, when generating an HMAC key.'
 weight: 05
 ---
 

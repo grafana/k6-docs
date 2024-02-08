@@ -1,6 +1,6 @@
 ---
 title: 'focus(selector[, options])'
-excerpt: 'Browser module: page.focus(selector[, options]) method'
+description: 'Browser module: page.focus(selector[, options]) method'
 ---
 
 # focus(selector[, options])

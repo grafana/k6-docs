@@ -1,6 +1,6 @@
 ---
 title: 'StatsD'
-excerpt: 'k6 has a built-in output to a StatsD service.'
+description: 'k6 has a built-in output to a StatsD service.'
 weight: 00
 ---
 

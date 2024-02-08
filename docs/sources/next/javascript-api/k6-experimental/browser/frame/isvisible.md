@@ -1,6 +1,6 @@
 ---
 title: 'isVisible(selector[, options])'
-excerpt: 'Browser module: frame.isVisible(selector[, options]) method'
+description: 'Browser module: frame.isVisible(selector[, options]) method'
 ---
 
 # isVisible(selector[, options])

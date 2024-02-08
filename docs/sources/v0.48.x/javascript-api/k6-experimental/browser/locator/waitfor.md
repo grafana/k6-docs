@@ -1,6 +1,6 @@
 ---
 title: 'waitFor([options])'
-excerpt: 'Browser module: locator.waitFor method'
+description: 'Browser module: locator.waitFor method'
 ---
 
 # waitFor([options])

@@ -1,6 +1,6 @@
 ---
 title: 'Using the HAR converter'
-excerpt: 'The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.'
+description: 'The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.'
 weight: 02
 ---
 

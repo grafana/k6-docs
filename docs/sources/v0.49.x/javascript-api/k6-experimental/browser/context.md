@@ -1,6 +1,6 @@
 ---
 title: 'context()'
-excerpt: 'Browser module: context method'
+description: 'Browser module: context method'
 ---
 
 # context()

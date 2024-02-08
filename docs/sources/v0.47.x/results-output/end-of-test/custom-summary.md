@@ -1,6 +1,6 @@
 ---
 title: Custom summary
-excerpt: With handlesummary(), you can customize every part of your report. Change the content, redirect output, and more.
+description: With handlesummary(), you can customize every part of your report. Change the content, redirect output, and more.
 weight: 150
 ---
 

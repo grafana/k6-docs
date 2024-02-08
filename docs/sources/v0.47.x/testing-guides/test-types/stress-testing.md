@@ -1,7 +1,7 @@
 ---
 title: 'Stress testing'
 head_title: 'What is Stress Testing? How to create a Stress Test in k6'
-excerpt: 'Stress tests assess the limits of your system and stability under extreme conditions.'
+description: 'Stress tests assess the limits of your system and stability under extreme conditions.'
 weight: 03
 ---
 

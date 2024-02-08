@@ -1,6 +1,6 @@
 ---
 title: 'Selection.get(index)'
-excerpt: 'Retrieve the Element matched by the selector.'
+description: 'Retrieve the Element matched by the selector.'
 ---
 
 # Selection.get(index)

@@ -1,6 +1,6 @@
 ---
 title: 'textContent([options])'
-excerpt: 'Browser module: locator.textContent method'
+description: 'Browser module: locator.textContent method'
 ---
 
 # textContent([options])

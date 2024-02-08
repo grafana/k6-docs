@@ -1,6 +1,6 @@
 ---
 title: 'tap([options])'
-excerpt: 'Browser module: locator.tap method'
+description: 'Browser module: locator.tap method'
 ---
 
 # tap([options])

@@ -1,6 +1,6 @@
 ---
 title: 'config'
-excerpt: 'Global configuration options for k6Chaijs'
+description: 'Global configuration options for k6Chaijs'
 weight: 31
 ---
 

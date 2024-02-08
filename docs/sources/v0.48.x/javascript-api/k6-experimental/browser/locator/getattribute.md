@@ -1,6 +1,6 @@
 ---
 title: 'getAttribute(name, [options])'
-excerpt: 'Browser module: locator.getAttribute method'
+description: 'Browser module: locator.getAttribute method'
 ---
 
 # getAttribute(name, [options])

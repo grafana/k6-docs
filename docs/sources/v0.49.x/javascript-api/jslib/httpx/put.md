@@ -2,7 +2,7 @@
 title: 'put(url, [body], [params])'
 head_title: 'httpx.put'
 description: 'httpx.put makes PUT requests'
-excerpt: 'httpx.put makes PUT requests'
+description: 'httpx.put makes PUT requests'
 weight: 12
 ---
 

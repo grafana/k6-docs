@@ -2,7 +2,7 @@
 head_title: 'JavaScript API: open'
 title: 'open( filePath, [mode] )'
 description: 'Opens a file and reads all the contents into memory.'
-excerpt: 'Opens a file and reads all the contents into memory.'
+description: 'Opens a file and reads all the contents into memory.'
 ---
 
 # open( filePath, [mode] )

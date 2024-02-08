@@ -1,6 +1,6 @@
 ---
 title: 'Ramping arrival rate'
-excerpt: 'A variable number of iterations are started in a specified period of time.'
+description: 'A variable number of iterations are started in a specified period of time.'
 weight: 06
 ---
 

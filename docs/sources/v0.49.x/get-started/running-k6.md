@@ -1,6 +1,6 @@
 ---
 title: 'Running k6'
-excerpt: 'Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.'
+description: 'Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.'
 weight: 03
 ---
 

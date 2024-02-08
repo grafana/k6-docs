@@ -1,7 +1,7 @@
 ---
 title: 'sleep( t )'
 description: 'Suspends VU execution for the specified duration.'
-excerpt: 'Suspends VU execution for the specified duration.'
+description: 'Suspends VU execution for the specified duration.'
 ---
 
 # sleep( t )

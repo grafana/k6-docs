@@ -1,6 +1,6 @@
 ---
 title: 'Client.decrBy(key, decrement)'
-excerpt: 'Decrements the number stored at `key` by `decrement`.'
+description: 'Decrements the number stored at `key` by `decrement`.'
 ---
 
 # Client.decrBy(key, decrement)

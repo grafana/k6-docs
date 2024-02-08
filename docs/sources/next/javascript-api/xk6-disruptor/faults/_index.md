@@ -1,6 +1,6 @@
 ---
 title: 'Faults'
-excerpt: 'xk6-disruptor: Fault Description'
+description: 'xk6-disruptor: Fault Description'
 weight: 100
 ---
 

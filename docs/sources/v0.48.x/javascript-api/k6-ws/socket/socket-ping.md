@@ -1,6 +1,6 @@
 ---
 title: 'Socket.ping()'
-excerpt: 'Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.'
+description: 'Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.'
 ---
 
 # Socket.ping()

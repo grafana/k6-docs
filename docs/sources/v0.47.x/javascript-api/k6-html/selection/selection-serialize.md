@@ -1,6 +1,6 @@
 ---
 title: 'Selection.serialize()'
-excerpt: 'Encode a set of form elements as a string in standard URL-encoded notation for submission.'
+description: 'Encode a set of form elements as a string in standard URL-encoded notation for submission.'
 ---
 
 # Selection.serialize()

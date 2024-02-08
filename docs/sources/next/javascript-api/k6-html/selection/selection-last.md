@@ -1,6 +1,6 @@
 ---
 title: 'Selection.last()'
-excerpt: 'Reduce the set of matched elements to the final one in the set.'
+descriptiontion: 'Reduce the set of matched elements to the final one in the set.'
 ---
 
 # Selection.last()

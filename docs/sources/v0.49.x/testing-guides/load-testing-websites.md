@@ -1,7 +1,7 @@
 ---
 title: 'Load testing websites'
 head_title: 'How to Load Test a Website: The k6 Guide'
-excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
+description: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
 weight: 03
 noindex: true
 ---

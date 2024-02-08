@@ -1,6 +1,6 @@
 ---
 title: 'getAttribute(selector, name[, options])'
-excerpt: 'Browser module: page.getAttribute(selector, name[, options]) method'
+description: 'Browser module: page.getAttribute(selector, name[, options]) method'
 ---
 
 # getAttribute(selector, name[, options])

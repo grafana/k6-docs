@@ -1,6 +1,6 @@
 ---
 title: 'HTTP'
-excerpt: 'xk6-disruptor: HTTP Fault attributes'
+description: 'xk6-disruptor: HTTP Fault attributes'
 weight: 02
 ---
 

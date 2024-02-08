@@ -1,6 +1,6 @@
 ---
 title: 'Socket.on(event, callback)'
-excerpt: 'Set up callback functions for various events on the WebSocket connection.'
+description: 'Set up callback functions for various events on the WebSocket connection.'
 ---
 
 # Socket.on(event, callback)

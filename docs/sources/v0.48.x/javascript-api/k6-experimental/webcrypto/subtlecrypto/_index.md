@@ -1,6 +1,6 @@
 ---
 title: 'SubtleCrypto'
-excerpt: 'SubtleCrypto offers low-level cryptographic functions.'
+description: 'SubtleCrypto offers low-level cryptographic functions.'
 weight: 02
 weight: 02
 ---

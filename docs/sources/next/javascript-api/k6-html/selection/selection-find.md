@@ -1,6 +1,6 @@
 ---
 title: 'Selection.find(selector)'
-excerpt: 'Find the selection descendants, filtered by a selector.'
+description: 'Find the selection descendants, filtered by a selector.'
 ---
 
 # Selection.find(selector)

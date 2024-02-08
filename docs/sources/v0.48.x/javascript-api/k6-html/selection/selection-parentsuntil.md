@@ -1,6 +1,6 @@
 ---
 title: 'Selection.parentsUntil([selector], [filter])'
-excerpt: 'Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.'
+description: 'Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.'
 ---
 
 # Selection.parentsUntil([selector], [filter])

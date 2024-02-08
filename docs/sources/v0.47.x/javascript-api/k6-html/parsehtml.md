@@ -1,7 +1,7 @@
 ---
 title: 'parseHTML( src )'
 description: 'Parse an HTML string and populate a Selection object.'
-excerpt: 'Parse an HTML string and populate a Selection object.'
+description: 'Parse an HTML string and populate a Selection object.'
 weight: 10
 ---
 

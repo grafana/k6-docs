@@ -1,6 +1,6 @@
 ---
 title: 'on(event, handler)'
-excerpt: 'Browser module: page.on method'
+description: 'Browser module: page.on method'
 ---
 
 # on(event, handler)

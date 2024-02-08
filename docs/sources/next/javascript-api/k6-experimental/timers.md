@@ -1,6 +1,6 @@
 ---
 title: 'timers'
-excerpt: 'k6 timers experimental API'
+description: 'k6 timers experimental API'
 weight: 03
 ---
 

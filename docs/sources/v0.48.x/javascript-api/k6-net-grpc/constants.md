@@ -1,6 +1,6 @@
 ---
 title: 'Constants'
-excerpt: 'Define constants to distinguish between gRPC Response'
+description: 'Define constants to distinguish between gRPC Response'
 weight: 40
 ---
 

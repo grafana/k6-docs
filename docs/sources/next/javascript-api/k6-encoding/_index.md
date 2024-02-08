@@ -1,6 +1,6 @@
 ---
 title: 'k6/encoding'
-excerpt: 'The encoding module provides base64 encoding/decoding as defined by RFC4648.'
+description: 'The encoding module provides base64 encoding/decoding as defined by RFC4648.'
 weight: 05
 ---
 

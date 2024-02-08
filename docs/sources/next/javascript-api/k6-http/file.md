@@ -1,7 +1,7 @@
 ---
 title: 'file( data, [filename], [contentType] )'
 description: 'Create a file object that is used for building multi-part requests.'
-excerpt: 'Create a file object that is used for building multi-part requests.'
+description: 'Create a file object that is used for building multi-part requests.'
 weight: 10
 ---
 

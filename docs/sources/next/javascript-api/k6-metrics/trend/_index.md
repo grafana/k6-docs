@@ -1,6 +1,6 @@
 ---
 title: 'Trend'
-excerpt: 'Trend is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles)'
+description: 'Trend is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles)'
 weight: 73
 weight: 73
 ---

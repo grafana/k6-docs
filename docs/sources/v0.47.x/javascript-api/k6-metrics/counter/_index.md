@@ -1,6 +1,6 @@
 ---
 title: 'Counter'
-excerpt: 'Counter is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.'
+description: 'Counter is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.'
 weight: 70
 weight: 70
 ---

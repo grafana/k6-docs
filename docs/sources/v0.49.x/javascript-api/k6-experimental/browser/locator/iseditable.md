@@ -1,6 +1,6 @@
 ---
 title: 'isEditable([options])'
-excerpt: 'Browser module: locator.isEditable method'
+description: 'Browser module: locator.isEditable method'
 ---
 
 # isEditable([options])

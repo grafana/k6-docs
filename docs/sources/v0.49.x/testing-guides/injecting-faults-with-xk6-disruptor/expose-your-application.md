@@ -1,6 +1,6 @@
 ---
 title: 'Expose your application'
-excerpt: 'How to make your applications accessible from the test scripts.'
+description: 'How to make your applications accessible from the test scripts.'
 weight: 04
 aliases:
   - ./expose--your-application/

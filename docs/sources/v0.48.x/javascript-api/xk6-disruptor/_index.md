@@ -1,6 +1,6 @@
 ---
 title: xk6-disruptor API
-excerpt: 'An overview of the API for xk6-disruptor.'
+description: 'An overview of the API for xk6-disruptor.'
 weight: 14
 ---
 

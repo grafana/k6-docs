@@ -1,6 +1,6 @@
 ---
 title: 'randomUUID'
-excerpt: 'randomUUID produces a 36-characters long string containing a cryptographically random UUID v4.'
+description: 'randomUUID produces a 36-characters long string containing a cryptographically random UUID v4.'
 weight: 02
 ---
 

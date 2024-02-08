@@ -1,6 +1,6 @@
 ---
 title: 'Selection.val()'
-excerpt: 'Get the current value of the first element in the set of matched elements.'
+description: 'Get the current value of the first element in the set of matched elements.'
 ---
 
 # Selection.val()

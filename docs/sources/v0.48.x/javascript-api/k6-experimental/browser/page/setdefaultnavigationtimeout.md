@@ -1,6 +1,6 @@
 ---
 title: 'setDefaultNavigationTimeout(timeout)'
-excerpt: 'Browser module: page.setDefaultNavigationTimeout(timeout) method'
+description: 'Browser module: page.setDefaultNavigationTimeout(timeout) method'
 ---
 
 # setDefaultNavigationTimeout(timeout)

@@ -1,6 +1,6 @@
 ---
 title: 'innerText([options])'
-excerpt: 'Browser module: locator.innerText method'
+description: 'Browser module: locator.innerText method'
 ---
 
 # innerText([options])

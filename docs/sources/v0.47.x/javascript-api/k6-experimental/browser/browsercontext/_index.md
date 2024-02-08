@@ -1,6 +1,6 @@
 ---
 title: "BrowserContext"
-excerpt: "Browser module: BrowserContext Class"
+description: "Browser module: BrowserContext Class"
 weight: 02
 weight: 02
 ---

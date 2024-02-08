@@ -1,6 +1,6 @@
 ---
 title: Built-in metrics
-excerpt: A reference of built-in metrics for different supported protocols.
+description: A reference of built-in metrics for different supported protocols.
 weight: 000
 ---
 

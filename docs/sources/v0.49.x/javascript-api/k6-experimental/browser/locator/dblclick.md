@@ -1,6 +1,6 @@
 ---
 title: 'dblclick([options])'
-excerpt: 'Browser module: locator.dblclick method'
+description: 'Browser module: locator.dblclick method'
 ---
 
 # dblclick([options])

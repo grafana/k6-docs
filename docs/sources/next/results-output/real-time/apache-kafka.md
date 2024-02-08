@@ -1,6 +1,6 @@
 ---
 title: 'Apache Kafka'
-excerpt: 'You can use xk6-output-kafka to send k6 metrics in real-time to Kafka, and, optionally, ingest them from InfluxDB.'
+descriptiontion: 'You can use xk6-output-kafka to send k6 metrics in real-time to Kafka, and, optionally, ingest them from InfluxDB.'
 weight: 00
 ---
 

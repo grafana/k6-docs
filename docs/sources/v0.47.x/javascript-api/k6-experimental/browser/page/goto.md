@@ -1,6 +1,6 @@
 ---
 title: 'goto(url[, options])'
-excerpt: 'Browser module: page.goto(url[, options]) method'
+description: 'Browser module: page.goto(url[, options]) method'
 ---
 
 # goto(url[, options])
