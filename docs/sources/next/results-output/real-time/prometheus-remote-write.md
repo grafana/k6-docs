@@ -234,7 +234,7 @@ Clone the repository to get started and follow these steps for using the [docker
    k6 run -o experimental-prometheus-rw script.js
    ```
 
-   Optionally, you can set the `testid` tag as a [wide test tag](https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/#test-wide-tags) to segment metrics into discrete test runs and filter specific test results on the pre-built Grafana dashboards or in PromQL queries. `testid` can be any unique string that let you clearly identify the test run.
+   Optionally, you can set the `testid` tag as a [wide test tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#test-wide-tags) to segment metrics into discrete test runs and filter specific test results on the pre-built Grafana dashboards or in PromQL queries. `testid` can be any unique string that let you clearly identify the test run.
 
    **Trend stats**
 

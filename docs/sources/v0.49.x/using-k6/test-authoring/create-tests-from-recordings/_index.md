@@ -55,7 +55,7 @@ The script could include **dozens or hundreds of requests for each page visit or
 
 These types of recorded tests are difficult to maintain. As the website changes, these tests must be updated to reflect assets and API changes.
 
-An alternative approach to load test websites is to run a [hybrid load test](https://grafana.com/docs/k6/latest/testing-guides/load-testing-websites/#hybrid-load-testing) which:
+An alternative approach to load test websites is to run a [hybrid load test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#hybrid-load-testing) which:
 
 - Runs a [browser test](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests) to validate the frontend.
 - While simultaneously running API tests to inject load to the backend.

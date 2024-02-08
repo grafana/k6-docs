@@ -37,7 +37,7 @@ Currently, k6 supports two ways to extend its native functionality:
 
 ## xk6 makes custom binaries
 
-[xk6](https://github.com/grafana/xk6/) is command-line tool and framework written in Go. With xk6, you build custom k6 binaries that bundle one or more extensions written in Go. You have two options for creating k6 binaries: using [Go and xk6](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-go/) or [Docker](https://grafana.com/docs/k6/latest/extensions/build-k6-binary-using-docker/):
+[xk6](https://github.com/grafana/xk6/) is command-line tool and framework written in Go. With xk6, you build custom k6 binaries that bundle one or more extensions written in Go. You have two options for creating k6 binaries: using [Go and xk6](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go/) or [Docker](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-docker/):
 
 {{< code >}}
 

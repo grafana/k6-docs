@@ -66,7 +66,7 @@ On the Dashboards UI:
 
 ![k6 Prometheus Dashboard](/media/docs/k6-oss/k6-prometheus-dashboard-part1.png)
 
-Optionally, when running the test, you can set the `testid` tag as a [wide test tag](https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/#test-wide-tags) to filter results of a particular test run on this dashboard (or in PromQL queries). `testid` can be any unique string that allows you to identify the test run.
+Optionally, when running the test, you can set the `testid` tag as a [wide test tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#test-wide-tags) to filter results of a particular test run on this dashboard (or in PromQL queries). `testid` can be any unique string that allows you to identify the test run.
 
 {{< code >}}
 
