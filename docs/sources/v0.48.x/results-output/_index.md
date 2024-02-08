@@ -1,7 +1,7 @@
 ---
 weight: 04
 title: Results output
-excerpt: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
+description: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
 ---
 
 # Results output

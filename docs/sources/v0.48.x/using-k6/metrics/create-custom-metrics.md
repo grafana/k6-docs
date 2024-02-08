@@ -1,6 +1,6 @@
 ---
 title: Create custom metrics
-excerpt: How to build custom k6 metrics for each metric type.
+description: How to build custom k6 metrics for each metric type.
 weight: 100
 ---
 

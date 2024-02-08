@@ -1,6 +1,6 @@
 ---
 title: 'Client.randomKey()'
-excerpt: 'Returns a random key from the keyspace.'
+description: 'Returns a random key from the keyspace.'
 ---
 
 # Client.randomKey()

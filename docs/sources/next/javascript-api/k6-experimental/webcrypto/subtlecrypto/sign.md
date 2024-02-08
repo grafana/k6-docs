@@ -1,6 +1,6 @@
 ---
 title: 'sign'
-excerpt: 'sign generates a digital signature.'
+description: 'sign generates a digital signature.'
 weight: 07
 ---
 

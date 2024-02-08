@@ -1,6 +1,6 @@
 ---
 title: 'k6/crypto'
-excerpt: 'The k6/crypto module provides common hashing functionality available in the GoLang crypto.'
+description: 'The k6/crypto module provides common hashing functionality available in the GoLang crypto.'
 weight: 03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Selection.serializeObject()'
-excerpt: 'Encode a set of form elements as an object.'
+description: 'Encode a set of form elements as an object.'
 ---
 
 # Selection.serializeObject()

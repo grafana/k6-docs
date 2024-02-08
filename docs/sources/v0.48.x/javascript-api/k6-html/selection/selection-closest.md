@@ -1,6 +1,6 @@
 ---
 title: 'Selection.closest(selector)'
-excerpt: 'For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.'
+description: 'For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.'
 ---
 
 # Selection.closest(selector)

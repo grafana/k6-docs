@@ -1,6 +1,6 @@
 ---
 title: 'isVisible([options])'
-excerpt: 'Browser module: locator.isVisible method'
+description: 'Browser module: locator.isVisible method'
 ---
 
 # isVisible([options])

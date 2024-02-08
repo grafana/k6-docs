@@ -1,6 +1,6 @@
 ---
 title: 'getRandomValues'
-excerpt: 'getRandomValues fills the passed TypedArray with cryptographically sound random values.'
+description: 'getRandomValues fills the passed TypedArray with cryptographically sound random values.'
 weight: 01
 ---
 

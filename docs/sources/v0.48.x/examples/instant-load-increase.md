@@ -1,6 +1,6 @@
 ---
 title: 'Instant load increase'
-excerpt: 'Scripting example on how to instantly increase the number of VUs or iterations and hold them for a period of time'
+description: 'Scripting example on how to instantly increase the number of VUs or iterations and hold them for a period of time'
 draft: 'false'
 weight: 22
 ---

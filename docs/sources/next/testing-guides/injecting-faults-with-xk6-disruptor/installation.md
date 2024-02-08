@@ -1,6 +1,6 @@
 ---
 title: 'Installation'
-excerpt: 'A step-by-step guide on how to install xk6-disruptor.'
+description: 'A step-by-step guide on how to install xk6-disruptor.'
 weight: 03
 ---
 

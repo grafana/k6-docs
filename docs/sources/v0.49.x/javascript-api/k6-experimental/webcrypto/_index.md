@@ -1,6 +1,6 @@
 ---
 title: 'webcrypto'
-excerpt: "k6 webcrypto experimental API"
+description: "k6 webcrypto experimental API"
 weight: 06
 weight: 06
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorials'
-excerpt: 'k6 Tutorials'
+description: 'k6 Tutorials'
 weight: 26
 ---
 

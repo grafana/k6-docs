@@ -1,6 +1,6 @@
 ---
 title: 'Injecting faults with xk6-disruptor'
-excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
+description: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 weight: 06
 ---
 

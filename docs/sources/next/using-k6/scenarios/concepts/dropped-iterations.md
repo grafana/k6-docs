@@ -1,6 +1,6 @@
 ---
 title: Dropped iterations
-excerpt: Explanations about how your scenario configuration or SUT performance can lead to dropped iterations
+description: Explanations about how your scenario configuration or SUT performance can lead to dropped iterations
 weight: 30
 ---
 

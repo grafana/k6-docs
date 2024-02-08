@@ -1,6 +1,6 @@
 ---
 title: 'Client.srem(key, members)'
-excerpt: 'Removes the specified members from the set stored at `key`.'
+description: 'Removes the specified members from the set stored at `key`.'
 ---
 
 # Client.srem(key, members)

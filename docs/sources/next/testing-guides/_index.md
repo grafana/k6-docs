@@ -1,6 +1,6 @@
 ---
 title: 'Testing guides'
-excerpt: 'A series of guides to help you defining your load testing strategies.'
+description: 'A series of guides to help you defining your load testing strategies.'
 weight: 07
 ---
 

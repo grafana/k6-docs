@@ -1,6 +1,6 @@
 ---
 title: 'hover([options])'
-excerpt: 'Browser module: locator.hover method'
+description: 'Browser module: locator.hover method'
 ---
 
 # hover([options])

@@ -1,6 +1,6 @@
 ---
 title: 'isVisible()'
-excerpt: 'Browser module: elementHandle.isVisible() method'
+description: 'Browser module: elementHandle.isVisible() method'
 ---
 
 # isVisible()

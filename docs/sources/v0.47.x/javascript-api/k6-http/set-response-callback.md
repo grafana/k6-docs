@@ -1,7 +1,7 @@
 ---
 title: 'setResponseCallback( callback )'
 description: 'set responseCallback to mark responses as expected'
-excerpt: 'set responseCallback to mark responses as expected'
+description: 'set responseCallback to mark responses as expected'
 weight: 10
 ---
 

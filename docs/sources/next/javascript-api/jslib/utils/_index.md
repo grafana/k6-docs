@@ -1,6 +1,6 @@
 ---
 title: 'utils'
-excerpt: 'A collection of small utility functions useful during load testing with k6. '
+description: 'A collection of small utility functions useful during load testing with k6. '
 weight: 04
 ---
 

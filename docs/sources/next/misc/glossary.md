@@ -1,6 +1,6 @@
 ---
 title: Glossary
-excerpt: 'A list of technical terms commonly used when discussing k6, with definitions.'
+description: 'A list of technical terms commonly used when discussing k6, with definitions.'
 weight: 07
 ---
 

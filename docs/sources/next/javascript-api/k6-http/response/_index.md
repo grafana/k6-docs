@@ -1,7 +1,7 @@
 ---
 title: 'Response'
 description: 'Returned by the http.* methods that generate HTTP requests.'
-excerpt: 'Returned by the http.* methods that generate HTTP requests.'
+description: 'Returned by the http.* methods that generate HTTP requests.'
 weight: 61
 weight: 61
 ---

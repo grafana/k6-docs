@@ -1,6 +1,6 @@
 ---
 title: Test for functional behavior
-excerpt: Use k6 to write requests and assert that they respond correctly
+description: Use k6 to write requests and assert that they respond correctly
 weight: 100
 ---
 

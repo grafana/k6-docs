@@ -1,6 +1,6 @@
 ---
 title: 'close()'
-excerpt: 'Browser module: page.close method'
+description: 'Browser module: page.close method'
 ---
 
 # close()

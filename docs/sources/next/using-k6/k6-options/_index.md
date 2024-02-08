@@ -1,7 +1,7 @@
 ---
 title: 'Options'
 slug: '/k6-options'
-excerpt: 'Options configure test-run behavior. You can set options in multiple locations. Examples for how to use options, and a complete reference.'
+descriptiontion: 'Options configure test-run behavior. You can set options in multiple locations. Examples for how to use options, and a complete reference.'
 weight: 05
 ---
 

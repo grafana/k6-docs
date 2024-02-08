@@ -1,7 +1,7 @@
 ---
 title: 'addHeaders( object )'
 description: 'adds multiple headers to the session'
-excerpt: 'adds multiple headers to the session'
+description: 'adds multiple headers to the session'
 weight: 22
 ---
 

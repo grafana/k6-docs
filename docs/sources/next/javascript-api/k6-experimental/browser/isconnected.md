@@ -1,6 +1,6 @@
 ---
 title: 'isConnected()'
-excerpt: 'Browser module: isConnected method'
+description: 'Browser module: isConnected method'
 ---
 
 # isConnected()

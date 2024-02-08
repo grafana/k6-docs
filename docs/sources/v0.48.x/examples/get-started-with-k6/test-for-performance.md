@@ -1,6 +1,6 @@
 ---
 title: Test for performance
-excerpt: Write thresholds to evaluate performance criteria, then increase load to see how the system performs.
+description: Write thresholds to evaluate performance criteria, then increase load to see how the system performs.
 weight: 200
 ---
 

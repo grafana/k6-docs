@@ -1,7 +1,7 @@
 ---
 title: 'expectedStatuses( statuses )'
 description: 'generates a responseCallback to check status codes'
-excerpt: 'generates a responseCallback to check status codes'
+description: 'generates a responseCallback to check status codes'
 weight: 11
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Constructor'
-excerpt: 'xk6-disruptor: ServiceDisruptor constructor'
+description: 'xk6-disruptor: ServiceDisruptor constructor'
 weight: 01
 ---
 

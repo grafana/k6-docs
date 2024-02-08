@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.send(data)'
-excerpt: 'Send a data string through the connection.'
+description: 'Send a data string through the connection.'
 weight: 10
 ---
 

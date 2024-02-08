@@ -1,6 +1,6 @@
 ---
 title: 'waitForNavigation([options])'
-excerpt: 'Browser module: page.waitForNavigation([options]) method'
+description: 'Browser module: page.waitForNavigation([options]) method'
 ---
 
 # waitForNavigation([options])

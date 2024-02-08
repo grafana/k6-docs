@@ -1,6 +1,6 @@
 ---
 title: 'ServiceDisruptor'
-excerpt: 'xk6-disruptor: ServiceDisruptor class'
+description: 'xk6-disruptor: ServiceDisruptor class'
 weight: 300
 ---
 

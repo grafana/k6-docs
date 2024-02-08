@@ -1,6 +1,6 @@
 ---
 title: 'type(selector, text[, options])'
-excerpt: 'Browser module: page.type(selector, text[, options]) method'
+description: 'Browser module: page.type(selector, text[, options]) method'
 ---
 
 # type(selector, text[, options])

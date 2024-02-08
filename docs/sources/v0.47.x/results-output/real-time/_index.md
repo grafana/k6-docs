@@ -1,6 +1,6 @@
 ---
 title: Real time
-excerpt: Send your time-series k6 metrics to multiple file formats and services
+description: Send your time-series k6 metrics to multiple file formats and services
 weight: 200
 ---
 

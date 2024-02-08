@@ -1,7 +1,7 @@
 ---
 title: 'clearHeader( name )'
 description: 'removes header from the session'
-excerpt: 'removes header from the session'
+description: 'removes header from the session'
 weight: 23
 ---
 

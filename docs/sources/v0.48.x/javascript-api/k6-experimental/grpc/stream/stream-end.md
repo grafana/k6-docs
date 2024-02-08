@@ -1,6 +1,6 @@
 ---
 title: 'Stream.end()'
-excerpt: 'Signals to the server that the client has finished sending.'
+description: 'Signals to the server that the client has finished sending.'
 weight: 40
 ---
 

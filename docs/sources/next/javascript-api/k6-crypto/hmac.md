@@ -1,7 +1,7 @@
 ---
 title: 'hmac( algorithm, secret, data, outputEncoding )'
 description: 'Use HMAC to sign input data.'
-excerpt: 'Use HMAC to sign input data.'
+description: 'Use HMAC to sign input data.'
 weight: 03
 ---
 

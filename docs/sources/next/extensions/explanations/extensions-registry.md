@@ -1,6 +1,6 @@
 ---
 title: About the Extensions Registry
-excerpt: Reasons for the registry and what is required to be included.
+description: Reasons for the registry and what is required to be included.
 weight: 01
 ---
 

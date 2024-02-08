@@ -3,7 +3,7 @@ title: 'sendMessage'
 head_title: 'SQSClient.sendMessage()'
 slug: 'sqsclient-sendmessage'
 description: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
-excerpt: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
+description: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
 weight: 10
 ---
 

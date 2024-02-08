@@ -1,6 +1,6 @@
 ---
 title: 'inputValue(selector[, options])'
-excerpt: 'Browser module: page.inputValue(selector[, options]) method'
+description: 'Browser module: page.inputValue(selector[, options]) method'
 ---
 
 # inputValue(selector[, options])

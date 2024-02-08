@@ -1,6 +1,6 @@
 ---
 title: 'dispatchEvent(type, eventInit, [options])'
-excerpt: 'Browser module: locator.dispatchEvent method'
+description: 'Browser module: locator.dispatchEvent method'
 ---
 
 # dispatchEvent(type, eventInit, [options])

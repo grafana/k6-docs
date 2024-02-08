@@ -1,6 +1,6 @@
 ---
 title: 'Build a k6 binary using Go'
-excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
+description: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 weight: 02
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'createHMAC( algorithm, secret )'
 description: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
-excerpt: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
+description: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 weight: 02
 ---
 

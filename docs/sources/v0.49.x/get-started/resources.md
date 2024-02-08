@@ -1,6 +1,6 @@
 ---
 title: k6 resources
-excerpt: 'An overview of the k6 resources beyond the k6 docs: videos, repositories, test servers, courses, and more'
+description: 'An overview of the k6 resources beyond the k6 docs: videos, repositories, test servers, courses, and more'
 weight: 05
 ---
 

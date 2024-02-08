@@ -1,6 +1,6 @@
 ---
 title: 'isClosed()'
-excerpt: 'Browser module: page.isClosed() method'
+description: 'Browser module: page.isClosed() method'
 ---
 
 # isClosed()

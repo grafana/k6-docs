@@ -1,6 +1,6 @@
 ---
 title: 'Response.html()'
-excerpt: 'Parses response as HTML and populate a Selection.'
+description: 'Parses response as HTML and populate a Selection.'
 ---
 
 # Response.html()

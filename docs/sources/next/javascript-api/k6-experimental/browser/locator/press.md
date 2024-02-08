@@ -1,6 +1,6 @@
 ---
 title: 'press(key, [options])'
-excerpt: 'Browser module: locator.press method'
+description: 'Browser module: locator.press method'
 ---
 
 # press(key, [options])

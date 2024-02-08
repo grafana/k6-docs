@@ -1,6 +1,6 @@
 ---
 title: 'k6/experimental'
-excerpt: 'k6 experimental APIs'
+description: 'k6 experimental APIs'
 weight: 07
 ---
 

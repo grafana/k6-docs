@@ -1,6 +1,6 @@
 ---
 title: 'Error handling'
-excerpt: 'How to handle errors in k6chaijs.'
+description: 'How to handle errors in k6chaijs.'
 weight: 35
 ---
 

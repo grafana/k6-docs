@@ -1,6 +1,6 @@
 ---
 title: 'HTTP Requests'
-excerpt: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
+description: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
 weight: 01
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Selection.text()'
-excerpt: 'Get the text content of the Selection.'
+description: 'Get the text content of the Selection.'
 ---
 
 # Selection.text()

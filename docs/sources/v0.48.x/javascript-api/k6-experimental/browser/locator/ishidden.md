@@ -1,6 +1,6 @@
 ---
 title: 'isHidden([options])'
-excerpt: 'Browser module: locator.isHidden method'
+description: 'Browser module: locator.isHidden method'
 ---
 
 # isHidden([options])

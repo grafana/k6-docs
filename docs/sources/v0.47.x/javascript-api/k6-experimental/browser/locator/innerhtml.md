@@ -1,6 +1,6 @@
 ---
 title: 'innerHTML([options])'
-excerpt: 'Browser module: locator.innerHTML method'
+description: 'Browser module: locator.innerHTML method'
 ---
 
 # innerHTML([options])

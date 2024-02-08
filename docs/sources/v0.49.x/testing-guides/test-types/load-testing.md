@@ -1,7 +1,7 @@
 ---
 title: 'Average-load testing'
 head_title: 'What is Load Testing? How to create a Load Test in k6'
-excerpt: 'An average-load test assesses the performance of your system in terms of concurrent users or requests per second.'
+description: 'An average-load test assesses the performance of your system in terms of concurrent users or requests per second.'
 weight: 02
 ---
 

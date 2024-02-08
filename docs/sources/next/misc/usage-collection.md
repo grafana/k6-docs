@@ -1,6 +1,6 @@
 ---
 title: 'Usage collection'
-excerpt: 'By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting an environment variable or option.'
+description: 'By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting an environment variable or option.'
 weight: 02
 ---
 

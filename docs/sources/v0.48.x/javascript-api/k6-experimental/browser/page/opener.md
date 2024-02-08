@@ -1,6 +1,6 @@
 ---
 title: 'opener()'
-excerpt: 'Browser module: page.opener method'
+description: 'Browser module: page.opener method'
 ---
 
 # opener()

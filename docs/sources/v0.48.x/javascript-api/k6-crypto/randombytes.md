@@ -1,7 +1,7 @@
 ---
 title: 'randomBytes( int )'
 description: 'randomBytes.'
-excerpt: 'randomBytes.'
+description: 'randomBytes.'
 weight: 06
 ---
 

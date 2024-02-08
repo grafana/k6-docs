@@ -2,7 +2,7 @@
 title: 'patch(url, [body], [params])'
 head_title: 'httpx.patch'
 description: 'httpx.patch makes PATCH requests'
-excerpt: 'httpx.patch makes PATCH requests'
+description: 'httpx.patch makes PATCH requests'
 weight: 13
 ---
 

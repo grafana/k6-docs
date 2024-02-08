@@ -1,6 +1,6 @@
 ---
 title: 'clear([options])'
-excerpt: 'Browser module: locator.clear method'
+description: 'Browser module: locator.clear method'
 ---
 
 # clear([options])

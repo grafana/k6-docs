@@ -1,6 +1,6 @@
 ---
 title: Extension Graduation
-excerpt: Some extensions are created with the intent to become a part of core of k6.
+description: Some extensions are created with the intent to become a part of core of k6.
 weight: 03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'isEnabled(selector[, options])'
-excerpt: 'Browser module: page.isEnabled(selector[, options]) method'
+description: 'Browser module: page.isEnabled(selector[, options]) method'
 ---
 
 # isEnabled(selector[, options])

@@ -2,7 +2,7 @@
 title: 'Hybrid approach to performance'
 heading: 'Hybrid performance with k6 browser'
 head_title: 'Hybrid performance with k6 browser'
-excerpt: 'An example on how to implement a hybrid approach to performance with k6 browser'
+description: 'An example on how to implement a hybrid approach to performance with k6 browser'
 weight: 01
 ---
 

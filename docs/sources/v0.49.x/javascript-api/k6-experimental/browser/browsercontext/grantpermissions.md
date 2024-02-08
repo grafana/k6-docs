@@ -1,6 +1,6 @@
 ---
 title: 'grantPermissions(permissions[, options])'
-excerpt: 'Grants specified permissions to the BrowserContext.'
+description: 'Grants specified permissions to the BrowserContext.'
 ---
 
 # grantPermissions(permissions[, options])

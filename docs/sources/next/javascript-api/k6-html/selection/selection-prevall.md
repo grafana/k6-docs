@@ -1,6 +1,6 @@
 ---
 title: 'Selection.prevAll([selector])'
-excerpt: 'Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.'
+descriptiontiontion: 'Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.'
 ---
 
 # Selection.prevAll([selector])

@@ -1,6 +1,6 @@
 ---
 title: 'Client.srandmember(key)'
-excerpt: 'Returns a random member of the set stored at `key`.'
+description: 'Returns a random member of the set stored at `key`.'
 ---
 
 # Client.srandmember(key)

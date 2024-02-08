@@ -1,6 +1,6 @@
 ---
 title: 'isHidden()'
-excerpt: 'Browser module: elementHandle.isHidden() method'
+description: 'Browser module: elementHandle.isHidden() method'
 ---
 
 # isHidden()

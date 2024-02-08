@@ -1,6 +1,6 @@
 ---
 title: 'Error Codes'
-excerpt: 'Error codes are unique numbers that can be used to identify and handle different application and network errors more easily.'
+description: 'Error codes are unique numbers that can be used to identify and handle different application and network errors more easily.'
 weight: 13
 ---
 

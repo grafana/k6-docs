@@ -1,6 +1,6 @@
 ---
 title: 'isEditable(selector[, options])'
-excerpt: 'Browser module: page.isEditable(selector[, options]) method'
+description: 'Browser module: page.isEditable(selector[, options]) method'
 ---
 
 # isEditable(selector[, options])

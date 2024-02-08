@@ -1,6 +1,6 @@
 ---
 title: 'dispatchEvent(selector, type, eventInit[, options])'
-excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
+description: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
 ---
 
 # dispatchEvent(selector, type, eventInit[, options])

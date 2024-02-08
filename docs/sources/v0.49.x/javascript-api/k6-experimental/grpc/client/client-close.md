@@ -1,6 +1,6 @@
 ---
 title: 'Client.close()'
-excerpt: 'Close the connection to the gRPC service. Tear down all underlying connections.'
+description: 'Close the connection to the gRPC service. Tear down all underlying connections.'
 weight: 40
 ---
 

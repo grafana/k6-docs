@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onerror'
-excerpt: 'A handler function for WebSocket connection error event.'
+description: 'A handler function for WebSocket connection error event.'
 weight: 30
 ---
 

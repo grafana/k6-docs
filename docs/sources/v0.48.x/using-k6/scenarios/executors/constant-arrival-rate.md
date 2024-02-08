@@ -1,6 +1,6 @@
 ---
 title: 'Constant arrival rate'
-excerpt: 'A fixed number of iterations are started in a specified period of time.'
+description: 'A fixed number of iterations are started in a specified period of time.'
 weight: 05
 ---
 

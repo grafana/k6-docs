@@ -1,6 +1,6 @@
 ---
 title: 'Client.hincrby(key, field, increment)'
-excerpt: 'Increments the value of a hash field by the given number.'
+description: 'Increments the value of a hash field by the given number.'
 ---
 
 # Client.hincrby(key, field, increment)

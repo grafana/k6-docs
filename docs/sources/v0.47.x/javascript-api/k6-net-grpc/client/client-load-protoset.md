@@ -1,7 +1,7 @@
 ---
 title: 'Client.loadProtoset(protosetPath)'
 slug: 'client-loadprotoset'
-excerpt: 'Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
+description: 'Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
 weight: 11
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Client.hkeys(key)'
-excerpt: 'Returns all fields of the hash stored at `key`.'
+description: 'Returns all fields of the hash stored at `key`.'
 ---
 
 # Client.hkeys(key)

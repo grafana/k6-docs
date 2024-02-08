@@ -1,6 +1,6 @@
 ---
 title: 'Parse HTML'
-excerpt: 'Scripting examples parsing HTML content.'
+description: 'Scripting examples parsing HTML content.'
 weight: 06
 ---
 

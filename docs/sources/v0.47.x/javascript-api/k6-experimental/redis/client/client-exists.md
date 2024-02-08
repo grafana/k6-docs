@@ -1,6 +1,6 @@
 ---
 title: 'Client.exists(keys)'
-excerpt: 'Returns the number of `key` arguments that exist.'
+description: 'Returns the number of `key` arguments that exist.'
 ---
 
 # Client.exists(keys)

@@ -1,6 +1,6 @@
 ---
 title: 'Externally controlled'
-excerpt: 'Control and scale execution at runtime via k6 REST API or the CLI.'
+description: 'Control and scale execution at runtime via k6 REST API or the CLI.'
 weight: 07
 ---
 

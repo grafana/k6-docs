@@ -1,6 +1,6 @@
 ---
 title: "Locator"
-excerpt: "Browser module: Locator Class"
+description: "Browser module: Locator Class"
 weight: 08
 weight: 08
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'k6'
-excerpt: 'The k6 module contains k6-specific functionality.'
+description: 'The k6 module contains k6-specific functionality.'
 weight: 02
 ---
 

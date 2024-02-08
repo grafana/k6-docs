@@ -1,6 +1,6 @@
 ---
 title: 'setDefaultTimeout(timeout)'
-excerpt: 'Sets the default timeout in milliseconds.'
+description: 'Sets the default timeout in milliseconds.'
 ---
 
 # setDefaultTimeout(timeout)

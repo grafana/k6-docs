@@ -1,6 +1,6 @@
 ---
 title: 'Client.ttl(key)'
-excerpt: 'Returns the remaining time to live of a key.'
+description: 'Returns the remaining time to live of a key.'
 ---
 
 # Client.ttl(key)

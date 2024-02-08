@@ -1,6 +1,6 @@
 ---
 title: 'Client.lpush(key, values)'
-excerpt: 'Adds the string `value` to the left of the list stored at `key`.'
+description: 'Adds the string `value` to the left of the list stored at `key`.'
 ---
 
 # Client.lpush(key, values)

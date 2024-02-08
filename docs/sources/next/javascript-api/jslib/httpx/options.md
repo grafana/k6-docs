@@ -1,7 +1,7 @@
 ---
 title: 'options(url, [body], [params])'
 description: 'httpx.options makes OPTIONS requests'
-excerpt: 'httpx.options makes OPTIONS requests'
+description: 'httpx.options makes OPTIONS requests'
 weight: 15
 ---
 

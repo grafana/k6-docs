@@ -1,6 +1,6 @@
 ---
 title: 'Data Uploads'
-excerpt: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test (SUT).'
+description: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test (SUT).'
 weight: 09
 ---
 

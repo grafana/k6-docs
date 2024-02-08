@@ -1,6 +1,6 @@
 ---
 title: 'Concepts'
-excerpt: High-level explanations about how your executor configuration can change the test execution and test results
+description: High-level explanations about how your executor configuration can change the test execution and test results
 weight: -10
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Client'
-excerpt: 'Client is a Redis client to interact with a Redis server, cluster, or sentinel.'
+description: 'Client is a Redis client to interact with a Redis server, cluster, or sentinel.'
 weight: 10
 weight: 10
 ---

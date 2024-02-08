@@ -1,7 +1,7 @@
 ---
 title: 'post( url, [body], [params] )'
 description: 'Issue an HTTP POST request.'
-excerpt: 'Issue an HTTP POST request.'
+description: 'Issue an HTTP POST request.'
 weight: 10
 ---
 

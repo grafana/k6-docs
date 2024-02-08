@@ -1,6 +1,6 @@
 ---
 title: 'Socket.setInterval(callback, interval)'
-excerpt: 'Call a function repeatedly, while the WebSocket connection is open.'
+description: 'Call a function repeatedly, while the WebSocket connection is open.'
 ---
 
 # Socket.setInterval(callback, interval)

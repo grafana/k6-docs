@@ -1,6 +1,6 @@
 ---
 title: 'newContext([options])'
-excerpt: 'Browser module: newContext method'
+description: 'Browser module: newContext method'
 ---
 
 # newContext([options])

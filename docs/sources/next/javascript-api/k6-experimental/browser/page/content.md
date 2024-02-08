@@ -1,6 +1,6 @@
 ---
 title: 'content()'
-excerpt: 'Browser module: page.content method'
+description: 'Browser module: page.content method'
 ---
 
 # content()

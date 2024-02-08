@@ -1,6 +1,6 @@
 ---
 title: 'Tags and Groups'
-excerpt: 'k6 provides the Tags and Groups APIs to help you during the analysis and easily visualize, sort and
+description: 'k6 provides the Tags and Groups APIs to help you during the analysis and easily visualize, sort and
 filter your test results.'
 weight: 08
 ---

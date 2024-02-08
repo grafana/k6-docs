@@ -1,6 +1,6 @@
 ---
 title: 'keyboard'
-excerpt: 'Browser module: page.keyboard method'
+description: 'Browser module: page.keyboard method'
 ---
 
 # keyboard

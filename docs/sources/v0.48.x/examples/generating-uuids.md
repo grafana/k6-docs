@@ -1,6 +1,6 @@
 ---
 title: 'Generating UUIDs'
-excerpt: 'Scripting example on how to generate UUIDs in your load test.'
+description: 'Scripting example on how to generate UUIDs in your load test.'
 weight: 11
 ---
 

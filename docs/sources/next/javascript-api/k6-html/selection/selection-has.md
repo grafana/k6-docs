@@ -1,6 +1,6 @@
 ---
 title: 'Selection.has(selector)'
-excerpt: 'Reduce the set of matched elements to those that have a descendant that matches the selector.'
+descriptiontion: 'Reduce the set of matched elements to those that have a descendant that matches the selector.'
 ---
 
 # Selection.has(selector)

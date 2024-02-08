@@ -1,6 +1,6 @@
 ---
 title: 'Keyboard'
-excerpt: 'Browser module: Keyboard Class'
+description: 'Browser module: Keyboard Class'
 weight: 07
 ---
 

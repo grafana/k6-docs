@@ -1,6 +1,6 @@
 ---
 title: 'Options'
-excerpt: 'Options allows to configure the tracing instrumentation behavior.'
+description: 'Options allows to configure the tracing instrumentation behavior.'
 weight: 03
 ---
 

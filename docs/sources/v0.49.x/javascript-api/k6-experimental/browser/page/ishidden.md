@@ -1,6 +1,6 @@
 ---
 title: 'isHidden(selector[, options])'
-excerpt: 'Browser module: page.isHidden(selector[, options) method'
+description: 'Browser module: page.isHidden(selector[, options) method'
 ---
 
 # isHidden(selector[, options])

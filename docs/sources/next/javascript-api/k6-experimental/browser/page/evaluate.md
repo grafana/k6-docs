@@ -1,6 +1,6 @@
 ---
 title: 'evaluate(pageFunction[, arg])'
-excerpt: 'Browser module: page.evaluate(pageFunction[, arg]) method'
+description: 'Browser module: page.evaluate(pageFunction[, arg]) method'
 ---
 
 # evaluate(pageFunction[, arg])

@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onopen'
-excerpt: 'A handler function for WebSocket connection open event.'
+description: 'A handler function for WebSocket connection open event.'
 weight: 30
 ---
 

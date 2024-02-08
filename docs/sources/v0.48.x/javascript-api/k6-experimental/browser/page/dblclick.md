@@ -1,6 +1,6 @@
 ---
 title: 'dblclick(selector[, options])'
-excerpt: 'Browser module: page.dblclick(selector[, options]) method'
+description: 'Browser module: page.dblclick(selector[, options]) method'
 ---
 
 # dblclick(selector[, options])

@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.addEventListener(event, handler)'
-excerpt: 'Set up handler functions for various events on the WebSocket connection.'
+description: 'Set up handler functions for various events on the WebSocket connection.'
 weight: 10
 ---
 

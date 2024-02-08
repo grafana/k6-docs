@@ -1,6 +1,6 @@
 ---
 title: 'injectHTTPFaults()'
-excerpt: 'xk6-disruptor: PodDisruptor.injectHTTPFaults method'
+description: 'xk6-disruptor: PodDisruptor.injectHTTPFaults method'
 weight: 300
 ---
 

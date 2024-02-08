@@ -1,6 +1,6 @@
 ---
 title: 'mainFrame()'
-excerpt: 'Browser module: page.mainFrame method'
+description: 'Browser module: page.mainFrame method'
 ---
 
 # mainFrame()

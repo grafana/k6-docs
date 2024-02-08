@@ -1,7 +1,7 @@
 ---
 title: 'Counter.add(value, [tags])'
 slug: 'counter-add'
-excerpt: 'Add a value to the Counter metric.'
+description: 'Add a value to the Counter metric.'
 ---
 
 # Counter.add(value, [tags])

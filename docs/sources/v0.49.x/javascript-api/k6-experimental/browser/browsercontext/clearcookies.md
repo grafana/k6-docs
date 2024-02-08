@@ -1,6 +1,6 @@
 ---
 title: 'clearCookies()'
-excerpt: 'Clears context cookies.'
+description: 'Clears context cookies.'
 ---
 
 # clearCookies()

@@ -1,7 +1,7 @@
 ---
 title: 'Hasher'
 description: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
-excerpt: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
+description: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
 weight: 80
 ---
 

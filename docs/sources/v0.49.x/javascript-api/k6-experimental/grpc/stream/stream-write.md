@@ -1,6 +1,6 @@
 ---
 title: 'Stream.write()'
-excerpt: 'Writes a message to the stream.'
+description: 'Writes a message to the stream.'
 weight: 40
 ---
 

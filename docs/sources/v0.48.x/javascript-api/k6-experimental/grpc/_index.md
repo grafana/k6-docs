@@ -1,6 +1,6 @@
 ---
 title: "grpc"
-excerpt: "Experimental GRPC module"
+description: "Experimental GRPC module"
 weight: 02
 weight: 02
 ---

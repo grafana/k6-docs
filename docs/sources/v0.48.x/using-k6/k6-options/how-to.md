@@ -1,7 +1,7 @@
 ---
 title: 'How to use options'
 slug: '/how-to'
-excerpt: 'How to set options in different places (with examples), how to override options, and how to access the value of an option as the test runs.'
+description: 'How to set options in different places (with examples), how to override options, and how to access the value of an option as the test runs.'
 weight: 01
 ---
 

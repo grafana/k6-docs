@@ -1,6 +1,6 @@
 ---
 title: 'Client.hget(key, field)'
-excerpt: 'Returns the value of field in the hash stored at `key`.'
+description: 'Returns the value of field in the hash stored at `key`.'
 ---
 
 # Client.hget(key, field)

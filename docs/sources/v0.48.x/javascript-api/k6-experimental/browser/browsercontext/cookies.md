@@ -1,6 +1,6 @@
 ---
 title: 'cookies([urls])'
-excerpt: 'Retrieves context cookies.'
+description: 'Retrieves context cookies.'
 ---
 
 # cookies([urls])

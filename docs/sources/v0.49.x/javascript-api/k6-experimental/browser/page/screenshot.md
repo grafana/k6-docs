@@ -1,6 +1,6 @@
 ---
 title: 'screenshot([options])'
-excerpt: 'Browser module: page.screenshot([options]) method'
+description: 'Browser module: page.screenshot([options]) method'
 ---
 
 # screenshot([options])

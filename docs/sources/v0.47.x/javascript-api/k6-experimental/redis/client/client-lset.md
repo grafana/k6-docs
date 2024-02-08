@@ -1,6 +1,6 @@
 ---
 title: 'Client.lset(key, index, element)'
-excerpt: 'Sets the list element at index `index` of the list stored at `key` to `value`.'
+description: 'Sets the list element at index `index` of the list stored at `key` to `value`.'
 ---
 
 # Client.lset(key, index, element)

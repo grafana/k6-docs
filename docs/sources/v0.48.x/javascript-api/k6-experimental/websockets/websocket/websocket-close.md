@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.close([code])'
-excerpt: 'Close the WebSocket connection.'
+description: 'Close the WebSocket connection.'
 weight: 15
 ---
 

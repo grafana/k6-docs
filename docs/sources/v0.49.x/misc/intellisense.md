@@ -1,6 +1,6 @@
 ---
 title: 'IntelliSense'
-excerpt: 'k6 has its TypeScript Type Definition that you can configure with your editor to unlock code editing features.'
+description: 'k6 has its TypeScript Type Definition that you can configure with your editor to unlock code editing features.'
 weight: 03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'instrumentHTTP'
-excerpt: 'instrumentHTTP instruments the k6 http module with tracing capabilities.'
+description: 'instrumentHTTP instruments the k6 http module with tracing capabilities.'
 weight: 01
 ---
 

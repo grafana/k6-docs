@@ -1,6 +1,6 @@
 ---
 title: 'emulateMedia([options])'
-excerpt: 'Browser module: page.emulateMedia([options]) method'
+description: 'Browser module: page.emulateMedia([options]) method'
 ---
 
 # emulateMedia([options])

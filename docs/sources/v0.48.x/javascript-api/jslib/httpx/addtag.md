@@ -1,7 +1,7 @@
 ---
 title: 'addTag( key, value )'
 description: 'adds a tag to the session'
-excerpt: 'adds a tag to the session'
+description: 'adds a tag to the session'
 weight: 24
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'Response'
 head_title: 'gRPC.Response'
-excerpt: 'The response object of a gRPC request.'
+description: 'The response object of a gRPC request.'
 weight: 30
 ---
 

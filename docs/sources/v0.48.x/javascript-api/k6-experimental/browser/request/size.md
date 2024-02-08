@@ -1,6 +1,6 @@
 ---
 title: 'size()'
-excerpt: 'Browser module: Request.size method'
+description: 'Browser module: Request.size method'
 ---
 
 # size()

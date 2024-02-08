@@ -1,6 +1,6 @@
 ---
 title: 'browser'
-excerpt: 'An overview of the browser-level APIs from browser module.'
+description: 'An overview of the browser-level APIs from browser module.'
 weight: 01
 ---
 

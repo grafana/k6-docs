@@ -1,6 +1,6 @@
 ---
 title: 'Gauge'
-excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
+description: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 weight: 71
 ---
 

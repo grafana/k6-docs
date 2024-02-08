@@ -1,6 +1,6 @@
 ---
 title: 'Client.expire(key, seconds)'
-excerpt: 'Sets an expiration date (a timeout) on the key `key`.'
+description: 'Sets an expiration date (a timeout) on the key `key`.'
 ---
 
 # Client.expire(key, seconds)

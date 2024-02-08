@@ -1,6 +1,6 @@
 ---
 title: Arrival-rate VU allocation
-excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
+description: How k6 allocates VUs in the open-model, arrival-rate executors
 weight: 20
 ---
 

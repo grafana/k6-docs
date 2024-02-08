@@ -1,6 +1,6 @@
 ---
 title: 'Client.getDel(key)'
-excerpt: 'Get the value of `key` and delete the key.'
+description: 'Get the value of `key` and delete the key.'
 ---
 
 # Client.getDel(key)

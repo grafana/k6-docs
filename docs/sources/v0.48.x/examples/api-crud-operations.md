@@ -1,6 +1,6 @@
 ---
 title: 'API CRUD Operations'
-excerpt: 'This example covers the usage of k6 to test a REST API CRUD operations.'
+description: 'This example covers the usage of k6 to test a REST API CRUD operations.'
 weight: 10
 ---
 

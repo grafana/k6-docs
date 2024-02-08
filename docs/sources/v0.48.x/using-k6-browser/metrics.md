@@ -1,6 +1,6 @@
 ---
 title: 'Browser metrics'
-excerpt: 'An overview of the different browser performance metrics that the browser module tracks.'
+description: 'An overview of the different browser performance metrics that the browser module tracks.'
 weight: 03
 ---
 

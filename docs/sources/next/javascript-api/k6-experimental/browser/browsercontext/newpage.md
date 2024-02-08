@@ -1,6 +1,6 @@
 ---
 title: 'newPage()'
-excerpt: 'Creates a new page inside this BrowserContext.'
+description: 'Creates a new page inside this BrowserContext.'
 ---
 
 # newPage()

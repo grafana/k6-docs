@@ -1,6 +1,6 @@
 ---
 title: 'Prometheus remote write'
-excerpt: 'Use the Prometheus remote write output to send test results to any Prometheus remote write endpoint.'
+description: 'Use the Prometheus remote write output to send test results to any Prometheus remote write endpoint.'
 weight: 00
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Build a k6 binary using Docker'
-excerpt: 'Guide to build a k6 binary with extensions using Docker.'
+description: 'Guide to build a k6 binary with extensions using Docker.'
 weight: 03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'selectOption(values, [options])'
-excerpt: 'Browser module: locator.selectOption method'
+description: 'Browser module: locator.selectOption method'
 ---
 
 # selectOption(values, [options])

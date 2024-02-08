@@ -1,6 +1,6 @@
 ---
 title: 'waitForEvent(event[, optionsOrPredicate])'
-excerpt: 'Waits for event to fire and returns its value.'
+description: 'Waits for event to fire and returns its value.'
 ---
 
 Waits for the event to fire and returns its value. If a predicate function has been set it will pass the value to the predicate function, which must return `true` for the promise to resolve.
