@@ -53,7 +53,7 @@ So it's unnecessary to use a `sleep()` function at the end of the VU code.
 ## Example
 
 This example schedules a constant rate of 30 iterations per second for 30 seconds.
-It allocates 50 VUs for k6 to dynamically use as needed.
+It pre-allocates 2 VUs, and allows k6 to dynamically schedule up to 50 VUs as needed.
 
 {{< code >}}
 
@@ -75,8 +75,12 @@ export const options = {
       // Start `rate` iterations per second
       timeUnit: '1s',
 
-      // Pre-allocate VUs
-      preAllocatedVUs: 50,
+      // Pre-allocate 2 VUs before starting the test
+      preAllocatedVUs: 2,
+
+      // Spin up a maximum of 50 VUs to sustain the defined
+      // constant arrival rate.
+      maxVUs: 50,
     },
   },
 };
@@ -98,8 +102,7 @@ Based upon our test scenario inputs and results:
 
 - The desired rate of 30 iterations started every 1 second is achieved and maintained for the majority of the test.
 - The test scenario runs for the specified 30 second duration.
-- Having started with 50 VUs (as specified by the `preAllocatedVUs` option), k6 automatically adjusts the number of VUs to achieve the desired rate, up to the allocated number. For this test, this ended up as 17 VUs.
-- The number of VUs to achieve the desired rate varies depending on how long each iteration takes to execute. For this test definition, if it would take exactly 1 second, then 30 VUs would be needed. However, as it takes less than 1 second, then less VUs are needed. 
-- Exactly 900 iterations are started in total, `30s * 30 iters/s`.
+- Having started with 2 VUs (as specified by the `preAllocatedVUs` option), k6 automatically adjusts the number of VUs to achieve the desired rate, up to the `maxVUs`. For this test, this ended up as 17 VUs.
+- The number of VUs to achieve the desired rate varies depending on how long each iteration takes to execute. For this test definition, if it would take exactly 1 second, then 30 VUs would be needed. However, as it takes less than 1 second, then less VUs are needed.
 
 > Using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate, as resources need to continually be allocated to achieve the rate.
