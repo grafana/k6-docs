@@ -1,7 +1,7 @@
 ---
 title: 'head( url, [params] )'
 description: 'Issue an HTTP HEAD request.'
-excerpt: 'Issue an HTTP HEAD request.'
+description: 'Issue an HTTP HEAD request.'
 weight: 10
 ---
 

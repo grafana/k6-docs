@@ -1,7 +1,7 @@
 ---
 title: 'group( name, fn )'
 description: 'Runs code inside a group. Used to organize results in a test.'
-excerpt: 'Runs code inside a group. Used to organize results in a test.'
+description: 'Runs code inside a group. Used to organize results in a test.'
 ---
 
 # group( name, fn )

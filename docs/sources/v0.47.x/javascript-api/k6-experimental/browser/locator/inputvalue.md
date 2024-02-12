@@ -1,6 +1,6 @@
 ---
 title: 'inputValue([options])'
-excerpt: 'Browser module: locator.inputValue method'
+description: 'Browser module: locator.inputValue method'
 ---
 
 # inputValue([options])

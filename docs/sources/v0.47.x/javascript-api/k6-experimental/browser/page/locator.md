@@ -1,6 +1,6 @@
 ---
 title: 'locator(selector)'
-excerpt: 'Browser module: page.locator(selector) method'
+description: 'Browser module: page.locator(selector) method'
 ---
 
 # locator(selector)

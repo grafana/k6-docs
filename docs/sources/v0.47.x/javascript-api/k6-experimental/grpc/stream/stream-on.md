@@ -1,6 +1,6 @@
 ---
 title: 'Stream.on()'
-excerpt: 'Set up handler functions for various events on the GRPC stream.'
+description: 'Set up handler functions for various events on the GRPC stream.'
 weight: 10
 ---
 

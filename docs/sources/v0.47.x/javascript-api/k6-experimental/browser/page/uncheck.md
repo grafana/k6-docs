@@ -1,6 +1,6 @@
 ---
 title: 'uncheck(selector[, options])'
-excerpt: 'Browser module: page.uncheck(selector[, options]) method'
+description: 'Browser module: page.uncheck(selector[, options]) method'
 ---
 
 # uncheck(selector[, options])

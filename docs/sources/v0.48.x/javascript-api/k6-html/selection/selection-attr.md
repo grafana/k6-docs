@@ -1,6 +1,6 @@
 ---
 title: 'Selection.attr(name)'
-excerpt: 'Get the value of an attribute for the first element in the Selection.'
+description: 'Get the value of an attribute for the first element in the Selection.'
 ---
 
 # Selection.attr(name)

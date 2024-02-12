@@ -1,6 +1,6 @@
 ---
 title: SharedArray
-excerpt: 'SharedArray is an array-like object that shares the underlying memory between VUs.'
+description: 'SharedArray is an array-like object that shares the underlying memory between VUs.'
 weight: 1
 ---
 

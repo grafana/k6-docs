@@ -1,6 +1,6 @@
 ---
 title: 'Client.incr(key)'
-excerpt: 'Increments the number stored at `key` by one.'
+description: 'Increments the number stored at `key` by one.'
 ---
 
 # Client.incr(key)

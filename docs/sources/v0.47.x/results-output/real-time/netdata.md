@@ -1,6 +1,6 @@
 ---
 title: 'Netdata'
-excerpt: 'You can send k6 output to Netdata. With this integration, visualize test results with zero configuration, in seconds'
+description: 'You can send k6 output to Netdata. With this integration, visualize test results with zero configuration, in seconds'
 weight: 00
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Cookie'
-excerpt: 'Browser module: Cookie Class'
+description: 'Browser module: Cookie Class'
 ---
 
 # Cookie

@@ -1,6 +1,6 @@
 ---
 title: Workaround to calculate iteration_duration
-excerpt: 'A threshold can calculate the value of a metric excluding the results of the setup and teardown functions'
+description: 'A threshold can calculate the value of a metric excluding the results of the setup and teardown functions'
 _build:
   list: false
 weight: 20

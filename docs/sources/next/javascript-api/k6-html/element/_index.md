@@ -1,7 +1,7 @@
 ---
 title: 'Element'
 description: 'An HTML DOM element as returned by the Selection API.'
-excerpt: 'An HTML DOM element as returned by the Selection API.'
+description: 'An HTML DOM element as returned by the Selection API.'
 weight: 20
 ---
 
@@ -16,6 +16,7 @@ The Element object provides a similar API to the [DOM Element API](https://devel
 
 | Method                 | Description                                                                                                                                                              |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element/element-selection) | The selection matching the element.                                                                                                                       |
 | nodeName               | The name of the element.                                                                                                                                                 |
 | nodeType               | The type of the element.                                                                                                                                                 |
 | nodeValue              | The element value.                                                                                                                                                       |

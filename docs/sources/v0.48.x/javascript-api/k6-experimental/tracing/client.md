@@ -1,6 +1,6 @@
 ---
 title: 'Client'
-excerpt: 'Client is a HTTP client attaching tracing information to its requests.'
+description: 'Client is a HTTP client attaching tracing information to its requests.'
 weight: 02
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'selectOption(selector, values[, options])'
-excerpt: 'Browser module: page.selectOption(selector, values[, options]) method'
+description: 'Browser module: page.selectOption(selector, values[, options]) method'
 ---
 
 # selectOption(selector, values[, options])

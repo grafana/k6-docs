@@ -1,6 +1,6 @@
 ---
 title: 'k6/metrics'
-excerpt: 'k6 Custom Metrics API'
+description: 'k6 Custom Metrics API'
 weight: 10
 ---
 

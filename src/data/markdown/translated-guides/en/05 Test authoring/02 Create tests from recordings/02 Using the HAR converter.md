@@ -22,7 +22,7 @@ A few popular ones are:
 
 - [Chrome](https://www.google.com/chrome/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/)
-- [Microsoft Edge](https://www.microsoft.com/en-us/windows/microsoft-edge)
+- [Microsoft Edge](https://www.microsoft.com/en-us/edge)
 - [Charles recording proxy](http://www.charlesproxy.com/)(HTTP proxy/recorder)
 - [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Shared iterations'
-excerpt: 'A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed.'
+description: 'A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed.'
 weight: 01
 ---
 

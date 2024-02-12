@@ -1,6 +1,6 @@
 ---
 title: 'Client.rpop(key)'
-excerpt: 'Removes and returns the last element of the list stored at `key`.'
+description: 'Removes and returns the last element of the list stored at `key`.'
 ---
 
 # Client.rpop(key)

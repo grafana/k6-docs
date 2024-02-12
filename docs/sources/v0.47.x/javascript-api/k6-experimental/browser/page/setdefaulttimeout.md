@@ -1,6 +1,6 @@
 ---
 title: 'setDefaultTimeout(timeout)'
-excerpt: 'Browser module: page.setDefaultTimeout(timeout) method'
+description: 'Browser module: page.setDefaultTimeout(timeout) method'
 ---
 
 # setDefaultTimeout(timeout)

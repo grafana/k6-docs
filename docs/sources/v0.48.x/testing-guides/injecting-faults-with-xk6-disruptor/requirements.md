@@ -1,6 +1,6 @@
 ---
 title: 'Requirements'
-excerpt: 'Requirements for using xk6-disruptor in your test scripts'
+description: 'Requirements for using xk6-disruptor in your test scripts'
 weight: 02
 ---
 

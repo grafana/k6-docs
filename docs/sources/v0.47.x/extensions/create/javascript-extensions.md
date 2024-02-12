@@ -1,6 +1,6 @@
 ---
 title: 'JavaScript Extensions'
-excerpt: 'Follow these steps to build a JS extension for k6.'
+description: 'Follow these steps to build a JS extension for k6.'
 weight: 01
 ---
 

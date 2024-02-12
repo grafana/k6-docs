@@ -1,6 +1,6 @@
 ---
 title: 'Client.smembers(key)'
-excerpt: 'Returns all the members of the set stored at `key`.'
+description: 'Returns all the members of the set stored at `key`.'
 ---
 
 # Client.smembers(key)

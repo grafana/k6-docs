@@ -1,6 +1,6 @@
 ---
 title: 'CSV'
-excerpt: 'You can also make k6 output detailed statistics in a CSV format by using the --out option.'
+description: 'You can also make k6 output detailed statistics in a CSV format by using the --out option.'
 weight: 00
 ---
 

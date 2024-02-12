@@ -1,6 +1,6 @@
 ---
 title: 'Client.sismember(key, member)'
-excerpt: 'Determines if a given value is a member of the set stored at `key`.'
+description: 'Determines if a given value is a member of the set stored at `key`.'
 ---
 
 # Client.sismember(key, member)

@@ -1,7 +1,7 @@
 ---
 weight: 04
 title: Results output
-excerpt: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
+description: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
 ---
 
 # Results output
@@ -22,3 +22,4 @@ If you stream your metrics, you can either write them to a file, like JSON, or s
 - [Real time results](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time)
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
 - [Build an output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions)
+- [k6 data collection pipeline](https://grafana.com/blog/2023/08/10/understanding-grafana-k6-a-simple-guide-to-the-load-testing-tool/)

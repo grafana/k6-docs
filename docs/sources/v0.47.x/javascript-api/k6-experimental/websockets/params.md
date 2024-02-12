@@ -1,7 +1,7 @@
 ---
 title: 'Params'
 description: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
-excerpt: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
+description: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 weight: 20
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Fine-tuning OS'
-excerpt: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
+description: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
 weight: 04
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'waitForTimeout(timeout)'
-excerpt: 'Browser module: waitForTimeout(timeout) method'
+description: 'Browser module: waitForTimeout(timeout) method'
 ---
 
 # waitForTimeout(timeout)

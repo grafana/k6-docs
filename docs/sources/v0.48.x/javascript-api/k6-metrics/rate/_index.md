@@ -1,6 +1,6 @@
 ---
 title: 'Rate'
-excerpt: 'Rate is an object for representing a custom metric keeping track of the percentage of added values that are non-zero.'
+description: 'Rate is an object for representing a custom metric keeping track of the percentage of added values that are non-zero.'
 weight: 72
 weight: 72
 ---

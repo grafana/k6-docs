@@ -1,6 +1,6 @@
 ---
 title: 'Socket.sendBinary(data)'
-excerpt: 'Send binary data through the connection.'
+description: 'Send binary data through the connection.'
 ---
 
 # Socket.sendBinary(data)

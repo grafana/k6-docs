@@ -1,6 +1,6 @@
 ---
 title: 'Client.sadd(key, members)'
-excerpt: 'Adds the specified members to the set stored at `key`.'
+description: 'Adds the specified members to the set stored at `key`.'
 ---
 
 # Client.sadd(key, members)

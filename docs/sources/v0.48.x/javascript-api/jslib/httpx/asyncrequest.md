@@ -2,7 +2,7 @@
 title: 'asyncRequest(method, url, [body], [params])'
 head_title: 'httpx.asyncRequest()'
 description: 'Generic method for making asynchronous HTTP requests'
-excerpt: 'Generic method for making asynchronous HTTP requests'
+description: 'Generic method for making asynchronous HTTP requests'
 weight: 08
 ---
 

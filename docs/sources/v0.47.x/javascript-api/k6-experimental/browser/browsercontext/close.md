@@ -1,6 +1,6 @@
 ---
 title: 'close()'
-excerpt: 'Close the BrowserContext and all its pages.'
+description: 'Close the BrowserContext and all its pages.'
 ---
 
 # close()

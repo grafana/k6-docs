@@ -1,6 +1,6 @@
 ---
 title: 'Troubleshooting'
-excerpt: 'Instructions to fix the most common installation issues.'
+description: 'Instructions to fix the most common installation issues.'
 weight: 01
 ---
 

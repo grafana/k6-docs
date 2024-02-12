@@ -1,6 +1,6 @@
 ---
 title: Stream
-excerpt: 'GRPC Streams'
+description: 'GRPC Streams'
 weight: 50
 weight: 30
 ---

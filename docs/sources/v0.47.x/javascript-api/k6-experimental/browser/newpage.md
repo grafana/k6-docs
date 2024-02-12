@@ -1,6 +1,6 @@
 ---
 title: 'newPage([options])'
-excerpt: 'Browser module: newPage method'
+description: 'Browser module: newPage method'
 ---
 
 # newPage([options])

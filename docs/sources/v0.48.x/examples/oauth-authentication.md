@@ -1,6 +1,6 @@
 ---
 title: 'OAuth Authentication'
-excerpt: 'Scripting examples on how to use OAuth authentication in your load test.'
+description: 'Scripting examples on how to use OAuth authentication in your load test.'
 weight: 03
 ---
 

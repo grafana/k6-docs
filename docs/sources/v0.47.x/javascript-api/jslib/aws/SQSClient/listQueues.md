@@ -2,7 +2,7 @@
 title: 'listQueues'
 head_title: 'SQSClient.listQueues()'
 description: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
-excerpt: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
+description: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
 weight: 10
 ---
 

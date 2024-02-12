@@ -1,6 +1,6 @@
 ---
 title: 'Client.connect(address [,params])'
-excerpt: 'Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown.'
+description: 'Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown.'
 weight: 20
 slug: 'client-connect'
 ---
@@ -24,8 +24,8 @@ See [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-
 | `ConnectParams.reflect`         | boolean         | Whether to use the [gRPC server reflection protocol](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md) when connecting.                                            |
 | `ConnectParams.reflectMetadata` | object          | Object with key-value pairs representing custom metadata the user would like to add to the reflection request.                                                                      |
 | `ConnectParams.timeout`         | string / number | Connection timeout to use. Default timeout is `"60s"`. <br/> The type can also be a number, in which case k6 interprets it as milliseconds, e.g., `60000` is equivalent to `"60s"`. |
-| `ConnectParams.maxReceiveSize`  | number          | Sets the maximum message size in bytes the client can receive. Defaults to 0.                                                                                                       |
-| `ConnectParams.maxSendSize`     | number          | Sets the maximum message size in bytes the client can send. Defaults to 0.                                                                                                          |
+| `ConnectParams.maxReceiveSize`  | number          | Sets the maximum message size in bytes the client can receive. Defaults to `grpc-go` default, which is 4MB.                                                                         |
+| `ConnectParams.maxSendSize`     | number          | Sets the maximum message size in bytes the client can send. Defaults to `grpc-go` default, which is approximately 2GB.                                                              |
 | `ConnectParams.tls` (optional)  | object          | [TLS](#tls) settings of the connection. Defaults to `null`.                                                                                                                         |
 
 ## TLS

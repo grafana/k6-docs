@@ -1,6 +1,6 @@
 ---
 title: 'Datadog'
-excerpt: 'Send k6 output to Datadog to visualize load test results and correlate performance testing metrics in Datadog.'
+description: 'Send k6 output to Datadog to visualize load test results and correlate performance testing metrics in Datadog.'
 weight: 00
 ---
 

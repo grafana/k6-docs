@@ -1,7 +1,7 @@
 ---
 title: 'Soak testing'
 head_title: 'What is Soak Testing? How to create a Soak Test in k6'
-excerpt: 'A Soak Test tests the reliability and performance of your system over extended periods of use.'
+description: 'A Soak Test tests the reliability and performance of your system over extended periods of use.'
 weight: 05
 ---
 

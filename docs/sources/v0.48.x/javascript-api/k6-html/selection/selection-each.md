@@ -1,6 +1,6 @@
 ---
 title: 'Selection.each(fn)'
-excerpt: 'Iterate over a Selection, executing a function for each matched element.'
+description: 'Iterate over a Selection, executing a function for each matched element.'
 ---
 
 # Selection.each(fn)

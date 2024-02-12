@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onmessage'
-excerpt: 'A handler function for message event WebSocket.'
+descriptiontion: 'A handler function for message event WebSocket.'
 weight: 30
 ---
 

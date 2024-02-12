@@ -1,6 +1,6 @@
 ---
 title: 'HTTP2'
-excerpt: 'Information on how to load test HTTP/2.'
+description: 'Information on how to load test HTTP/2.'
 weight: 12
 ---
 

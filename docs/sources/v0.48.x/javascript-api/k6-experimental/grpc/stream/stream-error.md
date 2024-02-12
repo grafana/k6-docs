@@ -1,7 +1,7 @@
 ---
 title: 'Error'
 head_title: 'gRPC.Error'
-excerpt: 'The error object of a gRPC stream.'
+description: 'The error object of a gRPC stream.'
 weight: 15
 ---
 

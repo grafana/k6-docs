@@ -1,6 +1,6 @@
 ---
 title: 'Client.lrange(key, start, stop)'
-excerpt: 'Returns the specified elements of the list stored at `key`.'
+description: 'Returns the specified elements of the list stored at `key`.'
 ---
 
 # Client.lrange(key, start, stop)

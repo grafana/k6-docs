@@ -1,6 +1,6 @@
 ---
 title: 'CookieJar.delete(url, name)'
-excerpt: 'Delete a cookie of a specified `name` for the given URL.'
+description: 'Delete a cookie of a specified `name` for the given URL.'
 ---
 
 # CookieJar.delete(url, name)

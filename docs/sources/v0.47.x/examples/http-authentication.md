@@ -1,6 +1,6 @@
 ---
 title: 'HTTP Authentication'
-excerpt: 'Scripting examples on how to use different authentication or authorization methods in your load test.'
+description: 'Scripting examples on how to use different authentication or authorization methods in your load test.'
 weight: 02
 ---
 

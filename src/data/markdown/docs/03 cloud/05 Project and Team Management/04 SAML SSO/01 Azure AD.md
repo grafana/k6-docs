@@ -17,7 +17,7 @@ On this page, you can read:
 To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
 1. An [Enterprise plan](https://k6.io/pricing) or a plan with the SAML SSO add-on.
-2. An [Azure AD Premium Subscription](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
+2. An [Azure AD Premium Subscription](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing).
 
 ## Azure Active Directory
 

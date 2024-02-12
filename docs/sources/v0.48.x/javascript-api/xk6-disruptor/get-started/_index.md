@@ -1,6 +1,6 @@
 ---
 title: 'Get started'
-excerpt: 'xk6-disruptor is an extension that adds fault injection capabilities to k6. Start here to learn the basics and how to use the disruptor'
+description: 'xk6-disruptor is an extension that adds fault injection capabilities to k6. Start here to learn the basics and how to use the disruptor'
 weight: 01
 ---
 

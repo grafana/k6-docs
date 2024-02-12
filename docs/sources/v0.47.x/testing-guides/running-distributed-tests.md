@@ -1,6 +1,6 @@
 ---
 title: 'Running distributed tests'
-excerpt: 'How to run distributed tests in Kubernetes'
+description: 'How to run distributed tests in Kubernetes'
 weight: 05
 ---
 

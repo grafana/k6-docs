@@ -1,6 +1,6 @@
 ---
 title: 'touchScreen'
-excerpt: 'Browser module: page.touchScreen method'
+description: 'Browser module: page.touchScreen method'
 ---
 
 # touchScreen

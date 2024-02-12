@@ -1,6 +1,6 @@
 ---
 title: 'isChecked([options])'
-excerpt: 'Browser module: locator.isChecked method'
+description: 'Browser module: locator.isChecked method'
 ---
 
 # isChecked([options])

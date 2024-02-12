@@ -2,8 +2,7 @@
 title: 'Load test types'
 head_title: 'Understanding the Different Types of Load Tests: Goals and Recommendations'
 excerpt: 'A series of conceptual articles explaining the different types of load tests. Learn about planning, running, and interpreting different tests for different performance goals.'
-# // TODO: Point canonical to new URL once it's published
-# canonicalUrl: https://grafana.com/load-testing/load-testing-types/
+canonicalUrl: https://grafana.com/load-testing/types-of-load-testing/
 ---
 
 Many things can go wrong when a system is under load.

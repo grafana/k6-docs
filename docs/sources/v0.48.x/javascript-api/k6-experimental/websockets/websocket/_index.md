@@ -1,7 +1,7 @@
 ---
 title: 'WebSocket'
 description: 'Create a WebSocket connection, and provides a WebSocket instance to interact with the service.'
-excerpt: 'Create a WebSocket connection, and provides a WebSocket instance to interact with the service.'
+description: 'Create a WebSocket connection, and provides a WebSocket instance to interact with the service.'
 weight: 10
 weight: 10
 ---

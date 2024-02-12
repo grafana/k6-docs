@@ -1,6 +1,6 @@
 ---
 title: 'waitForFunction(pageFunction, arg[, options])'
-excerpt: 'Browser module: page.waitForFunction(pageFunction, arg[, options]) method'
+description: 'Browser module: page.waitForFunction(pageFunction, arg[, options]) method'
 ---
 
 # waitForFunction(pageFunction, arg[, options])

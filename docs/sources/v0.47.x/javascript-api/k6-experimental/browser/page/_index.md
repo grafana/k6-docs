@@ -1,6 +1,6 @@
 ---
 title: 'Page'
-excerpt: 'Browser module: Page Class'
+description: 'Browser module: Page Class'
 weight: 10
 ---
 

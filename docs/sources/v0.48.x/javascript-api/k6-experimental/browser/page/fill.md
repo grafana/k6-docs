@@ -1,6 +1,6 @@
 ---
 title: 'fill(selector, value[, options])'
-excerpt: 'Browser module: page.fill(selector, value[, options]) method'
+description: 'Browser module: page.fill(selector, value[, options]) method'
 ---
 
 # fill(selector, value[, options])

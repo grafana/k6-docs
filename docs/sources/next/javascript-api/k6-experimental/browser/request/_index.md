@@ -1,6 +1,6 @@
 ---
 title: "Request"
-excerpt: "Browser module: Request Class"
+descriptiontiontiontion: "Browser module: Request Class"
 weight: 11
 weight: 11
 ---

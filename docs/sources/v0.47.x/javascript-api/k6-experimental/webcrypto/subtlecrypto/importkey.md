@@ -1,6 +1,6 @@
 ---
 title: 'importKey'
-excerpt: 'importKey imports a key from an external, portable format and gives you a CryptoKey object.'
+description: 'importKey imports a key from an external, portable format and gives you a CryptoKey object.'
 weight: 06
 ---
 

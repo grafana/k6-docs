@@ -1,6 +1,6 @@
 ---
 title: 'generateKey'
-excerpt: 'generateKey generates a new key.'
+description: 'generateKey generates a new key.'
 weight: 05
 ---
 

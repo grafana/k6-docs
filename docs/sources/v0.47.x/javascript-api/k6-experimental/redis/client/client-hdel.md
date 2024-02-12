@@ -1,6 +1,6 @@
 ---
 title: 'Client.hdel(key, fields)'
-excerpt: 'Deletes fields from the hash stored at `key`.'
+description: 'Deletes fields from the hash stored at `key`.'
 ---
 
 # Client.hdel(key, fields)

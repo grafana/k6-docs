@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onpong'
-excerpt: 'A handler function for WebSocket connection pong event.'
+description: 'A handler function for WebSocket connection pong event.'
 weight: 30
 ---
 

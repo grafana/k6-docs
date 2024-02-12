@@ -1,6 +1,6 @@
 ---
 title: 'Breakpoint testing'
-excerpt: 'Breakpoint tests aim to find system limits. They increase load until the system fails.'
+description: 'Breakpoint tests aim to find system limits. They increase load until the system fails.'
 weight: 07
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Frame'
-excerpt: 'Browser module: Frame Class'
+description: 'Browser module: Frame Class'
 weight: 05
 ---
 

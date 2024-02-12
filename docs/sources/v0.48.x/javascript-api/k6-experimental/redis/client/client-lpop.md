@@ -1,6 +1,6 @@
 ---
 title: 'Client.lpop(key)'
-excerpt: 'Removes and returns the first element of the list stored at `key`.'
+description: 'Removes and returns the first element of the list stored at `key`.'
 ---
 
 # Client.lpop(key)

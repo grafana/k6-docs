@@ -1,6 +1,6 @@
 ---
 title: 'Get started with k6'
-excerpt: A series of docs to learn how to use the major features of k6
+description: A series of docs to learn how to use the major features of k6
 weight: 01
 weight: -10
 ---

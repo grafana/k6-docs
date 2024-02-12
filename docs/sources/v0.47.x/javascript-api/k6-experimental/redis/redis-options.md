@@ -1,6 +1,6 @@
 ---
 title: 'Redis options'
-excerpt: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
+description: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
 weight: 20
 ---
 

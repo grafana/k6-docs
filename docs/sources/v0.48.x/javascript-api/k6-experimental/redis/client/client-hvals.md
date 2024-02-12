@@ -1,6 +1,6 @@
 ---
 title: 'Client.hvals(key)'
-excerpt: 'Returns all values of the hash stored at `key`.'
+description: 'Returns all values of the hash stored at `key`.'
 ---
 
 # Client.hvals(key)

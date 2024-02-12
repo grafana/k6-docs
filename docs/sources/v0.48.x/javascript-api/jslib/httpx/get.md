@@ -1,7 +1,7 @@
 ---
 title: 'get(url, [body], [params])'
 description: 'httpx.get makes GET requests'
-excerpt: 'httpx.get makes GET requests'
+description: 'httpx.get makes GET requests'
 weight: 10
 ---
 

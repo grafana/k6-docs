@@ -1,6 +1,6 @@
 ---
 title: 'Response.json( [selector] )'
-excerpt: 'Parses the response body data as JSON and returns a JS object or array.'
+description: 'Parses the response body data as JSON and returns a JS object or array.'
 ---
 
 # Response.json( [selector] )

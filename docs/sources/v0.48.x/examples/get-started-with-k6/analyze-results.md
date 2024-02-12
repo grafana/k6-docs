@@ -1,6 +1,6 @@
 ---
 title: Analyze results
-excerpt: Use k6 to write custom metrics and filter results.
+description: Use k6 to write custom metrics and filter results.
 weight: 300
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS'
-excerpt: 'By default and without any special configuration, k6 will connect and talk to servers over TLS. You just need to make sure to specify your request URLs with the https scheme.'
+description: 'By default and without any special configuration, k6 will connect and talk to servers over TLS. You just need to make sure to specify your request URLs with the https scheme.'
 weight: 04
 weight: 04
 ---

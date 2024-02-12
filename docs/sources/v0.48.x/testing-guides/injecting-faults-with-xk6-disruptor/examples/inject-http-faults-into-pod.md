@@ -1,6 +1,6 @@
 ---
 title: 'Inject HTTP faults into Pod'
-excerpt: 'This example shows how to test the effect of faults injected in the HTTP requests served by a pod.'
+description: 'This example shows how to test the effect of faults injected in the HTTP requests served by a pod.'
 weight: 02
 ---
 

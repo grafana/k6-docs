@@ -1,6 +1,6 @@
 ---
 title: 'clearPermissions()'
-excerpt: 'Clears all permission overrides for the BrowserContext.'
+description: 'Clears all permission overrides for the BrowserContext.'
 ---
 
 # clearPermissions()

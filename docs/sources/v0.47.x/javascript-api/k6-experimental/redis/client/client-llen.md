@@ -1,6 +1,6 @@
 ---
 title: 'Client.llen(key)'
-excerpt: 'Returns the length of the list stored at `key`.'
+description: 'Returns the length of the list stored at `key`.'
 ---
 
 # Client.llen(key)

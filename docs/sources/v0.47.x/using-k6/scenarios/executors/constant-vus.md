@@ -1,6 +1,6 @@
 ---
 title: 'Constant VUs'
-excerpt: 'A fixed number of VUs execute as many iterations as possible for a specified amount of time.'
+description: 'A fixed number of VUs execute as many iterations as possible for a specified amount of time.'
 weight: 03
 ---
 

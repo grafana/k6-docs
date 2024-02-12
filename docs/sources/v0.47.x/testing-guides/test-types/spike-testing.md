@@ -1,6 +1,6 @@
 ---
 title: 'Spike testing'
-excerpt: 'Spike tests simulate moments of short, extreme load'
+description: 'Spike tests simulate moments of short, extreme load'
 weight: 06
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'check([options])'
-excerpt: 'Browser module: locator.check method'
+description: 'Browser module: locator.check method'
 ---
 
 # check([options])

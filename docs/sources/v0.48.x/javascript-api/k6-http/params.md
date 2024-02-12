@@ -1,7 +1,7 @@
 ---
 title: 'Params'
 description: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
-excerpt: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
+description: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
 weight: 60
 ---
 

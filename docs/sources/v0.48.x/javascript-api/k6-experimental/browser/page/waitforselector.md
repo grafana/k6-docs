@@ -1,6 +1,6 @@
 ---
 title: 'waitForSelector(selector[, options])'
-excerpt: 'Browser module: page.waitForSelector(selector[, options]) method'
+description: 'Browser module: page.waitForSelector(selector[, options]) method'
 ---
 
 # waitForSelector(selector[, options])

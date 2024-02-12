@@ -1,6 +1,6 @@
 ---
 title: 'Recommended practices'
-excerpt: 'A list of different examples and recommended practices when working with the k6 browser module'
+description: 'A list of different examples and recommended practices when working with the k6 browser module'
 weight: 100
 weight: 100
 ---

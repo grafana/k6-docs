@@ -1,6 +1,6 @@
 ---
 title: "tracing"
-excerpt: "k6 Tracing experimental API"
+descriptiontion: "k6 Tracing experimental API"
 weight: 04
 weight: 04
 ---

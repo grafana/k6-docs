@@ -1,7 +1,7 @@
 ---
 title: 'options( url, [body], [params] )'
 description: 'Issue an HTTP OPTIONS request.'
-excerpt: 'Issue an HTTP OPTIONS request.'
+description: 'Issue an HTTP OPTIONS request.'
 weight: 10
 ---
 

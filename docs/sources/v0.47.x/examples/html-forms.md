@@ -1,6 +1,6 @@
 ---
 title: 'HTML Forms'
-excerpt: 'Scripting example on how to handle HTML forms in a k6 test.'
+description: 'Scripting example on how to handle HTML forms in a k6 test.'
 weight: 07
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'encrypt'
-excerpt: 'encrypt decrypts some encrypted data'
+description: 'encrypt decrypts some encrypted data'
 weight: 03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'isChecked(selector[, options])'
-excerpt: 'Browser module: page.isChecked(selector[, options]) method'
+description: 'Browser module: page.isChecked(selector[, options]) method'
 ---
 
 # isChecked(selector[, options])

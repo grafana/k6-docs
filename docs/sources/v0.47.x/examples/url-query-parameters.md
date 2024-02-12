@@ -1,6 +1,6 @@
 ---
 title: 'URLs with query parameters'
-excerpt: 'Scripting examples using URL and URLSearchParams modules.'
+description: 'Scripting examples using URL and URLSearchParams modules.'
 weight: 21
 ---
 

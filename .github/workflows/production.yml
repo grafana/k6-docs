@@ -31,14 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
-      - name: Use Node.js 16.xs
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Use Node.js 20.xs
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
@@ -52,14 +52,14 @@ jobs:
       - update-dependencies
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
-      - name: Use Node.js 16.xs
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Use Node.js 20.xs
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
@@ -79,7 +79,7 @@ jobs:
     name: Lint prose
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: errata-ai/vale-action@reviewdog
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -96,14 +96,14 @@ jobs:
       - lint
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
-      - name: Use Node.js 16.xs
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Use Node.js 20.xs
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}

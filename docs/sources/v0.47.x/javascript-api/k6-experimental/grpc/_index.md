@@ -1,13 +1,13 @@
 ---
 title: "grpc"
-excerpt: "Experimental GRPC module"
+description: "Experimental GRPC module"
 weight: 02
 weight: 02
 ---
 
 # grpc
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
+{{< docs/shared source="k6" lookup="experimental-grpc-module.md" version="<K6_VERSION>" >}}
 
 The `k6/experimental/grpc` module is an extension of the [`k6/net/grpc`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc). It provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 

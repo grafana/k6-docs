@@ -1,6 +1,6 @@
 ---
 title: 'Mouse'
-excerpt: 'Browser module: Mouse Class'
+description: 'Browser module: Mouse Class'
 weight: 09
 ---
 

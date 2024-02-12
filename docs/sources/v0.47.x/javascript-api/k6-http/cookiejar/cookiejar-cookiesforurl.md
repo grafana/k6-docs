@@ -1,6 +1,6 @@
 ---
 title: 'CookieJar.cookiesForURL(url)'
-excerpt: 'Get object with all cookies for the given URL, where the key is the cookie name and the value is an array.'
+description: 'Get object with all cookies for the given URL, where the key is the cookie name and the value is an array.'
 ---
 
 # CookieJar.cookiesForURL(url)

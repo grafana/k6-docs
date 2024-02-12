@@ -1,7 +1,7 @@
 ---
 title: 'connect( url, params, callback )'
 description: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
-excerpt: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
+description: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
 weight: 10
 ---
 

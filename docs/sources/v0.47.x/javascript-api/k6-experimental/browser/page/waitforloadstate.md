@@ -1,6 +1,6 @@
 ---
 title: 'waitForLoadState(state[, options])'
-excerpt: 'Browser module: page.waitForLoadState(state[, options]) method'
+description: 'Browser module: page.waitForLoadState(state[, options]) method'
 ---
 
 # waitForLoadState(state[, options])

@@ -1,6 +1,6 @@
 ---
 title: 'digest'
-excerpt: 'digest decrypts some encrypted data'
+description: 'digest decrypts some encrypted data'
 weight: 02
 ---
 

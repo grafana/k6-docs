@@ -1,7 +1,7 @@
 ---
 title: 'asyncRequest( method, url, [body], [params] )'
 description: 'Issue any type of HTTP request asynchronously.'
-excerpt: 'Issue any type of HTTP request asynchronously.'
+description: 'Issue any type of HTTP request asynchronously.'
 weight: 10
 ---
 

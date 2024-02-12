@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS version and ciphers'
-excerpt: 'To support testing specific client configurations, you can set a specific version or range
+description: 'To support testing specific client configurations, you can set a specific version or range
 of versions of SSL/TLS that should be allowed for a connection.'
 ---
 

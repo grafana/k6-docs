@@ -1,6 +1,6 @@
 ---
 title: 'WebSocket.onclose'
-excerpt: 'A handler function for WebSocket connection close event.'
+description: 'A handler function for WebSocket connection close event.'
 weight: 30
 ---
 

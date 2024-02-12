@@ -1,6 +1,6 @@
 ---
 title: 'reload([options])'
-excerpt: 'Browser module: page.reload([options]) method'
+description: 'Browser module: page.reload([options]) method'
 ---
 
 # reload([options])

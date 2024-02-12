@@ -1,6 +1,6 @@
 ---
 title: 'Selection.data([key])'
-excerpt: 'Return the value at the named data store for the first element in the set of matched elements.'
+description: 'Return the value at the named data store for the first element in the set of matched elements.'
 ---
 
 # Selection.data([key])

@@ -1,6 +1,6 @@
 ---
 title: 'url()'
-excerpt: 'Browser module: page.url method'
+description: 'Browser module: page.url method'
 ---
 
 # url()

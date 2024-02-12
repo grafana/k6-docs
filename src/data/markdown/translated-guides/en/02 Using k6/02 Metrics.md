@@ -34,7 +34,7 @@ So the best metric for your analysis depends on your goals.
 However, if you're unsure about the metrics to focus on, you can start with the metrics that measure the requests, errors, and duration (the criteria of the [RED method](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/)).
 - `http_reqs`, to measure requests
 - `http_req_failed`, to measure error rate
-- `req_duration`, to measure duration
+- `http_req_duration`, to measure duration
 
 <Blockquote mod="note" title="">
 

@@ -1,6 +1,6 @@
 ---
 title: 'bringToFront()'
-excerpt: 'Browser module: page.bringToFront method'
+description: 'Browser module: page.bringToFront method'
 ---
 
 # bringToFront()

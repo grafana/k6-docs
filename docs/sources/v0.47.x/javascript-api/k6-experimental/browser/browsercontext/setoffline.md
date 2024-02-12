@@ -1,6 +1,6 @@
 ---
 title: 'setOffline(offline)'
-excerpt: "Toggles the BrowserContext's connectivity on/off."
+description: "Toggles the BrowserContext's connectivity on/off."
 ---
 
 # setOffline(offline)

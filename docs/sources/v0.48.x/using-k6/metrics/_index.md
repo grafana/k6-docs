@@ -1,6 +1,6 @@
 ---
 title: 'Metrics'
-excerpt: 'This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.'
+description: 'This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.'
 weight: 02
 ---
 
@@ -35,7 +35,7 @@ However, if you're unsure about the metrics to focus on, you can start with the 
 
 - `http_reqs`, to measure requests
 - `http_req_failed`, to measure error rate
-- `req_duration`, to measure duration
+- `http_req_duration`, to measure duration
 
 {{% admonition type="note" %}}
 

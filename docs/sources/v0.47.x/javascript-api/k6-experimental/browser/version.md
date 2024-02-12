@@ -1,6 +1,6 @@
 ---
 title: 'version()'
-excerpt: 'Browser module: version method'
+description: 'Browser module: version method'
 ---
 
 # version()

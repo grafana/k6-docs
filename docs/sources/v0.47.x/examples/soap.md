@@ -1,6 +1,6 @@
 ---
 title: 'SOAP'
-excerpt: 'Load Testing SOAP API.'
+description: 'Load Testing SOAP API.'
 weight: 14
 ---
 

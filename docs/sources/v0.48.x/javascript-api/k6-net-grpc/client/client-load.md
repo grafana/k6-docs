@@ -1,6 +1,6 @@
 ---
 title: 'Client.load(importPaths, ...protoFiles)'
-excerpt: 'Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
+description: 'Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
 weight: 10
 ---
 
