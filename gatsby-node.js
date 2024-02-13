@@ -1369,6 +1369,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/test-types/stress-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/stress-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/cloud/cloud-faq/release-notes/',
     toPath: '/cloud/cloud-reference/release-notes/',
     isPermanent: true,
