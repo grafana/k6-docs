@@ -1369,8 +1369,44 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/test-types/load-test-types/',
+    toPath: 'https://grafana.com/load-testing/types-of-load-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-types/smoke-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/smoke-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-types/load-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/average-load-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/test-types/stress-testing/',
     toPath: 'https://grafana.com/blog/2024/01/30/stress-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-types/soak-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/soak-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-types/spike-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/spike-testing/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-types/breakpoint-testing/',
+    toPath: 'https://grafana.com/blog/2024/01/30/breakpoint-testing/',
     isPermanent: true,
   });
 
