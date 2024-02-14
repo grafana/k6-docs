@@ -12,7 +12,7 @@ weight: 19
 You can write k6 scripts in various ECMAScript versions:
 
 - ES6+ JavaScript with ES modules (ESM).
-- Plain old JavaScript (ES5.1+) with CommonJS modules.
+- ES6+ JavaScript with CommonJS modules.
 
 k6 supports both module types and most ES6+ features in all k6 execution modes: local, distributed, and cloud.
 
@@ -23,7 +23,7 @@ To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to 
 Some users prefer to bundle their test code outside k6. For this reason, k6 offers two JavaScript compatibility modes:
 
 - [Extended mode](#extended-mode): The default option, supporting ESM and most ES6+ features.
-- [Base mode](#base-mode): Limited to plain old JavaScript (ES5.1) and CommonJS, excluding the Babel step.
+- [Base mode](#base-mode): Limited to CommonJS, excluding the Babel step.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
@@ -45,7 +45,7 @@ $ k6 run script.js
 
 As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
 
-This k6 Babel transformation enables the k6 JavaScript VM to execute the test.
+Currently, the k6 Babel transformation only adds ESM support and sets `global` (node's global variable) with the value of `globalThis`.
 
 ## Base mode
 
