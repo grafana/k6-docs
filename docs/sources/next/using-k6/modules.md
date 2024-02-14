@@ -32,7 +32,7 @@ import http from 'k6/http';
 
 These modules are stored on the local filesystem, and accessed either through relative or absolute filesystem paths.
 
-k6 adopts a **brower-like module resolution** and doesn't support [Node.js module resolution](https://nodejs.org/api/modules.html#modules_all_together). File names for `imports` must be fully specified, such as `./helpers.js`.
+k6 adopts a **browser-like module resolution** and doesn't support [Node.js module resolution](https://nodejs.org/api/modules.html#modules_all_together). File names for `imports` must be fully specified, such as `./helpers.js`.
 
 ```javascript
 //my-test.js
