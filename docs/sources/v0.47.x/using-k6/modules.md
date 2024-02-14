@@ -211,30 +211,20 @@ has been marked for sharing in the Docker Desktop settings.
 
 The official [Grafana k6 Docker image](https://hub.docker.com/r/grafana/k6) includes the k6 release binary but lacks additional k6 extensions. Therefore, using the official Docker container to run a k6 test that requires an extension will fail.
 
-To run k6 with any extension in Docker, you must create a custom Docker image that includes the k6 binary with the necessary extensions. To learn building a Docker image with k6 and extensions, refer to the [xk6 command](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go#breaking-down-the-xk6-command) and this [Dockerfile](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/Dockerfile) example.
+To run k6 with extensions in Docker, create a Docker image that includes the k6 binary with any extension you may want to use. Define a `Dockerfile` with the necessary [xk6 build](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go#breaking-down-the-xk6-command) instructions as follows:
 
 ```bash
-# Stage 1 - download xk6 and desired extensions, then compile a new binary.
-FROM golang:1.20-alpine3.18 as builder
-WORKDIR $GOPATH/src/go.k6.io/k6
-COPY . .
-RUN apk --no-cache add git=~2
-RUN CGO_ENABLED=0 go install go.k6.io/xk6/cmd/xk6@latest  \
-    && CGO_ENABLED=0 xk6 build \
-    --with github.com/grafana/xk6-output-prometheus-remote=. \
-    --output /tmp/k6
+FROM grafana/xk6:latest
 
-# Stage 2 - Copy our custom k6 for use within a minimal linux image.
-FROM alpine:3.18
-RUN apk add --no-cache ca-certificates && \
-    adduser -D -u 12345 -g 12345 k6
-COPY --from=builder /tmp/k6 /usr/bin/k6
+RUN GCO_ENABLED=0 xk6 build \
+    --with github.com/grafana/xk6-kubernetes@latest
 
-USER 12345
-WORKDIR /home/k6
-
-ENTRYPOINT ["k6"]
+ENTRYPOINT ["./k6"]
 ```
+
+After building your custom k6 Docker image, you can [run k6 with Docker](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) as usual.
+
+Alternatively, you can implement a multistage Dockerfile build such as shown on this [Dockerfile example](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/Dockerfile).
 
 ## Read more
 
