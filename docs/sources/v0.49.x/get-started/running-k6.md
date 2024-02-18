@@ -56,7 +56,7 @@ To run a simple local script:
    # pipe the actual file into the container with `<` or equivalent. This will
    # cause the file to be redirected into the container and be read by k6.
 
-   $ docker run --rm -i grafana/k6 run - <script.js
+   $ docker run --rm -i grafana/k6 run - <script.js>
    ```
 
    ```windows
@@ -76,7 +76,7 @@ $ k6 run --vus 10 --duration 30s script.js
 ```
 
 ```docker
-$ docker run --rm -i grafana/k6 run --vus 10 --duration 30s - <script.js
+$ docker run --rm -i grafana/k6 run --vus 10 --duration 30s - <script.js>
 ```
 
 ```windows
@@ -147,7 +147,7 @@ $ k6 run script.js
 ```
 
 ```docker
-$ docker run --rm -i grafana/k6 run - <script.js
+$ docker run --rm -i grafana/k6 run - <script.js>
 ```
 
 ```windows
