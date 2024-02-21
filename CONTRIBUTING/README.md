@@ -68,15 +68,6 @@ Refer to [Writers' Toolkit, Build and review documentation](https://grafana.com/
 
 ## Write
 
-Each Markdown page should start with the following front matter.
-
-```yaml
----
-title: <page title>
-description: <summary text for search engines and social shares. Aim for 170 characters>.
----
-```
-
 You can find the Markdown file for the docs in the [`docs/sources`](../docs/sources) folder. In that folder you'll find:
 
 - A `next` folder, which represents the docs for the next major release of k6.
@@ -95,6 +86,8 @@ If you're making any updates or fixes that apply to the latest version of k6, yo
   - You can do this manually or by using the [`apply-patch`](../scripts/apply-patch) script from the `scripts` folder. Refer to the [Use the `apply-patch` script](#use-the-apply-patch-script) section for more details.
 
 This is to make sure that any changes you make are also brought over to the next major release version of k6.
+
+> If your update or fix also applies to previous versions of k6, use the `apply-patch` script to port your changes to the latest version, and two previous versions.
 
 #### Updates and fixes to the next major release of k6
 
