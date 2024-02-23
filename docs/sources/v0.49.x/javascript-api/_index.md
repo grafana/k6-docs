@@ -198,8 +198,6 @@ You can optionally [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-
 
 ## k6/net/grpc
 
-{{< docs/shared source="k6" lookup="grpc-module.md" version="<K6_VERSION>" >}}
-
 The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
 | Class/Method                                                                                                                      | Description                                                                                                                                             |
