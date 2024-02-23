@@ -1,8 +1,7 @@
 ---
+aliases:
+  - /docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/sqsclient-listqueues/
 title: 'listQueues'
-head_title: 'SQSClient.listQueues()'
-slug: 'sqsclient-listqueues'
-description: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
 description: 'SQSClient.listQueues retrieves a list of available Amazon SQS queues'
 weight: 10
 ---
