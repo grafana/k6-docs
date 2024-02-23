@@ -1,8 +1,7 @@
 ---
+aliases:
+  - /docs/k6/<K6_VERSION>/javascript-api/jslib/aws/sqsclient/sqsclient-sendmessage/
 title: 'sendMessage'
-head_title: 'SQSClient.sendMessage()'
-slug: 'sqsclient-sendmessage'
-description: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
 description: 'SQSClient.sendMessage sends a message to the specified Amazon SQS queue'
 weight: 10
 ---
