@@ -91,7 +91,7 @@ The steps of this tutorial are as follows:
 
 <Blockquote mod="note" title="k6-es6 starter">
 
-A [ready-to-use Webpack and Babel starter](https://github.com/k6io/k6-es6) is avaialble in a repository.
+A [ready-to-use Webpack and Babel starter](https://github.com/k6io/k6-es6) is available in a repository.
 
 </Blockquote>
 
