@@ -16,9 +16,9 @@ The method finds all elements matching the specified selector within the page. I
 
 ### Returns
 
-| Type                                                                                                                      | Description                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`. |
+| Type                                                                                                              | Description                       |
+| ----------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an `ElementHandle` array. |
 
 ### Example
 
