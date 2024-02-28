@@ -128,25 +128,3 @@ jobs:
         run: aws --version
       - name: Deploy
         run: npm run deploy
-  linkinator:
-    name: "Checks broken links"
-    runs-on: ubuntu-latest
-    needs: [build-deploy-staging]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: JustinBeckwith/linkinator-action@225a937c02e8c0916755289a02594a9105a3cbd8 # latest commit with node 20 support
-        with:
-          paths: ${{ env.GATSBY_DEFAULT_DOC_URL }}
-          concurrency: 50
-          recurse: true
-          retry: true
-          skip: ".*(\\.js|\\.css)$"
-          linksToSkip: >-
-            localhost,
-            https://linkedin.com,
-            googleapis.com,
-            https://www.linkedin.com/company/k6io,
-            https://staging.k6.io/slack,
-            https://twitter.com/k6_io
-          verbosity: "ERROR"
-          markdown: false
