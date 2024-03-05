@@ -1,6 +1,6 @@
 ---
 aliases:
-  - /docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/
+  - ./kmsclient-generatedatakey/ # /docs/k6/<K6_VERSION>/javascript-api/jslib/aws/kmsclient/kmsclient-generatedatakey/
 title: 'generateDataKey'
 description: 'KMSClient.generateDataKey generates a symmetric data key for use outside of the AWS Key Management Service'
 weight: 10
