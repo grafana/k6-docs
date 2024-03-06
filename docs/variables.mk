@@ -7,3 +7,4 @@
 # This overrides the default behavior of assuming the repository directory is the same as the project name.
 PROJECTS := k6:UNVERSIONED:$(notdir $(basename $(shell git rev-parse --show-toplevel)))
 export WEBSITE_MOUNTS := true
+export DOCS_IMAGE := grafana/docs-base:2024-01-30
