@@ -55,15 +55,15 @@ Dedicated sub-metrics have been generated collecting samples only for the scope 
 
 {{< code >}}
 
-```
-     http_req_duration..............: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
-       { expected_response:true }...: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
-     ✓ { scenario:default }.........: avg=148.4ms  min=103.1ms  med=148.4ms  max=193.7ms  p(90)=184.64ms p(95)=189.17ms
+```bash
+http_req_duration..............: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
+  { expected_response:true }...: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
+✓ { scenario:default }.........: avg=148.4ms  min=103.1ms  med=148.4ms  max=193.7ms  p(90)=184.64ms p(95)=189.17ms
 
-     iteration_duration.............: avg=5.51s    min=1.61s    med=6.13s    max=8.81s    p(90)=8.27s    p(95)=8.54s
-     ✓ { group:::setup }............: avg=6.13s    min=6.13s    med=6.13s    max=6.13s    p(90)=6.13s    p(95)=6.13s
-     ✓ { group:::teardown }.........: avg=8.81s    min=8.81s    med=8.81s    max=8.81s    p(90)=8.81s    p(95)=8.81s
-     ✓ { scenario:default }.........: avg=1.61s    min=1.61s    med=1.61s    max=1.61s    p(90)=1.61s    p(95)=1.61s
+iteration_duration.............: avg=5.51s    min=1.61s    med=6.13s    max=8.81s    p(90)=8.27s    p(95)=8.54s
+✓ { group:::setup }............: avg=6.13s    min=6.13s    med=6.13s    max=6.13s    p(90)=6.13s    p(95)=6.13s
+✓ { group:::teardown }.........: avg=8.81s    min=8.81s    med=8.81s    max=8.81s    p(90)=8.81s    p(95)=8.81s
+✓ { scenario:default }.........: avg=1.61s    min=1.61s    med=1.61s    max=1.61s    p(90)=1.61s    p(95)=1.61s
 ```
 
 {{< /code >}}
