@@ -30,7 +30,7 @@ Each option has its own detailed reference in a separate section.
 | [Duration](#duration)                                        | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus)                              |
 | [Execution segment](#execution-segment)                      | Limit execution to a segment of the total test                                                                                                                                                                                                                                                                                                     |
 | [Exit on running](#exit-on-running)                          | Exits when test reaches the running status                                                                                                                                                                                                                                                                                                         |
-| [Extension options](#extension-options)                      | An object used to set configuration options for cloud parameters and third-party collectors                                                                                                                                                                                                                                                        |
+| [Cloud options](#cloud-options)                              | An object used to set configuration options for cloud parameters.                                                                                                                                                                                                                                                                                  |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                         |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                                |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                          |
@@ -352,13 +352,13 @@ export const options = {
 
 {{< /code >}}
 
-## Extension options
+## Cloud options
 
 An object used to set configuration options for cloud parameters and third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
-| N/A | N/A | `ext`              | `null`  |
+| N/A | N/A | `cloud`            | `null`  |
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
@@ -368,13 +368,13 @@ logically grouped for trending and comparison) when streaming results to
 
 ```javascript
 export const options = {
-  ext: {
-    loadimpact: {
-      name: 'My test name',
-    },
+  cloud: {
+    name: 'My test name',
   },
 };
 ```
+
+Previously, the `cloud` object was known as `ext.loadimpact`.
 
 {{< /code >}}
 
