@@ -13,7 +13,7 @@ the code of conduct https://github.com/grafana/k6/blob/master/CODE_OF_CONDUCT.md
 - [ ] I have used a meaningful title for the PR.
 - [ ] I have described the changes I've made in the "What?" section above.
 - [ ] I have performed a self-review of my changes.
-- [ ] I have run the `make docs` command locally and verified that the changes look good.
+- [ ] I have run the `npm start` command locally and verified that the changes look good.
 
 <!-- Select one of the options below and delete the other -->
 
