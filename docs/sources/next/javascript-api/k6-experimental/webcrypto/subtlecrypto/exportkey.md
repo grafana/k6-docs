@@ -20,7 +20,7 @@ exportKey(format, key)
 
 | Name     | Type                                                                                                     | Description                                                                                                       |
 | :------- | :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| `format` | `string`                                                                                                 | Defines the data format the key should be exported in. Currently supported formats: `raw`.                        |
+| `format` | `string`                                                                                                 | Defines the data format the key should be exported in. Currently supported formats: `raw`, `jwk`.                 |
 | `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export. |
 
 ## Return Value
@@ -61,7 +61,7 @@ export default async function () {
   const exportedKey = await crypto.subtle.exportKey('raw', generatedKey);
 
   /**
-   * Reimport the key in raw format to verfiy its integrity.
+   * Reimport the key in raw format to verify its integrity.
    */
   const importedKey = await crypto.subtle.importKey('raw', exportedKey, 'AES-CBC', true, [
     'encrypt',
