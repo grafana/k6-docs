@@ -78,7 +78,7 @@ export default async function () {
 
 ### Import a static raw key and decrypt transmitted data
 
-This example demonstrates how to import a static `raw` key and decrypt some transmitted data (which contains initialization vector and encoded data) in `base64`.
+This example demonstrates how to import a static `raw` key and decrypt some transmitted data (concatenation of initialization vector and encoded data) in `base64`.
 
 {{< code >}}
 
@@ -87,14 +87,12 @@ import { crypto } from 'k6/experimental/webcrypto';
 import { b64decode } from 'k6/encoding';
 
 export default async function () {
-  // transmitted data is the base64 of the initialization vector + encrypted data
-  // that unusually transmitted over the network
   const transmittedData = base64Decode(
     'whzEN310mrlWIH/icf0dMquRZ2ENyfOzkvPuu92WR/9F8dbeFM8EGUVNIhaS'
   );
 
-  // keyData is the key used to decrypt the data, that is usually stored in a secure location
-  // for the purpose of this example, we are using a static key
+  // keyData is the key used to decrypt the data, which is usually stored in a secure location
+  // for this example, we are using a static key
   const keyData = new Uint8Array([
     109, 151, 76, 33, 232, 253, 176, 90, 94, 40, 146, 227, 139, 208, 245, 139, 69, 215, 55, 197, 43,
     122, 160, 178, 228, 104, 4, 115, 138, 159, 119, 49,
@@ -150,7 +148,7 @@ const base64Decode = (base64String) => {
 
 ### Import a static JWK key and decrypt transmitted data
 
-This example is almost the same as the previous one. Still, it demonstrates how to import a static `jwk` key and decrypt some transmitted data (which contains initialization vector and encoded data) in `base64`.
+This example is similar to the previous one. It demonstrates how to import a static `jwk` key and decrypt some transmitted data (which contains the initialization vector and encoded data) in `base64`.
 
 {{< code >}}
 
@@ -165,8 +163,8 @@ export default async function () {
     'drCfxl4O+5FcrHe8Bs0CvKlw3gZpv+S5if3zn7c4BJzHJ35QDFV4sJB0pbDT'
   );
 
-  // keyData is the key used to decrypt the data, that is usually stored in a secure location
-  // for the purpose of this example, we are using a static key
+  // keyData is the key used to decrypt the data, which is usually stored in a secure location
+  // for this example, we are using a static key
   const jwkKeyData = {
     kty: 'oct',
     ext: true,
