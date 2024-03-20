@@ -78,7 +78,7 @@ export default async function () {
 
 ### Import a static raw key and decrypt transmitted data
 
-This example demonstrates how to import a static `raw` key and decrypt some transmitted data (concatenation of initialization vector and encoded data) in `base64`.
+This example demonstrates how to import a static `raw` key and decrypt some transmitted data in `base64`. The transmitted data in this example represents an initialization vector and encoded data, and in a real-world scenario, it can be a response body or other data received from a request.
 
 {{< code >}}
 
