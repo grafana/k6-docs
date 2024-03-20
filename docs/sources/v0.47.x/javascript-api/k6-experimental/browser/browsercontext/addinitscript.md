@@ -7,8 +7,8 @@ description: 'Adds an init script.'
 
 Adds a script which will be evaluated in one of the following scenarios:
 
-- Whenever a page is created in the browser context or is navigated.
-- Whenever a child frame is attached or navigated in any page in the browser context. In this case, the script is evaluated in the context of the newly attached frame.
+- Whenever a [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) is created in the [browserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) or is navigated.
+- Whenever a child [frame](<[page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/)>) is attached or navigated in any [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) in the [browserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext). In this case, the script is evaluated in the context of the newly attached [frame](<[page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/)>).
 
 The script is evaluated after the document is created but before any of its scripts were run. This is useful to amend the JavaScript environment, e.g. to override `Math.random`.
 
