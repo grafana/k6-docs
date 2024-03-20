@@ -46,6 +46,7 @@ weight: 05
 | <a href="https://playwright.dev/docs/api/class-frame#frame-select-option" target="_blank" >frame.selectOption(selector, values[, options])</a>            | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-set-checked" target="_blank" >frame.setChecked(selector, checked[, options])</a>               | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-set-content" target="_blank" >frame.setContent(html[, options])</a>                            | -                                                            |
+| [frame.setInputFiles(selector, file[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/setinputfiles)     | Sets the file input element's value to the specified files.  |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-tap" target="_blank" >frame.tap(selector[, options])</a>                                       | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-text-content" target="_blank" >frame.textContent(selector[, options])</a>                      | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-title" target="_blank" >frame.title()</a>                                                      | -                                                            |
