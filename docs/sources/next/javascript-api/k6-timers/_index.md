@@ -1,0 +1,16 @@
+---
+title: "k6/timers"
+description: "k6 timers API"
+weight: 13
+---
+
+# k6/timers
+
+Implement timers to work with k6's event loop. They mimic the commonly find in browser and other JavaScript runtimes.
+
+| Function                                       | Description                                                                                    |
+| :------------------------------------------ | :--------------------------------------------------------------------------------------------- |
+| [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)     | sets a function to be run after a given timeout  |
+| [clearTimeout](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) | clears a previously set timeout with `setTimeout` |
+| [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)   | sets a function to be run on a given interval |
+| [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) | clears a previously set interval with `setInterval` |
