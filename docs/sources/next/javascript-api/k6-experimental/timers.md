@@ -6,7 +6,7 @@ weight: 03
 
 # timers
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
+{{< docs/shared source="k6" lookup="experimental-timers-module.md" version="<K6_VERSION>" >}}
 
 This modules implements the commonly found in browsers:
 
