@@ -6,7 +6,7 @@ weight: 13
 
 # k6/timers
 
-Implement timers to work with k6's event loop. They mimic the commonly find in browser and other JavaScript runtimes.
+Implement timers to work with k6's event loop. They mimic the functionality found in browsers and other JavaScript runtimes.
 
 | Function                                       | Description                                                                                    |
 | :------------------------------------------ | :--------------------------------------------------------------------------------------------- |
