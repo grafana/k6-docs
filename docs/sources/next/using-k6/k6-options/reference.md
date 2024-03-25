@@ -354,7 +354,7 @@ export const options = {
 
 ## Cloud options
 
-An object used to set configuration options for cloud parameters and third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-options/).
+An object used to set configuration options for Grafana Cloud k6. For more information about available parameters, refer to [Cloud options](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
