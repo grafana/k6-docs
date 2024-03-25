@@ -40,5 +40,6 @@ module.exports = {
     __ENV: 'readonly',
     __ITER: 'readonly',
     open: 'readonly',
+    window: 'readonly',
   },
 };
