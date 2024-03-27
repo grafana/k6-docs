@@ -44,28 +44,30 @@ export const options = {
 export default async function () {
   const page = browser.newPage();
 
-  // In this example we create a simple web page with an upload input field.
-  // Usually, you would use page.goto to navigate to a page with a file input field.
-  page.setContent(`
-    <html>
-      <head></head>
-      <body>
-          <!-- Simple file upload form -->
-          <form method="POST" action="/upload" enctype="multipart/form-data">
-              <input type="file" id="upload" multiple />
-              <input type="submit" value="Send" />
-          </form>
-      </body>
-    </html>`);
+  try {
+    // In this example we create a simple web page with an upload input field.
+    // Usually, you would use page.goto to navigate to a page with a file input field.
+    page.setContent(`
+      <html>
+        <head></head>
+        <body>
+            <!-- Simple file upload form -->
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" id="upload" multiple />
+                <input type="submit" value="Send" />
+            </form>
+        </body>
+      </html>`);
 
-  // The file is set to the input element with the id "upload".
-  page.setInputFiles('input[id="upload"]', {
-    name: 'file.txt',
-    mimetype: 'text/plain',
-    buffer: encoding.b64encode('hello world'),
-  });
-
-  page.close();
+    // The file is set to the input element with the id "upload".
+    page.setInputFiles('input[id="upload"]', {
+      name: 'file.txt',
+      mimetype: 'text/plain',
+      buffer: encoding.b64encode('hello world'),
+    });
+  } finally {
+    page.close();
+  }
 }
 ```
 
@@ -102,31 +104,33 @@ let file;
 export default async function () {
   const page = browser.newPage();
 
-  // In this example we create a simple web page with an upload input field.
-  // Usually, you would use page.goto to navigate to a page with a file input field.
-  page.setContent(`
-    <html>
-      <head></head>
-      <body>
-          <!-- Simple file upload form -->
-          <form method="POST" action="/upload" enctype="multipart/form-data">
-              <input type="file" id="upload" multiple />
-              <input type="submit" value="Send" />
-          </form>
-      </body>
-    </html>`);
+  try {
+    // In this example we create a simple web page with an upload input field.
+    // Usually, you would use page.goto to navigate to a page with a file input field.
+    page.setContent(`
+      <html>
+        <head></head>
+        <body>
+            <!-- Simple file upload form -->
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" id="upload" multiple />
+                <input type="submit" value="Send" />
+            </form>
+        </body>
+      </html>`);
 
-  // Read the whole file content into a buffer.
-  const buffer = await readAll(file);
+    // Read the whole file content into a buffer.
+    const buffer = await readAll(file);
 
-  // The file is set to the input element with the id "upload".
-  page.setInputFiles({
-    name: 'file.txt',
-    mimetype: 'text/plain',
-    buffer: encoding.b64encode(buffer),
-  });
-
-  page.close();
+    // The file is set to the input element with the id "upload".
+    page.setInputFiles({
+      name: 'file.txt',
+      mimetype: 'text/plain',
+      buffer: encoding.b64encode(buffer),
+    });
+  } finally {
+    page.close();
+  }
 }
 
 // readAll will read the whole of the file from the local filesystem into a
