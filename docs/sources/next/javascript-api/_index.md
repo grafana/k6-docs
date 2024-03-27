@@ -1,6 +1,6 @@
 ---
-weight: 08
 title: JavaScript API
+weight: 600
 ---
 
 # JavaScript API
