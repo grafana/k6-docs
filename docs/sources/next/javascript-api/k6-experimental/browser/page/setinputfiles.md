@@ -45,7 +45,7 @@ export default async function () {
   const page = browser.newPage();
 
   // In this example we create a simple web page with an upload input field.
-  // Usually you would use page.goto to navigate to a page with an file input field.
+  // Usually, you would use page.goto to navigate to a page with a file input field.
   page.setContent(`
     <html>
       <head></head>
@@ -103,7 +103,7 @@ export default async function () {
   const page = browser.newPage();
 
   // In this example we create a simple web page with an upload input field.
-  // Usually you would use page.goto to navigate to a page with an file input field.
+  // Usually, you would use page.goto to navigate to a page with a file input field.
   page.setContent(`
     <html>
       <head></head>
