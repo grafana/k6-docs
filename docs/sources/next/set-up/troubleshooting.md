@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../get-started/troubleshooting
 title: 'Troubleshooting'
 description: 'Instructions to fix the most common installation issues.'
 weight: 100
