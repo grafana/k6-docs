@@ -1,8 +1,7 @@
 ---
 title: 'Installation'
 description: 'k6 has packages for Linux, Mac, and Windows. As alternatives, you can also using a Docker container or a standalone binary.'
-weight: 02
-weight: 02
+weight: 01
 ---
 
 # Installation

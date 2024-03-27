@@ -1,7 +1,7 @@
 ---
 title: 'Troubleshooting'
 description: 'Instructions to fix the most common installation issues.'
-weight: 01
+weight: 100
 ---
 
 # Troubleshooting
