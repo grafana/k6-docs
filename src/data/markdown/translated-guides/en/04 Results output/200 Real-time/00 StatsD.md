@@ -16,7 +16,7 @@ k6 can push test metrics to a [StatsD](https://github.com/statsd/statsd) service
 
 ## Build the k6 version
 
-<InstallationInstructions extensionUrl="github.com/grafana/xk6-output-statsd"/>
+<InstallationInstructions extensionUrl="github.com/LeonAdato/xk6-output-statsd"/>
 
 ## Run the k6 test
 
