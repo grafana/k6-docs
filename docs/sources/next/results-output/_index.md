@@ -1,5 +1,5 @@
 ---
-weight: 04
+weight: 400
 title: Results output
 descriptiontion: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Testing guides'
 description: 'A series of guides to help you defining your load testing strategies.'
-weight: 07
+weight: 500
 ---
 
 # Testing guides

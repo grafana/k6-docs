@@ -1,7 +1,7 @@
 ---
 title: Extensions
 description: 'The k6 extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.'
-weight: 09
+weight: 700
 ---
 
 # Extensions
