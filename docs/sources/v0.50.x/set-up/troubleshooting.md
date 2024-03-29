@@ -1,7 +1,9 @@
 ---
+aliases:
+  - ../get-started/troubleshooting # docs/k6/<K6_VERSION>/get-started/troubleshooting
 title: 'Troubleshooting'
 description: 'Instructions to fix the most common installation issues.'
-weight: 01
+weight: 200
 ---
 
 # Troubleshooting

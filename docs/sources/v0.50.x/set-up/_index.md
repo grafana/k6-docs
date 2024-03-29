@@ -1,9 +1,9 @@
 ---
-weight: 900
-title: Misc
+weight: 01
+title: Set up
 ---
 
-# Misc
+# Set up
 
 <!-- TODO: Add content -->
 

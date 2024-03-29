@@ -1,5 +1,5 @@
 ---
-weight: 01
+weight: 100
 title: Get started
 ---
 

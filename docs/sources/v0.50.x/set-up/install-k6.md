@@ -1,11 +1,13 @@
 ---
-title: 'Installation'
+aliases:
+  - ../get-started/installation # docs/k6/<K6_VERSION>/get-started/installation
+  - ./installation
+title: 'Install k6'
 description: 'k6 has packages for Linux, Mac, and Windows. As alternatives, you can also using a Docker container or a standalone binary.'
-weight: 02
-weight: 02
+weight: 01
 ---
 
-# Installation
+# Install k6
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.
 
