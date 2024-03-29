@@ -4,7 +4,7 @@ aliases:
   - ../misc/intellisense # docs/k6/<K6_VERSION>/misc/intellisense
 title: 'Configure k6 IntelliSense'
 description: 'k6 has its TypeScript Type Definition that you can configure with your editor to unlock code editing features.'
-weight: 200
+weight: 100
 ---
 
 # Configure k6 IntelliSense
