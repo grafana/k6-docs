@@ -947,9 +947,9 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-enhanced",
-      "description": "Add enhanced JavaScript compatibility (TypeScript, import JSON files, etc) to k6",
-      "url": "https://github.com/szkiba/xk6-enhanced",
+      "name": "xk6-ts",
+      "description": "TypeScript support for k6",
+      "url": "https://github.com/szkiba/xk6-ts",
       "logo": "",
       "author": {
         "name": "Iván Szkiba",
