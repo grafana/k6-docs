@@ -95,9 +95,9 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-dotenv</h4>
         <p>Load env vars from a .env file</p>
     </a>
-    <a href="https://github.com/szkiba/xk6-enhanced" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-enhanced</h4>
-        <p>Add enhanced JavaScript compatibility: TypeScript, import JSON files, etc</p>
+    <a href="https://github.com/szkiba/xk6-ts" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-ts</h4>
+        <p>Add TypeScript support for k6</p>
     </a>
     <a href="https://github.com/BarthV/xk6-es" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-es</h4>

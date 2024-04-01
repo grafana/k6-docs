@@ -948,7 +948,7 @@
     },
     {
       "name": "xk6-ts",
-      "description": "TypeScript support for k6",
+      "description": "Add TypeScript support for k6",
       "url": "https://github.com/szkiba/xk6-ts",
       "logo": "",
       "author": {
