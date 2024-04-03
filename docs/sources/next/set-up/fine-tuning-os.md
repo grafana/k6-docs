@@ -1,7 +1,9 @@
 ---
+aliases:
+  - ../misc/fine-tuning-os # docs/k6/<K6_VERSION>/misc/fine-tuning-os
 title: 'Fine-tuning OS'
 description: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
-weight: 04
+weight: 200
 ---
 
 # Fine-tuning OS
