@@ -38,7 +38,7 @@ These commands enable reusing network connections, increase the limit of network
 
 The `sysctl` commands apply immediately for the entire system, and will reset to their default values if you restart the network service or reboot the machine. The `ulimit` command applies only for the current shell session, and you'll need to run it again for it to be set in another shell instance.
 
-For detailed information about these settings, how to make them permanent, and instructions for macOS, check out our ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os).
+For detailed information about these settings, how to make them permanent, and instructions for macOS, check out our ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/set-up/fine-tune-os).
 
 ## Hardware considerations
 
@@ -287,7 +287,7 @@ WARN[0057] Request Failed     error="Get http://test.k6.io/: dial tcp 52.18.24.2
 
 This error means that the load generator can't open TCP sockets because it reached the limit of open file descriptors.
 Make sure that your limit is set sufficiently high.
-Refer to the ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os#viewing-limits-configuration).
+Refer to the ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>/set-up/fine-tune-os#viewing-limits-configuration).
 
 ```bash
 WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.131:80: socket: too many open files"
@@ -362,7 +362,7 @@ If you aren't sure whether OSS or Cloud is a better fit for your project, we rec
 
 ## Read more
 
-- [Fine tuning OS](https://grafana.com/docs/k6/<K6_VERSION>/misc/fine-tuning-os)
+- [Fine tuning OS](https://grafana.com/docs/k6/<K6_VERSION>/set-up/fine-tune-os)
 - [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)
 
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
