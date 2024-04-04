@@ -18,7 +18,7 @@ Code k6 scripts in your IDE of choice. Empower your development workflow with ID
 
 - [Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6) - Run k6 tests from VS Code.
 - [IntelliJ IDEA](https://plugins.jetbrains.com/plugin/16141-k6) - Run k6 tests from IntelliJ IDEs.
-- [IntelliSense](https://grafana.com/docs/k6/<K6_VERSION>/misc/intellisense) - Get code autocompletion and in-context documentation.
+- [IntelliSense](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-k6-intellisense) - Get code autocompletion and in-context documentation.
 
 ## Converters
 

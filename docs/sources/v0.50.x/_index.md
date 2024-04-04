@@ -14,7 +14,7 @@ This documentation will help you go from a total beginner to a seasoned k6 exper
 ## Get started
 
 <div class="nav-cards">
-    <a href={{< relref "./get-started/installation" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href={{< relref "./set-up/install-k6" >}} class="nav-cards__item nav-cards__item--guide">
         <h4>🚀 Installation</h4>
         <p>Get up and running in no-time, using either a package manager, standalone installer or the official Docker image.</p>
     </a>

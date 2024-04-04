@@ -31,7 +31,7 @@ Finally, after you test the API and web application, break your scripts down int
 We encourage you to open your terminal and actively experiment with these examples.
 The tutorial requires the following:
 
-- [ ][k6 installed](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation)
+- [ ][k6 installed](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6)
 - [ ] A clean directory to experiment in.
 - [ ] Something to do during the minute or two when k6 runs the longest example tests
 - [ ] Optional: [`jq`](https://stedolan.github.io/jq/) to filter some results

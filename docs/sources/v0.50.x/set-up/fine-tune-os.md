@@ -1,6 +1,7 @@
 ---
 aliases:
   - ../misc/fine-tuning-os # docs/k6/<K6_VERSION>/misc/fine-tuning-os
+  - ./fine-tuning-os
 title: 'Fine-tune OS'
 description: 'Learn how to inspect the OS imposed limits of your system, and tweak them to be able to run larger tests.'
 weight: 200
