@@ -1,10 +1,18 @@
 ---
-title: 'Fine-tuning OS'
-description: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
-weight: 04
+aliases:
+  - ../misc/fine-tuning-os # docs/k6/<K6_VERSION>/misc/fine-tuning-os
+title: 'Fine-tune OS'
+description: 'Learn how to inspect the OS imposed limits of your system, and tweak them to be able to run larger tests.'
+weight: 200
 ---
 
-# Fine-tuning OS
+# Fine-tune OS
+
+{{< admonition type="note" >}}
+
+This page focuses on helping users run large test scripts locally. If you're just getting started with k6, and haven't run into a `Too Many Open Files` error, you can skip these instructions.
+
+{{< /admonition >}}
 
 When running large test scripts locally, users sometimes run into limits within their OS that prevent them from making the necessary number of requests to complete the test.
 This limit usually manifests itself in a `Too Many Open Files` error.
@@ -17,12 +25,9 @@ As with any changes to your OS, we discourage blindly changing your system setti
 E.g. before changing MSL / TIME_WAIT period, confirm that you’re experiencing the issue (error messages, netstat, ss, etc.), change settings conservatively, re-run the test, and note any improvement.
 This way you can gauge the effect of the optimization, find any negative side-effects, and come up with a range of recommended values.
 
-{{% admonition type="note" %}}
+## Before you begin
 
-The following modifications have been tested for macOS Sierra 10.12 and above.
-If you're on an older version, the process for changing these settings might differ.
-
-{{% /admonition %}}
+- The following modifications have been tested for Linux, and macOS Sierra 10.12 and above. If you're using an older macOS version, the process for changing these settings might differ.
 
 ## Network resource limit
 

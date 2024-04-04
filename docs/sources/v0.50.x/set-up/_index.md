@@ -7,4 +7,4 @@ title: Set up
 
 <!-- TODO: Add content -->
 
-{{< section >}}
+{{< section depth=2 >}}
