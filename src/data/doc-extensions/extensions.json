@@ -1171,6 +1171,21 @@
       "categories": ["Messaging, Protocol"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-sse",
+      "description": "A k6 extension for Server-Sent Events (SSE)",
+      "url": "https://github.com/phymbert/xk6-sse",
+      "logo": "",
+      "author": {
+        "name": "Pierrick HYMBERT",
+        "url": "https://github.com/phymbert"
+      },
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
