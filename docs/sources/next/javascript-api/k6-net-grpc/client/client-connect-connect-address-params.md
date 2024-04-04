@@ -72,7 +72,7 @@ export default () => {
 <div class="code-group" data-props='{"labels": ["Different TLS settings"], "lineNumbers": [true]}'>
 
 ```javascript
-import grpc from 'k6/experimental/grpc';
+import grpc from 'k6/net/grpc';
 import { check } from 'k6';
 import { SharedArray } from 'k6/data';
 import exec from 'k6/execution';
