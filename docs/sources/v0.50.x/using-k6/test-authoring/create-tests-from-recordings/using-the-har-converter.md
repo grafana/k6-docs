@@ -152,7 +152,7 @@ For example, tokens expire quickly, and they are one of the most common things t
 
 ## 4. Run the test
 
-Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation).
+Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](https://grafana.com/docs/k6/<K6_VERSION>/set-up/installation).
 
 Execute the `k6 run` command to run your k6 script:
 

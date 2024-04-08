@@ -1,11 +1,13 @@
 ---
-title: 'Installation'
+aliases:
+  - ../get-started/installation # docs/k6/<K6_VERSION>/get-started/installation
+  - ./installation
+title: 'Install k6'
 description: 'k6 has packages for Linux, Mac, and Windows. As alternatives, you can also using a Docker container or a standalone binary.'
-weight: 02
-weight: 02
+weight: 01
 ---
 
-# Installation
+# Install k6
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.
 
@@ -77,5 +79,12 @@ Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/
 
 ## Troubleshooting
 
-If installation fails, check the [list of common installation issues](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation/troubleshooting).
+If installation fails, check the [list of common installation issues](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/troubleshooting).
 If your problem is not listed and persists, reach out via the channel `#community-discussion` on our [official Slack](https://k6io.slack.com/), or report it on our [community forum](https://community.grafana.com/).
+
+## Next steps
+
+Now that you have k6 installed in your machine, you can:
+
+- Head over to [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) to learn how to create and run your first test.
+- Refer to [Configure k6 Intellisense](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-k6-intellisense/) to set up code editing features to your code editor, such as auto-completion of k6 functions.

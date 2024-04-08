@@ -16,6 +16,10 @@ Follow along to learn how to:
 With these example snippets, you'll run the test with your machine's resources.
 But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers.
 
+## Before you begin
+
+- [Install k6](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) on your machine.
+
 ## Run local tests
 
 To run a simple local script:

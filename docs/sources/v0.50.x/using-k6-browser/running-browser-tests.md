@@ -140,7 +140,7 @@ To run a simple local script:
 
    {{% admonition type="note" %}}
 
-   When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation#docker) for more information.
+   When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6#docker) for more information.
 
    {{% /admonition %}}
 
