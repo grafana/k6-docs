@@ -1171,6 +1171,21 @@
       "categories": ["Messaging, Protocol"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-amqp",
+      "description": "Add support for amqp protocol",
+      "url": "https://github.com/decarlec/xk6-amqp",
+      "logo": "",
+      "author": {
+        "name": "Christian DeCarle",
+        "url": "https://github.com/decarlec"
+      },
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Messaging, Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
