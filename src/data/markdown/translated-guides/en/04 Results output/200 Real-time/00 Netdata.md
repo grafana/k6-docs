@@ -50,7 +50,7 @@ Make sure you're using the k6 binary you built with the xk6-output-statsd extens
 
 ## Visualize in Netdata
 
-Netdata will automatically create charts for your application, as illustrated in the [documentation](https://github.com/netdata/netdata/blob/master/collectors/statsd.plugin/k6.md). 
+Netdata will automatically create charts for your application, as illustrated in the [documentation](https://github.com/netdata/netdata/blob/master/src/collectors/statsd.plugin/k6.md). 
 
 Simply head over to `localhost:19999` (assuming that you are running Netdata on the same machine) and find the k6 section. If you had opened Netdata before running the experiment, you will need to refresh the dashboard page.
 
