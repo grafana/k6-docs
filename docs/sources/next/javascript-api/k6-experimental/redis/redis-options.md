@@ -28,20 +28,20 @@ The configuration for the overall Redis client, including authentication and con
 
 Socket-level settings for connecting to a Redis server.
 
-| Option Name        | Type                                                     | Description                                                                           |
-|--------------------|----------------------------------------------------------|---------------------------------------------------------------------------------------|
-| host               | String                                                   | IP address or hostname of the Redis server.                                           |
-| port               | Number (optional)                                        | Port number of the Redis server.                                                      |
-| tls                | [TLSOptions](#tls-configuration-options) (optional)      | The configuration for TLS/SSL.                                                        |
-| dialTimeout        | Number (optional, default is _5_ (seconds))              | Timeout for establishing a connection, in seconds.                                    |
-| readTimeout        | Number (optional, default is _3_ (seconds))              | Timeout for socket reads, in seconds. A value of `-1` disables the timeout.           |
-| writeTimeout       | Number (optional, default is `readTimeout`)              | Timeout for socket writes, in seconds. A value of `-1` disables the timeout.          |
-| poolSize           | Number (optional, default is _10_ (per CPU))             | Number of socket connections in the pool per CPU.                                     |
-| minIdleConns       | Number (optional)                                        | Minimum number of idle connections in the pool.                                       |
-| maxConnAge         | Number (optional, default is _0_ (no maximum idle time)) | Maximum time before closing a connection.                                             |
-| poolTimeout        | Number (optional, `readTimeout + 1`)                     | Timeout for acquiring a connection from the pool.                                     |
-| idleTimeout        | Number (optional, `readTimeout + 1`)                     | Timeout for idle connections in the pool.                                             |
-| idleCheckFrequency | Number (optional, default is _1_ (minute))               | Frequency of idle connection checks, in minutes. A value of `-1` disables the checks. |
+| Option Name        | Type                                                                           | Description                                                                           |
+| ------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| host               | String                                                                         | IP address or hostname of the Redis server.                                           |
+| port               | Number (optional)                                                              | Port number of the Redis server.                                                      |
+| tls                | [TLSOptions](#tls-configuration-options) (optional)                            | The configuration for TLS/SSL.                                                        |
+| dialTimeout        | Number (optional, default is _5_ (seconds))                                    | Timeout for establishing a connection, in seconds.                                    |
+| readTimeout        | Number (optional, default is _3_ (seconds))                                    | Timeout for socket reads, in seconds. A value of `-1` disables the timeout.           |
+| writeTimeout       | Number (optional, default is `readTimeout`)                                    | Timeout for socket writes, in seconds. A value of `-1` disables the timeout.          |
+| poolSize           | Number (optional, default is _10_ (per CPU))                                   | Number of socket connections in the pool per CPU.                                     |
+| minIdleConns       | Number (optional, default is _0_ (idle connections are not closed by default)) | Minimum number of idle connections in the pool.                                       |
+| maxConnAge         | Number (optional, default is _0_ (no maximum idle time))                       | Maximum time before closing a connection.                                             |
+| poolTimeout        | Number (optional, `readTimeout + 1`)                                           | Timeout for acquiring a connection from the pool.                                     |
+| idleTimeout        | Number (optional, `readTimeout + 1`)                                           | Timeout for idle connections in the pool.                                             |
+| idleCheckFrequency | Number (optional, default is _1_ (minute))                                     | Frequency of idle connection checks, in minutes. A value of `-1` disables the checks. |
 
 #### TLS Configuration Options
 
