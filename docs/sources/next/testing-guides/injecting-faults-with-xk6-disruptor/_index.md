@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../javascript-api/xk6-disruptor/get-started # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/get-started/
 title: 'Injecting faults with xk6-disruptor'
 description: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 weight: 06
@@ -18,7 +20,7 @@ Key features include:
 
 Currently, the disruptor is intended to test applications running in Kubernetes. Other platforms are not supported at this time.
 
-It provides a Javascript API to inject different [faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/) or [Services](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/).
+It provides a Javascript API to inject different [faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor/) or [Services](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/).
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 

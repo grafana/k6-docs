@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../../javascript-api/xk6-disruptor/servicedisruptor # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor
 title: 'ServiceDisruptor'
 description: 'xk6-disruptor: ServiceDisruptor class'
 weight: 300
@@ -8,16 +10,16 @@ weight: 300
 
 The `ServiceDisruptor` class can inject different types of faults into the pods that back a Kubernetes service.
 
-To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/constructor).
+To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/constructor).
 
 ## Methods
 
 | Method                                                                                                                                         | Description                                                                                                                                         |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ServiceDisruptor.injectGrpcFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults) | Inject [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc) in the target Pods                          |
-| [ServiceDisruptor.injectHTTPFaults()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injecthttpfaults) | Inject [HTTTP faults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http) in the target Pods                         |
+| [ServiceDisruptor.injectGrpcFaults()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/injectgrpcfaults) | Inject [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/grpc) in the target Pods                          |
+| [ServiceDisruptor.injectHTTPFaults()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/injecthttpfaults) | Inject [HTTTP faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/http) in the target Pods                         |
 | ServiceDisruptor.targets()                                                                                                                     | Returns the list of target Pods of the ServiceDisruptor                                                                                             |
-| [ServiceDisruptor.terminatePods()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/terminate-pods)      | executes a [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/pod-termination) in the target Pods |
+| [ServiceDisruptor.terminatePods()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/terminate-pods)      | executes a [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/pod-termination) in the target Pods |
 
 ## Example
 

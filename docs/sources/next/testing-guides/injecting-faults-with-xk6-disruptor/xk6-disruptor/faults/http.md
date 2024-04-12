@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../../../javascript-api/xk6-disruptor/faults/http # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/http
 title: 'HTTP'
 description: 'xk6-disruptor: HTTP Fault attributes'
 weight: 02

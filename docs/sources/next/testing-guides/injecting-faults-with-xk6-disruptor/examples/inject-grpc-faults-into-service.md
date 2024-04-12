@@ -6,7 +6,7 @@ weight: 01
 
 # Inject gRPC faults into Service
 
-This example shows a way to use the [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
+This example shows a way to use the [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
 
 The complete [source code](#source-code) is at the end of this document. The next sections examine the code in detail.
 
@@ -18,7 +18,7 @@ For the Kubernetes manifests and the instructions on how to deploy it to a clust
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc) module provides functions for executing gRPC requests. The [check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) function verifies the results from the requests.
+The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc) module provides functions for executing gRPC requests. The [check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) function verifies the results from the requests.
 
 ```javascript
 import { ServiceDisruptor } from 'k6/x/disruptor';
@@ -60,7 +60,7 @@ export default function () {
 
 The `disrupt` function creates a `ServiceDisruptor` for the `grpcbin` service in the namespace `grpcbin`.
 
-The gRPC faults are injected by calling the [ServiceDisruptor.injectGrpcFaults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults) method using a fault definition that introduces a delay of `300ms` on each request and an error with status code `13` ("Internal error") in `10%` of the requests.
+The gRPC faults are injected by calling the [ServiceDisruptor.injectGrpcFaults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor/injectgrpcfaults) method using a fault definition that introduces a delay of `300ms` on each request and an error with status code `13` ("Internal error") in `10%` of the requests.
 
 ```javascript
 export function disrupt() {

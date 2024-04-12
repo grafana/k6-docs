@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../../../javascript-api/xk6-disruptor/servicedisruptor/constructor # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/constructor
 title: 'Constructor'
 descriptiontiontion: 'xk6-disruptor: ServiceDisruptor constructor'
 weight: 100
@@ -6,7 +8,7 @@ weight: 100
 
 # Constructor
 
-The `ServiceDisruptor()` constructor creates a new instance of a [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor) class.
+The `ServiceDisruptor()` constructor creates a new instance of a [ServiceDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor) class.
 
 | Parameter          | Type   | Description                                                       |
 | ------------------ | ------ | ----------------------------------------------------------------- |
