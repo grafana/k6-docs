@@ -299,6 +299,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-sqs</h4>
         <p>Produce to an SQS queue</p>
     </a>
+    <a href="https://github.com/phymbert/xk6-sse" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-sse</h4>
+        <p>Server Sent Event</p>
+    </a>
     <a href="https://github.com/grafana/xk6-ssh" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-ssh</h4>
         <p>SSH</p>
