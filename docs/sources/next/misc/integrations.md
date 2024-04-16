@@ -69,7 +69,7 @@ By automating load testing with your CI / CD tools, you can quickly see when a c
 ## Chaos engineering
 
 - [Steadybit](https://k6.io/blog/chaos-engineering-with-k6-and-steadybit) - Using k6 and Steadybit for chaos engineering.
-- [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor) - A k6 extension for injecting faults into k6 tests.
+- [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor) - A k6 extension for injecting faults into k6 tests.
 - [ChaosToolkit](http://chaostoolkit.org/drivers/k6/) - A collection of k6 actions and probes.
 
 ## Test management

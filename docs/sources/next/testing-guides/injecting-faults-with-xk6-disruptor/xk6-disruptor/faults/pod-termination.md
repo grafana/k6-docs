@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../../../javascript-api/xk6-disruptor/faults/pod-termination # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/pod-termination
 title: 'Pod Termination'
 description: 'xk6-disruptor: Pod Termination Fault attributes'
 weight: 03

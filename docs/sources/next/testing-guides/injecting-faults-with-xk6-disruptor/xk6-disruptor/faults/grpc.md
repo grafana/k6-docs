@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../../../javascript-api/xk6-disruptor/faults/grpc # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/faults/grpc
 title: 'gRPC'
 description: 'xk6-disruptor: gRPC Fault attributes'
 weight: 01

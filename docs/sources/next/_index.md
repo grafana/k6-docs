@@ -68,7 +68,7 @@ Common k6 use cases are:
 
 - **Chaos and resilience testing**
 
-  You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor).
+  You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with [xk6-disruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor).
 
 - **Performance and synthetic monitoring**
 
