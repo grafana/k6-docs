@@ -24,7 +24,7 @@ In all cases you'll be able to see your test results at [k6 Cloud](https://app.k
 {{% admonition type="caution" %}}
 
 Data storage and processing are primary cloud costs,
-so `k6 run --out cloud` will consume VUh or test runs from your subscription.
+so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
 {{% /admonition %}}
 
