@@ -237,7 +237,7 @@
       },
       "stars": "38",
       "type": ["JavaScript"],
-      "categories": ["Containers","Kubernetes"],
+      "categories": ["Containers", "Kubernetes"],
       "tiers": ["Official"],
       "cloudEnabled": false
     },
@@ -1182,6 +1182,21 @@
         "url": "https://github.com/phymbert"
       },
       "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
+    },
+    {
+      "name": "xk6-zeromq",
+      "description": "Add support for the ZeroMQ networking library",
+      "url": "https://github.com/luissimas/xk6-zeromq",
+      "logo": "",
+      "author": {
+        "name": "Luís Simas",
+        "url": "https://github.com/luissimas"
+      },
+      "stars": "0",
       "type": ["JavaScript"],
       "categories": ["Protocol"],
       "tiers": ["Community"],
