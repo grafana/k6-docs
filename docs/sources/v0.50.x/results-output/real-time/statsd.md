@@ -27,7 +27,7 @@ Then, open your terminal and run the following commands:
 go install go.k6.io/xk6/cmd/xk6@latest
 
 # Build the k6 binary
-xk6 build --with github.com/grafana/xk6-output-statsd
+xk6 build --with github.com/LeonAdato/xk6-output-statsd
 
 ... [INFO] Build environment ready
 ... [INFO] Building k6
