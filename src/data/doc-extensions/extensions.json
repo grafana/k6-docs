@@ -947,9 +947,9 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-enhanced",
-      "description": "Add enhanced JavaScript compatibility (TypeScript, import JSON files, etc) to k6",
-      "url": "https://github.com/szkiba/xk6-enhanced",
+      "name": "xk6-ts",
+      "description": "Add TypeScript support for k6",
+      "url": "https://github.com/szkiba/xk6-ts",
       "logo": "",
       "author": {
         "name": "Iván Szkiba",
@@ -1169,6 +1169,21 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Messaging, Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
+    },
+    {
+      "name": "xk6-sse",
+      "description": "A k6 extension for Server-Sent Events (SSE)",
+      "url": "https://github.com/phymbert/xk6-sse",
+      "logo": "",
+      "author": {
+        "name": "Pierrick HYMBERT",
+        "url": "https://github.com/phymbert"
+      },
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Protocol"],
       "tiers": ["Community"],
       "cloudEnabled": false
     }

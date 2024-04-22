@@ -6,7 +6,7 @@ weight: 02
 
 # Inject HTTP faults into Pod
 
-This example shows how [PodDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
+This example shows how [PodDisruptor](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
 
 You will find the complete [source code](#source-code) at the end of this document. Next sections examine the code in detail.
 
@@ -45,7 +45,7 @@ The test uses the `delay` endpoint which return after the requested delay. It re
 
 The `disrupt` function creates a `PodDisruptor` using a selector that matches pods in the namespace `httpbin` with the label `app: httpbin`.
 
-The http faults are injected by calling the [PodDisruptor.injectHTTPFaults](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults) method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in `10%` of the requests.
+The http faults are injected by calling the [PodDisruptor.injectHTTPFaults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor/injecthttpfaults) method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in `10%` of the requests.
 
 ```javascript
 export function disrupt(data) {
