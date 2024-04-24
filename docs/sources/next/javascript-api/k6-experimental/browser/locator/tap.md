@@ -30,6 +30,12 @@ Tap on the chosen element.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the tap action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -44,7 +50,7 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   const options = page.locator('#numbers-options');
-  options.tap();
+  await options.tap();
 }
 ```
 
