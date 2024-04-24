@@ -1,12 +1,12 @@
 ---
 title: 'instrumentHTTP'
-description: 'instrumentHTTP instruments the k6 http module with baggage header.'
+description: 'instrumentHTTP instruments the k6 HTTP module with baggage header.'
 weight: 01
 ---
 
 # instrumentHTTP
 
-The `instrumentHTTP` function instruments the k6 http module with additional headers. It transparently replaces each of the k6 http module functions with versions that automatically attach a [baggage header](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header)(by default) to every request.
+The `instrumentHTTP` function instruments the k6 HTTP module with additional headers. It transparently replaces each of the k6 http module functions with versions that automatically attach a [baggage header](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header)(by default) to every request.
 
 Instrumented functions include [del](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/del),[get](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/get),[head](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head),[options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/options),[patch](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/patch),[post](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post),[put](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head), and [request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/request).
 
