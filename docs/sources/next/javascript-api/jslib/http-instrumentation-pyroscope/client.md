@@ -1,22 +1,23 @@
 ---
 title: 'Client'
-description: 'Client is a HTTP client attaching tracing information to its requests.'
+description: 'Client is a HTTP client attaching baggage headers to its requests.'
 weight: 02
 ---
 
 # Client
 
-`Client` is an HTTP client constructor that attaches baggage header to its requests. Use it to include a context in HTTP requests so that  [Grafana pyroscope](https://grafana.com/oss/pyroscope/) can incorporate their results.
+`Client` is an HTTP client constructor that attaches baggage headers to its requests.
+Use the `Client` class to include a context in HTTP requests so that [Grafana pyroscope](https://grafana.com/oss/pyroscope/) can incorporate their results.
 
 The `Client` class acts as a drop-in replacement for the standard `http` module and attaches a [baggage header](https://www.w3.org/TR/baggage/) to the request. For details about propagation, refer to [About baggage header](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header).
 
-The `Client` constructor accepts a function taking the method, body and params of each request and returning a map of headers to be added to the request. By default it appends baggage header with info necessary for Grafana Cloud Profiling to integrate with Grafana K6 Ccloud.
+The `Client` constructor accepts a function that takes the method, the body, and the params of each request and returns a map of headers to be added to the request. By default, it appends the baggage header with the info necessary for Grafana Cloud Profiling to integrate with Grafana Cloud k6.
 
 For details about propagation, refer to [About baggage header](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header).
 
 ## Example
 
-This example demonstrates how to instantiate a client and use it to instrument HTTP calls. It also illustrates how you can use it alongside the standard `http` module to perform non-instrumented HTTP calls.
+This example demonstrates how to instantiate a client and use it to instrument HTTP calls. The example also illustrates how you can use the client alongside the standard `http` module to perform non-instrumented HTTP calls.
 
 {{< code >}}
 
@@ -25,7 +26,7 @@ import { check } from 'k6';
 import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/1.0.0/index.js';
 import http from 'k6/http';
 
-// Explicitly instantiating a pyroscope client allows to distinguish
+// Explicitly instantiating a Pyroscope client allows to distinguish
 // instrumented from non-instrumented HTTP calls, by keeping APIs separate.
 const instrumentedHTTP = new pyroscope.Client();
 
@@ -42,7 +43,7 @@ export default () => {
 
   // The client offers more flexibility over
   // the `instrumentHTTP` function, as it leaves the
-  // imported standard http module untouched. Thus,
+  // imported standard `http` module untouched. Thus,
   // one can still perform non-instrumented HTTP calls
   // using it.
   res = http.post('http://httpbin.org/post', JSON.stringify(testData), {
@@ -59,7 +60,7 @@ export default () => {
 
 ## HTTP module functions equivalents
 
-The `Client` class exposes the same API as the standard `http` module. Except for the `batch` method, which is absent from `Client`. The following table lists the `Client` methods which have an equivalent in the standard `http` module:
+The `Client` class exposes the same API as the standard `http` module except for the `batch` method, which is absent from `Client`. The following table lists the `Client` methods which have an equivalent in the standard `http` module:
 
 | Method                                               | HTTP equivalent                                                                                   | Description                                                                                                                                                                             |
 | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
