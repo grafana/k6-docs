@@ -31,6 +31,12 @@ Tap the first element that matches the selector.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the tap action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -55,7 +61,7 @@ export default async function () {
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.tap('#numbers-options');
+  await page.tap('#numbers-options');
 }
 ```
 
