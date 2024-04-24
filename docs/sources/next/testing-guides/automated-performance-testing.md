@@ -43,7 +43,7 @@ Automation often refers to running tests with pass/fail conditions as part of th
 [Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests in a frequent basis:
 
 - Cron and cron job runners.
-- Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/schedule-a-test/).
+- Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/schedule-a-test/).
 - Test management tools with automation capabilities.
 - Trigger manual tests. Include this as a step in your release checklist process.
 
