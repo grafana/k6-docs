@@ -1,15 +1,14 @@
 ---
-title: 'Client.invoke(url, request [,params])'
-description: 'Invokes an unary RPC request to the given method.'
+title: 'Client.asyncInvoke(url, request [,params])'
+description: 'Asynchronously invokes an unary RPC request to the given method.'
 weight: 30
 ---
 
-# Client.invoke(url, request [,params])
+# Client.asyncInvoke(url, request [,params])
 
-Invokes an unary RPC request to the given method.
+Asynchronously invokes an unary RPC request to the given method.
 
-The given method to invoke must have its RPC schema previously loaded via the [Client.load()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load) function, otherwise an
-error will be thrown.
+The given method to invoke must have its RPC schema previously loaded via the [Client.load()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-load) function, otherwise an error will be thrown.
 
 [Client.connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-connect) must be called first before invoking a request, otherwise an error will be thrown.
 
@@ -21,9 +20,9 @@ error will be thrown.
 
 ### Returns
 
-| Type       | Description                                                                                           |
-| ---------- | ----------------------------------------------------------------------------------------------------- |
-| `Response` | gRPC [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) object. |
+| Type                    | Description                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| Promise with `Response` | gRPC [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response) object. |
 
 ### Examples
 
@@ -38,15 +37,19 @@ client.load([], 'routeguide.proto');
 
 export default () => {
   client.connect('localhost:10000', { plaintext: true });
-  const response = client.invoke('main.RouteGuide/GetFeature', {
-    latitude: 410248224,
-    longitude: -747127767,
-  });
-  check(response, { 'status is OK': (r) => r && r.status === grpc.StatusOK });
-  console.log(response.message.name);
-  // output: 3 Hasta Way, Newton, NJ 07860, USA
 
-  client.close();
+  client
+    .asyncInvoke('main.RouteGuide/GetFeature', {
+      latitude: 410248224,
+      longitude: -747127767,
+    })
+    .then((response) => {
+      check(response, { 'status is OK': (r) => r && r.status === grpc.StatusOK });
+      console.log(response.message.name);
+      // output: 3 Hasta Way, Newton, NJ 07860, USA
+
+      client.close();
+    });
 };
 ```
 
