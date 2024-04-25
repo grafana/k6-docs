@@ -3,6 +3,8 @@ title: 'Params'
 head_title: 'gRPC.params'
 description: 'Params is an object used by the gRPC methods that generate RPC requests.'
 weight: 20
+aliases:
+  - ../k6-experimental/grpc/params/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/params/
 ---
 
 # Params

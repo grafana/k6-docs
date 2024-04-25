@@ -3,6 +3,8 @@ title: 'Client.connect(address [,params])'
 description: 'Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown.'
 weight: 20
 slug: 'client-connect'
+aliases:
+  - ../../k6-experimental/grpc/client/client-connect/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-connect/
 ---
 
 # Client.connect(address [,params])

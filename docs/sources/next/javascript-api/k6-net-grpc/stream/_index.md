@@ -2,6 +2,8 @@
 title: Stream
 description: gRPC Streams
 weight: 30
+aliases:
+  - ../k6-experimental/grpc/stream/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/
 ---
 
 # Stream

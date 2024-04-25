@@ -2,6 +2,8 @@
 title: 'Stream.write()'
 description: 'Writes a message to the stream.'
 weight: 40
+aliases:
+  - ../../k6-experimental/grpc/stream/stream-write/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-write/
 ---
 
 # Stream.write()
