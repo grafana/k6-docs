@@ -2,6 +2,8 @@
 title: 'Constants'
 description: 'Define constants to distinguish between gRPC Response'
 weight: 40
+aliases:
+  - ../k6-experimental/grpc/constants/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/constants/
 ---
 
 # Constants

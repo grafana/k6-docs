@@ -2,6 +2,8 @@
 title: 'Client.close()'
 description: 'Close the connection to the gRPC service. Tear down all underlying connections.'
 weight: 40
+aliases:
+  - ../../k6-experimental/grpc/client/client-close/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-close/
 ---
 
 # Client.close()

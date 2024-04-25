@@ -3,6 +3,8 @@ title: 'Response'
 head_title: 'gRPC.Response'
 description: 'The response object of a gRPC request.'
 weight: 30
+aliases:
+  - ../k6-experimental/grpc/response/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/response/
 ---
 
 # Response

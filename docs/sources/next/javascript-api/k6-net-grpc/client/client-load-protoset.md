@@ -3,6 +3,8 @@ title: 'Client.loadProtoset(protosetPath)'
 slug: 'client-loadprotoset'
 description: 'Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
 weight: 11
+aliases:
+  - ../../k6-experimental/grpc/client/client-loadprotoset/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-loadprotoset/
 ---
 
 # Client.loadProtoset(protosetPath)

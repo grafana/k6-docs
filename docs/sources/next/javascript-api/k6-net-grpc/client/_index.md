@@ -2,6 +2,8 @@
 title: Client
 description: 'Client is a gRPC client that can interact with a gRPC server.'
 weight: 10
+aliases:
+  - ../k6-experimental/grpc/client/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/
 ---
 
 # Client
