@@ -72,7 +72,6 @@ Each option has its own detailed reference in a separate section.
 | [User agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
 | [Verbose](#verbose)                                       | A boolean specifying whether verbose logging is enabled                             |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [Profiling enabled](#profiling-enabled)                   | A boolean enables exposing profiling endpoints                                      |
 
 The following sections detail all available options that you can be specify within a script.
 
@@ -1503,23 +1502,6 @@ export const options = {
   vus: 10,
   duration: '1h',
 };
-```
-
-</CodeGroup>
-
-## Profiling enabled
-
-A boolean which enables exposing [pprof](https://go.dev/blog/pprof) profiling endpoints. The profiling endpoints are exposed on the same port as the HTTP REST API under the `/debug/pprof/` path. This can be useful for extension developers.
-
-| Env                    | CLI                   | Code / Config file  | Default |
-| ---------------------- | --------------------- | ------------------- | ------- |
-| `K6_PROFILING_ENABLED` | `--profiling-enabled` | N/A                 | `false` |
-
-
-<CodeGroup labels={[]} lineNumbers={[false]}>
-
-```bash
-$ k6 run --profiling-enabled script.js
 ```
 
 </CodeGroup>
