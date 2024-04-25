@@ -910,9 +910,9 @@ export const options = {
 
 Enables [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints under the k6's REST API [address](#address). These endpoints help debug and profile k6 itself. k6's REST API should be enabled as well.
 
-| Env                    | CLI                   | Code / Config file | Default                              |
-| ---------------------- | --------------------- | ------------------ | ------------------------------------ |
-| `K6_PROFILING_ENABLED` | `--profiling-enabled` | N/A                | `http://localhost:6565/debug/pprof/` |
+| Env | CLI | Code / Config file | Default |
+| --- | --------------------- | ------------------ | ------------------------------------ |
+| N/A | `--profiling-enabled` | N/A | `http://localhost:6565/debug/pprof/` |
 
 {{< code >}}
 
