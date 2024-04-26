@@ -27,7 +27,7 @@ It's a good practice to run a smoke test as a first step, with the following goa
 - Verify that your test script doesn't have errors.
 - Verify that your system doesn't throw any errors (performance or system related) when under minimal load.
 - Gather baseline performance metrics of your system’s response under minimal load.
-- With simple logic, to serve as a synthetic test to monitor the performance and availability of production environments.
+- With simple logic, to serve as a [synthetic test](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/k6/) to monitor the performance and availability of production environments.
 
 ## Considerations
 

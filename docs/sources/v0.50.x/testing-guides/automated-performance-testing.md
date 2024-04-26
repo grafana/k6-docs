@@ -192,7 +192,7 @@ Typically, the previous testing environments do not perfectly mirror the product
 
 Testing in production provides real-world insights that cannot be achieved in other environments. However, production testing requires a careful approach to handling and storing test data in production and avoiding impacting real users.
 
-A low-risk common practice is to utilize smoke tests for synthetic testing, also called synthetic monitoring. Testing production with minimal load is safe. Schedule smoke tests every five minutes, establishing Pass/Fail test conditions and an effective alerting mechanism. For instance, if six consecutive test runs fail, send an alert.
+A low-risk common practice is to utilize smoke tests for synthetic testing, also called [synthetic monitoring](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/k6/). Testing production with minimal load is safe. Schedule smoke tests every five minutes, establishing Pass/Fail test conditions and an effective alerting mechanism. For instance, if six consecutive test runs fail, send an alert.
 
 If release strategies like Blue/Green or Canary deployments are in place, run load tests against the Green or new version to validate the release. It's an ideal moment to see how SLOs behave in production.
 

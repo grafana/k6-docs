@@ -72,7 +72,7 @@ Common k6 use cases are:
 
 - **Performance and synthetic monitoring**
 
-  With k6, you can automate and schedule to trigger tests very frequently with a small load to continuously validate the performance and availability of your production environment.
+  With [Grafana Synthetic Monitoring](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/k6/), you can schedule running k6 smoke tests at short, frequent intervals to proactively monitor your applications in production, 24/7.
 
 ## Load Testing Manifesto
 
