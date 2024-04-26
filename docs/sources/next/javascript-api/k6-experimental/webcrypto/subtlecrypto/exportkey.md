@@ -18,14 +18,14 @@ exportKey(format, key)
 
 ## Parameters
 
-| Name     | Type                                                                                                     | Description                                                                                                       |
-| :------- | :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| `format` | `string`                                                                                                 | Defines the data format the key should be exported in. Currently supported formats: `raw`, `jwk`.                 |
-| `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export. |
+| Name     | Type                                                                                                     | Description                                                                                                                                                                                          |
+| :------- | :------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `format` | `string`                                                                                                 | Defines the data format in which the key should be exported. Depending on the algorithm and key type, the data format could vary. Currently supported formats are `raw`, `jwk`, `spki`, and `pkcs8`. |
+| `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export.                                                                                    |
 
 ## Return Value
 
-A `Promise` that resolves to a new `ArrayBuffer` containing the key.
+A `Promise` that resolves to a new `ArrayBuffer` or an [`JsonWebKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/jsonwebkey) object/dictionary containing the key.
 
 ## Throws
 
