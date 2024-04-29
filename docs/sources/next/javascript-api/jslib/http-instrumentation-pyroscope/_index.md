@@ -4,7 +4,7 @@ description: "k6 Pyroscope instrumentation API"
 weight: 04
 ---
 
-# http instrumentation for Pyroscope
+# HTTP instrumentation for Pyroscope
 
 
 With jslib, you can _instrument_ HTTP requests in a way that lets you tag Grafana Cloud Profiles with relevant information generated from k6 tests.
