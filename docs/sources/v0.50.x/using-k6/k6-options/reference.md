@@ -912,7 +912,7 @@ Enables [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints under the
 
 | Env | CLI                   | Code / Config file | Default                              |
 | --- | --------------------- | ------------------ | ------------------------------------ |
-| N/A | `--profiling-enabled` | N/A | `http://localhost:6565/debug/pprof/` |
+| N/A | `--profiling-enabled` | N/A                | `http://localhost:6565/debug/pprof/` |
 
 {{< code >}}
 
