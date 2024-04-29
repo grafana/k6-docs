@@ -20,6 +20,7 @@ import { WebSocket } from 'k6/experimental/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');
+  ws.binaryType = "arraybuffer";
 
   ws.onmessage = (data) => {
     console.log('a message received');
