@@ -11,8 +11,8 @@ Throttles the network in Chrome/Chromium to slow it down by the specified fields
 | ----------------------- | -------------- | ------- | -------------------------------------------------------------------------------------- |
 | networkProfile          | NetworkProfile | `null`  | This is a mandatory parameter.                                                         |
 | networkProfile.latency  | number         | `0`     | Minimum latency from request sent to response headers received (ms).                   |
-| networkProfile.download | number         | `-1`    | Maximal aggregated download throughput (bytes/sec). `-1` disables download throttling. |
-| networkProfile.upload   | number         | `-1`    | Maximal aggregated upload throughput (bytes/sec). `-1` disables upload throttling.     |
+| networkProfile.downloadThroughput | number         | `-1`    | Maximal aggregated download throughput (bytes/sec). `-1` disables download throttling. |
+| networkProfile.uploadThroughput   | number         | `-1`    | Maximal aggregated upload throughput (bytes/sec). `-1` disables upload throttling.     |
 
 To work with the most commonly tested network profiles, import `networkProfiles` from the browser module. There are three profiles available:
 
