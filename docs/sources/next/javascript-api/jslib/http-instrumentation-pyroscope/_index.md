@@ -1,5 +1,6 @@
 ---
-title: "http-instrumentation-pyroscope"
+title: HTTP instrumentation for Pyroscope
+menuTitle: http-instrumentation-pyroscope
 description: "k6 Pyroscope instrumentation API"
 weight: 04
 ---
