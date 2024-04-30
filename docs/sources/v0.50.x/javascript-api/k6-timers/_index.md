@@ -1,7 +1,7 @@
 ---
 title: 'k6/timers'
 description: 'k6 timers API'
-weight: 13
+weight: 11
 ---
 
 # k6/timers
