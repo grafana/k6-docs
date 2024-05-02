@@ -21,6 +21,7 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 | [generateKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) | Generates a new cryptographic key for use with the specified algorithm.                                              |
 | [importKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey)     | Imports a raw key material into the Web Crypto API, generating a new key object to use with the specified algorithm. |
 | [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey)     | Exports the raw key material of the given key object.                                                                |
+| [deriveBits](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/derivebits)   | Derives bits using provided input.                                                                                   |
 
 ## Example
 

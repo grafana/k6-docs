@@ -34,7 +34,7 @@ A WebSocket instance also has the following properties:
 | WebSocket.readyState                                                                                                                    | The current state of the connection. Could be one of [the four states](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState).                                                 |
 | WebSocket.url                                                                                                                           | The URL of the connection as resolved by the constructor.                                                                                                                                      |
 | WebSocket.bufferedAmount                                                                                                                | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network.                                                                              |
-| WebSocket.binaryType                                                                                                                    | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `"ArrayBuffer"`. Setting it throws an exception, as k6 does not support the Blob type. |
+| WebSocket.binaryType                                                                                                                    | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `""`. If a binary message is received it will be automatically set to `"arraybuffer"` if empty and warning will be printed. In the future it will move to default to `"blob"`. If you want to have the same behaviour - you should always be setting it to `"arraybuffer"`. |
 | [WebSocket.onmessage](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | A handler for `message` events.                                                                                                                                                                |
 | [WebSocket.onerror](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onerror)     | A handler for `error` events.                                                                                                                                                                  |
 | [WebSocket.onopen](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onopen)       | A handler for `open` events.                                                                                                                                                                   |
@@ -75,6 +75,7 @@ export default function () {
 function startWSWorker(id) {
   // create a new websocket connection
   const ws = new WebSocket(`wss://test-api.k6.io/ws/crocochat/${chatRoomName}/`);
+  ws.binaryType = "arraybuffer";
 
   ws.addEventListener('open', () => {
     // change the user name
