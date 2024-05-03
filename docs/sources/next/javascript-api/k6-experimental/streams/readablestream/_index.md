@@ -60,7 +60,7 @@ The `queuingStrategy` argument is an object that defines the queuing strategy to
 - `highWaterMark`: An **optional** number that represents the maximum number of chunks that the stream can hold in its internal queue. The default value is `1`.
 - `size(chunk)`: An **optional** function that returns the size of the chunk passed as an argument. The default value is a function that returns `1`.
 
-Although you can define your own custom queueing strategy, the default behavior and recommended way to use the `ReadableStream` is to use a [CountQueuingStrategy](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/countqueuingstrategy) object.
+Although you can define your own custom queueing strategy, the default behavior and recommended way to use the `ReadableStream` is to use a [CountQueuingStrategy](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream/countqueuingstrategy) object.
 
 ## Methods
 
