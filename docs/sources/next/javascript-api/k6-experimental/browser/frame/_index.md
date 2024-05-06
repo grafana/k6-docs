@@ -10,7 +10,7 @@ weight: 05
 
 ## Supported APIs
 
-| Method                                                                                                                                                    | Playwright Relevant Distinctions                             |
+| Method                                                                                                                                                    | Description / Playwright Relevant Distinctions               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-query-selector" target="_blank" >frame.$(selector[, options])</a>                              | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-check" target="_blank" >frame.check(selector[, options])</a>                                   | -                                                            |
@@ -47,7 +47,7 @@ weight: 05
 | <a href="https://playwright.dev/docs/api/class-frame#frame-set-checked" target="_blank" >frame.setChecked(selector, checked[, options])</a>               | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-set-content" target="_blank" >frame.setContent(html[, options])</a>                            | -                                                            |
 | [frame.setInputFiles(selector, file[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/setinputfiles)     | Sets the file input element's value to the specified files.  |
-| <a href="https://playwright.dev/docs/api/class-frame#frame-tap" target="_blank" >frame.tap(selector[, options])</a>                                       | -                                                            |
+| [frame.tap(selector[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame/tap/) <BWIPT id="436"/>            | Taps the first element that matches the `selector`.          |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-text-content" target="_blank" >frame.textContent(selector[, options])</a>                      | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-title" target="_blank" >frame.title()</a>                                                      | -                                                            |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-type" target="_blank" >frame.title()</a>                                                       | -                                                            |
