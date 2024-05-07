@@ -123,4 +123,4 @@ $ k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
 
 ## Read more
 
-- [Manage environment variables in k6 Cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-environment-variables/)
+- [Manage environment variables in k6 Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/cloud-environment-variables/)
