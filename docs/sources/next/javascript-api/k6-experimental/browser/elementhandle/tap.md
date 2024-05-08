@@ -56,7 +56,7 @@ export default async function () {
   });
 
   await page.goto('https://test.k6.io/browser.php');
-  const el = page.locator("#numbers-options");
+  const el = page.$("#numbers-options");
   await el.tap();
 }
 ```
