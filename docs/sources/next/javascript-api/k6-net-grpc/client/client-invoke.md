@@ -2,6 +2,8 @@
 title: 'Client.invoke(url, request [,params])'
 description: 'Invokes an unary RPC request to the given method.'
 weight: 30
+aliases:
+  - ../../k6-experimental/grpc/client/client-invoke/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-invoke/
 ---
 
 # Client.invoke(url, request [,params])

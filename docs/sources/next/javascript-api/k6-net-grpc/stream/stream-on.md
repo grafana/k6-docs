@@ -2,6 +2,8 @@
 title: 'Stream.on()'
 description: 'Set up handler functions for various events on the GRPC stream.'
 weight: 10
+aliases:
+  - ../../k6-experimental/grpc/stream/stream-on/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-on/
 ---
 
 # Stream.on()

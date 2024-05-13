@@ -2,6 +2,8 @@
 title: 'Client.load(importPaths, ...protoFiles)'
 description: 'Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
 weight: 10
+aliases:
+  - ../../k6-experimental/grpc/client/client-load/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/client/client-load/
 ---
 
 # Client.load(importPaths, ...protoFiles)

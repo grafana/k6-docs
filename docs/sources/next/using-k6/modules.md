@@ -228,6 +228,8 @@ Alternatively, you can implement a multistage Dockerfile build such as shown on 
 
 ## Read more
 
+- [Guidelines for organizing your k6 performance testing suite](https://grafana.com/blog/2024/04/30/organizing-your-grafana-k6-performance-testing-suite-best-practices-to-get-started/): Recommendations for large performance testing projects.
+- [JavaScript tools, shared libraries, multiple repos, and central teams](https://grafana.com/blog/2024/05/02/setting-up-your-grafana-k6-performance-testing-suite-javascript-tools-shared-libraries-and-more/): Options for structuring your performance testing projects and sharing k6 libraries with other teams.
 - [JSLib](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib): A collection of k6 JavaScript libraries maintained by Grafana Labs and available as remote modules.
 - [Extensions directory](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore): A collection of k6 extensions maintained by Grafana Labs and the community.
 - [k6-rollup-example](https://github.com/grafana/k6-rollup-example): Example using Rollup and Babel to bundle a common library and testing suite.

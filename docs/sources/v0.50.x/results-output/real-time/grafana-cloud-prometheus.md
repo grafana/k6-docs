@@ -11,7 +11,7 @@ weight: 00
 
 This page includes instructions for running a local test that sends the test results to a Prometheus instance in Grafana Cloud.
 
-For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/).
+For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
 {{% /admonition %}}
 

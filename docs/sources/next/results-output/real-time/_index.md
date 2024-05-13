@@ -43,7 +43,7 @@ As well as the following third-party services:
 
 {{% admonition type="note" %}}
 
-This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/k6/).
+This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
 {{% /admonition %}}
 

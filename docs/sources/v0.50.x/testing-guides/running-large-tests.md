@@ -356,7 +356,7 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 
 ## Large-scale tests in the cloud
 
-[Grafana Cloud k6](https://grafana.com/products/cloud/k6/), our commercial offering, provides an instant solution for running large-scale tests, among other [benefits](https://grafana.com/docs/grafana-cloud/k6/).
+[Grafana Cloud k6](https://grafana.com/products/cloud/k6/), our commercial offering, provides an instant solution for running large-scale tests, among other [benefits](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
 If you aren't sure whether OSS or Cloud is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
