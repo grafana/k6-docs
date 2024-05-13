@@ -17,13 +17,13 @@ SignatureV4 is included in both the dedicated jslib `signature.js` bundle and th
 
 Instantiating a new `SignatureV4` requires a single options object argument with the following properties:
 
-| Property      | Type                                                                                      | Description                                                                                                                                                                                                                                                                  |
-| :------------ | :---------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| service       | string                                                                                    | the AWS region to sign or pre-sign requests for. As described by [Amazon AWS docs](https://docs.aws.amazon.com/general/latest/gr/rande.html)                                                                                                                                 |
-| region        | string                                                                                    | the AWS service to sign or pre-sign requests for. As described by [Amazon AWS docs](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)]                                                                                                                     |
-| credentials   | an object with `accessKeyId`, `secretAccessKeyId`, and optional `sessionToken` properties | the AWS credentials to sign or pre-sign requests with.                                                                                                                                                                                                                       |
-| uriEscapePath | boolean                                                                                   | Whether to uri-escape the request URI path as part of computing the canonical request string. As of late 2017, this is **required for every AWS service** except Amazon S3.                                                                                                  |
-| applyChecksum | boolean                                                                                   | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is **required for AWS Glacier and Amazon S3** and optional for every other AWS service as of late 2017. |
+| Property      | Type                                                                                    | Description                                                                                                                                                                                                                                                                  |
+| :------------ | :-------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| service       | string                                                                                  | the AWS region to sign or pre-sign requests for. As described by [Amazon AWS docs](https://docs.aws.amazon.com/general/latest/gr/rande.html)                                                                                                                                 |
+| region        | string                                                                                  | the AWS service to sign or pre-sign requests for. As described by [Amazon AWS docs](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)]                                                                                                                     |
+| credentials   | an object with `accessKeyId`, `secretAccessKey`, and optional `sessionToken` properties | the AWS credentials to sign or pre-sign requests with.                                                                                                                                                                                                                       |
+| uriEscapePath | boolean                                                                                 | Whether to uri-escape the request URI path as part of computing the canonical request string. As of late 2017, this is **required for every AWS service** except Amazon S3.                                                                                                  |
+| applyChecksum | boolean                                                                                 | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is **required for AWS Glacier and Amazon S3** and optional for every other AWS service as of late 2017. |
 
 ## Methods
 
@@ -51,7 +51,7 @@ SignatureV4 methods throw errors on failure.
 ```javascript
 import http from 'k6/http';
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.11.0/aws.js';
+import { AWSConfig, Endpoint, SignatureV4 } from 'https://jslib.k6.io/aws/0.12.0/signature.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -83,7 +83,7 @@ export default function () {
      * Whether or not the body's hash should be calculated and included
      * in the request.
      */
-    applyChecksum: false,
+    applyChecksum: true,
   });
 
   /**
@@ -103,24 +103,34 @@ export default function () {
       method: 'GET',
 
       /**
-       * The network protocol we will use to make the request.
+       * The endpoint of the service we will be making the request to.
+       *
+       * The endpoint is instantiated from a URL string, of the format: `{scheme}://{hostname}[:{port}]`
        */
-      protocol: 'https',
-
-      /**
-       * The hostname of the service we will be making the request to.
-       */
-      hostname: 'mybucket.s3.us-east-1.amazonaws.com',
+      endpoint: new Endpoint('https://s3.us-east-1.amazonaws.com'),
 
       /**
        * The path of the request.
        */
-      path: '/myfile.txt',
+      path: '/my-bucket/bonjour.txt',
+
+      /**
+       * The query parameters to include in the request.
+       */
+      query: {
+        'abc': '123',
+        'easy as': ['do', 're', 'mi'],
+      },
 
       /**
        * The headers we will be sending in the request.
        */
       headers: {},
+
+      /**
+       * The body of the request.
+       */
+      body: null,
     },
 
     /**
