@@ -1,0 +1,58 @@
+---
+title: 'LambdaClient'
+head_title: 'LambdaClient'
+description: 'LambdaClient allows interacting with the AWS Lambda service'
+weight: 00
+---
+
+# LambdaClient
+
+{{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}}
+
+`LambdaClient` interacts with the AWS Lambda. With it, you can invoke a lambda function.
+
+Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bundle include the `LambdaClient`.
+
+### Methods
+
+| Function                                                                                                                  | Description                     |
+| :------------------------------------------------------------------------------------------------------------------------ | :------------------------------ |
+| [invoke(name, payload, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/lambdaclient/invoke) | Invokes an AWS lambda function. |
+
+### Throws
+
+`LambdaClient` methods will throw errors in case of failure.
+
+| Error                 | Condition                                                   |
+| :-------------------- | :---------------------------------------------------------- |
+| InvalidSignatureError | when invalid credentials were provided.                     |
+| LambdaInvocationError | when AWS replied to the requested invokation with an error. |
+
+### Examples
+
+{{< code >}}
+
+```javascript
+import { AWSConfig, LambdaClient } from 'https://jslib.k6.io/aws/0.12.0/lambda.js';
+import { check } from 'k6';
+
+const awsConfig = new AWSConfig({
+  region: __ENV.AWS_REGION,
+  accessKeyId: __ENV.AWS_ACCESS_KEY_ID,
+  secretAccessKey: __ENV.AWS_SECRET_ACCESS_KEY,
+  sessionToken: __ENV.AWS_SESSION_TOKEN,
+});
+
+const lambdaClient = new LambdaClient(awsConfig);
+
+export default async function () {
+  const response = await lambdaClient.invoke('add-numbers', JSON.stringify({ x: 1, y: 2 }));
+
+  check(response, {
+    'status is 200': (r) => r.statusCode === 200,
+    'payload is 3': (r) => r.payload === 3,
+  });
+}
+```
+
+{{< /code >}}
