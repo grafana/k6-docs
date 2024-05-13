@@ -1,10 +1,10 @@
 ---
-title: 'error'
+title: 'error(reason)'
 description: 'The error method of the ReadableStreamDefaultController makes any future interactions with the associated stream to error.'
 weight: 40
 ---
 
-# error
+# error(reason)
 
 The `error()` method of the [ReadableStreamDefaultController](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultcontroller) makes any future interactions with the associated stream to error.
 

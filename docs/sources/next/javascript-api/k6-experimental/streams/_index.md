@@ -10,7 +10,7 @@ weight: 10
 
 The k6 streams experimental module provides an implementation of the Streams API specification, providing a way to define and consume streams of data within your test scripts. It currently implements a subset of the full specification, and offers support for defining and consuming readable streams.
 
-### Concepts and usage
+## Concepts and usage
 
 Streaming involves breaking a resource that one wants to process or consume into smaller chunks, which can be processed or consumed incrementally. This is particularly useful when dealing with large files or data sources, as it allows you to work with the data in smaller, more manageable pieces.
 
@@ -18,7 +18,7 @@ With the Streams API support in k6, you can start processing raw data with Javas
 
 ## API Overview
 
-| Object                                                                                                           | Description                           |
+| Class                                                                                                           | Description                           |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | [ReadableStream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream) | Represents a readable stream of data. |
 
@@ -70,7 +70,7 @@ export default async function () {
   const reader = fileLinesStream.getReader();
 
   try {
-    // Read and process each items from the stream
+    // Read and process each item from the stream
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -108,7 +108,7 @@ async function getNextLine(file, state) {
         if (state.remaining) {
           const finalLine = state.remaining.trim();
 
-          // Clear the remaining to signal the end
+          // Clear remaining to signal the end
           state.remaining = '';
 
           // Return the last non-empty line

@@ -1,10 +1,10 @@
 ---
-title: 'getReader'
+title: 'getReader()'
 description: 'Creates a reader and locks the stream to it.'
-weight: 20
+weight: 200
 ---
 
-# getReader
+# getReader()
 
 Creates a reader and locks the [stream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream) to it. While the stream is locked, no other reader can be acquired until this one is released.
 
@@ -12,13 +12,13 @@ Creates a reader and locks the [stream](https://grafana.com/docs/k6/<K6_VERSION>
 
 The `getReader` method takes a single optional `options` argument, which is an object with the following properties:
 
-| name | type   | default value | description                                                                                               |
+| Name | Type   | Default value | Description                                                                                               |
 | ---- | ------ | ------------- | --------------------------------------------------------------------------------------------------------- |
 | mode | string | `undefined`   | A property that specifies the type of reader to create. It currently only supports the `undefined` value. |
 
 ## Return value
 
-A [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream/readablestreamdefaultreader) object instance.
+A [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader/) object instance.
 
 ## Example
 

@@ -1,7 +1,7 @@
 ---
 title: 'CountQueuingStrategy'
 description: 'The CountQueuingStrategy interface of the Streams API represents a built-in queuing strategy that counts the number of chunks in the queue.'
-weight: 10
+weight: 300
 ---
 
 # CountQueuingStrategy

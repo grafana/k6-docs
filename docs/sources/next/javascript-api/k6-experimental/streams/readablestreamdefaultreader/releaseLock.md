@@ -1,10 +1,10 @@
 ---
-title: 'releaseLock'
+title: 'releaseLock()'
 description: "The releaseLock() method of the ReadableStreamDefaultReader interface releases the reader's lock on the stream."
 weight: 40
 ---
 
-# releaseLock
+# releaseLock()
 
 The `releaseLock()` method of the [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader) interface releases the reader's lock on the stream.
 

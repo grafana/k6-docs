@@ -1,10 +1,10 @@
 ---
-title: 'read'
+title: 'read()'
 description: "The read() method of the ReadableStreamDefaultReader interface returns a Promise providing access to the next chunk in the stream's internal queue."
 weight: 30
 ---
 
-# read
+# read()
 
 The `read()` method of the [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader) interface returns a promise providing access to the next chunk in the stream's internal queue.
 
@@ -12,7 +12,7 @@ The `read()` method of the [ReadableStreamDefaultReader](https://grafana.com/doc
 
 A promise which fullfils or rejects with a value depending on the state of the stream:
 
-- If a chunk is avilable, the promise resolves with an object of the form: `{ done: false, value: chunkValue }`.
+- If a chunk is available, the promise resolves with an object of the form: `{ done: false, value: chunkValue }`.
 - If the stream is closed and no more data is available, the promise resolves with an object of the form: `{ done: true, value: undefined }`.
 - If the stream is errored, the promise rejects with the error that caused the stream to error.
 
@@ -20,7 +20,7 @@ A promise which fullfils or rejects with a value depending on the state of the s
 
 | Exception | Description                                                                                                                                                                                                                                                                                                                                                                                    |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TypeError | Thrown when the source object is not a [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader), the stream has no owner, or [ReadableStreamDefaultReader.releaseLock()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader/releaseLock) is called. |
+| TypeError | Thrown when the source object is not a [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader), the stream has no owner, or [ReadableStreamDefaultReader.releaseLock()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader/releaselock) is called. |
 
 ## Example
 

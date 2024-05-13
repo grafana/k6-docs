@@ -6,7 +6,7 @@ weight: 20
 
 # ReadableStreamDefaultReader
 
-The `ReadableStreamDefaultReader` type represents a default reader that can be used to read stream data. It can be used to read from a [ReadableStream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream) object that has an [underlying source](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream/underlyingsource) of any type.
+The `ReadableStreamDefaultReader` type represents a default reader that can be used to read stream data. It can be used to read from a [ReadableStream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream) object that has an [underlying source](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream/#underlyingsource-optional) of any type.
 
 ## Methods
 

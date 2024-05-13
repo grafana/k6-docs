@@ -1,10 +1,10 @@
 ---
-title: 'enqueue'
+title: 'enqueue(chunk)'
 description: 'The enqueue method of the ReadableStreamDefaultController interface enqueues a chunk of data into the associated stream.'
 weight: 30
 ---
 
-# enqueue
+# enqueue(chunk)
 
 The `enqueue()` method of the [ReadableStreamDefaultController](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultcontroller) interface enqueues a chunk of data into the associated stream.
 
@@ -68,7 +68,7 @@ export default async function () {
   const reader = fileLinesStream.getReader();
 
   try {
-    // Read and process each items from the stream
+    // Read and process each item from the stream
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -106,7 +106,7 @@ async function getNextLine(file, state) {
         if (state.remaining) {
           const finalLine = state.remaining.trim();
 
-          // Clear the remaining to signal the end
+          // Clear remaining to signal the end
           state.remaining = '';
 
           // Return the last non-empty line

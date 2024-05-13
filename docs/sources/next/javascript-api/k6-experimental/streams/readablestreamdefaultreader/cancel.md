@@ -1,14 +1,14 @@
 ---
-title: 'cancel'
+title: 'cancel(reason)'
 description: 'Returns a Promise that resolves when the stream is canceled.'
 weight: 20
 ---
 
-# cancel
+# cancel(reason)
 
-The `cancel()` method of the [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader) interface returns a `Promise` that resolves when the stream is canceled. Calling this method signals a loss of interest in the stream by a consumer.
+The `cancel()` method of the [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultreader) interface returns a `Promise` that resolves when the stream is canceled.
 
-Cancel is used when you've completely finished with the stream and don't need any more data from it, even if there are chunks enqueued waiting to be read. That data is lost after cancel is called, and the stream is not readable any more. To read those chunks still and not completely get rid of the stream, you'd use [ReadableStreamDefaultController.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultcontroller/close).
+Cancel is used when you've completely finished with the stream and don't need any more data from it, even if chunks are enqueued waiting to be read. That data is lost after `cancel` is called, and the stream is not readable any more. To close the stream without getting rid of enqueued chunks, use [ReadableStreamDefaultController.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultcontroller/close).
 
 ## Arguments
 

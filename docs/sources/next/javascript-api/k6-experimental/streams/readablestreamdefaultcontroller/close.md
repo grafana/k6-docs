@@ -1,14 +1,14 @@
 ---
-title: 'close'
+title: 'close()'
 description: 'The close method closes the associated stream.'
 weight: 20
 ---
 
-# close
+# close()
 
 The `close()` method of the [ReadableStreamDefaultController](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestreamdefaultcontroller) interface closes the associated stream.
 
-Readers will still be able to read any previously enqueued chunks from stream. Once those chunks are read, the stream will be closed and no more data will be available.
+Readers can still read any previously enqueued chunks from the stream. Once those chunks are read, the stream closes, and no more data is available.
 
 ## Exceptions
 

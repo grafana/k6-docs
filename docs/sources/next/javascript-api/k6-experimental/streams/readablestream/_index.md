@@ -12,7 +12,10 @@ The `ReadableStream` type represents a readable stream of data.
 
 The constructor creates a new `ReadableStream` object.
 
-It takes two **optional** arguments, `underlyingsource` allowing to define the underlying source of data, as well as the queuing strategy to adopt.
+It takes two _optional_ arguments:
+
+- `underlyingsource`: defines the underlying source of data.
+- `queuingStrategy`: the queuing strategy to adopt.
 
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
@@ -162,7 +165,7 @@ export default async function () {
   const reader = fileLinesStream.getReader();
 
   try {
-    // Read and process each items from the stream
+    // Read and process each item from the stream
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -200,7 +203,7 @@ async function getNextLine(file, state) {
         if (state.remaining) {
           const finalLine = state.remaining.trim();
 
-          // Clear the remaining to signal the end
+          // Clear remaining to signal the end
           state.remaining = '';
 
           // Return the last non-empty line
