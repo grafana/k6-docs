@@ -42,7 +42,12 @@ export default async function () {
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
-    console.log(`received number ${value} from stream`);
+
+    if (value === 8) {
+      // Cancel the stream when the number is 8, any enqueued chunks are lost
+      await reader.cancel('cancelling the stream');
+      break;
+    }
   }
 }
 
