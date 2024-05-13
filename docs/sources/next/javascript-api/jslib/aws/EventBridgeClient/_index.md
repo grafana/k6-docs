@@ -34,7 +34,7 @@ EventBridgeClient methods will throw errors in case of failure.
 {{< code >}}
 
 ```javascript
-import { AWSConfig, EventBridgeClient } from 'https://jslib.k6.io/aws/0.11.0/event-bridge.js';
+import { AWSConfig, EventBridgeClient } from 'https://jslib.k6.io/aws/0.12.1/event-bridge.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
