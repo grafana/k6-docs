@@ -12,7 +12,7 @@ With this jslib, you can _instrument_ HTTP requests so that they emit traces as 
 
 ## About trace contexts
 
-A _trace context_ is a set of standardized HTTP headers added to a request that lets a tracing system correlate the request with other requests as they navigate through a system. The trace context specifications, such as the supported [W3C Trace Context](https://www.w3.org/TR/trace-context/) and [Jaeger Trace Context](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format), define specific header names and an encoding format for the header values.
+A _trace context_ is a set of standardized HTTP headers added to a request that lets a tracing system correlate it with other requests as they navigate through a system. The trace context specifications, such as the supported [W3C Trace Context](https://www.w3.org/TR/trace-context/) and [Jaeger Trace Context](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format), define specific header names and an encoding format for the header values.
 
 A trace context generally consists of, at least, a `trace_id`, a `span_id`, and a `sampled` flag. The `trace_id` is a unique identifier for the trace, the `span_id` is a unique identifier for the request, and the `sampled` flag is a boolean that indicates whether the request should be traced. For instance, the [W3C Trace Context](https://www.w3.org/TR/trace-context/) defines the `Traceparent` header, whose value contains a `trace_id`, a `span_id` and a `sampled` flag, encoded as a dash (`-`) separated list of hexadecimal values. When a trace context header is attached to an HTTP request, we refer to it as being _propagated_ to the downstream service.
 
