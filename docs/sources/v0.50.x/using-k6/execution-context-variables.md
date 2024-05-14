@@ -102,8 +102,8 @@ The variable is 0 when executing the setup and teardown functions.
 
 ### Running in k6 Cloud
 
-When you run tests in [k6 Cloud](https://grafana.com/docs/grafana-cloud/k6/), the **\_\_VU** value is per server/load generator.
-Read the details in the [cloud docs](https://grafana.com/docs/grafana-cloud/k6/reference/cloud-ips/).
+When you run tests in [k6 Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/), the **\_\_VU** value is per server/load generator.
+Read the details in the [cloud docs](https://grafana.com/docs/grafana-cloud/testing/k6/reference/cloud-ips/).
 
 ### Examples
 
@@ -139,4 +139,4 @@ export default function () {
 ## Grafana Cloud k6 environment variables
 
 If you run tests in k6 Cloud, you have additional environment variables that tell you the server, load zone, and distribution of the currently running test.
-[Read about cloud environment variables](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-environment-variables/).
+[Read about cloud environment variables](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/cloud-environment-variables/).

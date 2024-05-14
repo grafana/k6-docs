@@ -16,6 +16,6 @@ Though we strongly believe that scriptable, code-based tools will help you get t
 
 The k6 Test Builder is **free to use** and is available in:
 
-- [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/test-builder/)
+- [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/test-builder/)
 
 ![k6 Test Builder](/media/docs/k6-oss/grafana-cloud-k6-test-builder.png)

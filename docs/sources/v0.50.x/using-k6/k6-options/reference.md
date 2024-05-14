@@ -354,7 +354,7 @@ export const options = {
 
 ## Cloud options
 
-An object used to set configuration options for Grafana Cloud k6. For more information about available parameters, refer to [Cloud options](https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-options/).
+An object used to set configuration options for Grafana Cloud k6. For more information about available parameters, refer to [Cloud options](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -362,7 +362,7 @@ An object used to set configuration options for Grafana Cloud k6. For more infor
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
-[Grafana Cloud k6 Performance Insights](https://grafana.com/docs/grafana-cloud/k6/analyze-results/get-performance-insights/).
+[Grafana Cloud k6 Performance Insights](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/get-performance-insights/).
 
 {{< code >}}
 
