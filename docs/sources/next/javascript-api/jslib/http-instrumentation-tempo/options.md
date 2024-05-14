@@ -13,4 +13,4 @@ Use the `Options` object to configure the tracing instrumentation behavior. It i
 | Option name  | Type     | Default | Description                                                                    |
 | :----------- | :------- | :------ | :----------------------------------------------------------------------------- |
 | `propagator` | `string` | `w3c`   | The trace context propagation format. Currently supported: `w3c` and `jaeger`. |
-| `sampling` | `number` | `1`   | a number between 0 and 1 defining the sampling rate. 1 means sample always, 0 means never sample |
+| `sampling` | `number` | `1`   | A number between 0 and 1 defining the sampling rate. 1 means sample always, 0 means never sample. |
