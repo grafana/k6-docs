@@ -1,11 +1,11 @@
 ---
-title: "http instrument tempo"
-descriptiontion: "k6 tempo instrumentation API"
-weight: 04
+title: "HTTP instrumentation for Tempo"
+menuTitle: http-instrumentation-tempo
+description: "k6 Tempo instrumentation API"
 weight: 04
 ---
 
-# Tempo
+# HTTP instrumentation for Tempo
 
 
 With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs.
