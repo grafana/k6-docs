@@ -1,14 +1,13 @@
 ---
-title: "HTTP instrumentation for Tempo"
+title: 'HTTP instrumentation for Tempo'
 menuTitle: http-instrumentation-tempo
-description: "k6 Tempo instrumentation API"
+description: 'k6 Tempo instrumentation API'
 weight: 04
 ---
 
 # HTTP instrumentation for Tempo
 
-
-With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs.
+With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests so that tracing backends (such as [Grafana Tempo](https://grafana.com/oss/tempo/)) can incorporate their results.
 
 ## About trace contexts
 
@@ -18,9 +17,9 @@ A trace context generally consists of, at least, a `trace_id`, a `span_id`, and 
 
 ## API
 
-| Class/Function                                                                                                   | Description                                                                                                               |
-| :--------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| [instrumentHTTP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/instrumenthttp) | Instruments the k6 http module with tracing capabilities.                                                                 |
+| Class/Function                                                                                                            | Description                                                                                                                 |
+| :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------- |
+| [instrumentHTTP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/instrumenthttp) | Instruments the k6 http module with tracing capabilities.                                                                   |
 | [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/client)                 | A configurable client that exposes instrumented HTTP operations and allows selectively instrumenting requests with tracing. |
 
 ## Example
