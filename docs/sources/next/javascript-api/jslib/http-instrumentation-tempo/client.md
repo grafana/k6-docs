@@ -62,7 +62,9 @@ export default () => {
 
 ## HTTP module functions equivalents
 
-The `Client` class exposes the same API as the standard `http` module. Except for the `batch` method, which is absent from `Client`. The following table lists the `Client` methods which have an equivalent in the standard `http` module:
+The `Client` class exposes the same API as the standard `http` module, except for the `batch` method.
+
+The following table lists the `Client` methods which have an equivalent in the standard `http` module:
 
 | Method                                               | HTTP equivalent                                                                                   | Description                                                                                                                                                                             |
 | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
