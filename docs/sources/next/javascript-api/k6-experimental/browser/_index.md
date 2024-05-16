@@ -69,7 +69,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/');
@@ -250,7 +250,7 @@ export const options = {
 
 export default async function () {
   const iphoneX = devices['iPhone X'];
-  const context = browser.newContext(iphoneX);
+  const context = await browser.newContext(iphoneX);
   const page = context.newPage();
 
   try {
