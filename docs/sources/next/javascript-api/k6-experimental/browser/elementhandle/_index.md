@@ -71,7 +71,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   // Goto front page, find login link and click it
   try {
@@ -117,7 +117,7 @@ export const options = {
 };
 
 export default function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   // Inject page content
   page.setContent(`
