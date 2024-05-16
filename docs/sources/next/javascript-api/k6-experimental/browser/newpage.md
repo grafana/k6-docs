@@ -56,9 +56,9 @@ Pages that have been opened ought to be closed using [`Page.close`](https://graf
 
 ### Returns
 
-| Type   | Description                                                                                          |
-| ------ | ---------------------------------------------------------------------------------------------------- |
-| object | [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object |
+| Type            | Description                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<Page>` | A Promise that fulfills with a [`Page`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object. |
 
 ### deviceScaleFactor example
 
@@ -81,7 +81,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage({
+  const page = await browser.newPage({
     viewport: {
       width: 375,
       height: 812,
