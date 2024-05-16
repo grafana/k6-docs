@@ -356,7 +356,7 @@ An object used to set configuration options for cloud parameters and third-party
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
-| N/A | N/A | `ext`              | `null`  |
+| N/A | N/A | `cloud`              | `null`  |
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
@@ -366,10 +366,8 @@ logically grouped for trending and comparison) when streaming results to
 
 ```javascript
 export const options = {
-  ext: {
-    loadimpact: {
-      name: 'My test name',
-    },
+  cloud: {
+    name: 'My test name',
   },
 };
 ```
