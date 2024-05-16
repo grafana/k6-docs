@@ -44,7 +44,7 @@ Tap on the chosen element.
 import { browser } from 'k6/experimental/browser';
 
 export default async function () {
-  const page = browser.newPage({
+  const page = await browser.newPage({
     hasTouch: true,
   });
 
