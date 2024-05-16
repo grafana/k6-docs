@@ -11,6 +11,8 @@ weight: 01
 It provides a Javascript [API](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/) to inject [faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults) such as errors and delays into HTTP and gRPC requests served by selected Kubernetes [Pods](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor) or [Services](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/servicedisruptor).
 
 ```javascript
+import { ServiceDisruptor } from 'k6/x/disruptor';
+
 export default function () {
   // Create a new disruptor that targets a service
   const disruptor = new ServiceDisruptor('app-service', 'app-namespace');
