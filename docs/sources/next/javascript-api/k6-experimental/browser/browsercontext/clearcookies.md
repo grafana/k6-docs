@@ -28,7 +28,7 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
   const page = context.newPage();
 
   await page.goto('https://httpbin.org/cookies/set?testcookie=testcookievalue');
