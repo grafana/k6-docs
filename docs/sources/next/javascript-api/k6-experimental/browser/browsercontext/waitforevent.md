@@ -43,7 +43,7 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
 
   // Call waitForEvent with a predicate which will return true once at least
   // one page has been created.
