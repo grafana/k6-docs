@@ -185,7 +185,14 @@ To do this:
 1. Add the `abortOnFail` property to `http_req_failed`.
 
 ```javascript
-http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // http errors should be less than 1%, otherwise abort the test
+export const options = {
+  // define thresholds
+  thresholds: {
+    http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }], // http errors should be less than 1%, otherwise abort the test
+    http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
+  },
+  // ...
+};
 ```
 
 1. Update the `scenarios` property to ramp the test up until it fails.

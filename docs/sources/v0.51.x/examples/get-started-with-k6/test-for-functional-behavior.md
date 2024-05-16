@@ -74,9 +74,11 @@ As an optional step, you can log the response body to the console to make sure y
 
 {{< code >}}
 
+<!-- eslint-disable no-undef  -->
+
 ```javascript
 export default function () {
-  ...
+  // ...
 
   const res = http.post(url, payload, params);
 
@@ -84,6 +86,8 @@ export default function () {
   console.log(res.body);
 }
 ```
+
+<!-- eslint-enable no-undef  -->
 
 {{< /code >}}
 

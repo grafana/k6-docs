@@ -111,6 +111,8 @@ To do so, follow these steps:
 
    {{< code >}}
 
+   <!-- eslint-disable no-undef  -->
+
    ```javascript
    export function contacts() {
      group('Contacts flow', function () {
@@ -127,6 +129,8 @@ To do so, follow these steps:
      });
    }
    ```
+
+   <!-- eslint-enable no-undef  -->
 
    {{< /code >}}
 
