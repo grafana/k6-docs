@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 500
 title: Reference
 _build:
   list: false
@@ -7,6 +7,6 @@ _build:
 
 # Reference
 
-<!-- TODO: Add content -->
+<!-- TODO: Add generation from k6-operator repository  -->
 
 {{< section depth=2 >}}
