@@ -28,7 +28,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
 
   // perform other actions that might open up a different tab, taking focus away from the initial page.
