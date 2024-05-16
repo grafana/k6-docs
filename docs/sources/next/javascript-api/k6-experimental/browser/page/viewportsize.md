@@ -34,7 +34,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   page.setViewportSize({
     width: 640,
