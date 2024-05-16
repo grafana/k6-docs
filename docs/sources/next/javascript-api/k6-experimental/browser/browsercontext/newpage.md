@@ -21,7 +21,7 @@ Uses the `BrowserContext` to create a new [Page](https://grafana.com/docs/k6/<K6
 import { browser } from 'k6/experimental/browser';
 
 export default async function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
   const page = context.newPage();
 
   try {

@@ -28,7 +28,7 @@ export const options = {
 };
 
 export default function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
   context.grantPermissions(['clipboard-read']);
   // do stuff ...
   context.clearPermissions();
