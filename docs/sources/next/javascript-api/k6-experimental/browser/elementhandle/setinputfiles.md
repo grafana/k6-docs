@@ -41,7 +41,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     // In this example we create a simple web page with an upload input field.
@@ -103,7 +103,7 @@ let file;
 })();
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     // In this example we create a simple web page with an upload input field.
