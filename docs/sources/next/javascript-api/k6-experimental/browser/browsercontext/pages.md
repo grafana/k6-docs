@@ -41,7 +41,7 @@ export const options = {
 };
 
 export default function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
   context.newPage();
   const pages = context.pages();
   console.log(pages.length); // 1

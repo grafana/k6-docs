@@ -32,7 +32,7 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
 
   context.setOffline(true);
 
