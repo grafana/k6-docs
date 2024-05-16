@@ -50,7 +50,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await newPage();
   await page.goto('https://test.k6.io/browser.php');
   const checkbox = page.locator('#checkbox1');
   checkbox.check();

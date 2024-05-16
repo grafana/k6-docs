@@ -38,7 +38,7 @@ Since eventInit is event-specific, please refer to the events documentation for 
 import { browser } from 'k6/experimental/browser';
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
   const button = page.locator('#counter-button');

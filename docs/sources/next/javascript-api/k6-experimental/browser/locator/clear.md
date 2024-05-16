@@ -40,7 +40,7 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext();
+  const context = await browser.newContext();
   const page = context.newPage();
 
   await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
