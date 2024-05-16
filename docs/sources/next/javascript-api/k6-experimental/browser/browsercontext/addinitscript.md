@@ -34,7 +34,7 @@ export const options = {
 };
 
 export default async function () {
-  const browserContext = browser.newContext();
+  const browserContext = await browser.newContext();
 
   // This will execute and override the existing implementation of Math.random.
   browserContext.addInitScript('Math.random = function(){return 0}');
