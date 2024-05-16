@@ -38,7 +38,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
   page.waitForTimeout(5000);
