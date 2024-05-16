@@ -7,8 +7,8 @@ Closes the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/jav
 
 ### Returns
 
-| Type            | Description                                         |
-| --------------- | --------------------------------------------------- |
+| Type            | Description                                                                                                                                                    |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the [`BrowserContext`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) is closed. |
 
 ### Example
