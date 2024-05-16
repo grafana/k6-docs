@@ -11,7 +11,7 @@ These cloud options are **not required**.
 
 ## Example configuration
 
-Configure cloud options in the `options.ext.loadimpact` object:
+Configure cloud options in the `options.cloud` object:
 
 ```javascript
 export const options = {
