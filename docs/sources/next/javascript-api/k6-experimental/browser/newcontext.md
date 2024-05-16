@@ -50,9 +50,9 @@ A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/java
 
 ### Returns
 
-| Type   | Description                                                                                                              |
-| ------ | ------------------------------------------------------------------------------------------------------------------------ |
-| object | [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) object |
+| Type                      | Description                                                                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<BrowserContext>` | A Promise that fulfills with a [`BrowserContext`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) object. |
 
 ### deviceScaleFactor example
 
@@ -75,7 +75,7 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext({
+  const context = await browser.newContext({
     viewport: {
       width: 375,
       height: 812,
