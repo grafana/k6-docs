@@ -15,17 +15,15 @@ Configure cloud options in the `options.ext.loadimpact` object:
 
 ```javascript
 export const options = {
-  ext: {
-    loadimpact: {
-      name: 'Hello k6 cloud!',
-      projectID: 123456,
-      staticIPs: true,
-      distribution: {
-        distributionLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
-        distributionLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
-      },
-      note: 'Anything that may be worth noting about your test.',
+  cloud: {
+    name: 'Hello k6 cloud!',
+    projectID: 123456,
+    staticIPs: true,
+    distribution: {
+      distributionLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
+      distributionLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
     },
+    note: 'Anything that may be worth noting about your test.',
   },
 };
 ```
