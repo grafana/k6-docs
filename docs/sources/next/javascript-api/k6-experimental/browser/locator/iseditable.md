@@ -5,7 +5,7 @@ description: 'Browser module: locator.isEditable method'
 
 # isEditable([options])
 
-Checks if the element is `editable`.
+Checks if the element is editable.
 
 <TableWithNestedRows>
 
@@ -18,9 +18,9 @@ Checks if the element is `editable`.
 
 ### Returns
 
-| Type | Description                                        |
-| ---- | -------------------------------------------------- |
-| bool | `true` if the element is `editable`, else `false`. |
+| Type            | Description                                                                   |
+| --------------- | ----------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is editable, else `false`. |
 
 ### Example
 
