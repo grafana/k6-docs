@@ -42,7 +42,7 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   const button = page.locator('#counter-button');
-  button.dispatchEvent('click');
+  await button.dispatchEvent('click');
 
   page.close();
 }
