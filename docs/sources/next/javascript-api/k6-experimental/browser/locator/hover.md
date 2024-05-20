@@ -30,6 +30,12 @@ Hovers over the element.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the hover action is finished. |
+
 ### Example
 
 {{< code >}}
