@@ -18,9 +18,9 @@ Checks to see if the `checkbox` `input` type is selected or not.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the checkbox is selected, else `false`. |
+| Type            | Description                                                                  |
+| --------------- | ---------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is checked, else `false`. |
 
 ### Example
 
