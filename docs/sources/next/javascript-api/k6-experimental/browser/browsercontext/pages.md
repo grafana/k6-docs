@@ -16,9 +16,9 @@ Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 
 ### Returns
 
-| Type  | Description     |
-| ----- | --------------- |
-| array | All open pages. |
+| Type          | Description                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `Array<Page>` | An array of [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) objects. |
 
 ### Example
 
