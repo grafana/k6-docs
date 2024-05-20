@@ -30,6 +30,12 @@ Since eventInit is event-specific, please refer to the events documentation for 
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
+### Returns
+
+| Type            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills once the event is dispatched. |
+
 ### Example
 
 {{< code >}}
