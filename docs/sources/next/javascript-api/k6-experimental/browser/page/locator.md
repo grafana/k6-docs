@@ -42,7 +42,7 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   const textbox = page.locator('#text1');
-  textbox.focus();
+  await textbox.focus();
 }
 ```
 
