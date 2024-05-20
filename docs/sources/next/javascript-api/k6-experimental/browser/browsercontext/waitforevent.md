@@ -48,7 +48,7 @@ export default async function () {
   // Call waitForEvent with a predicate which will return true once at least
   // one page has been created.
   let counter = 0;
-  const promise = context.waitForEvent('page', {
+  const promise = await context.waitForEvent('page', {
     predicate: (page) => {
       if (++counter >= 1) {
         return true;
@@ -58,7 +58,7 @@ export default async function () {
   });
 
   // Now we create a page.
-  const page = context.newPage();
+  const page = await context.newPage();
 
   // Wait for the predicate to pass.
   await promise;

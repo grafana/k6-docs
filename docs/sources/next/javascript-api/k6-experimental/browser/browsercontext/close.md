@@ -29,9 +29,9 @@ export const options = {
 
 export default function () {
   const context = await browser.newContext();
-  context.newPage();
+await context.newPage();
 
-  context.close();
+  await context.close();
 }
 ```
 

@@ -37,9 +37,9 @@ export default async function () {
   const browserContext = await browser.newContext();
 
   // This will execute and override the existing implementation of Math.random.
-  browserContext.addInitScript('Math.random = function(){return 0}');
+  await browserContext.addInitScript('Math.random = function(){return 0}');
 
-  const page = browserContext.newPage();
+  const page = await browserContext.newPage();
 
   // In this example we are going to set the content manually, so we first
   // navigate to about:blank which will execute the init script, before setting

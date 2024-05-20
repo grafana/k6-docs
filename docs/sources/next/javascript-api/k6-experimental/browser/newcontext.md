@@ -82,7 +82,7 @@ export default async function () {
     },
     deviceScaleFactor: 3,
   });
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     await page.goto('https://test.k6.io/');

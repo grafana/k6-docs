@@ -34,9 +34,9 @@ export const options = {
 export default async function () {
   const context = await browser.newContext();
 
-  context.setOffline(true);
+  await context.setOffline(true);
 
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     // Will not be able to load the page
