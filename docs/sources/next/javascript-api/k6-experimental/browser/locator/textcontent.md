@@ -46,7 +46,7 @@ export default async function () {
   const page = await newPage();
   await page.goto('https://test.k6.io/browser.php');
   const options = page.locator('#checkbox1');
-  console.log(options.textContent());
+  console.log((await options.textContent()));
 }
 ```
 

@@ -46,8 +46,7 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const offScreen = page.locator('#off-screen');
-  const innerHTML = offScreen.innerHTML();
-  console.log(innerHTML);
+  console.log((await offScreen.innerHTML()));
 }
 ```
 

@@ -53,8 +53,8 @@ export default async function () {
   const page = await newPage();
   await page.goto('https://test.k6.io/browser.php');
   const checkbox = page.locator('#checkbox1');
-  checkbox.check();
-  checkbox.uncheck();
+  await checkbox.check();
+  await checkbox.uncheck();
 }
 ```
 

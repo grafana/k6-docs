@@ -47,7 +47,8 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#text1');
-  if (text.isEnabled()) {
+  const isEnabled = await text.isEnabled();
+  if (isEnabled) {
     console.log('element is enabled');
   }
 }
