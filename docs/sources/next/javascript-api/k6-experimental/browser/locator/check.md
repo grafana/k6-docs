@@ -29,6 +29,12 @@ Use this method to select an `input` checkbox.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the check action is finished. |
+
 ### Example
 
 {{< code >}}
