@@ -19,6 +19,12 @@ Type in the text into the input field.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the type action is finished. |
+
 ### Example
 
 {{< code >}}
