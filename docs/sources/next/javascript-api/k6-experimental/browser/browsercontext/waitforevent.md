@@ -18,9 +18,9 @@ Waits for the event to fire and returns its value. If a predicate function has b
 
 ### Returns
 
-| Type              | Description                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<Object>` | At the moment a [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) object is the only return value |
+| Type            | Description                                                                                                                                                                |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<Page>` | A Promise that fulfills with a [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) object when the `page` event has been emitted. |
 
 ### Example
 
