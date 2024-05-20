@@ -6,15 +6,49 @@ weight: 09
 
 # Mouse
 
-{{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
+`Mouse` provides a way to interact with a virtual mouse.
 
-## Supported APIs
+| Method                                                                                                                            | Description                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [mouse.click(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/click)       | Mouse clicks on the `x` and `y` coordinates.                    |
+| [mouse.dblclick(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/dblclick) | Mouse double clicks on the `x` and `y` coordinates.             |
+| [mouse.down([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/down)               | Dispatches a `mousedown` event on the mouse's current position. |
+| [mouse.up([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/up)                   | Dispatches a `mouseup` event on the mouse's current position.   |
+| [mouse.move(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/move)         | Dispatches a `mousemove` event on the mouse's current position. |
 
-| Method                                                                                                                    | Playwright Relevant Distinctions |
-| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-click" target="_blank" >mouse.click(x, y[, options])</a>       | -                                |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-dblclick" target="_blank" >mouse.dblclick(x, y[, options])</a> | -                                |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-down" target="_blank" >mouse.down([options])</a>               | -                                |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-move" target="_blank" >mouse.move(x, y[, options])</a>         | -                                |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-up" target="_blank" >mouse.up([options])</a>                   | -                                |
-| <a href="https://playwright.dev/docs/api/class-mouse#mouse-wheel" target="_blank" >mouse.wheel(deltaX, deltaY)</a>        | -                                |
+### Example
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  }
+}
+
+export default async function () {
+  const page = await browser.newPage();
+
+  await page.goto('https://test.k6.io/', {
+    waitUntil: 'networkidle'
+});
+
+  // Obtain ElementHandle for news link and navigate to it
+  // by clicking in the 'a' element's bounding box
+  const newsLinkBox = page.$('a[href="/news.php"]').boundingBox();
+  const x = newsLinkBox.x + newsLinkBox.width / 2; // center of the box
+  const y = newsLinkBox.y;
+
+  await page.mouse.click(x, y);
+
+  await page.close();
+}
+```
