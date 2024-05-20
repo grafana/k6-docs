@@ -24,6 +24,12 @@ Wait for the element to be in a particular state e.g. `visible`.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills once the element is in the desired state. |
+
 ### Example
 
 {{< code >}}
