@@ -46,7 +46,8 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#text1');
-  if (text.isEditable()) {
+  const isEditable = await text.isEditable();
+  if (isEditable) {
     text.fill('hello world!');
   }
 }

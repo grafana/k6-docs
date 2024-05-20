@@ -56,7 +56,7 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const options = page.locator('#numbers-options');
-  options.selectOption('three');
+  await options.selectOption('three');
 }
 ```
 

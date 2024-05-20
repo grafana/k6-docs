@@ -55,7 +55,7 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const button = page.locator('#counter-button');
-  button.dblclick();
+  await button.dblclick();
 }
 ```
 
