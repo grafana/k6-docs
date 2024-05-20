@@ -31,6 +31,12 @@ Mouse double click on the chosen element.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the double click action is finished. |
+
 ### Example
 
 {{< code >}}
