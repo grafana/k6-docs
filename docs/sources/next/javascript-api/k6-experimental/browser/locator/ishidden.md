@@ -5,13 +5,13 @@ description: 'Browser module: locator.isHidden method'
 
 # isHidden()
 
-Checks if the element is `hidden`.
+Checks if the element is hidden.
 
 ### Returns
 
-| Type | Description                                      |
-| ---- | ------------------------------------------------ |
-| bool | `true` if the element is `hidden`, else `false`. |
+| Type            | Description                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is hidden, else `false`. |
 
 ### Example
 
