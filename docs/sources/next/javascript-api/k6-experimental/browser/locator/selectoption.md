@@ -28,9 +28,9 @@ Select one or more options which match the values.
 
 ### Returns
 
-| Type     | Description                   |
-| -------- | ----------------------------- |
-| string[] | List of the selected options. |
+| Type                     | Description                                                               |
+| ------------------------ | ------------------------------------------------------------------------- |
+| `Promise<Array<string>>` | A Promise that fulfills with the selected options as an array of strings. |
 
 ### Example
 
