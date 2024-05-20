@@ -29,6 +29,12 @@ Unselect the `input` checkbox.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `Promise<void>` | A Promise that fulfills when the uncheck action is finished. |
+
 ### Example
 
 {{< code >}}
