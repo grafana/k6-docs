@@ -5,7 +5,7 @@ description: 'Browser module: locator.isEnabled method'
 
 # isEnabled([options])
 
-Checks if the element is `enabled`.
+Checks if the element is enabled.
 
 <TableWithNestedRows>
 
@@ -18,9 +18,9 @@ Checks if the element is `enabled`.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the element is `enabled`, else `false`. |
+| Type            | Description                                                                  |
+| --------------- | ---------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is enabled, else `false`. |
 
 ### Example
 
