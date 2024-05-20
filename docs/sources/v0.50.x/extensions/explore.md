@@ -159,9 +159,9 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-jose</h4>
         <p>Javascript Object Signing and Encryption (JOSE)</p>
     </a>
-    <a href="https://github.com/grafana/xk6-output-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-kafka</h4>
-        <p>Export k6 results in real-time to Kafka</p>
+    <a href="https://github.com/mostafa/xk6-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-kafka</h4>
+        <p>Load test Apache Kafka. Includes support for Avro messages.</p>
     </a>
     <a href="https://github.com/grafana/xk6-kubernetes" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-kubernetes</h4>
