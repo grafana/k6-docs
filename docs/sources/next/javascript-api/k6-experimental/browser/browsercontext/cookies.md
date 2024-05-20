@@ -45,26 +45,26 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     // get cookies from the browser context
-    let cookies = context.cookies();
+    let cookies = await context.cookies();
     console.log('initial cookies length:', cookies.length); // prints 0
 
     // let's add more cookies to filter by urls
-    context.addCookies([
+    await context.addCookies([
       { name: 'foo', value: 'foovalue', sameSite: 'Strict', url: 'http://foo.com' },
       { name: 'bar', value: 'barvalue', sameSite: 'Lax', url: 'https://bar.com' },
       { name: 'baz', value: 'bazvalue', sameSite: 'Lax', url: 'https://baz.com' },
     ]);
 
     // get all cookies
-    cookies = context.cookies();
+    cookies = await context.cookies();
     console.log('filtered cookies length:', cookies.length); // prints 3
 
     // get cookies filtered by urls
-    cookies = context.cookies('http://foo.com', 'https://baz.com');
+    cookies = await context.cookies('http://foo.com', 'https://baz.com');
     console.log('filtered cookies length:', cookies.length); // prints 2
 
     // the first filtered cookie

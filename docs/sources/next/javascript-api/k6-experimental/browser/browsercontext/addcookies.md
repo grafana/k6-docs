@@ -35,7 +35,7 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     const unixTimeSinceEpoch = Math.round(new Date() / 1000);
@@ -43,7 +43,7 @@ export default async function () {
     const dayAfter = unixTimeSinceEpoch + day;
     const dayBefore = unixTimeSinceEpoch - day;
 
-    context.addCookies([
+    await context.addCookies([
       // this cookie expires at the end of the session
       {
         name: 'testcookie',
