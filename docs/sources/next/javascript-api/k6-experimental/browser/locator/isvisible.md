@@ -5,13 +5,13 @@ description: 'Browser module: locator.isVisible method'
 
 # isVisible()
 
-Checks if the element is `visible`.
+Checks if the element is visible.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the element is `visible`, else `false`. |
+| Type            | Description                                                                  |
+| --------------- | ---------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is visible, else `false`. |
 
 ### Example
 
