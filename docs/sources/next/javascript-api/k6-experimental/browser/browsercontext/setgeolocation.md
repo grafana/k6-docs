@@ -47,7 +47,7 @@ export const options = {
 
 export default function () {
   const context = await browser.newContext();
-  context.setGeolocation({ latitude: 59.95, longitude: 30.31667 });
+  await context.setGeolocation({ latitude: 59.95, longitude: 30.31667 });
 }
 ```
 

@@ -34,7 +34,7 @@ export const options = {
 export default async function () {
   const context = await browser.newContext();
   context.setDefaultTimeout(1000); // 1s
-  const page = context.newPage();
+  const page = await context.newPage();
   await page.click('h2'); // times out
 }
 ```
