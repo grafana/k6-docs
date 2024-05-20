@@ -18,6 +18,12 @@ Clears text boxes and input fields (`input`, `textarea` or `contenteditable` ele
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the clear action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -45,22 +51,24 @@ export default async function () {
 
   await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
 
+  const login = page.locator('input[name="login"]');
+
   // Fill an input element with some text that we will later clear.
-  await page.locator('input[name="login"]').type('admin');
+  await login.type('admin');
 
   // This checks that the element has been filled with text.
-  let input = p.locator('input[name="login"]').inputValue();
+  let value = await login.inputValue();
   check(page, {
     not_empty: (p) => input != '',
   });
 
   // Now clear the text from the element.
-  await page.locator('input[name="login"]').clear();
+  await login.clear();
 
   // This checks that the element is now empty.
-  let input = p.locator('input[name="login"]').inputValue();
+  value = await login.inputValue();
   check(page, {
-    empty: () => input == '',
+    empty: () => value == '',
   });
 
   page.close();
