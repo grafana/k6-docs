@@ -5,13 +5,13 @@ description: 'Creates a new page inside this BrowserContext.'
 
 # newPage()
 
-Uses the `BrowserContext` to create a new [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) and returns it.
+Uses the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) to create and return a new [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/).
 
 ### Returns
 
-| Type   | Description                                                                                                 |
-| ------ | ----------------------------------------------------------------------------------------------------------- |
-| object | A new [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object. |
+| Type            | Description                                                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<Page>` | A Promise that fulfills with a new [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) object. |
 
 ### Example
 
