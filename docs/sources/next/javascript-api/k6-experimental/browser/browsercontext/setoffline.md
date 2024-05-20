@@ -5,11 +5,17 @@ description: "Toggles the BrowserContext's connectivity on/off."
 
 # setOffline(offline)
 
-Toggles the `BrowserContext`'s connectivity on/off.
+Toggles the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext)'s connectivity on/off.
 
 | Parameter | Type    | Default | Description                                                                                 |
 | --------- | ------- | ------- | ------------------------------------------------------------------------------------------- |
-| offline   | boolean | `false` | Whether to emulate the `BrowserContext` being disconnected (`true`) or connected (`false`). |
+| offline   | boolean | `false` | Whether to emulate the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) being disconnected (`true`) or connected (`false`). |
+
+### Returns
+
+| Type            | Description                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the connectivity has been set. |
 
 ### Example
 
