@@ -46,7 +46,8 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#input-text-disabled');
-  if (text.isDisabled()) {
+  const isDisabled = await text.isDisabled();
+  if (isDisabled) {
     console.log('element is disabled');
   }
 }

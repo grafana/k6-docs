@@ -43,9 +43,9 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#text1');
-  text.press('i');
-  text.press('ArrowLeft');
-  text.press('h');
+  await text.press('i');
+  await text.press('ArrowLeft');
+  await text.press('h');
 }
 ```
 
