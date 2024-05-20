@@ -19,9 +19,9 @@ Returns the element attribute value for the given attribute name.
 
 ### Returns
 
-| Type   | Description                         |
-| ------ | ----------------------------------- |
-| string | The value of the attribute or null. |
+| Type              | Description                                                                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| `Promise<string>` | A Promise that fulfills with the string value of the attribute or `null` if the attribute is not present. |
 
 ### Example
 
