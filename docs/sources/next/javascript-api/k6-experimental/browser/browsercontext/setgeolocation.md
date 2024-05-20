@@ -12,7 +12,7 @@ This feature has **known issues**. For details, refer to
 
 {{% /admonition %}}
 
-Sets the context's geolocation.
+Sets the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext)'s geolocation.
 
 <TableWithNestedRows>
 
@@ -24,6 +24,12 @@ Sets the context's geolocation.
 | geolocation.accuracy  | number | `0`     | Optional non-negative accuracy value. |
 
 </TableWithNestedRows>
+
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the geolocation has been set. |
 
 ### Example
 
