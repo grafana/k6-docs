@@ -22,7 +22,7 @@ import { browser } from 'k6/experimental/browser';
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     await page.goto('https://test.k6.io/browser.php');

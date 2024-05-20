@@ -42,10 +42,10 @@ export default function () {
 
   const page1 = await browser.newPage(); // implicitly creates a new browserContext
   const context = browser.context(); // underlying live browserContext associated with browser
-  const page2 = context.newPage(); // shares the browserContext with page1
+  const page2 = await context.newPage(); // shares the browserContext with page1
 
   page1.close();
   page2.close();
-  context.close();
+  await context.close();
 }
 ```
