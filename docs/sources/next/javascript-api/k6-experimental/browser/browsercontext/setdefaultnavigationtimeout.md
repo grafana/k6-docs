@@ -33,7 +33,7 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
   context.setDefaultNavigationTimeout(1000); // 1s
 
   try {

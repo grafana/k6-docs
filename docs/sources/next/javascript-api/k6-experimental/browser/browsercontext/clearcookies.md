@@ -29,13 +29,15 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   await page.goto('https://httpbin.org/cookies/set?testcookie=testcookievalue');
-  console.log(context.cookies().length); // prints: 1
+  let cookies = await context.cookies();
+  console.log(cookies.length); // prints: 1
 
-  context.clearCookies();
-  console.log(context.cookies().length); // prints: 0
+  await context.clearCookies();
+  cookies = await context.cookies();
+  console.log(cookies.length); // prints: 0
 }
 ```
 
