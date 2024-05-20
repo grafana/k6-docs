@@ -18,9 +18,9 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 
 ### Returns
 
-| Type   | Description                     |
-| ------ | ------------------------------- |
-| string | The input value of the element. |
+| Type              | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `Promise<string>` | A Promise that fulfills with the input value of the element. |
 
 ### Example
 
