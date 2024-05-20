@@ -46,19 +46,21 @@ export default async function () {
   await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
 
   // Fill an input element with some text that we will later clear.
-  page.locator('input[name="login"]').type('admin');
+  await page.locator('input[name="login"]').type('admin');
 
   // This checks that the element has been filled with text.
+  let input = p.locator('input[name="login"]').inputValue();
   check(page, {
-    not_empty: (p) => p.locator('input[name="login"]').inputValue() != '',
+    not_empty: (p) => input != '',
   });
 
   // Now clear the text from the element.
-  page.locator('input[name="login"]').clear();
+  await page.locator('input[name="login"]').clear();
 
   // This checks that the element is now empty.
+  let input = p.locator('input[name="login"]').inputValue();
   check(page, {
-    empty: (p) => p.locator('input[name="login"]').inputValue() == '',
+    empty: () => input == '',
   });
 
   page.close();

@@ -37,7 +37,8 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#text1');
-  if (text.isVisible()) {
+  const isVisible = await text.isVisible();
+  if (isVisible) {
     console.log('element is visible');
   }
 }
