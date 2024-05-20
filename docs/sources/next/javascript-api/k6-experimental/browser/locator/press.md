@@ -19,6 +19,12 @@ Press a single key on the keyboard or a combination of keys.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `Promise<void>` | A Promise that fulfills when the key is pressed. |
+
 ### Example
 
 {{< code >}}
