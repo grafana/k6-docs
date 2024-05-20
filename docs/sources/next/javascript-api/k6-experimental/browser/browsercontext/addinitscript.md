@@ -63,8 +63,9 @@ export default async function () {
     </script>
   </html>`);
 
+  const text = await p.locator('#random').texttext();
   check(page, {
-    zero: (p) => p.locator('#random').textContent() == '0',
+    zero: () => text == '0',
   });
 
   page.close();
