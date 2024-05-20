@@ -41,7 +41,7 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
 
