@@ -19,6 +19,12 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the fill action is finished. |
+
 ### Example
 
 {{< code >}}
