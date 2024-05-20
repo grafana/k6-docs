@@ -80,14 +80,15 @@ export default async function () {
 
     await Promise.all([page.waitForNavigation(), messagesLink.click()]);
     // Enter login credentials and login
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
     const submitButton = page.locator('input[type="submit"]');
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
+    const text = await p.locator('h2').textContent();
     check(page, {
-      header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+      header: () => text == 'Welcome, admin!',
     });
   } finally {
     page.close();
