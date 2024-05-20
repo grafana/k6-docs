@@ -16,6 +16,12 @@ Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the focus action is finished. |
+
 ### Example
 
 {{< code >}}
