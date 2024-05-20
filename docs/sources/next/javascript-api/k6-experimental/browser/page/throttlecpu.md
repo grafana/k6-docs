@@ -34,7 +34,7 @@ export const options = {
 
 export default async function () {
   const context = await browser.newContext();
-  const page = context.newPage();
+  const page = await context.newPage();
 
   try {
     page.throttleCPU({ rate: 4 });
