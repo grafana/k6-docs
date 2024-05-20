@@ -5,7 +5,7 @@ description: 'Browser module: locator.isDisabled method'
 
 # isDisabled([options])
 
-Checks if the element is `disabled`.
+Checks if the element is disabled.
 
 <TableWithNestedRows>
 
@@ -18,9 +18,9 @@ Checks if the element is `disabled`.
 
 ### Returns
 
-| Type | Description                                        |
-| ---- | -------------------------------------------------- |
-| bool | `true` if the element is `disabled`, else `false`. |
+| Type            | Description                                                                     |
+| --------------- | ------------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is disabled, else `false`. |
 
 ### Example
 
