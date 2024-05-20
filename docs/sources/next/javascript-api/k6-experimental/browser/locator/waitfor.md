@@ -49,7 +49,7 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#input-text-hidden');
-  text.waitFor({
+  await text.waitFor({
     state: 'hidden',
   });
 }

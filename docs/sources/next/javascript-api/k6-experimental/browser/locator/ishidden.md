@@ -37,7 +37,8 @@ export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
   const text = page.locator('#input-text-hidden');
-  if (text.isHidden()) {
+  const isHidden = await text.isHidden();
+  if (isHidden) {  
     console.log('element is hidden');
   }
 }
