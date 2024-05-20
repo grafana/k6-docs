@@ -64,15 +64,16 @@ export default async function () {
   try {
     await page.goto('https://test.k6.io/my_messages.php');
 
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
     const submitButton = page.locator('input[type="submit"]');
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
+    const text = await p.locator('h2').textContent();
     check(page, {
-      header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+      header: () => text == 'Welcome, admin!',
     });
   } finally {
     page.close();
