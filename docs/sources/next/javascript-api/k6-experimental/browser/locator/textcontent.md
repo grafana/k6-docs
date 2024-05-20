@@ -18,9 +18,9 @@ Returns the `element.textContent`.
 
 ### Returns
 
-| Type   | Description                               |
-| ------ | ----------------------------------------- |
-| string | The text content of the selector or null. |
+| Type                    | Description                                                              |
+| ----------------------- | ------------------------------------------------------------------------ |
+| `Promise<null\|string>` | A Promise that fulfills with the text content of the selector or `null`. |
 
 ### Example
 
