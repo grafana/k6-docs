@@ -18,9 +18,9 @@ Returns the `element.innerHTML`.
 
 ### Returns
 
-| Type   | Description                   |
-| ------ | ----------------------------- |
-| string | The innerHTML of the element. |
+| Type              | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `Promise<string>` | A Promise that fulfills with the inner HTML of the element. |
 
 ### Example
 
