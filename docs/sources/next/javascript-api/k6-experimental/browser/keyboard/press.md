@@ -5,13 +5,13 @@ description: 'Dispatches a `keydown` event followed by a `keyup` event. This is 
 
 # press(key[, options])
 
-Dispatches a `keydown` event followed by a `keyup` event. This is useful for simulating pressing and releasing a key.
+Dispatches a `keydown` event followed by a `keyup` event. This is useful for simulating pressing a key.
 
-| Parameter     | Type   | Default | Description                                                     |
-| ------------- | ------ | ------- | --------------------------------------------------------------- |
-| key           | string | `''`    | Name of the key to press, such as `Enter`.                      |
-| options       | object | `null`  | Optional settings.                                              |
-| options.delay | number | `0`     | Optional. Time to wait before pressing the key in milliseconds. |
+| Parameter     | Type   | Default | Description                                                             |
+| ------------- | ------ | ------- | ----------------------------------------------------------------------- |
+| key           | string | `''`    | Name of the key to press, such as `Enter`.                              |
+| options       | object | `null`  | Optional settings.                                                      |
+| options.delay | number | `0`     | Optional. Time to wait before running the press action in milliseconds. |
 
 ### Returns
 
