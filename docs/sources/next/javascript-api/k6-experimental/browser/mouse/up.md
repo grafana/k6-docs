@@ -5,7 +5,7 @@ description: 'Mouse dispatches a `mouseup` event on the current position of the 
 
 # up([options])
 
-Dispatches a `mouseup` event on the mouse's current position. Mouse can be moved to a different position using [`mouse.move()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/move).
+Dispatches a `mouseup` event on the mouse's current position. Mouse's current position can be changed using [`mouse.move()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/mouse/move).
 
 | Parameter          | Type   | Description                                                                                              |
 | ------------------ | ------ | -------------------------------------------------------------------------------------------------------- |
