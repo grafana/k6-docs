@@ -97,13 +97,13 @@ export default async function () {
     // Setting up the waitForNavigation first before the click
     // is important to avoid race conditions.
     await Promise.all([page.waitForNavigation(), tails.click()]);
-    console.log((await currentBet.innerText()));
+    console.log(await currentBet.innerText());
     // the heads locator clicks on the heads button
     // by using the locator's selector.
     await Promise.all([page.waitForNavigation(), heads.click()]);
-    console.log((await currentBet.innerText()));
+    console.log(await currentBet.innerText());
     await Promise.all([page.waitForNavigation(), tails.click()]);
-    console.log((await currentBet.innerText()));
+    console.log(await currentBet.innerText());
   } finally {
     page.close();
   }
