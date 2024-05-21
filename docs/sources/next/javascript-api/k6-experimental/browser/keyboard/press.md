@@ -1,11 +1,11 @@
 ---
 title: 'press(key[, options])'
-description: 'Dispatches a `keydown` event followed by an `keyup` event. This is useful for simulating pressing and releasing a key.'
+description: 'Dispatches a `keydown` event followed by a `keyup` event. This is useful for simulating pressing and releasing a key.'
 ---
 
 # press(key[, options])
 
-Dispatches a `keydown` event followed by an `keyup` event. This is useful for simulating pressing and releasing a key.
+Dispatches a `keydown` event followed by a `keyup` event. This is useful for simulating pressing and releasing a key.
 
 | Parameter     | Type   | Default | Description                                                     |
 | ------------- | ------ | ------- | --------------------------------------------------------------- |
