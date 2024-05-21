@@ -20,7 +20,7 @@ Returns the `element.textContent`.
 
 | Type                    | Description                                                              |
 | ----------------------- | ------------------------------------------------------------------------ |
-| `Promise<null\|string>` | A Promise that fulfills with the text content of the selector or `null`. |
+| `Promise<null \| string>` | A Promise that fulfills with the text content of the selector or `null`. |
 
 ### Example
 
@@ -46,7 +46,7 @@ export default async function () {
   const page = await newPage();
   await page.goto('https://test.k6.io/browser.php');
   const options = page.locator('#checkbox1');
-  console.log((await options.textContent()));
+  console.log(await options.textContent());
 }
 ```
 
