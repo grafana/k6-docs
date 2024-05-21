@@ -18,6 +18,8 @@ The code below shows an example of combining a browser and HTTP test in a single
 
 {{< code >}}
 
+<!-- eslint-disable no-undef  -->
+
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -58,7 +60,7 @@ export const options = {
 };
 
 export function getPizza() {
-  let restrictions = {
+  const restrictions = {
     maxCaloriesPerSlice: 500,
     mustBeVegetarian: false,
     excludedIngredients: ['pepperoni'],
@@ -67,7 +69,7 @@ export function getPizza() {
     minNumberOfToppings: 2,
   };
 
-  let res = http.post(`${BASE_URL}/api/pizza`, JSON.stringify(restrictions), {
+  const res = http.post(`${BASE_URL}/api/pizza`, JSON.stringify(restrictions), {
     headers: {
       'Content-Type': 'application/json',
       'X-User-ID': customers[Math.floor(Math.random() * customers.length)],
@@ -101,6 +103,8 @@ export async function checkFrontend() {
 }
 ```
 
+<!-- eslint-enable no-undef  -->
+
 {{< /code >}}
 
 ## Browser and failure injection test
@@ -117,6 +121,7 @@ To find out more information about injecting faults to your service, check out t
 import http from 'k6/http';
 import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
+import { ServiceDisruptor } from 'k6/x/disruptor';
 
 const BASE_URL = __ENV.BASE_URL;
 
