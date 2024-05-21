@@ -47,7 +47,7 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
   const textInput = page.locator('#text1');
   await textInput.fill('Hello world!');
-  console.log((await textInput.inputValue()));
+  console.log(await textInput.inputValue());
 }
 ```
 
