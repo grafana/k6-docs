@@ -21,7 +21,7 @@ Returns the element attribute value for the given attribute name.
 
 | Type              | Description                                                                                               |
 | ----------------- | --------------------------------------------------------------------------------------------------------- |
-| `Promise<string>` | A Promise that fulfills with the string value of the attribute or `null` if the attribute is not present. |
+| `Promise<string | null>` | A Promise that fulfills with the string value of the attribute or `null` if the attribute is not present. |
 
 ### Example
 
