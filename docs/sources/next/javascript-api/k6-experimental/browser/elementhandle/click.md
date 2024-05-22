@@ -1,6 +1,6 @@
 ---
 title: 'click([options])'
-description: 'Browser module: elementHandle.click([options]) method'
+description: 'Browser module: elementHandle.click method'
 ---
 
 # click([options])
