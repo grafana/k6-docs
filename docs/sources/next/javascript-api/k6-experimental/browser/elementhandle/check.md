@@ -1,6 +1,6 @@
 ---
 title: 'check([options])'
-description: 'Browser module: elementHandle.check([options]) method'
+description: 'Browser module: elementHandle.check method'
 ---
 
 # check([options])

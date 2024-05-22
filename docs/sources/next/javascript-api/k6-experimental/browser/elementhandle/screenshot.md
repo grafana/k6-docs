@@ -1,6 +1,6 @@
 ---
 title: 'screenshot([options])'
-description: 'Browser module: elementHandle.screenshot([options]) method'
+description: 'Browser module: elementHandle.screenshot method'
 ---
 
 # screenshot([options])

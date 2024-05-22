@@ -1,6 +1,6 @@
 ---
 title: 'contentFrame()'
-description: 'Browser module: elementHandle.contentFrame() method'
+description: 'Browser module: elementHandle.contentFrame method'
 ---
 
 # contentFrame()

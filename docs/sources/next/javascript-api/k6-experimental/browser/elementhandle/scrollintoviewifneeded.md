@@ -1,6 +1,6 @@
 ---
 title: 'scrollIntoViewIfNeeded([options])'
-description: 'Browser module: elementHandle.scrollIntoViewIfNeeded([options]) method'
+description: 'Browser module: elementHandle.scrollIntoViewIfNeeded method'
 ---
 
 # scrollIntoViewIfNeeded([options])
