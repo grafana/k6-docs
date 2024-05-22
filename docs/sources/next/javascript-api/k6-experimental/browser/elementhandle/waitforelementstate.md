@@ -1,6 +1,6 @@
 ---
 title: 'waitForElementState(state[, options])'
-description: 'Browser module: elementHandle.waitForElementState(state[, options]) method'
+description: 'Browser module: elementHandle.waitForElementState method'
 ---
 
 # waitForElementState(state[, options])

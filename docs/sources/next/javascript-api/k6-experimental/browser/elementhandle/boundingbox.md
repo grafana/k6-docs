@@ -1,6 +1,6 @@
 ---
 title: 'boundingBox()'
-description: 'Browser module: elementHandle.boundingBox() method'
+description: 'Browser module: elementHandle.boundingBox method'
 ---
 
 # boundingBox()
