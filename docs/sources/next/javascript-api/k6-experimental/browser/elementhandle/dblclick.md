@@ -1,9 +1,15 @@
 ---
-title: 'dblclick([, options])'
-description: 'Browser module: elementHandle.dblclick([, options]) method'
+title: 'dblclick([options])'
+description: 'Browser module: elementHandle.dblclick([options]) method'
 ---
 
-# dblclick([, options])
+# dblclick([options])
+
+{{% admonition type="warning" %}}
+
+Use [`locator.dblclick([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dblclick/) instead.
+
+{{% /admonition %}}
 
 Mouse double clicks on the element.
 
@@ -11,7 +17,7 @@ Mouse double clicks on the element.
 
 | Parameter           | Type     | Default | Description                                                                                                                                                                                                                                                                                                                                            |
 | ------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| options             | object   | `null`  |                                                                                                                                                                                                                                                                                                                                                        |
+| options             | object   | `null`  | Optional parameters.                                                                                                                                                                                                                                                                                                                                   |
 | options.button      | string   | `left`  | The mouse button (`left`, `middle` or `right`) to use during the action.                                                                                                                                                                                                                                                                               |
 | options.delay       | number   | `0`     | Milliseconds to wait between `mousedown` and `mouseup`.                                                                                                                                                                                                                                                                                                |
 | options.force       | boolean  | `false` | Bypasses the actionability checks (`visible`, `stable`, `enabled`) if set to `true`.                                                                                                                                                                                                                                                                   |
@@ -47,11 +53,12 @@ export const options = {
 
 export default async function () {
   const page = await browser.newPage();
-
   await page.goto('https://test.k6.io/browser.php');
 
-  const elementHandle = page.$('#counter-button');
-  elementHandle.dblclick();
+  const elementHandle = await page.$('#counter-button');
+  await elementHandle.dblclick();
+
+  page.close();
 }
 ```
 
