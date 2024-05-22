@@ -5,6 +5,12 @@ description: 'Browser module: elementhandle.tap(options) method'
 
 # tap(options)
 
+{{% admonition type="warning" %}}
+
+Use [`locator.tap([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/tap/) instead.
+
+{{% /admonition %}}
+
 Taps the element.
 
 <TableWithNestedRows>
@@ -56,7 +62,7 @@ export default async function () {
   });
 
   await page.goto('https://test.k6.io/browser.php');
-  const el = page.$("#numbers-options");
+  const el = await page.$("#numbers-options");
   await el.tap();
 }
 ```
