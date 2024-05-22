@@ -76,8 +76,8 @@ export default async function () {
     the buttons once and save them as below, you would see an
     error after the initial navigation. Try it!
   
-      const heads = page.$("input[value='Bet on heads!']");
-      const tails = page.$("input[value='Bet on tails!']");
+      const heads = await page.$("input[value='Bet on heads!']");
+      const tails = await page.$("input[value='Bet on tails!']");
   
     The Locator API allows you to get a fresh element handle each
     time you use one of the locator methods. And, you can carry a
