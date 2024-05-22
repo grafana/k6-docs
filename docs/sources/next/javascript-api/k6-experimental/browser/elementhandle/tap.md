@@ -1,6 +1,6 @@
 ---
 title: 'tap(options)'
-description: 'Browser module: elementhandle.tap(options) method'
+description: 'Browser module: elementhandle.tap method'
 ---
 
 # tap(options)
