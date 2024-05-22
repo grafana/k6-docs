@@ -14,14 +14,14 @@ weight: 04
 | [elementHandle.$(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/query)                                         | Queries the element for the given selector.                                                                                                                                                      |
 | [elementHandle.$$(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/queryall)                                     | Queries the elements for the given selector.                                                                                                                                                     |
 | [elementHandle.boundingBox()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/boundingbox)                                 | Returns the bounding box of the element.                                                                                                                                                         |
-| [elementHandle.check([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/check)                                    | Checks the element if it is a `checkbox` or `radio` button.                                                                                                                                          |
+| [elementHandle.check([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/check)                                    | Checks the element if it is a `checkbox` or `radio` button.                                                                                                                                      |
 | [elementHandle.click([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/click)                                    | Clicks on the element.                                                                                                                                                                           |
-| [elementHandle.contentFrame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/contentframe)                               | Returns the [frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame) of the element.                                                                       |
+| [elementHandle.contentFrame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/contentframe)                               | Returns the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame) of the element.                                                                       |
 | [elementHandle.dblclick([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/dblclick)                              | Double clicks on the element.                                                                                                                                                                    |
 | [elementHandle.dispatchEvent(type[, eventInit])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/dispatchevent)            | Dispatches an event to the element.                                                                                                                                                              |
 | [elementHandle.fill(value[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/fill)                               | Fills the specified value into the element.                                                                                                                                                      |
 | [elementHandle.focus()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/focus)                                             | Focuses on the element.                                                                                                                                                                          |
-| [elementHandle.getAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/getattribute)                               | Returns the specified attribute of the element.                                                                                                                                                  |
+| [elementHandle.getAttribute(name)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/getattribute)                | Returns the specified attribute of the element.                                                                                                                                                  |
 | [elementHandle.hover([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/hover)                                    | Hovers over the element.                                                                                                                                                                         |
 | [elementHandle.innerHTML()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/innerhtml)                                     | Returns the inner HTML of the element.                                                                                                                                                           |
 | [elementHandle.innerText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/innertext)                                     | Returns the inner text of the element.                                                                                                                                                           |
@@ -32,11 +32,11 @@ weight: 04
 | [elementHandle.isEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/isenabled)                                     | Checks if the element is `enabled`.                                                                                                                                                              |
 | [elementHandle.isHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ishidden/)                                      | Checks if the element is `hidden`.                                                                                                                                                               |
 | [elementHandle.isVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/isvisible/)                                    | Checks if the element is `visible`.                                                                                                                                                              |
-| [elementHandle.ownerFrame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ownerframe)                                   | Returns the [frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame) of the element.                                                                       |
+| [elementHandle.ownerFrame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/ownerframe)                                   | Returns the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/frame) of the element.                                                                       |
 | [elementHandle.press(key[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/press)                               | Focuses on the element and presses a single key or a combination of keys using the virtual [keyboard](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/keyboard). |
 | [elementHandle.screenshot([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/screenshot)                          | Takes a screenshot of the element.                                                                                                                                                               |
 | [elementHandle.scrollIntoViewIfNeeded([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/scrollintoviewifneeded)  | Scrolls the element into view if needed.                                                                                                                                                         |
-| [elementHandle.selectOptions(values[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/selectoptions)            | Selects the `select` element's one or more options which match the values.                                                                                                                       |
+| [elementHandle.selectOption(values[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/selectoption)              | Selects the `select` element's one or more options which match the values.                                                                                                                       |
 | [elementHandle.selectText([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/selecttext)                          | Selects the text of the element.                                                                                                                                                                 |
 | [elementHandle.setChecked(checked[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/setchecked)                 | Sets the `checkbox` or `radio` input element's value to the specified checked or unchecked state.                                                                                                |
 | [elementHandle.setInputFiles(file[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/setinputfiles)              | Sets the file input element's value to the specified files.                                                                                                                                      |
@@ -74,17 +74,17 @@ export default async function () {
   // Goto front page, find login link and click it
   try {
     await page.goto('https://test.k6.io/');
-    const messagesLink = page.locator('a[href="/my_messages.php"]');
+    const messagesLink = await page.$('a[href="/my_messages.php"]');
 
     await Promise.all([page.waitForNavigation(), messagesLink.click()]);
     // Enter login credentials and login
-    await page.locator('input[name="login"]').type('admin');
-    await page.locator('input[name="password"]').type('123');
+    await page.$('input[name="login"]').type('admin');
+    await page.$('input[name="password"]').type('123');
 
-    const submitButton = page.locator('input[type="submit"]');
+    const submitButton = await page.$('input[type="submit"]');
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
-    const text = await p.locator('h2').textContent();
+    const text = await p.$('h2').textContent();
     check(page, {
       header: () => text == 'Welcome, admin!',
     });
@@ -118,29 +118,39 @@ export const options = {
 export default function () {
   const page = await browser.newPage();
 
-  // Inject page content
-  page.setContent(`
-        <div class="visible">Hello world</div>
-        <div style="display:none" class="hidden"></div>
-        <div class="editable" editable>Edit me</div>
-        <input type="checkbox" enabled class="enabled">
-        <input type="checkbox" disabled class="disabled">
-        <input type="checkbox" checked class="checked">
-        <input type="checkbox" class="unchecked">
+  try {
+    // Inject page content
+    page.setContent(`
+          <div class="visible">Hello world</div>
+          <div style="display:none" class="hidden"></div>
+          <div class="editable" editable>Edit me</div>
+          <input type="checkbox" enabled class="enabled">
+          <input type="checkbox" disabled class="disabled">
+          <input type="checkbox" checked class="checked">
+          <input type="checkbox" class="unchecked">
     `);
 
-  // Check state
-  check(page, {
-    visible: (p) => p.$('.visible').isVisible(),
-    hidden: (p) => p.$('.hidden').isHidden(),
-    editable: (p) => p.$('.editable').isEditable(),
-    enabled: (p) => p.$('.enabled').isEnabled(),
-    disabled: (p) => p.$('.disabled').isDisabled(),
-    checked: (p) => p.$('.checked').isChecked(),
-    unchecked: (p) => p.$('.unchecked').isChecked() === false,
-  });
+    // Check state
+    const isVisible = await page.$('.visible').isVisible();
+    const isHidden = await page.$('.hidden').isHidden();
+    const isEditable = await page.$('.editable').isEditable();
+    const isEnabled = await page.$('.enabled').isEnabled();
+    const isDisabled = await page.$('.disabled').isDisabled();
+    const isChecked = await page.$('.checked').isChecked();
+    const isUnchecked = await page.$('.unchecked').isChecked();
 
-  page.close();
+    check(page, {
+      visible: isVisible,
+      hidden: isHidden,
+      editable: isEditable,
+      enabled: isEnabled,
+      disabled: isDisabled,
+      checked: isChecked,
+      unchecked: isUnchecked === false,
+    });
+  } finally {
+    page.close();
+  }
 }
 ```
 
