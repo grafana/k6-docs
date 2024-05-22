@@ -11,7 +11,7 @@ To work with local files on the file system, use the [experimental fs module](ht
 
 | Parameter           | Type        | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | ----------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| file                | object      | `null`  | This is a required parameter.                                                                                                                                                                                                                                                                                                                 |
+| file                | object      | `null`  | This is a required parameter.                                                                                                                                                                   `                                                                                                                                              |
 | file.name           | string      | `''`    | The name of the file. For example, `file.txt`.                                                                                                                                                                                                                                                                                                |
 | file.mimeType       | string      | `''`    | The type of the file content. For example, `text/plain`.                                                                                                                                                                                                                                                                                      |
 | file.buffer         | ArrayBuffer | `[]`    | Base64 encoded content of the file.                                                                                                                                                                                                                                                                                                           |
@@ -58,10 +58,10 @@ export default async function () {
         </body>
       </html>`);
 
-    const eh = page.$('input[id="upload"]');
+    const eh = await page.$('input[id="upload"]');
 
     // The file is set to the input element with the id "upload".
-    eh.setInputFiles({
+    await eh.setInputFiles({
       name: 'file.txt',
       mimetype: 'text/plain',
       buffer: encoding.b64encode('hello world'),
@@ -120,13 +120,13 @@ export default async function () {
         </body>
       </html>`);
 
-    const eh = page.$('input[id="upload"]');
+    const eh = await page.$('input[id="upload"]');
 
     // Read the whole file content into a buffer.
     const buffer = await readAll(file);
 
     // The file is set to the input element with the id "upload".
-    eh.setInputFiles({
+    await eh.setInputFiles({
       name: 'file.txt',
       mimetype: 'text/plain',
       buffer: encoding.b64encode(buffer),
