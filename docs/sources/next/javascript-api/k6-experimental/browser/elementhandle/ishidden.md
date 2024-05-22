@@ -1,17 +1,23 @@
 ---
 title: 'isHidden()'
-description: 'Browser module: elementHandle.isHidden() method'
+description: 'Browser module: elementHandle.isHidden method'
 ---
 
 # isHidden()
 
-Checks if the element is `hidden`.
+{{% admonition type="warning" %}}
+
+Use [`locator.isHidden([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/ishidden/) instead.
+
+{{% /admonition %}}
+
+Checks if the element is hidden.
 
 ### Returns
 
-| Type | Description                                           |
-| ---- | ----------------------------------------------------- |
-| bool | `true` if the element is `hidden`, `false` otherwise. |
+| Type            | Description                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fulfills with `true` if the element is hidden, else `false`. |
 
 ### Example
 
@@ -35,13 +41,15 @@ export const options = {
 
 export default async function () {
   const page = await browser.newPage();
-
   await page.goto('https://test.k6.io/browser.php');
 
-  const elementHandle = page.$('#input-text-hidden');
-  if (elementHandle.isHidden()) {
+  const text = await page.$('#input-text-hidden');
+  const isHidden = await text.isHidden();
+  if (isHidden) {  
     console.log('element is hidden');
   }
+
+  page.close();
 }
 ```
 
