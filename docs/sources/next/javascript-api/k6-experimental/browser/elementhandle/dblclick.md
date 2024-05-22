@@ -1,6 +1,6 @@
 ---
 title: 'dblclick([options])'
-description: 'Browser module: elementHandle.dblclick([options]) method'
+description: 'Browser module: elementHandle.dblclick method'
 ---
 
 # dblclick([options])
