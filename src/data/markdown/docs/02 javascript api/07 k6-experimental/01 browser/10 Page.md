@@ -32,7 +32,7 @@ Page provides methods to interact with a single tab in a running web browser. A 
 | [page.innerText(selector[, options])](/javascript-api/k6-experimental/browser/page/innertext/)       | Returns the `element.innerText`.                                                |
 | [page.inputValue(selector[, options])](/javascript-api/k6-experimental/browser/page/inputvalue/)       | Returns `input.value` for the selected `input`, `textarea` or `select` element.                                               |
 | [page.isChecked(selector[, options])](/javascript-api/k6-experimental/browser/page/ischecked/)       | Checks to see if the `checkbox` `input` type is selected or not.                                               |
-| [page.isClosed()](/javascript-api/k6-experimental/browser/page/isclosed/) <BWIPT id="878"/>       | Checks if the page has been closed.                                           |
+| [page.isClosed()](/javascript-api/k6-experimental/browser/page/isclosed/) {{< docs/bwipt id="878" >}}       | Checks if the page has been closed.                                           |
 | [page.isDisabled(selector[, options])](/javascript-api/k6-experimental/browser/page/isdisabled/)       | Checks if the element is `disabled`.                                        |
 | [page.isEditable(selector[, options])](/javascript-api/k6-experimental/browser/page/iseditable/)       | Checks if the element is `editable`.                                      |
 | [page.isEnabled(selector[, options])](/javascript-api/k6-experimental/browser/page/isenabled/)       | Checks if the element is `enabled`.                                      |
@@ -62,7 +62,7 @@ Page provides methods to interact with a single tab in a running web browser. A 
 | [page.url()](/javascript-api/k6-experimental/browser/page/url/)       | Returns the `page`'s URL.         |
 | [page.viewportSize()](/javascript-api/k6-experimental/browser/page/viewportsize/)       | Returns the `page`'s size (width and height).         |
 | [page.waitForFunction(pageFunction, arg[, options])](/javascript-api/k6-experimental/browser/page/waitforfunction/)       | Returns when the `pageFunction` returns a truthy value.         |
-| [page.waitForLoadState(state[, options])](/javascript-api/k6-experimental/browser/page/waitforloadstate/) <BWIPT id="880"/>       | Waits for the given load `state` to be reached.         |
+| [page.waitForLoadState(state[, options])](/javascript-api/k6-experimental/browser/page/waitforloadstate/) {{< docs/bwipt id="880" >}}       | Waits for the given load `state` to be reached.         |
 | [page.waitForNavigation([options])](/javascript-api/k6-experimental/browser/page/waitfornavigation/)       | Waits for the given navigation lifecycle event to occur and returns the main resource response.         |
 | [page.waitForSelector(selector[, options])](/javascript-api/k6-experimental/browser/page/waitforselector/)       | Returns when element specified by selector satisfies `state` option.        |
 | [page.waitForTimeout(timeout)](/javascript-api/k6-experimental/browser/page/waitfortimeout/)       | Waits for the given `timeout` in milliseconds. |
