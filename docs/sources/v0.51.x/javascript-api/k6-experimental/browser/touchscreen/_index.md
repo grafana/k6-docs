@@ -10,4 +10,4 @@ The `Touchscreen` class allows to interact with a virtual touchscreen. A `Touchs
 
 | Method                                                                                                                                 | Description      |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| [Touchscreen.tap()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/touchscreen/tap) <BWIPT id="436"/> | Simulates a tap. |
+| [Touchscreen.tap()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/touchscreen/tap) {{< docs/bwipt id="436" >}} | Simulates a tap. |
