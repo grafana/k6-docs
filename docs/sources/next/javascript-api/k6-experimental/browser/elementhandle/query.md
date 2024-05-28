@@ -7,7 +7,7 @@ description: 'Browser module: elementHandle.$ method'
 
 {{% admonition type="warning" %}}
 
-Use [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/) instead.
+Use [`page.locator(selector[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/) instead.
 
 {{% /admonition %}}
 
