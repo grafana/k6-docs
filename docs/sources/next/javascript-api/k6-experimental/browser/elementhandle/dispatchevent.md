@@ -1,13 +1,13 @@
 ---
-title: 'dispatchEvent(type, eventInit, [options])'
+title: 'dispatchEvent(type, eventInit)'
 description: 'Browser module: elementHandle.dispatchEvent method'
 ---
 
-# dispatchEvent(type, eventInit, [options])
+# dispatchEvent(type, eventInit)
 
 {{% admonition type="warning" %}}
 
-Use [`locator.dispatchEvent(type, eventInit, [options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
+Use [`locator.dispatchEvent(type, eventInit[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
 
 {{% /admonition %}}
 

@@ -5,6 +5,12 @@ description: 'Browser module: elementHandle.waitForSelector method'
 
 # waitForSelector(selector[, options])
 
+{{% admonition type="warning" %}}
+
+Use [`locator.waitFor([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/waitfor/) instead.
+
+{{% /admonition %}}
+
 Waits for the element to be present in the DOM and to be visible.
 
 <TableWithNestedRows>
