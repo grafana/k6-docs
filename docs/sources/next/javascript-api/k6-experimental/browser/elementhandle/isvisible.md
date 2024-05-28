@@ -7,7 +7,7 @@ description: 'Browser module: elementHandle.isVisible method'
 
 {{% admonition type="warning" %}}
 
-Use [`locator.isVisible([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/isvisible/) instead.
+Use [`locator.isVisible()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/isvisible/) instead.
 
 {{% /admonition %}}
 
