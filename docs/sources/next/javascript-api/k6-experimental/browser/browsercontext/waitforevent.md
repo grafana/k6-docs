@@ -64,7 +64,7 @@ export default async function () {
   await promise;
   console.log('predicate passed');
 
-  page.close();
+  await page.close();
 }
 ```
 
