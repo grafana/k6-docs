@@ -55,7 +55,7 @@ export default async function () {
     path: 'header.png'
   });
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -46,7 +46,7 @@ export default async function () {
   const offScreen = await page.$('#off-screen');
   console.log(await offScreen.innerHTML());
 
-  page.close();
+  await page.close();
 }
 ```
 

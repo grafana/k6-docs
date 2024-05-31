@@ -58,7 +58,7 @@ export default async function () {
   const options = await page.$('#numbers-options');
   await options.selectOption('three');
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -53,7 +53,7 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
   const textbox = await page.$('#text1');
   // ...
-  page.close();
+  await page.close();
 }
 ```
 

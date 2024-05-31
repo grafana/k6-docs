@@ -46,7 +46,7 @@ export default async function () {
   const options = await page.$('#checkbox1');
   console.log(await options.textContent());
 
-  page.close();
+  await page.close();
 }
 ```
 

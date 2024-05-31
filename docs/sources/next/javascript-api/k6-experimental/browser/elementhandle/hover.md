@@ -62,7 +62,7 @@ export default async function () {
   const offScreenElement = await page.$('#off-screen');
   await offScreenElement.hover();
 
-  page.close();
+  await page.close();
 }
 ```
 

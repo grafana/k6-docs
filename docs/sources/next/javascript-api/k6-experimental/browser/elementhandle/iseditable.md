@@ -49,7 +49,7 @@ export default async function () {
     text.fill('hello world!');
   }
 
-  page.close();
+  await page.close();
 }
 ```
 
