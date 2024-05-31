@@ -105,7 +105,7 @@ export default async function () {
     await Promise.all([page.waitForNavigation(), tails.click()]);
     console.log(await currentBet.innerText());
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
