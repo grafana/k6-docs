@@ -39,7 +39,7 @@ export default async function () {
   try {
     await page.goto('https://httpbin.test.k6.io/delay/5');
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

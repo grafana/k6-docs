@@ -48,7 +48,7 @@ export default async function () {
     // Will not be able to load the page
     await page.goto('https://test.k6.io/browser.php');
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
