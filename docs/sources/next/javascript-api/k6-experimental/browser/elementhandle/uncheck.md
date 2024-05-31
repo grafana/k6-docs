@@ -62,7 +62,7 @@ export default async function () {
   await checkbox.check();
   await checkbox.uncheck();
 
-  page.close();
+  await page.close();
 }
 ```
 

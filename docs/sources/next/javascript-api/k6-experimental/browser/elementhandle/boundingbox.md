@@ -53,7 +53,7 @@ export default async function () {
   const boundingBox = await element.boundingBox();
   console.log(`x: ${boundingBox.x}, y: ${boundingBox.y}, width: ${boundingBox.width}, height: ${boundingBox.height}`);
 
-  page.close();
+  await page.close();
 }
 ```
 

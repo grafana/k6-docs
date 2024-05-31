@@ -61,7 +61,7 @@ export default async function () {
   const checkbox = await page.$('#checkbox1');
   await checkbox.check();
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -49,7 +49,7 @@ export default async function () {
     console.log('element is hidden');
   }
 
-  page.close();
+  await page.close();
 }
 ```
 

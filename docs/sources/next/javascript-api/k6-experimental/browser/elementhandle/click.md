@@ -66,7 +66,7 @@ export default async function () {
   const button = await page.$('#counter-button');
   await button.click();
 
-  page.close();
+  await page.close();
 }
 ```
 
@@ -103,7 +103,7 @@ export default async function () {
     messagesLink.click()
   ]);
 
-  page.close();
+  await page.close();
 }
 ```
 
