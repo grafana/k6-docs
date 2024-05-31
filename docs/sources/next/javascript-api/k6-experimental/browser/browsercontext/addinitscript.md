@@ -52,7 +52,7 @@ export default async function () {
   // the content on the page.
   await page.goto('about:blank');
 
-  page.setContent(`
+  await page.setContent(`
   <html>
     <head></head>
     <body>
@@ -68,7 +68,7 @@ export default async function () {
     zero: () => text == '0',
   });
 
-  page.close();
+  await page.close();
 }
 ```
 
