@@ -31,6 +31,12 @@ This method hovers over an element matching `selector`.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the hover action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -54,7 +60,7 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
-  page.hover('#off-screen');
+  await page.hover('#off-screen');
 }
 ```
 

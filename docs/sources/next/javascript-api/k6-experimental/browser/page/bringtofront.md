@@ -7,6 +7,12 @@ description: 'Browser module: page.bringToFront method'
 
 Activates the browser tab which brings the page in focus to allow actions to be performed onto it.
 
+### Returns
+
+| Type            | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the page is brought to the front. |
+
 ### Example
 
 {{< code >}}
@@ -33,7 +39,7 @@ export default async function () {
 
   // perform other actions that might open up a different tab, taking focus away from the initial page.
 
-  page.bringToFront();
+  await page.bringToFront();
 }
 ```
 

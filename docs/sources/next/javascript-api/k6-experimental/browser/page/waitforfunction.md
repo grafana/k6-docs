@@ -64,9 +64,10 @@ export default async function () {
       polling: 'mutation',
       timeout: 2000,
     });
-    check(ok, { 'waitForFunction successfully resolved': ok.innerHTML() == 'Hello' });
+    const innerHTML = await ok.innerHTML();
+    check(ok, { 'waitForFunction successfully resolved': innerHTML == 'Hello' });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

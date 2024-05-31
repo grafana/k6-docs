@@ -33,9 +33,9 @@ Events can be either:
 
 ### Returns
 
-| Type                                                                                                          | Description                                                                |
-| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| null or [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/) | The `Response` instance associated with the page. Else, it returns `null`. |
+| Type                       | Description                                                                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<Response \| null` | A Promise that fulfills with the [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/)> instance associated with the page, else `null`. |
 
 ### Example
 

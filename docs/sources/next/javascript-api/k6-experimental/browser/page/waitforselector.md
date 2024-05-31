@@ -36,9 +36,9 @@ Element states can be either:
 
 ### Returns
 
-| Type                                                                                                               | Description                                                                |
-| ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| null \| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/keyboard/) | `ElementHandle` when a matching element is found. Else, it returns `null`. |
+| Type                             | Description                                                                                                                                                                                                          |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<ElementHandle \| null>` | A Promise that fulfills with the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/keyboard/) when a matching element is found, or `null` if the element is not found. |
 
 ### Example
 
@@ -63,7 +63,7 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
-  page.waitForSelector('#text1');
+  await page.waitForSelector('#text1');
 }
 ```
 

@@ -26,9 +26,9 @@ Checks if the element is `editable`.
 
 ### Returns
 
-| Type | Description                                        |
-| ---- | -------------------------------------------------- |
-| bool | `true` if the element is `editable`, else `false`. |
+| Type            | Description                                                                     |
+| --------------- | ------------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fullfils with `true` if the element is `editable`, else `false`. |
 
 ### Example
 
@@ -54,8 +54,9 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isEditable('#text1')) {
-    page.fill('#text1', 'hello world!');
+  const isEditable = await page.isEditable('#text1');
+  if (isEditable) {
+    await page.fill('#text1', 'hello world!');
   }
 }
 ```

@@ -13,6 +13,12 @@ Returns the page that opened the current page. The first page that is navigated 
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | null or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) | The `Page` instance. Else, it returns `null`. |
 
+### Returns
+
+| Type                    | Description                                                    |
+| ----------------------- | -------------------------------------------------------------- |
+| `Promise<Page \| null>` | A Promise that fullfils with the `Page` instance, else `null`. |
+
 ### Example
 
 {{< code >}}

@@ -37,7 +37,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.mouse.down();
+  await page.mouse.down();
 }
 ```
 

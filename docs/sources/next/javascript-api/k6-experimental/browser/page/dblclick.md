@@ -33,6 +33,12 @@ Mouse double clicks an element matching provided selector.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the double click action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -57,7 +63,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.dblclick('#counter-button');
+  await page.dblclick('#counter-button');
 }
 ```
 

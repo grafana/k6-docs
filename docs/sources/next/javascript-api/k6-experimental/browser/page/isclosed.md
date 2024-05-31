@@ -15,9 +15,9 @@ Checks if the page has been closed.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the page has been closed, else `false`. |
+| Type            | Description                                                                    |
+| --------------- | ------------------------------------------------------------------------------ |
+| `Promise<bool>` | A Promise that fullfils with `true` if the page has been closed, else `false`. |
 
 ### Example
 
@@ -43,9 +43,9 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.close();
+  await page.close();
 
-  console.log(page.isClosed());
+  console.log(await page.isClosed());
 }
 ```
 
