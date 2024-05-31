@@ -50,7 +50,7 @@ export default async function () {
   await textInput.fill('Hello world!');
   console.log(await textInput.inputValue());
 
-  page.close();
+  await page.close();
 }
 ```
 

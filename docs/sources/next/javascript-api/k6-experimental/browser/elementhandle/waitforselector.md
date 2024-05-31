@@ -59,7 +59,7 @@ export default async function () {
   const el = await element.waitForSelector(".title");
   // ... do something with the element
 
-  page.close();
+  await page.close();
 }
 ```
 

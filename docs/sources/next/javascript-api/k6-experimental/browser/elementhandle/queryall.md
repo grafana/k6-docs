@@ -50,7 +50,7 @@ export default async function () {
     // ...
   }
 
-  page.close();
+  await page.close();
 }
 ```
 
