@@ -55,6 +55,6 @@ export default async function () {
     page.waitForNavigation(),
   ]);
 
-  page.close();
+  await page.close();
 }
 ```
