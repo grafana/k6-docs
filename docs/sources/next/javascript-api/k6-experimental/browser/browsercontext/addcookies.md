@@ -87,7 +87,7 @@ export default async function () {
     // prints:
     // {"cookies":{"testcookie":"1","testcookie2":"2"}}
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

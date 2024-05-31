@@ -74,7 +74,7 @@ export default async function () {
     console.log("2nd cookie's name :", cookies[1].name); // prints baz
     console.log("2nd cookie's value:", cookies[1].value); // prints bazvalue
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
