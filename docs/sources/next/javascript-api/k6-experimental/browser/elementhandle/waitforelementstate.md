@@ -49,7 +49,7 @@ export default async function () {
   const element = await page.$('#text1');
   await element.waitForElementState('visible');
 
-  page.close();
+  await close();
 }
 ```
 

@@ -58,7 +58,7 @@ export default async function () {
   const textbox = await page.$('#text1');
   await textbox.fill('hello world!');
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -46,7 +46,7 @@ export default async function () {
   const textbox = await page.$('#text1');
   await textbox.focus();
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -49,7 +49,7 @@ export default async function () {
   const element = await page.$(".header");
   await element.scrollIntoViewIfNeeded();
 
-  page.close();
+  await page.close();
 }
 ```
 

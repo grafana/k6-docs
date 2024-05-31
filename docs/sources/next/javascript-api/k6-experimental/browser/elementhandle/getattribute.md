@@ -55,7 +55,7 @@ export default async function () {
   const attribute = await textbox.getAttribute('onfocus');
   console.log(attribute);
 
-  page.close();
+  await page.close();
 }
 ```
 

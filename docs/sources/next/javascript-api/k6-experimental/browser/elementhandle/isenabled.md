@@ -49,7 +49,7 @@ export default async function () {
     console.log('element is enabled');
   }
 
-  page.close();
+  await page.close();
 }
 ```
 
