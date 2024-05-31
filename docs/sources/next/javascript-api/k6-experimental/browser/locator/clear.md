@@ -71,7 +71,7 @@ export default async function () {
     empty: () => value == '',
   });
 
-  page.close();
+  await page.close();
 }
 ```
 

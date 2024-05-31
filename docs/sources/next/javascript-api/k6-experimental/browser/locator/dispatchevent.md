@@ -50,7 +50,7 @@ export default async function () {
   const button = page.locator('#counter-button');
   await button.dispatchEvent('click');
 
-  page.close();
+  await page.close();
 }
 ```
 
