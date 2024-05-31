@@ -64,9 +64,9 @@ export default async function () {
       });
     });
 
-    page.evaluate(() => console.log('this is a console.log message', 42));
+    await page.evaluate(() => console.log('this is a console.log message', 42));
   } finally {
-    page.close(); // required so iteration can end
+    await page.close(); // required so iteration can end
   }
 }
 ```

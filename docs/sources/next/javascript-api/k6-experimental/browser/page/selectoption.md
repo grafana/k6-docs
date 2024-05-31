@@ -29,9 +29,9 @@ Selects one or more options which match the values from a `<select>` element.
 
 ### Returns
 
-| Type     | Description                   |
-| -------- | ----------------------------- |
-| string[] | List of the selected options. |
+| Type                | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| `Promise<string[]>` | A Promise that fulfills with the list of the selected options. |
 
 ### Example
 

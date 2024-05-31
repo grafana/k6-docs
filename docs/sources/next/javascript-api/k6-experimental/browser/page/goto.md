@@ -37,9 +37,9 @@ Events can be either:
 
 ### Returns
 
-| Type                                                                                                                   | Description                                                                |
-| ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Promise<null \| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/)> | The `Response` instance associated with the page. Else, it returns `null`. |
+| Type                         | Description                                                                                                                                                            |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<Promise<Response \| null>` | The [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/)> instance associated with the page. Else, it returns `null`. |
 
 ### Example
 
@@ -64,7 +64,7 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
-  page.close();
+  await page.close();
 }
 ```
 

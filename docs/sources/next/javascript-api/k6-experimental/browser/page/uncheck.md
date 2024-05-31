@@ -30,6 +30,12 @@ This method is used to unselect an input checkbox.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the checkbox is unchecked. |
+
 ### Example
 
 {{< code >}}
@@ -54,8 +60,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.check('#checkbox1');
-  page.uncheck('#checkbox1');
+  await page.check('#checkbox1');
+  await page.uncheck('#checkbox1');
 }
 ```
 

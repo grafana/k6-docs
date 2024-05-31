@@ -26,9 +26,9 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 
 ### Returns
 
-| Type   | Description                     |
-| ------ | ------------------------------- |
-| string | The input value of the element. |
+| Type              | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `Promise<string>` | A Promise that fullfils with the input value of the element. |
 
 ### Example
 
@@ -55,7 +55,7 @@ export default async function () {
 
   await page.goto('https://test.k6.io/browser.php');
   page.fill('#text1', 'Hello world!');
-  const inputValue = page.inputValue('#text1');
+  const inputValue = await page.inputValue('#text1');
   console.log(inputValue);
 }
 ```

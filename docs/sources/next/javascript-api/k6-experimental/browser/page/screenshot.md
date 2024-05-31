@@ -27,9 +27,9 @@ Returns the buffer with the captured screenshot from the browser.
 
 ### Returns
 
-| Type                                                             | Description                              |
-| ---------------------------------------------------------------- | ---------------------------------------- |
-| [Buffer](https://nodejs.org/api/buffer.html#buffer_class_buffer) | The buffer with the captured screenshot. |
+| Type              | Description                                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<Buffer>` | A Promise that fulfills with the [Buffer](https://nodejs.org/api/buffer.html#buffer_class_buffer) with the captured screenshot. |
 
 ### Example
 
