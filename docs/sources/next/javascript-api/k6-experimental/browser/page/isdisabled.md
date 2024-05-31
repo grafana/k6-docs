@@ -26,9 +26,9 @@ Checks if the element is `disabled`.
 
 ### Returns
 
-| Type | Description                                        |
-| ---- | -------------------------------------------------- |
-| bool | `true` if the element is `disabled`, else `false`. |
+| Type            | Description                                                                     |
+| --------------- | ------------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fullfils with `true` if the element is `disabled`, else `false`. |
 
 ### Example
 
@@ -54,7 +54,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isDisabled('#input-text-disabled')) {
+  const isDisabled = await page.isDisabled('#input-text-disabled');
+  if (isDisabled) {
     console.log('element is disabled');
   }
 }

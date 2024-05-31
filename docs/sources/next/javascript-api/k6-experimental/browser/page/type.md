@@ -27,6 +27,12 @@ Type the `text` in the first element found that matches the selector.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the text has been typed. |
+
 ### Example
 
 {{< code >}}
@@ -51,7 +57,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.type('#text1', 'hello world!');
+  await page.type('#text1', 'hello world!');
 }
 ```
 

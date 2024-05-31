@@ -25,9 +25,9 @@ Checks if the element is `hidden`.
 
 ### Returns
 
-| Type | Description                                      |
-| ---- | ------------------------------------------------ |
-| bool | `true` if the element is `hidden`, else `false`. |
+| Type            | Description                                                                   |
+| --------------- | ----------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fullfils with `true` if the element is `hidden`, else `false`. |
 
 ### Example
 
@@ -53,7 +53,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isHidden('#input-text-hidden')) {
+  const isHidden = await page.isHidden('#input-text-hidden');
+  if (isHidden) {
     console.log('element is hidden');
   }
 }

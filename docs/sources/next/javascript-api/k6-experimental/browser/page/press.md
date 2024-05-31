@@ -36,6 +36,12 @@ Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported a
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fullfils when the press action is finished. |
+
 ### Example
 
 {{< code >}}

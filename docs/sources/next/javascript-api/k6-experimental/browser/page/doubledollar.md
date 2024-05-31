@@ -16,9 +16,9 @@ The method finds all elements matching the specified selector within the page. I
 
 ### Returns
 
-| Type                                                                                                              | Description                       |
-| ----------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/)[] | Returns an `ElementHandle` array. |
+| Type                       | Description                                                                                                                                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<ElementHandle[]>` | A Promise that fulfills with the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/) array of the selector when matching elements are found. |
 
 ### Example
 
@@ -44,7 +44,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  await page.$$('#text1')[0].type('hello world');
+  const text = await page.$$('#text1')[0];
+  await text.type('hello world');
 }
 ```
 
