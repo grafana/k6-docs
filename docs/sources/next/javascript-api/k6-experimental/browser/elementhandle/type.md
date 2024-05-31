@@ -58,7 +58,7 @@ export default async function () {
   const text = await page.$('#text1');
   await text.type('hello world!');
 
-  page.close();
+  await page.close();
 }
 ```
 

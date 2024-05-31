@@ -50,7 +50,7 @@ export default async function () {
   const element = await page.$('h1');
   await element.selectText();
 
-  page.close();
+  await page.close();
 }
 ```
 
