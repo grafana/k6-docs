@@ -76,7 +76,7 @@ export default async function () {
       header: () => text == 'Welcome, admin!',
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

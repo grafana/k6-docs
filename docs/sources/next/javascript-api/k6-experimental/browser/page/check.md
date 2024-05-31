@@ -30,6 +30,12 @@ This method is used to select an input checkbox.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the check action is finished. |
+
 ### Example
 
 {{< code >}}
@@ -53,7 +59,7 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/browser.php');
-  page.check('#checkbox1');
+  await page.check('#checkbox1');
 }
 ```
 

@@ -9,9 +9,9 @@ Gets the HTML contents of the page.
 
 ### Returns
 
-| Type   | Description                    |
-| ------ | ------------------------------ |
-| string | The HTML contents of the page. |
+| Type                      | Description                                                                                                            |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Promise<string \| null>` | A Promise that fulfills with the HTML content of the page as a string value or `null` if the attribute is not present. |
 
 ### Example
 
@@ -37,7 +37,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.content()); // HTML content printed in the console
+  console.log(await page.content()); // HTML content printed in the console
 }
 ```
 

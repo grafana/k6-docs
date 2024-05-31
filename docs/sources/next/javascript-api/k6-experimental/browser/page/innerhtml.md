@@ -26,9 +26,9 @@ Returns the `element.innerHTML`.
 
 ### Returns
 
-| Type   | Description                   |
-| ------ | ----------------------------- |
-| string | The innerHTML of the element. |
+| Type              | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `Promise<string>` | A Promise that fullfils with the inner HTML of the element. |
 
 ### Example
 
@@ -54,7 +54,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const innerHTML = page.innerHTML('#off-screen');
+  const innerHTML = await page.innerHTML('#off-screen');
   console.log(innerHTML);
 }
 ```

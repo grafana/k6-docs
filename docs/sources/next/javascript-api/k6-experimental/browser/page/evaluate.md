@@ -18,9 +18,9 @@ Returns the value of the `pageFunction` invocation.
 
 ### Returns
 
-| Type | Description                                 |
-| ---- | ------------------------------------------- |
-| any  | The value of the `pageFunction` invocation. |
+| Type           | Description                                 |
+| -------------- | ------------------------------------------- |
+| `Promise<any>` | The value of the `pageFunction` invocation. |
 
 ### Example
 
@@ -49,7 +49,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const dimensions = page.evaluate(() => {
+  const dimensions = await page.evaluate(() => {
     const obj = {
       width: document.documentElement.clientWidth,
       height: document.documentElement.clientHeight,

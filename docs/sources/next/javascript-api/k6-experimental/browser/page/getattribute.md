@@ -27,9 +27,9 @@ Returns the element attribute value for the given attribute name.
 
 ### Returns
 
-| Type           | Description                                          |
-| -------------- | ---------------------------------------------------- |
-| null or string | The value of the attribute. Else, it returns `null`. |
+| Type                      | Description                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| `Promise<string \| null>` | A Promise that fulfills with the value of the attribute. Else, it returns `null`. |
 
 ### Example
 
@@ -55,7 +55,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const attribute = page.getAttribute('#text1', 'onfocus');
+  const attribute = await page.getAttribute('#text1', 'onfocus');
   console.log(attribute); // prints inputTextOnFocus();
 }
 ```

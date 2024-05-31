@@ -87,7 +87,7 @@ export default async function () {
   try {
     await page.goto('https://test.k6.io/');
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
