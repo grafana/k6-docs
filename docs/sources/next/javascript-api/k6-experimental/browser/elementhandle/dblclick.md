@@ -58,7 +58,7 @@ export default async function () {
   const elementHandle = await page.$('#counter-button');
   await elementHandle.dblclick();
 
-  page.close();
+  await page.close();
 }
 ```
 

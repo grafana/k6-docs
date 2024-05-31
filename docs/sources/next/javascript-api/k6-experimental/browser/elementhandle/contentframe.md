@@ -41,7 +41,7 @@ export default async function () {
   const frame = await element.contentFrame();
   console.log(frame.url());
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -49,7 +49,7 @@ export default async function () {
     await checkbox.check();
   }
 
-  page.close();
+  await page.close();
 }
 ```
 

@@ -60,7 +60,7 @@ export default async function () {
   await text.press('ArrowLeft');
   await text.press('h');
 
-  page.close();
+  await page.close();
 }
 ```
 
