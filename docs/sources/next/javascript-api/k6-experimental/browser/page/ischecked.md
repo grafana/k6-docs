@@ -26,9 +26,9 @@ Checks to see if the `checkbox` `input` type is selected or not.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the checkbox is selected, else `false`. |
+| Type            | Description                                                                    |
+| --------------- | ------------------------------------------------------------------------------ |
+| `Promise<bool>` | A Promise that fullfils with `true` if the checkbox is selected, else `false`. |
 
 ### Example
 
@@ -54,8 +54,9 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (!page.isChecked('#checkbox1')) {
-    page.check('#checkbox1');
+  const isChecked = await page.isChecked('#checkbox1');
+  if (!isChecked) {
+    await page.check('#checkbox1');
   }
 }
 ```

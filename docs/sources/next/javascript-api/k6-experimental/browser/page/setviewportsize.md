@@ -17,6 +17,12 @@ This will update the page's width and height.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| `Promise<void>` | A Promise that fulfills when the viewport size is set. |
+
 ### Example
 
 {{< code >}}

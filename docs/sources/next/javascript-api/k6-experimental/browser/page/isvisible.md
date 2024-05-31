@@ -25,9 +25,9 @@ Checks if the element is `visible`.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the element is `visible`, else `false`. |
+| Type            | Description                                                                    |
+| --------------- | ------------------------------------------------------------------------------ |
+| `Promise<bool>` | A Promise that fullfils with `true` if the element is `visible`, else `false`. |
 
 ### Example
 
@@ -53,7 +53,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isVisible('#text1')) {
+  const isVisible = await page.isVisible('#text1');
+  if (isVisible) {
     console.log('element is visible');
   }
 }

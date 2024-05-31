@@ -20,9 +20,9 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 
 ### Returns
 
-| Type                                                                                                  | Description                                       |
-| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/) | The `JSHandle` instance associated with the page. |
+| Type                | Description                                                                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<JSHandle>` | The [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/) ) instance associated with the page. |
 
 ### Example
 
@@ -50,7 +50,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const resultHandle = page.evaluateHandle(() => document.body);
+  const resultHandle = await page.evaluateHandle(() => document.body);
   console.log(resultHandle.jsonValue());
 }
 ```

@@ -7,6 +7,12 @@ description: 'Browser module: page.close method'
 
 This will close the tab that this page is associated with.
 
+### Returns
+
+| Type            | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `Promise<void>` | A Promise that fulfills when the page is closed. |
+
 ### Example
 
 {{< code >}}
@@ -31,7 +37,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.close();
+  await page.close();
 }
 ```
 

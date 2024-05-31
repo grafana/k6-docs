@@ -18,6 +18,12 @@ This method changes the CSS `@media type` through the `media` argument, and/or t
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                         |
+| --------------- | --------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the media is emulated. |
+
 ### Example
 
 {{< code >}}
@@ -44,7 +50,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.evaluate(() => matchMedia('screen').matches)); // true
+  console.log(await page.evaluate(() => matchMedia('screen').matches)); // true
 }
 ```
 

@@ -11,6 +11,12 @@ This sets extra HTTP headers which will be sent with subsequent HTTP requests.
 | --------- | ---------------------- | ------- | ------------------------------------------------------------------------------------ |
 | headers   | Object<string, string> |         | An object containing the additional HTTP headers. All header values must be strings. |
 
+### Returns
+
+| Type            | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the headers have been set. |
+
 ### Example
 
 {{< code >}}

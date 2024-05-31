@@ -37,6 +37,12 @@ Events can be either:
 - `'load'` - consider operation to be finished when the `load` event is fired.
 - `'networkidle'` - Consider operation to be finished when there are no network connections for at least `500` ms.
 
+### Returns
+
+| Type            | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the load state is reached. |
+
 ### Example
 
 {{< code >}}
@@ -70,14 +76,14 @@ export default async function () {
     const submitButton = page.locator('input[type="submit"]');
     await submitButton.click();
 
-    page.waitForLoadState(); // waits for the default `load` event
+    await page.waitForLoadState(); // waits for the default `load` event
 
     const text = await p.locator('h2').textContent();
     check(page, {
       header: () => text == 'Welcome, admin!',
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

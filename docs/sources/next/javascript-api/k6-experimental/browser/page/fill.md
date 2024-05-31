@@ -27,6 +27,12 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| `Promise<void>` | A Promise that fulfills when the element is filled with the value. |
+
 ### Example
 
 {{< code >}}
@@ -51,7 +57,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.fill('#text1', 'hello world!');
+  await page.fill('#text1', 'hello world!');
 }
 ```
 

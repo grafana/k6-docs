@@ -26,9 +26,9 @@ Checks if the element is `enabled`.
 
 ### Returns
 
-| Type | Description                                       |
-| ---- | ------------------------------------------------- |
-| bool | `true` if the element is `enabled`, else `false`. |
+| Type            | Description                                                                     |
+| --------------- | ------------------------------------------------------------------------------- |
+| `Promise<bool>` | A Promise that fullfils with `true` if the element is `enabled`, else `false`. |
 
 ### Example
 
@@ -54,7 +54,8 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  if (page.isEnabled('#text1')) {
+  const isEnabled = await page.isEnabled('#text1');
+  if (isEnabled) {
     console.log('element is enabled');
   }
 }
