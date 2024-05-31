@@ -27,7 +27,7 @@ export default async function () {
   try {
     await page.goto('https://test.k6.io/browser.php');
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
