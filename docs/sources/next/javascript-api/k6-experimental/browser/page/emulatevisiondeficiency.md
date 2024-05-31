@@ -16,6 +16,12 @@ The supported types are:
 - tritanopia: the inability to perceive any blue light.
 - achromatopsia: the inability to perceive any color except for shades of grey (extremely rare).
 
+### Returns
+
+| Type            | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the vision deficiency is emulated. |
+
 ### Example
 
 {{< code >}}
@@ -40,7 +46,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.emulateVisionDeficiency('blurredVision');
+  await page.emulateVisionDeficiency('blurredVision');
 }
 ```
 

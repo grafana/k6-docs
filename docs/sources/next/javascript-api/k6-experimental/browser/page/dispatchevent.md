@@ -38,6 +38,12 @@ Since `eventInit` is event-specific, please refer to the events documentation fo
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
+### Returns
+
+| Type            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the event is dispatched. |
+
 ### Example
 
 {{< code >}}
@@ -62,7 +68,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.dispatchEvent('#counter-button', 'click');
+  await page.dispatchEvent('#counter-button', 'click');
 }
 ```
 

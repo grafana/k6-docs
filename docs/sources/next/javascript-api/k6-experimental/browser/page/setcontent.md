@@ -20,6 +20,12 @@ Sets the supplied HTML string to the current page.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the page has been set with the supplied HTML. |
+
 ### Example
 
 {{< code >}}

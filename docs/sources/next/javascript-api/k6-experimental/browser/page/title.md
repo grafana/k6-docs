@@ -9,9 +9,9 @@ Returns the page's title.
 
 ### Returns
 
-| Type   | Description       |
-| ------ | ----------------- |
-| string | The page's title. |
+| Type              | Description                                    |
+| ----------------- | ---------------------------------------------- |
+| `Promise<string>` | A Promise that fulfills with the page's title. |
 
 ### Example
 
@@ -37,7 +37,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.title());
+  console.log(await page.title());
 }
 ```
 

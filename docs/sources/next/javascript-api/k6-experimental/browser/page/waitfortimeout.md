@@ -13,9 +13,11 @@ Never wait for timeout in production, use this only for debugging. Tests that wa
 
 Waits for the given `timeout` in milliseconds.
 
-| Parameter | Type   | Default | Description              |
-| --------- | ------ | ------- | ------------------------ |
-| timeout   | number |         | Timeout in milliseconds. |
+### Returns
+
+| Type            | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the timeout is reached. |
 
 ### Example
 
@@ -41,7 +43,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.waitForTimeout(5000);
+  await page.waitForTimeout(5000);
 }
 ```
 

@@ -24,6 +24,12 @@ This method fetches an element with `selector` and focuses it.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type            | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the element is focused. |
+
 ### Example
 
 {{< code >}}
@@ -48,7 +54,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.focus('#text1');
+  await page.focus('#text1');
 }
 ```
 

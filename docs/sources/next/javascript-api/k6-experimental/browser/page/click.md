@@ -36,9 +36,10 @@ This method clicks on an element matching a `selector`.
 
 ### Returns
 
-| Type                | Description                                            |
-| ------------------- | ------------------------------------------------------ |
-| Promise&lt;void&gt; | An asynchronous operation that doesn't return a value. |
+| Type            | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the click action is finished. |
+
 
 ### Example
 

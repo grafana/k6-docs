@@ -22,6 +22,12 @@ To work with the most commonly tested network profiles, import `networkProfiles`
 | `'Fast 3G'`       | Emulates a typical fast 3G connection                                                                                          |
 | `'Slow 3G'`       | Emulates a typical slow 3G connection                                                                                          |
 
+### Returns
+
+| Type            | Description                                                                        |
+| --------------- | ---------------------------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the network has been throttled to the specified rate. |
+
 ### Example
 
 {{< code >}}
@@ -47,11 +53,11 @@ export default async function () {
   const page = await context.newPage();
 
   try {
-    page.throttleNetwork(networkProfiles['Slow 3G']);
+    await page.throttleNetwork(networkProfiles['Slow 3G']);
 
     await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
