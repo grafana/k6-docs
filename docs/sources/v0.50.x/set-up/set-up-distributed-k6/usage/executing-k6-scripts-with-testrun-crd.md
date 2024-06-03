@@ -1,18 +1,19 @@
 ---
 weight: 100
-title: Executing k6 scripts with TestRun CRD
+title: Run k6 scripts with TestRun CRD
 ---
 
-# Executing k6 scripts with TestRun CRD
+# Run k6 scripts with TestRun CRD
+
+This guide covers how you can configure your k6 scripts to run using the k6 operator.
 
 ## Defining test scripts
 
-There are several ways to configure scripts in `TestRun` CRD.
-#The operator utilises `ConfigMap`s and `LocalFile` to serve test scripts to the jobs. To upload your own test script, run the following command to configure through `ConfigMap`:
+There are several ways to configure scripts in the `TestRun` CRD. The operator uses `ConfigMap` and `LocalFile` to serve test scripts to the jobs.
 
 ### ConfigMap
 
-The main way to configure script is to create a ConfigMap with the script contents:
+The main way to configure a script is to create a `ConfigMap` with the script contents:
 
 ```bash
 kubectl create configmap my-test --from-file /path/to/my/test.js
@@ -27,28 +28,28 @@ Then specify it in `TestRun`:
       file: test.js
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
-There is a character limit of 1048576 bytes to a single configmap. If you need to have a larger test file, you'll need to use a volumeClaim or a localFile instead
+A single `ConfigMap` has a character limit of 1048576 bytes. If you need to have a larger test file, you have to use a `volumeClaim` or a `LocalFile` instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### VolumeClaim
 
-If you have a PVC with the name `stress-test-volumeClaim` containing your script and any other supporting file(s), you can pass it to the test like this:
+If you have a PVC with the name `stress-test-volumeClaim` containing your script and any other supporting files, you can pass it to the test like this:
 
 ```yaml
 spec:
   script:
     volumeClaim:
-      name: "stress-test-volumeClaim"
+      name: 'stress-test-volumeClaim'
       # test.js should exist inside /test/ folder.
-      # All the js files and directories test.js is importing 
+      # All the js files and directories test.js is importing
       # should be inside the same directory as well.
-      file: "test.js"
+      file: 'test.js'
 ```
 
-The pods will expect to find script files in `/test/` folder. If `volumeClaim` fails, it's the first place to check: the latest initializer pod does not generate any logs and when it can't find the file, it will terminate with error. So missing file may not be that obvious and it makes sense to check it is present manually. See [GH issue](https://github.com/k6-operator/issues/143) for potential improvements.
+The pods will expect to find the script files in the `/test/` folder. If `volumeClaim` fails, that's the first place to check. The latest initializer pod doesn't generate any logs and when it can't find the file, it exits with an error. Refer to [this GitHub issue](https://github.com/grafana/k6-operator/issues/143) for potential improvements.
 
 #### Sample directory structure
 
@@ -59,15 +60,15 @@ The pods will expect to find script files in `/test/` folder. If `volumeClaim` f
 │   ├── test.js
 ```
 
-In the above example, `test.js` imports a function from `stress-test.js` and these files would look like this:
+In the preceding example, `test.js` imports a function from `stress-test.js` and these files would look like this:
 
 ```js
 // test.js
-import stressTest from "./requests/stress-test.js";
+import stressTest from './requests/stress-test.js';
 
 export const options = {
   vus: 50,
-  duration: '10s'
+  duration: '10s',
 };
 
 export default function () {
@@ -80,7 +81,6 @@ export default function () {
 import { sleep, check } from 'k6';
 import http from 'k6/http';
 
-
 export default () => {
   const res = http.get('https://test-api.k6.io');
   check(res, {
@@ -92,7 +92,7 @@ export default () => {
 
 ### LocalFile
 
-If the script is present in the filesystem of custom runner image, it can be accessed with `localFile` option:
+If the script is present in the filesystem of a custom runner image, it can be accessed with the `localFile` option:
 
 ```yaml
 spec:
@@ -103,53 +103,52 @@ spec:
     image: <custom-image>
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
-If there is any limitation on usage of `volumeClaim` in your cluster you can use the `localFile` option, but usage of `volumeClaim` is recommneded.
+If there is any limitation on the usage of `volumeClaim` in your cluster, you can use the `localFile` option. We recommend using `volumeClaim` if possible.
 
-{{% /admonition %}}
-
+{{< /admonition >}}
 
 ### Multi-file tests
 
-In case your k6 script is split between more than one JS file, you can simply create a ConfigMap with several data entries like this:
+In case your k6 script is split between multiple JavaScript files, you can create a `ConfigMap` with several data entries like this:
 
 ```bash
 kubectl create configmap scenarios-test --from-file test.js --from-file utils.js
 ```
 
-If there are too many files to specify manually, kubectl with folder might be an option as well:
+If there are too many files to specify manually, using `kubectl` with a folder might be an option as well:
+
 ```bash
 kubectl create configmap scenarios-test --from-file=./test
 ```
 
 Alternatively, you can create an archive with k6:
+
 ```bash
 k6 archive test.js [args]
 ```
 
-The above command will create an `archive.tar` in your current folder, unless `-O` option is used to change the name of the output archive. Then it is possible to put that archive into configmap similarly to JS script:
+The `k6 archive` command creates an `archive.tar` in your current folder. You can then use that file in the `configmap`, similarly to a JavaScript script:
+
 ```bash
 kubectl create configmap scenarios-test --from-file=archive.tar
 ```
 
-In case of using an archive it must correctly set in your yaml for `TestRun` deployment:
+If you use an archive, you must edit your YAML file for the `TestRun` deployment so that the `file` option is set to the correct entrypoint for the `k6 run` command:
 
 ```yaml
 # ...
 spec:
   script:
     configMap:
-      name: "crocodile-stress-test"
-      file: "archive.tar" # <-- change here
+      name: 'crocodile-stress-test'
+      file: 'archive.tar' # <-- change here
 ```
 
-In other words, `file` option must be the correct entrypoint for `k6 run` command.
+## Run tests
 
-
-## Executing tests
-
-Tests are executed by applying the custom resource `TestRun` to a cluster where the k6-operator is running. Additional optional properties of `TestRun` CRD allow you to control some key aspects of a distributed execution. For example:
+Tests are executed by applying the custom resource `TestRun` to a cluster where the k6-operator is running. Additional optional properties of the `TestRun` CRD allow you to control some key aspects of a distributed execution. For example:
 
 ```yaml
 # k6-resource.yml
@@ -196,26 +195,25 @@ spec:
       runAsNonRoot: true
 ```
 
-`TestRun` CR is created with this command:
+A `TestRun` CR is created with this command:
 
 ```bash
 kubectl apply -f /path/to/your/k6-resource.yml
 ```
 
-## Cleaning up resources
+## Clean up resources
 
-After completing a test run, you need to clean up the test jobs created. Manually this can be done by running the following command:
+After completing a test run, you need to clean up the test jobs that were created:
 
 ```bash
 kubectl delete -f /path/to/your/k6-resource.yml
 ```
 
-Alternatively, automatic deletion of all resources can be configured with `cleanup` option:
+Alternatively, you can configure the automatic deletion of all resources with the `cleanup` option:
+
 ```yaml
 spec:
-  cleanup: "post"
+  cleanup: 'post'
 ```
 
-With `cleanup` option set, k6-operator will remove `TestRun` CRD and all created resources once the test run is finished.
-
-{{< section depth=2 >}}
+With the `cleanup` option set, k6-operator removes the `TestRun` CRD and all created resources once the test run ends.
