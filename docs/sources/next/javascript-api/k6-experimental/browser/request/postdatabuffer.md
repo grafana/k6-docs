@@ -9,9 +9,9 @@ Request's post body in a binary form, if any.
 
 ### Returns
 
-| Type                | Description                                                              |
-| ------------------- | ------------------------------------------------------------------------ |
-| ArrayBuffer \| null | Returns an ArrayBuffer with request's post data or null if no post data. |
+| Type                | Description                                                                  |
+| ------------------- | ---------------------------------------------------------------------------- |
+| ArrayBuffer \| null | Returns an `ArrayBuffer` with request's post data or `null` if no post data. |
 
 ### Example
 
