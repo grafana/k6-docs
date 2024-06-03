@@ -5,7 +5,7 @@ description: 'Browser module: Request.resourceType method'
 
 # resourceType()
 
-Contains the request's resource type as it was perceived by the rendering engine. Resource type will be one of the following: `document`, `stylesheet`, `image`, `media`, `font`, `script`, `texttrack`, `xhr`, `fetch`, `eventsource`, `websocket`, `manifest`, `other`.
+Contains the request's resource type as it was perceived by the rendering engine. It will be one of the following: `document`, `stylesheet`, `image`, `media`, `font`, `script`, `texttrack`, `xhr`, `fetch`, `eventsource`, `websocket`, `manifest`, `other`.
 
 ### Returns
 
