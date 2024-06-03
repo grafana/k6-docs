@@ -1,23 +1,23 @@
 ---
 weight: 400
-title: Scheduling tests
+title: Schedule k6 tests
 ---
 
-# Scheduling Tests
+# Schedule k6 tests
 
-While the k6-operator doesn't support scheduling k6 tests directly, one can schedule tests with the `CronJob` object from Kubernetes directly. The `CronJob` would run on a schedule and execute creation and deletion of `TestRun` object.
+While the k6-operator doesn't support scheduling k6 tests directly, you can schedule tests with the `CronJob` object from Kubernetes directly. The `CronJob` would run on a schedule and execute the creation and deletion of the `TestRun` object.
 
-Running these tests requires a little more setup than standalone test run.
+Running these tests requires a little more setup than a standalone test run.
 
-## Create a ConfigMap with k6 scripts
+## Create a `ConfigMap` with k6 scripts
 
-This step is described in [Executing k6 script with `TestRun` CRD](https://grafana.com/docs/k6/<K6_VERSION>/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/).
+Refer to [Run k6 scripts with `TestRun` CRD](https://grafana.com/docs/k6/<K6_VERSION>/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/) for details on how to create a `ConfigMap` with k6 scripts.
 
+## Create a ConfigMap of the YAML file for the `TestRun` job
 
-## Create a ConfigMap of the yaml for the `TestRun` job
 <!-- TODO: add a proper description for default installations: for bundle & Helm  -->
 
-When using `make deploy` installation method, add a `configMapGenerator` to the `kustomization.yaml`:
+When using the `make deploy` installation method, add a `configMapGenerator` to the `kustomization.yaml`:
 
 ```yaml
 configMapGenerator:
@@ -71,7 +71,7 @@ metadata:
 
 ## Create a `CronJob`
 
-A `CronJob` can be defined in the following way:
+This is an example of how to define a `CronJob` in a YAML file:
 
 ```yaml
 # snapshotter.yml
@@ -80,7 +80,7 @@ kind: CronJob
 metadata:
   name: <test-name>-cron
 spec:
-  schedule: "<cron-schedule>"
+  schedule: '<cron-schedule>'
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
@@ -97,12 +97,10 @@ spec:
                 - /bin/bash
               args:
                 - -c
-                - "kubectl delete -f /tmp/<test-name>.yaml; kubectl apply -f /tmp/<test-name>.yaml"
+                - 'kubectl delete -f /tmp/<test-name>.yaml; kubectl apply -f /tmp/<test-name>.yaml'
           restartPolicy: OnFailure
           volumes:
             - name: k6-yaml
               configMap:
                 name: <test-name>-config
 ```
-
-{{< section depth=2 >}}
