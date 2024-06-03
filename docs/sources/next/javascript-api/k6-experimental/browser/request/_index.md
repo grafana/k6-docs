@@ -29,3 +29,37 @@ weight: 11
 | [request.size()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/request/size)                           | Unlike Playwright, this method returns an object containing the sizes of request headers and body. |
 | <a href="https://playwright.dev/docs/api/class-request#request-timing" target="_blank" >request.timing()</a>                             | -                                                                                                  |
 | <a href="https://playwright.dev/docs/api/class-request#request-url" target="_blank" >request.url()</a>                                   | -                                                                                                  |
+
+### Example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    const res = await page.goto('https://test.k6.io/');
+    const req = res.request();
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
