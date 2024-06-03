@@ -3,16 +3,15 @@ weight: 300
 title: Common options
 ---
 
-<!-- TODO: consider removeing this once full reference is generated -->
-
 # Common options
 
-The only options that must be defined as part of `TestRun` CRD spec are `script` and `parallelism`. But there are many others; here are some of the most common.
+<!-- TODO: consider removing this page once full reference is generated -->
+
+The only options that are required as part of the `TestRun` CRD spec are `script` and `parallelism`. This guide covers some of the most common options.
 
 ## Parallelism
 
-`parallelism` defines how many instances of k6 runneres you want to create. Each instance will be assigned an equal execution segment. For instance, if your test script is configured to run 200 VUs and `parallelism` is set to 4, the k6-operator will
-create four k6 jobs, each running 50 VUs to achieve the desired VU count.
+`parallelism` defines how many instances of k6 runners you want to create. Each instance is assigned an equal execution segment. For instance, if your test script is configured to run 200 VUs and `parallelism` is set to 4, the k6-operator creates four k6 jobs, each running 50 VUs to achieve the desired VU count.
 
 ## Separate
 
@@ -21,7 +20,7 @@ test with a really high VU count and want to make sure the resources of each nod
 
 ## Service account
 
-If you want to use a custom Service Account you'll need to pass it into both the starter and runner object:
+If you want to use a custom Service Account you'll need to pass it into both the starter and the runner object:
 
 ```yaml
 apiVersion: k6.io/v1alpha1
@@ -31,7 +30,7 @@ metadata:
 spec:
   script:
     configMap:
-      name: "<configmap>"
+      name: '<configmap>'
   runner:
     serviceAccountName: <service-account>
   starter:
@@ -42,17 +41,14 @@ spec:
 
 Defines options for the test runner pods. The non-exhaustive list includes:
 
-* passing resource limits and requests
-* passing in labels and annotations
-* passing in affinity and anti-affinity
-* passing in a custom image
+- Passing resource limits and requests.
+- Passing in labels and annotations.
+- Passing in affinity and anti-affinity.
+- Passing in a custom image.
 
 ## Starter
 
 Defines options for the starter pod. The non-exhaustive list includes:
 
-* passing in custom image
-* passing in labels and annotations
-
-
-{{< section depth=2 >}}
+- Passing in a custom image.
+- Passing in labels and annotations.
