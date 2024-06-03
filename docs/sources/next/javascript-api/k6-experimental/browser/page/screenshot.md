@@ -55,7 +55,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  page.screenshot({ path: 'screenshots/browser.png' });
+  await page.screenshot({ path: 'screenshots/browser.png' });
 }
 ```
 
