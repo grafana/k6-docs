@@ -12,3 +12,40 @@ Similar to Playwright's [`request.sizes()`](https://playwright.dev/docs/api/clas
 | Type   | Description                           |
 | ------ | ------------------------------------- |
 | object | `{ body: <bytes>, headers: <bytes> }` |
+
+### Example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    const res = await page.goto('https://test.k6.io/');
+    const req = res.request();
+
+    const size = await req.size();
+    console.log(`size: ${JSON.stringify(size)}`); // size: {"headers":344,"body":0}
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
