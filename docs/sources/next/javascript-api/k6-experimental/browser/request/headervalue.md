@@ -9,9 +9,9 @@ Returns the value of the header matching the name. The name is case insensitive.
 
 ### Returns
 
-| Type                      | Description                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------ |
-| `Promise<string \| null>` | A promise that resolves to the value of the header matching the name, otherwise null |
+| Type                      | Description                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------- |
+| `Promise<string \| null>` | A promise that resolves to the value of the header matching the name, otherwise null. |
 
 ### Example
 
