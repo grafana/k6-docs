@@ -7,6 +7,8 @@ weight: 11
 
 # Request
 
+The `request` that the browser performs can be retrieved from the [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response) when a navigation occurs.
+
 {{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 
 ## Supported APIs
