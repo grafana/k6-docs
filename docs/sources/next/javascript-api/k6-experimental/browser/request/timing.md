@@ -21,3 +21,40 @@ Returns resource timing information for given request. Most of the timing values
 | ResourceTiming.requestStart          | Time immediately before the browser starts requesting the resource from the server, cache, or local resource. The value is given in milliseconds relative to `startTime`, -1 if not available.                                              |
 | ResourceTiming.responseStart         | Time immediately after the browser receives the first byte of the response from the server, cache, or local resource. The value is given in milliseconds relative to `startTime`, -1 if not available.                                      |
 | ResourceTiming.responseEnd           | Time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first. The value is given in milliseconds relative to `startTime`, -1 if not available. |
+
+### Example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    const res = await page.goto('https://test.k6.io/');
+    const req = res.request();
+
+    const timing = await req.timing();
+    console.log(`timing: ${JSON.stringify(timing)}`); // timing: {"startTime":534898988.85297775,...}
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
