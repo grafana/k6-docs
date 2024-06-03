@@ -1,6 +1,6 @@
 ---
 weight: 200
-title: Extensions
+title: Use k6-operator with k6 extensions
 ---
 
 # Use k6-operator with k6 extensions
