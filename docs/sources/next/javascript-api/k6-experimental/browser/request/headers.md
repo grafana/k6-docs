@@ -9,9 +9,9 @@ An object of key value pairs made up of HTTP headers associated with the request
 
 ### Returns
 
-| Type                     | Description                     |
-| ------------------------ | ------------------------------- |
-| `Record<string, string>` | Key value pairs for each header |
+| Type                     | Description                      |
+| ------------------------ | -------------------------------- |
+| `Record<string, string>` | Key value pairs for each header. |
 
 ### Example
 
