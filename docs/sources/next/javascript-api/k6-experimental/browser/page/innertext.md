@@ -26,9 +26,9 @@ Returns the `element.innerText`.
 
 ### Returns
 
-| Type              | Description                                                 |
-| ----------------- | ----------------------------------------------------------- |
-| `Promise<string>` | A Promise that fullfils with the inner text of the element. |
+| Type              | Description                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<string>` | A Promise that fullfils with the inner text (represents the rendered text content of an element handle and its descendants) of the element. |
 
 ### Example
 
