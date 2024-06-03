@@ -5,7 +5,7 @@ description: 'Browser module: Request.timing method'
 
 # timing()
 
-Returns resource timing information for given request. Most of the timing values become available upon the response, `responseEnd` becomes available when request finishes.
+Returns resource timing information for the given request. Most of the timing values become available upon the response, `responseEnd` becomes available when request finishes.
 
 ### Returns
 
