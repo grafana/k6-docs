@@ -3,18 +3,20 @@ weight: 200
 title: Extensions
 ---
 
-# Extensions
+# Use k6-operator with k6 extensions
 
-By default, the operator will use `grafana/k6:latest` as the container image for the test jobs.
-If you want to use [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) built with [xk6](https://github.com/grafana/xk6) you'll need to create your own image and override the `image` property on the `TestRun` Kubernetes resource.
+By default, the k6 operator uses `grafana/k6:latest`, or the latest version of k6, as the container image for the test jobs.
 
-For example, create a `Dockerfile` with the following content:
+If you want to use k6 [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) built with [xk6](https://github.com/grafana/xk6), you'll need to create your own image and override the `image` property on the `TestRun` Kubernetes resource.
+
+For example, this is a `Dockerfile` that builds a k6 binary with the `xk6-output-influxdb` extension:
 
 ```Dockerfile
 # Build the k6 binary with the extension
 FROM golang:1.20 as builder
 
 RUN go install go.k6.io/xk6/cmd/xk6@latest
+
 # For our example, we'll add support for output of test metrics to InfluxDB v2.
 # Feel free to add other extensions using the '--with ...'.
 RUN xk6 build \
@@ -26,13 +28,15 @@ FROM grafana/k6:latest
 COPY --from=builder /k6 /usr/bin/k6
 ```
 
-Build the image based on this `Dockerfile` by executing:
+You can build the image based on this `Dockerfile` by executing:
+
 ```bash
 docker build -t k6-extended:local .
 ```
 
-Once the build is completed, push the resulting `k6-extended:local` image to an image repository accessible to your Kubernetes cluster.
-We can now use it as follows:
+After the build completes, you can push the resulting `k6-extended:local` image to an image repository accessible to your Kubernetes cluster.
+
+You can then use that image as follows:
 
 ```yaml
 # k6-resource-with-extensions.yml
@@ -54,20 +58,20 @@ spec:
         value: xk6-influxdb=http://influxdb.somewhere:8086/demo
 ```
 
-Note that we are overriding the default image with `k6-extended:latest`, providing the test runner with environment variables used by our included extensions.
+Note that this examples overrides the default image with `k6-extended:latest`, and it includes environment variables that are required by the `xk6-output-influxdb` extension.
 
-## k6 Cloud output
+## Output to Grafana Cloud k6
 
-k6 supports [output to its Cloud](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud) with `k6 run --out cloud script.js` command. This feature is available in k6-operator as well for subscribed users. Note that it supports only `parallelism: 20` or less.
+With k6, you can send the [output from a test run to Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud) with the `k6 run --out cloud script.js` command. This feature is also available in k6-operator, if you have a Grafana Cloud account. Note that it supports only `parallelism: 20` or less.
 
-To use this option in k6-operator, set the argument in yaml:
+To use this option in k6-operator, set the argument in YAML:
 
 ```yaml
 # ...
-  script:
-    configMap:
-      name: "<configmap>"
-  arguments: --out cloud
+script:
+  configMap:
+    name: '<configmap>'
+arguments: --out cloud
 # ...
 ```
 
@@ -78,35 +82,23 @@ kubectl -n k6-operator-system create secret generic my-cloud-token \
     --from-literal=token=<COPY YOUR TOKEN HERE> && kubectl -n k6-operator-system label secret my-cloud-token "k6cloud=token"
 ```
 
-Alternatively, if you installed operator with Makefile, you can uncomment cloud output section in `config/default/kustomization.yaml` and copy your token from the Cloud there:
+Alternatively, if you installed operator with Makefile, you can uncomment the cloud output section in `config/default/kustomization.yaml` and copy your token from Grafana Cloud k6 there:
 
 ```yaml
 # Uncomment this section if you need cloud output and copy-paste your token
 secretGenerator:
-- name: cloud-token
-  literals:
-  - token=<copy-paste-token-string-here>
-  options:
-    annotations:
-      kubernetes.io/service-account.name: k6-operator-controller
-    labels:
-      k6cloud: token
+  - name: cloud-token
+    literals:
+      - token=<copy-paste-token-string-here>
+    options:
+      annotations:
+        kubernetes.io/service-account.name: k6-operator-controller
+      labels:
+        k6cloud: token
 ```
 
-And re-run `make deploy`.
+After updating the file, run `make deploy`.
 
-This is sufficient to run k6 with the Cloud output and default values of `projectID` and `name`. For non-default values, extended script options can be used like this:
+After these steps, you can run k6 with the cloud output and default values of `projectID` and `name`.
 
-```js
-export let options = {
-  // ...
-  ext: {
-    loadimpact: {
-      name: 'Configured k6-operator test',
-      projectID: 1234567,
-    }
-  }
-};
-```
-
-{{< section depth=2 >}}
+Refer to [Cloud options](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/cloud-options/#cloud-options) for details on how to change the `projectID` and `name` options.
