@@ -44,8 +44,9 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const text = await page.$('#text1');
-  await text.type('hello world');
+  const text = await page
+    .$('#text1')
+    .then(text => text.type('hello world'));
 }
 ```
 

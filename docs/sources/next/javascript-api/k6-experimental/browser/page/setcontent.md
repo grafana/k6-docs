@@ -57,7 +57,7 @@ export default async function () {
     </html>
   `;
 
-  page.setContent(htmlContent);
+  await page.setContent(htmlContent);
 }
 ```
 

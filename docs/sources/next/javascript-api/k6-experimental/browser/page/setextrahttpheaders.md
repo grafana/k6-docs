@@ -40,7 +40,7 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
 
-  page.setExtraHTTPHeaders({ foo: 'bar' });
+  await page.setExtraHTTPHeaders({ foo: 'bar' });
   const url = await page.goto('https://test.k6.io/browser.php');
 
   console.log(url.request().headers().foo); // prints bar

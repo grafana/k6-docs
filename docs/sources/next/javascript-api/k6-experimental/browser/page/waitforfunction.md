@@ -52,7 +52,7 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    page.evaluate(() => {
+    await page.evaluate(() => {
       setTimeout(() => {
         const el = document.createElement('h1');
         el.innerHTML = 'Hello';
