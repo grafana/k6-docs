@@ -43,7 +43,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.opener());
+  console.log(await page.opener());
 }
 ```
 

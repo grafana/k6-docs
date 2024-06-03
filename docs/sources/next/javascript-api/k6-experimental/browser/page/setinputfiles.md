@@ -53,7 +53,7 @@ export default async function () {
   try {
     // In this example we create a simple web page with an upload input field.
     // Usually, you would use page.goto to navigate to a page with a file input field.
-    page.setContent(`
+    await page.setContent(`
       <html>
         <head></head>
         <body>
@@ -66,13 +66,13 @@ export default async function () {
       </html>`);
 
     // The file is set to the input element with the id "upload".
-    page.setInputFiles('input[id="upload"]', {
+    await page.setInputFiles('input[id="upload"]', {
       name: 'file.txt',
       mimetype: 'text/plain',
       buffer: encoding.b64encode('hello world'),
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
@@ -129,13 +129,13 @@ export default async function () {
     const buffer = await readAll(file);
 
     // The file is set to the input element with the id "upload".
-    page.setInputFiles({
+    await page.setInputFiles({
       name: 'file.txt',
       mimetype: 'text/plain',
       buffer: encoding.b64encode(buffer),
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 
