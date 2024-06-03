@@ -15,9 +15,9 @@ An object of key value pairs made up of HTTP headers associated with the request
 
 ### Returns
 
-| Type                              | Description                                                             |
-| --------------------------------- | ----------------------------------------------------------------------- |
-| `Promise<Record<string, string>>` | A promise that resolves to an object of key value pairs for each header |
+| Type                              | Description                                                              |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| `Promise<Record<string, string>>` | A promise that resolves to an object of key value pairs for each header. |
 
 ### Example
 

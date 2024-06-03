@@ -9,9 +9,9 @@ Returns the matching [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascr
 
 ### Returns
 
-| Type                        | Description                                                                    |
-| --------------------------- | ------------------------------------------------------------------------------ |
-| `Promise<Response \| null>` | The `Response` object, or `null` if the response was not received due to error |
+| Type                        | Description                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `Promise<Response \| null>` | The `Response` object, or `null` if the response was not received due to error. |
 
 ### Example
 

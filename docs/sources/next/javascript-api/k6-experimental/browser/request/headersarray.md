@@ -9,9 +9,9 @@ An array with all the request HTTP headers. Unlike [request.allHeaders()](https:
 
 ### Returns
 
-| Type                                             | Description                                                         |
-| ------------------------------------------------ | ------------------------------------------------------------------- |
-| `Promise<Array<{ name: string; value: string }>` | A promise that resolves to an array of all the request HTTP headers |
+| Type                                             | Description                                                          |
+| ------------------------------------------------ | -------------------------------------------------------------------- |
+| `Promise<Array<{ name: string; value: string }>` | A promise that resolves to an array of all the request HTTP headers. |
 
 ### Example
 
