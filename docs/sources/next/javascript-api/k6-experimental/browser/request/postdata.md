@@ -9,9 +9,9 @@ Contains the request's post body, if any.
 
 ### Returns
 
-| Type           | Description                                         |
-| -------------- | --------------------------------------------------- |
-| string \| null | Request's post body, otherwise null if none exists. |
+| Type           | Description                                           |
+| -------------- | ----------------------------------------------------- |
+| string \| null | Request's post body, otherwise `null` if none exists. |
 
 ### Example
 
