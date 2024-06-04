@@ -206,7 +206,7 @@ A note on groups, they do not work with async APIs either, there is no workaroun
 
 # Are there any other upcoming major breaking changes?
 
-We think that this is likely the last large breaking change until the browser module is deemed to be stable enough to be a non-experimental module in k6. When the browser module is no longer experimental, we think it should only be a small change in the import path from `k6/experimental/browser` to `k6/browser`. We have an open [issue on github](https://github.com/grafana/xk6-browser/issues/1117) which you can view and track to see the progress of graduating the browser module out of experimental. For more information on graduating extension out of experimental, refer to the [extension graduation process]({{< relref "../extensions/explanations/extension-graduation" >}}).
+We think that this is likely the last large breaking change until the browser module is deemed to be stable enough to be a non-experimental module in k6. When the browser module is no longer experimental, we think it should only be a small change in the import path from `k6/experimental/browser` to `k6/browser`. For more information on graduating extension out of experimental, refer to the [extension graduation process]({{< relref "../extensions/explanations/extension-graduation" >}}).
 
 # Where to get extra help
 
