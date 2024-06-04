@@ -29,8 +29,11 @@ From
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
+// options block
+
 export default async function () {
   const page = browser.newPage();
+
   // ...
 }
 ```
@@ -44,8 +47,11 @@ To
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
+// options block
+
 export default async function () {
   const page = await browser.newPage();
+
   // ...
 }
 ```
@@ -118,6 +124,8 @@ If you want to use promise chaining the newly migrated async APIs, You won't be 
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
+// options block
+
 export default async function () {
   const page = browser.newPage();
 
@@ -137,6 +145,8 @@ Instead you could do this until k6 `v0.52` is released:
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
+
+// options block
 
 export default async function () {
   const page = browser.newPage();
@@ -162,6 +172,8 @@ The k6 `check` API wasn't designed to work with async APIs. However there is a w
 import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
 
+// options block
+
 export default async function () {
   const page = browser.newPage();
 
@@ -184,6 +196,8 @@ Since the `locator.textContent` API is being migrated to async, and `check` does
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
+
+// options block
 
 export default async function () {
   const page = browser.newPage();
