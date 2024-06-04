@@ -109,7 +109,7 @@ export default async function () {
 
 {{< /code >}}
 
-### Can I promise chain?
+### Can I promise chain in v0.51?
 
 If you want to use promise chaining the newly migrated async APIs, You won't be able to do that until the migration. For example, you can't do this yet:
 
