@@ -60,7 +60,7 @@ export default async function () {
 
 You will likely already have encountered async APIs when working with the browser module such as [page.click]({{< relref "../javascript-api/k6-experimental/browser/page/click/" >}}), so the use of `async` and `await` keywords will be familiar to you.
 
-The full list of APIs that will migrate over to be async can be found in this [github comment](https://github.com/grafana/xk6-browser/issues/428#issuecomment-1964020837). You will also find a screenshot of a comparison between the [fillform.js example](https://github.com/grafana/xk6-browser/blob/main/examples/fillform.js) in `v0.51` and `v0.52` in another [comment](https://github.com/grafana/xk6-browser/issues/428#issuecomment-2141634960) in the same github issue.
+The full list of APIs that will be migrated over to be async can be found in this [github comment](https://github.com/grafana/xk6-browser/issues/428#issuecomment-1964020837). You will also find a screenshot of a comparison between the [fillform.js example](https://github.com/grafana/xk6-browser/blob/main/examples/fillform.js) in `v0.51` and `v0.52` in another [comment](https://github.com/grafana/xk6-browser/issues/428#issuecomment-2141634960) in the same github issue.
 
 ### When can I migrate?
 
@@ -117,7 +117,7 @@ export default async function () {
 
 ### Can I promise chain in v0.51?
 
-If you want to use promise chaining the newly migrated async APIs, You won't be able to do that until the migration. For example, you can't do this yet:
+If you want to promise chain the newly migrated async APIs, You won't be able to do that until after the migration and release of k6 `v0.52`. For example, you can't do this yet:
 
 {{< code >}}
 
@@ -139,7 +139,7 @@ export default async function () {
 
 {{< /code >}}
 
-Instead you could do this until k6 `v0.52` is released:
+You could do this instead:
 
 {{< code >}}
 
@@ -164,7 +164,7 @@ export default async function () {
 
 ## Working with k6 check
 
-The k6 `check` API wasn't designed to work with async APIs. However there is a workaround. In your current scripts, you may use a `check` like so:
+The k6 `check` API wasn't designed to work with async APIs. However there is a workaround. In your current scripts, you may have used a `check` like so:
 
 {{< code >}}
 
