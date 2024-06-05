@@ -362,7 +362,7 @@ export default async function () {
 
 ## Working with k6 check
 
-The k6 `check` API wasn't designed to work with async APIs. However, there is a workaround. In your current scripts, you may have used a `check` like so:
+The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, e.g. `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`, like so:
 
 {{< code >}}
 
@@ -377,34 +377,16 @@ export default async function () {
 
   // ...
 
+  // Before
   check(page, {
     header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
   });
 
-  // ...
-}
-```
-
-{{< /code >}}
-
-Since the `locator.textContent` API is being migrated to async, and `check` doesn't work with async APIs, you will need to do something like this:
-
-{{< code >}}
-
-```javascript
-import { browser } from 'k6/experimental/browser';
-import { check } from 'k6';
-
-// options block
-
-export default async function () {
-  const page = browser.newPage();
-
-  // ...
-
-  const h2 = page.locator('h2');
-  const headerOK = (await h2.textContent()) == 'Welcome, admin!';
-  check(headerOK, { header: headerOK });
+  // After
+  const headerText = await page.locator('h2').textContent();
+  check(headerText, {
+    header: headerText === 'Welcome, admin!',
+  });
 
   // ...
 }
