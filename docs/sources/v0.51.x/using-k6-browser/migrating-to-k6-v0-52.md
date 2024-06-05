@@ -334,19 +334,29 @@ await text.type('hello world');
 
 ## Working with k6 check
 
-The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, e.g. `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`, like so:
+The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, e.g. `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`:
+
+For example, before:
 
 {{< code >}}
 
 <!-- eslint-skip -->
 
 ```javascript
-// Before
 check(page, {
   header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
 });
+```
 
-// After
+{{< /code >}}
+
+And after:
+
+{{< code >}}
+
+<!-- eslint-skip -->
+
+```javascript
 const headerText = await page.locator('h2').textContent();
 check(headerText, {
   header: headerText === 'Welcome, admin!',
