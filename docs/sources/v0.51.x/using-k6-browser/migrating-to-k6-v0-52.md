@@ -305,7 +305,7 @@ export default async function () {
 
 ### Promise chaining in v0.51
 
-No. If you want to chain promises with the APIs soon to be migrated over to async, you won't be able to do that until after the migration and release of k6 `v0.52`.
+This won't work. If you want to chain promises with the APIs soon to be migrated over to async, you won't be able to do that until after the migration and release of k6 `v0.52`.
 
 For example, you can't do this yet:
 
