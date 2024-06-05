@@ -26,16 +26,10 @@ For example, before:
 
 {{< code >}}
 
+<!-- eslint-skip -->
+
 ```javascript
-import { browser } from 'k6/experimental/browser';
-
-// options block
-
-export default async function () {
-  const page = browser.newPage();
-
-  // ...
-}
+const page = browser.newPage();
 ```
 
 {{< /code >}}
@@ -44,16 +38,10 @@ And after:
 
 {{< code >}}
 
+<!-- eslint-skip -->
+
 ```javascript
-import { browser } from 'k6/experimental/browser';
-
-// options block
-
-export default async function () {
-  const page = await browser.newPage();
-
-  // ...
-}
+const page = await browser.newPage();
 ```
 
 {{< /code >}}
@@ -323,20 +311,10 @@ For example, you can't do this yet:
 
 {{< code >}}
 
+<!-- eslint-skip -->
+
 ```javascript
-import { browser } from 'k6/experimental/browser';
-
-// options block
-
-export default async function () {
-  const page = browser.newPage();
-
-  // ...
-
-  await page.$('#text1').then((text) => text.type('hello world'));
-
-  // ...
-}
+await page.$('#text1').then((text) => text.type('hello world'));
 ```
 
 {{< /code >}}
@@ -345,21 +323,11 @@ You could do this instead:
 
 {{< code >}}
 
+<!-- eslint-skip -->
+
 ```javascript
-import { browser } from 'k6/experimental/browser';
-
-// options block
-
-export default async function () {
-  const page = browser.newPage();
-
-  // ...
-
-  const text = await page.$('#text1');
-  await text.type('hello world');
-
-  // ...
-}
+const text = await page.$('#text1');
+await text.type('hello world');
 ```
 
 {{< /code >}}
