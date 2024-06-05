@@ -334,7 +334,7 @@ await text.type('hello world');
 
 ## Working with k6 check
 
-The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, e.g. `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`:
+The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, for example `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`:
 
 For example, before:
 
