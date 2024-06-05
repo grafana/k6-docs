@@ -370,30 +370,19 @@ The k6 `check` API will not `await` promises, so calling a function that returns
 
 {{< code >}}
 
+<!-- eslint-skip -->
+
 ```javascript
-import { browser } from 'k6/experimental/browser';
-import { check } from 'k6';
+// Before
+check(page, {
+  header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+});
 
-// options block
-
-export default async function () {
-  const page = browser.newPage();
-
-  // ...
-
-  // Before
-  check(page, {
-    header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
-  });
-
-  // After
-  const headerText = await page.locator('h2').textContent();
-  check(headerText, {
-    header: headerText === 'Welcome, admin!',
-  });
-
-  // ...
-}
+// After
+const headerText = await page.locator('h2').textContent();
+check(headerText, {
+  header: headerText === 'Welcome, admin!',
+});
 ```
 
 {{< /code >}}
