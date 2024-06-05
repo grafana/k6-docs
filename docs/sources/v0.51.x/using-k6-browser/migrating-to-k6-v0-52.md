@@ -232,4 +232,4 @@ For more information on graduating extension out of experimental, refer to the [
 
 With the release of k6 `v0.52`, you'll also be able to find the latest type definitions and updates to the k6 browser documentation. Refer to [Configure k6 IntelliSense](http://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-k6-intellisense/) for details on how to work with the type definition file in your project.
 
-For all the details, review the upcoming CHANGELOG for [k6 version 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0). You can also ask questions in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need help.
+For all the details, review the _upcoming_ CHANGELOG for k6 version 0.52. You can also ask questions in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need help.
