@@ -252,7 +252,9 @@ Here's the complete list of APIs that will be migrated over to be async:
 | Response       | size                    |
 | Touchscreen    | tap                     |
 
-You will also find a screenshot of a comparison between the [fillform.js example](https://github.com/grafana/xk6-browser/blob/main/examples/fillform.js) in `v0.51` and `v0.52` in another [comment](https://github.com/grafana/xk6-browser/issues/428#issuecomment-2141634960) in the same GitHub issue.
+Below is a screenshot of a comparison between the [grant_permission.js example](https://github.com/grafana/xk6-browser/blob/main/examples/grant_permission.js) in `v0.51` and `v0.52` to help visualize a simple script:
+
+![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-2.png)
 
 ### When to migrate
 
