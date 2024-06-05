@@ -60,6 +60,12 @@ export default async function () {
 
 You might have already encountered async APIs when working with the browser module, such as [page.click](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/click/), so the use of `async` and `await` keywords might be familiar to you.
 
+Below is a screenshot of a comparison between the [grant_permission.js example](https://github.com/grafana/xk6-browser/blob/main/examples/grant_permission.js) in `v0.51` and `v0.52` to help visualize the change to a simple script:
+
+![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-2.png)
+
+### The affected APIs
+
 {{< collapse title="List of APIs to be migrated to async" >}}
 
 | Class          | Method                  |
@@ -253,10 +259,6 @@ You might have already encountered async APIs when working with the browser modu
 | Touchscreen    | tap                     |
 
 {{< /collapse >}}
-
-Below is a screenshot of a comparison between the [grant_permission.js example](https://github.com/grafana/xk6-browser/blob/main/examples/grant_permission.js) in `v0.51` and `v0.52` to help visualize the change to a simple script:
-
-![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-2.png)
 
 ### When to migrate
 
