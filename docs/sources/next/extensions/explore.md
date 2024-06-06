@@ -335,10 +335,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-url</h4>
         <p>Parse and normalize URLs</p>
     </a>
-    <a href="https://github.com/vvarp/xk6-wamp" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-wamp</h4>
-        <p>Add support for WAMP protocol</p>
-    </a>
     <a href="https://github.com/kelseyaubrecht/xk6-webtransport" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-webtransport</h4>
         <p>Add support for webtransport protocol</p>
