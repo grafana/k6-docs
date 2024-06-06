@@ -572,21 +572,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-avro",
-      "description": "Work with messages using Avro data format",
-      "url": "https://github.com/xvzf/xk6-avro",
-      "logo": "",
-      "author": {
-        "name": "Matthias Riegler",
-        "url": "https://github.com/xvzf"
-      },
-      "stars": "",
-      "type": ["JavaScript"],
-      "categories": ["Messaging", "Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-tcp",
       "description": "Send data to TCP port",
       "url": "https://github.com/NAlexandrov/xk6-tcp",
