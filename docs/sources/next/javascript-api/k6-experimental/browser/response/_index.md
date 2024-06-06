@@ -6,6 +6,8 @@ weight: 12
 
 # Response
 
+Response represents a response received by the page.
+
 {{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 
 ## Supported APIs
