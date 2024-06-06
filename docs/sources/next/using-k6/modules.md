@@ -189,7 +189,7 @@ You can also use these two example repositories as a starting point:
 - [k6-template-es6](https://github.com/grafana/k6-template-es6): Template using Webpack and Babel to enable ES6 features in k6 tests.
 - [k6-rollup-example](https://github.com/grafana/k6-rollup-example/): Example using Rollup to bundle k6 tests and release a shared library.
 
-### Set up Webpack
+### Webpack setup example
 
 Setting up a Babel and Webpack project from scratch might sound like a big undertaking, but
 is usually accomplished within minutes. Start by creating a project folder and initializing
@@ -201,7 +201,7 @@ $ mkdir ./example-project && \
     npm init -y
 ```
 
-### Install packages
+#### Install packages
 
 Then, install the packages needed:
 
@@ -226,7 +226,7 @@ $ npm install --save-dev \
 | [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |
 | [core-js](https://github.com/zloirock/core-js)                                            | A modular standard library for JS including polyfills                                                                                                                                                                                                                 |
 
-### Configure Webpack
+#### Configure Webpack
 
 Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
 
@@ -302,7 +302,7 @@ The `filename` key, as the name suggests, configures the name of the finished bu
 example, the [template string](https://webpack.js.org/configuration/output/#template-strings) `[name]`
 is used to add a dynamic part to the output filename.
 
-### Add a bundle command
+#### Add a bundle command
 
 Open the `package.json` file and add a new script entry, used for running the bundling process.
 
@@ -319,7 +319,7 @@ Open the `package.json` file and add a new script entry, used for running the bu
 }
 ```
 
-### Bundle tests
+#### Bundle tests
 
 Running webpack will now output two different test bundles, that may be executed independently:
 
@@ -335,7 +335,7 @@ dist
 0 directories, 2 files
 ```
 
-### Run tests
+#### Run tests
 
 ```bash
 $ npm run bundle
