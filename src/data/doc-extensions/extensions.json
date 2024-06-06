@@ -167,21 +167,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-wamp",
-      "description": "Add support for WAMP protocol",
-      "url": "https://github.com/vvarp/xk6-wamp",
-      "logo": "",
-      "author": {
-        "name": "Maciek Szczesniak",
-        "url": "https://github.com/vvarp"
-      },
-      "stars": "2",
-      "type": ["JavaScript"],
-      "categories": ["Protocol"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-mqtt",
       "description": "mqtt extension",
       "url": "https://github.com/pmalhaire/xk6-mqtt",
