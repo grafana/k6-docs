@@ -121,13 +121,48 @@ scripts/apply-patch HEAD~3 docs/sources/next docs/sources/v0.47.x
 
 ### Style guides
 
-- k6 follows the style prescribed in the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/), which itself inherits most of its rules from the [Google developer documentation style guide](https://developers.google.com/style).
+k6 follows the style prescribed in the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/), which itself inherits most of its rules from the [Google developer documentation style guide](https://developers.google.com/style).
 
 ### Shortcodes
 
-- We've also added a number of writing enhancements, like admonitions, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Writers' Toolkit, Shortcodes](https://grafana.com/docs/writers-toolkit/write/shortcodes/). 
+We've also added a number of writing enhancements, like admonitions, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Writers' Toolkit, Shortcodes](https://grafana.com/docs/writers-toolkit/write/shortcodes/). 
 
 Refer to [Writers' Toolkit, Write documentation](https://grafana.com/docs/writers-toolkit/write/) for more details about how to write new topics, how to use shortcodes, how to add images, and more.
+
+### Code snippets and ESLint
+
+We use ESLint in the repository to validate code snippets in Markdown files. It checks for things such as valid JavaScript syntax, or that imports are defined.
+
+When writing tutorials, it's common to include code snippets that only contain a few lines, and might not necessarily have all necessary imports or variable declarations. For example, if you try to include this code snippet:
+
+````Markdown
+```javascript
+export default async function () {
+  const browser = chromium.launch({ headless: false });
+  const page = browser.newPage();
+}
+```
+````
+
+You might see the following error when trying to commit the file:
+
+```bash
+/Users/USERNAME/path/to/file/_index.md
+  12:19  error  'chromium' is not defined  no-undef
+```
+
+In case having a short snippet makes sense for your tutorial, you can disable ESLint for a code snippet by using the `eslint-skip` rule:
+
+````Markdown
+<!-- eslint-skip -->
+
+```javascript
+export default async function () {
+  const browser = chromium.launch({ headless: false });
+  const page = browser.newPage();
+}
+```
+````
 
 ## Deploy
 
