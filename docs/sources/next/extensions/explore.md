@@ -279,10 +279,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-proxy</h4>
         <p>Dynamic proxy support, allow changing the HTTP proxy settings in the script</p>
     </a>
-    <a href="https://github.com/olvod/xk6-pubsub" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-pubsub</h4>
-        <p>Google PubSub</p>
-    </a>
     <a href="https://github.com/acuenca-facephi/xk6-read" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-read</h4>
         <p>Read files and directories</p>

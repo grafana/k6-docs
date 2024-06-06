@@ -272,21 +272,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-pubsub",
-      "description": "Google PubSub",
-      "url": "https://github.com/olvod/xk6-pubsub",
-      "logo": "",
-      "author": {
-        "name": "Oleksii Vodotyiets",
-        "url": "https://github.com/olvod"
-      },
-      "stars": "5",
-      "type": ["JavaScript"],
-      "categories": ["Messaging"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-mllp",
       "description": "Simple MLLP sender for k6",
       "url": "https://github.com/gjergjsheldija/xk6-mllp",
