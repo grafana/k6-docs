@@ -7,7 +7,7 @@ weight: 07
 
 # Modules
 
-## Importing modules
+## Import modules
 
 It's common to import modules, or parts of modules, to use in your test scripts.
 In k6, you can import different kinds of modules:
@@ -106,7 +106,7 @@ How do k6 extensions (Go-to-JS modules) work? For enhanced performance, the k6 e
 
 To learn more about using or creating k6 extensions, refer to the [Extension documentation](https://grafana.com/docs/k6/<K6_VERSION>/extensions).
 
-## Sharing JavaScript modules
+## Share JavaScript modules
 
 As mentioned previously, users can import custom JavaScript libraries by loading either local or remote modules. Because of that, we have two options to import JavaScript modules, along with various methods to distribute them.
 
@@ -116,7 +116,7 @@ The following options for distributing and sharing JavaScript libraries are avai
 
 {{< /admonition >}}
 
-**As remote modules**
+### Remote modules
 
 You can host your modules in a public webserver like GitHub and any CDN and be imported remotely.
 
@@ -138,7 +138,7 @@ When the library consists of multiple files and modules, you may want to bundle 
 
 Be aware that k6 automatically executes remote modules, making it crucial to trust the source code of these remote modules. There is a **risk of altering the remote modules with certain hosting mechanisms**. To mitigate this security risk, some users prefer to download and import the modules locally to ensure full control of the source code.
 
-**As local modules**
+### Local modules
 
 In this example, the previous remote modules have been downloaded to the `lib` folder of the testing project and imported as follows:
 
@@ -152,14 +152,14 @@ Another option to distribute libraries is to use a package manager tool like npm
 
 Although k6 does not resolve node modules, you can utilize a Bundler to load npm dependencies, as shown in the [k6-rollup-example](https://github.com/grafana/k6-rollup-example).
 
-## Using TypeScript
+## Use TypeScript
 
 k6 does not natively support TypeScript. If you wish to write k6 tests in Typescript, you will need a bundler, as demonstrated in the previous examples:
 
 - Using Webpack: Refer to [k6-template-typescript](https://github.com/grafana/k6-template-typescript) and [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws).
 - Using Rollup: Apply the [@rollup/plugin-typescript](https://github.com/rollup/plugins/tree/master/packages/typescript) to the [k6-rollup-example](https://github.com/grafana/k6-rollup-example).
 
-## Using modules with Docker
+## Use modules with Docker
 
 Built-in and remote modules work out of the box when running k6 in a Docker container like the [Grafana k6 Docker image](https://hub.docker.com/r/grafana/k6).
 
