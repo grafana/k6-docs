@@ -30,3 +30,37 @@ Response represents a response received by the page.
 | <a href="https://playwright.dev/docs/api/class-response#response-status-text" target="_blank" >response.statusText()</a>           | -                                                                                                                                                                                         |
 | response.size()                                                                                                                    | Similar to [`Request.size()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/request/size), this returns the size of response headers and body sections. |
 | <a href="https://playwright.dev/docs/api/class-response#response-url" target="_blank" >response.url()</a>                          | -                                                                                                                                                                                         |
+
+### Example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    // Response returned once goto resolves.
+    const res = await page.goto('https://test.k6.io/');
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
