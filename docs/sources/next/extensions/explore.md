@@ -35,10 +35,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-ansible-vault</h4>
         <p>Encrypt and decrypt Ansible Vault</p>
     </a>
-    <a href="https://github.com/xvzf/xk6-avro" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-avro</h4>
-        <p>Work with messages using Avro data format</p>
-    </a>
     <a href="https://github.com/anycable/xk6-cable" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-cable</h4>
         <p>Test Action Cable and AnyCable functionality</p>
