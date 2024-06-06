@@ -152,6 +152,207 @@ Another option to distribute libraries is to use a package manager tool like npm
 
 Although k6 does not resolve node modules, you can utilize a Bundler to load npm dependencies, as shown in the [k6-rollup-example](https://github.com/grafana/k6-rollup-example).
 
+## Use Node.js modules
+
+{{< admonition type="caution" >}}
+
+k6 isn't Node.js or a browser. Packages that rely on APIs provided by Node.js, for instance the `os` and `fs` modules, won't work in k6. The same goes for browser-specific APIs, such as the `window` object.
+
+{{< /admonition >}}
+
+In a JavaScript project running Node.js, modules are imported using either `import` or `require()`, using the Node.js module resolution algorithm. This means that a user can import modules by name, without providing the full filesystem path to the module. For instance:
+
+```javascript
+import { ClassInAModule } from 'cool-module';
+```
+
+The `import` statement would be automatically resolved by the node resolution algorithm by searching:
+
+- The current directory
+- Any `node_modules` folder in the directory
+- Any `node_modules` folder in a parent directory, up to the closest `package.json` file.
+
+As the implementation of `import` in k6 lacks support for the node module resolution algorithm, Node.js modules that resolve external dependencies need to be transformed into a self-contained, isolated, bundle.
+
+That's done with the help of a bundling tool, such as Webpack, which analyses the test script, identifies all external dependencies, and then creates a self-contained bundle including everything necessary to run the script.
+
+If the test script has no external dependencies, already has them vendored in a k6 compatible way, or only uses ES5.1+ features, using a bundler isn't necessary.
+
+### Pick a bundler
+
+You can use any bundler that supports transpilation. Popular ones include, but are not limited to, [webpack](https://github.com/webpack/webpack), [parcel](https://github.com/parcel-bundler/parcel), [rollup](https://github.com/rollup/rollup) and [browserify](https://github.com/browserify/browserify).
+
+Due to its flexibility, ease of use, relatively low resource consumption, and known compatibility with k6, it is recommended to use [webpack](https://github.com/webpack/webpack).
+
+You can also use these two example repositories as a starting point:
+
+- [k6-template-es6](https://github.com/grafana/k6-template-es6): Template using Webpack and Babel to enable ES6 features in k6 tests.
+- [k6-rollup-example](https://github.com/grafana/k6-rollup-example/): Example using Rollup to bundle k6 tests and release a shared library.
+
+### Set up Webpack
+
+Setting up a Babel and Webpack project from scratch might sound like a big undertaking, but
+is usually accomplished within minutes. Start by creating a project folder and initializing
+`npm`:
+
+```bash
+$ mkdir ./example-project && \
+    cd "$_" && \
+    npm init -y
+```
+
+### Install packages
+
+Then, install the packages needed:
+
+```bash
+$ npm install --save-dev \
+    webpack \
+    webpack-cli \
+    @types/k6 \
+    babel-loader \
+    @babel/core \
+    @babel/preset-env \
+    core-js
+```
+
+| Package                                                                                   | Usage                                                                                                                                                                                                                                                                 |
+| :---------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [webpack](https://github.com/webpack/webpack)                                             | The bundler part of Webpack                                                                                                                                                                                                                                           |
+| [webpack-cli](https://github.com/webpack/webpack-cli)                                     | The CLI part of Webpack, which allows us to use it from the terminal                                                                                                                                                                                                  |
+| [@types/k6](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/k6)      | k6 Typescript definition                                                                                                                                                                                                                                              |
+| [babel-loader](https://github.com/babel/babel-loader)                                     | A loader used by Webpack to leverage babel functionality while bundling                                                                                                                                                                                               |
+| [@babel/core](https://github.com/babel/babel/tree/master/packages/babel-core)             | The core functionality of Babel                                                                                                                                                                                                                                       |
+| [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |
+| [core-js](https://github.com/zloirock/core-js)                                            | A modular standard library for JS including polyfills                                                                                                                                                                                                                 |
+
+### Configure Webpack
+
+Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  mode: 'production',
+  entry: {
+    login: './src/login.test.js',
+    signup: './src/signup.test.js',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'), // eslint-disable-line
+    libraryTarget: 'commonjs',
+    filename: '[name].bundle.js',
+  },
+  module: {
+    rules: [{ test: /\.js$/, use: 'babel-loader' }],
+  },
+  target: 'web',
+  externals: /k6(\/.*)?/,
+};
+```
+
+`Mode`
+
+Tells Webpack to automatically use the optimizations associated with the `mode`.
+Additional details available in [the webpack docs](https://webpack.js.org/configuration/mode/).
+
+`Entry`
+
+The files Webpack will use as its entry points while performing the bundling. From these points,
+Webpack will automatically traverse all imports recursively until every possible dependency path has
+been exhausted. For instance:
+
+```javascript
+// login.test.js
+
+import { SomeService } from './some.service.js';
+
+const svc = new SomeService();
+```
+
+and:
+
+```javascript
+// some.service.js
+
+import * as lodash from 'lodash';
+
+export class SomeService {
+  constructor() {
+    this._ = lodash;
+  }
+}
+```
+
+would result in Webpack bundling `login.test.js`, `some.service.js` and all upstream dependencies
+utilized by `lodash`.
+
+`Output`
+
+The `path` key takes an absolute path which is where the finished bundle will be placed. In
+this example, `path.resolve` is used to concatenate `__dirname` and `'dist'` into an absolute
+path.
+
+The `libraryTarget` key configures how the library will be exposed. Setting it to `commonjs`
+will result in it being exported using `module.exports`. Additional details available in [the
+Webpack docs](https://webpack.js.org/configuration/output/#outputlibrarytarget).
+
+The `filename` key, as the name suggests, configures the name of the finished bundles. In this
+example, the [template string](https://webpack.js.org/configuration/output/#template-strings) `[name]`
+is used to add a dynamic part to the output filename.
+
+### Add a bundle command
+
+Open the `package.json` file and add a new script entry, used for running the bundling process.
+
+```diff
+{
+  "name": "bundling-example",
+  "description": "",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
++    "bundle": "webpack"
+  }
+  ...
+}
+```
+
+### Bundle tests
+
+Running webpack will now output two different test bundles, that may be executed independently:
+
+```bash
+$ npm run bundle
+# ...
+$ tree dist
+
+dist
+├── login.bundle.js
+└── signup.bundle.js
+
+0 directories, 2 files
+```
+
+### Run tests
+
+```bash
+$ npm run bundle
+# ...
+$ k6 run dist/login.bundle.js
+# ...
+```
+
+```bash
+$ npm run bundle
+# ...
+$ k6 run dist/signup.bundle.js \
+    --vus 10 \
+    --duration 10s
+# ...
+```
+
 ## Use TypeScript
 
 k6 does not natively support TypeScript. If you wish to write k6 tests in Typescript, you will need a bundler, as demonstrated in the previous examples:
