@@ -362,21 +362,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-jose",
-      "description": "Javascript Object Signing and Encryption (JOSE) standards",
-      "url": "https://github.com/szkiba/xk6-jose",
-      "logo": "",
-      "author": {
-        "name": "Iván Szkiba",
-        "url": "https://github.com/szkiba"
-      },
-      "stars": "5",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-prometheus",
       "description": "Prometheus HTTP exporter for k6",
       "url": "https://github.com/szkiba/xk6-prometheus",
