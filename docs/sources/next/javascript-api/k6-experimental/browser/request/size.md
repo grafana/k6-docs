@@ -9,9 +9,16 @@ Similar to Playwright's [`request.sizes()`](https://playwright.dev/docs/api/clas
 
 ### Returns
 
-| Type   | Description                           |
-| ------ | ------------------------------------- |
-| object | `{ body: <bytes>, headers: <bytes> }` |
+| Type          | Description            |
+| ------------- | ---------------------- |
+| Promise<Size> | Returns [Size](#size). |
+
+### Size
+
+| Property | Type   | Description                        |
+| -------- | ------ | ---------------------------------- |
+| body     | number | Size in bytes of the request body. |
+| headers  | number | Size in bytes of the headers body. |
 
 ### Example
 
@@ -40,7 +47,7 @@ export default async function () {
     const res = await page.goto('https://test.k6.io/');
     const req = res.request();
 
-    const size = await req.size();
+    const size = req.size();
     console.log(`size: ${JSON.stringify(size)}`); // size: {"headers":344,"body":0}
   } finally {
     await page.close();
