@@ -147,10 +147,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-interpret</h4>
         <p>Interpret Go code</p>
     </a>
-    <a href="https://github.com/szkiba/xk6-jose" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-jose</h4>
-        <p>Javascript Object Signing and Encryption (JOSE)</p>
-    </a>
     <a href="https://github.com/mostafa/xk6-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-kafka</h4>
         <p>Load test Apache Kafka. Includes support for Avro messages.</p>
