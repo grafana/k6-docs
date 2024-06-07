@@ -29,7 +29,7 @@ Response represents a response received by the page.
 | [response.status()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/status)                                     | Contains the status code of the response (e.g., 200 for a success).                                                                                                  |
 | [response.statusText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/statustext)                             | Contains the status text of the response (e.g. usually an "OK" for a success).                                                                                       |
 | [response.size()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/size)                                         | The size of the response body and the headers.                                                                                                                       |
-| <a href="https://playwright.dev/docs/api/class-response#response-url" target="_blank" >response.url()</a>                                                | -                                                                                                                                                                    |
+| [response.url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/response/url)                                           | URL of the response.                                                                                                                                                 |
 
 ### Example
 
