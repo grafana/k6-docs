@@ -197,21 +197,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-url",
-      "description": "Parse and normalize URLs",
-      "url": "https://github.com/dgzlopes/xk6-url",
-      "logo": "",
-      "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
-      },
-      "stars": "4",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-kubernetes",
       "description": "Interact with Kubernetes clusters",
       "url": "https://github.com/grafana/xk6-kubernetes",
