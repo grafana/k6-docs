@@ -71,10 +71,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-couchbase</h4>
         <p>Load-test Couchbase no-SQL databases</p>
     </a>
-    <a href="https://github.com/szkiba/xk6-crypto" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-crypto</h4>
-        <p>Use extended crypto functions</p>
-    </a>
     <a href="https://github.com/szkiba/xk6-csv" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-csv</h4>
         <p>Parse CSV values</p>

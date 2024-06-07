@@ -362,21 +362,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-crypto",
-      "description": "Use extended crypto functions",
-      "url": "https://github.com/szkiba/xk6-crypto",
-      "logo": "",
-      "author": {
-        "name": "Iván Szkiba",
-        "url": "https://github.com/szkiba"
-      },
-      "stars": "1",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-jose",
       "description": "Javascript Object Signing and Encryption (JOSE) standards",
       "url": "https://github.com/szkiba/xk6-jose",
