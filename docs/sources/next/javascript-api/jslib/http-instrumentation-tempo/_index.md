@@ -7,7 +7,7 @@ weight: 04
 
 # HTTP instrumentation for Tempo
 
-With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests so that tracing backends (such as [Grafana Tempo](https://grafana.com/oss/tempo/)) can incorporate their results.
+With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests, which can then be used by a tracing backend such as [Grafana Tempo](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/integration-with-grafana-cloud-traces/).
 
 ## About trace contexts
 
