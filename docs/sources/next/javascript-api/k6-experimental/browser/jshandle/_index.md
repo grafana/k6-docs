@@ -7,6 +7,8 @@ weight: 06
 
 # JSHandle
 
+JSHandle represents an in-page JavaScript object.
+
 {{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 
 ## Supported APIs
