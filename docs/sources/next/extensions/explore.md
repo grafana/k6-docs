@@ -215,10 +215,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-output-elasticsearch</h4>
         <p>Export results to Elasticsearch 8.x</p>
     </a>
-    <a href="https://github.com/tinkoff/xk6-output-error" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-error</h4>
-        <p>Add more information into StdErr k6 about requests</p>
-    </a>
     <a href="https://github.com/grafana/xk6-output-influxdb" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-influxdb</h4>
         <p>Export results to InfluxDB v2</p>

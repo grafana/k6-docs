@@ -587,21 +587,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-output-error",
-      "description": "Add more information into StdErr k6 about requests",
-      "url": "https://github.com/tinkoff/xk6-output-error",
-      "logo": "",
-      "author": {
-        "name": "Maksimall89",
-        "url": "https://github.com/maksimall89"
-      },
-      "stars": "2",
-      "type": ["JavaScript"],
-      "categories": ["Reporting"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-oauth-pkce",
       "description": "Generate OAuth PKCE code verifier and code challenge",
       "url": "https://github.com/frankhefeng/xk6-oauth-pkce",
