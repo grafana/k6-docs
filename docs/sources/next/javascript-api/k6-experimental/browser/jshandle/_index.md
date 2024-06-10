@@ -22,3 +22,40 @@ JSHandle represents an in-page JavaScript object.
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-properties" target="_blank" >jsHandle.getProperties()</a>                      | -                                |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-property" target="_blank" >jsHandle.getProperty(propertyName)</a>              | -                                |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-json-value" target="_blank" >jsHandle.jsonValue()</a>                              | -                                |
+
+### Example
+
+{{< code >}}
+
+<!-- eslint-skip -->
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/');
+    const jsHandle = await page.evaluateHandle(() => document.head);
+    // ...
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
