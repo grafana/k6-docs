@@ -20,7 +20,6 @@ JSHandle represents an in-page JavaScript object.
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-evaluate" target="_blank" >jsHandle.evaluate(pageFunction[, arg])</a>              | -                                |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-evaluate-handle" target="_blank" >jsHandle.evaluateHandle(pageFunction[, arg])</a> | -                                |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-properties" target="_blank" >jsHandle.getProperties()</a>                      | -                                |
-| <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-property" target="_blank" >jsHandle.getProperty(propertyName)</a>              | -                                |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-json-value" target="_blank" >jsHandle.jsonValue()</a>                              | -                                |
 
 ### Example
