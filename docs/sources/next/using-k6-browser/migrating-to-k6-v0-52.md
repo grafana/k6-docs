@@ -1,16 +1,16 @@
 ---
 title: 'Migrating browser scripts to k6 v0.52'
-description: 'A migration guide to ease the process of transitioning to the new k6 browser module version bundled with k6 v0.52'
+description: 'A migration guide to ease the process of transitioning to the new non-experimental k6 browser module version bundled with k6 v0.52'
 weight: 04
 ---
 
 # Migrating browser scripts to k6 v0.52
 
-This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the _latest_ [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
+This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the _latest_ non-experimental [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
 
 ## Key changes
 
-In the latest release of k6, we have made a breaking change that will affect _all scripts_ that use the k6 browser module. The breaking changes are:
+In the latest release of k6, we have introduced the non-experimental k6 browser module under the import `k6/browser`. Migrating to this is a breaking change that will affect _all scripts_ that use the current experimental k6 browser module. The breaking changes are:
 
 1. Converted most of the k6 browser module APIs to asynchronous (async) APIs. That means they will return a `promise` that will `resolve` to a value when the API call succeeds or `reject` when an error occurs.
 2. A side effect of making this async changes is that you will need to use a workaround to work with the k6 [check](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check/) API.
@@ -18,9 +18,18 @@ In the latest release of k6, we have made a breaking change that will affect _al
 
 If you are interested in the rationale behind this change, refer to the [v0.51 release notes](https://github.com/grafana/k6/releases/tag/v0.51.0).
 
+{{% admonition type="note" %}}
+
+The experimental import (`k6/experimental/browser`) and the corresponding synchronous APIs will be supported up until the 23rd of September 2024.
+
+{{% /admonition %}}
+
 ## Migrating to async
 
-To ensure your scripts work with the latest release of k6, you must ensure that all the synchronous (sync) APIs that have been migrated over to async are handled appropriately. In most cases, you will only need to add `await` in front of the API call.
+To ensure your scripts work with the latest release of the non-experimental k6 browser module, you must:
+
+1. change the import from `k6/experimental/browser` to `k6/browser`.
+2. ensure that all the synchronous (sync) APIs that have been migrated over to async are handled appropriately. In most cases, you will only need to add `await` in front of the API call.
 
 For example, before:
 
@@ -29,7 +38,11 @@ For example, before:
 <!-- eslint-skip -->
 
 ```javascript
-const page = browser.newPage();
+import { browser } from 'k6/experimental/browser';
+
+...
+
+    const page = browser.newPage();
 ```
 
 {{< /code >}}
@@ -41,7 +54,11 @@ And now:
 <!-- eslint-skip -->
 
 ```javascript
-const page = await browser.newPage();
+import { browser } from 'k6/browser';
+
+...
+
+    const page = await browser.newPage();
 ```
 
 {{< /code >}}
@@ -284,12 +301,6 @@ check(headerText, {
 ## Groups
 
 A note on [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), they don't work with async APIs either, there is no workaround as of yet. Here's the [GitHub issue](https://github.com/grafana/k6/issues/2728) that you can follow to keep up-to-date with relevant news on a group API that works with async APIs.
-
-# Upcoming major breaking changes
-
-This is likely the last significant breaking change until the browser module is considered stable enough to be a non-experimental module in k6. When the browser module is no longer experimental, this should only be a small change in the import path from `k6/experimental/browser` to `k6/browser`.
-
-For more information on graduating extension out of experimental, refer to the [extension graduation process](http://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/extension-graduation/).
 
 # Where to get extra help
 
