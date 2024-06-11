@@ -1,7 +1,7 @@
 ---
 title: 'invoke'
 head_title: 'LambdaClient.invoke(name, payload, [options])'
-description: 'LambdaClient.deleteObject deletes an object from a bucket'
+description: 'LambdaClient.invoke invokes an AWS Lamba function'
 weight: 10
 ---
 
@@ -19,7 +19,7 @@ weight: 10
 
 #### InvocationOptions
 
-InvocationOptions is an object used to customize the invocation of a lambda function.
+InvocationOptions is an object used to customize the invocation of a Lambda function.
 It has the following properties:
 
 | Property       | Type              | Description                                                                                                                                                                                                                                                                                                                                                  |

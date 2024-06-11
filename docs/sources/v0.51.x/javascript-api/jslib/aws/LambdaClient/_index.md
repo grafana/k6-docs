@@ -9,7 +9,7 @@ weight: 00
 
 {{< docs/shared source="k6" lookup="blocking-aws-blockquote.md" version="<K6_VERSION>" >}}
 
-`LambdaClient` interacts with the AWS Lambda. With it, you can invoke a lambda function.
+`LambdaClient` interacts with [AWS Lambda](https://aws.amazon.com/lambda/). With it, you can invoke a Lambda function.
 
 Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bundle include the `LambdaClient`.
 
@@ -17,7 +17,7 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 
 | Function                                                                                                                  | Description                     |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------ |
-| [invoke(name, payload, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/lambdaclient/invoke) | Invokes an AWS lambda function. |
+| [invoke(name, payload, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/lambdaclient/invoke) | Invokes an AWS Lambda function. |
 
 ### Throws
 
@@ -25,8 +25,8 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 
 | Error                 | Condition                                                   |
 | :-------------------- | :---------------------------------------------------------- |
-| InvalidSignatureError | when invalid credentials were provided.                     |
-| LambdaInvocationError | when AWS replied to the requested invokation with an error. |
+| InvalidSignatureError | When invalid credentials were provided.                     |
+| LambdaInvocationError | When AWS replied to the requested invokation with an error. |
 
 ### Examples
 
