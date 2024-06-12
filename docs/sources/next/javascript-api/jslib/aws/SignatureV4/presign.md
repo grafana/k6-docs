@@ -14,13 +14,12 @@ description: 'SignatureV4.sign pre-signs a URL with the AWS Signature V4 algorit
 
 The first parameter of the `presign` method consists of an Object with the following properties.
 
-| Property | Type                     | Description                         |
-| :------- | :----------------------- | :---------------------------------- |
-| method   | string                   | The HTTP method of the request      |
-| protocol | `http` or `https` string | The network protocol of the request |
-| hostname | string                   | The hostname the request is sent to |
-| path     | string                   | The path of the request             |
-| headers  | Object                   | The headers of the HTTP request     |
+| Property | Type     | Description                                                                                                                                                                                                                                                                                   |
+| :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| method   | string   | The HTTP method of the request                                                                                                                                                                                                                                                                |
+| endpoint | Endpoint | The endpoint of the request. The Endpoint constructor can be imported from both the `aws.js` bundle, as well as the `signature.js` file, and takes a string of the form `{scheme}://{hostname}[:{port}]` as input, allowing to define the target of the request (See provided example below). |
+| path     | string   | The path of the request                                                                                                                                                                                                                                                                       |
+| headers  | Object   | The headers of the HTTP request                                                                                                                                                                                                                                                               |
 
 You can provide further options and override SignatureV4 options in the context of this specific request.
 To do this, pass a second parameter to the `presign` method, which is an Object with the following parameters.
@@ -53,10 +52,11 @@ import { check } from 'k6';
 
 import {
   AWSConfig,
+  Endpoint,
   SignatureV4,
   AMZ_CONTENT_SHA256_HEADER,
   UNSIGNED_PAYLOAD,
-} from 'https://jslib.k6.io/aws/0.11.0/kms.js';
+} from 'https://jslib.k6.io/aws/0.12.1/signature.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -76,12 +76,21 @@ export default function () {
       secretAccessKey: awsConfig.secretAccessKey,
       sessionToken: awsConfig.sessionToken,
     },
+
+    /**
+     * Whether the URI should be escaped or not.
+     */
     uriEscapePath: false,
-    applyChecksum: false,
+
+    /**
+     * Whether or not the body's hash should be calculated and included
+     * in the request.
+     */
+    applyChecksum: true,
   });
 
   // We can now use the signer to produce a pre-signed URL.
-  const signedRequest = signer.presign(
+  const presignedRequest = signer.presign(
     /**
      * HTTP request description
      */
@@ -92,19 +101,16 @@ export default function () {
       method: 'GET',
 
       /**
-       * The network protocol we will use to make the request.
+       * The endpoint of the service we will be making the request to.
+       *
+       * The endpoint is instantiated from a URL string, of the format: `{scheme}://{hostname}[:{port}]`
        */
-      protocol: 'https',
-
-      /**
-       * The hostname of the service we will be making the request to.
-       */
-      hostname: 'my-bucket.s3.us-east-1.amazonaws.com',
+      endpoint: new Endpoint('https://s3.us-east-1.amazonaws.com'),
 
       /**
        * The path of the request.
        */
-      path: '/my-file.txt',
+      path: '/my-bucket/bonjour.txt',
 
       /**
        * The headers we will be sending in the request.
@@ -186,13 +192,13 @@ export default function () {
     }
   );
 
-  console.log(`presigned URL: ${signedRequest.url}`);
+  console.log(`presigned URL: ${presignedRequest.url}`);
 
   /**
    * Our URL is now ready to be used.
    */
-  const res = http.get(signedRequest.url, {
-    headers: signedRequest.headers,
+  const res = http.get(presignedRequest.url, {
+    headers: presignedRequest.headers,
   });
 
   check(res, { 'status is 200': (r) => r.status === 200 });

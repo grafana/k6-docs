@@ -44,7 +44,7 @@ import exec from 'k6/execution';
 
 // Note that you AWSConfig is also included in the dedicated service
 // client bundles such as `s3.js` and `secrets-manager.js`
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.11.0/aws.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.12.1/aws.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
