@@ -12,9 +12,9 @@ Represents a Web Worker or a Service Worker within the browser context.
 
 ## Supported APIs
 
-| Method                                                                                              | Playwright Relevant Distinctions |
-| --------------------------------------------------------------------------------------------------- | -------------------------------- |
-| <a href="https://playwright.dev/docs/api/class-worker#worker-url" target="_blank" >worker.url()</a> | -                                |
+| k6 Class                                                                                                   | Description                        |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [worker.url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/worker/url) | Returns the URL of the web worker. |
 
 {{< code >}}
 
