@@ -42,7 +42,7 @@ export default async function () {
     await page.goto('https://test.k6.io/');
     const jsHandle = await page.evaluateHandle(() => document.head);
 
-    jsHandle.dispose();
+    await jsHandle.dispose();
     const element = jsHandle.asElement();
     await element.innerHTML(); // Error! JS handle is disposed
   } finally {
