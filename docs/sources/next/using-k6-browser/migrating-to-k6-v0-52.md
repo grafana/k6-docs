@@ -42,6 +42,7 @@ import { browser } from 'k6/experimental/browser';
 
 ...
 
+export default async function () {
     const page = browser.newPage();
 ```
 
@@ -58,6 +59,7 @@ import { browser } from 'k6/browser';
 
 ...
 
+export default async function () {
     const page = await browser.newPage();
 ```
 
