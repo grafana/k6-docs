@@ -5,7 +5,7 @@ description: 'Browser module: JSHandle.jsonValue() method'
 
 # jsonValue()
 
-Fetches a JSON representation of the object.
+Retrieves the JSON representation of the JavaScript object that the JSHandle refers to, making it easy to work with the data outside the browser context.
 
 ### Returns
 

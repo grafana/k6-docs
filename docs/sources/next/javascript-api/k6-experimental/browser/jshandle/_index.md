@@ -7,7 +7,7 @@ weight: 06
 
 # JSHandle
 
-JSHandle represents an in-page JavaScript object.
+Represents a reference to a JavaScript object within the context of a webpage. This allows you to interact with JavaScript objects directly from your script.
 
 {{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 

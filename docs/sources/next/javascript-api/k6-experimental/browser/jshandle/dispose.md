@@ -5,7 +5,7 @@ description: 'Browser module: JSHandle.dispose method'
 
 # dispose()
 
-Stops referencing the element handle.
+Releases the remote object this references.
 
 ### Returns
 
