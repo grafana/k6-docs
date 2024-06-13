@@ -5,7 +5,9 @@ description: 'Browser module: JSHandle.evaluateHandle(pageFunction[, arg]) metho
 
 # evaluateHandle(pageFunction[, arg])
 
-Evaluates the `pageFunction` and returns a `JSHandle`. This method passes this handle as the first argument to the `pageFunction`. Unlike [evaluate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/evaluate/), `evaluateHandle` returns the value as a `JSHandle`
+Returns the value of the `pageFunction` invocation as a `JSHandle`. It passes this handle as the first argument to the `pageFunction`.
+
+The only difference between [evaluate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/evaluate/) and `evaluateHandle` is that `evaluateHandle` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/jshandle/).
 
 <TableWithNestedRows>
 

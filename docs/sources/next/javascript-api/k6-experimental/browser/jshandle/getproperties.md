@@ -5,7 +5,7 @@ description: 'Browser module: JSHandle.getProperties() method'
 
 # getProperties()
 
-Fetches a map with own property names of of the `JSHandle` with their values as `JSHandle` instances.
+This allows you to inspect and interact with the properties of the object within the page context.
 
 ### Returns
 

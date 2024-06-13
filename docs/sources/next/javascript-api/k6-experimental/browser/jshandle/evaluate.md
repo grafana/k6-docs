@@ -5,7 +5,7 @@ description: 'Browser module: JSHandle.evaluate(pageFunction[, arg]) method'
 
 # evaluate(pageFunction[, arg])
 
-Evaluates the `pageFunction` and returns its return value. This method passes this handle as the first argument to the `pageFunction`.
+Returns the value of the `pageFunction` invocation. It passes this handle as the first argument to the `pageFunction`.
 
 <TableWithNestedRows>
 
