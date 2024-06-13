@@ -1,16 +1,16 @@
 ---
 title: 'Migrating browser scripts to k6 v0.52'
-description: 'A migration guide to ease the process of transitioning to the new non-experimental k6 browser module version bundled with k6 v0.52'
+description: 'A migration guide to ease the process of transitioning to the new k6 browser module version bundled with k6 v0.52'
 weight: 04
 ---
 
 # Migrating browser scripts to k6 v0.52
 
-This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the _latest_ non-experimental [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
+This guide outlines the key changes you will need to make when moving your existing k6 experimental browser test scripts to the _latest_ [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
 
 ## Key changes
 
-In the latest release of k6, we have introduced the non-experimental k6 browser module under the import `k6/browser`. Migrating to this is a breaking change that will affect _all scripts_ that use the current experimental k6 browser module. The breaking changes are:
+In the latest release of k6, we have graduated k6 browser module out of experimental and is now under the import `k6/browser`. Migrating to this is a breaking change that will affect _all scripts_ that use the experimental k6 browser module. The breaking changes are:
 
 1. Converted most of the k6 browser module APIs to asynchronous (async) APIs. That means they will return a `promise` that will `resolve` to a value when the API call succeeds or `reject` when an error occurs.
 2. A side effect of making this async changes is that you will need to use a workaround to work with the k6 [check](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check/) API.
@@ -26,7 +26,7 @@ The experimental import (`k6/experimental/browser`) and the corresponding synchr
 
 ## Migrating to async
 
-To ensure your scripts work with the latest release of the non-experimental k6 browser module, you must:
+To ensure your scripts work with the latest release of the k6 browser module, you must:
 
 1. Change the import from `k6/experimental/browser` to `k6/browser`.
 2. Ensure that all the synchronous (sync) APIs that have been migrated over to async are handled appropriately. In most cases, you will only need to add `await` in front of the API call.
@@ -67,7 +67,7 @@ export default async function () {
 
 You might have already encountered async APIs when working with the browser module, such as [page.click](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/click/), so the use of `async` and `await` keywords might be familiar to you.
 
-Below is a screenshot of a comparison between the [grant_permission.js example](https://github.com/grafana/xk6-browser/blob/main/examples/grant_permission.js) in `v0.51` and `v0.52` to help visualize the change to a simple script:
+Below is a screenshot of a comparison between a generic browser test in `v0.51` and `v0.52` to help visualize the change:
 
 ![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-2.png)
 
