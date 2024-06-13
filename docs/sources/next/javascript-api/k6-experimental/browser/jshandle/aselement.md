@@ -5,7 +5,7 @@ description: 'Browser module: JSHandle.asElement method'
 
 # asElement()
 
-Returns either `null` or the object handle itself, if the object handle is an instance of [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/).
+Returns either `null` or the object handle itself, provided the object handle is an instance of [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/elementhandle/).
 
 ### Returns
 
