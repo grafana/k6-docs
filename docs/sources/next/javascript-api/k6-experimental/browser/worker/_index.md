@@ -17,3 +17,35 @@ Represents a Web Worker or a Service Worker within the browser context.
 | <a href="https://playwright.dev/docs/api/class-worker#worker-url" target="_blank" >worker.url()</a>                                           | -                                |
 | <a href="https://playwright.dev/docs/api/class-worker#worker-evaluate" target="_blank" >worker.evaluate(pageFunction[, arg])</a>              | -                                | -   |
 | <a href="https://playwright.dev/docs/api/class-worker#worker-evaluate-handle" target="_blank" >worker.evaluateHandle(pageFunction[, arg])</a> | -                                | -   |
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/browser.php');
+    console.log(page.workers());
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
