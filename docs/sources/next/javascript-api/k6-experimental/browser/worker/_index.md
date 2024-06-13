@@ -8,6 +8,8 @@ weight: 14
 
 {{< docs/shared source="k6" lookup="browser-module-wip.md" version="<K6_VERSION>" >}}
 
+Represents a Web Worker or a Service Worker within the browser context.
+
 ## Supported APIs
 
 | Method                                                                                                                                        | Playwright Relevant Distinctions |
