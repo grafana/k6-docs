@@ -146,7 +146,7 @@ A test that assesses the performance of the system under test in terms of concur
 
 ## Load zone
 
-The geographical instance from which a test runs.<br/><br/>[Private load zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/),[Declare load zones from the CLI](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/load-zones/)
+The geographical instance from which a test runs.<br/><br/>[Private load zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/),[Declare load zones from the CLI](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-load-zones/)
 
 ## Lifecycle function
 
