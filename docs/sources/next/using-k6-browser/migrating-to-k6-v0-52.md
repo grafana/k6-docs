@@ -73,7 +73,7 @@ You might have already encountered async APIs when working with the browser modu
 
 Below is a screenshot of a comparison between a generic browser test in `v0.51` and `v0.52` to help visualize the change:
 
-![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-2.png)
+![v0.51 & v0.52 script comparison](/media/docs/k6-oss/browser-v0.52-migration-script-comparison-3.png)
 
 ### The affected APIs
 
