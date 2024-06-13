@@ -28,8 +28,8 @@ The experimental import (`k6/experimental/browser`) and the corresponding synchr
 
 To ensure your scripts work with the latest release of the non-experimental k6 browser module, you must:
 
-1. change the import from `k6/experimental/browser` to `k6/browser`.
-2. ensure that all the synchronous (sync) APIs that have been migrated over to async are handled appropriately. In most cases, you will only need to add `await` in front of the API call.
+1. Change the import from `k6/experimental/browser` to `k6/browser`.
+2. Ensure that all the synchronous (sync) APIs that have been migrated over to async are handled appropriately. In most cases, you will only need to add `await` in front of the API call.
 
 For example, before:
 
