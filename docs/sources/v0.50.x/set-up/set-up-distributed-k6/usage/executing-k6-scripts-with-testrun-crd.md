@@ -9,7 +9,7 @@ This guide covers how you can configure your k6 scripts to run using the k6 oper
 
 ## Defining test scripts
 
-There are several ways to configure scripts in the `TestRun` CRD. The operator uses `ConfigMap` and `LocalFile` to serve test scripts to the jobs.
+There are several ways to configure scripts in the `TestRun` CRD. The operator uses `configMap`, `volumeClaim` and `localFile` to serve test scripts to the jobs.
 
 ### ConfigMap
 
@@ -30,7 +30,7 @@ Then specify it in `TestRun`:
 
 {{< admonition type="note" >}}
 
-A single `ConfigMap` has a character limit of 1048576 bytes. If you need to have a larger test file, you have to use a `volumeClaim` or a `LocalFile` instead.
+A single `ConfigMap` has a character limit of 1048576 bytes. If you need to have a larger test file, you have to use a `volumeClaim` or a `localFile` instead.
 
 {{< /admonition >}}
 
