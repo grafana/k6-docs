@@ -1,12 +1,12 @@
 ---
 title: About the Go-to-JS bridge
-description: Technical details about how JavaScript works in the goja engine.
+description: Technical details about how JavaScript works in the sobek engine.
 weight: 02
 ---
 
 # About the Go-to-JS bridge
 
-All k6 and xk6 binaries have an embedded JavaScript engine, [goja](https://github.com/dop251/goja),
+All k6 and xk6 binaries have an embedded JavaScript engine, [sobek](https://github.com/grafana/sobek),
 which your test scripts run on.
 
 You will deepen your conceptual knowledge of how your k6 extension works if you understand the _bridge_ between Go internals and the JavaScript runtime.
@@ -28,14 +28,14 @@ The bridge has a few features we should highlight:
 
 The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent.
 For complex types where this is impossible, your script might fail with a `TypeError`, requiring you to explicitly convert
-your object to a [`goja.Object`](https://pkg.go.dev/github.com/dop251/goja#Object) or [`goja.Value`](https://pkg.go.dev/github.com/dop251/goja#Value).
+your object to a [`sobek.Object`](https://pkg.go.dev/github.com/grafana/sobek#Object) or [`sobek.Value`](https://pkg.go.dev/github.com/grafana/sobek#Value).
 
 ```go
-func (*Compare) XComparator(call goja.ConstructorCall, rt *goja.Runtime) *goja.Object {
+func (*Compare) XComparator(call sobek.ConstructorCall, rt *sobek.Runtime) *sobek.Object {
 	return rt.ToValue(&Compare{}).ToObject(rt)
 }
 ```
 
-The preceding snippet also demonstrates the _native constructors_ feature from goja, where methods can become JS constructors.
+The preceding snippet also demonstrates the _native constructors_ feature from sobek, where methods can become JS constructors.
 Methods with this signature can create `Comparator` instances in JS with `new compare.Comparator()`.
-While this is more idiomatic to JS, it still has the benefit of receiving the `goja.Runtime`.
+While this is more idiomatic to JS, it still has the benefit of receiving the `sobek.Runtime`.
