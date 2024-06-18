@@ -170,7 +170,7 @@ Our main `Compare` struct should implement the [`modules.Instance`](https://pkg.
 to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) to inspect internal k6 objects such as:
 
 - [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State), the VU state with values like the VU ID and iteration number
-- [`goja.Runtime`](https://pkg.go.dev/github.com/dop251/goja#Runtime), the JavaScript runtime used by the VU
+- [`sobek.Runtime`](https://pkg.go.dev/github.com/grafana/sobek#Runtime), the JavaScript runtime used by the VU
 - a global `context.Context` containing objects like the [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState)
 
 Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
@@ -276,10 +276,10 @@ runtime state:
 ```go
 // InternalState holds basic metadata from the runtime state.
 type InternalState struct {
-	ActiveVUs       int64      `js:"activeVUs"`
+	ActiveVUs       int64       `js:"activeVUs"`
 	Iteration       int64
-	VUID            uint64     `js:"vuID"`
-	VUIDFromRuntime goja.Value `js:"vuIDFromRuntime"`
+	VUID            uint64      `js:"vuID"`
+	VUIDFromRuntime sobek.Value `js:"vuIDFromRuntime"`
 }
 
 // GetInternalState interrogates the current virtual user for state information.

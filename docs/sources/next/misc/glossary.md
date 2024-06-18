@@ -23,7 +23,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Endurance testing](#endurance-testing)
 - [Environment variables](#environment-variables)
 - [Execution segment](#execution-segment)
-- [Goja](#goja)
+- [Sobek](#sobek)
 - [Graceful stop](#graceful-stop)
 - [Happy path](#happy-path)
 - [HTTP archive](#http-archive)
@@ -104,9 +104,9 @@ User-definable values which may be utilized by the operating system and other pr
 
 A partition, or fractional portion, of an overall [test run](#test-run).<br/><br/>[The execution-segment options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#execution-segment)
 
-## Goja
+## Sobek
 
-A JavaScript engine written in Go. k6 binaries are embedded with Goja, enabling test scripting in JavaScript.<br/><br/>[Goja repository](https://github.com/dop251/goja)
+A JavaScript engine written in Go. k6 binaries are embedded with Sobek, enabling test scripting in JavaScript.<br/><br/>[Sobek repository](https://github.com/grafana/sobek) fork of [goja](https://github.com/dop251/goja).
 
 ## Graceful stop
 
