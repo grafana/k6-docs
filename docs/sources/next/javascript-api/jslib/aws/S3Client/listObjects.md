@@ -29,7 +29,7 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.12.1/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.12.3/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

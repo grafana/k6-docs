@@ -33,7 +33,7 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 {{< code >}}
 
 ```javascript
-import { AWSConfig, LambdaClient } from 'https://jslib.k6.io/aws/0.12.1/lambda.js';
+import { AWSConfig, LambdaClient } from 'https://jslib.k6.io/aws/0.12.3/lambda.js';
 import { check } from 'k6';
 
 const awsConfig = new AWSConfig({

@@ -22,7 +22,7 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.12.1/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.12.3/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

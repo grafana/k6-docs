@@ -123,7 +123,7 @@ Here's an example script to demonstrate how to sign a request to fetch an object
 
 ```javascript
 import http from 'k6/http';
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.12.1/signature.js';
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.12.3/signature.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

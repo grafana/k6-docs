@@ -30,7 +30,7 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.12.1/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.12.3/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
