@@ -239,6 +239,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-output-kafka</h4>
         <p>Export k6 results in real-time to Kafka</p>
     </a>
+    <a href="https://github.com/grafana/xk6-output-opentelemetry" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-output-opentelemetry</h4>
+        <p>Export k6 results in OpenTelemetry format</p>
+    </a>
     <a href="https://github.com/szkiba/xk6-output-plugin" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-plugin</h4>
         <p>Dynamic output extension using your favorite programming language</p>
