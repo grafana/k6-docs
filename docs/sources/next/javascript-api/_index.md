@@ -29,6 +29,12 @@ The k6 module contains k6-specific functionality.
 | [randomSeed(int)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/random-seed)    | Set seed to get a reproducible pseudo-random number using `Math.random`.                                                                     |
 | [sleep(t)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep)                 | Suspends VU execution for the specified duration.                                                                                            |
 
+## k6/browser
+
+The k6/browser module provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
+
+Please see the [Browser API](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) for more information.
+
 ## k6/crypto
 
 The k6/crypto `module` provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
@@ -131,7 +137,6 @@ Meta information and execution details about the current vu.
 
 | Modules                                                                                          | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser)       | Provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests. |
 | [redis](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis)           | Functionality to interact with [Redis](https://redis.io/).                                                               |
 | [timers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/timers)         | `setTimeout`, `clearTimeout`, `setInterval`, `clearInterval`                                                             |
 | [tracing](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing)       | Support for instrumenting HTTP requests with tracing information.                                                        |
