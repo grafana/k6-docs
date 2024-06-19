@@ -132,13 +132,9 @@ export default async function () {
     await page.goto("https://test.k6.io/browser.php");
     await page.evaluate(() => window.performance.mark("page-visit"));
 
-    const checkbox1 = page.locator("#checkbox1");
-    const counterButton = page.locator('#counter-button');
-    const text1 = page.locator("#text1");
-
-    await checkbox1.check();
-    await counterButton.click();
-    await text1.fill("This is a test");
+    await page.locator("#checkbox1").check();
+    await page.locator('#counter-button').click();
+    await page.locator("#text1").fill("This is a test");
 
     await page.evaluate(() => window.performance.mark("action-completed"));
 
