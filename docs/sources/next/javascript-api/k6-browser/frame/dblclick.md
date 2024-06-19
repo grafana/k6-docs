@@ -33,34 +33,8 @@ Double clicks on an element matching the provided selector.
 
 </TableWithNestedRows>
 
-### Example
+### Returns
 
-{{< code >}}
-
-```javascript
-import { browser } from 'k6/browser';
-
-export const options = {
-  scenarios: {
-    browser: {
-      executor: 'shared-iterations',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-};
-
-export default async function () {
-  const page = await browser.newPage();
-
-  await page.goto('https://test.k6.io/browser.php');
-
-  const frames = page.frames();
-  frames[0].dblclick('#counter-button');
-}
-```
-
-{{< /code >}}
+| Type            | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the double click action is finished. |
