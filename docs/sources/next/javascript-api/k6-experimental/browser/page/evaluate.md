@@ -29,7 +29,7 @@ Returns the value of the `pageFunction` invocation.
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6/http';
 
 export const options = {

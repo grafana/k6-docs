@@ -22,7 +22,7 @@ This sets extra HTTP headers which will be sent with subsequent HTTP requests.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

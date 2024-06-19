@@ -30,7 +30,7 @@ The `Rect` object represents the bounding box of an element.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

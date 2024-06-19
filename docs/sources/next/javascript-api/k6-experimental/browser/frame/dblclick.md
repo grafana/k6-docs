@@ -38,7 +38,7 @@ Double clicks on an element matching the provided selector.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

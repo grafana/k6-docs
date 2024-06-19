@@ -18,7 +18,7 @@ Activates the browser tab which brings the page in focus to allow actions to be 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

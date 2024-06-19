@@ -16,7 +16,7 @@ This setting will change the timeout for all the methods accepting a `timeout` o
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

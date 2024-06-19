@@ -18,7 +18,7 @@ Returns the JSON representation of response body. Throws if response body is not
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

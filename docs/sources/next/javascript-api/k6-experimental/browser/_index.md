@@ -22,7 +22,7 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 ## Properties
 
-The table below lists the properties you can import from the browser module (`'k6/experimental/browser'`).
+The table below lists the properties you can import from the browser module (`'k6/browser'`).
 
 | Property | Description                                                                                                                                                                          |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -50,7 +50,7 @@ The browser module is the entry point for all your tests, and it is what interac
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -225,12 +225,12 @@ Additionally if headless mode is set to `true` in [browser options](https://graf
 
 ## Devices Example
 
-To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/experimental/browser`.
+To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/browser`.
 
 {{< code >}}
 
 ```javascript
-import { browser, devices } from 'k6/experimental/browser';
+import { browser, devices } from 'k6/browser';
 
 export const options = {
   scenarios: {

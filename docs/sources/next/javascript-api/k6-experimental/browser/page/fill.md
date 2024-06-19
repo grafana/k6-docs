@@ -38,7 +38,7 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

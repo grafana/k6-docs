@@ -35,7 +35,7 @@ This method fetches an element with `selector` and focuses it.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

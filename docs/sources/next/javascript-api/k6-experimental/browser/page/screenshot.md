@@ -36,7 +36,7 @@ Returns the buffer with the captured screenshot from the browser.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

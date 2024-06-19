@@ -38,7 +38,7 @@ Selects one or more options which match the values from a `<select>` element.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

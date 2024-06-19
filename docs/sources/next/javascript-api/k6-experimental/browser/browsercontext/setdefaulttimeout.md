@@ -16,7 +16,7 @@ Sets the default maximum timeout for all methods accepting a `timeout` option in
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

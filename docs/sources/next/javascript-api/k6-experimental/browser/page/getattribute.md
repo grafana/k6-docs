@@ -36,7 +36,7 @@ Returns the element attribute value for the given attribute name.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

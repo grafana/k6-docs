@@ -18,7 +18,7 @@ Returns the matching [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascri
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

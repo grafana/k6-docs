@@ -16,7 +16,7 @@ Sets the default maximum navigation timeout for [Page.goto()](https://playwright
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

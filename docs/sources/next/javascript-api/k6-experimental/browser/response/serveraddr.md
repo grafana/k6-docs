@@ -25,7 +25,7 @@ Returns the IP address and port of the server for this response.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

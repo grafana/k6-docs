@@ -25,7 +25,7 @@ The method finds an element matching the specified selector within the page. If 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

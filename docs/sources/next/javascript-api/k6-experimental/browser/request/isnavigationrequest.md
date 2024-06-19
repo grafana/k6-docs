@@ -18,7 +18,7 @@ Returns a boolean stating whether the request is for a navigation.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

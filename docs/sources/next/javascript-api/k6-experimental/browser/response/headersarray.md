@@ -18,7 +18,7 @@ An array with all the response HTTP headers. Unlike [response.allHeaders()](http
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

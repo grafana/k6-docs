@@ -38,7 +38,7 @@ Type the `text` in the first element found that matches the selector.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

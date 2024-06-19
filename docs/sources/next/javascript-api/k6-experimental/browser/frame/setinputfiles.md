@@ -25,7 +25,7 @@ To work with local files on the file system, use the [experimental fs module](ht
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import encoding from 'k6/encoding';
 
 export const options = {
@@ -80,7 +80,7 @@ export default async function () {
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import encoding from 'k6/encoding';
 import { open } from 'k6/experimental/fs';
 

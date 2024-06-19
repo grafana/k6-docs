@@ -26,7 +26,7 @@ Returns all values of the headers matching the name, for example `set-cookie`. T
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

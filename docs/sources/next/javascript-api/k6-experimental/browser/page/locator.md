@@ -22,7 +22,7 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

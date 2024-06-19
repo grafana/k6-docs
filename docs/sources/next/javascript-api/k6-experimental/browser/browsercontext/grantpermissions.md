@@ -28,7 +28,7 @@ Grants specified permissions to the [browser context](https://grafana.com/docs/k
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

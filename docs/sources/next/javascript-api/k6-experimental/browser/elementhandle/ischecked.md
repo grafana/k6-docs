@@ -24,7 +24,7 @@ Checks to see if the `checkbox` `input` type is selected or not.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
