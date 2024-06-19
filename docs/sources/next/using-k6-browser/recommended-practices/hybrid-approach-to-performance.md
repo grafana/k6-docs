@@ -82,23 +82,28 @@ export function getPizza() {
 }
 
 export async function checkFrontend() {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto(BASE_URL);
-    check(page, {
-      header: page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
+
+    const header = await page.locator("h1").textContent();
+    check(header, {
+      header: h => h == "Looking to break out of your pizza routine?",
     });
 
-    await page.locator('//button[. = "Pizza, Please!"]').click();
-    page.waitForTimeout(500);
-    page.screenshot({ path: `screenshots/${__ITER}.png` });
+    await Promise.all([
+      page.locator('//button[. = "Pizza, Please!"]').click(),
+      page.waitForTimeout(500),
+    ]);
+    await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
-    check(page, {
-      recommendation: page.locator('div#recommendations').textContent() != '',
+    const recommendation = await page.locator("div#recommendations").textContent();
+    check(recommendation, {
+      recommendation: (r) => r != "",
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
@@ -170,23 +175,27 @@ export function disrupt() {
 }
 
 export async function checkFrontend() {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto(BASE_URL);
-    check(page, {
-      header: page.locator('h1').textContent() == 'Looking to break out of your pizza routine?',
+    const header = await page.locator('h1').textContent();
+    check(header, {
+      header: h => h == 'Looking to break out of your pizza routine?',
     });
 
-    await page.locator('//button[. = "Pizza, Please!"]').click();
-    page.waitForTimeout(500);
-    page.screenshot({ path: `screenshots/${__ITER}.png` });
+    await Promise.all([
+      page.locator('//button[. = "Pizza, Please!"]').click(),
+      page.waitForTimeout(500),
+    ]);
+    await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
-    check(page, {
-      recommendation: page.locator('div#recommendations').textContent() != '',
+    const recommendation = await page.locator('div#recommendations').textContent();
+    check(recommendation, {
+      recommendation: r => r != '',
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
