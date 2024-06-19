@@ -10,7 +10,6 @@ weight: 07
 
 | Modules                                                                                          | Description                                                                                                                |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)       | Provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.   |
 | [fs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs)                 | Provides a memory-efficient way to handle file interactions within your test scripts.                                      |
 | [grpc](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc)             | Extends `k6/net/grpc` with the streaming capabilities.                                                                     |
 | [redis](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis)           | Functionality to interact with [Redis](https://redis.io/).                                                                 |
