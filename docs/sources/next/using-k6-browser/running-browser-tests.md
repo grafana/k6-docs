@@ -49,13 +49,13 @@ To run a simple local script:
    };
 
    export default async function () {
-     const page = browser.newPage();
+     const page = await browser.newPage();
 
      try {
        await page.goto('https://test.k6.io/');
-       page.screenshot({ path: 'screenshots/screenshot.png' });
+       await page.screenshot({ path: 'screenshots/screenshot.png' });
      } finally {
-       page.close();
+       await page.close();
      }
    }
    ```
@@ -201,18 +201,18 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
 
     // Enter login credentials
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
-    page.screenshot({ path: 'screenshots/screenshot.png' });
+    await page.screenshot({ path: 'screenshots/screenshot.png' });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
@@ -254,23 +254,27 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/my_messages.php');
+    await page.goto("https://test.k6.io/my_messages.php");
 
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
+    await page.locator('input[name="login"]').type("admin");
+    await page.locator('input[name="password"]').type("123");
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([page.waitForNavigation(), submitButton.click()]);
+    await Promise.all([
+      page.waitForNavigation(),
+      submitButton.click(),
+    ]);
 
-    check(page, {
-      header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+    const header = await page.locator("h2").textContent();
+    check(header, {
+      header: h => h == "Welcome, admin!",
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
@@ -327,19 +331,19 @@ export const options = {
 };
 
 export async function browserTest() {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/browser.php');
 
-    page.locator('#checkbox1').check();
+    await page.locator('#checkbox1').check();
 
-    check(page, {
-      'checkbox is checked':
-        page.locator('#checkbox-info-display').textContent() === 'Thanks for checking the box',
+    const info = await page.locator('#counter-button').textContent();
+    check(info, {
+      'checkbox is checked': info => info === 'Thanks for checking the box',
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 
