@@ -6,7 +6,7 @@ weight: 04
 
 # Migrating browser scripts to k6 v0.52
 
-This guide outlines the key changes you will need to make when moving your existing k6 experimental browser test scripts to the _latest_ [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
+This guide outlines the key changes you will need to make when moving your existing k6 experimental browser test scripts to the _latest_ [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) version bundled with [k6 0.52](https://github.com/grafana/k6/releases/tag/v0.52.0).
 
 ## Key changes
 
@@ -69,7 +69,7 @@ export default async function () {
 
 {{< /code >}}
 
-You might have already encountered async APIs when working with the browser module, such as [page.click](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/click/), so the use of `async` and `await` keywords might be familiar to you.
+You might have already encountered async APIs when working with the browser module, such as [page.click](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/click/), so the use of `async` and `await` keywords might be familiar to you.
 
 Below is a screenshot of a comparison between a generic browser test in `v0.51` and `v0.52` to help visualize the change:
 
