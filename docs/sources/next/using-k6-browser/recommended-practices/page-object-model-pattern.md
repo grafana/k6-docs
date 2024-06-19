@@ -73,7 +73,7 @@ You can import the `Homepage` class within your test class and invoke the method
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.0/index.js';
 
 import { Homepage } from '../pages/homepage.js';
