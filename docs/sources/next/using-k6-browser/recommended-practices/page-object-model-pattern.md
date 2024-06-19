@@ -60,7 +60,7 @@ export class Homepage {
     await this.submitButton.click();
   }
 
-  getVerificationMessage() {
+  async getVerificationMessage() {
     return this.verificationMessage.innerText();
   }
 }
@@ -80,7 +80,7 @@ import { Homepage } from '../pages/homepage.js';
 import { bookingData } from '../data/booking-data.js';
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   const { name } = bookingData;
 
@@ -88,9 +88,9 @@ export default async function () {
   await homepage.goto();
   await homepage.submitForm();
 
-  expect(homepage.getVerificationMessage()).to.contain(name);
+  expect(await homepage.getVerificationMessage()).to.contain(name);
 
-  page.close();
+  await page.close();
 }
 ```
 

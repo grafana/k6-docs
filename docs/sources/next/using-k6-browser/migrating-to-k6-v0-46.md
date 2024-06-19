@@ -71,13 +71,13 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/');
-    page.screenshot({ path: 'screenshot.png' });
+    await page.screenshot({ path: 'screenshot.png' });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
@@ -272,9 +272,9 @@ export default async function () {
 
 ```javascript
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
   // ...
-  page.close();
+  await page.close();
 }
 ```
 
@@ -304,9 +304,9 @@ For instance, the code below will not function as intended, as it attempts to ex
 
 ```javascript
 export default async function () {
-  const context1 = browser.newContext();
+  const context1 = await browser.newContext();
   // Simultaneous browser contexts are not permitted!
-  const context2 = browser.newContext();
+  const context2 = await browser.newContext();
 }
 ```
 
@@ -320,12 +320,12 @@ On the other hand, the next example will function correctly by closing the initi
 
 ```javascript
 export default async function () {
-  const context1 = browser.newContext();
-  context1.close();
+  const context1 = await browser.newContext();
+  await context1.close();
 
   // Since the first browser context is closed, a new browser context can be created.
-  const context2 = browser.newContext();
-  context2.close();
+  const context2 = await browser.newContext();
+  await context2.close();
 }
 ```
 

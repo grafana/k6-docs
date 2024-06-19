@@ -107,7 +107,7 @@ Using the [`performance.measure`](https://developer.mozilla.org/en-US/docs/Web/A
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { Trend } from 'k6/metrics';
 
 export const options = {
@@ -126,32 +126,43 @@ export const options = {
 const myTrend = new Trend('total_action_time', true);
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/browser.php');
-    page.evaluate(() => window.performance.mark('page-visit'));
+    await page.goto("https://test.k6.io/browser.php");
+    await page.evaluate(() => window.performance.mark("page-visit"));
 
-    page.locator('#checkbox1').check();
-    page.locator('#counter-button"]').click();
-    page.locator('#text1').fill('This is a test');
+    const checkbox1 = page.locator("#checkbox1");
+    const counterButton = page.locator('#counter-button');
+    const text1 = page.locator("#text1");
 
-    page.evaluate(() => window.performance.mark('action-completed'));
+    await checkbox1.check();
+    await counterButton.click();
+    await text1.fill("This is a test");
+
+    await page.evaluate(() => window.performance.mark("action-completed"));
 
     // Get time difference between visiting the page and completing the actions
-    page.evaluate(() =>
-      window.performance.measure('total-action-time', 'page-visit', 'action-completed')
+    await page.evaluate(() =>
+      window.performance.measure(
+        "total-action-time",
+        "page-visit",
+        "action-completed"
+      )
     );
 
-    const totalActionTime = page.evaluate(
+    const totalActionTime = await page.evaluate(
       () =>
-        JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0]
-          .duration
+        JSON.parse(
+          JSON.stringify(
+            window.performance.getEntriesByName("total-action-time")
+          )
+        )[0].duration
     );
 
     myTrend.add(totalActionTime);
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```

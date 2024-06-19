@@ -54,24 +54,26 @@ export const options = {
 };
 
 export default async function () {
-  const context = browser.newContext();
-  const page = context.newPage();
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   try {
-    await page.goto('https://test.k6.io/my_messages.php');
+    await page.goto("https://test.k6.io/my_messages.php");
 
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
+    await page.locator('input[name="login"]').type("admin");
+    await page.locator('input[name="password"]').type("123");
 
-    const submitButton = page.locator('input[type="submit"]');
+    await Promise.all([
+      page.waitForNavigation(),
+      page.locator('input[type="submit"]').click(),
+    ]);
 
-    await Promise.all([page.waitForNavigation(), submitButton.click()]);
-
-    check(page, {
-      header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+    const header = await page.locator("h2").textContent();
+    check(header, {
+      header: (h) => h == "Welcome, admin!",
     });
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
