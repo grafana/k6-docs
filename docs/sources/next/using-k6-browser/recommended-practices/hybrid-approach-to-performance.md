@@ -23,7 +23,7 @@ The code below shows an example of combining a browser and HTTP test in a single
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 const BASE_URL = __ENV.BASE_URL;
 
@@ -120,7 +120,7 @@ To find out more information about injecting faults to your service, check out t
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { ServiceDisruptor } from 'k6/x/disruptor';
 
 const BASE_URL = __ENV.BASE_URL;
