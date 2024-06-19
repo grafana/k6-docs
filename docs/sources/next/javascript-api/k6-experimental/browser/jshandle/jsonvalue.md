@@ -20,7 +20,7 @@ Retrieves the JSON representation of the JavaScript object that the JSHandle ref
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

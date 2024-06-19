@@ -23,7 +23,7 @@ The script is evaluated after the document is created but before any of its scri
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6';
 
 export const options = {

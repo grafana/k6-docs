@@ -22,7 +22,7 @@ Toggles the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascrip
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

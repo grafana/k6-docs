@@ -20,7 +20,7 @@ This allows you to inspect and interact with the properties of the object within
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

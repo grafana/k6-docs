@@ -18,7 +18,7 @@ The page's main frame. Page is made up of frames in a hierarchical. At the top i
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

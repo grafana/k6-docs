@@ -25,7 +25,7 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

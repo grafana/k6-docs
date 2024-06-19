@@ -18,7 +18,7 @@ An object of key value pairs made up of HTTP headers associated with the request
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

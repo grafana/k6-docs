@@ -36,7 +36,7 @@ Press a single key on the keyboard or a combination of keys.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -44,7 +44,7 @@ Mouse double clicks an element matching provided selector.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -35,7 +35,7 @@ The request that the browser performs can be retrieved from the [Response](https
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

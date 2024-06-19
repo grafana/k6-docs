@@ -21,7 +21,7 @@ This setting will change the navigation timeout for the following methods:
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

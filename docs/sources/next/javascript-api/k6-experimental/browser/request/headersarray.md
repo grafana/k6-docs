@@ -18,7 +18,7 @@ An array with all the request HTTP headers. Unlike [request.allHeaders()](https:
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

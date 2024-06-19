@@ -25,7 +25,7 @@ Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

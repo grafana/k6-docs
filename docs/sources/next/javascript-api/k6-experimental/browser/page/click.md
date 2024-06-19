@@ -46,7 +46,7 @@ This method clicks on an element matching a `selector`.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -76,7 +76,7 @@ When a click action results in a page navigation, remember to work with `page.wa
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

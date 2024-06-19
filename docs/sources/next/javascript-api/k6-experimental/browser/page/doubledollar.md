@@ -25,7 +25,7 @@ The method finds all elements matching the specified selector within the page. I
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

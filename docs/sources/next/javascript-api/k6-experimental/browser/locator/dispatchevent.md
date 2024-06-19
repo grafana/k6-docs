@@ -41,7 +41,7 @@ Since eventInit is event-specific, please refer to the events documentation for 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export default async function () {
   const page = await browser.newPage();

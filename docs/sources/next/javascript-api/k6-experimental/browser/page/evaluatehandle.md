@@ -31,7 +31,7 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

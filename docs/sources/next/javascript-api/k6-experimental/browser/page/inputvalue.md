@@ -35,7 +35,7 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

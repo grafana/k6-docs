@@ -49,7 +49,7 @@ Since `eventInit` is event-specific, please refer to the events documentation fo
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -53,7 +53,7 @@ weight: 04
 
 ```javascript
 import { check } from 'k6';
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -100,7 +100,7 @@ export default async function () {
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6';
 
 export const options = {
