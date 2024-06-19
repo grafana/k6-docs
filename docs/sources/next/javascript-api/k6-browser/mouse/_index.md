@@ -8,13 +8,13 @@ weight: 09
 
 `Mouse` provides a way to interact with a virtual mouse.
 
-| Method                                                                                                                            | Description                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [mouse.click(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/click)       | Mouse clicks on the `x` and `y` coordinates.                    |
-| [mouse.dblclick(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/dblclick) | Mouse double clicks on the `x` and `y` coordinates.             |
-| [mouse.down([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/down)               | Dispatches a `mousedown` event on the mouse's current position. |
-| [mouse.up([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/up)                   | Dispatches a `mouseup` event on the mouse's current position.   |
-| [mouse.move(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/move)         | Dispatches a `mousemove` event on the mouse's current position. |
+| Method                                                                                                         | Description                                                     |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [click(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/click)       | Mouse clicks on the `x` and `y` coordinates.                    |
+| [dblclick(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/dblclick) | Mouse double clicks on the `x` and `y` coordinates.             |
+| [down([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/down)               | Dispatches a `mousedown` event on the mouse's current position. |
+| [up([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/up)                   | Dispatches a `mouseup` event on the mouse's current position.   |
+| [move(x, y[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/mouse/move)         | Dispatches a `mousemove` event on the mouse's current position. |
 
 ### Example
 

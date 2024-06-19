@@ -10,13 +10,13 @@ weight: 07
 
 `Keyboard` provide a way to interact with a virtual keyboard.
 
-| Method                                                                                                                           | Description                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [keyboard.down(key)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/down)              | Dispatches a `keydown` event.                                                                    |
-| [keyboard.up(key)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/up)                  | Dispatches a `keyup` event.                                                                      |
-| [keyboard.press(key[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/press) | Dispatches a `keydown` event followed by an `keyup` event.                                       |
-| [keyboard.type(text[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/type)  | Dispatches a `keydown`, `keypress` or`input`, and `keyup` events for each character in the text. |
-| [keyboard.insertText(text)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/inserttext) | Dispatches only an `input` event.                                                                |
+| Method                                                                                                     | Description                                                                                      |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [down(key)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/down)              | Dispatches a `keydown` event.                                                                    |
+| [up(key)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/up)                  | Dispatches a `keyup` event.                                                                      |
+| [press(key[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/press) | Dispatches a `keydown` event followed by an `keyup` event.                                       |
+| [type(text[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/type)  | Dispatches a `keydown`, `keypress` or`input`, and `keyup` events for each character in the text. |
+| [insertText(text)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/inserttext) | Dispatches only an `input` event.                                                                |
 
 ### Example
 

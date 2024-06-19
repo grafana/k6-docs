@@ -12,9 +12,9 @@ Represents a Web Worker or a Service Worker within the browser context.
 
 ## Supported APIs
 
-| k6 Class                                                                                                   | Description                        |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [worker.url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/worker/url) | Returns the URL of the web worker. |
+| k6 Class                                                                               | Description                        |
+| -------------------------------------------------------------------------------------- | ---------------------------------- |
+| [url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/worker/url) | Returns the URL of the web worker. |
 
 {{< code >}}
 
