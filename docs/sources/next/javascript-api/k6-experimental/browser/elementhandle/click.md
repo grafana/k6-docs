@@ -44,7 +44,7 @@ Mouse click on the chosen element.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -77,7 +77,7 @@ When a click action results in a page navigation, remember to work with `Promise
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

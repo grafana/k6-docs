@@ -36,7 +36,7 @@ Type in the text into the input field.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -29,7 +29,7 @@ Represents a reference to a JavaScript object within the context of a webpage. T
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

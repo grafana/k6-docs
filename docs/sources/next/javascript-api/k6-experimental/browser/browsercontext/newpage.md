@@ -18,7 +18,7 @@ Uses the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-a
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export default async function () {
   const context = await browser.newContext();

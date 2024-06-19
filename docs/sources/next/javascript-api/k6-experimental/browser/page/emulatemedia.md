@@ -31,7 +31,7 @@ This method changes the CSS `@media type` through the `media` argument, and/or t
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

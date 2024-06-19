@@ -18,7 +18,7 @@ Contains the status text of the response (e.g. usually an "OK" for a success).
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -31,7 +31,7 @@ The only difference between [evaluate](https://grafana.com/docs/k6/<K6_VERSION>/
 <!-- eslint-skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

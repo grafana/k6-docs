@@ -47,7 +47,7 @@ Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported a
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

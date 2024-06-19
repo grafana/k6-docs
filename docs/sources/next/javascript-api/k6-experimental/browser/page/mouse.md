@@ -18,7 +18,7 @@ Returns the [Mouse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-e
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

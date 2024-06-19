@@ -49,7 +49,7 @@ Locator can be created with the [page.locator(selector[, options])](https://graf
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

@@ -14,7 +14,7 @@ Closes the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/jav
 ### Example
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

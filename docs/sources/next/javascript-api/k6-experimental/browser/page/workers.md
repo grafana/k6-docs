@@ -18,7 +18,7 @@ This method returns an array of the dedicated [WebWorkers](https://grafana.com/d
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

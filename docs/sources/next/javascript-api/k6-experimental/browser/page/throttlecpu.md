@@ -23,7 +23,7 @@ Throttles the CPU in Chrome/Chromium to slow it down by the specified `rate` in 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

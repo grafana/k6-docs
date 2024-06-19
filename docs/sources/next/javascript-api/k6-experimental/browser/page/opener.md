@@ -24,7 +24,7 @@ Returns the page that opened the current page. The first page that is navigated 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

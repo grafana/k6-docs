@@ -21,7 +21,7 @@ Simulates a tap (dispatches a `touchstart` and `touchend` events) at the specifi
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

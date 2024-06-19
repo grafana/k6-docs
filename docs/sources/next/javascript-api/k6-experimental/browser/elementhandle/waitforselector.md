@@ -36,7 +36,7 @@ Waits for the element to be present in the DOM and to be visible.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

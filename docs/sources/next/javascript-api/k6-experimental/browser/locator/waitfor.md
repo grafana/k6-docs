@@ -35,7 +35,7 @@ Wait for the element to be in a particular state e.g. `visible`.
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

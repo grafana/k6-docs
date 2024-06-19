@@ -18,7 +18,7 @@ Contains the status code of the response (e.g., 200 for a success).
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

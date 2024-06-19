@@ -32,7 +32,7 @@ Returns resource timing information for the given request. Most of the timing va
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
