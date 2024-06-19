@@ -6,17 +6,17 @@ weight: 04
 
 # Migrating to k6 v0.46
 
-This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the new [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) (bundled with [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0)).
+This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the new [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) (bundled with [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0)).
 
 ## Key changes
 
 The updated version introduces notable structural changes in its operation and API, including breaking changes:
 
-- The [import path](#import-path) for the browser module has switched from `chromium` to [`browser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-api).
+- The [import path](#import-path) for the browser module has switched from `chromium` to [`browser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-api).
 - [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. The `chromium.launch()`, `chromium.connect()`, and `browser.close()` methods are no longer necessary and have been removed.
-- [Browser options](#browser-options) can now only be set using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options).
+- [Browser options](#browser-options) can now only be set using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-options).
 - [Scenario options](#scenario-options) must now be defined for running browser tests.
-- [Single browser context per iteration](#browser-context-limit). You can now only run a single [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) at a time in the same iteration.
+- [Single browser context per iteration](#browser-context-limit). You can now only run a single [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) at a time in the same iteration.
 
 {{% admonition type="note" %}}
 
@@ -31,7 +31,7 @@ Let's start with an overview of the main differences between the previous and ne
 {{< code >}}
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { chromium } from 'k6/browser';
 
 export default async function () {
   const browser = chromium.launch({
@@ -55,7 +55,7 @@ export default async function () {
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -86,12 +86,12 @@ export default async function () {
 
 ## Import path
 
-With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), you should directly import the [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-api) object from the [browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser).
+With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), you should directly import the [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-api) object from the [browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser).
 
 {{< code >}}
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { chromium } from 'k6/browser';
 ```
 
 {{< /code >}}
@@ -99,7 +99,7 @@ import { chromium } from 'k6/experimental/browser';
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 ```
 
 {{< /code >}}
@@ -112,7 +112,7 @@ Now, all that is needed is to specify the `browser.type` within the [scenario op
 
 ## Browser options
 
-With the removal of the `chromium.launch()` and `chromium.connect()` methods, setting browsers options is now done by using environment variables. For more information, refer to [Browser Module Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options).
+With the removal of the `chromium.launch()` and `chromium.connect()` methods, setting browsers options is now done by using environment variables. For more information, refer to [Browser Module Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-options).
 
 ### Launching a browser
 
@@ -248,7 +248,7 @@ export const options = {
 
 ## Opening and closing a page
 
-You can open a new page by using the imported [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-api) object's [browser.newPage()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/newpage) method. You can still use the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) object as before.
+You can open a new page by using the imported [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-api) object's [browser.newPage()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/newpage) method. You can still use the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page) object as before.
 
 {{< code >}}
 
@@ -280,7 +280,7 @@ export default async function () {
 
 {{< /code >}}
 
-The `browser.close()` method has been removed, so you can remove that from your scripts and use [`page.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close) once you're done using the page object.
+The `browser.close()` method has been removed, so you can remove that from your scripts and use [`page.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/close) once you're done using the page object.
 
 {{% admonition type="note" %}}
 
@@ -290,13 +290,13 @@ Closing of the page is critical for the calculation of accurate Web Vital metric
 
 ## Browser context limit
 
-The new browser implementation limits the usage to a single active [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) per iteration. This change enhances the prediction of resource requirements for a test run and promotes the use of [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to separate independent browser sessions.
+The new browser implementation limits the usage to a single active [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) per iteration. This change enhances the prediction of resource requirements for a test run and promotes the use of [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) to separate independent browser sessions.
 
-- A new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) can be created either with the [browser.newContext()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/newcontext) or [browser.newPage()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/newpage) methods.
-- If a new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) needs to be created, the existing one must be closed first using the [browserContext.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/close) method.
-- Alongside these changes, the `browser.contexts()` method has been altered to [browser.context()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/context) to retrieve the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext).
+- A new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) can be created either with the [browser.newContext()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/newcontext) or [browser.newPage()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/newpage) methods.
+- If a new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) needs to be created, the existing one must be closed first using the [browserContext.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/close) method.
+- Alongside these changes, the `browser.contexts()` method has been altered to [browser.context()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/context) to retrieve the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext).
 
-For instance, the code below will not function as intended, as it attempts to execute two simultaneous [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext)s within the same iteration.
+For instance, the code below will not function as intended, as it attempts to execute two simultaneous [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext)s within the same iteration.
 
 {{< code >}}
 
@@ -312,7 +312,7 @@ export default async function () {
 
 {{< /code >}}
 
-On the other hand, the next example will function correctly by closing the initial [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) prior to establishing a new one.
+On the other hand, the next example will function correctly by closing the initial [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) prior to establishing a new one.
 
 {{< code >}}
 

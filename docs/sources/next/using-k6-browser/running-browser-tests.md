@@ -30,7 +30,7 @@ To run a simple local script:
    {{< code >}}
 
    ```javascript
-   import { browser } from 'k6/experimental/browser';
+   import { browser } from 'k6/browser';
 
    export const options = {
      scenarios: {
@@ -62,9 +62,9 @@ To run a simple local script:
 
    {{< /code >}}
 
-   The preceding code imports the `browser` [the browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
+   The preceding code imports the `browser` [the browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser)), and uses its `newPage` method to open a new page.
 
-   After getting the page, you can interact with it using the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page.
+   After getting the page, you can interact with it using the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page) methods. This example visits a test URL and takes a screenshot of the page.
 
    Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
 
@@ -106,7 +106,7 @@ To run a simple local script:
 
    {{< /code >}}
 
-   You can also use [the browser module options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
+   You can also use [the browser module options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
 
    {{< code >}}
 
@@ -169,20 +169,20 @@ To run a simple local script:
 
 ## Interact with elements on your webpage
 
-You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator) object, which you can later use to interact with the element.
+You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator) object, which you can later use to interact with the element.
 
 To find out which selectors the browser module supports, check out [Selecting Elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements).
 
 {{% admonition type="note" %}}
 
-You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator).
+You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator).
 
 {{% /admonition %}}
 
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -235,7 +235,7 @@ To avoid timing errors or other race conditions in your script, if you have acti
 
 ```javascript
 import { check } from 'k6';
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -300,7 +300,7 @@ Keep in mind that there is an additional performance overhead when it comes to s
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6';
 import http from 'k6/http';
 
