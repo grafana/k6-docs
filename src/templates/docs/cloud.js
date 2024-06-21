@@ -33,6 +33,7 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Cloud"
+        canonicalUrl={SeoMetaData.cloud.data.canonicalUrl}
       >
         <PageInfo title={'k6 Cloud documentation'} />
         <div className={`${docPageContent.inner}`}>

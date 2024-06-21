@@ -37,6 +37,7 @@ export default {
   'bundle-builder': {
     data: {
       title: 'k6 Bundle Builder',
+      canonicalUrl: 'https://grafana.com/docs/k6/latest/extensions/explore/',
       description:
         'Easily create your own bespoke k6 binary with all the extensions you want to run using the bundle builder and xk6.',
     },
@@ -69,6 +70,7 @@ export default {
     data: {
       title:
         'Documentación de k6 - Herramienta Open Source de Pruebas de Carga',
+      canonicalUrl: 'https://grafana.com/docs/k6/latest/',
       description:
         'La documentación de k6 le ayudará a ejecutar sus pruebas de rendimiento correctamente. Aprenda y comience rápidamente a efectuar sus tests de carga y rendimiento',
     },

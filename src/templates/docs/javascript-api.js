@@ -117,6 +117,7 @@ const JavascriptAPI = ({
         path="/javascript-api/"
         pageVersions={pageVersions}
         sectionName="k6 API"
+        canonicalUrl={SeoMetaData['javascript-api'].data.canonicalUrl}
       >
         <PageInfo
           title={'k6 API'}

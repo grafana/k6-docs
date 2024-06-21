@@ -1,5 +1,6 @@
 .wrapper {
-  margin: 140px 0 -145px 0;
+  //margin: 140px 0 -145px 0;
+  margin: 100px 0 -145px 0;
 
   @include sm-down {
     display: flex;

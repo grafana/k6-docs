@@ -65,6 +65,7 @@ const ExploreExtensionsPage = ({
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Extensions"
+        canonicalUrl={SeoMetaData['explore-extensions'].data.canonicalUrl}
       >
         <ExtensionsTitleGroup
           title={'Explore'}

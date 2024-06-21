@@ -252,6 +252,7 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
+  canonicalUrl,
   pageVersions = {},
   sectionName = null,
   path,
@@ -308,7 +309,9 @@ export const DocLayout = ({
 
     if (sidebarRef && sidebarRef.current && sidebarScrollValue) {
       setTimeout(() => {
-        sidebarRef.current.scrollTop = parseInt(sidebarScrollValue, 10);
+        if (sidebarRef && sidebarRef.current && sidebarScrollValue) {
+          sidebarRef.current.scrollTop = parseInt(sidebarScrollValue, 10);
+        }
       }, 0);
     }
   }, [sidebarRef]);
@@ -419,7 +422,11 @@ export const DocLayout = ({
             </div>
           </div>
         </Header>
-        {version && <VersionBanner version={version} versions={pageVersions} />}
+        <VersionBanner
+          canonicalUrl={canonicalUrl}
+          version={version}
+          versions={pageVersions}
+        />
 
         {children}
         <MobileNav

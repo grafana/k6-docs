@@ -46,6 +46,7 @@ const Examples = ({ pageContext: { sidebarTree, navLinks } }) => {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Examples"
+        canonicalUrl={SeoMetaData.examples.data.canonicalUrl}
       >
         <PageInfo
           title={'Examples & Tutorials'}
