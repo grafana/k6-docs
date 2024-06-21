@@ -20,7 +20,7 @@ To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to 
 
 ![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
 
-Additionally, k6 also has experimental support for esbuild, to transpile TypeScript (TS) code and to support most ES6+ features.    
+Additionally, k6 also has experimental support for esbuild, to transpile TypeScript (TS) code and to support most ES6+ features.
 
 Some users prefer to bundle their test code outside k6. For this reason, k6 offers three JavaScript compatibility modes:
 
@@ -31,7 +31,7 @@ Some users prefer to bundle their test code outside k6. For this reason, k6 offe
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
 | Env                     | CLI                    | Code / Config file | Default      |
-|-------------------------|------------------------|--------------------|--------------|
+| ----------------------- | ---------------------- | ------------------ | ------------ |
 | `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
 
 ## Extended mode
@@ -55,11 +55,11 @@ Currently, the k6 Babel transformation only adds ESM support and sets `global` (
 {{< code >}}
 
 ```cli
-$ k6 run --compatibility-mode=experimental_enhanced script.js
+$ k6 run --compatibility-mode=experimental_enhanced script.ts
 ```
 
 ```env
-$ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.js
+$ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.ts
 ```
 
 {{< /code >}}
