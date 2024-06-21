@@ -20,15 +20,18 @@ To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to 
 
 ![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
 
-Some users prefer to bundle their test code outside k6. For this reason, k6 offers two JavaScript compatibility modes:
+Additionally, k6 also has experimental support for esbuild, to transpile TypeScript (TS) code and to support most ES6+ features.    
+
+Some users prefer to bundle their test code outside k6. For this reason, k6 offers three JavaScript compatibility modes:
 
 - [Extended mode](#extended-mode): The default option, supporting ESM and most ES6+ features.
+- [Experimental enhanced mode](#experimental-enhanced-mode): The experimental option, supporting TS and most ES6+ features.
 - [Base mode](#base-mode): Limited to CommonJS, excluding the Babel step.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
 | Env                     | CLI                    | Code / Config file | Default      |
-| ----------------------- | ---------------------- | ------------------ | ------------ |
+|-------------------------|------------------------|--------------------|--------------|
 | `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
 
 ## Extended mode
@@ -46,6 +49,24 @@ $ k6 run script.js
 As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
 
 Currently, the k6 Babel transformation only adds ESM support and sets `global` (node's global variable) with the value of `globalThis`.
+
+## Experimental enhanced mode
+
+{{< code >}}
+
+```cli
+$ k6 run --compatibility-mode=experimental_enhanced script.js
+```
+
+```env
+$ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.js
+```
+
+{{< /code >}}
+
+The experimental enhanced mode is similar to the extended mode, but it uses esbuild instead of Babel to transpile TypeScript (TS) code and to support most ES6+ features.
+
+TypeScript support is partial as it removes the type information but does not provide type safety.
 
 ## Base mode
 
