@@ -1,13 +1,13 @@
 ---
 aliases:
   - ./javascript-compatibility-mode/ # /docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode/
-title: JavaScript compatibility mode
-menuTitle: JavaScript mode
-excerpt: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
+title: JavaScript and TypeScript compatibility mode
+menuTitle: JavaScript and TypeScript mode
+excerpt: 'k6 supports running test scripts with different ECMAScript and TypeScript compatibility modes using --compatibility-mode'
 weight: 19
 ---
 
-# JavaScript compatibility mode
+# JavaScript and TypeScript compatibility mode
 
 You can write k6 scripts in various ECMAScript versions:
 
