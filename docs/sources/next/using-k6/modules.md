@@ -355,10 +355,7 @@ $ k6 run dist/signup.bundle.js \
 
 ## Use TypeScript
 
-k6 does not natively support TypeScript. If you wish to write k6 tests in Typescript, you will need a bundler, as demonstrated in the previous examples:
-
-- Using Webpack: Refer to [k6-template-typescript](https://github.com/grafana/k6-template-typescript) and [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws).
-- Using Rollup: Apply the [@rollup/plugin-typescript](https://github.com/rollup/plugins/tree/master/packages/typescript) to the [k6-rollup-example](https://github.com/grafana/k6-rollup-example).
+k6 supports partial TypeScript support with the `experimental_enhanced` compatibility mode. For more details, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
 
 ## Use modules with Docker
 
