@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ./javascript-compatibility-mode/ # /docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode/
 title: JavaScript compatibility mode
 menuTitle: JavaScript mode
 excerpt: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
