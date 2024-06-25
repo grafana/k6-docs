@@ -30,7 +30,10 @@ weight: 10
 {{< code >}}
 
 ```javascript
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.12.3/secrets-manager.js';
+import {
+  AWSConfig,
+  SecretsManagerClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
