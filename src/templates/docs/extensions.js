@@ -31,6 +31,7 @@ const Extensions = ({ pageContext: { sidebarTree, navLinks } }) => {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Extensions"
+        canonicalUrl={SeoMetaData.extensions.data.canonicalUrl}
       >
         <PageInfo
           title={'k6 Extensions'}

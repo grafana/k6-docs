@@ -61,6 +61,7 @@ const GuidesContent = ({
       locale={locale}
       pageTranslations={guidesTranslations}
       sectionName="Guides"
+      canonicalUrl={SeoMetaData.guides.data.canonicalUrl}
     >
       <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
