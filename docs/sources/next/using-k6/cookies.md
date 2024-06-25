@@ -6,7 +6,7 @@ weight: 09
 
 # Cookies
 
-HTTP Cookies are used by web sites and apps to store pieces of stateful information on user devices.
+HTTP Cookies are used by websites and apps to store pieces of stateful information on user devices.
 Through the `Set-Cookie` HTTP header, a server tells a client what information it wants stored on the user machine.
 
 The user's browser stores the cookie data and associates it with the hostname of the server.
