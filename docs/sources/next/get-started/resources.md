@@ -14,8 +14,7 @@ These resources help you write and run k6 tests in a safe environment and explor
 
 ## Learning
 
-- [Get started with k6 tutorial](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6). The getting started tutorial provides some procedures for common real-life uses of k6 and does not require prior knowledge of k6 or JavaScript
-
+- [Get started with k6 tutorial](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6). The getting started tutorial provides some procedures for common real-life uses of k6 and does not require prior knowledge of k6 or JavaScript.
 - [k6 Learn](https://github.com/grafana/k6-learn). A repository with a course and a ton of learning resources.
 - [k6 OSS workshop](https://github.com/grafana/k6-oss-workshop). A 2-3 hour k6 workshop with practical k6 examples using the QuickPizza demo app.
 - [k6 YouTube channel](https://www.youtube.com/playlist?list=PLDGkOdUX1UjrZM3lIHvFcKJxVgl2n4J65). Office hours, specific playlists, and other interesting videos from the community.
@@ -43,5 +42,5 @@ Note that these are shared testing environments - please avoid high-load tests. 
 - [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribute test execution across a Kubernetes cluster.
 - [xk6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions). Custom k6 binaries to support the tool you need.
 - [The browser recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder). Make test scripts from browser sessions.
-- [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)
+- [Use TypeScript in k6 scripts](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/)
 - [Integrations](https://grafana.com/docs/k6/<K6_VERSION>/misc/integrations)

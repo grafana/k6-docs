@@ -1,13 +1,13 @@
 ---
-title: JavaScript compatibility mode
-menuTitle: JavaScript mode
-excerpt: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
-_build:
-  list: false
+aliases:
+  - ./javascript-compatibility-mode/ # /docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode/
+title: JavaScript and TypeScript compatibility mode
+menuTitle: JavaScript and TypeScript mode
+excerpt: 'k6 supports running test scripts with different ECMAScript and TypeScript compatibility modes using --compatibility-mode'
 weight: 19
 ---
 
-# JavaScript compatibility mode
+# JavaScript and TypeScript compatibility mode
 
 You can write k6 scripts in various ECMAScript versions:
 
@@ -20,9 +20,12 @@ To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to 
 
 ![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
 
-Some users prefer to bundle their test code outside k6. For this reason, k6 offers two JavaScript compatibility modes:
+Additionally, k6 also has experimental support for [esbuild](https://esbuild.github.io/), to transpile TypeScript (TS) code and to support most ES6+ features.
+
+Some users prefer to bundle their test code outside k6. For this reason, k6 offers three JavaScript compatibility modes:
 
 - [Extended mode](#extended-mode): The default option, supporting ESM and most ES6+ features.
+- [Experimental enhanced mode](#experimental-enhanced-mode): The experimental option, supporting TS and most ES6+ features.
 - [Base mode](#base-mode): Limited to CommonJS, excluding the Babel step.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
@@ -46,6 +49,24 @@ $ k6 run script.js
 As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
 
 Currently, the k6 Babel transformation only adds ESM support and sets `global` (node's global variable) with the value of `globalThis`.
+
+## Experimental enhanced mode
+
+{{< code >}}
+
+```cli
+$ k6 run --compatibility-mode=experimental_enhanced script.ts
+```
+
+```env
+$ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.ts
+```
+
+{{< /code >}}
+
+The experimental enhanced mode is similar to the extended mode, but it uses [esbuild](https://esbuild.github.io/) instead of Babel to transpile TypeScript (TS) code and to support most ES6+ features.
+
+TypeScript support is partial as it removes the type information but doesn't provide type safety.
 
 ## Base mode
 

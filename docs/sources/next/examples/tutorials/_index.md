@@ -12,7 +12,7 @@ weight: 26
 - [Swagger/OpenAPI integration](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6)
 - [Schedule k6 tests with cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6)
 - [Load test a GraphQL service](https://k6.io/blog/load-testing-graphql-with-k6)
-- [Use TypeScript in k6 scripts](https://github.com/k6io/template-typescript)
+- [Use TypeScript in k6 scripts](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/)
 - [Debug using a Web Proxy](https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/)
 - [Distributed k6 tests on K8s](https://k6.io/blog/running-distributed-tests-on-k8s/)
 - [Create a k6 extension](https://k6.io/blog/extending-k6-with-xk6)
