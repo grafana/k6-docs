@@ -13,12 +13,6 @@ Follow along to learn how to:
 3. Wait for page navigation
 4. Run both browser-level and protocol-level tests in a single script
 
-{{% admonition type="note" %}}
-
-With these example snippets, you'll run the test locally with your machine's resources. The browser module is not available within k6 cloud as of yet.
-
-{{% /admonition %}}
-
 ## Run a test
 
 To run a simple local script:
