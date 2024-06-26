@@ -1,7 +1,7 @@
 ---
 title: 'uncheck(selector[, options])'
 excerpt: 'Browser module: page.uncheck(selector[, options]) method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/uncheck/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/uncheck/
 ---
 
 <Blockquote mod="warning" title="">
