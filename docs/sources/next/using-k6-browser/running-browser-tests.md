@@ -70,7 +70,7 @@ To run a simple local script:
 
    {{% admonition type="note" %}}
 
-   Starting from v0.52.0 the browser module API has been converted to an asynchronous API. This means that most of the methods now return promises. See the [migration guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-52/) to learn more about the changes and how to update your scripts.
+   Starting from v0.52.0 the browser module API has been converted to an asynchronous API. That means that most of the methods now return promises. Refer to the [migration guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-52/) to learn more about the changes and how to update your scripts.
 
    {{% /admonition %}}
 
