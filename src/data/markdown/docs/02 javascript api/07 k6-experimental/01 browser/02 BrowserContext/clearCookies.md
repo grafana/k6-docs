@@ -1,7 +1,7 @@
 ---
 title: 'clearCookies()'
 excerpt: 'Clears context cookies.'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/browsercontext/clearcookies/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/clearcookies/
 ---
 
 Clears the `BrowserContext`'s cookies.
