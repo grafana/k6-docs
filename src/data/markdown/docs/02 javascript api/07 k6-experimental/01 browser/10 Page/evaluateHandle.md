@@ -1,7 +1,7 @@
 ---
 title: 'evaluateHandle(pageFunction[, arg])'
 excerpt: 'Browser module: page.evaluateHandle(pageFunction[, arg]) method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/evaluatehandle/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/evaluatehandle/
 ---
 
 Returns the value of the `pageFunction` invocation as a [JSHandle](/javascript-api/k6-experimental/browser/jshandle/). 

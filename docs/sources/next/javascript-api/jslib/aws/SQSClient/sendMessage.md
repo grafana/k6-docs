@@ -40,7 +40,10 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.12.3/sqs.js';
+import {
+  AWSConfig,
+  SQSClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/sqs.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

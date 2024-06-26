@@ -1,7 +1,7 @@
 ---
 title: 'on(event, handler)'
 excerpt: 'Browser module: page.on method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/on/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/on/
 ---
 
 Registers a handler to be called whenever the specified event occurs.
