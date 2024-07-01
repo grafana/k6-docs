@@ -77,9 +77,9 @@ The `K6` CRD has been replaced by the `TestRun` CRD and will be deprecated in th
 
 {{< /admonition >}}
 
-## Namespaced deployment
+## Watch namespace
 
-By default, the k6 Operator watches `TestRun` and `PrivateLoadZone` custom resources in all namespaces. You can also configure the k6 Operator to watch a specific namespace by setting the `WATCH_NAMESPACE` environment variable for the operator's deployment:
+By default, the k6 Operator watches the `TestRun` and `PrivateLoadZone` custom resources in all namespaces. You can also configure the k6 Operator to watch a specific namespace by setting the `WATCH_NAMESPACE` environment variable for the operator's deployment:
 
 ```yaml
 apiVersion: apps/v1
