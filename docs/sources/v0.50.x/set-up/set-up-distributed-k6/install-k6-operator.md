@@ -98,3 +98,17 @@ spec:
               value: 'some-ns'
 # ...
 ```
+
+## Uninstall k6 Operator
+
+You can remove all of the resources created by the k6 Operator with `bundle`:
+
+```bash
+curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl delete -f -
+```
+
+Or with the `make` command:
+
+```bash
+make delete
+```
