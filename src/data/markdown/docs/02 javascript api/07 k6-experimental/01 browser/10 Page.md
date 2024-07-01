@@ -1,7 +1,7 @@
 ---
 title: "Page"
 excerpt: "Browser module: Page Class"
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/
 ---
 
 Page provides methods to interact with a single tab in a running web browser. A single [BrowserContext](https://k6.io/docs/javascript-api/k6-experimental/browser/browsercontext/) can have many `pages`.

@@ -1,7 +1,7 @@
 ---
 title: 'setViewportSize(viewportSize)'
 excerpt: 'Browser module: page.setViewportSize(viewportSize) method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/setviewportsize/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/setviewportsize/
 ---
 
 This will update the page's width and height.

@@ -525,8 +525,8 @@ If the API is in an internal or restricted environment, you can use k6 to test i
 
 - Run the test from your private network using the k6 run command or the [Kubernetes operator](https://github.com/grafana/k6-operator). Optionally, store the test results in [k6 Cloud](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud) or other [external services](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/).
 - For cloud tests:
-  - [Open your firewall](https://grafana.com/docs/grafana-cloud/k6/reference/cloud-ips/) for cloud test traffic.
-  - Run the cloud test from your [Kubernetes clusters](https://grafana.com/docs/grafana-cloud/k6/author-run/private-load-zone-v2/).
+  - [Open your firewall](https://grafana.com/docs/grafana-cloud/testing/k6/reference/cloud-ips/) for cloud test traffic.
+  - Run the cloud test from your [Kubernetes clusters](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/).
 
 ## Supplementary tools
 

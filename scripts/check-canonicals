@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+
+function usage {
+  cat <<EOF
+Find all canonicalURL front matter values in all Markdown files from a directory and verify they return an OK status code.
+
+Usage:
+  $0 <PATH>
+
+Examples:
+  $0 src/data/markdown
+EOF
+}
+
+
+if [[ $# -ne 1 ]]; then
+  usage
+  exit 1
+fi
+
+errors=0
+find "$1" -type f -name '*.md' -exec grep -H '^canonicalUrl: ' {} \; | while IFS= read -r line; do
+  file="$(echo "${line}" | cut -d: -f1)"
+  url="$(echo "${line}" | cut -d: -f2- | cut -d' ' -f2)"
+  status="$(curl -X HEAD -s -o /dev/null -w '%{http_code}' "${url}")"
+
+  if [[ "${status}" -ne 200 ]]; then
+    echo "ERROR: ${file}: ${url} returned status ${status}"
+    errors=$((errors + 1))
+    else
+    echo "OK: ${file}: ${url} returned status ${status}" >&2
+  fi
+
+  sleep 0.1
+done

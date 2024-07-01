@@ -6,7 +6,7 @@ weight: 00
 
 # Grafana Cloud k6
 
-Besides [running cloud tests](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#execution-modes), you can also run a test locally and stream the results to [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/#run-locally-and-stream-to-the-cloud).
+Besides [running cloud tests](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#execution-modes), you can also run a test locally and stream the results to [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/get-started/run-cloud-tests-from-the-cli/#run-locally-and-stream-to-the-cloud).
 
 When streaming the results to the cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the cloud-based solution. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
@@ -24,7 +24,7 @@ In all cases you'll be able to see your test results at [k6 Cloud](https://app.k
 {{% admonition type="caution" %}}
 
 Data storage and processing are primary cloud costs,
-so `k6 run --out cloud` will consume VUh or test runs from your subscription.
+so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
 {{% /admonition %}}
 
@@ -36,7 +36,7 @@ so `k6 run --out cloud` will consume VUh or test runs from your subscription.
 
    With the `k6 login cloud` command, you can set up your API token on the k6 machine to authenticate against the cloud service.
 
-   Copy your token from [k6 Cloud](https://app.k6.io/account/api-token) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/tokens-and-cli-authentication/) and pass it as:
+   Copy your token from [k6 Cloud](https://app.k6.io/account/api-token) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/) and pass it as:
 
    {{< code >}}
 

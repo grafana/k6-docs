@@ -1,7 +1,7 @@
 ---
 title: 'locator(selector)'
 excerpt: 'Browser module: page.locator(selector) method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/locator/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/locator/
 ---
 
 The method returns an element [Locator](/javascript-api/k6-experimental/browser/locator/). Locators resolve to the element when the action takes place, which means locators can span over navigations where the underlying dom changes.

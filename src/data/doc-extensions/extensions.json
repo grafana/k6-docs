@@ -167,21 +167,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-wamp",
-      "description": "Add support for WAMP protocol",
-      "url": "https://github.com/vvarp/xk6-wamp",
-      "logo": "",
-      "author": {
-        "name": "Maciek Szczesniak",
-        "url": "https://github.com/vvarp"
-      },
-      "stars": "2",
-      "type": ["JavaScript"],
-      "categories": ["Protocol"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-mqtt",
       "description": "mqtt extension",
       "url": "https://github.com/pmalhaire/xk6-mqtt",
@@ -208,21 +193,6 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-url",
-      "description": "Parse and normalize URLs",
-      "url": "https://github.com/dgzlopes/xk6-url",
-      "logo": "",
-      "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
-      },
-      "stars": "4",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
     },
@@ -284,21 +254,6 @@
       "type": ["Output"],
       "categories": ["Data"],
       "tiers": ["Official"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-pubsub",
-      "description": "Google PubSub",
-      "url": "https://github.com/olvod/xk6-pubsub",
-      "logo": "",
-      "author": {
-        "name": "Oleksii Vodotyiets",
-        "url": "https://github.com/olvod"
-      },
-      "stars": "5",
-      "type": ["JavaScript"],
-      "categories": ["Messaging"],
-      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -388,36 +343,6 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-crypto",
-      "description": "Use extended crypto functions",
-      "url": "https://github.com/szkiba/xk6-crypto",
-      "logo": "",
-      "author": {
-        "name": "Iván Szkiba",
-        "url": "https://github.com/szkiba"
-      },
-      "stars": "1",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-jose",
-      "description": "Javascript Object Signing and Encryption (JOSE) standards",
-      "url": "https://github.com/szkiba/xk6-jose",
-      "logo": "",
-      "author": {
-        "name": "Iván Szkiba",
-        "url": "https://github.com/szkiba"
-      },
-      "stars": "5",
-      "type": ["JavaScript"],
-      "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
     },
@@ -602,21 +527,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-avro",
-      "description": "Work with messages using Avro data format",
-      "url": "https://github.com/xvzf/xk6-avro",
-      "logo": "",
-      "author": {
-        "name": "Matthias Riegler",
-        "url": "https://github.com/xvzf"
-      },
-      "stars": "",
-      "type": ["JavaScript"],
-      "categories": ["Messaging", "Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-tcp",
       "description": "Send data to TCP port",
       "url": "https://github.com/NAlexandrov/xk6-tcp",
@@ -673,21 +583,6 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Authentication"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-output-error",
-      "description": "Add more information into StdErr k6 about requests",
-      "url": "https://github.com/tinkoff/xk6-output-error",
-      "logo": "",
-      "author": {
-        "name": "Maksimall89",
-        "url": "https://github.com/maksimall89"
-      },
-      "stars": "2",
-      "type": ["JavaScript"],
-      "categories": ["Reporting"],
       "tiers": ["Community"],
       "cloudEnabled": false
     },

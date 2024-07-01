@@ -1,7 +1,7 @@
 ---
 title: 'waitForEvent(event[, optionsOrPredicate])'
 excerpt: 'Waits for event to fire and passes its value into the predicate function.'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/browsercontext/waitforevent/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/waitforevent/
 ---
 
 <Blockquote mod="attention">

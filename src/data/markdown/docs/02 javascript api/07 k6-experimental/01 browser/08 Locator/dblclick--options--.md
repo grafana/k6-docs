@@ -1,7 +1,7 @@
 ---
 title: 'dblclick([options])'
 excerpt: 'Browser module: locator.dblclick method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/locator/dblclick/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/dblclick/
 ---
 
 <Blockquote mod="attention">

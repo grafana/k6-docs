@@ -1,28 +1,18 @@
 import React from 'react';
-import { LATEST_VERSION } from 'utils/versioning';
+// import { LATEST_VERSION } from 'utils/versioning';
 
 import styles from './version-banner.module.scss';
 
-export const VersionBanner = ({ version, versions }) => (
+export const VersionBanner = ({ canonicalUrl }) => (
   <div className={styles.wrapper}>
     <div className={'container'}>
       <div className={styles.inner}>
         <span className={styles.message}>
-          ⚠️ This is the archived documentation for k6 <b>{version}</b>.
-          {typeof versions[LATEST_VERSION] !== 'undefined' && (
-            <span>
-              {' '}
-              Go to the{' '}
-              <a
-                href="https://grafana.com/docs/k6/latest/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                latest version
-              </a>
-              .
-            </span>
-          )}
+          ⚠️ This documentation is outdated. Please visit grafana.com for the{' '}
+          <a href={canonicalUrl || 'https://grafana.com/docs/k6/latest/'}>
+            latest k6 documentation
+          </a>
+          .📚
         </span>
       </div>
     </div>

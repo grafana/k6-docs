@@ -13,8 +13,8 @@ It's common to import modules, or parts of modules, to use in your test scripts.
 In k6, you can import different kinds of modules:
 
 - [Built-in modules](#built-in-modules)
-- [Local filesystem modules](#local-filesystem-modules)
-- [Remote HTTP(S) modules](#remote-https-modules)
+- [Local filesystem modules](#local-modules)
+- [Remote HTTP(S) modules](#remote-modules)
 - [Extension modules](#extension-modules)
 
 ### Built-in modules

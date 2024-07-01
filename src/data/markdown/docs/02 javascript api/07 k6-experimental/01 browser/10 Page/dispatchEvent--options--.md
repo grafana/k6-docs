@@ -1,7 +1,7 @@
 ---
 title: 'dispatchEvent(selector, type, eventInit[, options])'
 excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
-canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/browser/page/dispatchevent/
+canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/dispatchevent/
 ---
 
 <Blockquote mod="warning" title="">
