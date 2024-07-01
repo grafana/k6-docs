@@ -11,7 +11,7 @@ The only options that are required as part of the `TestRun` CRD spec are `script
 
 ## Parallelism
 
-`parallelism` defines how many instances of k6 runners you want to create. Each instance is assigned an equal execution segment. For instance, if your test script is configured to run 200 VUs and `parallelism` is set to 4, the k6-operator creates four k6 jobs, each running 50 VUs to achieve the desired VU count.
+`parallelism` defines how many instances of k6 runners you want to create. Each instance is assigned an equal execution segment. For instance, if your test script is configured to run 200 VUs and `parallelism` is set to 4, the k6 Operator creates four k6 jobs, each running 50 VUs to achieve the desired VU count.
 
 ## Separate
 

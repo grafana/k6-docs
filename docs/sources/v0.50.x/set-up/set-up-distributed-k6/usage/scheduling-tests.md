@@ -5,7 +5,7 @@ title: Schedule k6 tests
 
 # Schedule k6 tests
 
-While the k6-operator doesn't support scheduling k6 tests directly, you can schedule tests with the `CronJob` object from Kubernetes directly. The `CronJob` would run on a schedule and execute the creation and deletion of the `TestRun` object.
+While the k6 Operator doesn't support scheduling k6 tests directly, you can schedule tests with the `CronJob` object from Kubernetes directly. The `CronJob` would run on a schedule and execute the creation and deletion of the `TestRun` object.
 
 Running these tests requires a little more setup than a standalone test run.
 

@@ -12,7 +12,7 @@ A couple of reasons why you might want to do this:
 - You run your application in Kubernetes and would like k6 to be executed in the same fashion as all your other infrastructure components.
 - You want to run your tests within your private network for security and/or privacy reasons.
 
-[k6 operator](https://github.com/grafana/k6-operator) is a Kubernetes operator that you can use to run distributed k6 tests in your cluster.
+[k6 Operator](https://github.com/grafana/k6-operator) is a Kubernetes operator that you can use to run distributed k6 tests in your cluster.
 
 This section includes the following topics:
 

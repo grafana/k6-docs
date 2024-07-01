@@ -148,7 +148,7 @@ spec:
 
 ## Run tests
 
-Tests are executed by applying the custom resource `TestRun` to a cluster where the k6-operator is running. Additional optional properties of the `TestRun` CRD allow you to control some key aspects of a distributed execution. For example:
+Tests are executed by applying the custom resource `TestRun` to a cluster where the k6 Operator is running. Additional optional properties of the `TestRun` CRD allow you to control some key aspects of a distributed execution. For example:
 
 ```yaml
 # k6-resource.yml
@@ -216,4 +216,4 @@ spec:
   cleanup: 'post'
 ```
 
-With the `cleanup` option set, k6-operator removes the `TestRun` CRD and all created resources once the test run ends.
+With the `cleanup` option set, k6 Operator removes the `TestRun` CRD and all created resources once the test run ends.
