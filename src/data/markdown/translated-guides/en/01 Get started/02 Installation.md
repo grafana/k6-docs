@@ -1,7 +1,7 @@
 ---
 title: 'Installation'
 excerpt: 'k6 has packages for Linux, Mac, and Windows. As alternatives, you can also using a Docker container or a standalone binary.'
-canonicalUrl: https://grafana.com/docs/k6/latest/get-started/installation/
+canonicalUrl: https://grafana.com/docs/k6/latest/set-up/install-k6/
 ---
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.

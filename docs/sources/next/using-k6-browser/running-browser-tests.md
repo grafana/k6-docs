@@ -64,7 +64,7 @@ To run a simple local script:
 
    {{% admonition type="note" %}}
 
-   To provide rough compatibility with the Playwright API, the browser module API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `await` keyword is used to deal with the asynchronous nature of the operation.
+   Starting from v0.52.0 the browser module API has been converted to an asynchronous API. That means that most of the methods now return promises. Refer to the [migration guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-52/) to learn more about the changes and how to update your scripts.
 
    {{% /admonition %}}
 
@@ -138,7 +138,7 @@ To run a simple local script:
 
    {{% /admonition %}}
 
-1. Optional step: running browser tests in Docker on M1/M2 Macs
+1. Optional step: running browser tests in Docker on Mac computers with Apple Silicon:
 
    1. Make sure you’re running [the latest Docker](https://docs.docker.com/engine/install/) version.
 
@@ -251,21 +251,18 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.goto("https://test.k6.io/my_messages.php");
+    await page.goto('https://test.k6.io/my_messages.php');
 
-    await page.locator('input[name="login"]').type("admin");
-    await page.locator('input[name="password"]').type("123");
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      submitButton.click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
-    const header = await page.locator("h2").textContent();
+    const header = await page.locator('h2').textContent();
     check(header, {
-      header: h => h == "Welcome, admin!",
+      header: (h) => h == 'Welcome, admin!',
     });
   } finally {
     await page.close();
@@ -334,7 +331,7 @@ export async function browserTest() {
 
     const info = await page.locator('#counter-button').textContent();
     check(info, {
-      'checkbox is checked': info => info === 'Thanks for checking the box',
+      'checkbox is checked': (info) => info === 'Thanks for checking the box',
     });
   } finally {
     await page.close();
