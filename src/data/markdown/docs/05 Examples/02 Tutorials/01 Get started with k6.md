@@ -2,6 +2,7 @@
 title: 'Get started with k6'
 excerpt: A series of docs to learn how to use the major features of k6
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/
+redirect: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/
 ---
 
 This tutorial provides some procedures for common real-life uses of k6.

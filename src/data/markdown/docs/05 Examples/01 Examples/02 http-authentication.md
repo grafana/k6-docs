@@ -2,6 +2,7 @@
 title: 'HTTP Authentication'
 excerpt: 'Scripting examples on how to use different authentication or authorization methods in your load test.'
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/http-authentication/
+redirect: https://grafana.com/docs/k6/latest/examples/http-authentication/
 ---
 
 Scripting examples on how to use different authentication or authorization methods in your load test.
