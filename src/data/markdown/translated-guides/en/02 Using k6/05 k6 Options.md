@@ -3,6 +3,7 @@ title: 'Options'
 slug: '/using-k6/k6-options'
 excerpt: 'Options configure test-run behavior. You can set options in multiple locations. Examples for how to use options, and a complete reference.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/k6-options/
+redirect: https://grafana.com/docs/k6/latest/using-k6/k6-options/
 ---
 
 Options configure test-run behavior.
