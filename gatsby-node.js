@@ -1179,7 +1179,10 @@ async function createDocPages({
         reporter,
       }),
     )
-    .map((pageProps) => actions.createPage(pageProps));
+    .map((pageProps) =>
+      // console.log(pageProps.path);
+      actions.createPage(pageProps),
+    );
 }
 
 const createRedirects = ({ actions }) => {
@@ -2099,6 +2102,7 @@ exports.onCreateNode = ({ node, actions }) => {
   // Adding default values for some fields and moving them under node.fields
   // because that how createNodeField works
   if (node.frontmatter) {
+    // console.log('node slug: ' , node.frontmatter.slug);
     createNodeField({
       node,
       name: 'redirect',
