@@ -9,3 +9,5 @@ weight: 100
 # Grafana k6 release notes
 
 {{< section >}}
+
+You can find a full list of release notes in the [k6 GitHub repository](https://github.com/grafana/k6/tree/master/release%20notes).
