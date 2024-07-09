@@ -21,7 +21,7 @@ cards:
       height: 24
     - title: Using k6
       href: ./using-k6/
-      description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more!
+      description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more.
       height: 24
     - title: Testing guides
       href: ./testing-guides/
