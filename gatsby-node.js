@@ -176,19 +176,11 @@ const getPageVersions = (
 const topLevelLinks = [
   {
     label: 'guides',
-    to: '/',
+    to: 'https://grafana.com/docs/k6/latest/',
   },
   {
     label: 'JAVASCRIPT API',
-    to: '/javascript-api/',
-    submenu: [
-      { label: 'k6 API', to: `/javascript-api/` },
-      {
-        label: 'xk6-disruptor',
-        to: `/javascript-api/xk6-disruptor/`,
-      },
-      { label: 'jslib', to: `/javascript-api/jslib/` },
-    ],
+    to: 'https://grafana.com/docs/k6/latest/javascript-api/',
   },
   {
     label: 'Cloud Docs',
@@ -203,15 +195,15 @@ const topLevelLinks = [
   },
   {
     label: 'Extensions',
-    to: '/extensions/',
+    to: 'https://grafana.com/docs/k6/latest/extensions/',
   },
   {
     label: 'Integrations',
-    to: '/integrations/',
+    to: 'https://grafana.com/docs/k6/latest/misc/integrations/',
   },
   {
     label: 'examples',
-    to: '/examples/',
+    to: 'https://grafana.com/docs/k6/latest/examples/',
   },
 ];
 
@@ -1179,7 +1171,10 @@ async function createDocPages({
         reporter,
       }),
     )
-    .map((pageProps) => actions.createPage(pageProps));
+    .map((pageProps) =>
+      // console.log(pageProps.path);
+      actions.createPage(pageProps),
+    );
 }
 
 const createRedirects = ({ actions }) => {
@@ -2099,6 +2094,7 @@ exports.onCreateNode = ({ node, actions }) => {
   // Adding default values for some fields and moving them under node.fields
   // because that how createNodeField works
   if (node.frontmatter) {
+    // console.log('node slug: ' , node.frontmatter.slug);
     createNodeField({
       node,
       name: 'redirect',

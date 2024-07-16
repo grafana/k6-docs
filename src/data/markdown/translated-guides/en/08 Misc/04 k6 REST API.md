@@ -4,6 +4,8 @@ excerpt: 'With this API you can see and control different execution aspects like
 number of VUs, pause or resume the test, list groups, set and get the
 setup data and more.'
 hideFromSidebar: true
+canonicalUrl: https://grafana.com/docs/k6/latest/misc/k6-rest-api/
+redirect: https://grafana.com/docs/k6/latest/misc/k6-rest-api/
 ---
 
 When k6 starts, it spins up an HTTP server with a REST API that can be used to control some

@@ -2,6 +2,8 @@
 title: JavaScript Compatibility Mode
 excerpt: 'k6 supports running test scripts with different ECMAScript compatibility modes using --compatibility-mode'
 hideFromSidebar: true
+canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/javascript-typescript-compatibility-mode/
+redirect: https://grafana.com/docs/k6/latest/using-k6/javascript-typescript-compatibility-mode/
 ---
 
 You can run test scripts with different ECMAScript compatibility modes with the
