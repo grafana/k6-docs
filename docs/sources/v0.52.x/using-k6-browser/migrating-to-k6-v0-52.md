@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ./migrating-to-k6-v0-46/ # docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-46
 title: 'Migrating browser scripts to k6 v0.52'
 description: 'A migration guide to ease the process of transitioning to the new k6 browser module version bundled with k6 v0.52'
 weight: 04
@@ -307,6 +309,10 @@ check(headerText, {
 ## Groups
 
 A note on [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), they don't work with async APIs either, there is no workaround as of yet. Here's the [GitHub issue](https://github.com/grafana/k6/issues/2728) that you can follow to keep up-to-date with relevant news on a group API that works with async APIs.
+
+## Migrating from k6 v0.45 or below
+
+If you use k6 v0.45 or below, first review [how to migrate to v0.46](https://grafana.com/docs/k6/v0.51.x/migrating-to-k6-v0-46). This guide details the breaking changes introduced in v0.46 for the `browser` APIs and provides instructions on how to migrate to them.
 
 # Where to get extra help
 
