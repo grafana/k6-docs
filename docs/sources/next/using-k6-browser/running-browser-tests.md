@@ -329,7 +329,7 @@ export async function browserTest() {
 
     await page.locator('#checkbox1').check();
 
-    const info = await page.locator('#counter-button').textContent();
+    const info = await page.locator('#checkbox-info-display').textContent();
     check(info, {
       'checkbox is checked': (info) => info === 'Thanks for checking the box',
     });
