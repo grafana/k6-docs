@@ -15,7 +15,7 @@ export const OutdatedBlockquote = () => (
         to view the latest version of the k6 documentation.
         <br />
         <br />
-        The page is still available for users to be able to view the{' '}
+        This page is still available for users to be able to view the{' '}
         <a className="link" href="https://k6.io/docs/cloud/">
           k6 Cloud documentation
         </a>
