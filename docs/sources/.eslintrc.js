@@ -41,5 +41,9 @@ module.exports = {
     __ITER: 'readonly',
     open: 'readonly',
     window: 'readonly',
+    setInterval: 'readonly',
+    clearInterval: 'readonly',
+    setTimeout: 'readonly',
+    clearTimeout: 'readonly',
   },
 };
