@@ -72,3 +72,7 @@ The following specific error codes are currently defined:
 {{< docs/shared source="k6" lookup="javascript-api/k6-errors-list.md" version="<K6_VERSION>" >}}
 
 Read more about [Error codes](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/error-codes).
+
+## jslib
+
+{{< docs/shared source="k6" lookup="javascript-api/jslib.md" version="<K6_VERSION>" >}}
