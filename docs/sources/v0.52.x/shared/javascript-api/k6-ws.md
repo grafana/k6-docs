@@ -2,7 +2,7 @@
 title: javascript-api/k6-ws
 ---
 
-The ws module provides a [WebSocket](https://en.wikipedia.org/wiki/WebSocket) client implementing the [WebSocket protocol](http://www.rfc-editor.org/rfc/rfc6455.txt).
+The [`k6/ws` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws) provides a [WebSocket](https://en.wikipedia.org/wiki/WebSocket) client implementing the [WebSocket protocol](http://www.rfc-editor.org/rfc/rfc6455.txt).
 
 | Function                                                                                                  | Description                                                                                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

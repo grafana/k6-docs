@@ -2,7 +2,7 @@
 title: javascript-api/k6-http
 ---
 
-The k6/http module contains functionality for performing HTTP transactions.
+The [`k6/http` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) contains functionality for performing HTTP transactions.
 
 | Function                                                                                                                       | Description                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |

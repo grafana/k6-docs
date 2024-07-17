@@ -2,7 +2,7 @@
 title: javascript-api/k6-encoding
 ---
 
-The encoding module provides [base64](https://en.wikipedia.org/wiki/Base64)
+The [`k6/encoding` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-encoding) provides [base64](https://en.wikipedia.org/wiki/Base64)
 encoding/decoding as defined by [RFC4648](https://tools.ietf.org/html/rfc4648).
 
 | Function                                                                                                                 | Description             |

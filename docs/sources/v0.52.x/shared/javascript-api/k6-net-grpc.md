@@ -2,7 +2,7 @@
 title: javascript-api/k6-net-grpc
 ---
 
-The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
+The [`k6/net/grpc` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc) provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
 | Class/Method                                                                                                                                 | Description                                                                                                                                                                         |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

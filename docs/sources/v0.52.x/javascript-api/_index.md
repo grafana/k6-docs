@@ -23,8 +23,6 @@ Please see the [Browser API](https://grafana.com/docs/k6/<K6_VERSION>/javascript
 
 ## k6/crypto
 
-{{< docs/shared source="k6" lookup="crypto-module.md" version="<K6_VERSION>" >}}
-
 {{< docs/shared source="k6" lookup="javascript-api/k6-crypto.md" version="<K6_VERSION>" >}}
 
 ## k6/data
@@ -40,6 +38,8 @@ Please see the [Browser API](https://grafana.com/docs/k6/<K6_VERSION>/javascript
 {{< docs/shared source="k6" lookup="javascript-api/k6-execution-intro.md" version="<K6_VERSION>" >}}
 
 ## k6/experimental
+
+[`k6/experimental` modules](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental) are stable modules that may introduce breaking changes. Once they become fully stable, they may graduate to become k6 core modules.
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-experimental.md" version="<K6_VERSION>" >}}
 

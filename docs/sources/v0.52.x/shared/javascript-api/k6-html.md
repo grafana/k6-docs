@@ -2,7 +2,7 @@
 title: javascript-api/k6-html
 ---
 
-The k6/html module contains functionality for HTML parsing.
+The [`k6/html` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html) contains functionality for HTML parsing.
 
 | Function                                                                                    | Description                                                                                                                        |
 | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |

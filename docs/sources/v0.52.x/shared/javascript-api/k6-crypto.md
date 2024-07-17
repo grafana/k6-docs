@@ -2,7 +2,7 @@
 title: javascript-api/k6-crypto
 ---
 
-The k6/crypto `module` provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
+The [`k6/crypto` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-crypto) provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
 
 | Function                                                                                                                | Description                                                                                                                  |
 | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |

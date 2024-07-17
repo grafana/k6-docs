@@ -2,10 +2,7 @@
 title: javascript-api/k6-metrics
 ---
 
-The metrics module provides functionality to [create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) of various types.
-All metrics (both the [built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference) and the custom ones) have a type.
-
-You can optionally [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) all values added to a custom metric, which can be useful when analysing the test results.
+The [`k6/metrics` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) provides functionality to [create custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) of various types.
 
 | Metric type                                                                           | Description                                                                                   |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
