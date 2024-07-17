@@ -2,7 +2,6 @@
 title: 'HTML Forms'
 excerpt: 'Scripting example on how to handle HTML forms in a k6 test.'
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/html-forms/
-redirect: https://grafana.com/docs/k6/latest/examples/html-forms/
 ---
 
 Scripting example on how to handle HTML forms.

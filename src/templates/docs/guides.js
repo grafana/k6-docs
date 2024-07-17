@@ -1,8 +1,13 @@
 import classNames from 'classnames';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { WhatIs } from 'components/pages/doc-welcome';
-import { OutdatedBlockquote } from 'components/pages/doc-welcome/outdated-blockquote';
+import {
+  Features,
+  Manifesto,
+  Quickstart,
+  WhatIs,
+} from 'components/pages/doc-welcome';
+import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
 import { PageInfo } from 'components/shared/page-info';
 import { SEO } from 'components/shared/seo';
@@ -18,7 +23,8 @@ import { flattenSidebarTree } from 'utils/utils';
 const pageInfo = {
   en: {
     title: 'Welcome to the k6 documentation',
-    description: '',
+    description:
+      'This documentation will help you go from a total beginner to a seasoned k6 expert!',
   },
   es: {
     title: 'Bienvenido a la documentación de k6',
@@ -60,9 +66,12 @@ const GuidesContent = ({
       <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
         <div ref={contentContainerRef} className={stickyContainerClasses}>
-          <OutdatedBlockquote />
+          <Quickstart />
           <WhatIs />
+          <Features />
           <UseCases />
+          <Manifesto />
+          <K6DoesNot />
         </div>
         <DocPageNavigation
           prev={null}

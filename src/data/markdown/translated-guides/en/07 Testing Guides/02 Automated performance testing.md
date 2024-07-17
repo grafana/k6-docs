@@ -3,7 +3,6 @@ title: 'Automated performance testing'
 head_title: 'How to Automate Performance Testing: The k6 Guide'
 excerpt: 'Performance testing automation is about establishing a repeatable and consistent process that checks reliability issues at different stages of the development and release cycle.'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/automated-performance-testing/
-redirect: https://grafana.com/docs/k6/latest/testing-guides/automated-performance-testing/
 ---
 
 

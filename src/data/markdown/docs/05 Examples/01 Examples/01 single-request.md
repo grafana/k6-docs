@@ -3,7 +3,6 @@ title: 'Single request'
 excerpt: 'Example of one HTTP GET request'
 draft: 'false'
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/single-request/
-redirect: https://grafana.com/docs/k6/latest/examples/single-request/
 ---
 
 <CodeGroup labels={["single-request.js"]} lineNumbers={[true]}>

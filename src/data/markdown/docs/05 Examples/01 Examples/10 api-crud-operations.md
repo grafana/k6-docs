@@ -2,7 +2,6 @@
 title: 'API CRUD Operations'
 excerpt: 'This example covers the usage of k6 to test a REST API CRUD operations.'
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/api-crud-operations/
-redirect: https://grafana.com/docs/k6/latest/examples/api-crud-operations/
 ---
 
 The examples showcase the testing of CRUD operations on a REST API. 
