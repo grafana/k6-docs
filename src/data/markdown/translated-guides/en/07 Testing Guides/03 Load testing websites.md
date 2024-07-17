@@ -3,7 +3,6 @@ title: 'Load testing websites'
 head_title: 'How to Load Test a Website: The k6 Guide'
 excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
 canonicalUrl: https://grafana.com/blog/2024/01/30/load-testing-websites/
-redirect: https://grafana.com/blog/2024/01/30/load-testing-websites/
 ---
 
 This doc explains some key concepts about load testing websites, including:

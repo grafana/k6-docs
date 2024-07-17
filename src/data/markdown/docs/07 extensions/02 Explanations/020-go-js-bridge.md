@@ -3,7 +3,6 @@ title: About the Go-to-JS bridge
 excerpt: Technical details about how JavaScript works in the goja engine.
 slug: /extensions/explanations/go-js-bridge
 canonicalUrl: https://grafana.com/docs/k6/latest/extensions/explanations/go-js-bridge/
-redirect: https://grafana.com/docs/k6/latest/extensions/explanations/go-js-bridge/
 ---
 
 All k6 and xk6 binaries have an embedded JavaScript engine, [goja](https://github.com/dop251/goja),

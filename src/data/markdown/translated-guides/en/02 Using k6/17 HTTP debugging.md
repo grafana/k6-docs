@@ -2,8 +2,6 @@
 title: 'HTTP debugging'
 excerpt: "Things don't always work as expected. For those cases there is a handy CLI flag, --http-debug, that is good to be aware of."
 hideFromSidebar: true
-canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/http-debugging/
-redirect: https://grafana.com/docs/k6/latest/using-k6/http-debugging/
 ---
 
 Things don't always work as expected. For those cases, enabling the [--http-debug](/using-k6/k6-options/reference#http-debug) option will log HTTP requests and responses to help you debugging the script.
