@@ -17,7 +17,7 @@ The list of k6 modules natively supported in your k6 scripts.
 
 ## k6/browser
 
-The [`k6/browser` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental) adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
+The [`k6/browser` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental) provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-browser-module.md" version="<K6_VERSION>" >}}
 
