@@ -17,7 +17,7 @@ Implement timers to work with k6's event loop. They mimic the functionality foun
 
 {{% admonition type="note" %}}
 
-The timing methods are available globally, like in other JavaScript runtimes, and it is unnecessary to import them from the `k6/timers` module.
+The timer methods are available globally, so you can use them in your script without including an import statement.
 
 {{% /admonition %}}
 
