@@ -8,8 +8,6 @@ weight: 02
 
 It takes as its arguments the base key, the derivation algorithm to use, and the length of the bits to derive. It returns a Promise which will be fulfilled with an `ArrayBuffer` containing the derived bits. This array of bits can be used as a key for encryption or decryption as a shared secret.
 
-Currently, the only ECDH algorithm is supported.
-
 ## Usage
 
 ```
@@ -18,11 +16,17 @@ deriveBits(algorithm, baseKey, length)
 
 ## Parameters
 
-| Name        | Type                                                                                                                            | Description                                                                                |
-| :---------- | :------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------- |
-| `algorithm` | [`EcdhKeyDeriveParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdhkeyderiveparams/) | An object defining a derivation algorithm to use.                                          |
-| `baseKey`   | [`CryptoKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                      | Represent an input to derivation algorithm. Currently it could be only a private ECDH key. |
-| `length`    | `number`                                                                                                                        | Optional. A length of the bits to derive. Currently, only multiplies of 8 are supported.   |
+| Name        | Type                                                                                                                          | Description                                                                                |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| `algorithm` | [EcdhKeyDeriveParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdhkeyderiveparams/) | An object defining a derivation algorithm to use.                                          |
+| `baseKey`   | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                      | Represent an input to derivation algorithm. Currently it could be only a private ECDH key. |
+| `length`    | `number`                                                                                                                      | Optional. A length of the bits to derive. Currently, only multiplies of 8 are supported.   |
+
+### Supported algorithms
+
+| ECDH                                                                                                                             | HKDF | PBKDF2 |
+| :------------------------------------------------------------------------------------------------------------------------------- | :--- | :----- |
+| ✅ [EcdhKeyDeriveParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdhkeyderiveparams/) | ❌   | ❌     |
 
 ## Return Value
 

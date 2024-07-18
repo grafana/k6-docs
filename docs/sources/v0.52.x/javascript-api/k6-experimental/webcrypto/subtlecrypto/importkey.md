@@ -16,13 +16,21 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 
 ## Parameters
 
-| Name          | Type                                                                                                                                                    | Description                                                                                                                                                                           |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `format`      | `string`                                                                                                                                                | Defines the data format of the key to import. Depending on the algorithm and key type, the data format could vary. Currently supported formats are `raw`, `jwk`, `spki`, and `pkcs8`. |
-| `keyData`     | `ArrayBuffer`, `TypedArray`, `DataView` or [`JsonWebKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/jsonwebkey) | the data to import the key from.                                                                                                                                                      |
-| `algorithm`   | a `string` or object with a single `name` string property                                                                                               | The algorithm to use to import the key. Currently supported algorithms: `AES-CBC`, `AES-GCM`, `AES-CTR`, and `HMAC`.                                                                  |
-| `extractable` | `boolean`                                                                                                                                               | Indicates whether it will be possible to export the key using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey).  |
-| `keyUsages`   | `Array<string>`                                                                                                                                         | An array of strings describing what operations can be performed with the key. Currently supported usages include `encrypt`, `decrypt`, `sign`, and `verify`.                          |
+| Name          | Type                                                                                                                                                  | Description                                                                                                                                                                           |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `format`      | `string`                                                                                                                                              | Defines the data format of the key to import. Depending on the algorithm and key type, the data format could vary. Currently supported formats are `raw`, `jwk`, `spki`, and `pkcs8`. |
+| `keyData`     | `ArrayBuffer`, `TypedArray`, `DataView` or [JsonWebKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/jsonwebkey) | the data to import the key from.                                                                                                                                                      |
+| `algorithm`   | a `string` or object with a single `name` string property                                                                                             | The algorithm to use to import the key.                                                                                                                                               |
+| `extractable` | `boolean`                                                                                                                                             | Indicates whether it will be possible to export the key using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey).  |
+| `keyUsages`   | `Array<string>`                                                                                                                                       | An array of strings describing what operations can be performed with the key. Currently supported usages include `encrypt`, `decrypt`, `sign`, and `verify`.                          |
+
+### Supported algorithms
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-key-methods.md" version="<K6_VERSION>" >}}
+
+### Supported formats
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-key-methods-formats.md" version="<K6_VERSION>" >}}
 
 ## Return Value
 
