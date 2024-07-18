@@ -6,6 +6,8 @@ weight: 01
 
 # instrumentHTTP
 
+{{< docs/shared source="k6" lookup="experimental-tracing-module.md" version="<K6_VERSION>" >}}
+
 The `instrumentHTTP` function instruments the k6 http module with tracing capabilities. It transparently replaces each of the k6 http module functions with versions that automatically attach a trace context to every request. Instrumented functions include [del](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/del),[get](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/get),[head](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head),[options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/options),[patch](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/patch),[post](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post),[put](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/head), and [request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/request).
 
 The `instrumentHTTP` automatically adds tracing information to HTTP requests performed using the `k6/http` module functions (mentioned above).

@@ -6,6 +6,8 @@ weight: 02
 
 # Client
 
+{{< docs/shared source="k6" lookup="experimental-tracing-module.md" version="<K6_VERSION>" >}}
+
 `Client` is an HTTP client constructor that attaches tracing information to its requests. Use it to include a tracing context in HTTP requests so that tracing backends (such as [Grafana Tempo](https://grafana.com/oss/tempo/)) can incorporate their results.
 
 The `Client` class acts as a drop-in replacement for the standard `http` module and attaches a [trace context](https://www.w3.org/TR/trace-context/) to the requests headers, and add a `trace_id` to HTTP-related k6 output's data points metadata. It currently supports the [W3C Trace Context](https://www.w3.org/TR/trace-context/) and [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format) trace context propagation formats. For details about propagation, refer to [About trace contexts](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing#about-trace-contexts).
