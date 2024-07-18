@@ -1,7 +1,7 @@
 ---
 title: 'CryptoKeyPair'
 description: 'CryptoKeyPair represents an asymmetric key pair with public and private keys.'
-weight: 03
+weight: 08
 ---
 
 # CryptoKeyPair

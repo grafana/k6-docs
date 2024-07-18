@@ -2,7 +2,6 @@
 title: 'Crypto'
 description: 'Crypto offers basic cryptography features.'
 weight: 01
-weight: 01
 ---
 
 # Crypto
