@@ -7,7 +7,7 @@ title: Use the k6 Operator with Grafana Cloud k6
 
 Grafana Cloud k6 is the Grafana Cloud offering of k6, which gives you access to all of k6 capabilities, while Grafana handles the infrastructure, storage, and metrics aggregation and insights from your tests.
 
-When using the k6 Operator, you can still leverage Grafana Cloud k6 to get access to the metric analysis that the platform offers.
+When using the k6 Operator, you can still leverage Grafana Cloud k6 to get access to the metric storage and analysis that the platform offers.
 
 There are two ways to use the k6 Operator with Grafana Cloud k6: Private Load Zones and Cloud output.
 

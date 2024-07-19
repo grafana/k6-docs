@@ -5,7 +5,7 @@ title: Use k6 Operator with k6 extensions
 
 # Use k6 Operator with k6 extensions
 
-By default, the k6 operator uses `grafana/k6:latest`, or the latest version of k6, as the container image for the test jobs.
+By default, the k6 Operator uses `ghcr.io/grafana/k6-operator:latest-runner` as the container image for the test jobs.
 
 If you want to use k6 [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) built with [xk6](https://github.com/grafana/xk6), you'll need to create your own image and override the `image` property on the `TestRun` Kubernetes resource.
 

@@ -15,8 +15,7 @@ The only options that are required as part of the `TestRun` CRD spec are `script
 
 ## Separate
 
-`separate: true` indicates that the jobs created need to be distributed across different nodes. This is useful if you're running a
-test with a really high VU count and want to make sure the resources of each node won't become a bottleneck.
+`separate: true` indicates that the jobs created need to be distributed across different nodes. This is useful if you're running a test with a really high VU count and want to make sure the resources of each node won't become a bottleneck.
 
 ## Service account
 
@@ -52,3 +51,7 @@ Defines options for the starter pod. The non-exhaustive list includes:
 
 - Passing in a custom image.
 - Passing in labels and annotations.
+
+## Initializer
+
+By default, the initializer Job is defined with the same options as the runner Jobs, but its options can be overwritten by setting `.spec.initializer`.

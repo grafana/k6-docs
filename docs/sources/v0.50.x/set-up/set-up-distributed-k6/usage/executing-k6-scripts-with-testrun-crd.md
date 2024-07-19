@@ -5,7 +5,7 @@ title: Run k6 scripts with TestRun CRD
 
 # Run k6 scripts with TestRun CRD
 
-This guide covers how you can configure your k6 scripts to run using the k6 operator.
+This guide covers how you can configure your k6 scripts to run using the k6 Operator.
 
 ## Defining test scripts
 
