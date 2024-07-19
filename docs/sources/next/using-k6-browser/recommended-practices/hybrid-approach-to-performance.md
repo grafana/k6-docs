@@ -26,7 +26,7 @@ import { check } from 'k6';
 import { browser } from 'k6/browser';
 import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
-const BASE_URL = __ENV.BASE_URL ? __ENV.BASE_URL : 'https://quickpizza.grafana.com';
+const BASE_URL = __ENV.BASE_URL || 'https://quickpizza.grafana.com';
 
 export const options = {
   scenarios: {
