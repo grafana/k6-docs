@@ -115,7 +115,7 @@ If you save that script to a local file named `test.js`, you can run it with:
 k6 run test.js
 ```
 
-The script also includes a common best practice by defining a `BASE_URL` variable, and using the [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/) value `__ENV.BASE_URL` if it exists. This is useful if you want to use the same script for multiple environments for example, such as staging and production, and you could pass that value to your script with the command:
+The script also includes a common best practice by defining a `BASE_URL` variable, and using the [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/) value `__ENV.BASE_URL` if it exists. This is useful if you want to use the same script for multiple environments, such as staging and production, and you could pass that value to your script with the command:
 
 ```bash
 k6 run -e BASE_URL=https://quickpizza.grafana.com test.js
