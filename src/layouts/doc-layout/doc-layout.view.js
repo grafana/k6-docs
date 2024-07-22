@@ -26,7 +26,7 @@ import {
 } from 'react-cookie-banner';
 import { childrenToList, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
-import { main } from 'utils/urls';
+import { main, app } from 'utils/urls';
 
 import styles from './doc-layout.module.scss';
 import ArrowLeft from './svg/arrow-left.inline.svg';
@@ -378,11 +378,8 @@ export const DocLayout = ({
           <a className={'link'} href={`${main}`}>
             k6.io
           </a>
-          <a
-            className={'link'}
-            href={'https://grafana.com/docs/grafana-cloud/testing/k6/'}
-          >
-            Grafana Cloud k6
+          <a className={'link'} href={`${app}`}>
+            app.k6.io
           </a>
         </div>
       </div>

@@ -2,7 +2,6 @@
 title: 'Testing guides'
 excerpt: 'A series of guides to help you defining your load testing strategies.'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/
-redirect: https://grafana.com/docs/k6/latest/testing-guides/
 ---
 
 

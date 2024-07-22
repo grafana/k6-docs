@@ -1,7 +1,7 @@
 ---
 title: 'AesCtrParams'
 description: 'AesCtrParams represents the object that should be passed as the algorithm parameter into the encrypt and decrypt operation when using the AES-CTR algorithm.'
-weight: 06
+weight: 05
 ---
 
 # AesCtrParams

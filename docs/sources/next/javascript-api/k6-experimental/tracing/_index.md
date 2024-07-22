@@ -7,7 +7,7 @@ weight: 04
 
 # tracing
 
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
+{{< docs/shared source="k6" lookup="experimental-tracing-module.md" version="<K6_VERSION>" >}}
 
 With this experimental module, you can _instrument_ HTTP requests so that they emit traces as the test runs.
 

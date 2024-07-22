@@ -2,7 +2,6 @@
 title: Glossary
 excerpt: 'A list of technical terms commonly used when discussing k6, with definitions.'
 canonicalUrl: https://grafana.com/docs/k6/latest/misc/glossary/
-redirect: https://grafana.com/docs/k6/latest/misc/glossary/
 ---
 
 What we talk about when we talk about k6.

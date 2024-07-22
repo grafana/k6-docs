@@ -9,6 +9,10 @@ weight: 04
 
 With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests, which can then be used by a tracing backend such as [Grafana Tempo](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/integration-with-grafana-cloud-traces/).
 
+## Migration from `k6/experimental/tracing`
+
+This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js'`
+
 ## About trace contexts
 
 A _trace context_ is a set of standardized HTTP headers added to a request that lets a tracing system correlate it with other requests as they navigate through a system. The trace context specifications, such as the supported [W3C Trace Context](https://www.w3.org/TR/trace-context/) and [Jaeger Trace Context](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format), define specific header names and an encoding format for the header values.

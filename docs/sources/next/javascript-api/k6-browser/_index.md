@@ -1,7 +1,7 @@
 ---
 title: 'k6/browser'
 description: 'An overview of the browser-level APIs from browser module.'
-weight: 01
+weight: 02
 ---
 
 # browser

@@ -2,7 +2,6 @@
 title: 'Fine tuning OS'
 excerpt: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
 canonicalUrl: https://grafana.com/docs/k6/latest/set-up/fine-tune-os/
-redirect: https://grafana.com/docs/k6/latest/set-up/fine-tune-os/
 ---
 
 When running large test scripts locally, users sometimes run into limits within their OS that prevent them from making the necessary number of requests to complete the test.

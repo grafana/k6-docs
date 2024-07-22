@@ -18,14 +18,13 @@ The code below shows an example of combining a browser and HTTP test in a single
 
 {{< code >}}
 
-<!-- eslint-disable no-undef  -->
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
-const BASE_URL = __ENV.BASE_URL;
+const BASE_URL = __ENV.BASE_URL || 'https://quickpizza.grafana.com';
 
 export const options = {
   scenarios: {
@@ -72,7 +71,7 @@ export function getPizza() {
   const res = http.post(`${BASE_URL}/api/pizza`, JSON.stringify(restrictions), {
     headers: {
       'Content-Type': 'application/json',
-      'X-User-ID': customers[Math.floor(Math.random() * customers.length)],
+      'X-User-ID': randomIntBetween(1, 30000),
     },
   });
 
@@ -87,9 +86,9 @@ export async function checkFrontend() {
   try {
     await page.goto(BASE_URL);
 
-    const header = await page.locator("h1").textContent();
+    const header = await page.locator('h1').textContent();
     check(header, {
-      header: h => h == "Looking to break out of your pizza routine?",
+      header: (h) => h == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -98,9 +97,9 @@ export async function checkFrontend() {
     ]);
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
-    const recommendation = await page.locator("div#recommendations").textContent();
+    const recommendation = await page.locator('div#recommendations').textContent();
     check(recommendation, {
-      recommendation: (r) => r != "",
+      recommendation: (r) => r != '',
     });
   } finally {
     await page.close();
@@ -108,17 +107,27 @@ export async function checkFrontend() {
 }
 ```
 
-<!-- eslint-enable no-undef  -->
-
 {{< /code >}}
+
+If you save that script to a local file named `test.js`, you can run it with:
+
+```bash
+k6 run test.js
+```
+
+The script also includes a common best practice by defining a `BASE_URL` variable, and using the [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/) value `__ENV.BASE_URL` if it exists. That's useful if you want to use the same script for multiple environments, such as staging and production, and you could pass that value to your script with the command:
+
+```bash
+k6 run -e BASE_URL=https://quickpizza.grafana.com test.js
+```
 
 ## Browser and failure injection test
 
-You can also run a browser test together with a failure injection test by using the [xk6-disruptor](https://github.com/grafana/xk6-disruptor) extension. This approach lets you find issues in your front end if any services it depends on are suddenly injected with failures, such as delays or server errors.
+You can also run a browser test together with a failure injection test by using the [xk6-disruptor](https://github.com/grafana/xk6-disruptor) extension. This approach lets you find issues in your frontend if any services it depends on are suddenly injected with failures, such as delays or server errors.
 
-The following code shows an example of how to introduce faults to a Kubernetes service. At the same time, the `browser` scenario runs to ensure the frontend application is free of any unexpected errors that may not have been handled properly.
+The following code shows an example of how you could use the xk6-disruptor extension to introduce faults to a Kubernetes service. At the same time, the `browser` scenario runs to ensure the frontend application is free of any unexpected errors that may not have been handled properly.
 
-To find out more information about injecting faults to your service, check out the [Get started with xk6-disruptor guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/).
+To find out more information about injecting faults to your service, check out the [Get started with xk6-disruptor guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps/).
 
 {{< code >}}
 
@@ -181,7 +190,7 @@ export async function checkFrontend() {
     await page.goto(BASE_URL);
     const header = await page.locator('h1').textContent();
     check(header, {
-      header: h => h == 'Looking to break out of your pizza routine?',
+      header: (h) => h == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -192,7 +201,7 @@ export async function checkFrontend() {
 
     const recommendation = await page.locator('div#recommendations').textContent();
     check(recommendation, {
-      recommendation: r => r != '',
+      recommendation: (r) => r != '',
     });
   } finally {
     await page.close();

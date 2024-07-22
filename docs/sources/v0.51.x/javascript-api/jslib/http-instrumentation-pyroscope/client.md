@@ -23,7 +23,7 @@ This example demonstrates how to instantiate a client and use it to instrument H
 
 ```javascript
 import { check } from 'k6';
-import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/1.0.0/index.js';
+import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/1.0.1/index.js';
 import http from 'k6/http';
 
 // Explicitly instantiating a Pyroscope client allows to distinguish
