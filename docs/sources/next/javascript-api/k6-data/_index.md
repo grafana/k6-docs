@@ -1,9 +1,9 @@
 ---
-title: 'k6/encoding'
-description: 'The encoding module provides base64 encoding/decoding as defined by RFC4648.'
-weight: 05
+title: 'k6/data'
+description: 'k6 data API'
+weight: 04
 ---
 
-# k6/encoding
+# k6/data
 
-{{< docs/shared source="k6" lookup="javascript-api/k6-encoding.md" version="<K6_VERSION>" >}}
+{{< docs/shared source="k6" lookup="javascript-api/k6-data.md" version="<K6_VERSION>" >}}
