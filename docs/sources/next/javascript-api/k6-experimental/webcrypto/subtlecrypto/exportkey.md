@@ -23,9 +23,17 @@ exportKey(format, key)
 | `format` | `string`                                                                                                 | Defines the data format in which the key should be exported. Depending on the algorithm and key type, the data format could vary. Currently supported formats are `raw`, `jwk`, `spki`, and `pkcs8`. |
 | `key`    | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) to export.                                                                                    |
 
+### Supported algorithms
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-key-methods.md" version="<K6_VERSION>" >}}
+
+### Supported formats
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-key-methods-formats.md" version="<K6_VERSION>" >}}
+
 ## Return Value
 
-A `Promise` that resolves to a new `ArrayBuffer` or an [`JsonWebKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/jsonwebkey) object/dictionary containing the key.
+A `Promise` that resolves to a new `ArrayBuffer` or an [JsonWebKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/jsonwebkey) object/dictionary containing the key.
 
 ## Throws
 

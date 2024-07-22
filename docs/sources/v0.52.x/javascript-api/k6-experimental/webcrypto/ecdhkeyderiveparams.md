@@ -1,7 +1,7 @@
 ---
 title: 'EcdhKeyDeriveParams'
 description: 'EcdhKeyDeriveParams is a parameter used for derive bits operation.'
-weight: 03
+weight: 10
 ---
 
 # EcdhKeyDeriveParams

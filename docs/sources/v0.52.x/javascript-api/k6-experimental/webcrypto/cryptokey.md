@@ -1,7 +1,7 @@
 ---
 title: 'CryptoKey'
 description: 'CryptoKey represents a cryptographic key used for encryption, decryption, signing, or verification.'
-weight: 03
+weight: 02
 ---
 
 # CryptoKey

@@ -1,7 +1,7 @@
 ---
 title: 'EcKeyGenParams'
 description: 'EcKeyGenParams represents the object that should be passed as the algorithm parameter into the generateKey operation, when generating ECDH or ECDSA key pairs.'
-weight: 04
+weight: 09
 ---
 
 # EcKeyGenParams

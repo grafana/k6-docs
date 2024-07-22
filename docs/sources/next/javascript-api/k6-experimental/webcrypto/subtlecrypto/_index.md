@@ -1,8 +1,7 @@
 ---
 title: 'SubtleCrypto'
 description: 'SubtleCrypto offers low-level cryptographic functions.'
-weight: 02
-weight: 02
+weight: 03
 ---
 
 # SubtleCrypto

@@ -1,7 +1,7 @@
 ---
 title: 'AesGcmParams'
 description: 'AesGcmParams represents the object that should be passed as the algorithm parameter into the encrypt and decrypt operation when using the AES-GCM algorithm.'
-weight: 08
+weight: 06
 ---
 
 # AesGcmParams

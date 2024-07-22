@@ -16,11 +16,15 @@ sign(algorithm, key, data)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                 | Description                                                              |
-| :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
-| `algorithm` | `string` or object with a single `name` string property or an [`EcdsaParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdsaparams/) object | The signature algorithm to use. Currently supported: `HMAC` and `ECDSA`. |
-| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                             | The key to use for signing.                                              |
-| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                           | The data to be signed.                                                   |
+| Name        | Type                                                                                                                                                                                                                                                                                                           | Description                                                              |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| `algorithm` | `string` or object with a single `name` string property or an [EcdsaParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdsaparams/), or [HmacKeyGenParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/hmackeygenparams/) object | The signature algorithm to use. Currently supported: `HMAC` and `ECDSA`. |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                       | The key to use for signing.                                              |
+| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                     | The data to be signed.                                                   |
+
+### Supported algorithms
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-sign-verify.md" version="<K6_VERSION>" >}}
 
 ## Return Value
 
