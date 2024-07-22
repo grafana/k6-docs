@@ -68,7 +68,7 @@ The [http module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-htt
 
 ## Follow redirects
 
-By default, k6 automatically follows a set number of redirects before giving up on a request and erroring out. You can customize this by using:
+By default, k6 automatically follows a set number of redirects before stopping and returning the last response. You can customize this by using:
 
 - The `maxRedirects` option to customize the number of redirects globally. Refer to [Max redirects](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#max-redirects) for more details.
 - The `Params.redirects` property to customize the number of redirects for a specific request, which overrides the `maxRedirects` option. Refer to [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params/) for more details.
