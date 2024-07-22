@@ -3,12 +3,14 @@ title: 'closeContext()'
 description: 'Browser module: close context method'
 ---
 
+# closeContext()
+
 Closes the current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext). If there is no active browser context, because none has been created yet or because it has been previously closed, this method throws an error.
 
 ### Returns
 
-| Type            | Description                                                                                                                                                    |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the [`BrowserContext`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) is closed. |
 
 ### Example
