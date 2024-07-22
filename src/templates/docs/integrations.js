@@ -399,6 +399,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Integrations"
+        canonicalUrl={SeoMetaData.integrations.data.canonicalUrl}
       >
         <PageInfo title={'Integrations & Tools'} description={''} />
         <div className={`${docPageContent.inner} `}>

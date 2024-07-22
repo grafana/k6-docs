@@ -1,17 +1,20 @@
 .container {
   margin-bottom: 20px;
-  margin-top: 115px;
+  //margin-top: 115px;
+  margin-top: 165px;
 
   @include xl-down {
     margin-top: 160px;
   }
 
   @include lg-down {
+    margin-top: 205px;
     margin-bottom: 20px;
   }
 
   @include sm-down {
-    margin-top: 230px;
+    //margin-top: 230px;
+    margin-top: 240px;
   }
 
   &.wide {

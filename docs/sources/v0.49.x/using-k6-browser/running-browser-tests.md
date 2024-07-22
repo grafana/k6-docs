@@ -144,7 +144,7 @@ To run a simple local script:
 
    {{% /admonition %}}
 
-1. Optional step: running browser tests in Docker on M1/M2 Macs
+1. Optional step: running browser tests in Docker on Mac computers with Apple Silicon:
 
    1. Make sure you’re running [the latest Docker](https://docs.docker.com/engine/install/) version.
 

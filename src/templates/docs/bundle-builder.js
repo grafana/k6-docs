@@ -59,6 +59,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         sectionName="Extensions"
+        canonicalUrl={SeoMetaData['bundle-builder'].data.canonicalUrl}
       >
         <ExtensionsTitleGroup
           title={'Bundle'}

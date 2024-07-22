@@ -77,6 +77,7 @@ const DocPage = (props) => {
         pageVersions={pageVersions}
         path={path}
         sectionName={sectionName}
+        canonicalUrl={frontmatter.canonicalUrl}
       >
         <div
           className={classNames(

@@ -360,7 +360,7 @@ An object used to set configuration options for cloud parameters and third-party
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
-[Grafana Cloud k6 Performance Insights](https://grafana.com/docs/grafana-cloud/k6/analyze-results/get-performance-insights/).
+[Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
 {{< code >}}
 
