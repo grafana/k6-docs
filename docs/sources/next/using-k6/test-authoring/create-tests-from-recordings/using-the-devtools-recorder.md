@@ -13,6 +13,7 @@ The DevTools recorder lets you record user journeys using Chrome DevTools and th
 To ensure you have a useful test output:
 
 - Review the [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically) and [Consider hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites) sections on [Create tests from recordings](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/).
+- Learn how to [configure and run](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests/) browser tests.
 
 {{< admonition type="note" >}}
 
@@ -22,7 +23,7 @@ Using the DevTools recorder _doesn't require a Grafana Cloud account_.
 
 ## Create a script from a recording
 
-1. Install the [Grafana k6 Browser Recorder Chrome extension](https://chrome.google.com/webstore/detail/grafana-k6-browser-record/fbanjfonbcedhifbgikmjelkkckhhidl).
+1. Install the [k6 Browser Recorder Chrome extension](https://chrome.google.com/webstore/detail/grafana-k6-browser-record/fbanjfonbcedhifbgikmjelkkckhhidl).
 1. Record a session using the [Chrome DevTools Recorder](https://developer.chrome.com/docs/devtools/recorder).
 1. [Export the user flow](https://developer.chrome.com/docs/devtools/recorder/reference#export-flows) and choose the k6 Browser option.
 1. Edit your script as necessary. Depending on the [type of test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/), you might need to change different aspects of the script.
