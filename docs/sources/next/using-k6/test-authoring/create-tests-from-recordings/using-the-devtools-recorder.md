@@ -16,7 +16,7 @@ To ensure you have a useful test output:
 
 {{< admonition type="note" >}}
 
-Note that the DevTools recorder **does not require a cloud account**.
+Using the DevTools recorder _doesn't require a Grafana Cloud account_.
 
 {{< /admonition >}}
 
