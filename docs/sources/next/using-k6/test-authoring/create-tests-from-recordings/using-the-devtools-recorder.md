@@ -26,4 +26,4 @@ Note that the DevTools recorder **does not require a cloud account**.
 1. Choose k6 Browser when [exporting the user flow](https://developer.chrome.com/docs/devtools/recorder/reference#export-flows).
 1. Edit your script as necessary. Depending on the [type of test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/), you might need to change different aspects of the script.
    Typical changes are for [load options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and to handle [correlation and dynamic data](https://grafana.com/docs/k6/<K6_VERSION>/examples/correlation-and-dynamic-data).
-1. Run the test from the CLI or Grafana Cloud k6. For more about running k6, refer to the [Running k6 guide](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6).
+1. Run the test from the CLI or Grafana Cloud k6. Refer to [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6) for more details.
