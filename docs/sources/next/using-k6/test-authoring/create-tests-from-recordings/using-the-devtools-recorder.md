@@ -20,7 +20,7 @@ Using the DevTools recorder _doesn't require a Grafana Cloud account_.
 
 {{< /admonition >}}
 
-## How to record
+## Create a script from a recording
 
 1. Install the [Chrome](https://chrome.google.com/webstore/detail/grafana-k6-browser-record/fbanjfonbcedhifbgikmjelkkckhhidl) extension.
 1. Record a session using the [Chrome DevTools Recorder](https://developer.chrome.com/docs/devtools/recorder).
