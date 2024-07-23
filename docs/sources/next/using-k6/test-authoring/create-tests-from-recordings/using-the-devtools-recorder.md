@@ -8,12 +8,11 @@ weight: 01
 
 The DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
 
-## Before you start
+## Before you begin
 
-Before you start, consider the following:
+To ensure you have a useful test output:
 
-- [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically)
-- [A hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites)
+- Review the [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically) and [Consider hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites) sections on [Create tests from recordings](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/).
 
 {{< admonition type="note" >}}
 
