@@ -2,7 +2,6 @@
 title: Get timings for an HTTP metric
 excerpt: How to calculate timings for an individual k6 metric
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/get-timings-for-an-http-metric/
-redirect: https://grafana.com/docs/k6/latest/examples/get-timings-for-an-http-metric/
 ---
 
 

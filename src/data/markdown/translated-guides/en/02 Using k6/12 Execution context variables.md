@@ -2,7 +2,6 @@
 title: 'Execution context variables'
 excerpt: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/execution-context-variables/
-redirect: https://grafana.com/docs/k6/latest/using-k6/execution-context-variables/
 ---
 In some cases, it's really useful to have information about the script's current test-execution state. For example, you might want to
 - Have different VUs run different test logic

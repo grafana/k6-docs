@@ -3,7 +3,6 @@ title: "Params"
 head_title: 'gRPC.params'
 excerpt: 'Params is an object used by the gRPC methods that generate RPC requests.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/params/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/params/
 ---
 
 *Params* is an object used by the gRPC methods that generate RPC requests. *Params* contains request-specific options like headers that should be inserted into the request.

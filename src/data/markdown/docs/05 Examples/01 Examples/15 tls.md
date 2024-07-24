@@ -4,7 +4,6 @@ excerpt: |
   TLS is the mechanism through which encrypted connections can be established between clients and
   servers on the web and through which data can flow with integrity intact.
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/tls/
-redirect: https://grafana.com/docs/k6/latest/examples/tls/
 ---
 
 <CodeGroup labels={["tls-example.js"]} lineNumbers={[true]}>

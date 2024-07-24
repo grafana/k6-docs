@@ -2,7 +2,6 @@
 title: 'Data Uploads'
 excerpt: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test (SUT).'
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/data-uploads/
-redirect: https://grafana.com/docs/k6/latest/examples/data-uploads/
 ---
 
 Example to execute a load test that will upload a file to the System Under Test (SUT).

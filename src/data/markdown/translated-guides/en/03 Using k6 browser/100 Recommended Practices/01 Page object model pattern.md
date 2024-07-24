@@ -4,7 +4,6 @@ heading: 'Page object model with k6 browser'
 head_title: 'Page object model with k6 browser'
 excerpt: 'An example on how to implement page object model design pattern with k6 browser'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/page-object-model-pattern/
-redirect: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/page-object-model-pattern/
 ---
 
 When working with large test suites, a popular design pattern to improve your code’s maintainability and readability is the [page object model](https://martinfowler.com/bliki/PageObject.html).

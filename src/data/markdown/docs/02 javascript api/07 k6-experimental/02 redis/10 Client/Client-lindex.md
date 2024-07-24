@@ -2,7 +2,6 @@
 title: 'Client.lindex(key)'
 excerpt: 'Returns the element at index `index` of the list stored at `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lindex/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lindex/
 ---
 
 Returns the specified element of the list stored at `key`. The index is zero-based. Negative indices can be used to designate elements starting at the tail of the list.

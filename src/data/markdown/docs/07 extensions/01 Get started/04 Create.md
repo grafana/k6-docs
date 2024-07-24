@@ -2,7 +2,6 @@
 title: 'Create'
 excerpt: 'Creating k6 extensions does not have to be a daunting task, but there are some prerequisites to succeed.'
 canonicalUrl: https://grafana.com/docs/k6/latest/extensions/create/
-redirect: https://grafana.com/docs/k6/latest/extensions/create/
 ---
 
 If you find a gap in your testing process that no k6 extension can fix,

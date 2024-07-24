@@ -2,7 +2,6 @@
 title: 'addCookies()'
 excerpt: 'Clears context cookies.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/addcookies/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/addcookies/
 ---
 
 Adds a list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) into the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie). All pages within this [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie) will have these [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) set.

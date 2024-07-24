@@ -2,7 +2,6 @@
 title: 'SSL/TLS client certificates'
 excerpt: 'To use client certificates, you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/ssl-tls-client-certificates/
-redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/ssl-tls-client-certificates/
 ---
 
 Discussion about TLS certificates is usually about how clients authenticate servers.

@@ -2,7 +2,6 @@
 title: 'WebSocket.onclose'
 excerpt: 'A handler function for WebSocket connection close event.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onclose/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onclose/
 ---
 
 A handler for a WebSocket connection `close` event.

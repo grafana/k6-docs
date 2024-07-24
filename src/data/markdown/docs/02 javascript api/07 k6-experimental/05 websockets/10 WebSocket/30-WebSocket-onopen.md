@@ -2,7 +2,6 @@
 title: 'WebSocket.onopen'
 excerpt: 'A handler function for WebSocket connection open event.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onopen/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onopen/
 ---
 
 A handler for a WebSocket connection `open` event.

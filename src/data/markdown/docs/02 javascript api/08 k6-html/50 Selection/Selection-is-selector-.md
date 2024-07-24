@@ -2,7 +2,6 @@
 title: 'Selection.is(selector)'
 excerpt: 'Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-is/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-is/
 ---
 
 Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.

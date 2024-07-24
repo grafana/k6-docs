@@ -2,7 +2,6 @@
 title: 'WebSocket.onpong'
 excerpt: 'A handler function for WebSocket connection pong event.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onpong/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onpong/
 ---
 
 A handler for a WebSocket connection `pong` event.

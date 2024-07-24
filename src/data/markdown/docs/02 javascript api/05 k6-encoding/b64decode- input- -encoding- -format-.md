@@ -3,7 +3,6 @@ title: 'b64decode( input, [encoding], [format] )'
 description: 'Base64 decode a string.'
 excerpt: 'Base64 decode a string.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-encoding/b64decode/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-encoding/b64decode/
 ---
 
 Decode the passed base64 encoded `input` string into the unencoded original input in either binary or string formats.

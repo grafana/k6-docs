@@ -2,7 +2,6 @@
 title: 'context()'
 excerpt: 'Browser module: page.context method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/context/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/context/
 ---
 
 Gets the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) that the page belongs to.

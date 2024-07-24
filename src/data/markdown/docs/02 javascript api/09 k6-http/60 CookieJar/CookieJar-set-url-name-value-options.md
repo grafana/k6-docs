@@ -2,7 +2,6 @@
 title: 'CookieJar.set(url, name, value, [options])'
 excerpt: 'Set a cookie in the jar by specifying url, name, value and some other optional settings like domain, path, etc.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar/cookiejar-set/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar/cookiejar-set/
 ---
 
 Set a cookie in the jar by specifying url, name, value and some other optional settings like domain, path, etc.

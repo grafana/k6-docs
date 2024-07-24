@@ -2,7 +2,6 @@
 title: 'waitFor([options])'
 excerpt: 'Browser module: locator.waitFor method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/waitfor/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/waitfor/
 ---
 
 <Blockquote mod="attention">

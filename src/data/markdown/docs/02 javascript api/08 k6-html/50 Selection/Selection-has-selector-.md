@@ -2,7 +2,6 @@
 title: 'Selection.has(selector)'
 excerpt: 'Reduce the set of matched elements to those that have a descendant that matches the selector.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-has/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-has/
 ---
 
 Reduce the set of matched elements to those that have a descendant that matches the selector.

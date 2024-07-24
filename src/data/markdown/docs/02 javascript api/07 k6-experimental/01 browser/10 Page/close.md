@@ -2,7 +2,6 @@
 title: 'close()'
 excerpt: 'Browser module: page.close method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/close/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/close/
 ---
 
 This will close the tab that this page is associated with.

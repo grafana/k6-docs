@@ -4,7 +4,6 @@ head_title: 'SystemsManagerClient'
 description: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
 excerpt: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/systemsmanagerclient/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/systemsmanagerclient/
 ---
 
 `SystemsManagerClient` interacts with the AWS Systems Manager Service.

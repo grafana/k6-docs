@@ -2,7 +2,6 @@
 title: 'waitForNavigation([options])'
 excerpt: 'Browser module: page.waitForNavigation([options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitfornavigation/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitfornavigation/
 ---
 
 Waits for the given navigation lifecycle event to occur and returns the main resource response.

@@ -2,7 +2,6 @@
 title: 'uncheck([options])'
 excerpt: 'Browser module: locator.uncheck method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/uncheck/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/uncheck/
 ---
 
 <Blockquote mod="attention">

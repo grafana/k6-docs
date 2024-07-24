@@ -2,7 +2,6 @@
 title: 'Per VU iterations'
 excerpt: 'Each VU executes an exact number of iterations.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/per-vu-iterations/
-redirect: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/per-vu-iterations/
 ---
 
 With the `per-vu-iterations` executor, each VU executes an exact number of iterations.

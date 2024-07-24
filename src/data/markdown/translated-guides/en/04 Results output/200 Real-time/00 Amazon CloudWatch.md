@@ -2,7 +2,6 @@
 title: 'Amazon CloudWatch'
 excerpt: 'You can send k6 results output to Amazon CloudWatch and later visualize them.'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/amazon-cloudwatch/
-redirect: https://grafana.com/docs/k6/latest/results-output/real-time/amazon-cloudwatch/
 ---
 
 <Blockquote mod="warning" title="">

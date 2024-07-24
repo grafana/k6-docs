@@ -2,7 +2,6 @@
 title: 'config'
 excerpt: 'Global configuration options for k6Chaijs'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/config/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/config/
 ---
 
 Chai exposes a few options to change the library configuration.

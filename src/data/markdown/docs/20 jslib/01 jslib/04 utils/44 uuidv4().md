@@ -3,7 +3,6 @@ title: 'uuidv4()'
 description: 'uuid v4 function'
 excerpt: 'uuid v4 function'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/uuidv4/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/uuidv4/
 ---
 
 Function returns a random uuid v4 in a string form.

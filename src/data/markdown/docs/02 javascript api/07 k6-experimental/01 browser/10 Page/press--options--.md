@@ -2,7 +2,6 @@
 title: 'press(selector, key[, options])'
 excerpt: 'Browser module: page.press(selector, key[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/press/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/press/
 ---
 
 <Blockquote mod="warning" title="">

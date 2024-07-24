@@ -2,7 +2,6 @@
 title: 'verify'
 excerpt: 'verify verifies a digital signature.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify/
 ---
 
 The `verify()` operation verifies a digital signature. It ensures that some data was signed by a known key and that the data has not been tampered with since it was signed.

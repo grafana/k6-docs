@@ -3,7 +3,6 @@ title: 'randomBytes( int )'
 description: 'randomBytes.'
 excerpt: 'randomBytes.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/randombytes/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/randombytes/
 ---
 
 <CryptoBlockquote />

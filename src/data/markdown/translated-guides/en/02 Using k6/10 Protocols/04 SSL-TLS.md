@@ -2,7 +2,6 @@
 title: 'SSL/TLS'
 excerpt: 'By default and without any special configuration, k6 will connect and talk to servers over TLS. You just need to make sure to specify your request URLs with the https scheme.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/
-redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/
 ---
 
 Transport Layer Security (TLS), the successor of Secure Socket Layer (SSL), is the mechanism through

@@ -2,7 +2,6 @@
 title: 'terminatePods()'
 excerpt: 'xk6-disruptor: PodDisruptor.terminatePods method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/terminate-pods/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/terminate-pods/
 ---
 
 `terminatePods` terminates a number of the pods matching the selector configured in the PodDisruptor.

@@ -2,7 +2,6 @@
 title: 'Examples'
 excerpt: 'Examples of how to use the xk6-disruptor extension to introduce faults in k6 tests.'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/examples/
-redirect: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/examples/
 ---
 
 In this section, we present some examples of using the `xk6-disruptor` extension to introduce faults in `k6` tests.

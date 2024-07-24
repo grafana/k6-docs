@@ -2,7 +2,6 @@
 title: 'injectGrpcFaults'
 excerpt: 'xk6-disruptor: ServiceDisruptor.injectGrpcFaults method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/injectgrpcfaults/
 ---
 
 injectGrpcFaults injects gRPC faults in the requests served by a target Service.

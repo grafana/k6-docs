@@ -1,4 +1,4 @@
 ---
 title: 'InfluxDB'
-redirect: 'https://grafana.com/docs/k6/latest/results-output/real-time/influxdb/'
+redirect: 'https://k6.io/docs/results-output/real-time/influxdb'
 ---

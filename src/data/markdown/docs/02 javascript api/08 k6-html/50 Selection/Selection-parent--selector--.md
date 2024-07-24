@@ -2,7 +2,6 @@
 title: 'Selection.parent([selector])'
 excerpt: 'Get the parent of each element in the current set of matched elements, optionally filtered by a selector.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-parent/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-parent/
 ---
 
 Get the parent of each element in the current set of matched elements, optionally filtered by a selector.

@@ -2,7 +2,6 @@
 title: Custom summary
 excerpt: With handlesummary(), you can customize every part of your report. Change the content, redirect output, and more.
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/end-of-test/custom-summary/
-redirect: https://grafana.com/docs/k6/latest/results-output/end-of-test/custom-summary/
 ---
 
 With `handleSummary()`, you can completely customize your end-of-test summary.

@@ -2,7 +2,6 @@
 title: "Request"
 excerpt: "Browser module: Request Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/request/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/request/
 ---
 
 <BrowserDocsWIP/>

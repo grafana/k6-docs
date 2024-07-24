@@ -2,7 +2,6 @@
 title: "httpx"
 excerpt: "httpx is a wrapper library around the native k6 http module"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/
 ---
 
 The `httpx` module is an external JavaScript library that wraps around the native [k6/http](/javascript-api/k6-http) module. 

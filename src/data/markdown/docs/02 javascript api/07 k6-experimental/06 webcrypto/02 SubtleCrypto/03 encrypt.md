@@ -2,7 +2,6 @@
 title: 'encrypt'
 excerpt: 'encrypt decrypts some encrypted data'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt/
 ---
 
 The `encrypt()` method encrypts some data.

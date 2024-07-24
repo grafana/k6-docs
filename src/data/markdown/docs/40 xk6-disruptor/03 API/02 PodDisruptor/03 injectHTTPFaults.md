@@ -2,7 +2,6 @@
 title: 'injectHTTPFaults()'
 excerpt: 'xk6-disruptor: PodDisruptor.injectHTTPFaults method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/injecthttpfaults/
 ---
 
 injectHTTPFaults injects HTTP faults in the requests served by a target Pod.

@@ -3,7 +3,6 @@ title: 'S3Client.listBuckets()'
 description: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
 excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/listbuckets/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/listbuckets/
 ---
 
 `S3Client.listBuckets()` lists the buckets the authenticated user has access to in the region set by the `S3Client` instance's configuration.

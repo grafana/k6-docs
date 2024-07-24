@@ -2,7 +2,6 @@
 title: 'Client.del(keys)'
 excerpt: ''
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-del/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-del/
 ---
 
 Removes the specified keys. A key is ignored if it does not exist.

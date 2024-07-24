@@ -2,7 +2,6 @@
 title: 'Response.json( [selector] )'
 excerpt: 'Parses the response body data as JSON and returns a JS object or array.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-json/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-json/
 ---
 
 Parses the response body data as JSON and returns a JS object or array. This call caches the deserialized JSON data, additional calls will return the cached data. An optional selector can be specified to extract a specific part of the data, see [here for selector syntax](https://github.com/tidwall/gjson#path-syntax).

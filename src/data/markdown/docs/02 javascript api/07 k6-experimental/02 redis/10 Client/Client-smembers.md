@@ -2,7 +2,6 @@
 title: 'Client.smembers(key)'
 excerpt: 'Returns all the members of the set stored at `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-smembers/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-smembers/
 ---
 
 Returns all the members of the set values stored at `keys`.

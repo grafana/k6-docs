@@ -2,7 +2,6 @@
 title: 'Selection.nextAll([selector])'
 excerpt: 'Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-nextall/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-nextall/
 ---
 
 Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.

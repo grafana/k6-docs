@@ -3,7 +3,6 @@ title: 'expectedStatuses( statuses )'
 description: 'generates a responseCallback to check status codes'
 excerpt: 'generates a responseCallback to check status codes'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/expected-statuses/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/expected-statuses/
 ---
 
 Returns a callback to be used with [setResponseCallback](/javascript-api/k6-http/setresponsecallback) to mark responses as expected based only on their status codes.

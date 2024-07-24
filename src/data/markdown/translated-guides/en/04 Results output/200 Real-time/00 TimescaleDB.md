@@ -2,7 +2,6 @@
 title: 'TimescaleDB'
 excerpt: k6 has an output extension to store k6 metrics in TimescaleDB. This document shows you how to configure the k6 TimescaleDB integration.
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/timescaledb/
-redirect: https://grafana.com/docs/k6/latest/results-output/real-time/timescaledb/
 ---
 
 Using the [TimescaleDB k6 extension](https://github.com/grafana/xk6-output-timescaledb), you can store k6 metrics in [TimescaleDB](https://www.timescale.com/) and analyze your performance results with SQL and dashboards. The extension repository includes two Grafana dashboards.

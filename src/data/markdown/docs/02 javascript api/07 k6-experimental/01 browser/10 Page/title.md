@@ -2,7 +2,6 @@
 title: 'title()'
 excerpt: 'Browser module: page.title method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/title/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/title/
 ---
 
 Returns the page's title.

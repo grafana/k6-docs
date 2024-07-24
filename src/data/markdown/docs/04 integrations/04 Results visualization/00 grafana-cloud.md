@@ -1,4 +1,4 @@
 ---
 title: 'Grafana Cloud Prometheus'
-redirect: 'https://grafana.com/docs/k6/latest/results-output/real-time/cloud/'
+redirect: 'https://k6.io/docs/results-output/real-time/grafana-cloud-prometheus/'
 ---
