@@ -7,7 +7,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const shouldAnnouncementBannerBeShown = true;
+const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
   'gatsby-transformer-sharp',
@@ -204,7 +204,7 @@ if (shouldAnnouncementBannerBeShown) {
     },
     storage: {
       // changing storage name to force users to see the banner even if it was disabled
-      name: 'k6-docs-banner-was-shown',
+      name: 'k6-db-was-shown',
     },
   };
   if (isProduction) {
