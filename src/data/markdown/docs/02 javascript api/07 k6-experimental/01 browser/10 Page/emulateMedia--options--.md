@@ -2,6 +2,7 @@
 title: 'emulateMedia([options])'
 excerpt: 'Browser module: page.emulateMedia([options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/emulatemedia/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/emulatemedia/
 ---
 
 This method changes the CSS `@media type` through the `media` argument, and/or the `'prefers-colors-scheme'` media feature, using the `colorScheme` argument.

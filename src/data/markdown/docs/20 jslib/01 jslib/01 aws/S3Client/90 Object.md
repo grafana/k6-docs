@@ -3,6 +3,7 @@ title: 'Object'
 description: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
 excerpt: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/object/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/object/
 ---
 
 Object is returned by the S3Client.\* methods that query S3 buckets' objects. Namely, [`listObjects`](/javascript-api/jslib/aws/s3client/s3client-listobjects), [`getObject`](/javascript-api/jslib/aws/s3client/s3client-getobject), [`putObject`](/javascript-api/jslib/aws/s3client/s3client-putobject),

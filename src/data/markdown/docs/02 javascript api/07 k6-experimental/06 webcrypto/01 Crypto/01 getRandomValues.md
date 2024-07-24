@@ -2,6 +2,7 @@
 title: 'getRandomValues'
 excerpt: 'getRandomValues fills the passed TypedArray with cryptographically sound random values.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/crypto/getrandomvalues/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/crypto/getrandomvalues/
 ---
 
 The `getRandomValues()` method fills the passed `TypedArray` with cryptographically sound random values.

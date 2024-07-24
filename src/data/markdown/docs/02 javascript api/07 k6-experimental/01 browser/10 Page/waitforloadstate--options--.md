@@ -2,6 +2,7 @@
 title: 'waitForLoadState(state[, options])'
 excerpt: 'Browser module: page.waitForLoadState(state[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitforloadstate/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitforloadstate/
 ---
 
 <Blockquote mod="attention">

@@ -4,6 +4,7 @@ head_title: 'KMSClient'
 description: 'KMSClient allows interacting with the AWS Key Management Service'
 excerpt: 'KMSClient allows interacting with the AWS Key Management Service'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/
 ---
 
 <BlockingAwsBlockquote />

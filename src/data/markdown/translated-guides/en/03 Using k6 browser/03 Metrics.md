@@ -2,6 +2,7 @@
 title: 'Browser metrics'
 excerpt: 'An overview of the different browser performance metrics that the browser module tracks.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6-browser/metrics/
+redirect: https://grafana.com/docs/k6/latest/using-k6-browser/metrics/
 ---
 
 Follow along to learn about:

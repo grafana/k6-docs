@@ -2,6 +2,7 @@
 title: 'waitForSelector(selector[, options])'
 excerpt: 'Browser module: page.waitForSelector(selector[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitforselector/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/waitforselector/
 ---
 
 <Blockquote mod="note" title="">

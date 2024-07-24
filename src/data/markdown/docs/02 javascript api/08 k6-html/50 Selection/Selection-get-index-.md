@@ -2,6 +2,7 @@
 title: 'Selection.get(index)'
 excerpt: 'Retrieve the Element matched by the selector.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-get/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-get/
 ---
 
 Retrieve the Element matched by the selector.

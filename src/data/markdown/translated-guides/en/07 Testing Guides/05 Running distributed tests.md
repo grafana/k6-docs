@@ -2,6 +2,7 @@
 title: 'Running distributed tests'
 excerpt: 'How to run distributed tests in Kubernetes'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/running-distributed-tests/
+redirect: https://grafana.com/docs/k6/latest/testing-guides/running-distributed-tests/
 ---
 
 It has already been established that k6 can [run large load tests](/testing-guides/running-large-tests/) from a single instance, but what about _multiple instances running a single test_?

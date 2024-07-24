@@ -2,6 +2,7 @@
 title: 'Prometheus remote write'
 excerpt: 'Use the Prometheus remote write output to send test results to any Prometheus remote write endpoint.'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/prometheus-remote-write/
+redirect: https://grafana.com/docs/k6/latest/results-output/real-time/prometheus-remote-write/
 ---
 
 <ExperimentalBlockquote />

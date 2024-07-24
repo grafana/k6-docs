@@ -2,6 +2,7 @@
 title: 'Selection.toArray()'
 excerpt: 'Retrieve all the elements contained in the Selection, as an array.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-toarray/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-toarray/
 ---
 
 Retrieve all the elements contained in the Selection, as an array.

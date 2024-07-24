@@ -3,6 +3,7 @@ title: 'addTags( object )'
 description: 'adds multiple tags to the session'
 excerpt: 'adds multiple tags to the session'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addtags/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addtags/
 ---
 
 

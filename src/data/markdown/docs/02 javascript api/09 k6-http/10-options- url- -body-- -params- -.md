@@ -3,6 +3,7 @@ title: "options( url, [body], [params] )"
 description: "Issue an HTTP OPTIONS request."
 excerpt: "Issue an HTTP OPTIONS request."
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/options/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/options/
 ---
 
 | Parameter         | Type                          | Description                                                                                           |

@@ -2,6 +2,7 @@
 title: 'Usage collection'
 excerpt: 'By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting an environment variable or option.'
 canonicalUrl: https://grafana.com/docs/k6/latest/set-up/usage-collection/
+redirect: https://grafana.com/docs/k6/latest/set-up/usage-collection/
 ---
 
 By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting the environment variable `K6_NO_USAGE_REPORT` or by adding the option `--no-usage-report` when executing k6.

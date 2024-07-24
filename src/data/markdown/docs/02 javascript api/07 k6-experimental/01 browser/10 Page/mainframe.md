@@ -2,6 +2,7 @@
 title: 'mainFrame()'
 excerpt: 'Browser module: page.mainFrame method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/mainframe/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/mainframe/
 ---
 
 The page's main frame. Page is made up of frames in a hierarchical. At the top is `mainFrame`. A page is guaranteed to have a main frame.

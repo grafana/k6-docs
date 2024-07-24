@@ -2,6 +2,7 @@
 title: 'isHidden(selector[, options])'
 excerpt: 'Browser module: page.isHidden(selector[, options) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/ishidden/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/ishidden/
 ---
 
 <Blockquote mod="warning" title="">

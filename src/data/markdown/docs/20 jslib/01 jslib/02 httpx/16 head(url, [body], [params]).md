@@ -3,6 +3,7 @@ title: 'head(url, [body], [params])'
 description: 'httpx.head makes HEAD requests'
 excerpt: 'httpx.head makes HEAD requests'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/head/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/head/
 ---
 
 `session.head(url, body, params)` makes a HEAD request. Only the first parameter is required

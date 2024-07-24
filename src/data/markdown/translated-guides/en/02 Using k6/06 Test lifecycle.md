@@ -2,6 +2,7 @@
 title: 'Test lifecycle'
 excerpt: 'The four distinct lifecycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
+redirect: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
 ---
 
 In the lifecycle of a k6 test,

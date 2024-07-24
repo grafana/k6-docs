@@ -2,6 +2,7 @@
 title: 'Client'
 excerpt: 'Client is a HTTP client attaching tracing information to its requests.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/tracing/client/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/tracing/client/
 ---
 
 `Client` is an HTTP client constructor that attaches tracing information to its requests. Use it to include a tracing context in HTTP requests so that tracing backends (such as [Grafana Tempo](https://grafana.com/oss/tempo/)) can incorporate their results.

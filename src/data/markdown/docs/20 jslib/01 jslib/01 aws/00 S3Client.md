@@ -4,6 +4,7 @@ head_title: 'S3Client'
 description: 'S3Client allows interacting with AWS S3 buckets and objects'
 excerpt: 'S3Client class allows interacting with AWS S3 buckets and objects'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/
 ---
 
 <BlockingAwsBlockquote />

@@ -2,6 +2,7 @@
 title: "ElementHandle"
 excerpt: "Browser module: ElementHandle Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/elementhandle/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/elementhandle/
 ---
 
 <BrowserDocsWIP/>

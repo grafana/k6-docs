@@ -3,6 +3,7 @@ title: 'sign'
 description: 'Signaturev4.sign signs an HTTP request with the AWS Signature V4 algorithm'
 excerpt: 'SignatureV4.sign signs an HTTP request with the AWS Signature V4 algorithm'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/signaturev4/sign/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/signaturev4/sign/
 ---
 
 `SignatureV4.sign()` signs an HTTP request with the AWS Signature V4 algorithm. Given an HTTP request description, it returns a new HTTP request with the AWS signature v4 protocol headers added. It returns an Object holding a `url` and a `headers` properties, ready to use in the context of k6's HTTP call.
