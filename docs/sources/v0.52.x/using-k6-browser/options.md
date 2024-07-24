@@ -6,7 +6,53 @@ weight: 04
 
 # Browser options
 
-You can customize the behavior of the browser module by providing browser options as environment variables.
+To enable browser testing, add the `browser` configuration within the `options` property of the [Scenario options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#options).
+
+{{< code >}}
+
+```shared-iterations
+export const options = {
+  scenarios: {
+    foo: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+```
+
+```constant-vus
+export const options = {
+  scenarios: {
+    foo: {
+      executor: 'constant-vus',
+      vus: 10,
+      duration: '5m',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+```
+
+{{< /code >}}
+
+## Script options
+
+| Option                    | Description                                                         |
+| ------------------------- | ------------------------------------------------------------------- |
+| type<sup>(required)</sup> | Name of the browser running the test. Options include `'chromium'`. |
+
+## Environment variable options
+
+You can customize the behavior of the browser module by passing environment variables.
 
 {{% admonition type="note" %}}
 
@@ -14,49 +60,9 @@ Customizing browser options via environment variables is unsupported when [runni
 
 {{% /admonition %}}
 
-| Environment Variable           | Description                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| K6_BROWSER_ARGS                | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the command example below).                                                                                                  |
-| K6_BROWSER_DEBUG               | All CDP messages and internal fine grained logs will be logged if set to `true`.                                                                                                                                                                                                                                                                                         |
-| K6_BROWSER_EXECUTABLE_PATH     | Override search for browser executable in favor of specified absolute path.                                                                                                                                                                                                                                                                                              |
-| K6_BROWSER_HEADLESS            | Show browser GUI or not. `true` by default.                                                                                                                                                                                                                                                                                                                              |
-| K6_BROWSER_IGNORE_DEFAULT_ARGS | Ignore any of the [default arguments](#default-arguments) included when launching a browser process.                                                                                                                                                                                                                                                                     |
-| K6_BROWSER_TIMEOUT             | Default timeout to use for various actions and navigation. `'30s'` if not set.                                                                                                                                                                                                                                                                                           |
-| K6_BROWSER_TRACES_METADATA     | Sets additional _key-value_ metadata that is included as attributes in every span generated from browser module traces. Example: `K6_BROWSER_TRACES_METADATA=attr1=val1,attr2=val2`. This only applies if traces generation is enabled, refer to [Traces output](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#traces-output) for more details. |
+{{< docs/shared source="k6" lookup="browser/env-var-options.md" version="<K6_VERSION>" >}}
 
-The following command passes the browser options as environment variables to launch a headful browser with custom arguments.
-
-{{< code >}}
-
-```bash
-$ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run script.js
-```
-
-```docker
-# WARNING!
-# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
-# 'no-sandbox' argument. Only use it with trustworthy websites.
-#
-# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
-# Chrome arguments to not use 'no-sandbox' such as:
-# docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
-#
-# You can find an example of a hardened SECCOMP profile in:
-# https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
-docker run --rm -i -e K6_BROWSER_HEADLESS=false -e K6_BROWSER_ARGS='show-property-changed-rects' grafana/k6:master-with-browser run - <script.js
-```
-
-```windows
-C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_ARGS='show-property-changed-rects' " && k6 run script.js
-```
-
-```windows-powershell
-PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_ARGS='show-property-changed-rects' ; k6 run script.js
-```
-
-{{< /code >}}
-
-## Default arguments
+### Default arguments
 
 List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `K6_BROWSER_IGNORE_DEFAULT_ARGS` environment variable when starting a test for the ones you want to ignore.
 

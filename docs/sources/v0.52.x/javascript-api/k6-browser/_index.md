@@ -147,3 +147,9 @@ export default async function () {
 ## Browser-level APIs
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-browser-api.md" version="<K6_VERSION>" >}}
+
+## Browser Module Options
+
+You can customize the behavior of the browser module by providing browser options as environment variables.
+
+{{< docs/shared source="k6" lookup="browser/env-var-options.md" version="<K6_VERSION>" >}}
