@@ -2,7 +2,6 @@
 title: 'Pod Termination'
 excerpt: 'xk6-disruptor: Pod Termination Fault attributes'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/faults/pod-termination/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/faults/pod-termination/
 ---
 
 A Pod Termination Fault allows terminating either a fixed number or a percentage of the pods that matching a selector or back a service.

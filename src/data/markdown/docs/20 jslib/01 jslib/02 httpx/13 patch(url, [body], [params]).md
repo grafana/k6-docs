@@ -4,7 +4,6 @@ head_title: 'httpx.patch'
 description: 'httpx.patch makes PATCH requests'
 excerpt: 'httpx.patch makes PATCH requests'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/patch/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/patch/
 ---
 
 `session.patch(url, body, params)` makes a PATCH request. Only the first parameter is required

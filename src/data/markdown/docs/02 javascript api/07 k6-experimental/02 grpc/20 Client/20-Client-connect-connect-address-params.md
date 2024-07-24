@@ -2,7 +2,6 @@
 title: "Client.connect(address [,params])"
 excerpt: 'Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/client-connect/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/client-connect/
 ---
 
 Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](/using-k6/test-lifecycle).

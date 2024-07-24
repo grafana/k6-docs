@@ -3,7 +3,6 @@ title: 'Migrating to k6 v0.46'
 excerpt: 'A migration guide to ease the process of transitioning to the new k6 browser module version'
 slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6-browser/migrating-to-k6-v0-46/
-redirect: https://grafana.com/docs/k6/latest/using-k6-browser/migrating-to-k6-v0-46/
 ---
 
 This guide outlines the key changes you will need to make when moving your existing k6 browser test scripts to the new [k6 browser module](/javascript-api/k6-experimental/browser/) (bundled with [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0)).

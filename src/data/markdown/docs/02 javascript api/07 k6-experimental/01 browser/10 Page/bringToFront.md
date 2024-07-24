@@ -2,7 +2,6 @@
 title: 'bringToFront()'
 excerpt: 'Browser module: page.bringToFront method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/bringtofront/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/bringtofront/
 ---
 
 Activates the browser tab which brings the page in focus to allow actions to be performed onto it.

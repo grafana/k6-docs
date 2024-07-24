@@ -2,7 +2,6 @@
 title: 'Selection.serializeObject()'
 excerpt: 'Encode a set of form elements as an object.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-serializeobject/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-serializeobject/
 ---
 
 Encode a set of form elements as an object (`{ "inputName": "value", "checkboxName": "value" }`).

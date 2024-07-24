@@ -2,7 +2,6 @@
 title: 'Selection.eq(index)'
 excerpt: 'Reduce the set of matched elements to the one at the specified index.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-eq/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-eq/
 ---
 
 Reduce the set of matched elements to the one at the specified index.

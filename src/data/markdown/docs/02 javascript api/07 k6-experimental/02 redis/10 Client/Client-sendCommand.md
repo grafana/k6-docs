@@ -2,7 +2,6 @@
 title: 'Client.sendCommand(command, args)'
 excerpt: 'Issue a command to the Redis server.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-sendcommand/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-sendcommand/
 ---
 
 In the event a Redis command you wish to use is not implemented yet, the `sendCommand` method can be used to send a custom commands to the server.

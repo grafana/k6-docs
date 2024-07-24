@@ -2,7 +2,6 @@
 title: 'innerHTML([options])'
 excerpt: 'Browser module: locator.innerHTML method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/innerhtml/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/innerhtml/
 ---
 
 Returns the `element.innerHTML`.

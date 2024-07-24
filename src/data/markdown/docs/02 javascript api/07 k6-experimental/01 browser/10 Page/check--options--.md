@@ -2,7 +2,6 @@
 title: 'check(selector[, options])'
 excerpt: 'Browser module: page.check(selector[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/check/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/check/
 ---
 
 <Blockquote mod="warning" title="">

@@ -2,7 +2,6 @@
 title: 'Client.hlen(key)'
 excerpt: 'Returns the number of fields in the hash stored at `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hlen/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hlen/
 ---
 
 Returns the number of fields in the hash stored at `key`.

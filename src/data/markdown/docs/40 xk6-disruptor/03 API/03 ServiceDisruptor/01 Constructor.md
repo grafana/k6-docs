@@ -2,7 +2,6 @@
 title: 'Constructor'
 excerpt: 'xk6-disruptor: ServiceDisruptor constructor'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/constructor/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/constructor/
 ---
 
 

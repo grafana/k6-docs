@@ -2,7 +2,6 @@
 title: Test for functional behavior
 excerpt: Use k6 to write requests and assert that they respond correctly
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/test-for-functional-behavior/
-redirect: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/test-for-functional-behavior/
 ---
 
 In this tutorial, learn how to write a test that does the following:

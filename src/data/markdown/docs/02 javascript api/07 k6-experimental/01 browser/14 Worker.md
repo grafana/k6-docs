@@ -2,7 +2,6 @@
 title: "Worker"
 excerpt: "Browser module: Worker Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/worker/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/worker/
 ---
 
 <BrowserDocsWIP/>

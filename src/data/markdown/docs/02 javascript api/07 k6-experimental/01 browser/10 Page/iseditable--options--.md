@@ -2,7 +2,6 @@
 title: 'isEditable(selector[, options])'
 excerpt: 'Browser module: page.isEditable(selector[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/iseditable/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/iseditable/
 ---
 
 <Blockquote mod="warning" title="">

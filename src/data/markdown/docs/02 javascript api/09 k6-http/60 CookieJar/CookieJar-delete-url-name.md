@@ -2,7 +2,6 @@
 title: 'CookieJar.delete(url, name)'
 excerpt: 'Delete a cookie of a specified `name` for the given URL.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar/cookiejar-delete/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/cookiejar/cookiejar-delete/
 ---
 
 | Parameter | Type   | Description |

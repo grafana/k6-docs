@@ -1,4 +1,4 @@
 ---
 title: 'Elasticsearch'
-redirect: 'https://grafana.com/docs/k6/latest/results-output/real-time/elasticsearch/'
+redirect: 'https://k6.io/docs/results-output/real-time/elasticsearch'
 ---

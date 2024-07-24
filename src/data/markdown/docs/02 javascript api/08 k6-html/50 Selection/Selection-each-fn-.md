@@ -2,7 +2,6 @@
 title: 'Selection.each(fn)'
 excerpt: 'Iterate over a Selection, executing a function for each matched element.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-each/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-each/
 ---
 
 Iterate over a [Selection](/javascript-api/k6-html/selection), executing a function for each matched element.

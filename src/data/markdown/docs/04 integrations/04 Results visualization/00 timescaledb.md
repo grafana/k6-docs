@@ -1,4 +1,4 @@
 ---
 title: 'TimescaleDB'
-redirect: 'https://grafana.com/docs/k6/latest/results-output/real-time/timescaledb/'
+redirect: 'https://k6.io/docs/results-output/real-time/timescaledb'
 ---

@@ -2,7 +2,6 @@
 title: "grpc"
 excerpt: "Experimental GRPC module"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/
 ---
 
 <ExperimentalBlockquote />

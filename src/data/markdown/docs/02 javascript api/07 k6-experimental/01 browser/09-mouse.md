@@ -2,7 +2,6 @@
 title: "Mouse"
 excerpt: "Browser module: Mouse Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/mouse/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/mouse/
 ---
 
 <BrowserDocsWIP/>

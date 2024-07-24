@@ -2,7 +2,6 @@
 title: 'ServiceDisruptor'
 excerpt: 'xk6-disruptor: ServiceDisruptor class'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/
 ---
 
 The `ServiceDisruptor` class can inject different types of faults into the pods that back a Kubernetes service. 

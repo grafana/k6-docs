@@ -2,7 +2,6 @@
 title: "utils"
 excerpt: "A collection of small utility functions useful during load testing with k6. "
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/
 ---
 
 The `utils` module contains number of small utility functions useful in every day load testing.

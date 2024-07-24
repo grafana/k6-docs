@@ -2,7 +2,6 @@
 title: 'Shared iterations'
 excerpt: 'A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/shared-iterations/
-redirect: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/shared-iterations/
 ---
 
 The `shared-iterations` executor shares iterations between the number of VUs.

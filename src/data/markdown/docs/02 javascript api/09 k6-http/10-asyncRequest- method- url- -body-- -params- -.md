@@ -3,7 +3,6 @@ title: 'asyncRequest( method, url, [body], [params] )'
 description: 'Issue any type of HTTP request asynchronously.'
 excerpt: 'Issue any type of HTTP request asynchronously.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/asyncrequest/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/asyncrequest/
 ---
 
 | Parameter         | Type                          | Description                                                                               |

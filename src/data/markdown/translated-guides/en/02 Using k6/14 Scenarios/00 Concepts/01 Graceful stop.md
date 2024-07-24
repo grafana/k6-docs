@@ -2,7 +2,6 @@
 title: 'Graceful stop'
 excerpt: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/graceful-stop/
-redirect: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/graceful-stop/
 ---
 
 The `gracefulStop` is a period at the end of the test in which k6 lets iterations in progress finish.

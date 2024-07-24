@@ -7,7 +7,6 @@ excerpt: |
   Parameterization helps to prevent server-side caching from impacting your load test.
   This will, in turn, make your test more realistic.
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/data-parameterization/
-redirect: https://grafana.com/docs/k6/latest/examples/data-parameterization/
 ---
 
 _Data parameterization_ is the process of turning test values into reusable parameters, for example, through variables and shared arrays.

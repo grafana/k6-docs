@@ -3,7 +3,6 @@ title: 'Params'
 description: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 excerpt: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/params/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/params/
 ---
 
 <WsBlockquote />

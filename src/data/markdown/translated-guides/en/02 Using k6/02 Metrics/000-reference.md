@@ -3,7 +3,6 @@ title: Built-in metrics
 slug: '/using-k6/metrics/reference'
 excerpt: A reference of built-in metrics for different supported protocols.
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/metrics/reference/
-redirect: https://grafana.com/docs/k6/latest/using-k6/metrics/reference/
 ---
 
 Every k6 test emits built-in and [Custom metrics](/using-k6/metrics/create-custom-metrics).

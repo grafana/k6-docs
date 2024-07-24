@@ -2,7 +2,6 @@
 title: 'importKey'
 excerpt: 'importKey imports a key from an external, portable format and gives you a CryptoKey object.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey/
 ---
 
 The `importKey()` imports a key from an external, portable format, and gives you a [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.

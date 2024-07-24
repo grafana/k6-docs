@@ -3,7 +3,6 @@ title: 'KMSKey'
 description: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 excerpt: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/kmskey/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/kmsclient/kmskey/
 ---
 
 `KMSClient.*` methods querying Key Management Service keys return some `KMSKey` instances. Namely, `listKeys()` returns an array of `KMSKey` objects. The `KMSKey` object describes an Amazon Key Management Service key.

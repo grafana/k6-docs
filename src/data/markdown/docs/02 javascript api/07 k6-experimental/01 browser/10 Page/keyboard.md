@@ -2,7 +2,6 @@
 title: 'keyboard'
 excerpt: 'Browser module: page.keyboard method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/keyboard/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/keyboard/
 ---
 
 Returns the [Keyboard](/javascript-api/k6-experimental/browser/keyboard/) instance to interact with a virtual keyboard on the page.

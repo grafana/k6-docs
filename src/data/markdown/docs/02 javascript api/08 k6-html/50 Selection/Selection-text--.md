@@ -2,7 +2,6 @@
 title: 'Selection.text()'
 excerpt: 'Get the text content of the Selection.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-text/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-text/
 ---
 
 Get the text content of the Selection.

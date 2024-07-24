@@ -3,7 +3,6 @@ title: 'Modules'
 excerpt: 'While writing test scripts, it is common to import different modules, or part of modules, for
 usage throughout the script. In k6, it is possible to import three different kinds of modules.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/modules/
-redirect: https://grafana.com/docs/k6/latest/using-k6/modules/
 ---
 
 ## Importing modules

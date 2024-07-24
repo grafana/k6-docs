@@ -2,7 +2,6 @@
 title: 'cookies([urls])'
 excerpt: 'Retrieves context cookies.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/cookies/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/cookies/
 ---
 
 Returns a list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) from the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext) filtered by the provided `urls`. If no `urls` are provided, all cookies are returned.

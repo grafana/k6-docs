@@ -3,7 +3,6 @@ title: 'clearHeader( name )'
 description: 'removes header from the session'
 excerpt: 'removes header from the session'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/clearheader/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/clearheader/
 ---
 
 

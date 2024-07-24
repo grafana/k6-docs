@@ -2,7 +2,6 @@
 title: 'HTTP/2'
 excerpt: 'When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/http-2/
-redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/http-2/
 ---
 
 ## Overview

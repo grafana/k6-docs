@@ -3,7 +3,6 @@ title: 'sleep( t )'
 description: 'Suspends VU execution for the specified duration.'
 excerpt: 'Suspends VU execution for the specified duration.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6/sleep/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6/sleep/
 ---
 
 Suspend VU execution for the specified duration.

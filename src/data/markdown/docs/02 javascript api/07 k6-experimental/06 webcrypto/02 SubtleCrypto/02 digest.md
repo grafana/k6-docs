@@ -2,7 +2,6 @@
 title: 'digest'
 excerpt: 'digest decrypts some encrypted data'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/digest/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/digest/
 ---
 
 The `digest()` method generates a cryptographically secure [digest](https://developer.mozilla.org/en-US/docs/Glossary/Digest) of the given data. A digest is a short fixed-length value derived from some input data. The `digest()` method is commonly used to compute a checksum of data or to verify the integrity of data.

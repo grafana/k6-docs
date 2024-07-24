@@ -2,7 +2,6 @@
 title: 'setDefaultNavigationTimeout(timeout)'
 excerpt: 'Browser module: page.setDefaultNavigationTimeout(timeout) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/setdefaultnavigationtimeout/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/setdefaultnavigationtimeout/
 ---
 
 This setting will change the navigation timeout for the following methods:

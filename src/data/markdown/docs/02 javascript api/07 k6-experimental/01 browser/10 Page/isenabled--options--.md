@@ -2,7 +2,6 @@
 title: 'isEnabled(selector[, options])'
 excerpt: 'Browser module: page.isEnabled(selector[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/isenabled/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/isenabled/
 ---
 
 <Blockquote mod="warning" title="">

@@ -2,7 +2,6 @@
 title: "Trend.add(value, [tags])"
 excerpt: 'Add a value to the Trend metric.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/trend/trend-add/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/trend/trend-add/
 ---
 
 Add a value to the `Trend` metric.

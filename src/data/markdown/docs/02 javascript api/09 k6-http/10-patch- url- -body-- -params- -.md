@@ -3,7 +3,6 @@ title: 'patch( url, [body], [params] )'
 description: 'Issue an HTTP PATCH request.'
 excerpt: 'Issue an HTTP PATCH request.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/patch/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/patch/
 ---
 
 | Parameter         | Type                          | Description                                                                              |

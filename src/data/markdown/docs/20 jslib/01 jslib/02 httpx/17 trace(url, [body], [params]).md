@@ -3,7 +3,6 @@ title: 'trace(url, [body], [params])'
 description: 'httpx.trace makes TRACE requests'
 excerpt: 'httpx.trace makes TRACE requests'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/trace/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/trace/
 ---
 
 `session.trace(url, body, params)` makes a TRACE request. Only the first parameter is required

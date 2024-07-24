@@ -2,7 +2,6 @@
 title: 'Client.exists(keys)'
 excerpt: 'Returns the number of `key` arguments that exist.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-exists/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-exists/
 ---
 
 Returns the number of `key` arguments that exist. Note that if the same existing key is mentioned in the argument multiple times, it will be counted multiple times.

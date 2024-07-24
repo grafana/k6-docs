@@ -2,7 +2,6 @@
 title: 'Troubleshooting'
 excerpt: 'Instructions to fix the most common installation issues.'
 canonicalUrl: https://grafana.com/docs/k6/latest/set-up/install-k6/troubleshooting/
-redirect: https://grafana.com/docs/k6/latest/set-up/install-k6/troubleshooting/
 ---
 
 ## System lacks ca-certificates or gnupg2

@@ -2,7 +2,6 @@
 title: 'WebSocket.onmessage'
 excerpt: 'A handler function for message event WebSocket.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage/
 ---
 
 A handler for a WebSocket connection `message` event.

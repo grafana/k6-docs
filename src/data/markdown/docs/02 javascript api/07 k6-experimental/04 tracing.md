@@ -2,7 +2,6 @@
 title: "tracing"
 excerpt: "k6 Tracing experimental API"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/tracing/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/tracing/
 ---
 
 <ExperimentalBlockquote />

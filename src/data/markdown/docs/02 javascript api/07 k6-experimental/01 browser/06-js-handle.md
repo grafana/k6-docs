@@ -2,7 +2,6 @@
 title: "JSHandle"
 excerpt: "Browser module: JSHandle Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/jshandle/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/jshandle/
 ---
 
 <BrowserDocsWIP/>

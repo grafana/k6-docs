@@ -3,7 +3,6 @@ title: 'randomSeed( int )'
 description: 'Set seed to get a reproducible pseudo-random number using `Math.random`.'
 excerpt: 'Set seed to get a reproducible pseudo-random number using `Math.random`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6/random-seed/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6/random-seed/
 ---
 
 Set seed to get a reproducible pseudo-random number using `Math.random`.

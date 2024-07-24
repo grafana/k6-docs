@@ -2,7 +2,6 @@
 title: 'Gauge'
 excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/gauge/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/gauge/
 ---
 
 _Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/javascript-api/k6-metrics).

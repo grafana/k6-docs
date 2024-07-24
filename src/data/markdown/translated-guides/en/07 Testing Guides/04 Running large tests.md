@@ -2,7 +2,6 @@
 title: 'Running large tests'
 excerpt: 'How to run large-scale k6 tests without distributed-execution'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
-redirect: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
 ---
 
 k6 can generate a lot of load from a single machine. With proper monitoring and script optimization, you might be able to run a rather large load test without needing [distributed execution](#distributed-execution). This document explains how to launch such a test, and some of the aspects you should be aware of.

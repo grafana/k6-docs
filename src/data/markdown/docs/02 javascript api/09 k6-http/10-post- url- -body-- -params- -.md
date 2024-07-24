@@ -3,7 +3,6 @@ title: 'post( url, [body], [params] )'
 description: 'Issue an HTTP POST request.'
 excerpt: 'Issue an HTTP POST request.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/post/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/post/
 ---
 
 | Parameter           | Type                          | Description                                                                              |

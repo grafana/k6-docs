@@ -1,5 +1,6 @@
 import { Heading } from 'components/shared/heading';
 import { useI18n } from 'contexts/i18n-provider';
+import { useLocale } from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 
@@ -7,6 +8,7 @@ import styles from './use-cases.module.scss';
 
 export const UseCases = () => {
   const { t } = useI18n();
+  const { urlLocale } = useLocale();
   return (
     <section className={`container ${styles.container}`}>
       <Heading tag={'h2'} size={'lg'} className={styles.title}>
@@ -24,7 +26,9 @@ export const UseCases = () => {
             <Link
               className={'link'}
               to={
-                'https://grafana.com/docs/k6/latest/testing-guides/test-types/spike-testing/'
+                urlLocale === 'es'
+                  ? '/test-types/spike-testing/'
+                  : '/test-types/spike-testing/'
               }
             >
               spike
@@ -33,7 +37,9 @@ export const UseCases = () => {
             <Link
               className={'link'}
               to={
-                'https://grafana.com/docs/k6/latest/testing-guides/test-types/stress-testing/'
+                urlLocale === 'es'
+                  ? '/es/tipos-de-prueba/stress-testing/'
+                  : '/test-types/stress-testing/'
               }
             >
               stress
@@ -42,7 +48,9 @@ export const UseCases = () => {
             <Link
               className={'link'}
               to={
-                'https://grafana.com/docs/k6/latest/testing-guides/test-types/soak-testing/'
+                urlLocale === 'es'
+                  ? '/es/tipos-de-prueba/soak-testing/'
+                  : '/test-types/soak-testing/'
               }
             >
               soak tests
@@ -57,10 +65,7 @@ export const UseCases = () => {
           </Heading>
           <p>
             {t('welcome.use-cases.browser-testing.pre-description')}
-            <Link
-              className={'link'}
-              to={'https://grafana.com/docs/k6/latest/using-k6-browser/'}
-            >
+            <Link className={'link'} to={'/using-k6-browser/overview/'}>
               k6 browser
             </Link>
             {t('welcome.use-cases.browser-testing.description')}
@@ -71,15 +76,8 @@ export const UseCases = () => {
             {t('welcome.use-cases.chaos-testing.title')}
           </Heading>
           <p>
-            You can use k6 to simulate traffic as part of your chaos
-            experiments, trigger them from your k6 tests or inject different
-            types of faults in Kubernetes with{' '}
-            <Link
-              className={'link'}
-              to={
-                'https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/'
-              }
-            >
+            {t('welcome.use-cases.chaos-testing.description')}
+            <Link className={'link'} to={'/javascript-api/xk6-disruptor/'}>
               xk6-disruptor
             </Link>
             .
@@ -89,22 +87,7 @@ export const UseCases = () => {
           <Heading tag={'h3'} size={'md'} className={styles.title}>
             {t('welcome.use-cases.performance-monitoring.title')}
           </Heading>
-          <p>
-            With k6, you can automate and schedule to trigger tests very
-            frequently with a small load to continuously validate the
-            performance and availability of your production environment. You can
-            also use{' '}
-            <Link
-              className={'link'}
-              to={
-                'https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/k6/'
-              }
-            >
-              Grafana Cloud Synthetic Monitoring
-            </Link>{' '}
-            for a managed solution built specifically for synthetic monitoring
-            that supports k6 test scripts.
-          </p>
+          <p>{t('welcome.use-cases.performance-monitoring.description')}</p>
         </li>
       </ul>
     </section>

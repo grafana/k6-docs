@@ -2,7 +2,6 @@
 title: 'Client.lpop(key)'
 excerpt: 'Removes and returns the first element of the list stored at `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lpop/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-lpop/
 ---
 
 Removes and returns the first element of the list stored at `key`.

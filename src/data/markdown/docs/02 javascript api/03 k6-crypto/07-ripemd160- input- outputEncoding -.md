@@ -3,7 +3,6 @@ title: 'ripemd160( input, outputEncoding )'
 description: 'Use RIPEMD-160 to hash input data.'
 excerpt: 'Use RIPEMD-160 to hash input data.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/ripemd160/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/ripemd160/
 ---
 
 <CryptoBlockquote />

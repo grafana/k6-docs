@@ -3,7 +3,6 @@ title: 'setResponseCallback( callback )'
 description: 'set responseCallback to mark responses as expected'
 excerpt: 'set responseCallback to mark responses as expected'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/set-response-callback/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/set-response-callback/
 ---
 
 Set the response callback to be called to determine if a response was expected/successful or not.

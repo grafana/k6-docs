@@ -2,7 +2,6 @@
 title: 'Ramping arrival rate'
 excerpt: 'A variable number of iterations are started in a specified period of time.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/ramping-arrival-rate/
-redirect: https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/ramping-arrival-rate/
 ---
 
 With the `ramping-arrival-rate` executor, k6 starts iterations at a variable rate.

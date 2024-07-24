@@ -2,7 +2,6 @@
 title: "Client.loadProtoset(protosetPath)"
 excerpt: 'Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/client-loadprotoset/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/client-loadprotoset/
 ---
 
 Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.

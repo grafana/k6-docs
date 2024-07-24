@@ -3,7 +3,6 @@ title: 'Online Certificate Status Protocol (OCSP)'
 excerpt: 'k6 supports OCSP stapling, receiving and parsing a stapled response as part of
 the TLS connection setup.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp/
-redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp/
 ---
 
 ## What is OCSP?

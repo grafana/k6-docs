@@ -2,7 +2,6 @@
 title: 'goto(url[, options])'
 excerpt: 'Browser module: page.goto(url[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/goto/
-redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/goto/
 ---
 
 Navigates to the specified URL and returns the main resource response.

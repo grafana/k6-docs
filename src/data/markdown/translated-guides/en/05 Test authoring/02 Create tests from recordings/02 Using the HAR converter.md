@@ -2,7 +2,6 @@
 title: 'Using the HAR converter'
 excerpt: 'The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter/
-redirect: https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter/
 ---
 
 The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool that generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>). 
