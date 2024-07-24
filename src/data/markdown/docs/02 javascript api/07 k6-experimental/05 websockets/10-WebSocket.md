@@ -3,6 +3,7 @@ title: 'WebSocket'
 description: 'Create a WebSocket connection, and provides a WebSocket instance to interact with the service.'
 excerpt: 'Create a WebSocket connection, and provides a WebSocket instance to interact with the service.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/websocket/
 ---
 
 Creates a WebSocket instance for connection to a remote host.

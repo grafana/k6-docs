@@ -2,6 +2,7 @@
 title: 'grantPermissions(permissions[, options])'
 excerpt: 'Grants specified permissions to the BrowserContext.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/grantpermissions/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/grantpermissions/
 ---
 
 Grants specified permissions to the `BrowserContext`. Only grants corresponding permissions to the given origin if specified.

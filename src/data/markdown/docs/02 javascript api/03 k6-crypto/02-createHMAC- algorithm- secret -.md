@@ -3,6 +3,7 @@ title: 'createHMAC( algorithm, secret )'
 description: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 excerpt: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/createhmac/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/createhmac/
 ---
 
 <CryptoBlockquote />

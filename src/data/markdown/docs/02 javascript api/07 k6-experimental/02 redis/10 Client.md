@@ -2,6 +2,7 @@
 title: 'Client'
 excerpt: 'Client is a Redis client to interact with a Redis server or cluster.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/
 ---
 
 `Client` is a Redis client to interact with a Redis server or cluster. It exposes a promise-based API, which users can interact with in an asynchronous manner.

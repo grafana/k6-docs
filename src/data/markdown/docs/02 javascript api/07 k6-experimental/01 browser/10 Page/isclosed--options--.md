@@ -2,6 +2,7 @@
 title: 'isClosed()'
 excerpt: 'Browser module: page.isClosed() method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/isclosed/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/isclosed/
 ---
 
 <Blockquote mod="attention">

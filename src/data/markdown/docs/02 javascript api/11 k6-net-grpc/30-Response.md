@@ -3,6 +3,7 @@ title: "Response"
 head_title: 'gRPC.Response'
 excerpt: 'The response object of a gRPC request.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/response/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/response/
 ---
 
 | Name | Type | Description |

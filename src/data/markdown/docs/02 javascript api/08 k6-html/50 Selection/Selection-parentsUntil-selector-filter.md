@@ -2,6 +2,7 @@
 title: 'Selection.parentsUntil([selector], [filter])'
 excerpt: 'Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-parentsuntil/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-parentsuntil/
 ---
 
 Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.

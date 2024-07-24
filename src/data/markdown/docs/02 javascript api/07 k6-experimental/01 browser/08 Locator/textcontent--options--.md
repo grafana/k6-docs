@@ -2,6 +2,7 @@
 title: 'textContent([options])'
 excerpt: 'Browser module: locator.textContent method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/textcontent/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/textcontent/
 ---
 
 Returns the `element.textContent`.

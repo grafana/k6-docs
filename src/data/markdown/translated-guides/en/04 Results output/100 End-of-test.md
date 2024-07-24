@@ -2,6 +2,7 @@
 title: End of test
 excerpt: When a test finishes, k6 prints a summary of results, with aggregated metrics and meta-data about the test. You can customize this, or configure the test to write granular metrics to a file.
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/end-of-test/
+redirect: https://grafana.com/docs/k6/latest/results-output/end-of-test/
 ---
 
 When a test finishes, k6 prints a top-level overview of the aggregated results to `stdout`.

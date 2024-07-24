@@ -4,6 +4,7 @@ head_title: 'AWSConfig'
 description: 'AWSConfig is used to configure an AWS service client instances'
 excerpt: 'AWSConfig is used to configure an AWS service client instances'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/awsconfig/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/awsconfig/
 ---
 
 AWSConfig is used to configure an AWS service client instance, such as [S3Client](/javascript-api/jslib/aws/s3client) or [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient). It effectively allows the user to select a [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) they wish to interact with, and the AWS credentials they wish to use to authenticate.

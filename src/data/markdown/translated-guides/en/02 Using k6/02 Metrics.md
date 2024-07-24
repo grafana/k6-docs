@@ -2,6 +2,7 @@
 title: 'Metrics'
 excerpt: 'This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/metrics/
+redirect: https://grafana.com/docs/k6/latest/using-k6/metrics/
 ---
 
 _Metrics_ measure how a system performs under test conditions.

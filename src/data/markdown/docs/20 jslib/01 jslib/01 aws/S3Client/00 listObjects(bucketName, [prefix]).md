@@ -3,6 +3,7 @@ title: 'S3Client.listObjects(bucketName, [prefix])'
 description: 'S3Client.listObjects lists the objects contained in a bucket'
 excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/listobjects/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/listobjects/
 ---
 
 `S3Client.listObjects()` lists the objects contained in a bucket.

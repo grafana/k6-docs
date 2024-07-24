@@ -3,6 +3,7 @@ title: 'Selection'
 description: 'A jQuery-like API for accessing HTML DOM elements.'
 excerpt: 'A jQuery-like API for accessing HTML DOM elements.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/
 ---
 
 Represents a set of nodes in a DOM tree.

@@ -2,6 +2,7 @@
 title: Client
 excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/client/
 ---
 
 `Client` is a gRPC client that can interact with a gRPC server.

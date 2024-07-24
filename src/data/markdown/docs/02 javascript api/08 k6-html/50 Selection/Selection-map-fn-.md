@@ -2,6 +2,7 @@
 title: 'Selection.map(fn)'
 excerpt: 'Pass each selection in the current matched set through a function, producing a new Array containing the return values.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-map/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/selection/selection-map/
 ---
 
 Pass each selection in the current matched set through a function, producing a new Array containing the return values.
