@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { WhatIs } from 'components/pages/doc-welcome';
+import { OutdatedBlockquote } from 'components/pages/doc-welcome/outdated-blockquote';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
 import { PageInfo } from 'components/shared/page-info';
 import { SEO } from 'components/shared/seo';
@@ -59,6 +60,7 @@ const GuidesContent = ({
       <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
         <div ref={contentContainerRef} className={stickyContainerClasses}>
+          <OutdatedBlockquote />
           <WhatIs />
           <UseCases />
         </div>
