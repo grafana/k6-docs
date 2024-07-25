@@ -100,7 +100,7 @@ To run a simple local script:
 
    {{< /code >}}
 
-   You can also use [the browser module options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
+   You can also use [the browser module options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
 
    {{< code >}}
 

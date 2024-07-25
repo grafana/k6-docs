@@ -92,6 +92,7 @@ For the full list, refer to [Executors](https://grafana.com/docs/k6/<K6_VERSION>
 | exec                            | string | Name of exported JS function to execute.                                                                                                                                                                  | `"default"` |
 | env                             | object | Environment variables specific to this scenario.                                                                                                                                                          | `{}`        |
 | tags                            | object | [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) specific to this scenario.                                                                                                      | `{}`        |
+| options                         | object | Additional options include [browser options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/options/).                                                                                         | `{}`        |
 
 ## Scenario example
 
