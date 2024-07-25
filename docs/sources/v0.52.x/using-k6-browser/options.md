@@ -8,9 +8,7 @@ weight: 04
 
 To enable browser testing, add the `browser` configuration within the `options` property of the [Scenario options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#options).
 
-{{< code >}}
-
-```shared-iterations
+```javascript
 export const options = {
   scenarios: {
     foo: {
@@ -24,25 +22,6 @@ export const options = {
   },
 };
 ```
-
-```constant-vus
-export const options = {
-  scenarios: {
-    foo: {
-      executor: 'constant-vus',
-      vus: 10,
-      duration: '5m',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-};
-```
-
-{{< /code >}}
 
 ## Script options
 
