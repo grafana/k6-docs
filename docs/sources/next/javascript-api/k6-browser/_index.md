@@ -104,7 +104,7 @@ PS C:\k6> k6 run script.js
 
 {{< /code >}}
 
-### Devices Example
+### Devices example
 
 To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/browser`.
 
@@ -148,7 +148,7 @@ export default async function () {
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-browser-api.md" version="<K6_VERSION>" >}}
 
-## Browser Module Options
+## Browser module options
 
 You can customize the behavior of the browser module by providing browser options as environment variables.
 

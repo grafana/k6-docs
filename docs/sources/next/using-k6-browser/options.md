@@ -1,6 +1,6 @@
 ---
 title: 'Browser options'
-description: 'An overview of the different options to customize the behaviour when running browser tests.'
+description: 'An overview of the different options you can use to customize the browser module behavior when running browser tests.'
 weight: 04
 ---
 
@@ -54,11 +54,11 @@ export const options = {
 
 You can customize the behavior of the browser module by passing environment variables.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Customizing browser options via environment variables is unsupported when [running browser tests in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/get-started/run-your-first-browser-tests/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< docs/shared source="k6" lookup="browser/env-var-options.md" version="<K6_VERSION>" >}}
 
@@ -66,11 +66,11 @@ Customizing browser options via environment variables is unsupported when [runni
 
 List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `K6_BROWSER_IGNORE_DEFAULT_ARGS` environment variable when starting a test for the ones you want to ignore.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The starting '--' have been omitted from the argument names in these lists.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Argument                                                 | Value                                                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
