@@ -12,9 +12,10 @@ You can use this recording to auto-generate your test logic.
 Testers commonly use recordings to avoid writing complex tests from scratch.
 For example, testing advanced scenarios on websites or mobile applications, such as end-to-end (E2E) tests with dozens or hundreds of requests.
 
-k6 provides two tools that can directly convert a recording into k6 script:
+k6 provides three tools that can directly convert a recording into k6 script:
 
 - [Browser recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) generates a k6 script from a browser session.
+- [DevTools recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-devtools-recorder) generates a k6 Browser script from user flows recorded in Chrome DevTools.
 - [HAR converter](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter) generates a k6 script from the requests included in a HAR file.
 
 ## Steps
