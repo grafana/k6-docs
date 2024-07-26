@@ -1,12 +1,14 @@
 ---
 title: 'OpenTelemetry'
-description: 'Use the OpenTelemetry output extension to send test results in OTEL metrics format.'
+description: 'Use the OpenTelemetry experimental output to send test results in OTEL metrics format.'
 weight: 00
 ---
 
 # OpenTelemetry
 
-Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format](https://opentelemetry.io/docs/specs/otel/metrics/) to an OTEL metrics collector or a metrics backend that supports the OTEL metrics format by using the [xk6-output-opentelemetry extension](https://github.com/grafana/xk6-output-opentelemetry/).
+Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format](https://opentelemetry.io/docs/specs/otel/metrics/) to an OTEL metrics collector or a metrics backend that supports the OTEL metrics format by using the experimental OpenTelemetry output `--out experimental-opentelemetry`.
+
+Note that the `experimental-opentelemetry` became a part of k6 only with k6 v0.53.0, so prior that version you should use a [xk6-output-opentelemetry extension](https://github.com/grafana/xk6-output-opentelemetry/).
 
 {{< admonition type="note" >}}
 
@@ -25,40 +27,14 @@ k6 converts all [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using
 | Rate      | Split into two `Int64Counter` counters named `metric_name.occurred` and `metric_name.total`. `metric_name.occurred` counts only the number of non-zero occurrences, and `metric_name.total` registers the total number of positive and negative occurrences. This might change in the future, refer to [xk6-output-opentelemetry#12](https://github.com/grafana/xk6-output-opentelemetry/issues/12) for more details. |
 | Trend     | `Float64Histogram`                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-## Build the k6 version
-
-To build a k6 binary with the extension, first, make sure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed on your machine.
-
-Then, open your terminal and run the following commands:
-
-```bash
-# Install xk6
-go install go.k6.io/xk6/cmd/xk6@latest
-
-# Build the k6 binary
-xk6 build --with github.com/grafana/xk6-output-opentelemetry
-
-... [INFO] Build environment ready
-... [INFO] Building k6
-... [INFO] Build complete: ./k6
-```
-
-xk6 will create the new k6 binary in the local folder.
-
-{{% admonition type="note" %}}
-
-To learn more about how to build custom k6 versions, refer to [xk6](https://github.com/grafana/xk6).
-
-{{% /admonition %}}
-
 ## Run the k6 test
 
-Using the k6 binary you built in the previous step, you can use the `--out xk6-opentelemetry` option when running your tests to use this extension:
+You can use the `--out experimental-opentelemetry` option when running your tests to use this extension:
 
 {{< code >}}
 
 ```bash
-$ ./k6 run --out xk6-opentelemetry script.js
+$  K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o experimental-opentelemetry examples/script.js
 ```
 
 {{< /code >}}
