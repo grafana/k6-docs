@@ -1,6 +1,6 @@
 ---
-title: 'Using the DevTools recorder'
-description: 'The DevTools recorder allows exporting k6 browser scripts from the recorder panel in Chrome DevTools.'
+title: 'Using the k6 DevTools recorder'
+description: 'The k6 DevTools recorder allows you to export k6 browser scripts from the recorder panel in Chrome DevTools.'
 weight: 01
 ---
 
