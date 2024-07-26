@@ -4,9 +4,9 @@ description: 'The k6 DevTools recorder allows you to export k6 browser scripts f
 weight: 01
 ---
 
-# Using the DevTools recorder
+# Using the k6 DevTools recorder
 
-The DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
+The k6 DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
 
 ## Before you begin
 
