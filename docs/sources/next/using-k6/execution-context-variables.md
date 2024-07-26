@@ -77,7 +77,7 @@ VU tags: ${exec.vu.tags}`);
 
 For detailed reference, refer to the [k6/execution module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution).
 
-### More examples
+## Additional examples
 
 - [Getting unique data once](https://grafana.com/docs/k6/<K6_VERSION>/examples/data-parameterization#retrieving-unique-data)
 - [Timing operations](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution#timing-operations)
@@ -85,26 +85,22 @@ For detailed reference, refer to the [k6/execution module](https://grafana.com/d
 
 {{< collapse title="_VU and _ITER (discouraged)" >}}
 
-> k6 v0.34.0 introduced the **k6/execution** module.
-> If you are using a version k6 that does not have this module, use **\_\_VU** and **\_\_ITER**.
+{{< admonition type="note" >}}
 
-⚠️ **\_\_VU** and **\_\_ITER** are both global variables with execution-context information that k6 makes available to the test script.
+k6 v0.34.0 introduced the **k6/execution** module. If you are using a version of k6 that doesn't have this module, use `__VU` and `__ITER`.
 
-**\_\_ITER**
+{{< /admonition >}}
 
-A numeric counter with the current iteration number for a specific VU. Zero-based.
+`__VU` and `__ITER` are both global variables with execution-context information that k6 makes available to the test script.
 
-**\_\_VU**
+- `__ITER`: A numeric counter with the current iteration number for a specific VU. Zero-based.
+- `__VU`: Current VU number in use. k6 assigns the value incrementally for each new VU instance, starting from one. The variable is 0 when executing the setup and teardown functions.
 
-Current VU number in use. k6 assigns the value incrementally for each new VU instance, starting from one.
-The variable is 0 when executing the setup and teardown functions.
+### Running in k6 Cloud
 
-**Running in k6 Cloud**
+When you run tests in [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/), the **\_\_VU** value is per server/load generator.
 
-When you run tests in [k6 Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/), the **\_\_VU** value is per server/load generator.
-Read the details in the [cloud docs](https://grafana.com/docs/grafana-cloud/testing/k6/reference/cloud-ips/).
-
-**Examples**
+### Examples
 
 ```javascript
 import http from 'k6/http';
@@ -137,6 +133,6 @@ export default function () {
 
 ## Grafana Cloud k6 context variables
 
-Grafana Cloud k6 injects additional context variables into running cloud test. These variables provide information about the server (`K6_CLOUDRUN_INSTANCE_ID`), load zone (`K6_CLOUDRUN_LOAD_ZONE`), ID (`K6_CLOUDRUN_INSTANCE_ID`), and cloud distribution (`K6_CLOUDRUN_DISTRIBUTION`).
+Grafana Cloud k6 injects additional context variables into a running cloud test. These variables provide information about the server (`K6_CLOUDRUN_INSTANCE_ID`), load zone (`K6_CLOUDRUN_LOAD_ZONE`),instance ID (`K6_CLOUDRUN_INSTANCE_ID`), and cloud distribution (`K6_CLOUDRUN_DISTRIBUTION`).
 
 Refer to [Cloud execution context variables](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/cloud-scripting-extras/cloud-execution-context-variables/) for more details.
