@@ -7,13 +7,7 @@ slug: 'new-relic'
 
 # New Relic
 
-{{% admonition type="warning" %}}
-
-The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
-
-For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
-
-{{% /admonition %}}
+{{< docs/shared source="k6" lookup="statsd-output.md" version="<K6_VERSION>" >}}
 
 k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualized in dashboards and shared with others, used to compare load impact with system performance, and alert on metrics too.
 
