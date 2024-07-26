@@ -1,19 +1,19 @@
 ---
-title: 'Using the DevTools recorder'
-description: 'The DevTools recorder allows exporting k6 browser scripts from the recorder panel in Chrome DevTools.'
+title: 'Using the k6 DevTools recorder'
+description: 'The k6 DevTools recorder allows you to export k6 browser scripts from the recorder panel in Chrome DevTools.'
 weight: 01
 ---
 
-# Using the DevTools recorder
+# Using the k6 DevTools recorder
 
-The DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
+The k6 DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
 
 ## Before you begin
 
 To ensure you have a useful test output:
 
 - Review the [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically) and [Consider hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites) sections on [Create tests from recordings](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/).
-- Learn how to [configure and run](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests/) browser tests.
+- Learn the basics of k6 browser tests with [Running browser tests](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests/).
 
 {{< admonition type="note" >}}
 
