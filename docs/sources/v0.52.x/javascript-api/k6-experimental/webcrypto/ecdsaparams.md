@@ -1,7 +1,7 @@
 ---
 title: 'EcdsaParams'
 description: 'EcdsaParams is a parameter used for sign or verify operations.'
-weight: 03
+weight: 11
 ---
 
 # EcdsaParams

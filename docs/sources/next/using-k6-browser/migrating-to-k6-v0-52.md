@@ -3,7 +3,7 @@ aliases:
   - ./migrating-to-k6-v0-46/ # docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-46
 title: 'Migrating browser scripts to k6 v0.52'
 description: 'A migration guide to ease the process of transitioning to the new k6 browser module version bundled with k6 v0.52'
-weight: 04
+weight: 05
 ---
 
 # Migrating browser scripts to k6 v0.52

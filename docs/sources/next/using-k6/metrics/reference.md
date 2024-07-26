@@ -53,29 +53,13 @@ The [k6 browser module](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browse
 
 These core metrics will evolve over time when technology changes, but for now, k6 tracks the following core web vitals:
 
-<!-- vale off -->
-
-| Core Web Vital        | Description                                                                                                                                                                                                                            |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| browser_web_vital_cls | Measures the visual stability on a webpage by quantifying the amount of unexpected layout shift of visible page content. Refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.                                |
-| browser_web_vital_fid | Measures the responsiveness of a web page by quantifying the delay between a user’s first interaction, such as clicking a button, and the browser’s response. Refer to [First Input Delay](https://web.dev/fid/) for more information. |
-| browser_web_vital_lcp | Measures the time it takes for the largest content element on a page to become visible. Refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information.                                                                |
-
-<!-- vale on -->
+{{< docs/shared source="k6" lookup="browser/web-vital-core-metrics.md" version="<K6_VERSION>" >}}
 
 ### Other Web Vitals
 
 Apart from the Core Web Vitals, the browser module also reports [Other Web Vitals](https://web.dev/vitals/#other-web-vitals).
 
-<!-- vale off -->
-
-| Other Web Vital        | Description                                                                                                                                                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| browser_web_vital_fcp  | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Refer to [First Contentful Paint](https://web.dev/fcp/) for more information. |
-| browser_web_vital_inp  | An experimental metric that measures a page's responsiveness. Refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.                                                                |
-| browser_web_vital_ttfb | Measures the time it takes between the browser request and the start of the response from a server. Refer to [Time to First Byte](https://web.dev/ttfb/) for more information.                                |
-
-<!-- vale on -->
+{{< docs/shared source="k6" lookup="browser/web-vital-other-metrics.md" version="<K6_VERSION>" >}}
 
 ## Built-in WebSocket metrics {#websockets}
 

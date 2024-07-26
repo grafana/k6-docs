@@ -6,14 +6,7 @@ weight: 06
 
 # k6/execution
 
-`k6/execution` provides the capability to get information about the current test execution state inside the test script. You can read in your script the execution state during the test execution and change your script logic based on the current state.
-
-The `k6/execution` module provides the test execution information with the following properties:
-
-- [instance](#instance)
-- [scenario](#scenario)
-- [test](#test)
-- [vu](#vu)
+{{< docs/shared source="k6" lookup="javascript-api/k6-execution-intro.md" version="<K6_VERSION>" >}}
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 

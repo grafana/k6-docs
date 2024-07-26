@@ -11,12 +11,11 @@ Follow along to learn about:
 - Google's Core Web Vitals and why they are important
 - How to analyze the browser metrics output
 - How to set thresholds for your browser metrics
+- How to use the Performance API to measure web performance.
 
 ## Google's Core Web Vitals
 
 The k6 browser module emits metrics based on the [Core Web Vitals](https://web.dev/vitals/#core-web-vitals).
-This section provides some conceptual background about the core vitals.
-To review the complete list of browser metrics, refer to the section in the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference#browser).
 
 Google introduced these metrics to provided unified signals to assess user experience on the web.
 The vitals are composed of three important metrics to help user experience when using your web application.
@@ -31,6 +30,18 @@ The Core Web Vitals are one of [Google's Page Experience Signals](https://develo
 
 Existing browser measures, such as `Load` and `DOMContentLoaded` times, no longer accurately reflect user experience very well.
 Relying on these load events does not give the correct metric to analyze critical performance bottlenecks that your page might have. Google's Web Vitals is a better measure of your page performance and its user experience.
+
+## Browser metrics
+
+The following Core Web Vital metrics are collected when using the k6 browser module.
+
+{{< docs/shared source="k6" lookup="browser/web-vital-core-metrics.md" version="<K6_VERSION>" >}}
+
+Additionally, k6 also collects other Web Vital metrics.
+
+{{< docs/shared source="k6" lookup="browser/web-vital-other-metrics.md" version="<K6_VERSION>" >}}
+
+To review the complete list of k6 metrics, refer to the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference).
 
 ## Understanding the browser metrics output
 
@@ -129,31 +140,24 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.goto("https://test.k6.io/browser.php");
-    await page.evaluate(() => window.performance.mark("page-visit"));
+    await page.goto('https://test.k6.io/browser.php');
+    await page.evaluate(() => window.performance.mark('page-visit'));
 
-    await page.locator("#checkbox1").check();
+    await page.locator('#checkbox1').check();
     await page.locator('#counter-button').click();
-    await page.locator("#text1").fill("This is a test");
+    await page.locator('#text1').fill('This is a test');
 
-    await page.evaluate(() => window.performance.mark("action-completed"));
+    await page.evaluate(() => window.performance.mark('action-completed'));
 
     // Get time difference between visiting the page and completing the actions
     await page.evaluate(() =>
-      window.performance.measure(
-        "total-action-time",
-        "page-visit",
-        "action-completed"
-      )
+      window.performance.measure('total-action-time', 'page-visit', 'action-completed')
     );
 
     const totalActionTime = await page.evaluate(
       () =>
-        JSON.parse(
-          JSON.stringify(
-            window.performance.getEntriesByName("total-action-time")
-          )
-        )[0].duration
+        JSON.parse(JSON.stringify(window.performance.getEntriesByName('total-action-time')))[0]
+          .duration
     );
 
     myTrend.add(totalActionTime);

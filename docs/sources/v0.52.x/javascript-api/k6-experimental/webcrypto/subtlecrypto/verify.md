@@ -16,12 +16,16 @@ verify(algorithm, key, signature, data)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                 | Description                                                    |
-| :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
-| `algorithm` | `string` or object with a single `name` string property or an [`EcdsaParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdsaparams/) object | The algorithm to use. Currently supported: `HMAC` and `ECDSA`. |
-| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                             | The key that will be used to verify the signature.             |
-| `signature` | `ArrayBuffer`                                                                                                                                                                        | The signature to verify.                                       |
-| `data`      | `ArrayBuffer`                                                                                                                                                                        | The data whose signature is to be verified.                    |
+| Name        | Type                                                                                                                                                                                                                                                                                                           | Description                                                    |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
+| `algorithm` | `string` or object with a single `name` string property or an [EcdsaParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdsaparams/), or [HmacKeyGenParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/hmackeygenparams/) object | The algorithm to use. Currently supported: `HMAC` and `ECDSA`. |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                       | The key that will be used to verify the signature.             |
+| `signature` | `ArrayBuffer`                                                                                                                                                                                                                                                                                                  | The signature to verify.                                       |
+| `data`      | `ArrayBuffer`                                                                                                                                                                                                                                                                                                  | The data whose signature is to be verified.                    |
+
+### Supported algorithms
+
+{{< docs/shared source="k6" lookup="webcrypto/supported-sign-verify.md" version="<K6_VERSION>" >}}
 
 ## Return Value
 

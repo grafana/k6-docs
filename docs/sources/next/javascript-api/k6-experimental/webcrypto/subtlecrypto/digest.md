@@ -21,6 +21,12 @@ digest(algorithm, data)
 | `algorithm` | a `string` or object with a single `name` string property | Names the hash function to use. Supported values are `"SHA-1"`, `"SHA-256"`, `"SHA-384"` and `"SHA-512"`. Note that the SHA-1 hash function is not considered safe for cryptographic use. |
 | `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                | The data to be digested.                                                                                                                                                                  |
 
+### Supported algorithms
+
+| SHA-1 | SHA-256 | SHA-384 | SHA-512 |
+| :---- | :------ | :------ | :------ |
+| ✅    | ✅      | ✅      | ✅      |
+
 ## Return Value
 
 A `Promise` that resolves to a new `ArrayBuffer` containing the digest.

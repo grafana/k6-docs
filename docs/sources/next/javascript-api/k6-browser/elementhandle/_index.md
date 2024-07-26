@@ -38,7 +38,7 @@ weight: 04
 | [scrollIntoViewIfNeeded([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/scrollintoviewifneeded)  | Scrolls the element into view if needed.                                                                                                                                            |
 | [selectOption(values[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/selectoption)              | Selects the `select` element's one or more options which match the values.                                                                                                          |
 | [selectText([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/selecttext)                          | Selects the text of the element.                                                                                                                                                    |
-| [setChecked(checked[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/setchecked)                 | Sets the `checkbox` or `radio` input element's value to the specified checked or unchecked state.                                                                                   |
+| setChecked(checked[, options])                                                                                                                | Sets the `checkbox` or `radio` input element's value to the specified checked or unchecked state.                                                                                   |
 | [setInputFiles(file[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/setinputfiles)              | Sets the file input element's value to the specified files.                                                                                                                         |
 | [tap(options)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/tap)                                          | Taps the element.                                                                                                                                                                   |
 | [textContent()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/textcontent)                                 | Returns the text content of the element.                                                                                                                                            |
@@ -48,8 +48,6 @@ weight: 04
 | [waitForSelector(selector[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/waitforselector)      | Waits for the element to be present in the DOM and to be visible.                                                                                                                   |
 
 ## Examples
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -84,7 +82,7 @@ export default async function () {
     const submitButton = await page.$('input[type="submit"]');
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
-    const text = await p.$('h2');
+    const text = await page.$('h2');
     const content = await text.textContent();
     check(page, {
       header: () => text == 'Welcome, admin!',
@@ -95,9 +93,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
+<!-- eslint-skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -167,5 +163,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}
