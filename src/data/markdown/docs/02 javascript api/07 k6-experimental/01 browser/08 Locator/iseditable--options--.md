@@ -2,6 +2,7 @@
 title: 'isEditable([options])'
 excerpt: 'Browser module: locator.isEditable method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/iseditable/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/iseditable/
 ---
 
 Checks if the element is `editable`.

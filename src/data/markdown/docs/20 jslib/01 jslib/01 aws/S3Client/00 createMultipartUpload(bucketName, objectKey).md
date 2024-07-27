@@ -3,6 +3,7 @@ title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 description: 'S3Client.createMultipartUpload creates a multipart upload for an object key to a bucket'
 excerpt: 'S3Client.createMultipartUpload creates a multipart upload to a bucket'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/createmultipartupload/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/createmultipartupload/
 ---
 
 `S3Client.createMultipartUpload` creates a new multipart upload for a given an object key in a bucket.

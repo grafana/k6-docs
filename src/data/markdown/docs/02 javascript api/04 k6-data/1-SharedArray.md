@@ -2,6 +2,7 @@
 title: SharedArray
 excerpt: 'SharedArray is an array-like object that shares the underlying memory between VUs.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-data/sharedarray/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-data/sharedarray/
 ---
 
 `SharedArray` is an array-like object that shares the underlying memory between VUs.

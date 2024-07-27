@@ -3,6 +3,7 @@ title: 'Redis options'
 slug: '/javascript-api/k6-experimental/redis/options/'
 excerpt: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/redis-options/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/redis-options/
 ---
 
 You can configure the [Redis Client](/javascript-api/k6-experimental/redis/client) at construction time with the [Options](#options) object.

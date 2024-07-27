@@ -3,6 +3,7 @@ title: 'Secret'
 description: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
 excerpt: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/secret/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/secret/
 ---
 
 Secret is returned by the SecretsManagerClient.* methods that query secrets. Namely, [listSecrets](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/),

@@ -2,6 +2,7 @@
 title: 'newContext([options])'
 excerpt: 'Browser module: newContext method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/newcontext/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/newcontext/
 ---
 
 Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/), if one hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If one has already been initialized an error is thrown.

@@ -2,6 +2,7 @@
 title: 'setExtraHTTPHeaders(headers)'
 excerpt: 'Browser module: page.setExtraHTTPHeaders(headers) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/setextrahttpheaders/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/setextrahttpheaders/
 ---
 
 This sets extra HTTP headers which will be sent with subsequent HTTP requests.

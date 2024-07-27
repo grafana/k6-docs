@@ -3,6 +3,7 @@ title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 excerpt: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/uploadpart/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/uploadpart/
 ---
 
 `S3Client.uploadPart` uploads a part to multipart upload in a bucket.

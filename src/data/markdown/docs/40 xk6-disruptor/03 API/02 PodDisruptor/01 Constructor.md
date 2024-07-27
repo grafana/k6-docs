@@ -2,6 +2,7 @@
 title: 'Constructor'
 excerpt: 'xk6-disruptor: PodDisruptor constructor'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/constructor/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/constructor/
 ---
 
 

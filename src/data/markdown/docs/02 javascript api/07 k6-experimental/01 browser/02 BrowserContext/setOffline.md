@@ -2,6 +2,7 @@
 title: 'setOffline(offline)'
 excerpt: "Toggles the BrowserContext's connectivity on/off."
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/setoffline/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/setoffline/
 ---
 
 Toggles the `BrowserContext`'s connectivity on/off.

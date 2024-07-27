@@ -3,6 +3,7 @@ title: 'SystemsManagerParameter'
 description: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query parameters'
 excerpt: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query KMS parameters'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/
 ---
 
 `SystemsManagerParameter.*` methods querying the Systems Manager Service parameters return some `SystemsManagerParameter` instances. Namely, `getParameter` returns an array of `SystemsManagerParameter` objects. The `SystemsManagerParameter` object describes an Amazon Systems Manager Service parameter.

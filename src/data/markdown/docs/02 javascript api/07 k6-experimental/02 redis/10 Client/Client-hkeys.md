@@ -2,6 +2,7 @@
 title: 'Client.hkeys(key)'
 excerpt: 'Returns all fields of the hash stored at `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hkeys/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-hkeys/
 ---
 
 Returns all fields of the hash stored at `key`.

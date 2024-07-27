@@ -3,6 +3,7 @@ title: 'S3Client.abortMultipartUpload(bucketName, objectKey, uploadId)'
 description: 'S3Client.abortMultipartUpload aborts a multipart upload to a bucket'
 excerpt: 'S3Client.abortMultipartUpload aborts a multipart upload to a bucket'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/abortmultipartupload/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/abortmultipartupload/
 ---
 
 `S3Client.abortMultipartUpload` aborts a multipart upload to an S3 bucket.

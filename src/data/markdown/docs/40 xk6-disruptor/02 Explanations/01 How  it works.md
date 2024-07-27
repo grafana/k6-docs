@@ -2,6 +2,7 @@
 title: 'How xk6-disruptor works'
 excerpt: 'A brief description of the components of the xk6-disruptor and how they work when inject faults in a target system.'
 canonicalUrl: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/how-it-works/
+redirect: https://grafana.com/docs/k6/latest/testing-guides/injecting-faults-with-xk6-disruptor/how-it-works/
 ---
 
 xk6-disruptor consists of two main components:

@@ -2,6 +2,7 @@
 title: 'newPage([options])'
 excerpt: 'Browser module: newPage method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/newpage/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/newpage/
 ---
 
 Creates and returns a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) if a `BrowserContext` hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If a `BrowserContext` has already been initialized an error is thrown.

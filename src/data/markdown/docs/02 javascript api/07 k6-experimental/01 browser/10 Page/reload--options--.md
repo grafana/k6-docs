@@ -2,6 +2,7 @@
 title: 'reload([options])'
 excerpt: 'Browser module: page.reload([options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/reload/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/reload/
 ---
 
 This reloads the current page and returns the main resource response.

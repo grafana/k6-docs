@@ -2,6 +2,7 @@
 title: 'setGeolocation(geolocation)'
 excerpt: "Sets the BrowserContext's geolocation."
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/setgeolocation/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/setgeolocation/
 ---
 
 <Blockquote mod="attention">

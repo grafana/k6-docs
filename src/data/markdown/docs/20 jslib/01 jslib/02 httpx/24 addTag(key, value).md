@@ -3,6 +3,7 @@ title: 'addTag( key, value )'
 description: 'adds a tag to the session'
 excerpt: 'adds a tag to the session'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addtag/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/addtag/
 ---
 
 

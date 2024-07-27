@@ -2,6 +2,7 @@
 title: 'describe( name, function )'
 excerpt: 'Entry point for creating test cases.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/describe/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/k6chaijs/describe/
 ---
 
 `describe` is a wrapper of [group](/javascript-api/k6/group) that adds the ability to: 

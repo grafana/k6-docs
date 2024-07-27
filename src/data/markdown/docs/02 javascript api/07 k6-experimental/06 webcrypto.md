@@ -2,6 +2,7 @@
 title: 'webcrypto'
 excerpt: "k6 webcrypto experimental API"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/
 ---
 
 <ExperimentalBlockquote />

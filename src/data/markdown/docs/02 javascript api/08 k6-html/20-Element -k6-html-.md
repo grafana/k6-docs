@@ -3,6 +3,7 @@ title: 'Element'
 description: 'An HTML DOM element as returned by the Selection API.'
 excerpt: 'An HTML DOM element as returned by the Selection API.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-html/element/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-html/element/
 ---
 
 Represents a DOM element matched by a [Selection](/javascript-api/k6-html/selection),

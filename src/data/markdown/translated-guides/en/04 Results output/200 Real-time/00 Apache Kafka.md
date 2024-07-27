@@ -2,6 +2,7 @@
 title: 'Apache Kafka'
 excerpt: 'You can use xk6-output-kafka to send k6 metrics in real-time to Kafka, and, optionally, ingest them from InfluxDB.'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/apache-kafka/
+redirect: https://grafana.com/docs/k6/latest/results-output/real-time/apache-kafka/
 ---
 
 [Apache Kafka](https://kafka.apache.org) is a stream-processing platform for handling real-time data. Using [xk6-output-kafka extension](https://github.com/grafana/xk6-output-kafka), you can send k6 metrics in real-time to Kafka, and, optionally, ingest them from InfluxDB.

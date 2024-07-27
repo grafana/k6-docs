@@ -2,6 +2,7 @@
 title: Analyze results
 excerpt: Use k6 to write custom metrics and filter results.
 canonicalUrl: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/analyze-results/
+redirect: https://grafana.com/docs/k6/latest/examples/get-started-with-k6/analyze-results/
 ---
 
 In this tutorial, learn how to:

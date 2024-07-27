@@ -2,6 +2,7 @@
 title: "Protocols"
 excerpt: "Out of the box k6 comes with support for a few protocols: HTTP / WebSockets / gRPC / ..."
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/
+redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/
 ---
 Out of the box, k6 supports the following protocols:
 

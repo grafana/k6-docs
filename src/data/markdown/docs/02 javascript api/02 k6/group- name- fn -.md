@@ -3,6 +3,7 @@ title: 'group( name, fn )'
 description: 'Runs code inside a group. Used to organize results in a test.'
 excerpt: 'Runs code inside a group. Used to organize results in a test.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6/group/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6/group/
 ---
 
 Run code inside a group. Groups are used to organize results in a test.

@@ -3,6 +3,7 @@ title: 'S3Client.putObject(bucketName, objectKey, data)'
 description: 'S3Client.putObject uploads an object to a bucket'
 excerpt: 'S3Client.putObject uploads an object to a bucket'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/putobject/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/putobject/
 ---
 
 `S3Client.putObject` uploads an object to a bucket.

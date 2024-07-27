@@ -2,6 +2,7 @@
 title: "Stream.end()"
 excerpt: 'Signals to the server that the client has finished sending.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/stream/stream-end/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/grpc/stream/stream-end/
 ---
 
 Signals to the server that the client has finished sending messages.

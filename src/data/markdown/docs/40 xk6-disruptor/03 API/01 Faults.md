@@ -2,6 +2,7 @@
 title: 'Faults'
 excerpt: 'xk6-disruptor: Fault Description'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/faults/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/faults/
 ---
 
 A fault is as an abnormal condition that affects a system component and which may lead to a failure.

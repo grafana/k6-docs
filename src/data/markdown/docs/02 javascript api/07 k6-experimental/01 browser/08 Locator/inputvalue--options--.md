@@ -2,6 +2,7 @@
 title: 'inputValue([options])'
 excerpt: 'Browser module: locator.inputValue method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/inputvalue/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/locator/inputvalue/
 ---
 
 Returns `input.value` for the selected `input`, `textarea` or `select` element.

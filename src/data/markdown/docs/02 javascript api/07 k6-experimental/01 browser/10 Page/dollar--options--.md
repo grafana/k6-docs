@@ -2,6 +2,7 @@
 title: 'page.$(selector)'
 excerpt: 'Browser module: page.$(selector) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/page-dollar/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/page-dollar/
 ---
 
 <Blockquote mod="warning" title="">

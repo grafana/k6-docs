@@ -3,6 +3,7 @@ title: "aws"
 excerpt: "aws is a library implementing APIs for accessing a selection of AWS services"
 description: "aws is a library implementing APIs for accessing a selection of AWS servicese"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/
 ---
 
 The `aws` module is a JavaScript library that wraps around some Amazon AWS services API.

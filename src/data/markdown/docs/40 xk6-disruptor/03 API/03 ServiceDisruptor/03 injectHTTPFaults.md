@@ -2,6 +2,7 @@
 title: 'injectHTTPFaults'
 excerpt: 'xk6-disruptor: ServiceDisruptor.injectHTTPFaults method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/injecthttpfaults/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/servicedisruptor/injecthttpfaults/
 ---
 
 injectHTTPFaults injects HTTP faults in the requests served by a target Service.

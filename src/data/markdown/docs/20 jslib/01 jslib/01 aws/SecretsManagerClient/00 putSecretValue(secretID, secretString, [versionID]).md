@@ -3,6 +3,7 @@ title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID],
 description: "SecretsManagerClient.putSecretValue updates an existing secret's value"
 excerpt: "SecretsManagerClient.putSecretValue updates an existing secret's value"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/putsecretvalue/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/putsecretvalue/
 ---
 
 `SecretsManagerClient.putSecretValue` updates a secret's value in AWS' secrets manager.

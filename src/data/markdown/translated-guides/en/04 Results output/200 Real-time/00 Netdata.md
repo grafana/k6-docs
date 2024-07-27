@@ -2,6 +2,7 @@
 title: 'Netdata'
 excerpt: 'You can send k6 output to Netdata. With this integration, visualize test results with zero configuration, in seconds'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/netdata/
+redirect: https://grafana.com/docs/k6/latest/results-output/real-time/netdata/
 ---
 
 <Blockquote mod="warning" title="">

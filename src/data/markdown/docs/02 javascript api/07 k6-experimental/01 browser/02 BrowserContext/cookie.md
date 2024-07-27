@@ -2,6 +2,7 @@
 title: "Cookie"
 excerpt: "Browser module: Cookie Class"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/cookie/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/cookie/
 ---
 
 Cookie class represents a cookie in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext).

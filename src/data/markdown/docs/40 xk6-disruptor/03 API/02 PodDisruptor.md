@@ -2,6 +2,7 @@
 title: 'PodDisruptor'
 excerpt: 'xk6-disruptor: PodDisruptor class'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/xk6-disruptor/poddisruptor/
 ---
 
 The `PodDisruptor` class can inject different types of faults into the pods that match a selection criteria.

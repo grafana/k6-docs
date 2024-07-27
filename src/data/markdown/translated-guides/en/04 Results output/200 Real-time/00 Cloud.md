@@ -2,6 +2,7 @@
 title: 'Cloud'
 excerpt: 'When streaming the results to the cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/cloud/
+redirect: https://grafana.com/docs/k6/latest/results-output/real-time/cloud/
 ---
 
 Besides [running cloud tests](/get-started/running-k6/#execution-modes), you can also run a test locally and stream the results to: 

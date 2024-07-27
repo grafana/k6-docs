@@ -2,6 +2,7 @@
 title: 'newPage()'
 excerpt: 'Creates a new page inside this BrowserContext.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/newpage/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/newpage/
 ---
 
 Uses the `BrowserContext` to create a new [Page](/javascript-api/k6-experimental/browser/page/) and returns it.

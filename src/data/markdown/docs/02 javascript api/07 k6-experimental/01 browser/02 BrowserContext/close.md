@@ -2,6 +2,7 @@
 title: 'close()'
 excerpt: 'Close the BrowserContext and all its pages.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/close/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/browsercontext/close/
 ---
 
 Close the `BrowserContext` and all its [page](/javascript-api/k6-experimental/browser/page/)s. The `BrowserContext` is unusable after this call and a new one must be created. This is typically called to cleanup before ending the test.

@@ -2,6 +2,7 @@
 title: 'workers()'
 excerpt: 'Browser module: page.workers method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/workers/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/workers/
 ---
 
 This method returns an array of the dedicated [WebWorkers](/javascript-api/k6-experimental/browser/worker/) associated with the page.

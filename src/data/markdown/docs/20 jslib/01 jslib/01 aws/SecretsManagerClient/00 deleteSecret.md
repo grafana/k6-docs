@@ -3,6 +3,7 @@ title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noReco
 description: 'SecretsManagerClient.deleteSecret deletes a secret'
 excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/deletesecret/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/deletesecret/
 ---
 
 `SecretsManagerClient.deleteSecret` deletes a secret from AWS' secrets manager.

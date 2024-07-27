@@ -2,6 +2,7 @@
 title: 'sign'
 excerpt: 'sign generates a digital signature.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign/
 ---
 
 The `sign()` operation generates a digital signature of the provided `data`, using the given [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey) object.

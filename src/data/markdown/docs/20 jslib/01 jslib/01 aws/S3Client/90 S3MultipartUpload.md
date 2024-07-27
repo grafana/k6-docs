@@ -3,6 +3,7 @@ title: 'S3MultipartUpload'
 description: 'S3MultipartUpload is returned by the S3Client.createMultipartUpload method when creating a multipart upload.'
 excerpt: 'S3MultipartUpload is returned by the S3Client.createMultipartUpload method when creating a multipart upload.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/s3multipartupload/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/s3client/s3multipartupload/
 ---
 
 S3MultipartUpload is returned by the [`createMultipartUpload(bucketName, objectKey)`](/javascript-api/jslib/aws/s3client/s3client-createmultipartupload/) method when creating a [multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html).

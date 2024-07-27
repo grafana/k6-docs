@@ -2,6 +2,7 @@
 title: 'StatsD'
 excerpt: 'k6 has a built-in output to a StatsD service.'
 canonicalUrl: https://grafana.com/docs/k6/latest/results-output/real-time/statsd/
+redirect: https://grafana.com/docs/k6/latest/results-output/real-time/statsd/
 ---
 
 <Blockquote mod="warning" title="">

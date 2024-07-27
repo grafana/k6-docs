@@ -2,6 +2,7 @@
 title: 'Archive Command'
 excerpt: 'A k6 archive is simply a tar file with all files needed to execute a k6 test.'
 canonicalUrl: https://grafana.com/docs/k6/latest/misc/archive/
+redirect: https://grafana.com/docs/k6/latest/misc/archive/
 ---
 
 ## What is an archive?

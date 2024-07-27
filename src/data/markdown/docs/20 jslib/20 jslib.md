@@ -2,6 +2,7 @@
 title: "jslib"
 excerpt: "External JavaScript libraries for k6"
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/
 ---
 
 The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](/using-k6/modules#remote-http-s-modules) in k6 scripts.

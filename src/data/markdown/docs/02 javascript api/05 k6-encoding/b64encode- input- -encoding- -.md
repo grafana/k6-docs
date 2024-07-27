@@ -3,6 +3,7 @@ title: 'b64encode( input, [encoding] )'
 description: 'Encode data in base64.'
 excerpt: 'Encode data in base64.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-encoding/b64encode/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-encoding/b64encode/
 ---
 
 | Parameter           | Type   | Description                                                              |

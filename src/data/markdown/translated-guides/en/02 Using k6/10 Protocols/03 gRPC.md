@@ -2,6 +2,7 @@
 title: 'gRPC'
 excerpt: 'gRPC is a lightweight open-source RPC framework. Starting with k6 v0.29.0, we support unary gRPC requests.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/protocols/grpc/
+redirect: https://grafana.com/docs/k6/latest/using-k6/protocols/grpc/
 ---
 
 ## Overview

@@ -2,6 +2,7 @@
 title: 'getAttribute(selector, name[, options])'
 excerpt: 'Browser module: page.getAttribute(selector, name[, options]) method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/getattribute/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/getattribute/
 ---
 
 <Blockquote mod="warning" title="">

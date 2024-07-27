@@ -3,6 +3,7 @@ title: 'SecretsManagerClient.listSecrets()'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/listsecrets/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/aws/secretsmanagerclient/listsecrets/
 ---
 
 `S3Client.listSecrets` lists the secrets the authenticated user has access to in the region set by the `SecretsManagerClient` instance's configuration.

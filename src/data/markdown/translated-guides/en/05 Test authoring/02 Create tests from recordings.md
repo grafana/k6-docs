@@ -2,6 +2,7 @@
 title: 'Create tests from recordings'
 excerpt: 'In load testing, recording usually refers to the process of creating a load test from the recording of a user session.'
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/
+redirect: https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/
 ---
 
 A recording stores the sequence of requests and parameters of a user session or API interaction. 

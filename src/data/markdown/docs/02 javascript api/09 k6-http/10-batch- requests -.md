@@ -3,6 +3,7 @@ title: 'batch( requests )'
 description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-http/batch/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-http/batch/
 ---
 
 Batch multiple HTTP requests together to issue them in parallel over multiple TCP connections.

@@ -2,6 +2,7 @@
 title: 'Client.get(key)'
 excerpt: 'Get the value of `key`.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-get/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/client/client-get/
 ---
 
 Get the key's value.

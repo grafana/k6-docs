@@ -2,6 +2,7 @@
 title: 'url()'
 excerpt: 'Browser module: page.url method'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/url/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-browser/page/url/
 ---
 
 Returns the page's URL.

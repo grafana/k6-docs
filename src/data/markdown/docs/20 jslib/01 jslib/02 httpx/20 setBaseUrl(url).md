@@ -3,6 +3,7 @@ title: 'setBaseUrl( url )'
 description: 'sets the base URL for the session'
 excerpt: 'sets the base URL for the session'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/setbaseurl/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/jslib/httpx/batch/
 ---
 
 

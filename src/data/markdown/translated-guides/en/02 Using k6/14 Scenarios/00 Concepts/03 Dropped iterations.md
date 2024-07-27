@@ -2,6 +2,7 @@
 title: Dropped iterations
 excerpt: Explanations about how your scenario configuration or SUT performance can lead to dropped iterations
 canonicalUrl: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/dropped-iterations/
+redirect: https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/dropped-iterations/
 ---
 
 Sometimes, a scenario can't run the expected number of iterations.

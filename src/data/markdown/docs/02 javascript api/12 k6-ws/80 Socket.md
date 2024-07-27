@@ -2,6 +2,7 @@
 title: 'Socket'
 excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 canonicalUrl: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/socket/
+redirect: https://grafana.com/docs/k6/latest/javascript-api/k6-ws/socket/
 ---
 
 <WsBlockquote />
