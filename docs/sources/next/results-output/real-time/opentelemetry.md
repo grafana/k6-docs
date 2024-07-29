@@ -8,7 +8,7 @@ weight: 00
 
 Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format](https://opentelemetry.io/docs/specs/otel/metrics/) to an OTEL metrics collector or a metrics backend that supports the OTEL metrics format by using the experimental OpenTelemetry output `--out experimental-opentelemetry`.
 
-Note that the `experimental-opentelemetry` became a part of k6 only with k6 v0.53.0, so prior that version you should use a [xk6-output-opentelemetry extension](https://github.com/grafana/xk6-output-opentelemetry/).
+Note that the `experimental-opentelemetry` became a part of k6 only with k6 v0.53.0, so prior that version you should use the [xk6-output-opentelemetry extension](https://github.com/grafana/xk6-output-opentelemetry/).
 
 {{< admonition type="note" >}}
 
