@@ -10,11 +10,7 @@ Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format
 
 Note that the `experimental-opentelemetry` became a part of k6 only with k6 v0.53.0, so prior that version you should use the [xk6-output-opentelemetry extension](https://github.com/grafana/xk6-output-opentelemetry/).
 
-{{< admonition type="note" >}}
-
-This is an extension, and we're looking for feedback and contributions and aiming to graduate it as an experimental output within Grafana k6 in a future release. Feel free to [open an issue](https://github.com/grafana/xk6-output-opentelemetry/issues) if you have any feedback or suggestions.
-
-{{< /admonition >}}
+For any feedback, bugs or suggestions feel free to [open an issue](https://github.com/grafana/xk6-output-opentelemetry/issues) directly in the output repository. Contributions are also welcome!
 
 ## Metrics mapping
 
