@@ -35,6 +35,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-ansible-vault</h4>
         <p>Encrypt and decrypt Ansible Vault</p>
     </a>
+    <a href="https://github.com/joanlopez/xk6-aws" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-aws</h4>
+        <p>Alternative to the official AWS JS Lib that relies on the AWS SDK for Go to interact with Amazon Web Services</p>
+    </a>
     <a href="https://github.com/anycable/xk6-cable" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-cable</h4>
         <p>Test Action Cable and AnyCable functionality</p>
