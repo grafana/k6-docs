@@ -9,15 +9,22 @@ description: 'Opens a file and reads all the contents into memory.'
 
 Opens a file, reading all its contents into memory for use in the script.
 
-`open()` can only be called from the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-init-stage) (aka _init code_). This restriction is necessary to determine the local files needed to bundle when distributing the test across multiple nodes.
+{{< admonition type="caution" >}}
 
-{{% admonition type="caution" %}}
+`open()` can only be called from the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-init-stage). This restriction is necessary to determine the local files needed to bundle when distributing the test across multiple nodes.
+
+{{< /admonition >}}
+
+{{< admonition type="note" >}}
 
 `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
 
-To reduce the memory consumption, we advise the usage of `open()` within a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), which shares the allocated file memory between VUs. Alternatively, use the new [open() in `k6/experimental/fs`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/), which initially loads as little as possible and can read the file in small chunks.
+To reduce the memory consumption, you can:
 
-{{% /admonition %}}
+- Use `open()` within a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), which shares the allocated file memory between VUs.
+- Use [open() from the `k6/experimental/fs`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/) module. It provides a memory-efficient way to handle file interactions in your test script and can read files in small chunks.
+
+{{< /admonition >}}
 
 | Parameter | Type   | Description                                                                                                                                       |
 | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
