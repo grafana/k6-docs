@@ -23,7 +23,7 @@ Using the DevTools recorder _doesn't require a Grafana Cloud account_.
 
 ## Create a script from a recording
 
-1. Install the [k6 Browser Recorder Chrome extension](https://chromewebstore.google.com/detail/k6-devtools-recorder/fkajbajcclbdgaoanencnhpfnigfipgc).
+1. Install the [k6 DevTools recorder Chrome extension](https://chromewebstore.google.com/detail/k6-devtools-recorder/fkajbajcclbdgaoanencnhpfnigfipgc).
 1. Record a session using the [Chrome DevTools Recorder](https://developer.chrome.com/docs/devtools/recorder).
 1. [Export the user flow](https://developer.chrome.com/docs/devtools/recorder/reference#export-flows) and choose the k6 Browser option.
 1. Edit your script as necessary. Depending on the [type of test](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/), you might need to change different aspects of the script.
