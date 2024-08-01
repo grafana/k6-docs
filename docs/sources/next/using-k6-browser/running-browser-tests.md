@@ -62,11 +62,11 @@ To run a simple local script:
 
    Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
 
-   {{% admonition type="note" %}}
+   {{< admonition type="note" >}}
 
    Starting from v0.52.0 the browser module API has been converted to an asynchronous API. That means that most of the methods now return promises. Refer to the [migration guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-52/) to learn more about the changes and how to update your scripts.
 
-   {{% /admonition %}}
+   {{< /admonition >}}
 
 1. Then, run the test on your terminal with this command:
 
@@ -132,11 +132,11 @@ To run a simple local script:
 
    {{< /code >}}
 
-   {{% admonition type="note" %}}
+   {{< admonition type="note" >}}
 
    When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6#docker) for more information.
 
-   {{% /admonition %}}
+   {{< /admonition >}}
 
 1. Optional step: running browser tests in Docker on Mac computers with Apple Silicon:
 
@@ -167,11 +167,11 @@ You can use `page.locator()` and pass in the element's selector you want to find
 
 To find out which selectors the browser module supports, check out [Selecting Elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 
@@ -286,11 +286,11 @@ The real power of the browser module shines when it’s combined with the existi
 
 To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 

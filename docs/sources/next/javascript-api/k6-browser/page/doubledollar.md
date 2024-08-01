@@ -10,7 +10,7 @@ description: 'Browser module: page.$$(selector) method'
 
 Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/locator/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`.
 

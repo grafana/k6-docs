@@ -9,7 +9,7 @@ description: 'Browser module: page.waitForLoadState(state[, options]) method'
 
 This method has **known issues**. For details, refer to [#880](https://github.com/grafana/xk6-browser/issues/880).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 This waits for the given load state to be reached. It will immediately unblock if that lifecycle event has already been received.
 
@@ -29,7 +29,7 @@ This waits for the given load state to be reached. It will immediately unblock i
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Events can be either:
 

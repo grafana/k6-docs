@@ -14,13 +14,13 @@ A Pod Termination fault is defined by the following attributes:
 | --------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | count     | integer or percentage | the number of pods to be terminated. It can be specified as a integer number or as a percentage, for example `30%`, that defines the fraction of target pods to be terminated |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 If the count is a percentage and there are no enough elements in the target pod list, the number is rounded up.
 For example '25%' of a list of 2 target pods will terminate one pod.
 If the list of target pods is not empty, at least one pod is always terminated.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

@@ -37,11 +37,11 @@ Relying on these load events does not give the correct metric to analyze critica
 When a browser test finishes, k6 reports a top-level overview of the aggregated browser metrics output.
 The following snippet is an example:
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ```bash
   browser_data_received.......: 2.6 kB  2.0 kB/s
@@ -73,7 +73,7 @@ As the following example shows, you can also pass in different URLs if you're go
 
 Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 

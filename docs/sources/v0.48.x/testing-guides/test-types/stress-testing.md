@@ -92,11 +92,11 @@ The VU or throughput chart of a Stress test looks similar to this:
 
 Note that in the same way as the average-load test, the Stress test starts at 0 and increases beyond the point tested in the average-load type. The ramp-up and ramp-down periods are longer to allow a more realistic response.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Run stress tests only after smoke and average-load tests. Running this test type earlier may be wasteful and make it hard to pinpoint problems if they appear at low volumes or at loads under the average utilization.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Results analysis
 

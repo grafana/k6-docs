@@ -10,7 +10,7 @@ description: 'Browser module: isConnected method'
 This feature has **known issues**.
 For details, refer to [#453](https://github.com/grafana/xk6-browser/issues/453).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.
 

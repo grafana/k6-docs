@@ -225,12 +225,12 @@ Available in `k6 run` and `k6 cloud` commands:
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 When running tests in k6 Cloud and using a non-default config.json file,
 specify the cloud token inside your config file to authenticate.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Console output
 
@@ -430,11 +430,11 @@ k6 also supports ways to narrow or widen the scope of your redirects:
 - You can redirect only from or to certain ports.
 - Starting from v0.42.0, you can use an asterisk (`*`) as a wild card at the start of the host name to avoid repetition. For example, `*.k6.io` would apply the override for all subdomains of `k6.io`.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 This does not modify the actual HTTP `Host` header, but rather where it will be routed.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -956,7 +956,7 @@ That is, it is not sharded like VUs are.
 <br>
 We strongly recommend the [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) to simulate constant RPS instead of this option.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Env      | CLI     | Code / Config file | Default         |
 | -------- | ------- | ------------------ | --------------- |
@@ -1156,7 +1156,7 @@ Add/override an [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **The `-e` flag does not configure options.**
 
@@ -1165,7 +1165,7 @@ For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
 
 Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ set iterations.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -1368,7 +1368,7 @@ For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/
 
 Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349), changing the ciphers for TLS 1.3 is _not_ supported and will do nothing.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |

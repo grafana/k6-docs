@@ -7,11 +7,11 @@ description: 'Browser module: newContext method'
 
 Creates and returns a new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/), if one hasn't already been initialized for the [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser). If one has already been initialized an error is thrown.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [close](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/close)d first before creating a new one.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 <TableWithNestedRows>
 

@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.$ method'
 
 Use [`page.locator(selector[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Queries the element for the given selector in the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle)'s subtree.
 

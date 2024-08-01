@@ -9,7 +9,7 @@ description: 'Browser module: page.dispatchEvent(selector, type, eventInit[, opt
 
 Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Dispatches HTML DOM event types e.g. `'click'`.
 

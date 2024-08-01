@@ -45,11 +45,11 @@ xk6 build --with github.com/grafana/xk6-output-opentelemetry
 
 xk6 will create the new k6 binary in the local folder.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To learn more about how to build custom k6 versions, refer to [xk6](https://github.com/grafana/xk6).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run the k6 test
 

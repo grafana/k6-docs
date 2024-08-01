@@ -10,7 +10,7 @@ description: 'Browser module: locator.selectOption method'
 This feature has **known issues**. For details, refer to
 [#470](https://github.com/grafana/xk6-browser/issues/470) and [#471](https://github.com/grafana/xk6-browser/issues/471).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Select one or more options which match the values.
 

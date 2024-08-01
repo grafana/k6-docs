@@ -13,13 +13,13 @@ It is commonly used by single-page apps (SPAs) and mobile apps, to add server-pu
 
 ## Load testing WebSockets with k6
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 [xk6-websockets](https://github.com/grafana/xk6-websockets) is an experimental module with a more standard API than `k6/ws`. It implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/). While the implementation isn't complete, it uses a global event loop instead of local one.
 
 Currently, it's available as an experimental module [`k6/experimental/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets). It's also likely that it will become part of the core of k6 in the future.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
 The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now runs an asynchronous event loop.

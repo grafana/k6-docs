@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.press method'
 
 Use [`locator.press(key[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Press a single key on the keyboard or a combination of keys.
 

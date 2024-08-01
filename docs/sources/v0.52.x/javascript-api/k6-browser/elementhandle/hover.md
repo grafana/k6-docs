@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.hover method'
 
 Use [`locator.hover([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/hover/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Hovers over the element.
 

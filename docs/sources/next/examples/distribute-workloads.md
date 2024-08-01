@@ -14,20 +14,20 @@ For example, most traffic to an e-commerce site might come from users who only s
 The following sections provide examples of how to structure k6 scripts to split logic across VUs.
 To inspect the results for a certain behavior, you can [create a custom metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/create-custom-metrics) or use [Tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 These techniques can create very complex configurations.
 However, more complexity creates more ambiguity in result interpretation
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Split logic across scenarios
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 In this context, _workload_ refers to the traffic pattern simulated by a scenario.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 One way to distribute traffic is to use scenarios to schedule different workloads for different functions.
 

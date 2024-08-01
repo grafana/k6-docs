@@ -9,7 +9,7 @@ description: 'Browser module: page.isVisible(selector[, options]) method'
 
 Use locator-based [`locator.isVisible([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/isvisible/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Checks if the element is `visible`.
 

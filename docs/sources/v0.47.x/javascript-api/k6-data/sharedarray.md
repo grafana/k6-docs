@@ -43,7 +43,7 @@ Attempting to instantiate a `SharedArray` outside of the [init context](https://
 
 This limitation will eventually be removed, but for now, the implication is that you can use `SharedArray` to populate test data only at the very beginning of your test and not as a result of receiving data from a response (for example).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

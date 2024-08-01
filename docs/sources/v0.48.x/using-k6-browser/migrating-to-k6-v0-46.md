@@ -18,11 +18,11 @@ The updated version introduces notable structural changes in its operation and A
 - [Scenario options](#scenario-options) must now be defined for running browser tests.
 - [Single browser context per iteration](#browser-context-limit). You can now only run a single [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) at a time in the same iteration.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You no longer need to use the `K6_BROWSER_ENABLED` flag when running browser tests with the `k6` command.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Before and after comparison
 
@@ -215,11 +215,11 @@ PS C:\k6> $env:K6_BROWSER_WS_URL='REMOTE_URL' ; k6 run script.js
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. `slowMo` has been temporarily removed, and we're working on reintroducing it.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Scenario options
 
@@ -282,11 +282,11 @@ export default async function () {
 
 The `browser.close()` method has been removed, so you can remove that from your scripts and use [`page.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close) once you're done using the page object.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Closing of the page is critical for the calculation of accurate Web Vital metrics. See the [browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics) for more details.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Browser context limit
 

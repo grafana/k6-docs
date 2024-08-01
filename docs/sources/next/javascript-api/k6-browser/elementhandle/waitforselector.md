@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.waitForSelector method'
 
 Use [`locator.waitFor([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Waits for the element to be present in the DOM and to be visible.
 

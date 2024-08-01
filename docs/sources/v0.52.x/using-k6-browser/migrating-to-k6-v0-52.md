@@ -20,11 +20,11 @@ In the latest release of k6, we have graduated k6 browser module out of experime
 
 If you are interested in the rationale behind this change, refer to the [v0.51 release notes](https://github.com/grafana/k6/releases/tag/v0.51.0).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The experimental import (`k6/experimental/browser`) and the corresponding synchronous APIs will be supported up until the 23rd of September 2024.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Migrating to async
 

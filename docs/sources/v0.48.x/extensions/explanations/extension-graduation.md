@@ -21,11 +21,11 @@ A _core-bound_ extension passes through the following phases:
 Most extensions in the k6 ecosystem remain _extensions_ requiring [xk6](https://github.com/grafana/xk6) to incorporate the custom functionality.
 These extensions might be provided by Grafana or by the community, and _may_ be included in the [Extensions Registry](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Only Grafana-controlled extensions may progress beyond the _extension_ phase to become _experimental_ or _core modules_.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Experimental Module
 
@@ -44,7 +44,7 @@ The key will be to achieve a balance between usability and stability.
 Not all experimental modules will progress to become a core module!
 The k6 team reserves the right to discontinue and remove any experimental module if is no longer deemed desirable.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Core Module
 

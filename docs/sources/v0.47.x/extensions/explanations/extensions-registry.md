@@ -70,11 +70,11 @@ As an example, suppose an extension that outputs test metrics to the _AwesomeLog
 In this case, say the latest v3 API is not backward-compatible.
 Applying our conventions, we'd recommend naming this repository as `xk6-output-awesomelog-v2`.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Our goal is to quickly understand the intent of the extension.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Extension Tiers
 

@@ -36,11 +36,11 @@ The main types are as follows. Each type has its own article outlining its essen
 
 - [**Breakpoint tests**](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/breakpoint-testing) gradually increase load to identify the capacity limits of the system.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 In k6 scripts, configure the load configuration using [`options`](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#using-options) or [`scenarios`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios). This separates workload configuration from iteration logic.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Test-type cheat sheet
 

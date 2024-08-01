@@ -87,7 +87,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30
 
 _Running a 30-second, 10-VU load test_
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 k6 runs multiple iterations in parallel with _virtual users_ (VUs).
 In general terms, more virtual users means more simulated traffic.
@@ -96,7 +96,7 @@ VUs are essentially parallel `while(true)` loops.
 Scripts are written in JavaScript, as ES6 modules,
 so you can break larger tests into smaller pieces or make reusable pieces as you like.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### The init context and the default function
 
@@ -188,13 +188,13 @@ For more granular ramp configuration, you can use [scenarios](https://grafana.co
 
 ## Execution modes
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Portability is a major design goal of k6.
 
 You can run the same test in different modes with minimal changes.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 k6 supports three execution modes to run a k6 test: local, distributed, and cloud.
 

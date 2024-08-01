@@ -8,4 +8,4 @@ The experimental module `k6/experimental/timers` has graduated, and its function
 
 To migrate your scripts, remove the `k6/experimental/timers` imports.
 
-{{% /admonition %}}
+{{< /admonition >}}

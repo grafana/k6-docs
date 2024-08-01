@@ -2,7 +2,7 @@
 title: k6/ws module admonition
 ---
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 A module with a better and standard API exists.
 <br>
@@ -12,4 +12,4 @@ The new [k6/experimental/websockets API]({{< relref "../javascript-api/k6-experi
 <br>
 When possible, we recommend using the new API. It uses a global event loop for consistency with other k6 APIs and better performance.
 
-{{% /admonition %}}
+{{< /admonition >}}

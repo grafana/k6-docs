@@ -9,7 +9,7 @@ description: 'Browser module: frame.click(selector[, options]) method'
 
 Use locator-based [`locator.click([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/click/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 This method clicks on an element matching a `selector`.
 

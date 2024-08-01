@@ -9,7 +9,7 @@ description: 'Browser module: frame.dblclick(selector[, options]) method'
 
 Use locator-based [`locator.dblclick([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dblclick/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Double clicks on an element matching the provided selector.
 

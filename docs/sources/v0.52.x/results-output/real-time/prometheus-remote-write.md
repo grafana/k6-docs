@@ -73,13 +73,13 @@ To address the limitations of the previous option, you can convert k6 trend metr
 
 With this option, each k6 trend metric maps to its corresponding Prometheus histogram metric: `k6_*`. You can then query them using Prometheus histogram functions, such as [histogram_quantile()](https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 🌟 To learn the benefits and outcomes of using Histograms, watch [High-resolution Histograms in Prometheus](https://www.youtube.com/watch?v=F72Tk8iaWeA).
 
 ⚠️ Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet. In the future, when Prometheus makes this feature stable, k6 will consider using it as the default conversion method for Trend metrics.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Send test metrics to a remote write endpoint
 

@@ -9,7 +9,7 @@ description: 'Browser module: frame.isChecked(selector[, options]) method'
 
 Use locator-based [`locator.isChecked([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/ischecked/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Checks to see if the `checkbox` `input` type is selected or not.
 

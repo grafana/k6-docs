@@ -9,4 +9,4 @@ In some cases, using this library&apos;s operations might impact performance and
 <br>
 To ensure accurate results, consider executing these operations in the `setup` and `teardown` [lifecycle functions]({{< relref "../using-k6/test-lifecycle" >}}). These functions run before and after the test run and have no impact on the test results.
 
-{{% /admonition %}}
+{{< /admonition >}}

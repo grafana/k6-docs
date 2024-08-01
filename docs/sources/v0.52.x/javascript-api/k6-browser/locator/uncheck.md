@@ -10,7 +10,7 @@ description: 'Browser module: locator.uncheck method'
 This feature has **known issues**.
 For details, refer to [#471](https://github.com/grafana/xk6-browser/issues/471).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Unselect the `input` checkbox.
 

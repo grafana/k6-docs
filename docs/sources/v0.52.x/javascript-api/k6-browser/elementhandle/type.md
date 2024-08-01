@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.type method'
 
 Use [`locator.type([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/type/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Type in the text into the input field.
 

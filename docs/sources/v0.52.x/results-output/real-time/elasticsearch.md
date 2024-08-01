@@ -28,11 +28,11 @@ xk6 build --with github.com/elastic/xk6-output-elasticsearch
 
 xk6 will create the new k6 binary in the local folder.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run the test
 
@@ -64,7 +64,7 @@ export K6_ELASTICSEARCH_URL=http://localhost:9200
 
 {{% admonition type="caution" %}}
 Security and self-signed certificates for non-cloud clusters are not yet supported.
-{{% /admonition %}}
+{{< /admonition >}}
 
 You can now connect to Elasticsearch and query the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) stored in the `k6-metrics` index.
 The following example uses an unsecured local Elasticsearch, version `7.17.9`:

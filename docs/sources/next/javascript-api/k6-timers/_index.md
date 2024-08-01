@@ -15,11 +15,11 @@ Implement timers to work with k6's event loop. They mimic the functionality foun
 | [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)   | Sets a function to be run on a given interval.       |
 | [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) | Clears a previously set interval with `setInterval`. |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The timer methods are available globally, so you can use them in your script without including an import statement.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

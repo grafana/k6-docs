@@ -30,12 +30,12 @@ Once a change is detected, the operator will react by modifying the cluster stat
 Let's walk through the process for getting started with the k6-operator.
 The only requirement being access to a Kubernetes cluster and having the appropriate access and tooling.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 This process can be performed on a local Kubernetes cluster running within [Docker](https://docs.docker.com/get-docker/)!
 Using [kind](https://kind.sigs.k8s.io/) or [k3d](https://k3d.io/) are awesome options to experiment with the process.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 - [Introducing k6-operator](#introducing-k6-operator)
 - [Get started with k6-operator](#get-started-with-k6-operator)
@@ -59,7 +59,7 @@ The first step to running distributed tests in Kubernetes is to install the oper
 At this time, installation does require having the project source code downloaded onto your system.
 Installation commands must be run from the source directory.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Besides privileged access to a Kubernetes cluster, installation will require that the system performing the installation has the following tools installed:
 
@@ -69,7 +69,7 @@ Besides privileged access to a Kubernetes cluster, installation will require tha
 - [Kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/)
 - [Make](https://www.gnu.org/software/make/)
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 From your command-line, execute the following:
 
@@ -134,12 +134,12 @@ export default function () {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 While creating scripts, [run them locally](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6#running-local-tests) before publishing to your cluster.
 This can give you immediate feedback if you have errors in your script.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Let's go ahead and verify our script is valid by performing a brief test:
 
@@ -172,7 +172,7 @@ Kubernetes imposes a size limit of 1,048,576 bytes (1 MiB) for the data, therefo
 
 Check the [motivations](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation) for when you should use a `ConfigMap` versus a `PersistentVolume`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 You should see confirmation with `configmap/my-test created`.
 
@@ -183,17 +183,17 @@ Setting up a `PersistentVolume` is beyond the scope of this guide, but enables a
 When using this option, organize your test scripts in the applicable filesystem just as you would locally.
 This mechanism is ideal when breaking up monolithic scripts into reusable [modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Organizing your test scripts was part of the discussion during [episode #76](https://www.youtube.com/watch?v=zDtEzp_JUOE&utm=k6-guides) of k6 Office Hours.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{% admonition type="caution" %}}
 
 When using a `PersistentVolume`, the operator will expect all test scripts to be contained within a directory named `/test/`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` resources, review the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
@@ -204,12 +204,12 @@ The data we provide in the custom resource `TestRun` object should contain all t
 
 Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#parallelism) to utilize.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The `TestRun` custom resource provides many configuration options to control the initialization and execution of tests.
 For the full listing of possible options, please refer to the project [source](https://github.com/grafana/k6-operator/blob/main/config/crd/bases/k6.io_testruns.yaml) and [README](https://github.com/grafana/k6-operator/blob/main/README.md).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The following examples will show some common variations for the custom resource:
 
@@ -248,7 +248,7 @@ The operator will split the workload between the pods using [execution segments]
 
 It is important that the `ConfigMap` and `CustomResource` are created in the same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Script in a PersistentVolume
 
@@ -279,7 +279,7 @@ spec:
 
 It is important that the `PersistentVolumeClaim` and `CustomResource` are created in the same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Configure the environment
 
@@ -316,11 +316,11 @@ spec:
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The above YAML introduces the `runner` section. This section applies to each pod that will be running a portion of your test, based upon the desired `parallelism`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Now, with the referenced resources, our test scripts can [use environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) as in the following:
 
@@ -355,11 +355,11 @@ spec:
 
 With the above arguments, we're adding a [test-wide custom tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#json).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Be sure to visit the [options reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference) for a listing of available options.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## 5. Run your test
 
@@ -377,7 +377,7 @@ This is done by running the following command:
 kubectl delete -f /path/to/your/k6-resource.yaml
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 If you make use of [real-time results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time), e.g. [Prometheus Remote Write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), use the `cleanup` option to automatically remove resources upon test completion as with the following example:
 
@@ -397,7 +397,7 @@ spec:
   arguments: -o experimental-prometheus-rw
 ```
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## 6. When things go wrong
 

@@ -21,7 +21,7 @@ In cloud tests, **`preAllocatedVUs` count against your subscription.**
 
 When planning a test, consider doing a trial initialization on a local machine to ensure you're allocating VUs efficiently.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Pre-allocation in arrival-rate executors
 
@@ -96,7 +96,7 @@ As dropped iterations can also indicate that the system performance is degrading
 In cloud tests, the number of `maxVUs` counts against your subscription,
 **overriding the number set by `preAllocatedVUs`**.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The arrival-rate executors also have a `maxVUs` property.
 If you set it, k6 runs in this sequence:

@@ -8,4 +8,4 @@ Starting on k6 `v0.50`, the experimental module `k6/experimental/timers` has bee
 
 To migrate your scripts, replace all `k6/experimental/timers` imports with `k6/timers`.
 
-{{% /admonition %}}
+{{< /admonition >}}

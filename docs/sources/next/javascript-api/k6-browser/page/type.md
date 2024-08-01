@@ -9,7 +9,7 @@ description: 'Browser module: page.type(selector, text[, options]) method'
 
 Use locator-based [`locator.type()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/type/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Type the `text` in the first element found that matches the selector.
 

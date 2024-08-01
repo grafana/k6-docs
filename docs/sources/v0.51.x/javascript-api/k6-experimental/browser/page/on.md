@@ -16,7 +16,7 @@ Registers a handler to be called whenever the specified event occurs.
 
 When using the `page.on` method, the page has to be explicitly [closed](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close/) for the iteration to be able to finish.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Events
 
