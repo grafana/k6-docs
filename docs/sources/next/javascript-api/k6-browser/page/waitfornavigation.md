@@ -9,11 +9,11 @@ Waits for the given navigation lifecycle event to occur and returns the main res
 
 <TableWithNestedRows>
 
-| Parameter         | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
-| ----------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options           | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
+| Parameter         | Type   | Default | Description                                                                                                                                                                                                                                                                                                         |
+| ----------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options           | object | `null`  |                                                                                                                                                                                                                                                                                                                     |
 | options.timeout   | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
-| options.waitUntil | string | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                                                                                                         |
+| options.waitUntil | string | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                                                                               |
 
 </TableWithNestedRows>
 
@@ -33,8 +33,8 @@ Events can be either:
 
 ### Returns
 
-| Type                                                                                                                   | Description                                                               |
-| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Type                                                                                                      | Description                                                               |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Promise<null \| [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/)> | The `Response` instance associated with the page. Else, it returns `null` |
 
 ### Example
@@ -71,7 +71,7 @@ export default async function () {
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
-    const text = await p.locator('h2').textContent();
+    const text = await page.locator('h2').textContent();
     check(page, {
       header: () => text == 'Welcome, admin!',
     });
