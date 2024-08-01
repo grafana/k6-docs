@@ -12,7 +12,7 @@ The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue t
 
 For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 k6 can push test metrics to a [StatsD](https://github.com/statsd/statsd) service by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd).
 
@@ -36,11 +36,11 @@ xk6 build --with github.com/LeonAdato/xk6-output-statsd
 
 xk6 will create the new k6 binary in the local folder.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run the k6 test
 

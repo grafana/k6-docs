@@ -27,7 +27,7 @@ This library is stable enough to be useful, but pay attention to the new version
 
 This documentation is for the only last version only. If you discover that some of the following doesn't work, you might be using an older version.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Methods
 

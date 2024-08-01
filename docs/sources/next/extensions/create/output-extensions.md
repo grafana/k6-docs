@@ -88,11 +88,11 @@ func init() {
 }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You must use the registered with the `-o`, or `--out` flag when running k6!
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The final extension code looks like this:
 
@@ -181,13 +181,13 @@ To build a k6 binary with this extension, run:
 $ xk6 build --with xk6-output-logger=.
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 `xk6-output-logger` is the Go module name passed to `go mod init`
 
 Usually, this would be a URL similar to `github.com/grafana/xk6-output-logger`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Use your extension
 
@@ -215,12 +215,12 @@ export default function () {
 $ ./k6 run test.js --out logger --quiet --no-summary --iterations 2
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The `--out logger` argument tells k6 to use your custom output. The flag
 `--quiet --no-summary` configures k6 to show only custom output.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Your output should look something like this:
 

@@ -9,7 +9,7 @@ description: 'Browser module: frame.fill(selector, value[, options]) method'
 
 Use locator-based [`locator.fill(value[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Fill an `input`, `textarea` or `contenteditable` element with the provided value.
 

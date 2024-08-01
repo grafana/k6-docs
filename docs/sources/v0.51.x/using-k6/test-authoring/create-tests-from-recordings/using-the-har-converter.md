@@ -9,11 +9,11 @@ weight: 02
 The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool that generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 It is an alternative to the [Browser recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 HAR is a file format used by all major browsers and various other tools to export recorded HTTP requests.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Before you start
 

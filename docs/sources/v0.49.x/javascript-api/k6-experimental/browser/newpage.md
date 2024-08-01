@@ -7,17 +7,17 @@ description: 'Browser module: newPage method'
 
 Creates and returns a new [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) if a `BrowserContext` hasn't already been initialized for the [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser). If a `BrowserContext` has already been initialized an error is thrown.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [retrieved](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/context) and [close](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{% admonition type="caution" %}}
 
 Pages that have been opened ought to be closed using [`Page.close`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close/). Pages left open could potentially distort the results of Web Vital metrics.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 <TableWithNestedRows>
 

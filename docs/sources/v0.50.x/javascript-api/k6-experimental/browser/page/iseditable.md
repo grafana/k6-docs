@@ -9,7 +9,7 @@ description: 'Browser module: page.isEditable(selector[, options]) method'
 
 Use locator-based [`locator.isEditable([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/iseditable/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Checks if the element is `editable`.
 

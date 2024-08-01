@@ -15,13 +15,13 @@ The time to execute an iteration can vary with test logic or the system-under-te
 To compensate for this, the executor starts a varied number of VUs to meet the configured iteration rate.
 For explanations of how allocation works, read [Arrival-rate VU allocation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **Iteration starts are spaced fractionally.**
 Iterations **do not** start at exactly the same time.
 At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Options
 
@@ -41,14 +41,14 @@ this executor has the following options:
 When you want iterations to remain constant, independent of the performance of the system under test.
 This approach is useful for a more accurate representation of RPS, for example.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **Don't put sleep at the end of an iteration.**
 
 The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
 So it's unnecessary to use a `sleep()` function at the end of the VU code.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

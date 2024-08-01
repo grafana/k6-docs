@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.dblclick method'
 
 Use [`locator.dblclick([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/dblclick/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Mouse double clicks on the element.
 

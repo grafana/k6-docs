@@ -19,12 +19,12 @@ Each topic has examples to make a custom metric and create [thresholds](https://
 
 ## Create a custom metric
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Custom metrics must be created in [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 This limits memory and ensures that k6 can validate that all thresholds are evaluating defined metrics.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The generic procedure to create a custom metric is as follows:
 
@@ -91,12 +91,12 @@ $ k6 run script.js
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Custom metrics are collected from VU threads only at the end of a VU iteration.
 For long-running scripts, custom metrics might appear only after the test runs a while.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Read more
 

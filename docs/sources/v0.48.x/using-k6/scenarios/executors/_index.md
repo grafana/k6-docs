@@ -38,7 +38,7 @@ The following table lists all k6 executors and links to their documentation.
 | [Ramping Arrival Rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | A variable number of iterations are <br/> executed in a specified period of time.                                                                                                          |
 | [Externally Controlled](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Control and scale execution at runtime<br/> via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) or the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 For any given scenario, you can't guarantee that a specific VU can run a specific iteration.
 
@@ -47,4 +47,4 @@ So the tenth VU could use the tenth item in your array (or the sixth iteration t
 
 But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration.
 
-{{% /admonition %}}
+{{< /admonition >}}

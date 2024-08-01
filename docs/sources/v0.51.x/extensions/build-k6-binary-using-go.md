@@ -9,11 +9,11 @@ weight: 02
 To use an extension that you found on the [Extension page](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) or the [xk6 GitHub topic](https://github.com/topics/xk6),
 you need to build a binary using Go.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Not interested in setting up a Go environment? You can [use Docker instead](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-docker/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Before you start
 

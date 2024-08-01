@@ -35,7 +35,7 @@ You can define a request specified as an array or object with the following para
 When you define requests as an array, you must use a specific order of items.
 Note the `Position` column for the correct order.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Array position | Name              | Type                                                                                            | Description                                                                                                                 |
 | -------------- | ----------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -118,11 +118,11 @@ export default function () {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 In the preceding example, `req1` can happen before `req2` or `req3`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Example with array of strings
 

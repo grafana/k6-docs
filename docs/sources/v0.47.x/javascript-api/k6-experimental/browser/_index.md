@@ -14,11 +14,11 @@ Note that because k6 does not run in NodeJS, the browser module APIs will slight
 
 You can find examples of using [the browser module API](#browser-module-api) in our [getting started guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Properties
 
@@ -178,11 +178,11 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_ARGS='show-property
 
 List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `K6_BROWSER_IGNORE_DEFAULT_ARGS` environment variable when starting a test for the ones you want to ignore.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The starting '--' have been omitted from the argument names in these lists.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Argument                                                 | Value                                                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

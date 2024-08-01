@@ -9,7 +9,7 @@ description: 'Browser module: page.press(selector, key[, options]) method'
 
 Use locator-based [`locator.press()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Focuses the element, and then uses `keyboard.down(key)` and `keyboard.up(key)`.
 

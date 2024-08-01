@@ -29,11 +29,11 @@ xk6 build --with github.com/Dynatrace/xk6-output-dynatrace
 
 xk6 will create the new k6 binary in the local folder.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run the test
 
@@ -41,7 +41,7 @@ Create a Dynatrace API token to send the data.
 
 {{% admonition type="caution" %}}
 The Dynatrace API Token must have the scope name "metrics.ingest" (scope type `API v2`).
-{{% /admonition %}}
+{{< /admonition >}}
 
 You can use the Dynatrace UI:
 

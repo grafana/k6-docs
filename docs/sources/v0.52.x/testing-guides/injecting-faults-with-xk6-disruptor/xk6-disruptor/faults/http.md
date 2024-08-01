@@ -22,11 +22,11 @@ A HTTP fault is described by the following attributes:
 | exclude        | string | comma-separated list of urls to be excluded from disruption (e.g. /health)                                     |
 | port           | number | port on which the requests will be intercepted                                                                 |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 `averageDelay` and `delayVariation` are applied to all requests affected by the fault, regardless of the value of `errorRate`. `errorCode` is returned only to a fraction of requests defined by `errorRate`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

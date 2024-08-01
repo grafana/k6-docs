@@ -7,11 +7,11 @@ description: 'Clears context cookies.'
 
 Adds a list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) into the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie). All pages within this [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) will have these [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) set.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 If a [cookie](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie)'s `url` property is not provided, both `domain` and `path` properties must be specified.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Example
 

@@ -14,14 +14,14 @@ a script always runs through these stages in the same order:
 3. VU code runs in the `default` or scenario function, running for as long and as many times as the `options` define. **Required**.
 4. The `teardown` function runs, postprocessing data and closing the test environment. _Optional._
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **Lifecycle functions**
 
 Except for init code, each stage occurs in a _lifecycle function_,
 a function called in a specific sequence in the k6 runtime.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 

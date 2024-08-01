@@ -114,14 +114,14 @@ export function news() {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 By default, k6 applies a `scenario` tag to all metrics in each scenario, whose value is the scenario name.
 You can combine these tags with thresholds, or use them to simplify results filtering.
 
 To disable scenario tags, use the [`--system-tags` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options#system-tags).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run multiple scenario functions, with different thresholds
 

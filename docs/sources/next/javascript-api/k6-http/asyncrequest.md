@@ -79,13 +79,13 @@ function randomInt(min, max) {
 }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 `http.asyncRequest` has no current way to abort a request.
 
 In the preceding script, after `res` gets the value from the fastest request, the other requests will continue to execute.
 This might block the end of the iteration, because the iteration only stops once all async jobs finish.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< /code >}}

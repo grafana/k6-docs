@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.innerText method'
 
 Use [`locator.innerText([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/innertext/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns the element's inner text.
 

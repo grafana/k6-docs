@@ -43,11 +43,11 @@ To load the certificate and key from embedded strings, use this snippet.
 Note the use of
 [template literals](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Template_literals) for multi-line strings):
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 These are just example keys.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 

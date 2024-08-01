@@ -13,12 +13,12 @@ In this document, read about:
 - How to customize the content and output location of your summary
 - The data structure of the summary object
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 However, we plan to support the feature for k6 Cloud tests, too.
 [Track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## About `handleSummary()`
 
@@ -280,14 +280,14 @@ export function handleSummary(data) {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The last examples use imported helper functions.
 These functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
 
 Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io), too!
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Summary data reference
 
@@ -316,12 +316,12 @@ The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_
 
 </TableWithNestedRows>
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 If you change the default trend metrics with the [`summaryTrendStats`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) option,
 the keys for the values of the trend will change accordingly.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Example summary JSON
 

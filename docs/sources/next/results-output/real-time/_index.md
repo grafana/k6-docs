@@ -41,11 +41,11 @@ As well as the following third-party services:
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 - [Other alternative with a custom output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions)
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 This list applies to local tests, not to [cloud tests](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Read more
 

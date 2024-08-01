@@ -37,12 +37,12 @@ However, if you're unsure about the metrics to focus on, you can start with the 
 - `http_req_failed`, to measure error rate
 - `http_req_duration`, to measure duration
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 In other terminology, these metrics measure traffic (in requests), availability (in error rate), and latency (in request duration).
 SREs might recognize these metrics as three of the [four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example output
 

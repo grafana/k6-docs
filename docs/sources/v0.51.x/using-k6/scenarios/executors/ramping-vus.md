@@ -62,12 +62,12 @@ export default function () {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 With [`gracefulRampDown`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/graceful-stop#the-gracefulrampdown) set to 0 seconds, some iterations might be
 interrupted during the ramp down stage.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Observations
 

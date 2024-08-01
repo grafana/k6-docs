@@ -9,7 +9,7 @@ description: 'Browser module: page.uncheck(selector[, options]) method'
 
 Use locator-based [`locator.uncheck([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/uncheck/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 This method is used to unselect an input checkbox.
 

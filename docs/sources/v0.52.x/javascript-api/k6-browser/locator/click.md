@@ -9,7 +9,7 @@ description: 'Browser module: locator.click method'
 
 This method has **known issues**. For details, refer to [#471](https://github.com/grafana/xk6-browser/issues/471) and [#474](https://github.com/grafana/xk6-browser/issues/474).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Mouse click on the chosen element.
 

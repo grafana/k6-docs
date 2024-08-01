@@ -9,13 +9,13 @@ description: 'Opens a file and reads all the contents into memory.'
 
 Opens a file, reading all its contents into memory for use in the script.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
 
 To reduce the memory consumption, we strongly advise the usage of [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) for CSV, JSON and other files intended for script parametrization.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{% admonition type="caution" %}}
 
@@ -25,7 +25,7 @@ By restricting it to the init context, we can easily determine what local files 
 
 See the example further down on this page. For a more in-depth description, see [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Parameter | Type   | Description                                                                                                                                       |
 | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |

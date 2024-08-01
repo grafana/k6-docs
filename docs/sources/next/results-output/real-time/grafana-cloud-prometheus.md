@@ -13,7 +13,7 @@ This page includes instructions for running a local test that sends the test res
 
 For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
 With k6 metrics in Grafana, you can correlate k6 metrics with other metrics of your observability stack.

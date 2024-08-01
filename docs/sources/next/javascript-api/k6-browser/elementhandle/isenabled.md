@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.isEnabled method'
 
 Use [`locator.isEnabled([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/isenabled/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Checks if the element is enabled.
 

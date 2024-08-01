@@ -41,7 +41,7 @@ export default function () {
 }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You can test this script by creating first a pod running nginx and exposing it as a service with the commands below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
 
@@ -52,4 +52,4 @@ You can test this script by creating first a pod running nginx and exposing it a
 
 You can also use the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension for creating these resources from your test script.
 
-{{% /admonition %}}
+{{< /admonition >}}
