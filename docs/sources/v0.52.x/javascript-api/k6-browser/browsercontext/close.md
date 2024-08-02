@@ -9,8 +9,8 @@ Close the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                                                                                                                     |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                                                                                                           |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) and all its [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/)s have been closed. |
 
 ### Example
@@ -33,7 +33,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   const context = await browser.newContext();
   await context.newPage();
 

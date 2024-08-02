@@ -16,8 +16,8 @@ Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 
 ### Returns
 
-| Type          | Description                                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Type          | Description                                                                                           |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
 | `Array<Page>` | An array of [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/) objects. |
 
 ### Example
@@ -40,7 +40,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   const context = await browser.newContext();
   await context.newPage();
   const pages = context.pages();
