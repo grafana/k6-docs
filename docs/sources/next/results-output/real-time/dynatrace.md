@@ -39,7 +39,7 @@ To learn more about how to build custom k6 versions, check out [xk6](https://git
 
 Create a Dynatrace API token to send the data.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 The Dynatrace API Token must have the scope name "metrics.ingest" (scope type `API v2`).
 {{< /admonition >}}
 

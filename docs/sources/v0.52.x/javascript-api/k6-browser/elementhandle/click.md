@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.click method'
 
 # click([options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.click([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/click/) instead.
 

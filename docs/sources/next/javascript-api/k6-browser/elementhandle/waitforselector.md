@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.waitForSelector method'
 
 # waitForSelector(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.waitFor([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) instead.
 

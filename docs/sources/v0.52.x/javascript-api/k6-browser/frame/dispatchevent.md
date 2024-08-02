@@ -5,7 +5,7 @@ description: 'Browser module: frame.dispatchEvent(selector, type, eventInit[, op
 
 # dispatchEvent(selector, type, eventInit[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/dispatchevent/) instead.
 

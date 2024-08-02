@@ -5,7 +5,7 @@ description: 'Browser module: frame.waitForLoadState(state[, options]) method'
 
 # waitForLoadState(state[, options])
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This method has **known issues**. For details, refer to [#880](https://github.com/grafana/xk6-browser/issues/880).
 
@@ -25,7 +25,7 @@ This waits for the given load state to be reached. It will immediately unblock i
 
 ### Events
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 

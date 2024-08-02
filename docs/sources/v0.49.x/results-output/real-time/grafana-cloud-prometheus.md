@@ -7,7 +7,7 @@ weight: 00
 
 # Grafana Cloud Prometheus
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This page includes instructions for running a local test that sends the test results to a Prometheus instance in Grafana Cloud.
 

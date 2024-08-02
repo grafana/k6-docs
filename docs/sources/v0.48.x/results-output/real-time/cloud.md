@@ -21,7 +21,7 @@ Fundamentally the difference is the machine that the test runs on:
 
 In all cases you'll be able to see your test results at [k6 Cloud](https://app.k6.io) or [Grafana Cloud](https://grafana.com/products/cloud/).
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Data storage and processing are primary cloud costs,
 so `k6 run --out cloud` will consume VUH or test runs from your subscription.

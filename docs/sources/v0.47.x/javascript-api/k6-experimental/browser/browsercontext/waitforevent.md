@@ -5,7 +5,7 @@ description: 'Waits for event to fire and passes its value into the predicate fu
 
 # waitForEvent(event[, optionsOrPredicate])
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This method is a work in progress.
 It requires async functionality and returning a `Promise` to be useful in scripts.

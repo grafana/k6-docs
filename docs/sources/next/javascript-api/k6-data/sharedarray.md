@@ -37,7 +37,7 @@ Supported operations on a `SharedArray` include:
 In most cases, you should be able to reduce the memory usage of an array data structure by wrapping it in a `SharedArray`.
 Once constructed, a `SharedArray` is read-only, so **you can't use a SharedArray to communicate data between VUs**.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Attempting to instantiate a `SharedArray` outside of the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) results in the exception `new SharedArray must be called in the init context`.
 

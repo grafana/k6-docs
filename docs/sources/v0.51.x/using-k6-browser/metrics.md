@@ -69,7 +69,7 @@ To set thresholds for your browser metrics:
 
 As the following example shows, you can also pass in different URLs if you're going to set a threshold for other pages, especially when your script contains page navigations.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
 

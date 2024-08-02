@@ -5,7 +5,7 @@ description: 'Browser module: frame.check(selector[, options]) method'
 
 # check(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.check([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/check/) instead.
 

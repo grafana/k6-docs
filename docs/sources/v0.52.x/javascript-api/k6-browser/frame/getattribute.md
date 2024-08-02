@@ -5,7 +5,7 @@ description: 'Browser module: frame.getAttribute(selector, name[, options]) meth
 
 # getAttribute(selector, name[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.getAttribute()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getattribute/) instead.
 

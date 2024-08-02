@@ -30,7 +30,7 @@ You can use this GET shortcut in objects&mdash;name a key and give it a URL valu
 
 You can define a request specified as an array or object with the following parameters.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 When you define requests as an array, you must use a specific order of items.
 Note the `Position` column for the correct order.

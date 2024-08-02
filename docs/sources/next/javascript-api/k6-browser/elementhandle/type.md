@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.type method'
 
 # type(text, [options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.type([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/type/) instead.
 

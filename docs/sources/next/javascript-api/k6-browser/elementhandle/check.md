@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.check method'
 
 # check([options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.check([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/check/) instead.
 

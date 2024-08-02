@@ -176,7 +176,7 @@ to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) to in
 Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
 interface to serve as a factory of `Compare` instances for each VU.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 The significance depends on the size of your module.
 

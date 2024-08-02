@@ -252,7 +252,7 @@ All that is left after this is to reboot your Mac back to the Recovery Mode, ope
 
 In most cases these limits should be enough to run most of your simple tests locally for some time, but you can modify the files above to any values you will need in your testing.
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Please be aware that all of these limitations are put in place to protect your operating system from files and applications that are poorly written and might leak memory like in huge quantities. We would suggest not going too overboard with the values, or you might find your system slowing down to a crawl if or when it runs out of RAM.
 

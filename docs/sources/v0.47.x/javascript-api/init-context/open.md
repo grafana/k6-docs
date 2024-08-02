@@ -17,7 +17,7 @@ To reduce the memory consumption, we strongly advise the usage of [SharedArray](
 
 {{< /admonition >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This function can only be called from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
 

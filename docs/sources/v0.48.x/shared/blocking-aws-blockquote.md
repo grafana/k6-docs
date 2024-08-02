@@ -2,7 +2,7 @@
 title: jslib/aws module blocking admonition
 ---
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 In some cases, using this library&apos;s operations might impact performance and skew your test results.
 <br>

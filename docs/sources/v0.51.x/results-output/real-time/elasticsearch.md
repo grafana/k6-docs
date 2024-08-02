@@ -62,7 +62,7 @@ export K6_ELASTICSEARCH_URL=http://localhost:9200
 ./k6 run script.js -o output-elasticsearch
 ```
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 Security and self-signed certificates for non-cloud clusters are not yet supported.
 {{< /admonition >}}
 

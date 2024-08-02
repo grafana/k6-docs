@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.isHidden method'
 
 # isHidden()
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.isHidden()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/ishidden/) instead.
 

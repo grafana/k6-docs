@@ -122,7 +122,7 @@ Flags:
 
 {{< /code >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 The use of `--replace` should be considered an advanced feature to be avoided unless required.
 

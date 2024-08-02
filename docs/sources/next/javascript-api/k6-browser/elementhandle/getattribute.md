@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.getAttribute method'
 
 # getAttribute(name)
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.getAttribute(name[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getattribute/) instead.
 

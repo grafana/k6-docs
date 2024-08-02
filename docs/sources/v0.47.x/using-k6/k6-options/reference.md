@@ -942,7 +942,7 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 **This option is discouraged.**
 <br>
@@ -1364,7 +1364,7 @@ export const options = {
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349), changing the ciphers for TLS 1.3 is _not_ supported and will do nothing.
 

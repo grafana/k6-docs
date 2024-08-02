@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.innerText method'
 
 # innerText()
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.innerText([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/innertext/) instead.
 
