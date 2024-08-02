@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.selectOption method'
 
 # selectOption(values, [options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.selectOption(values[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/selectoption/) instead.
 

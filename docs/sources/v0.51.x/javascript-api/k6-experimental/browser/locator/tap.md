@@ -5,7 +5,7 @@ description: 'Browser module: locator.tap method'
 
 # tap([options])
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This feature has **known issues**. For details, refer to
 [#436](https://github.com/grafana/xk6-browser/issues/436) and [#471](https://github.com/grafana/xk6-browser/issues/471).

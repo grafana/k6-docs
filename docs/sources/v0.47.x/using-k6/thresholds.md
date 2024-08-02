@@ -186,7 +186,7 @@ export default function () {
 
 {{< /code >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Do not specify multiple thresholds for the same metric by repeating the same object key.
 
@@ -445,7 +445,7 @@ export default function () {
 
 {{< /code >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 When k6 runs in the cloud, thresholds are evaluated every 60 seconds.
 Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.

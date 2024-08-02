@@ -6,7 +6,7 @@ description: 'Browser module: frame.$(selector) method'
 
 # $(selector)
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`frame.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/locator/) instead.
 

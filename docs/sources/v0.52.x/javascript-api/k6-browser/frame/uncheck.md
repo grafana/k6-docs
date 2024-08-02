@@ -5,7 +5,7 @@ description: 'Browser module: frame.uncheck(selector[, options]) method'
 
 # uncheck(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.uncheck([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/uncheck/) instead.
 

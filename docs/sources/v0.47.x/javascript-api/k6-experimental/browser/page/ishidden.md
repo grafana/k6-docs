@@ -5,7 +5,7 @@ description: 'Browser module: page.isHidden(selector[, options) method'
 
 # isHidden(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.isHidden([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/ishidden/) instead.
 

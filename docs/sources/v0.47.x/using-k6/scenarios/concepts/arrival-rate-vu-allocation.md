@@ -15,7 +15,7 @@ In other words, before the tests runs, you must both:
 
 Read on to learn about how k6 allocates VUs in the arrival-rate executors.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 In cloud tests, **`preAllocatedVUs` count against your subscription.**
 
@@ -91,7 +91,7 @@ As dropped iterations can also indicate that the system performance is degrading
 
 ## You probably don't need `maxVUs`
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 In cloud tests, the number of `maxVUs` counts against your subscription,
 **overriding the number set by `preAllocatedVUs`**.

@@ -5,7 +5,7 @@ description: 'Browser module: page.isDisabled(selector[, options]) method'
 
 # isDisabled(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.isDisabled([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/isdisabled/) instead.
 

@@ -7,7 +7,7 @@ slug: 'new-relic'
 
 # New Relic
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
 

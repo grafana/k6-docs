@@ -12,7 +12,7 @@ Registers a handler to be called whenever the specified event occurs.
 | event     | string   | `''`    | Event to attach the handler to. Currently, only the `'console'` event is supported. |
 | handler   | function | `null`  | A function to be called every time the specified event is emitted.                  |
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 When using the `page.on` method, the page has to be explicitly [closed](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/close/) for the iteration to be able to finish.
 

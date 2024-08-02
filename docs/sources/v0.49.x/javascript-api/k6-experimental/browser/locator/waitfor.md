@@ -5,7 +5,7 @@ description: 'Browser module: locator.waitFor method'
 
 # waitFor([options])
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This feature has **known issues**. For details,
 refer to [#472](https://github.com/grafana/xk6-browser/issues/472).

@@ -5,7 +5,7 @@ description: 'Returns a list of pages inside this BrowserContext.'
 
 # pages()
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This feature has **known issues**. For details, refer to
 [#444](https://github.com/grafana/xk6-browser/issues/444).

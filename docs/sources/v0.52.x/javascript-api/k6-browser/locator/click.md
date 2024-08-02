@@ -5,7 +5,7 @@ description: 'Browser module: locator.click method'
 
 # click([options])
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This method has **known issues**. For details, refer to [#471](https://github.com/grafana/xk6-browser/issues/471) and [#474](https://github.com/grafana/xk6-browser/issues/474).
 

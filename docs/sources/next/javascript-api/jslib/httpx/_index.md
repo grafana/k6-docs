@@ -19,7 +19,7 @@ httpx module integrates well with the expect library.
 The source code is [on GitHub](https://github.com/k6io/k6-jslib-httpx).
 Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-httpx/issues).
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 **This library is in active development.**
 

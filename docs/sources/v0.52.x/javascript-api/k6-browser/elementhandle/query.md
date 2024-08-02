@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.$ method'
 
 # $(selector)
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`page.locator(selector[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) instead.
 

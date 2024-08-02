@@ -5,7 +5,7 @@ description: 'Browser module: page.dblclick(selector[, options]) method'
 
 # dblclick(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.dblclick([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/dblclick/) instead.
 

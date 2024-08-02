@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.fill method'
 
 # fill(value, [options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use [`locator.fill(value, [options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) instead.
 

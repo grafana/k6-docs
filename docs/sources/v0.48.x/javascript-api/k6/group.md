@@ -19,7 +19,7 @@ Run code inside a group. Groups are used to organize results in a test.
 | ---- | ------------------------- |
 | any  | The return value of _fn_. |
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Avoid using `group` with async functions or asynchronous code.
 If you do, k6 might apply tags in a way that is unreliable or unintuitive.

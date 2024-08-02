@@ -5,7 +5,7 @@ description: 'Browser module: page.isClosed() method'
 
 # isClosed()
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This method has **known issues**. For details, refer to [#878](https://github.com/grafana/xk6-browser/issues/878).
 

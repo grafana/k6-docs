@@ -39,7 +39,7 @@ There should be a reasonably high degree of quality and stability at this point.
 This phase makes the feature accessible to more users, which in turn gives k6 developers more chances to receive feedback.
 The key will be to achieve a balance between usability and stability.
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Not all experimental modules will progress to become a core module!
 The k6 team reserves the right to discontinue and remove any experimental module if is no longer deemed desirable.

@@ -6,7 +6,7 @@ description: 'Browser module: page.$(selector) method'
 
 # page.$(selector)
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/locator/) instead.
 

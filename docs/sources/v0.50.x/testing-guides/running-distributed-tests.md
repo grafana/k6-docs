@@ -165,7 +165,7 @@ Let's create our ConfigMap as `my-test` with the content of our `test.js` script
 kubectl create configmap my-test --from-file test.js
 ```
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 Limitations exist on how large your test script can be when deployed within a `ConfigMap`.
 Kubernetes imposes a size limit of 1,048,576 bytes (1 MiB) for the data, therefore if your test scripts exceed this limit, you'll need to mount a `PersistentVolume`.
@@ -189,7 +189,7 @@ Organizing your test scripts was part of the discussion during [episode #76](htt
 
 {{< /admonition >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 When using a `PersistentVolume`, the operator will expect all test scripts to be contained within a directory named `/test/`.
 
@@ -244,7 +244,7 @@ The test script content was added to the map using the filename as the key-value
 The amount of `parallelism` is up to you; how many pods do you want to split the test amongst?
 The operator will split the workload between the pods using [execution segments](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#execution-segment).
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 It is important that the `ConfigMap` and `CustomResource` are created in the same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
@@ -275,7 +275,7 @@ spec:
 
 {{< /code >}}
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 It is important that the `PersistentVolumeClaim` and `CustomResource` are created in the same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 

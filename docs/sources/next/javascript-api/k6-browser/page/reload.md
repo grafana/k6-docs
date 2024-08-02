@@ -19,7 +19,7 @@ This reloads the current page and returns the main resource response.
 
 ### Events
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 

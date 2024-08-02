@@ -5,7 +5,7 @@ description: 'Browser module: frame.focus(selector[, options]) method'
 
 # focus(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.focus([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/focus/) instead.
 

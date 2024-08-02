@@ -2,7 +2,7 @@
 title: Experimental module admonition
 ---
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This is an experimental module.
 <br>

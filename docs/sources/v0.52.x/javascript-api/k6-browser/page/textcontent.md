@@ -5,7 +5,7 @@ description: 'Browser module: locator.textContent(selector[, options]) method'
 
 # textContent(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.textContent([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/textcontent/) instead.
 

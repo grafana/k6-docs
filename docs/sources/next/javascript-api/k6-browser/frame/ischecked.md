@@ -5,7 +5,7 @@ description: 'Browser module: frame.isChecked(selector[, options]) method'
 
 # isChecked(selector[, options])
 
-{{% admonition type="warning" %}}
+{{< admonition type="warning" >}}
 
 Use locator-based [`locator.isChecked([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/ischecked/) instead.
 

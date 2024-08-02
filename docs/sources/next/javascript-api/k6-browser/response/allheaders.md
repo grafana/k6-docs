@@ -5,7 +5,7 @@ description: 'Browser module: Response.allHeaders method'
 
 # allHeaders()
 
-{{% admonition type="caution" %}}
+{{< admonition type="caution" >}}
 
 This method has a **known issue**. For details, refer to [#965](https://github.com/grafana/xk6-browser/issues/965).
 
