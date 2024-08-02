@@ -6,13 +6,7 @@ weight: 00
 
 # Amazon CloudWatch
 
-{{< admonition type="warning" >}}
-
-The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue to use this feature by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd), and this guide has been updated to include instructions for how to use it.
-
-For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
-
-{{< /admonition >}}
+{{< docs/shared source="k6" lookup="statsd-output.md" version="<K6_VERSION>" >}}
 
 k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) by using the [xk6-output-statsd extension](https://github.com/LeonAdato/xk6-output-statsd). These metrics can then be visualized in dashboards.
 
