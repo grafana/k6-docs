@@ -12,7 +12,7 @@ The built-in StatsD output has been deprecated on k6 v0.47.0. You can continue t
 
 For more information on the reason behind this change, you can follow [this issue](https://github.com/grafana/k6/issues/2982) in the k6 repository.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 k6 can send metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
 
@@ -54,11 +54,11 @@ Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadog
 
 If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 For additional information, refer to the <a href="https://docs.datadoghq.com/agent/docker/">Datadog Docker Agent documentation</a>.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### DogStatsD
 

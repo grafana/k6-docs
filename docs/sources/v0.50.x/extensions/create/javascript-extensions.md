@@ -66,12 +66,12 @@ func (c *Compare) IsGreater(a, b int) bool {
 
 1. Register the module to use these from k6 test scripts.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 k6 extensions must have the `k6/x/` prefix,
 and the short name must be unique among all extensions built in the same k6 binary.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ```go
 import "go.k6.io/k6/js/modules"
@@ -126,12 +126,12 @@ To build a k6 binary with this extension, run this command:
 $ xk6 build --with xk6-compare=.
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 When building from source code, `xk6-compare` is the Go module name passed to `go mod init`.
 Usually, this would be a URL similar to `github.com/grafana/xk6-compare`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Use your extension
 
@@ -180,7 +180,7 @@ interface to serve as a factory of `Compare` instances for each VU.
 
 The significance depends on the size of your module.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Here's what that would look like:
 
@@ -259,11 +259,11 @@ func (mi *ModuleInstance) Exports() modules.Exports {
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Notice that we implemented the Module API and now `modules.Register` the _root module_ rather than our _Compare_ object!
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Accessing runtime state
 

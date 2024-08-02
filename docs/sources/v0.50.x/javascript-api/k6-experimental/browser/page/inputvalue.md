@@ -9,7 +9,7 @@ description: 'Browser module: page.inputValue(selector[, options]) method'
 
 Use locator-based [`locator.inputValue([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/inputvalue/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns `input.value` for the selected `input`, `textarea` or `select` element.
 

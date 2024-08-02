@@ -8,11 +8,11 @@ weight: 03
 
 Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify the process of creating a custom k6 binary. It avoids having to setup a local Go environment, and install xk6 manually.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 This tutorial is about creating a custom k6 binary (using Docker). If you want to create a Docker image with a custom k6 binary, refer instead to [Using modules with Docker](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules/#using-modules-with-docker).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Building your first extension
 
@@ -126,7 +126,7 @@ Flags:
 
 The use of `--replace` should be considered an advanced feature to be avoided unless required.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Referring back to our executed command, note that:
 

@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.focus method'
 
 Use [`locator.focus([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/focus/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on the element, if it can be focused on.
 

@@ -97,11 +97,11 @@ You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/qu
 
 ### Example NRQL Queries
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 New Relic doesn't support calculating percentiles from metric data, which is the data format sent by this k6 output. See [this New Relic forum post](https://discuss.newrelic.com/t/percentiles-of-values-from-metrics-api-with-nrql-not-working/95832) and [the documentation about the metric data type](https://docs.newrelic.com/docs/data-apis/understand-data/metric-data/query-metric-data-type/) for details.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Here are some example NRQL queries you can easily copy and paste into widgets in a New Relic dashboard, you can however stick with the [chart builder](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder). Find all your k6 Metrics under the metrics tab, prefixed with `k6.`
 

@@ -17,11 +17,11 @@ Returns a list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-
 | ----- | --------------------------------------------------------------------------------------------------------------------------- |
 | array | A list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie). |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 [Cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/cookie) can be added with [BrowserContext.addCookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/addcookies/).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Example
 

@@ -10,7 +10,7 @@ description: 'Browser module: frame.$(selector) method'
 
 Use locator-based [`frame.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/locator/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 The method finds an element matching the specified selector within the frame. If no elements match the selector, the return value resolves to `null`. To wait for an element on the frame, use [locator.waitFor([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/).
 

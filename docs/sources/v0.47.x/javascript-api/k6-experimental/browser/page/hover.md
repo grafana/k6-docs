@@ -9,7 +9,7 @@ description: 'Browser module: page.hover(selector[, options]) method'
 
 Use locator-based [`locator.hover([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/hover/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 This method hovers over an element matching `selector`.
 

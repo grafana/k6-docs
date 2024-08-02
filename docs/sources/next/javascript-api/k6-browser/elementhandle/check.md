@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.check method'
 
 Use [`locator.check([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/check/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Use this method to select an `input` checkbox.
 

@@ -13,11 +13,11 @@ Follow along to learn how to:
 3. Wait for page navigation
 4. Run both browser-level and protocol-level tests in a single script
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 With these example snippets, you'll run the test locally with your machine's resources. The browser module is not available within k6 cloud as of yet.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Run a test
 
@@ -68,11 +68,11 @@ To run a simple local script:
 
    Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
 
-   {{% admonition type="note" %}}
+   {{< admonition type="note" >}}
 
    To provide rough compatibility with the Playwright API, the browser module API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `await` keyword is used to deal with the asynchronous nature of the operation.
 
-   {{% /admonition %}}
+   {{< /admonition >}}
 
 1. Then, run the test on your terminal with this command:
 
@@ -138,11 +138,11 @@ To run a simple local script:
 
    {{< /code >}}
 
-   {{% admonition type="note" %}}
+   {{< admonition type="note" >}}
 
    When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation#docker) for more information.
 
-   {{% /admonition %}}
+   {{< /admonition >}}
 
 ## Interact with elements on your webpage
 
@@ -150,11 +150,11 @@ You can use `page.locator()` and pass in the element's selector you want to find
 
 To find out which selectors the browser module supports, check out [Selecting Elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 
@@ -268,11 +268,11 @@ The real power of the browser module shines when it’s combined with the existi
 
 To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 {{< code >}}
 

@@ -10,11 +10,11 @@ Selectors are strings that represents a specific DOM element on the page. When w
 
 Currently, the browser module supports the standard **CSS and XPath selectors**.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Text-based selectors are currently not supported. This will be supported in future releases.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Recommended practices
 

@@ -10,7 +10,7 @@ description: 'Clears all permission overrides for the BrowserContext.'
 This feature has known issues.
 For details, refer to [issue #443](https://github.com/grafana/xk6-browser/issues/443).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Clears all permission overrides for the `BrowserContext`.
 

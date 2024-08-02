@@ -10,7 +10,7 @@ description: "Sets the BrowserContext's geolocation."
 This feature has **known issues**. For details, refer to
 [#435](https://github.com/grafana/xk6-browser/issues/435).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Sets the context's geolocation.
 

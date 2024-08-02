@@ -9,7 +9,7 @@ description: 'Browser module: Request.allHeaders method'
 
 This method has a **known issue**. For details, refer to [#965](https://github.com/grafana/xk6-browser/issues/965).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 An object of key value pairs made up of HTTP headers associated with the request and the ones that the browser adds (such as cookies). All header names are lower-case.
 

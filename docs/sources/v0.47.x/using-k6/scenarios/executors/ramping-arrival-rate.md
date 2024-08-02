@@ -15,13 +15,13 @@ Unlike the [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using
 this executor dynamically changes the number of iterations to start, and starts these iterations as long as the test has enough allocated VUs.
 To learn how allocation works, read [Arrival-rate VU allocation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **Iteration starts are spaced fractionally.**
 Iterations **do not** start at exactly the same time.
 At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Options
 
@@ -41,13 +41,13 @@ this executor has the following options:
 If you need start iterations independent of system-under-test performance, and
 want to ramp the number of iterations up or down during specific periods of time.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 **Don't put sleep at the end of an iteration.**
 The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
 It's unnecessary to use a `sleep()` function at the end of the VU code.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

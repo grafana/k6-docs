@@ -17,12 +17,12 @@ As with any changes to your OS, we discourage blindly changing your system setti
 E.g. before changing MSL / TIME_WAIT period, confirm that you’re experiencing the issue (error messages, netstat, ss, etc.), change settings conservatively, re-run the test, and note any improvement.
 This way you can gauge the effect of the optimization, find any negative side-effects, and come up with a range of recommended values.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The following modifications have been tested for macOS Sierra 10.12 and above.
 If you're on an older version, the process for changing these settings might differ.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Network resource limit
 
@@ -250,7 +250,7 @@ In most cases these limits should be enough to run most of your simple tests loc
 
 Please be aware that all of these limitations are put in place to protect your operating system from files and applications that are poorly written and might leak memory like in huge quantities. We would suggest not going too overboard with the values, or you might find your system slowing down to a crawl if or when it runs out of RAM.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Local port range
 

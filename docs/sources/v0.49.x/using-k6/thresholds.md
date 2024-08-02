@@ -190,7 +190,7 @@ export default function () {
 
 Do not specify multiple thresholds for the same metric by repeating the same object key.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Since thresholds are defined as the properties of a JavaScript object, you can't specify multiple ones with the same property name.
 
@@ -450,7 +450,7 @@ export default function () {
 When k6 runs in the cloud, thresholds are evaluated every 60 seconds.
 Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Fail a load test using checks
 

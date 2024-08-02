@@ -35,11 +35,11 @@ export default function (data) {
 }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The test uses the `delay` endpoint which return after the requested delay. It requests a `0.1s` (`100ms`) delay to ensure the baseline scenario (see scenarios below) has meaningful statistics for the request duration. If we were simply calling a locally deployed http server (for example `nginx`), the response time would exhibit a large variation between a few microseconds to a few milliseconds. Having `100ms` as baseline response time has proved to offer more consistent results.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Fault injection
 
@@ -106,19 +106,19 @@ This test defines two [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using
     }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Notice that the `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Executions
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Baseline execution
 
@@ -253,11 +253,11 @@ Let's take a closer look at the results for the requests on each scenario. We ca
 | Baseline        | 103.22ms      | 0.00%           |
 | Fault injection | 151.9 ms      | 9.65%           |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Notice we have used the average response time reported as `expected_response:true` because this metric only consider successful requests while `http_req_duration` considers all requests, including those returning a fault.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Source Code
 

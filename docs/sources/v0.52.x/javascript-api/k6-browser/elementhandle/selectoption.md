@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.selectOption method'
 
 Use [`locator.selectOption(values[, options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/selectoption/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Select one or more options which match the values.
 

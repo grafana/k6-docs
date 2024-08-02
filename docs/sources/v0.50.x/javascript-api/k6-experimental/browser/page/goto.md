@@ -27,7 +27,7 @@ Navigating to `about:blank` or navigation to the same URL with a different hash,
 
 `networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Events can be either:
 

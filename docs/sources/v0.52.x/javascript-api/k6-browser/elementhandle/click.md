@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.click method'
 
 Use [`locator.click([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/click/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Mouse click on the chosen element.
 

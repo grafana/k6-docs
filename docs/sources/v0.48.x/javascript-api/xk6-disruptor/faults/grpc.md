@@ -20,11 +20,11 @@ A gRPC fault is described by the following attributes:
 | exclude        | string | comma-separated list of services to be excluded from disruption                                                |
 | port           | number | port on which the requests will be intercepted                                                                 |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 `averageDelay` and `delayVariation` are applied to all requests affected by the fault, regardless of the value of `errorRate`. `statusCode` is returned only to a fraction of requests defined by `errorRate`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 

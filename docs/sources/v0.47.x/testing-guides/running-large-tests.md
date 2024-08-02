@@ -293,12 +293,12 @@ Refer to the ["Fine tuning OS" article](https://grafana.com/docs/k6/<K6_VERSION>
 WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.131:80: socket: too many open files"
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Benchmarking k6
 

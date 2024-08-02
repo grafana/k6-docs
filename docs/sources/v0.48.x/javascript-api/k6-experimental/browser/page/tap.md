@@ -9,7 +9,7 @@ description: 'Browser module: locator.tap(selector[, options]) method'
 
 Use locator-based [`locator.tap([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/locator/tap/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Tap the first element that matches the selector.
 

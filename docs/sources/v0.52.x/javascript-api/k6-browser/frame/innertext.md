@@ -9,7 +9,7 @@ description: 'Browser module: frame.innerText(selector[, options]) method'
 
 Use locator-based [`locator.innerText([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/innertext/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns the `element.innerText`.
 

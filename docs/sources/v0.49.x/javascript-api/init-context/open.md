@@ -9,23 +9,22 @@ description: 'Opens a file and reads all the contents into memory.'
 
 Opens a file, reading all its contents into memory for use in the script.
 
-{{% admonition type="note" %}}
+{{< admonition type="caution" >}}
+
+`open()` can only be called from the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-init-stage). This restriction is necessary to determine the local files needed to bundle when distributing the test across multiple nodes.
+
+{{< /admonition >}}
+
+{{< admonition type="note" >}}
 
 `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
 
-To reduce the memory consumption, we strongly advise the usage of [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) for CSV, JSON and other files intended for script parametrization.
+To reduce the memory consumption, you can:
 
-{{% /admonition %}}
+- Use `open()` within a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray), which shares the allocated file memory between VUs.
+- Use [open() from the `k6/experimental/fs`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/) module. It provides a memory-efficient way to handle file interactions in your test script and can read files in small chunks.
 
-{{% admonition type="caution" %}}
-
-This function can only be called from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
-
-By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
-
-See the example further down on this page. For a more in-depth description, see [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
-
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Parameter | Type   | Description                                                                                                                                       |
 | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,6 +36,8 @@ See the example further down on this page. For a more in-depth description, see 
 | Type                 | Description                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------- |
 | string / ArrayBuffer | The contents of the file, returned as string or ArrayBuffer (if `b` was specified as the mode). |
+
+### Examples
 
 {{< code >}}
 

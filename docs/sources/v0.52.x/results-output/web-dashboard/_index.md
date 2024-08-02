@@ -37,13 +37,13 @@ K6_WEB_DASHBOARD=true ./k6 run script.js
 
 By default, the web dashboard is available on localhost port `5665`. You can change the host and port by using the [dashboard options](#dashboard-options).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The k6 process waits to exit as long as there's at least one open browser window for the dashboard extension.
 
 In certain environments, such as a CI/CD pipeline, the k6 process has to exit after the test run completes. In that case, it's advisable to disable the HTTP port by setting it to `-1`.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Generate HTML test reports
 

@@ -9,7 +9,7 @@ description: 'Browser module: elementHandle.textContent method'
 
 Use [`locator.textContent([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/textcontent/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns the element's text content.
 

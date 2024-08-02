@@ -12,11 +12,11 @@ Note that because k6 does not run in NodeJS, the browser module APIs will slight
 
 You can find examples of using [the browser module API](#browser-module-api) in our [getting started guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser).
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Properties
 

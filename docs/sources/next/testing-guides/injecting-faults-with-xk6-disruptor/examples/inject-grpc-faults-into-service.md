@@ -131,19 +131,19 @@ export const options = {
 };
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Executions
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to [Installation](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/installation) for details on how to install it in your environment.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### Baseline execution
 

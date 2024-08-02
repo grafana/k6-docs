@@ -139,13 +139,13 @@ $ k6 run checks.js
 
 {{< /code >}}
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 When a check fails, the script will continue executing successfully and will not return a 'failed' exit status.
 If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#fail-a-load-test-using-checks).
 This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Read more
 

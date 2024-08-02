@@ -144,14 +144,14 @@ k6 run api-test.js
    ✓ response code was 200
    ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Under larger loads, this check will fail in some iterations.
 **Failed checks do not stop tests.**
 
 Rather, k6 tracks the success rate and presents it in your [end of test](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) summary.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Next steps
 

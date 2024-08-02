@@ -28,12 +28,12 @@ k6 always collects the following metrics, no matter what protocol the test uses:
 
 These metrics are generated only when the test makes HTTP requests.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 For all `http_req_*` metrics, **the timestamp is emitted the end of the request.**
 In other words, the timestamp happens when k6 receives the end of the response body, or the request times out.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 | Metric Name              | Type    | Description                                                                                                                                                                                                                                  |
 | ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -101,8 +101,8 @@ k6 emits the following metrics when it interacts with a service through the [`gR
 | grpc_streams_msgs_received | Counter | Total number of messages received         |
 | grpc_streams_msgs_sent     | Counter | Total number of messages sent             |
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Steams-related metrics (`grpc_streams*`) are available only on `k6` version `0.49.0` or higher or when using the `k6/experimental/grpc` module, which is available on `k6` version `0.45.0`.
 
-{{% /admonition %}}
+{{< /admonition >}}

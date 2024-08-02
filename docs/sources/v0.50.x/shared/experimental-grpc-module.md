@@ -8,4 +8,4 @@ Starting on k6 `v0.49`, the experimental module `k6/experimental/grpc` has been 
 
 To migrate your scripts, replace all `k6/experimental/grpc` imports with `k6/net/grpc`.
 
-{{% /admonition %}}
+{{< /admonition >}}

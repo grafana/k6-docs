@@ -5,11 +5,11 @@ description: 'Browser module: frame.waitForSelector(selector[, options]) method'
 
 # waitForSelector(selector[, options])
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 Use web assertions that assert visibility or a locator-based [`locator.waitFor([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns when element specified by selector satisfies `state` option.
 

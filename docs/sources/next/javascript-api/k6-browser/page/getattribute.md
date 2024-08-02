@@ -9,7 +9,7 @@ description: 'Browser module: page.getAttribute(selector, name[, options]) metho
 
 Use locator-based [`locator.getAttribute()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getattribute/) instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Returns the element attribute value for the given attribute name.
 

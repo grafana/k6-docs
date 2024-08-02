@@ -50,7 +50,7 @@ export default function () {
 }
 ```
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 You can test this script by first creating a pod running nginx with the command below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
 
@@ -60,4 +60,4 @@ $ kubectl run nginx --image=nginx
 
 You can also use the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension for creating these resources from your test script.
 
-{{% /admonition %}}
+{{< /admonition >}}

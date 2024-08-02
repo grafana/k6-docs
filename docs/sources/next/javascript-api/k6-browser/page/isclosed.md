@@ -9,7 +9,7 @@ description: 'Browser module: page.isClosed() method'
 
 This method has **known issues**. For details, refer to [#878](https://github.com/grafana/xk6-browser/issues/878).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Checks if the page has been closed.
 

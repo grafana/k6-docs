@@ -13,7 +13,7 @@ Refer to <a href="https://github.com/grafana/xk6-browser/issues/447">#447</a> fo
 
 Consider using the sync methods `Page.waitForNavigation()` and `Page.waitForSelector()` instead.
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Waits for the event to fire and passes its value into the predicate function. Returns the event data value when the predicate returns `true`.
 

@@ -12,4 +12,4 @@ While we intend to keep experimental modules as stable as possible, we may need 
 <br>
 Experimental modules maintain a high level of stability and follow regular maintenance and security measures. Feel free to [open an issue](https://github.com/grafana/k6/issues) if you have any feedback or suggestions.
 
-{{% /admonition %}}
+{{< /admonition >}}

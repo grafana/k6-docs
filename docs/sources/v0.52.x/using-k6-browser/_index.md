@@ -10,11 +10,11 @@ The [Browser module](https://github.com/grafana/xk6-browser) brings browser auto
 
 This module aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases), and install a Chromium-based browser on your machine (such as [Google Chrome](https://www.google.com/chrome/)).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 Watch the video below to learn more about k6 browser.
 

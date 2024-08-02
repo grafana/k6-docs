@@ -24,12 +24,12 @@ there's some background knowledge you should have:
 - You should be familiar with both Go(lang), JavaScript, and their tooling
 - You should understand how the [_Go-to-JavaScript_](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/go-js-bridge) bridge works within k6
 
-{{% admonition type="note" %}}
+{{< admonition type="note" >}}
 
 If you maintain a public xk6 repository and wish to have your extension listed in our [registry](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore),
 be sure to review the [requirements](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/extensions-registry#registry-requirements).
 
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Avoid unneeded work
 
