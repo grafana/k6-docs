@@ -43,7 +43,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   const context = await browser.newContext();
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], {
     origin: 'https://example.com/',

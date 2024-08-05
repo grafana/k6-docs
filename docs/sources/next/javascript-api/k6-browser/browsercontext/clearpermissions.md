@@ -9,8 +9,8 @@ Clears all permission overrides for the [browser context](https://grafana.com/do
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                                   |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the permissions have been cleared from the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext). |
 
 ### Example
@@ -33,7 +33,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   const context = await browser.newContext();
   await context.grantPermissions(['clipboard-read']);
   // do stuff ...

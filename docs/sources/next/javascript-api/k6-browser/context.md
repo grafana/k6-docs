@@ -15,8 +15,8 @@ A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/java
 
 ### Returns
 
-| Type           | Description                                                                                                                                                              |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Type           | Description                                                                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | object \| null | The current [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) if one has been created, otherwise `null`. |
 
 ### Example
@@ -37,7 +37,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   console.log(browser.context()); // null
 
   const page1 = await browser.newPage(); // implicitly creates a new browserContext

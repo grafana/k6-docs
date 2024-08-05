@@ -15,10 +15,10 @@ This waits for the given load state to be reached. It will immediately unblock i
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
-| --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| state           | string | `load`  | Optional load state to wait for. See [Events](#events) for more details.                                                                                                                                                                                                                                                                      |
-| options         | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
+| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                         |
+| --------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| state           | string | `load`  | Optional load state to wait for. See [Events](#events) for more details.                                                                                                                                                                                                                                            |
+| options         | object | `null`  |                                                                                                                                                                                                                                                                                                                     |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
 </TableWithNestedRows>
@@ -78,7 +78,7 @@ export default async function () {
 
     await page.waitForLoadState(); // waits for the default `load` event
 
-    const text = await p.locator('h2').textContent();
+    const text = await page.locator('h2').textContent();
     check(page, {
       header: () => text == 'Welcome, admin!',
     });
