@@ -9,24 +9,20 @@ weight: 19
 
 # JavaScript and TypeScript compatibility mode
 
-You can write k6 scripts in various ECMAScript versions:
+You can write k6 tests in various ECMAScript versions:
 
 - ES6+ JavaScript with ES modules (ESM).
 - ES6+ JavaScript with CommonJS modules.
 
 k6 supports both module types and most ES6+ features in all k6 execution modes: local, distributed, and cloud.
 
-To enable ES module support, k6 uses [Babel](https://babeljs.io/) internally to transform ESM to CommonJS. The process is as follows:
-
-![Babel transformation in k6](/media/docs/k6-oss/diagram-grafana-k6-babel-pipeline.png)
-
-Additionally, k6 also has experimental support for [esbuild](https://esbuild.github.io/), to transpile TypeScript (TS) code and to support most ES6+ features.
+Additionally, k6 also has experimental support for [esbuild](https://esbuild.github.io/), to transpile TypeScript (TS) code.
 
 Some users prefer to bundle their test code outside k6. For this reason, k6 offers three JavaScript compatibility modes:
 
-- [Extended mode](#extended-mode): The default option, supporting ESM and most ES6+ features.
-- [Experimental enhanced mode](#experimental-enhanced-mode): The experimental option, supporting TS and most ES6+ features.
-- [Base mode](#base-mode): Limited to CommonJS, excluding the Babel step.
+- [Extended mode](#extended-mode): The default option.
+- [Experimental enhanced mode](#experimental-enhanced-mode): The experimental option, supporting TS.
+- [Base mode](#base-mode): After v0.53.0 this is almost the same as extended, but doesn't alias `global` to `globalThis` - a nodejs compatibility.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
@@ -46,9 +42,7 @@ $ k6 run script.js
 
 {{< /code >}}
 
-As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
-
-Currently, the k6 Babel transformation only adds ESM support and sets `global` (node's global variable) with the value of `globalThis`.
+After v0.53.0 the only difference with base is that `global` (node's global variable) is aliased to the value of `globalThis`.
 
 ## Experimental enhanced mode
 
@@ -64,7 +58,7 @@ $ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.ts
 
 {{< /code >}}
 
-The experimental enhanced mode is similar to the extended mode, but it uses [esbuild](https://esbuild.github.io/) instead of Babel to transpile TypeScript (TS) code and to support most ES6+ features.
+The experimental enhanced mode is similar to the extended mode, but it uses [esbuild](https://esbuild.github.io/) instead of Babel to transpile TypeScript (TS) code.
 
 TypeScript support is partial as it removes the type information but doesn't provide type safety.
 
@@ -82,9 +76,7 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 
 {{< /code >}}
 
-The base mode omits the Babel transformation step, supporting only ES5.1+ code. You may want to enable this mode if your scripts are already written using only ES5.1 features or were previously transformed by Babel.
-
-Generally, this mode is not recommended as it offers minor benefits in reducing startup time.
+After v0.53.0 there isn't a big reason to use this. Before that it was dropping ESM support for usually improved startup speed.
 
 ### CommonJS Example
 
@@ -126,7 +118,6 @@ The examples below demonstrate the use of Babel with bundlers like [Webpack](htt
 
 ## Read more
 
-- [Native ESM support](https://github.com/grafana/k6/issues/3265): GitHub issue for native ESM support in k6. This feature aims to eliminate the Babel transformation step within k6.
 - [Running large tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/running-large-tests): Optimize k6 for better performance.
 - [k6 Modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules): Different options to import modules in k6.
 - [k6 Archive Command](https://grafana.com/docs/k6/<K6_VERSION>/misc/archive): The `k6 archive` command bundles all k6 test dependencies into a `tar` file, which can then be used for execution. It may also reduce the execution startup time.
