@@ -65,7 +65,7 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 #### ⚠️ Warning
 
-By default, passing system environment variables doesn't work for `k6 archive`, `k6 cloud`, and `k6 inspect`.
+By default, passing system environment variables doesn't work for `k6 archive`, `k6 cloud run`, and `k6 inspect`.
 This is a security measure to avoid the risk of uploading sensitive data to k6 Cloud.
 To override this mode, specify [--include-system-env-vars](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#include-system-env-vars).
 

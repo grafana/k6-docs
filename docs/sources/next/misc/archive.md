@@ -79,7 +79,7 @@ as needed.
 
 k6 offers a commercial service for running large scale and geographically
 distributed load tests on managed cloud infrastructure. Cloud executed tests are triggered
-from the k6 command-line via the `k6 cloud script.js` command (similar to `k6 run`) which will
+from the k6 command-line via the `k6 cloud run script.js` command (similar to `k6 run`) which will
 trigger an implicit creation of a k6 archive that is uploaded and distributed to k6 cloud
 load generators for execution.
 

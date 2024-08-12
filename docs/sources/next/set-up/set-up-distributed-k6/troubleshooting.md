@@ -119,10 +119,10 @@ Unlike `TestRun` deployment, when a `PrivateLoadZone` is first created, there ar
 
 ### Running tests in `PrivateLoadZone`
 
-Each time a user runs a test in a PLZ, for example with `k6 cloud script.js`, there is a corresponding `TestRun` being deployed by the k6 Operator. This `TestRun` will be deployed in the same namespace as its `PrivateLoadZone`. If the test is misbehaving, for example, it errors out, or doesn't produce the expected result, then you can check:
+Each time a user runs a test in a PLZ, for example with `k6 cloud run script.js`, there is a corresponding `TestRun` being deployed by the k6 Operator. This `TestRun` will be deployed in the same namespace as its `PrivateLoadZone`. If the test is misbehaving, for example, it errors out, or doesn't produce the expected result, then you can check:
 
 1. If there are any messages in the GCk6 UI.
-2. If there are any messages in the output of the `k6 cloud` command.
+2. If there are any messages in the output of the `k6 cloud run` command.
 3. The resources and their logs, the same way as with a [standalone `TestRun` deployment](#testrun-deployment)
 
 ## Common scenarios
