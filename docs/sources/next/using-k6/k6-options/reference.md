@@ -80,7 +80,7 @@ Each option has its own detailed reference in a separate section.
 The following sections detail all available options that you can be specify within a script.
 
 It also documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
-and `k6 cloud ...`, which you can use to override options specified in the code.
+and `k6 cloud run ...`, which you can use to override options specified in the code.
 
 ## Address
 
@@ -106,7 +106,7 @@ The maximum number of simultaneous/parallel connections in total that an
 [`http.batch()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch) call in a VU can make. If you have a
 `batch()` call that you've given 20 URLs to and `--batch` is set to 15, then the VU will make 15
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
-done and a slot opens. Available in both the `k6 run` and the `k6 cloud` commands
+done and a slot opens. Available in both the `k6 run` and the `k6 cloud run` commands
 
 | Env        | CLI       | Code / Config file | Default |
 | ---------- | --------- | ------------------ | ------- |
@@ -128,7 +128,7 @@ The maximum number of simultaneous/parallel connections for the same hostname th
 [`http.batch()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch) call in a VU can make. If you have a
 `batch()` call that you've given 20 URLs to the _same_ hostname and `--batch-per-host` is set to 5, then the VU will make 5
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
-done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
+done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud run` commands
 
 | Env                 | CLI                | Code / Config file | Default |
 | ------------------- | ------------------ | ------------------ | ------- |
@@ -146,7 +146,7 @@ export const options = {
 
 ## Blacklist IP
 
-Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
+Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env                | CLI              | Code / Config file | Default |
 | ------------------ | ---------------- | ------------------ | ------- |
@@ -167,7 +167,7 @@ export const options = {
 Blocks hostnames based on a list of glob match strings. The pattern matching string can have a single
 `*` at the beginning such as `*.example.com` that will match anything before that such as
 `test.example.com` and `test.test.example.com`.
-Available in `k6 run` and `k6 cloud` commands.
+Available in `k6 run` and `k6 cloud run` commands.
 
 | Env                  | CLI                 | Code / Config file | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
@@ -221,7 +221,7 @@ Default config locations on different operating systems are as follows:
 | macOS      | `${HOME}/Library/Application Support/loadimpact/k6/config.json` |
 | Windows    | `%AppData%/loadimpact/k6/config.json`                           |
 
-Available in `k6 run` and `k6 cloud` commands:
+Available in `k6 run` and `k6 cloud run` commands:
 
 | Env | CLI                            | Code / Config file | Default |
 | --- | ------------------------------ | ------------------ | ------- |
@@ -236,7 +236,7 @@ specify the cloud token inside your config file to authenticate.
 
 ## Console output
 
-Redirects logs logged by `console` methods to the provided output file. Available in `k6 cloud` and `k6 run` commands.
+Redirects logs logged by `console` methods to the provided output file. Available in `k6 cloud run` and `k6 run` commands.
 
 | Env                 | CLI                | Code / Config file | Default |
 | ------------------- | ------------------ | ------------------ | ------- |
@@ -313,7 +313,7 @@ Possible `policy` values are:
 Here are some configuration examples:
 
 ```bash
-K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud run script.js
 ```
 
 {{< code >}}
@@ -333,7 +333,7 @@ export const options = {
 ## Duration
 
 A string specifying the total duration a test run should be run for. During this time each
-VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
+VU will execute the script in a loop. Available in `k6 run` and `k6 cloud run` commands.
 
 Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus).
 
@@ -383,7 +383,7 @@ Previously, the `cloud` object was known as `ext.loadimpact`.
 These options specify how to partition the test run and which segment to run.
 If defined, k6 will scale the number of VUs and iterations to be run for that
 segment, which is useful in distributed execution. Available in `k6 run` and
-`k6 cloud` commands.
+`k6 cloud run` commands.
 
 | Env | CLI                            | Code / Config file         | Default |
 | --- | ------------------------------ | -------------------------- | ------- |
@@ -403,11 +403,11 @@ This way one instance could run with `--execution-segment '0:1/4'`, another with
 ## Exit on running
 
 A boolean, specifying whether the script should exit once the test status reaches `running`.
-When running scripts with `k6 cloud` by default scripts will run until the test reaches a finalized status.
+When running scripts with `k6 cloud run` by default scripts will run until the test reaches a finalized status.
 This could be problematic in certain environments (think of Continuous Integration and Delivery pipelines),
 since you'd need to wait until the test ends up in a finalized state.
 
-With this option, you can exit early and let the script run in the background. Available in `k6 cloud` command.
+With this option, you can exit early and let the script run in the background. Available in `k6 cloud run` command.
 
 | Env                  | CLI                 | Code / Config file | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
@@ -416,7 +416,7 @@ With this option, you can exit early and let the script run in the background. A
 {{< code >}}
 
 ```bash
-$ k6 cloud --exit-on-running script.js
+$ k6 cloud run --exit-on-running script.js
 ```
 
 {{< /code >}}
@@ -461,7 +461,7 @@ The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, kee
 ## HTTP debug
 
 Log all HTTP requests and responses. Excludes body by default, to include body use
-`--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
+`--http-debug=full`. Available in `k6 run` and `k6 cloud run` commands.
 
 Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging).
 
@@ -481,7 +481,7 @@ export const options = {
 
 ## Include system env vars
 
-Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
+Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env | CLI                         | Code / Config file | Default                                                                                              |
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -500,7 +500,7 @@ $ k6 run --include-system-env-vars ~/script.js
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
 This only applies to connections created from code, such as HTTP requests.
-Available in `k6 run` and `k6 cloud` commands
+Available in `k6 run` and `k6 cloud run` commands
 
 | Env                           | CLI                          | Code / Config file      | Default |
 | ----------------------------- | ---------------------------- | ----------------------- | ------- |
@@ -518,7 +518,7 @@ export const options = {
 
 ## Iterations
 
-An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud` commands.
+An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud run` commands.
 
 Together with the [`vus` option](#vus), `iterations` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations).
 
@@ -690,7 +690,7 @@ $ k6 run --log-format raw test.js
 ## Max redirects
 
 The maximum number of HTTP redirects that k6 will follow before giving up on a request and
-erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
+erroring out. Available in both the `k6 run` and the `k6 cloud run` commands.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -728,7 +728,7 @@ export const options = {
 
 ## No color
 
-A boolean specifying whether colored output is disabled. Available in `k6 run` and `k6 cloud` commands.
+A boolean specifying whether colored output is disabled. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env | CLI          | Code / Config file | Default |
 | --- | ------------ | ------------------ | ------- |
@@ -745,7 +745,7 @@ $ k6 run --no-color script.js
 ## No connection reuse
 
 A boolean, true or false, specifying whether k6 should disable keep-alive connections.
-Available in `k6 run` and `k6 cloud` commands.
+Available in `k6 run` and `k6 cloud run` commands.
 
 | Env                      | CLI                     | Code / Config file  | Default |
 | ------------------------ | ----------------------- | ------------------- | ------- |
@@ -801,7 +801,7 @@ $ k6 run --no-summary ~/script.js
 
 ## No setup
 
-A boolean specifying whether `setup()` function should be run. Available in `k6 cloud` and `k6 run` commands.
+A boolean specifying whether `setup()` function should be run. Available in `k6 cloud run` and `k6 run` commands.
 
 | Env           | CLI          | Code / Config file | Default |
 | ------------- | ------------ | ------------------ | ------- |
@@ -817,7 +817,7 @@ $ k6 run --no-setup script.js
 
 ## No teardown
 
-A boolean specifying whether `teardown()` function should be run. Available in `k6 cloud` and `k6 run` commands.
+A boolean specifying whether `teardown()` function should be run. Available in `k6 cloud run` and `k6 run` commands.
 
 | Env              | CLI             | Code / Config file | Default |
 | ---------------- | --------------- | ------------------ | ------- |
@@ -871,7 +871,7 @@ $ k6 run --no-usage-report ~/script.js
 ## No VU connection reuse
 
 A boolean, true or false, specifying whether k6 should reuse TCP connections between iterations
-of a VU. Available in `k6 run` and `k6 cloud` commands.
+of a VU. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env                         | CLI                        | Code / Config file    | Default |
 | --------------------------- | -------------------------- | --------------------- | ------- |
@@ -890,7 +890,7 @@ export const options = {
 ## Paused
 
 A boolean, true or false, specifying whether the test should start in a paused state. To resume
-a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud` commands.
+a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env         | CLI              | Code / Config file | Default |
 | ----------- | ---------------- | ------------------ | ------- |
@@ -924,7 +924,7 @@ $ k6 run --profiling-enabled script.js
 
 ## Quiet
 
-A boolean, true or false, that disables the progress update bar on the console output. Available in `k6 run` and `k6 cloud` commands.
+A boolean, true or false, that disables the progress update bar on the console output. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env | CLI             | Code / Config file | Default |
 | --- | --------------- | ------------------ | ------- |
@@ -958,7 +958,7 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 ## RPS
 
-The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
+The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud run` commands.
 
 {{% admonition type="caution" %}}
 
@@ -1002,7 +1002,7 @@ environment variables, tags, and more.
 
 See the [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) article for details and more examples.
 
-Available in `k6 run` and `k6 cloud` commands.
+Available in `k6 run` and `k6 cloud run` commands.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1051,7 +1051,7 @@ export const options = {
 
 ## Show logs
 
-A boolean specifying whether the cloud logs are printed out to the terminal. Available in `k6 cloud` command.
+A boolean specifying whether the cloud logs are printed out to the terminal. Available in `k6 cloud run` command.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -1060,7 +1060,7 @@ A boolean specifying whether the cloud logs are printed out to the terminal. Ava
 {{< code >}}
 
 ```bash
-$ k6 cloud --show-logs=false script.js
+$ k6 cloud run --show-logs=false script.js
 ```
 
 {{< /code >}}
@@ -1068,7 +1068,7 @@ $ k6 cloud --show-logs=false script.js
 ## Stages
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
-ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands.
+ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud run` commands.
 
 It is a shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
 
@@ -1489,7 +1489,7 @@ This would be useful if you would like to update a given test and run it later. 
 {{< code >}}
 
 ```bash
-$ k6 cloud --upload-only script.js
+$ k6 cloud run --upload-only script.js
 ```
 
 {{< /code >}}

@@ -14,7 +14,7 @@ Follow along to learn how to:
 4. Ramp the number of requests up and down as the test runs.
 
 With these example snippets, you'll run the test with your machine's resources.
-But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers.
+But, if you have a k6 Cloud account, you can also use the `k6 cloud run` command to outsource the test to k6 servers.
 
 ## Before you begin
 
@@ -235,7 +235,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 - **Cloud**: the test runs on [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/get-started/run-cloud-tests-from-the-cli/).
 
   ```bash
-  k6 cloud script.js
+  k6 cloud run script.js
   ```
 
   Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/), and accept the test results from a [local](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/cloud) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
