@@ -11,7 +11,7 @@ The list of k6 modules natively supported in your k6 scripts.
 
 {{< docs/shared source="k6" lookup="javascript-api/init-context.md" version="<K6_VERSION>" >}}
 
-## Import.meta
+## import.meta
 
 `import.meta` is only available in ECMAScript modules, but not CommonJS ones.
 
