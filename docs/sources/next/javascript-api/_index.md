@@ -11,6 +11,10 @@ The list of k6 modules natively supported in your k6 scripts.
 
 {{< docs/shared source="k6" lookup="javascript-api/init-context.md" version="<K6_VERSION>" >}}
 
+## import.meta
+
+{{< docs/shared source="k6" lookup="javascript-api/import.meta.md" version="<K6_VERSION>" >}}
+
 ## k6
 
 {{< docs/shared source="k6" lookup="javascript-api/k6.md" version="<K6_VERSION>" >}}
