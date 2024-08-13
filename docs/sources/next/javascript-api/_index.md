@@ -13,11 +13,7 @@ The list of k6 modules natively supported in your k6 scripts.
 
 ## import.meta
 
-`import.meta` is only available in ECMAScript modules, but not CommonJS ones.
-
-| Function                                                                                           | Description                                               |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| [import.meta.resolve](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/import.meta/resolve) | Resolve the path to URL in the same way that an ESM import does. |
+{{< docs/shared source="k6" lookup="javascript-api/import.meta.md" version="<K6_VERSION>" >}}
 
 ## k6
 
