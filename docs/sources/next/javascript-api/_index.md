@@ -17,7 +17,7 @@ The list of k6 modules natively supported in your k6 scripts.
 
 | Function                                                                                           | Description                                               |
 | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| [import.meta.resolve](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/import.meta/resolve) | resolve path to URL the same way that an ESM import would |
+| [import.meta.resolve](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/import.meta/resolve) | Resolve the path to URL in the same way that an ESM import does. |
 
 ## k6
 
