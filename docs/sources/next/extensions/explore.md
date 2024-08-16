@@ -327,6 +327,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-yaml</h4>
         <p>Encode and decode YAML values</p>
     </a>
+    <a href="https://github.com/luissimas/xk6-zeromq" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-zeromq</h4>
+        <p>Add support for the ZeroMQ networking library</p>
+    </a>
 </div>
 
 Don't see what you need? Learn how you can [create a custom extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/).
