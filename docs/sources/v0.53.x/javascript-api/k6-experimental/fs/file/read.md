@@ -39,6 +39,8 @@ let file;
 export default async function () {
   const buffer = new Uint8Array(128);
 
+  await file.seek(0, SeekMode.Start);
+
   let totalBytesRead = 0;
   while (true) {
     // Read into the buffer
@@ -79,6 +81,7 @@ let file;
 })();
 
 async function readAll(file) {
+  await file.seek(0, SeekMode.Start);
   const fileInfo = await file.stat();
   const buffer = new Uint8Array(fileInfo.size);
 
