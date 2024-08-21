@@ -11,7 +11,7 @@ Use [`locator.setChecked(checked [, options])`](https://grafana.com/docs/k6/<K6_
 
 {{< /admonition >}}
 
-Use this method to select an `input` or `radio` checkbox.
+Use this method to select or unselect an `input` or `radio` checkbox.
 
 <TableWithNestedRows>
 
@@ -33,7 +33,7 @@ Use this method to select an `input` or `radio` checkbox.
 
 | Type            | Description                                                |
 | --------------- | ---------------------------------------------------------- |
-| `Promise<void>` | A Promise that fulfills when the check action is finished. |
+| `Promise<void>` | A Promise that fulfills when the set check action is finished. |
 
 ### Example
 
