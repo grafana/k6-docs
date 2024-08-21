@@ -5,7 +5,7 @@ description: 'Browser module: locator.setChecked method'
 
 # setChecked(checked[, options])
 
-Use this method to select an `input` or `radio` checkbox.
+Use this method to select or unselect an `input` or `radio` checkbox.
 
 <TableWithNestedRows>
 

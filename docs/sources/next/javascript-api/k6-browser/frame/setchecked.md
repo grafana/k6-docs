@@ -11,7 +11,7 @@ Use [`locator.setChecked(checked [, options])`](https://grafana.com/docs/k6/<K6_
 
 {{< /admonition >}}
 
-Use this method to select an `input` or `radio` checkbox.
+Use this method to select on unselect an `input` or `radio` checkbox.
 
 <TableWithNestedRows>
 
