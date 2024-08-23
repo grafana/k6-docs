@@ -15,8 +15,7 @@ For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud 
 
 {{< /admonition >}}
 
-With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
-With k6 metrics in Grafana, you can correlate k6 metrics with other metrics of your observability stack.
+You can send your k6 results to a Prometheus instance running in [Grafana Cloud](https://grafana.com/products/cloud) for visualization and analysis. By bringing k6 metrics into Grafana, you can correlate them with other observability metrics.
 
 While this topic uses Grafana Cloud as an example, this approach is compatible with any remote write capable Prometheus installation.
 
@@ -37,19 +36,19 @@ After you've set up your account, follow these steps:
 
 1. Copy the URL of the Remote Write Endpoint, along with the Username and Instance ID.
 
-   ![Grafana Cloud Prometheus Configuration](/media/docs/k6-oss/grafana_cloud_prometheus_configuration.png)
+   ![Grafana Cloud Prometheus Configuration](/media/docs/k6-oss/grafana_cloud_prometheus_configuration-v2.png)
 
-1. In the **Password / API Key** section, create and copy an API key of the `MetricsPublisher` role. This will be used as a password.
+1. In the **Password / API Token** section, create and copy a [Grafana Cloud Access Policy Token](https://grafana.com/docs/grafana-cloud/account-management/authentication-and-permissions/access-policies/) with the `metrics:write` scope (permission). The token will be used as a password.
 
-   ![Create API Key](/media/docs/k6-oss/grafana_cloud_create_api_key_metrics_publisher.png)
+   ![Create API Key](/media/docs/k6-oss/grafana_cloud_create_api_key_metrics_publisher-v2.png)
 
 ## Run the test
 
-Now, pass the Username, API key, and Remote Write Endpoint of the Grafana Cloud Prometheus Configuration to the k6 binary:
+Now, pass the Username, Access Policy Token, and Remote Write Endpoint of the Grafana Cloud Prometheus Configuration to the k6 binary:
 
 ```bash
 K6_PROMETHEUS_RW_USERNAME=USERNAME \
-K6_PROMETHEUS_RW_PASSWORD=API_KEY \
+K6_PROMETHEUS_RW_PASSWORD=ACCESS_POLICY_API_TOKEN \
 K6_PROMETHEUS_RW_SERVER_URL=REMOTE_WRITE_ENDPOINT \
 k6 run -o experimental-prometheus-rw script.js
 ```
@@ -72,7 +71,7 @@ Optionally, when running the test, you can set the `testid` tag as a [wide test 
 
 ```bash
 K6_PROMETHEUS_RW_USERNAME=USERNAME \
-K6_PROMETHEUS_RW_PASSWORD=API_KEY \
+K6_PROMETHEUS_RW_PASSWORD=ACCESS_POLICY_API_TOKEN \
 K6_PROMETHEUS_RW_SERVER_URL=REMOTE_WRITE_ENDPOINT \
 k6 run -o experimental-prometheus-rw --tag testid=TEST_ID script.js
 ```
