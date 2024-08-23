@@ -125,10 +125,10 @@ To do so:
 
 The `textSummary()` function comes with a few options:
 
-| Option        | Description                            |
-| ------------- | -------------------------------------- |
-| `indent`      | How to start the summary indentation   |
-| `enableColor` | Whether to print the summary in color. |
+| Option         | Description                            |
+| -------------- | -------------------------------------- |
+| `indent`       | How to start the summary indentation   |
+| `enableColors` | Whether to print the summary in color. |
 
 For example, this `handleSummary()` modifies the default summary in the following ways:
 
