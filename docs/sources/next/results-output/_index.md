@@ -2,7 +2,7 @@
 aliases:
   - ./results-output/overview # docs/k6/<K6_VERSION>/results-output/overview
 title: Results output
-descriptiontion: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
+description: All the ways you can look at k6 results. While the test runs, after the test runs, on an external platform, as summary statistics.
 weight: 400
 ---
 
