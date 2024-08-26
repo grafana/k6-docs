@@ -2,7 +2,7 @@
 aliases:
   - ../../../../javascript-api/xk6-disruptor/servicedisruptor/constructor # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/servicedisruptor/constructor
 title: 'Constructor'
-descriptiontiontion: 'xk6-disruptor: ServiceDisruptor constructor'
+description: 'xk6-disruptor: ServiceDisruptor constructor'
 weight: 100
 ---
 

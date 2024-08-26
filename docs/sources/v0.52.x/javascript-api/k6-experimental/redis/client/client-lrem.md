@@ -1,6 +1,6 @@
 ---
 title: 'Client.lrem(key, count, value)'
-descriptiontion: 'Removes the first count occurrences of elements equal to value from the list stored at `key`.'
+description: 'Removes the first count occurrences of elements equal to value from the list stored at `key`.'
 ---
 
 # Client.lrem(key, count, value)

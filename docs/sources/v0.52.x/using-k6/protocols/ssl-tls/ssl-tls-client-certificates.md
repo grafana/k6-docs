@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS client certificates'
-descriptiontiontion: 'To use client certificates, you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
+description: 'To use client certificates, you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
 ---
 
 # SSL/TLS client certificates
