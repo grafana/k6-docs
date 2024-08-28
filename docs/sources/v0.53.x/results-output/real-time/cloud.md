@@ -17,7 +17,7 @@ Don't confuse `k6 run --out cloud script.js` (what this page is about) with `k6 
 Fundamentally the difference is the machine that the test runs on:
 
 - `k6 run --out cloud` runs k6 locally and streams the results to the cloud.
-- `k6 cloud run`, on the other hand, uploads your script to the cloud solution and runs the test on the cloud infrastructure. In this case you'll only see status updates in your CLI.
+- `k6 cloud`, on the other hand, uploads your script to the cloud solution and runs the test on the cloud infrastructure. In this case you'll only see status updates in your CLI.
 
 In all cases you'll be able to see your test results at [k6 Cloud](https://app.k6.io) or [Grafana Cloud](https://grafana.com/products/cloud/).
 
@@ -34,14 +34,14 @@ so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
    Assuming you have installed k6, the first step is to log in to the cloud service.
 
-   With the `k6 cloud login` command, you can set up your API token on the k6 machine to authenticate against the cloud service.
+   With the `k6 login cloud` command, you can set up your API token on the k6 machine to authenticate against the cloud service.
 
    Copy your token from [k6 Cloud](https://app.k6.io/account/api-token) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/) and pass it as:
 
    {{< code >}}
 
    ```bash
-   $ k6 cloud login --token <YOUR_API_TOKEN>
+   $ k6 login cloud --token <YOUR_API_TOKEN>
    ```
 
    {{< /code >}}
@@ -58,7 +58,7 @@ so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
    {{< /code >}}
 
-   Alternatively, you could skip the `k6 cloud login` command when passing your API token to the `k6 run` command as:
+   Alternatively, you could skip the `k6 login cloud` command when passing your API token to the `k6 run` command as:
 
    {{< code >}}
 
@@ -131,7 +131,7 @@ Outlier data&mdash;far outside the lower and upper quartiles&mdash; is not aggre
 | `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_LOWER` | How many quartiles below the lower quartile are treated as non-aggregatable outliers (default `1.5`)       |
 | `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_UPPER` | How many quartiles above the upper quartile are treated as non-aggregatable outliers (default `1.3`)       |
 
-> When running a test entirely in the cloud with `k6 cloud run`, `k6` will always
+> When running a test entirely in the cloud with `k6 cloud`, `k6` will always
 > aggregate. For that case the aggregation settings are however set by the
 > cloud infrastructure and are not controllable from the CLI.
 
