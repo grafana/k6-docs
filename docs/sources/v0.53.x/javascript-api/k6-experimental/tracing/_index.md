@@ -1,7 +1,6 @@
 ---
-title: "tracing"
-descriptiontion: "k6 Tracing experimental API"
-weight: 04
+title: 'tracing'
+description: 'k6 Tracing experimental API'
 weight: 04
 ---
 
