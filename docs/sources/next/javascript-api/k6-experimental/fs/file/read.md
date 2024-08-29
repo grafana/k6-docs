@@ -37,6 +37,9 @@ let file;
 })();
 
 export default async function () {
+  // Seek to the beginning of the file
+  await file.seek(0, SeekMode.Start);
+
   const buffer = new Uint8Array(128);
 
   let totalBytesRead = 0;
@@ -56,9 +59,6 @@ export default async function () {
       break;
     }
   }
-
-  // Seek back to the beginning of the file
-  await file.seek(0, SeekMode.Start);
 }
 ```
 
@@ -79,6 +79,9 @@ let file;
 })();
 
 async function readAll(file) {
+  // Seek to the beginning of the file
+  await file.seek(0, SeekMode.Start);
+
   const fileInfo = await file.stat();
   const buffer = new Uint8Array(fileInfo.size);
 
@@ -100,9 +103,6 @@ export default async function () {
   // Read the whole file
   const fileContent = await readAll(file);
   console.log(JSON.stringify(fileContent));
-
-  // Seek back to the beginning of the file
-  await file.seek(0, SeekMode.Start);
 }
 ```
 
