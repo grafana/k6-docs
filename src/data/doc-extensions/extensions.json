@@ -1081,6 +1081,21 @@
       "categories": ["Protocol"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-banner",
+      "description": "Print ASCII art banner from k6 test",
+      "url": "https://gitlab.com/szkiba/xk6-banner",
+      "logo": "",
+      "author": {
+        "name": "Ivan Szkiba",
+        "url": "https://gitlab.com/szkiba"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
