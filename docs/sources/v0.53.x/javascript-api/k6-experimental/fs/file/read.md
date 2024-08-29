@@ -59,9 +59,6 @@ export default async function () {
       break;
     }
   }
-
-  // Seek back to the beginning of the file
-  await file.seek(0, SeekMode.Start);
 }
 ```
 
@@ -106,9 +103,6 @@ export default async function () {
   // Read the whole file
   const fileContent = await readAll(file);
   console.log(JSON.stringify(fileContent));
-
-  // Seek back to the beginning of the file
-  await file.seek(0, SeekMode.Start);
 }
 ```
 
