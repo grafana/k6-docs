@@ -35,6 +35,9 @@ let file;
 })();
 
 export default async function () {
+  // Seek to the beginning of the file
+  await file.seek(0, SeekMode.Start);
+
   // About information about the file
   const fileinfo = await file.stat();
   if (fileinfo.name != 'bonjour.txt') {
@@ -65,9 +68,6 @@ export default async function () {
   if (totalBytesRead != fileinfo.size) {
     throw new Error('Unexpected number of bytes read');
   }
-
-  // Seek back to the beginning of the file
-  await file.seek(0, SeekMode.Start);
 }
 ```
 
