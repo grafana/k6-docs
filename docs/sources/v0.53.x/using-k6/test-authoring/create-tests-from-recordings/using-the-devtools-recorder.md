@@ -12,7 +12,7 @@ The k6 DevTools recorder lets you record user journeys using Chrome DevTools and
 
 To ensure you have a useful test output:
 
-- Review the [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically) and [Consider hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites) sections on [Create tests from recordings](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/).
+- Review the [Be sure to record realistically](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically) and [Consider hybrid approach for load testing websites](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites) sections on [Create tests from recordings](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/).
 - Learn the basics of k6 browser tests with [Running browser tests](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests/).
 
 {{< admonition type="note" >}}
