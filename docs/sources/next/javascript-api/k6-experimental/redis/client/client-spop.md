@@ -9,15 +9,15 @@ Removes and returns a random element from the set value stored at `key`.
 
 ### Parameters
 
-| Parameter | Type   | Description                                    |
-| :-------- | :----- | :--------------------------------------------- |
-| `key`     | string | key holding the set to get a random member of. |
+| Parameter | Type   | Description                                              |
+| :-------- | :----- | :------------------------------------------------------- |
+| `key`     | string | The key value holding the set to get a random member of. |
 
 ### Returns
 
-| Type              | Resolves with                                                | Rejected when                                                     |
-| :---------------- | :----------------------------------------------------------- | :---------------------------------------------------------------- |
-| `Promise<string>` | On success, the promise resolves to the returned set member. | If the set does not exist, the promise is rejected with an error. |
+| Type              | Resolves with                                                | Rejected when                                                    |
+| :---------------- | :----------------------------------------------------------- | :--------------------------------------------------------------- |
+| `Promise<string>` | On success, the promise resolves to the returned set member. | If the set doesn't exist, the promise is rejected with an error. |
 
 ### Example
 
@@ -32,7 +32,8 @@ const redisClient = new redis.Client('redis://localhost:6379');
 export default async function () {
   await redisClient.sadd('myset', 'foo');
   await redisClient.sadd('myset', 'bar');
-  await redisClient.spop('myset', 'foo');
+  await redisClient.spop('myset');
+
   const members = await redisClient.smembers('myset');
   if (members.length !== 1) {
     throw new Error('sismember should have length 1');
