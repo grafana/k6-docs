@@ -1,10 +1,10 @@
 ---
 title: 'Bundling and transpilation'
-redirect: 'https://github.com/k6io/k6-es6/'
 description: |
-  Reference project demonstrating how to use webpack and babel to bundle
-  node modules or transpile code to ES5.1+ for usage in k6 tests.
+  Refer to the JavaScript and TypeScript compatibility mode page for more details on how to use TypeScript with k6
 weight: 18
 ---
 
 # Bundling and transpilation
+
+For more details about bundling and transpiling, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
