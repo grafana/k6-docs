@@ -409,7 +409,7 @@
     {
       "name": "xk6-faker",
       "description": "Generate random fake data",
-      "url": "https://github.com/szkiba/xk6-faker",
+      "url": "https://github.com/grafana/xk6-faker",
       "logo": "",
       "author": {
         "name": "Iván Szkiba",
@@ -418,7 +418,7 @@
       "stars": "15",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Community"],
+      "tiers": ["Official"],
       "cloudEnabled": false
     },
     {
