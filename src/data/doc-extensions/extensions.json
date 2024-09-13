@@ -17,7 +17,7 @@
     },
     {
       "name": "xk6-prompt",
-      "description": "Support for input arguments via UI.",
+      "description": "Support for input arguments via UI",
       "url": "https://github.com/Juandavi1/xk6-prompt",
       "logo": "",
       "author": {
@@ -47,7 +47,7 @@
     },
     {
       "name": "xk6-kafka",
-      "description": "Load-test Apache Kafka. Includes support for Avro messages",
+      "description": "Load test Apache Kafka. Includes support for Avro messages.",
       "url": "https://github.com/mostafa/xk6-kafka",
       "logo": "https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png?raw=true",
       "author": {
@@ -93,7 +93,7 @@
     },
     {
       "name": "xk6-sql",
-      "description": "Load-test SQL Servers (PostgreSQL, MySQL and SQLite3 for now)",
+      "description": "Load-test SQL Servers",
       "url": "https://github.com/grafana/xk6-sql",
       "logo": "",
       "author": {
@@ -799,7 +799,7 @@
     {
       "name": "xk6-opentelemetry",
       "url": "https://github.com/thmshmm/xk6-opentelemetry",
-      "description": "Generate OpenTelemetry signals from within your test scripts",
+      "description": "Generate OpenTelemetry signals from k6 tests",
       "logo": "https://github.com/thmshmm/xk6-opentelemetry/raw/main/assets/xk6-opentelemetry-logo.png",
       "author": {
         "name": "Thomas Hamm",
@@ -858,7 +858,7 @@
     },
     {
       "name": "xk6-proxy",
-      "description": "Add a dynamic proxy support to k6. Allow changing the HTTP proxy settings in the script.",
+      "description": "Dynamic proxy support, allow changing the HTTP proxy settings in the script",
       "url": "https://github.com/SYM01/xk6-proxy",
       "logo": "",
       "author": {
@@ -904,7 +904,7 @@
     },
     {
       "name": "xk6-output-plugin",
-      "description": "Write k6 output extension as a dynamically loadable plugin using your favorite programming language",
+      "description": "Dynamic output extension using your favorite programming language",
       "url": "https://github.com/szkiba/xk6-output-plugin",
       "logo": "",
       "author": {
@@ -964,7 +964,7 @@
     },
     {
       "name": "xk6-coap",
-      "description": "Interact with Constrained Application Protocol endpoints.",
+      "description": "Interact with Constrained Application Protocol endpoints",
       "url": "https://github.com/golioth/xk6-coap",
       "logo": "",
       "author": {
@@ -1069,7 +1069,7 @@
     },
     {
       "name": "xk6-sse",
-      "description": "A k6 extension for Server-Sent Events (SSE)",
+      "description": "Server Sent Event",
       "url": "https://github.com/phymbert/xk6-sse",
       "logo": "",
       "author": {
