@@ -1033,7 +1033,7 @@ export const options = {
 
 ## Setup timeout
 
-Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
+Specify how long the `setup()` function is allow to run before it's terminated and the test fails. If defined the value must be positive.
 
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
