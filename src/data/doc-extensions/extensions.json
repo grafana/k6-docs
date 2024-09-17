@@ -1111,6 +1111,21 @@
       "categories": ["Reporting", "Observability"],
       "tiers": ["Official"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-aws",
+      "description": "Alternative to the official AWS JS Lib that relies on the AWS SDK for Go to interact with Amazon Web Services",
+      "url": "https://github.com/joanlopez/xk6-aws",
+      "logo": "",
+      "author": {
+        "name": "Joan López de la Franca Beltran",
+        "url": "https://github.com/joanlopez"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
