@@ -1096,6 +1096,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-output-opentelemetry",
+      "description": "Export k6 results in OpenTelemetry format",
+      "url": "https://github.com/grafana/xk6-output-opentelemetry",
+      "logo": "",
+      "author": {
+        "name": "Grafana",
+        "url": "https://github.com/grafana"
+      },
+      "stars": "0",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
     }
   ]
 }
