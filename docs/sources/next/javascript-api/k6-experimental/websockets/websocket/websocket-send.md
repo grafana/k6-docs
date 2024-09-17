@@ -1,17 +1,17 @@
 ---
 title: 'WebSocket.send(data)'
-description: 'Send a data string through the connection.'
+description: 'Send data through the connection.'
 weight: 10
 ---
 
 # WebSocket.send(data)
 
-Send a data string through the connection.
+Send data through the connection.
 You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON string.
 
-| Parameter | Type                 | Description       |
-| --------- | -------------------- | ----------------- |
-| data      | string / ArrayBuffer | The data to send. |
+| Parameter | Type                                          | Description       |
+| --------- | --------------------------------------------- | ----------------- |
+| data      | string / ArrayBuffer / Blob / ArrayBufferView | The data to send. |
 
 ### Example
 
