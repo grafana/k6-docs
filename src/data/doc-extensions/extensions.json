@@ -1096,6 +1096,36 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-output-opentelemetry",
+      "description": "Export k6 results in OpenTelemetry format",
+      "url": "https://github.com/grafana/xk6-output-opentelemetry",
+      "logo": "",
+      "author": {
+        "name": "Grafana",
+        "url": "https://github.com/grafana"
+      },
+      "stars": "0",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
+    },
+    {
+      "name": "xk6-aws",
+      "description": "Alternative to the official AWS JS Lib that relies on the AWS SDK for Go to interact with Amazon Web Services",
+      "url": "https://github.com/joanlopez/xk6-aws",
+      "logo": "",
+      "author": {
+        "name": "Joan López de la Franca Beltran",
+        "url": "https://github.com/joanlopez"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
