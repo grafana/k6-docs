@@ -1,4 +1,20 @@
 {
   "alert": "The extensions.json file is no longer in use, use https://registry.k6.io instead!",
-  "extensions": []
+  "extensions": [
+    {
+      "name": "k6",
+      "description": "A modern load testing tool, using Go and JavaScript",
+      "url": "https://github.com/grafana/k6",
+      "logo": "",
+      "author": {
+        "name": "Grafana",
+        "url": "https://github.com/grafana"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
+    }
+  ]
 }
