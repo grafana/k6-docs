@@ -12,11 +12,11 @@ When streaming the results to the cloud, the machine - where you execute the k6 
 
 ## Streaming results vs. running on cloud servers
 
-Don't confuse `k6 run --out cloud script.js` (what this page is about) with `k6 cloud run script.js`.
+Don't confuse `k6 cloud run --local-execution script.js` (what this page is about) with `k6 cloud run script.js`.
 
 Fundamentally the difference is the machine that the test runs on:
 
-- `k6 run --out cloud` runs k6 locally and streams the results to the cloud.
+- `k6 cloud run --local-execution` runs k6 locally and streams the results to the cloud.
 - `k6 cloud run`, on the other hand, uploads your script to the cloud solution and runs the test on the cloud infrastructure. In this case you'll only see status updates in your CLI.
 
 In all cases you'll be able to see your test results at [k6 Cloud](https://app.k6.io) or [Grafana Cloud](https://grafana.com/products/cloud/).
@@ -24,7 +24,7 @@ In all cases you'll be able to see your test results at [k6 Cloud](https://app.k
 {{< admonition type="caution" >}}
 
 Data storage and processing are primary cloud costs,
-so `k6 run --out cloud` will consume VUH or test runs from your subscription.
+so `k6 cloud run --local-execution` will consume VUH or test runs from your subscription.
 
 {{< /admonition >}}
 
@@ -48,27 +48,27 @@ so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
 1. Run the tests and upload the results
 
-   Now, k6 will authenticate you against the cloud service, and you can use the `--out` option to send the k6 results to the cloud as:
+   Now, k6 will authenticate you against the cloud service, and you can use the `--local-execution` option to send the k6 results to the cloud as:
 
    {{< code >}}
 
    ```bash
-   $ k6 run --out cloud script.js
+   $ k6 cloud run --local-execution script.js
    ```
 
    {{< /code >}}
 
-   Alternatively, you could skip the `k6 cloud login` command when passing your API token to the `k6 run` command as:
+   Alternatively, you could skip the `k6 cloud login` command when passing your API token to the `k6 cloud run` command as:
 
    {{< code >}}
 
    ```bash
-   $ K6_CLOUD_TOKEN=<YOUR_API_TOKEN> k6 run --out cloud script.js
+   $ K6_CLOUD_TOKEN=<YOUR_API_TOKEN> k6 cloud run --local-execution script.js
    ```
 
    {{< /code >}}
 
-   After running the command, the console shows an URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
+   After running the command, the console shows a URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
 
    {{< code >}}
 
@@ -82,7 +82,7 @@ so `k6 run --out cloud` will consume VUH or test runs from your subscription.
 
 ![Grafana Cloud k6 Test Results](/media/docs/k6-oss/screenshot-stream-k6-results-to-grafana-cloud-k6.png)
 
-When you send the results to the k6 Cloud with `k6 run --out`, data will be
+When you send the results to the k6 Cloud with `k6 cloud run --local-execution`, data will be
 continuously streamed to the cloud. While this happens the state of the test run
 will be marked as `Running`. A test run that ran its course will be marked
 `Finished`. The run state has nothing to do with the test passing any
@@ -101,6 +101,20 @@ If no reconnection happens, the cloud service will time out after two minutes of
 data, setting the run state to `Timed out`. You can still analyze a timed out
 test but you'll of course only have access to as much data as was streamed
 before the network issue.
+
+{{< admonition type="caution" >}}
+
+To make it possible for us to offer you a seamless user experience, the `k6 cloud run --local-execution script.js`
+command will also upload the test archive k6 produces from your test script and resources to our cloud service.
+
+This behavior can be deactivated by adding the `--no-archive-upload` option to your
+command: `k6 cloud run --local-execution --no-archive-upload script.js`.
+
+{{< /admonition >}}
+
+{{< admonition type="note" >}}
+
+{{< /admonition >}}
 
 ## Advanced settings
 
