@@ -104,15 +104,10 @@ before the network issue.
 
 {{< admonition type="caution" >}}
 
-To make it possible for us to offer you a seamless user experience, the `k6 cloud run --local-execution script.js`
-command will also upload the test archive k6 produces from your test script and resources to our cloud service.
+The `k6 cloud run --local-execution script.js` command uploads the test archive k6 produces from your test script and resources to Grafana Cloud.
 
 This behavior can be deactivated by adding the `--no-archive-upload` option to your
 command: `k6 cloud run --local-execution --no-archive-upload script.js`.
-
-{{< /admonition >}}
-
-{{< admonition type="note" >}}
 
 {{< /admonition >}}
 
