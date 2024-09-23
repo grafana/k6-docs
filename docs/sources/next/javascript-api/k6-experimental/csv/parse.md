@@ -1,10 +1,10 @@
 ---
-title: 'parse'
+title: 'parse( file, [options] )'
 description: 'parse a CSV file into a SharedArray'
 weight: 20
 ---
 
-# parse
+# parse( file, [options] )
 
 The `csv.parse` function parses an entire CSV file at once and returns a promise that resolves to a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) instance.
 This function uses Go-based processing, which results in faster parsing and lower memory usage compared to JavaScript alternatives.
