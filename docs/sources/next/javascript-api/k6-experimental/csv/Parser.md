@@ -7,12 +7,12 @@ weight: 30
 # Parser
 
 The `csv.Parser` class provides a streaming parser that reads CSV files line-by-line, offering fine-grained control over the parsing process and minimizing memory consumption.
-It is well-suited for scenarios where memory efficiency is crucial or when you need to process large CSV files without loading the entire file into memory.
+It's well-suited for scenarios where memory efficiency is crucial or when you need to process large CSV files without loading the entire file into memory.
 
-## Asynchronous Nature
+## Asynchronous nature
 
 The `csv.Parser` class methods are asynchronous and return Promises.
-Due to k6's current limitation with the Init context (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper like this:
+Due to k6's current limitation with the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/#the-init-stage) (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper such as:
 
 {{< code >}}
 
@@ -41,13 +41,13 @@ let parser;
 | file      | [fs.File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file)    | A file instance opened using the fs.open function.              |
 | options   | [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/options) | An optional parameter object to customize the parsing behavior. | An optional parameter object to customize the parsing behavior. Options can include delimiter (string). |
 
-## Methods
+### Methods
 
-### `next()`
+| Name     | Description                                                                                           |
+| :------- | :---------------------------------------------------------------------------------------------------- |
+| `next()` | Reads the next line from the CSV file and returns a promise that resolves to an iterator-like object. |
 
-Reads the next line from the CSV file and returns a promise that resolves to an iterator-like object.
-
-#### Returns
+### Returns
 
 A promise resolving to an object with the following properties:
 
@@ -94,7 +94,7 @@ export default async function () {
 
 {{< /code >}}
 
-## Notes on Usage
+## Notes on usage
 
-- **Memory Efficiency**: Since `csv.Parser` reads the file line-by-line, it keeps memory usage low and avoids loading the entire set of records into memory. This is particularly useful for large CSV files.
-- **Streaming Control**: The streaming approach provides more control over how records are processed, which can be beneficial for complex data handling requirements.
+- **Memory efficiency**: Since `csv.Parser` reads the file line-by-line, it keeps memory usage low and avoids loading the entire set of records into memory. This is particularly useful for large CSV files.
+- **Streaming control**: The streaming approach provides more control over how records are processed, which can be beneficial for complex data handling requirements.

@@ -6,7 +6,7 @@ weight: 40
 
 # Options
 
-The `Options` object describes the configuration available for the operation of parsing CSV files using the [csv.parse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function as well as the [csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser).
+The `Options` object describes the configuration available for the operation of parsing CSV files using the [`csv.parse`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function and the [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class.
 
 ## Properties
 

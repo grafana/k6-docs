@@ -8,32 +8,29 @@ weight: 10
 
 {{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
 
-The csv experimental module provides efficient ways to handle CSV files in k6, offering faster parsing and lower memory
+The `k6-experimental/csv` module provides efficient ways to handle CSV files in k6, offering faster parsing and lower memory
 usage compared to traditional JavaScript-based libraries.
 
 This module includes functionalities for both full-file parsing and streaming, allowing users to choose between
 performance and memory optimization.
 
-## Key Features
+## Key features
 
-- The [csv.parse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function parses a complete CSV file into a SharedArray, leveraging Go-based processing for better performance and reduced memory footprint compared to JavaScript alternatives.
-- The [csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class is a streaming parser that reads CSV files line-by-line, optimizing memory usage and giving more control over the parsing process through a stream-like API.
+- The [`csv.parse()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function parses a complete CSV file into a SharedArray, leveraging Go-based processing for better performance and reduced memory footprint compared to JavaScript alternatives.
+- The [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class is a streaming parser that reads CSV files line-by-line, optimizing memory usage and giving more control over the parsing process through a stream-like API.
 
 ### Benefits
 
-- **Faster Parsing**: The [csv.parse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function bypasses the JavaScript runtime, significantly speeding up parsing for large CSV files.
-- **Lower Memory Usage**: Both [csv.parse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) and [csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) support shared memory across virtual users (VUs) when using the [fs.open()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/open) function.
-- **Flexibility**: Users can choose between full-file parsing ([csv.parse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse)) for speed or line-by-line streaming ([csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser)) for memory efficiency.
+- **Faster parsing**: The [`csv.parse()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function bypasses the JavaScript runtime, significantly speeding up parsing for large CSV files.
+- **Lower memory usage**: Both [`csv.parse()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) and [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) support shared memory across virtual users (VUs) when using the [`fs.open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/open) function.
+- **Flexibility**: Users can choose between full-file parsing with [`csv.parse`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) for speed or line-by-line streaming with [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) for memory efficiency.
 
 ### Trade-offs
 
-- The [csv.parse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function parses the entire file during the initialization phase, which might increase startup time and memory usage for large files. Best for scenarios where performance is more important than memory consumption.
-- The [csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class processes the file line-by-line, making it more memory-efficient but potentially slower due to the overhead of reading each line. Suitable for scenarios where memory usage is critical, or more granular control over parsing is needed.
+- The [`csv.parse()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function parses the entire file during the initialization phase, which might increase startup time and memory usage for large files. Best for scenarios where performance is more important than memory consumption.
+- The [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class processes the file line-by-line, making it more memory-efficient but potentially slower due to the overhead of reading each line. Suitable for scenarios where memory usage is critical or more granular control over parsing is needed.
 
-API Overview
-The module exports functions and objects for interacting with CSV files:
-
-## API overview
+## API
 
 | Function/Object                                                                                  | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
@@ -42,7 +39,7 @@ The module exports functions and objects for interacting with CSV files:
 
 ## Example
 
-### Parsing a Full CSV File into a SharedArray
+### Parsing a full CSV File into a SharedArray
 
 {{< code >}}
 
@@ -76,7 +73,7 @@ export default async function () {
 
 {{< /code >}}
 
-### Streaming a CSV File Line-by-Line
+### Streaming a CSV file line-by-line
 
 {{< code >}}
 

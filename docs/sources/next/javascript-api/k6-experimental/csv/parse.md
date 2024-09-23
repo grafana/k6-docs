@@ -8,7 +8,7 @@ weight: 20
 
 The `csv.parse` function parses an entire CSV file at once and returns a promise that resolves to a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) instance.
 This function uses Go-based processing, which results in faster parsing and lower memory usage compared to JavaScript alternatives.
-It is ideal for scenarios where performance is a priority, and the entire CSV file can be loaded into memory.
+It's ideal for scenarios where performance is a priority, and the entire CSV file can be loaded into memory.
 
 ## Asynchronous Nature
 
@@ -78,5 +78,5 @@ export default async function () {
 
 ## Notes on Usage
 
-- **Memory Considerations**: `csv.parse` loads the entire CSV file into memory at once, which may lead to increased memory usage and startup time for very large files.
-- **Shared Memory Usage**: The [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) returned by `csv.parse` is shared among all Virtual Users (VUs), reducing memory overhead when multiple VUs access the same data.
+- **Memory considerations**: `csv.parse` loads the entire CSV file into memory at once, which may lead to increased memory usage and startup time for very large files.
+- **Shared memory usage**: The [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) returned by `csv.parse` is shared among all Virtual Users (VUs), reducing memory overhead when multiple VUs access the same data.
