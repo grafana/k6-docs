@@ -83,6 +83,22 @@ from the k6 command-line via the `k6 cloud run script.js` command (similar to `k
 trigger an implicit creation of a k6 archive that is uploaded and distributed to k6 cloud
 load generators for execution.
 
+#### Uploading an archive to k6 Cloud
+
+Under certain scenarios, such as scheduled executions, users might want to upload an archive to k6 Cloud without triggering
+a test execution in the process.
+
+To cater to this use case, the `k6 cloud upload` command was introduced. This command allows users to upload an archive to k6 Cloud
+without triggering a test execution. The command syntax is as follows:
+
+{{< code >}}
+
+```bash
+k6 cloud upload archive.tar
+```
+
+{{< /code >}}
+
 ### Distributed Execution
 
 [k6-operator](https://github.com/grafana/k6-operator#multi-file-tests) can distribute a k6 test across a Kubernetes cluster.
