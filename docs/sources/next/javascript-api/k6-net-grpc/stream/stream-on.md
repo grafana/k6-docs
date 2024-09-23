@@ -10,10 +10,10 @@ aliases:
 
 Set up handler functions for various events on the gRPC stream.
 
-| Parameter | Type     | Description                                  |
-| --------- | -------- | -------------------------------------------- |
-| event     | string   | The event name to define a handler for.      |
-| handler   | function | The function to call when the event happens. |
+| Parameter | Type                                                                                                       | Description                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| event     | string                                                                                                     | The event name to define a handler for.      |
+| handler   | [`EventHandler`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/event-handler) | The function to call when the event happens. |
 
 Possible events:
 
