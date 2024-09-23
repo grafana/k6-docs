@@ -18,8 +18,6 @@ Writes a message to the stream. The message is a canonical request object, as-pe
 import { Client, Stream } from 'k6/net/grpc';
 import { sleep } from 'k6';
 
-const COORD_FACTOR = 1e7;
-
 const client = new Client();
 client.load([], '../../grpc_server/route_guide.proto');
 

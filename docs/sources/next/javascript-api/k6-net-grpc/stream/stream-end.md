@@ -18,8 +18,6 @@ Signals to the server that the client has finished sending messages.
 import { Client, Stream } from 'k6/net/grpc';
 import { sleep } from 'k6';
 
-const COORD_FACTOR = 1e7;
-
 const client = new Client();
 client.load([], '../../grpc_server/route_guide.proto');
 
