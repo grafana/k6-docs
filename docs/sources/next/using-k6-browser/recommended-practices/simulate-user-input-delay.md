@@ -1,25 +1,23 @@
 ---
-title: 'sleep and wait*'
-description: 'A guide on how to work with sleep and wait*.'
+title: 'Simulating user input delay'
+description: 'A guide on how to simulate user input delay.'
 weight: 04
 ---
 
-We will discuss the differences between `sleep` in `k6` and the various `wait*` prepended methods that are available in `k6/browser`. By the end of this page, you should be able to successfully use the correct API where necessary.
+We will demonstrate how best to work with `sleep` in `k6` and the various `wait*` prepended methods that are available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
 
 {{< admonition type="note" >}}
 
-To avoid flaky tests, avoid working with `sleep` or `page.waitForTimeout` to wait for state changes with an element (such as waiting for elements to appear/disappear or navigating to a different page).
-
-They are, however, useful for mimicking a real user by slowing the test down between API calls, or to debug your test.
+While using the `sleep` or `page.waitForTimeout` functions to wait for element state changes may seem helpful, it's best to avoid them to prevent flakey tests. Instead, it's better to use the other `wait*` prepended methods listed on this page.
 
 {{< /admonition >}}
 
 # What is `sleep`?
 
-[sleep](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) is a first class function built into k6. It's main use is to _"suspend VU execution for the specified duration"_ which is most useful when you want to replicate user behavior, such as:
+[sleep](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) is a first class function built into k6. It's main use is to _"suspend VU execution for the specified duration"_ which is most useful when you want to simulate user input delay, such as:
 
 - Navigating to a page.
-- Sleeping for a 1 second, which is to mimic a user looking for a specific element on the page.
+- Sleeping for a 1 second, which is to simulate a user looking for a specific element on the page.
 - Clicking on the element.
 - etc.
 

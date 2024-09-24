@@ -11,4 +11,4 @@ This section presents some examples and recommended practices when working with 
 - [Hybrid approach to performance](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/hybrid-approach-to-performance)
 - [Page object model pattern](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/page-object-model-pattern)
 - [Selecting elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements)
-- [`sleep` and `wait*`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/sleep-and-wait)
+- [Simulating user input delay](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/simulate-user-input-delay)
