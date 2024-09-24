@@ -61,7 +61,6 @@ This example shows:
 ```javascript
 import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 import { WebSocket } from 'k6/experimental/websockets';
-import { setTimeout, clearTimeout, setInterval, clearInterval } from 'k6/experimental/timers';
 
 const chatRoomName = 'publicRoom'; // choose any chat room name
 const sessionDuration = randomIntBetween(5000, 60000); // user session between 5s and 1m
