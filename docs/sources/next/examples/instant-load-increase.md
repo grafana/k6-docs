@@ -9,7 +9,7 @@ weight: 22
 
 One of the common usages of load testing tools it's the so-called stepped arrival rate.
 
-In k6, you can do that by using the `options` object, and configuring the number of iterations or VUs.
+In k6, you can do that by using the `options` object, and configuring the number of iterations or VUs in different scenarios.
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
 
