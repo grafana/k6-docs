@@ -15,7 +15,7 @@ aliases:
 k6 takes specific measurements for gRPC requests.
 For the complete list, refer to the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference#grpc).
 
-### Example
+## Example
 
 {{< code >}}
 
