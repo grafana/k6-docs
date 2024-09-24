@@ -32,10 +32,10 @@ let parser;
 
 ## Constructor
 
-| Parameter | Type                                                                                          | Description                                                     |
-| :-------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| file      | [fs.File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file)    | A file instance opened using the fs.open function.              |
-| options   | [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/options) | An optional parameter object to customize the parsing behavior. | An optional parameter object to customize the parsing behavior. Options can include delimiter (string). |
+| Parameter | Type                                                                                          | Description                                                                                               |
+| :-------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| file      | [fs.File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file)    | A file instance opened using the fs.open function.                                                        |
+| options   | [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/options) | An optional parameter object to customize the parsing behavior. Options can include a delimiter (string). |
 
 ### Methods
 
