@@ -1476,11 +1476,11 @@ The possible keys with their meanings and default values:
 | proto               | the protocol to use when connecting with the traces backend                                                            | `grpc`                  |
 | header.`headerName` | adds an additional HTTP header with the provided header name and value to each HTTP request made to the traces backend | N/A                     |
 
-## Upload Only (deprecated)
+## Upload only (deprecated)
 
 {{< admonition type="caution" >}}
 
-The "Upload Only" option is deprecated and will be removed in a future release. Please use the `k6 cloud upload` command instead.
+The "Upload only" option is deprecated and will be removed in a future release. Use the `k6 cloud upload` command instead.
 
 {{< /admonition >}}
 
