@@ -194,14 +194,14 @@ import { browser } from 'k6/browser';
 import { sleep } from 'k6';
 
 export default async function () {
-  const page = browser.newPage();
+  const page = await browser.newPage();
 
   // 01. Go to the homepage
   try {
     await page.goto('https://mywebsite.com');
 
-    page.waitForSelector('p[class="woocommerce-result-count"]"]');
-    page.screenshot({ path: 'screenshots/01_homepage.png' });
+    await page.waitForSelector('p[class="woocommerce-result-count"]"]');
+    await page.screenshot({ path: 'screenshots/01_homepage.png' });
 
     sleep(4);
 
@@ -210,12 +210,12 @@ export default async function () {
       'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
     );
     await element.click();
-    page.waitForSelector('button[name="add-to-cart"]');
-    page.screenshot({ path: 'screenshots/02_view-product.png' });
+    await page.waitForSelector('button[name="add-to-cart"]');
+    await page.screenshot({ path: 'screenshots/02_view-product.png' });
 
     sleep(1);
   } finally {
-    page.close();
+    await page.close();
   }
 }
 ```
