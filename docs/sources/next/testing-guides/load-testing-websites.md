@@ -191,7 +191,6 @@ The following is an example of a browser-based load testing script in k6 using t
 
 ```javascript
 import { browser } from 'k6/browser';
-import { sleep } from 'k6';
 
 export default async function () {
   const page = await browser.newPage();
@@ -203,7 +202,7 @@ export default async function () {
     await page.waitForSelector('p[class="woocommerce-result-count"]"]');
     await page.screenshot({ path: 'screenshots/01_homepage.png' });
 
-    sleep(4);
+    await page.waitForTimeout(4000);
 
     // 02. View products
     const element = page.locator(
@@ -213,7 +212,7 @@ export default async function () {
     await page.waitForSelector('button[name="add-to-cart"]');
     await page.screenshot({ path: 'screenshots/02_view-product.png' });
 
-    sleep(1);
+    await page.waitForTimeout(1000);
   } finally {
     await page.close();
   }
