@@ -20,8 +20,8 @@ The code below shows an example of combining a browser and HTTP test in a single
 
 ```javascript
 import http from 'k6/http';
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 const BASE_URL = __ENV.BASE_URL || 'https://quickpizza.grafana.com';
@@ -86,9 +86,8 @@ export async function checkFrontend() {
   try {
     await page.goto(BASE_URL);
 
-    const header = await page.locator('h1').textContent();
-    check(header, {
-      header: (h) => h == 'Looking to break out of your pizza routine?',
+    check(page.locator('h1'), {
+      header: async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
     });
 
     await Promise.all([
@@ -97,9 +96,8 @@ export async function checkFrontend() {
     ]);
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
-    const recommendation = await page.locator('div#recommendations').textContent();
-    check(recommendation, {
-      recommendation: (r) => r != '',
+    await check(page.locator('div#recommendations'), {
+      recommendation: async lo => await lo.textContent() != '',
     });
   } finally {
     await page.close();
@@ -188,9 +186,8 @@ export async function checkFrontend() {
 
   try {
     await page.goto(BASE_URL);
-    const header = await page.locator('h1').textContent();
-    check(header, {
-      header: (h) => h == 'Looking to break out of your pizza routine?',
+    check(page.locator('h1'), {
+      header: async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
     });
 
     await Promise.all([
@@ -199,9 +196,8 @@ export async function checkFrontend() {
     ]);
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
-    const recommendation = await page.locator('div#recommendations').textContent();
-    check(recommendation, {
-      recommendation: (r) => r != '',
+    await check(page.locator('div#recommendations'), {
+      recommendation: async lo => await lo.textContent() != '',
     });
   } finally {
     await page.close();
