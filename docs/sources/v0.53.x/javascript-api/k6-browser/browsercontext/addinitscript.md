@@ -24,7 +24,7 @@ The script is evaluated after the document is created but before any of its scri
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -63,9 +63,8 @@ export default async function () {
     </script>
   </html>`);
 
-  const text = await page.locator('#random').textContent();
-  check(page, {
-    zero: () => text == '0',
+  await check(page.locator('#random'), {
+    'is zero': async random => await random.textContent() == '0'
   });
 
   await page.close();

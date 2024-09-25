@@ -48,8 +48,8 @@ Events can be either:
 {{< code >}}
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -65,7 +65,7 @@ export const options = {
 };
 
 export default async function () {
-  const page = await browser.newPage();
+  let page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
@@ -76,11 +76,10 @@ export default async function () {
     const submitButton = page.locator('input[type="submit"]');
     await submitButton.click();
 
-    await page.waitForLoadState(); // waits for the default `load` event
+    await page.waitForLoadState('networkidle'); // waits until the `networkidle` event
 
-    const text = await page.locator('h2').textContent();
-    check(page, {
-      header: () => text == 'Welcome, admin!',
+    await check(page.locator('h2'), {
+      'header': async h2 => await h2.textContent() == 'Welcome, admin!'
     });
   } finally {
     await page.close();

@@ -50,8 +50,8 @@ weight: 04
 ## Examples
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from "https://jslib.k6.io/k6-utils/1.5.0/index.js";
 
 export const options = {
   scenarios: {
@@ -76,16 +76,20 @@ export default async function () {
 
     await Promise.all([page.waitForNavigation(), messagesLink.click()]);
     // Enter login credentials and login
-    await page.$('input[name="login"]').type('admin');
-    await page.$('input[name="password"]').type('123');
+    const login = await page.$('input[name="login"]');
+    await login.type('admin');
+    const password = await page.$('input[name="password"]');
+    await password.type('123');
 
     const submitButton = await page.$('input[type="submit"]');
 
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
-    const text = await page.$('h2');
-    const content = await text.textContent();
-    check(page, {
-      header: () => text == 'Welcome, admin!',
+
+    await check(page, {
+      'header': async p => {
+        const h2 = await p.$('h2');
+        return await h2.textContent() == 'Welcome, admin!';
+      },
     });
   } finally {
     await page.close();
@@ -96,8 +100,8 @@ export default async function () {
 <!-- eslint-skip -->
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -112,7 +116,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default async function () {
   const page = await browser.newPage();
 
   try {
@@ -128,35 +132,35 @@ export default function () {
     `);
 
     // Check state
-    let el = await page.$('.visible');
-    const isVisible = await el.isVisible();
-
-    el = await page.$('.hidden');
-    const isHidden = await el.isHidden();
-
-    el = await page.$('.editable');
-    const isEditable = await el.isEditable();
-
-    el = await page.$('.enabled');
-    const isEnabled = await el.isEnabled();
-
-    el = await page.$('.disabled');
-    const isDisabled = await el.isDisabled();
-
-    el = await page.$('.checked');
-    const isChecked = await el.isChecked();
-
-    el = await page.$('.unchecked');
-    const isUncheckedChecked = await el.isChecked();
-
-    check(page, {
-      visible: isVisible,
-      hidden: isHidden,
-      editable: isEditable,
-      enabled: isEnabled,
-      disabled: isDisabled,
-      checked: isChecked,
-      unchecked: isUncheckedChecked === false,
+    await check(page, {
+      'is visible': async p => {
+        const e = await p.$('.visible');
+        return e.isVisible();
+      },
+      'is hidden': async p => {
+        const e = await p.$('.hidden');
+        return e.isHidden();
+      },
+      'is editable': async p => {
+        const e = await p.$('.editable');
+        return e.isEditable();
+      },
+      'is enabled': async p => {
+        const e = await p.$('.enabled');
+        return e.isEnabled();
+      },
+      'is disabled': async p => {
+        const e = await p.$('.disabled');
+        return e.isDisabled();
+      },
+      'is checked': async p => {
+        const e = await p.$('.checked');
+        return e.isChecked();
+      },
+      'is unchecked': async p => {
+        const e = await p.$('.unchecked');
+        return await e.isChecked() === false;
+      },
     });
   } finally {
     await page.close();
