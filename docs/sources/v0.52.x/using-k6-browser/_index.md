@@ -35,7 +35,7 @@ The main use case for the browser module is to test performance on the browser l
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -68,9 +68,8 @@ export default async function () {
       page.locator('input[type="submit"]').click(),
     ]);
 
-    const header = await page.locator("h2").textContent();
-    check(header, {
-      header: (h) => h == "Welcome, admin!",
+    await check(page.locator("h2"), {
+      'header': async h2 => await h2.textContent() == "Welcome, admin!"
     });
   } finally {
     await page.close();
