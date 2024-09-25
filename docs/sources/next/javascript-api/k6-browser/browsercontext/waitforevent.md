@@ -27,7 +27,7 @@ Waits for the event to fire and returns its value. If a predicate function has b
 <CodeGroup labels={[]}>
 
 ```javascript
-import { browser } from 'k6/x/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
