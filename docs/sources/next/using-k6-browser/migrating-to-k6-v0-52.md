@@ -15,7 +15,7 @@ This guide outlines the key changes you will need to make when moving your exist
 In the latest release of k6, we have graduated k6 browser module out of experimental and is now under the import `k6/browser`. Migrating to this is a breaking change that will affect _all scripts_ that use the experimental k6 browser module. The breaking changes are:
 
 1. Converted most of the k6 browser module APIs to asynchronous (async) APIs. That means they will return a `promise` that will `resolve` to a value when the API call succeeds or `reject` when an error occurs.
-2. A side effect of making this async changes is that you will need to use a workaround to work with the k6 [check](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check/) API.
+2. A side effect of making this async changes is that you will need to use [the `check` utility function from jslib.k6.io](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils/check/) instead of working with the k6 [check](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check/) API.
 3. Finally, it's also worth reiterating that the [group](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group/) API still doesn't work with async APIs.
 
 If you are interested in the rationale behind this change, refer to the [v0.51 release notes](https://github.com/grafana/k6/releases/tag/v0.51.0).
@@ -275,7 +275,7 @@ Below is a screenshot of a comparison between a generic browser test in `v0.51` 
 
 ## Working with k6 check
 
-The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, for example `locator.textContent()`, inside one of the predicates will not work. Instead you will have to `await` and store the result in a variable _outside_ the `check`:
+The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, for example `locator.textContent()`, inside one of the predicates will not work. Instead you can work with [the jslib.k6.io's `check` utility](https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/check/).
 
 For example, before:
 
@@ -284,8 +284,8 @@ For example, before:
 <!-- eslint-skip -->
 
 ```javascript
-check(page, {
-  header: (p) => p.locator('h2').textContent() == 'Welcome, admin!',
+check(page.locator('h2'), {
+  header: lo => lo.textContent() == 'Welcome, admin!',
 });
 ```
 
@@ -298,9 +298,12 @@ And now:
 <!-- eslint-skip -->
 
 ```javascript
-const headerText = await page.locator('h2').textContent();
-check(headerText, {
-  header: headerText === 'Welcome, admin!',
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
+
+// ...
+
+await check(page.locator('h2'), {
+  'header': async lo => await lo.textContent() === 'Welcome, admin!'
 });
 ```
 
