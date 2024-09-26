@@ -9,13 +9,16 @@ weight: 22
 
 One of the common usages of load testing tools it's the so-called stepped arrival rate.
 
-In k6 we can achieve it with the following configuration.
+In k6, you can do that by using the `options` object, and configuring the number of iterations or VUs in different scenarios.
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
 
 {{< code >}}
 
 ```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
 export const options = {
   scenarios: {
     contacts: {
@@ -31,6 +34,11 @@ export const options = {
     },
   },
 };
+
+export default function () {
+  http.get('https://test.k6.io');
+  sleep(1);
+}
 ```
 
 {{< /code >}}
@@ -40,11 +48,13 @@ Here's an example on how to instantly increase the number of VUs and hold them f
 {{< code >}}
 
 ```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
 export const options = {
   scenarios: {
     contacts: {
       executor: 'ramping-vus',
-      preAllocatedVUs: 10,
       startVUs: 3,
       stages: [
         { target: 20, duration: '30s' }, // linearly go from 3 VUs to 20 VUs for 30s
@@ -54,6 +64,11 @@ export const options = {
     },
   },
 };
+
+export default function () {
+  http.get('https://test.k6.io');
+  sleep(1);
+}
 ```
 
 {{< /code >}}
