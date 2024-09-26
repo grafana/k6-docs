@@ -29,7 +29,7 @@ When using the `page.on` method, the page has to be explicitly [closed](https://
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/x/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6';
 
 export const options = {
