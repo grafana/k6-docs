@@ -4,6 +4,8 @@ description: 'A guide on how to simulate user input delay.'
 weight: 04
 ---
 
+# Simulating user input delay
+
 We will demonstrate how best to work with `sleep` in `k6` and the various `wait*` prepended methods that are available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
 
 {{< admonition type="note" >}}
