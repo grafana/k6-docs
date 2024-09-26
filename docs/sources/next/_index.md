@@ -8,7 +8,7 @@ weight: -10
 hero:
   title: Grafana k6
   level: 1
-  image: /media/docs/k6/GrafanaLogo_k6_icon.svg
+  image: /media/docs/k6/GrafanaLogo_k6_orange_icon.svg
   width: 100
   height: 100
   description: Grafana k6 is an open-source, developer-friendly, and extensible load testing tool. k6 allows you to prevent performance issues and proactively improve reliability.
