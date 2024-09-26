@@ -275,7 +275,7 @@ Below is a screenshot of a comparison between a generic browser test in `v0.51` 
 
 ## Working with k6 check
 
-The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, for example `locator.textContent()`, inside one of the predicates will not work. Instead you can work with [the jslib.k6.io's `check` utility](https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/check/).
+The k6 `check` API will not `await` promises, so calling a function that returns a `Promise`, for example `locator.textContent()`, inside one of the predicates will not work. Instead, you can work with [the jslib.k6.io's `check` utility function](https://grafana.com/docs/k6/latest/javascript-api/jslib/utils/check/).
 
 For example, before:
 
