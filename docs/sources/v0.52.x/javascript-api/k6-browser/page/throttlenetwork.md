@@ -33,7 +33,7 @@ To work with the most commonly tested network profiles, import `networkProfiles`
 {{< code >}}
 
 ```javascript
-import { browser, networkProfiles } from 'k6/x/browser';
+import { browser, networkProfiles } from 'k6/browser';
 
 export const options = {
   scenarios: {
