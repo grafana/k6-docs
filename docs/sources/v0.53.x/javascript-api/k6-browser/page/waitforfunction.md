@@ -64,8 +64,8 @@ export default async function () {
       polling: 'mutation',
       timeout: 2000,
     });
-    await check(page, {
-      'waitForFunction successfully resolved': async () =>
+    await check(ok, {
+      'waitForFunction successfully resolved': async (ok) =>
           await ok.innerHTML() == 'Hello'
     });
   } finally {

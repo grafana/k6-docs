@@ -89,7 +89,7 @@ export default async function () {
     });
 
     await check(ok, {
-      'waitForFunction successfully resolved': async () => await ok.innerHTML() == 'Hello'
+      'waitForFunction successfully resolved': async (ok) => await ok.innerHTML() == 'Hello'
     });
   } finally {
     await page.close();
