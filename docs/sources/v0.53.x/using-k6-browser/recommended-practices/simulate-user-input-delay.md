@@ -52,7 +52,7 @@ In the browser modules there are various asynchronous APIs that can be used to w
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -87,8 +87,9 @@ export default async function () {
       timeout: 2000,
     });
 
-    const innerHTML = await ok.innerHTML();
-    check(ok, { 'waitForFunction successfully resolved': innerHTML == 'Hello' });
+    await check(ok, {
+      'waitForFunction successfully resolved': async (ok) => (await ok.innerHTML()) == 'Hello',
+    });
   } finally {
     await page.close();
   }
@@ -104,7 +105,6 @@ export default async function () {
 {{< code >}}
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
 
 export const options = {
@@ -148,7 +148,6 @@ It's important to call this in a [Promise.all](https://developer.mozilla.org/en-
 {{< code >}}
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
 
 export const options = {
