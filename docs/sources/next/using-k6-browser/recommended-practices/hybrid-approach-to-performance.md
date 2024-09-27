@@ -133,7 +133,6 @@ To find out more information about injecting faults to your service, check out t
 import { browser } from 'k6/browser';
 import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 import { ServiceDisruptor } from 'k6/x/disruptor';
-import http from 'k6/http';
 
 const BASE_URL = __ENV.BASE_URL;
 

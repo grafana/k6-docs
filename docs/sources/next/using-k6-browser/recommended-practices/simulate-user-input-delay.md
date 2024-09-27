@@ -107,7 +107,6 @@ export default async function () {
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -151,7 +150,6 @@ It's important to call this in a [Promise.all](https://developer.mozilla.org/en-
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
