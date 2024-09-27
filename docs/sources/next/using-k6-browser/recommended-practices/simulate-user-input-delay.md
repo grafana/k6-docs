@@ -6,7 +6,7 @@ weight: 04
 
 # Simulate user input delay
 
-We will demonstrate how best to work with `sleep` in `k6` and the various `wait*` prepended methods that are available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
+On this page, you'll learn how to best work with `sleep` in `k6` and the various `wait*` prepended methods available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
 
 {{< admonition type="note" >}}
 
@@ -88,7 +88,7 @@ export default async function () {
     });
 
     await check(ok, {
-      'waitForFunction successfully resolved': async (ok) => await ok.innerHTML() == 'Hello'
+      'waitForFunction successfully resolved': async (ok) => (await ok.innerHTML()) == 'Hello',
     });
   } finally {
     await page.close();
@@ -176,10 +176,7 @@ export default async function () {
 
     // The click action will start a navigation, and the waitForNavigation
     // will help the test wait until the navigation completes.
-    await Promise.all([
-      page.waitForNavigation(),
-      submitButton.click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
   } finally {
     await page.close();
   }
