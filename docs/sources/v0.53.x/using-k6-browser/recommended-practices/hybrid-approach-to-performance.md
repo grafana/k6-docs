@@ -86,7 +86,7 @@ export async function checkFrontend() {
   try {
     await page.goto(BASE_URL);
 
-    check(page.locator('h1'), {
+    await check(page.locator('h1'), {
       'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
     });
 
@@ -185,7 +185,7 @@ export async function checkFrontend() {
 
   try {
     await page.goto(BASE_URL);
-    check(page.locator('h1'), {
+    await check(page.locator('h1'), {
       'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
     });
 
