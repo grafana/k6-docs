@@ -1,10 +1,12 @@
 ---
-title: 'Simulating user input delay'
+title: 'Simulate user input delay'
 description: 'A guide on how to simulate user input delay.'
 weight: 04
 ---
 
-We will demonstrate how best to work with `sleep` in `k6` and the various `wait*` prepended methods that are available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
+# Simulate user input delay
+
+On this page, you'll learn how to best work with `sleep` in `k6` and the various `wait*` prepended methods available in `k6/browser` to simulate user input delay, wait for navigations, and wait for element state changes. By the end of this page, you should be able to successfully use the correct API where necessary.
 
 {{< admonition type="note" >}}
 
@@ -17,15 +19,14 @@ While using the `sleep` or `page.waitForTimeout` functions to wait for element s
 [sleep](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) is a first class function built into k6. It's main use is to _"suspend VU execution for the specified duration"_ which is most useful when you want to simulate user input delay, such as:
 
 - Navigating to a page.
-- Sleeping for a 1 second, which is to simulate a user looking for a specific element on the page.
+- Sleeping for one second to simulate a user looking for a specific element on the page.
 - Clicking on the element.
-- etc.
 
 {{< admonition type="warning" >}}
 
-`sleep` is a synchronous function that blocks the JS event loop, which means that all asynchronous work will also be suspended until the `sleep` completes.
+`sleep` is a synchronous function that blocks the JavaScript event loop, which means that all asynchronous work will also be suspended until `sleep` completes.
 
-The browser module predominantly provides asynchronous APIs, and so it's best to avoid working with `sleep`, and instead **we recommend you use [page.waitForTimeout](#pagewaitfortimeout)**.
+The browser module predominantly provides asynchronous APIs, so it's best to avoid working with `sleep`. Instead, _use the [page.waitForTimeout](#pagewaitfortimeout) function_.
 
 {{< /admonition >}}
 
@@ -33,17 +34,17 @@ The browser module predominantly provides asynchronous APIs, and so it's best to
 
 In the browser modules there are various asynchronous APIs that can be used to wait for certain states:
 
-| Method                                           | Description                                                                   |
-| ------------------------------------------------ | ----------------------------------------------------------------------------- |
-| [page.waitForFunction](#pagewaitforfunction)     | Waits for the given function to return a truthy value.                        |
-| [page.waitForLoadState](#pagewaitforloadstate)   | Waits for the specified page life cycle event.                                |
-| [page.waitForNavigation](#pagewaitfornavigation) | Waits for the navigation to complete after one starts.                        |
-| [locator.waitFor](#locatorwaitfor)               | Wait for the element to be in a particular state.                             |
-| [page.waitForTimeout](#pagewaitfortimeout)       | Waits the given time. **Use this instead of `sleep` in your frontend tests.** |
+| Method                                           | Description                                                                 |
+| ------------------------------------------------ | --------------------------------------------------------------------------- |
+| [page.waitForFunction](#pagewaitforfunction)     | Waits for the given function to return a truthy value.                      |
+| [page.waitForLoadState](#pagewaitforloadstate)   | Waits for the specified page life cycle event.                              |
+| [page.waitForNavigation](#pagewaitfornavigation) | Waits for the navigation to complete after one starts.                      |
+| [locator.waitFor](#locatorwaitfor)               | Wait for the element to be in a particular state.                           |
+| [page.waitForTimeout](#pagewaitfortimeout)       | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
 
 ## page.waitForFunction
 
-[page.waitForFunction](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforfunction) is useful when you want more control over when a test progresses with a javascript function that returns true when a condition (or many conditions) is met. It can be used to poll for changes in the dom or non dom elements and variables.
+[page.waitForFunction](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforfunction) is useful when you want more control over when a test progresses with a javascript function that returns true when a condition (or many conditions) is met. It can be used to poll for changes in the DOM or non-DOM elements and variables.
 
 {{< code >}}
 
@@ -98,7 +99,7 @@ export default async function () {
 
 ## page.waitForLoadState
 
-[page.waitForLoadState](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate) is useful when there’s no explicit navigation, but you need to wait for the page or network to settle. This is mainly used when working with single page applications or when no full page reloads happen.
+[page.waitForLoadState](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate) is useful when there’s no explicit navigation, but you need to wait for the page or network to settle. This is mainly used when working with single-page applications or when no full page reloads happen.
 
 {{< code >}}
 
@@ -140,7 +141,7 @@ export default async function () {
 
 ## page.waitForNavigation
 
-[page.waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation) is a very useful API when performing other actions that could start a page navigation, and they don't automatically wait for a navigation to end. Usually you'll find it in our examples with a `click` API call. Note that [goto](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/goto) is an example of an API that **doesn't** require `waitForNavigation` since it will automatically wait for the navigation to complete before returning.
+[page.waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation) is a very useful API when performing other actions that could start a page navigation, and they don't automatically wait for the navigation to end. Usually, you'll find it in our examples with a `click` API call. Note that [goto](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/goto) is an example of an API that _doesn't_ require `waitForNavigation` since it will automatically wait for the navigation to complete before returning.
 
 It's important to call this in a [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) along with the API that will cause the navigation to start.
 
@@ -187,7 +188,7 @@ export default async function () {
 
 ## locator.waitFor
 
-[locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state (they might load after some delay due to async calls, JavaScript execution, etc.).
+[locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state. For example, if elements load after some delay due to async calls, or because of slow JavaScript execution.
 
 {{< code >}}
 
@@ -222,7 +223,7 @@ export default async function () {
 
 ## page.waitForTimeout
 
-[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#What-is-`sleep`) but it is asynchronous which means it will not block the event loop, thus allowing the background tasks to continue to be worked on. We're also planning on instruementing it with tracing to then allow us visualize it in the timeline in grafana cloud k6.
+[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#What-is-`sleep`), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
 
 {{< code >}}
 
