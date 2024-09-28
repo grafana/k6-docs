@@ -5,21 +5,14 @@ description: 'Browser module: locator.waitFor method'
 
 # waitFor([options])
 
-{{< admonition type="caution" >}}
-
-This feature has **known issues**. For details,
-refer to [#472](https://github.com/grafana/xk6-browser/issues/472).
-
-{{< /admonition >}}
-
 Wait for the element to be in a particular state e.g. `visible`.
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Default   | Description                                                                                                                                                                                                                                                                                                                                   |
-| --------------- | ------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options         | object | `null`    |                                                                                                                                                                                                                                                                                                                                               |
-| options.state   | string | `visible` | Can be `attached`, `detached`, `visible` or `hidden`.                                                                                                                                                                                                                                                                                         |
+| Parameter       | Type   | Default   | Description                                                                                                                                                                                                                                                                                                         |
+| --------------- | ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options         | object | `null`    |                                                                                                                                                                                                                                                                                                                     |
+| options.state   | string | `visible` | Can be `attached`, `detached`, `visible` or `hidden`.                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000`   | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
 </TableWithNestedRows>

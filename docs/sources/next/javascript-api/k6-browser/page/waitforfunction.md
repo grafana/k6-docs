@@ -33,7 +33,7 @@ Returns when the `pageFunction` returns a truthy value.
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -64,8 +64,10 @@ export default async function () {
       polling: 'mutation',
       timeout: 2000,
     });
-    const innerHTML = await ok.innerHTML();
-    check(ok, { 'waitForFunction successfully resolved': innerHTML == 'Hello' });
+    await check(ok, {
+      'waitForFunction successfully resolved': async (ok) =>
+          await ok.innerHTML() == 'Hello'
+    });
   } finally {
     await page.close();
   }

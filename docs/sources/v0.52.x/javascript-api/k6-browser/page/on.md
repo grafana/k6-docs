@@ -20,8 +20,8 @@ When using the `page.on` method, the page has to be explicitly [closed](https://
 
 ### Events
 
-| Event     | Description                                                                                                                                                                                                                                                                       |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Event     | Description                                                                                                                                                                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. |
 
 ### Example
@@ -29,7 +29,7 @@ When using the `page.on` method, the page has to be explicitly [closed](https://
 {{< code >}}
 
 ```javascript
-import { browser } from 'k6/x/browser';
+import { browser } from 'k6/browser';
 import { check } from 'k6';
 
 export const options = {

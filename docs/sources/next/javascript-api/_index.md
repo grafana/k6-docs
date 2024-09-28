@@ -65,6 +65,10 @@ The [`k6/browser` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-net-grpc.md" version="<K6_VERSION>" >}}
 
+## k6/timers
+
+{{< docs/shared source="k6" lookup="javascript-api/k6-timers.md" version="<K6_VERSION>" >}}
+
 ## k6/ws
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-ws.md" version="<K6_VERSION>" >}}

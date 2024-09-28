@@ -18,8 +18,8 @@ Waits for the event to fire and returns its value. If a predicate function has b
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<Page>` | A Promise that fulfills with a [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page) object when the `page` event has been emitted. |
 
 ### Example
@@ -27,7 +27,7 @@ Waits for the event to fire and returns its value. If a predicate function has b
 <CodeGroup labels={[]}>
 
 ```javascript
-import { browser } from 'k6/x/browser';
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {

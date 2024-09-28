@@ -52,7 +52,7 @@ The following options can be configured:
 | `K6_OTEL_GRPC_EXPORTER_INSECURE`   | Disables client transport security for the gRPC exporter.                                                                                                           |
 | `K6_OTEL_GRPC_EXPORTER_ENDPOINT`   | Configures the gRPC exporter endpoint. Default is `localhost:4317`.                                                                                                 |
 | `K6_OTEL_HTTP_EXPORTER_INSECURE`   | Disables client transport security for the HTTP exporter.                                                                                                           |
-| `K6_OTEL_HTTP_EXPORTER_ENDPOINT`   | Configures the HTTP exporter endpoint. Default is `localhost:4318`.                                                                                                 |
+| `K6_OTEL_HTTP_EXPORTER_ENDPOINT`   | Configures the HTTP exporter endpoint. Must be host and port only, without scheme. Default is `localhost:4318`.                                                     |
 | `K6_OTEL_HTTP_EXPORTER_URL_PATH`   | Configures the HTTP exporter path. Default is `/v1/metrics`.                                                                                                        |
 
 You can also use the OpenTelemetry SDK configuration environment variables to configure the OpenTelemetry output, like the [gRPC exporter configuration](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc@v1.26.0). The `K6_OTEL_*` environment variables take precedence over the OpenTelemetry SDK configuration environment variables.

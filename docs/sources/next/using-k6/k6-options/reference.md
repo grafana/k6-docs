@@ -1033,7 +1033,7 @@ export const options = {
 
 ## Setup timeout
 
-Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
+Specify how long the `setup()` function can run before it's terminated and the test fails. If defined, the value must be positive.
 
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
@@ -1476,7 +1476,13 @@ The possible keys with their meanings and default values:
 | proto               | the protocol to use when connecting with the traces backend                                                            | `grpc`                  |
 | header.`headerName` | adds an additional HTTP header with the provided header name and value to each HTTP request made to the traces backend | N/A                     |
 
-## Upload Only
+## Upload only (deprecated)
+
+{{< admonition type="caution" >}}
+
+The "Upload only" option is deprecated and will be removed in a future release. Use the `k6 cloud upload` command instead.
+
+{{< /admonition >}}
 
 A boolean specifying whether the test should just be uploaded to the cloud, but not run it. Available in `k6 cloud` command.
 

@@ -29,8 +29,8 @@ Clears text boxes and input fields (`input`, `textarea` or `contenteditable` ele
 {{< code >}}
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from "https://jslib.k6.io/k6-utils/1.5.0/index.js";
 
 export const options = {
   scenarios: {
@@ -49,26 +49,25 @@ export default async function () {
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
-
-  const login = page.locator('input[name="login"]');
-
-  // Fill an input element with some text that we will later clear.
-  await login.type('admin');
-
-  // This checks that the element has been filled with text.
-  let value = await login.inputValue();
-  check(page, {
-    not_empty: (p) => value != '',
+  await page.goto("https://test.k6.io/my_messages.php", {
+    waitUntil: 'networkidle',
   });
 
-  // Now clear the text from the element.
+  // Fill an input element with some text that we will later clear
+  const login = page.locator('input[name="login"]');
+  await login.type('admin');
+
+  // Check that the element has been filled with text
+  await check(login, {
+    'not empty': async lo => await lo.inputValue() != '',
+  });
+
+  // Now clear the text from the element
   await login.clear();
 
-  // This checks that the element is now empty.
-  value = await login.inputValue();
-  check(page, {
-    empty: () => value == '',
+  // Check that the element is now empty
+  await check(login, {
+    empty: async lo => await lo.inputValue() == '',
   });
 
   await page.close();

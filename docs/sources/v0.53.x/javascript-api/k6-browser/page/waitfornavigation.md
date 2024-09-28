@@ -42,8 +42,8 @@ Events can be either:
 {{< code >}}
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/browser';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -69,11 +69,13 @@ export default async function () {
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([page.waitForNavigation(), submitButton.click()]);
+    await Promise.all([
+      submitButton.click(),
+      page.waitForNavigation(),
+    ]);
 
-    const text = await page.locator('h2').textContent();
-    check(page, {
-      header: () => text == 'Welcome, admin!',
+    await check(page.locator('h2'), {
+      header: async h2 => await h2.textContent() == 'Welcome, admin!'
     });
   } finally {
     await page.close();
