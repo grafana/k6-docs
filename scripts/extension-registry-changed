@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script keeps the list of extensions up to date 
 # in the docs/sources/next/extensions/explore.md file.
