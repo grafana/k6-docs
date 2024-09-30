@@ -31,7 +31,7 @@ local -r infile="$2"
 
 ed -s "$outfile" <<EOF
 /<div class=.nav-cards.>/+,/<.div>/-d
-/<div class=.nav-cards.>/ r "$infile"
+/<div class=.nav-cards.>/ r $infile
 w
 q
 EOF
