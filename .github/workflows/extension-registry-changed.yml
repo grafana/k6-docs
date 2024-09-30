@@ -1,0 +1,48 @@
+# This workflow keeps the list of extensions up to date
+# in the docs/sources/next/extensions/explore.md file.
+#
+# The workflow is activated by a workflow dispatch event
+# of the "extension-registry-changed" type.
+# This event is triggered by the grafana/k6-extension-registry
+# repository when the extension registry changes.
+#
+# The list of extensions is generated based on https://registry.k6.io/registry.json.
+# If the generated list differs from the previous one,
+# it is pushed to the "extension-registry-changed" branch and
+# a pull request is created with the change (or updated if it already existed).
+#
+# It is not a problem if the registry changes several times before merging the pull request,
+# the pull request will be updated. The "extension-registry-changed" branch can be deleted
+# after merging the pull request, it will be created again if necessary.
+
+name: extension-registry-changed
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [extension-registry-changed]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Files
+        run: ${{ github.workspace }}/scripts/extension-registry-changed
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: extension-registry-changed
+          commit-message: |
+            Keep files generated from the k6 extension registry up to date
+          title: |
+            Update files generated from the k6 Extension Registry
+          body: |
+            The [k6 Extension Registry](https://registry.k6.io) has changed.
+            This pull request contains the files generated from the k6 Extension Registry.
+          add-paths: |
+            docs/sources/next/extensions/explore.md
