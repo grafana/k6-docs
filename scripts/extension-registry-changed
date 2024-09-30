@@ -26,9 +26,12 @@ curl -sL https://registry.k6.io/registry.json |
 }
 
 replace_extension_list_partial() {
-ed -s $1 <<EOF
+local -r outfile="$1"
+local -r infile="$2"
+
+ed -s "$outfile" <<EOF
 /<div class=.nav-cards.>/+,/<.div>/-d
-/<div class=.nav-cards.>/ r $2
+/<div class=.nav-cards.>/ r "$infile"
 w
 q
 EOF
