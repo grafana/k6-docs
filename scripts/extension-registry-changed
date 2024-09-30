@@ -43,6 +43,6 @@ docfile="$scriptdir/../docs/sources/next/extensions/explore.md"
 tmpfile=/tmp/explore.$$
 
 generate_extension_list_partial > $tmpfile
-replace_extension_list_partial $docfile $tmpfile
+replace_extension_list_partial "$docfile" $tmpfile
 
 rm -f $tmpfile
