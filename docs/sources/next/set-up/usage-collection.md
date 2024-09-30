@@ -23,9 +23,9 @@ The usage report does not contain any information about what you are testing. Th
 - The running program's architecture target (386, amd64, arm, s390x...)
 - The list of JavaScript imported modules (`k6/http`, `k6/experimental/webcrypto`, ...)
 - The list of used outputs (`json`, `influxdb`, ...)
-- Test run id if ran in the cloud
-- How many file were parsed and how many of those were ts files.
-- How many time `require` was called.
+- The test run ID if the test was executed in the cloud
+- The number of parsed files and how many were TypeScript files.
+- The number of times `require` was called.
 - Whether `global` was accessed.
 
 > Only k6 built-in JavaScript modules and outputs are considered. Private modules and custom extensions are excluded.
