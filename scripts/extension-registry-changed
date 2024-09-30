@@ -40,9 +40,9 @@ EOF
 scriptdir="$(dirname "$(readlink -f "$0")")"
 docfile="$scriptdir/../docs/sources/next/extensions/explore.md"
 
-tmpfile=/tmp/explore.$$
+tmpfile="$(mktemp)"
 
-generate_extension_list_partial > $tmpfile
-replace_extension_list_partial "$docfile" $tmpfile
+generate_extension_list_partial > "$tmpfile"
+replace_extension_list_partial "$docfile" "$tmpfile"
 
-rm -f $tmpfile
+rm -f "$tmpfile"
