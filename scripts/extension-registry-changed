@@ -37,8 +37,8 @@ q
 EOF
 }
 
-scriptdir=$(dirname $(readlink -f "$0"))
-docfile=$scriptdir/../docs/sources/next/extensions/explore.md
+scriptdir="$(dirname "$(readlink -f "$0")")"
+docfile="$scriptdir/../docs/sources/next/extensions/explore.md"
 
 tmpfile=/tmp/explore.$$
 
