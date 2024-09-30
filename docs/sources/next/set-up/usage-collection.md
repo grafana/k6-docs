@@ -23,7 +23,7 @@ The usage report does not contain any information about what you are testing. Th
 - The running program's architecture target (386, amd64, arm, s390x...)
 - The list of JavaScript imported modules (`k6/http`, `k6/experimental/webcrypto`, ...)
 - The list of used outputs (`json`, `influxdb`, ...)
-- The test run ID if the test was executed in the cloud
+- The test run ID if the test was executed in the cloud or was outputed to it
 - The number of parsed files and how many were TypeScript files.
 - The number of times `require` was called.
 - Whether `global` was accessed.
