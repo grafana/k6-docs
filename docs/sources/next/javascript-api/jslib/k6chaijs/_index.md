@@ -7,27 +7,29 @@ weight: 03
 
 # k6chaijs
 
+{{< admonition type="note" >}}
+
+The source code for this library can be found in the [grafana/k6-jslib-k6chaijs](https://github.com/grafana/k6-jslib-k6chaijs) GitHub repository.
+
+{{< /admonition >}}
+
 `k6chaijs` is a library to provide BDD assertions in k6 based on [ChaiJS](https://www.chaijs.com/). You can use `k6chaijs` as an alternative to [check](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) and [group](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group).
 
 With this library, you get the following:
 
 - BDD style of assertions for more expressive language
-- chainable assertions
-- more powerful assertions functions such as: `deep`, `nested`, `ordered`, etc.
-- automatic assertion messages
-- [exception handling](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) for better test stability
+- Chainable assertions
+- More powerful assertions functions such as: `deep`, `nested`, `ordered`, etc.
+- Automatic assertion messages
+- [Exception handling](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) for better test stability
 
 ## Installation
 
-There's nothing to install. This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in the k6 script directly.
-
-{{< code >}}
+This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in directly in your k6 script.
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 ```
-
-{{< /code >}}
 
 Alternatively, you can use a copy of this file stored locally. The source code is available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs).
 
