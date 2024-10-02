@@ -158,6 +158,8 @@ That code would produce JSON output like this:
 {{< code >}}
 
 ```json
+// For http://example.com/1, note that the url is not present in the JSON.
+
 {
     "type":"Point",
     "metric":"http_req_duration",
@@ -168,12 +170,12 @@ That code would produce JSON output like this:
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
-            "url":"http://example.com/1"
+            "url":"PostsItemURL"
         }
     }
 }
 
-// and
+// and for http://example.com/2
 
 {
     "type":"Point",
@@ -185,7 +187,7 @@ That code would produce JSON output like this:
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
-            "url":"http://example.com/2"
+            "url":"PostsItemURL"
         }
     }
 }
