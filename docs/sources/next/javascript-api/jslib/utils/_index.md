@@ -6,10 +6,13 @@ weight: 04
 
 # utils
 
-The `utils` module contains number of small utility functions useful in every day load testing.
+{{< admonition type="note" >}}
 
-> ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-utils).
-> Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-utils/issues).
+The source code for this library can be found in the [grafana/k6-jslib-utils](https://github.com/k6io/k6-jslib-utils) GitHub repository.
+
+{{< /admonition >}}
+
+The `utils` module contains number of small utility functions useful in every day load testing.
 
 | Function                                                                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

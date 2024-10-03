@@ -7,7 +7,13 @@ weight: 04
 
 # HTTP instrumentation for Pyroscope
 
-With jslib, you can _instrument_ HTTP requests in a way that lets you tag Grafana Cloud Profiles with relevant information generated from k6 tests.
+{{< admonition type="note" >}}
+
+The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io/tree/main/lib/http-instrumentation-pyroscope) GitHub repository.
+
+{{< /admonition >}}
+
+The `http-instrumentation-pyroscope` module allows you to _instrument_ HTTP requests in a way that lets you tag Grafana Cloud Profiles with relevant information generated from k6 tests.
 
 ## About baggage header
 
@@ -15,9 +21,9 @@ The _baggage header_ is a standardized HTTP header used to propagate distributed
 
 This module, by default, adds three key-value pairs:
 
-1.  Scenario name
-2.  Name of the request (URL if not set)
-3.  Value of `__ENV.K6_CLOUDRUN_TEST_RUN_ID`, which is set automatically in Grafana Cloud k6.
+1. Scenario name
+2. Name of the request (URL if not set)
+3. Value of `__ENV.K6_CLOUDRUN_TEST_RUN_ID`, which is set automatically in Grafana Cloud k6.
 
 ## API
 
