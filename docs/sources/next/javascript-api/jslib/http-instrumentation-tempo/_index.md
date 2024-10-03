@@ -9,7 +9,7 @@ weight: 04
 
 {{< admonition type="note" >}}
 
-The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io) GitHub repository.
+The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io/tree/main/lib/http-instrumentation-tempo/1.0.0) GitHub repository.
 
 {{< /admonition >}}
 
