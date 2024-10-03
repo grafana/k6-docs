@@ -1,7 +1,6 @@
 ---
-title: "httpx"
-description: "httpx is a wrapper library around the native k6 http module"
-weight: 02
+title: 'httpx'
+description: 'httpx is a wrapper library around the native k6 http module'
 weight: 02
 ---
 

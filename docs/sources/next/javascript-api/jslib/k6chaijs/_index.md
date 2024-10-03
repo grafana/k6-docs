@@ -1,7 +1,6 @@
 ---
-title: "k6chaijs"
-description: "Assertion library for k6"
-weight: 03
+title: 'k6chaijs'
+description: 'Assertion library for k6'
 weight: 03
 ---
 
