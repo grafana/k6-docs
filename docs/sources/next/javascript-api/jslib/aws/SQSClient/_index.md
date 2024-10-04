@@ -55,7 +55,7 @@ const testQueue = 'https://sqs.us-east-1.amazonaws.com/000000000/test-queue';
 export default async function () {
   // If our test queue does not exist, abort the execution.
   const queuesResponse = await sqs.listQueues();
-  if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
+  if (queuesResponse.urls.filter((q) => q === testQueue).length == 0) {
     exec.test.abort();
   }
 
