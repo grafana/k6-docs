@@ -1,13 +1,14 @@
 ---
 aliases:
-  - ./intellisense
+  - ./configure-k6-intellisense # docs/k6/<K6_VERSION>/set-up/configure-k6-intellisense
+  - ./intellisense # docs/k6/<K6_VERSION>/set-up/intellisense
   - ../misc/intellisense # docs/k6/<K6_VERSION>/misc/intellisense
-title: 'Configure k6 IntelliSense'
+title: 'Configure your code editor'
 description: 'k6 has its TypeScript Type Definition that you can configure with your editor to unlock code editing features.'
 weight: 100
 ---
 
-# Configure k6 IntelliSense
+# Configure your code editor
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) refers to code editing features like **intelligent code completion** and **quick access to documentation**. These features can significantly improve the developer experience and productivity when working on k6 scripts in your editor of choice. Notable features are:
 
