@@ -1,5 +1,5 @@
 ---
-weight: 175
+weight: 150
 title: Set up
 ---
 
