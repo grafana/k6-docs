@@ -18,11 +18,64 @@ Waits for the event to fire and returns its value. If a predicate function has b
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<Page>` | A Promise that fulfills with a [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page) object when the `page` event has been emitted. |
 
 ### Example
+
+This API is useful when you want to wait for the new page to open after clicking on a link that opens in a new tab.
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  await page.goto('https://test.k6.io/');
+
+  await page.keyboard.down('ControlOrMeta');
+
+  // Open the link in a new tab with the help of the meta key.
+  // Wait for the new page to be created.
+  const browserContext = browser.context();
+  const [newTab] = await Promise.all([
+    browserContext.waitForEvent('page'),
+    await page.locator('a[href="/my_messages.php"]').click(),
+  ]);
+
+  await page.keyboard.up('ControlOrMeta');
+
+  // Wait for the new page (tab) to load.
+  await newTab.waitForLoadState('load');
+
+  // Take screenshots of each page.
+  await page.screenshot({ path: `screenshot-page.png` });
+  await newTab.screenshot({ path: `screenshot-newTab.png` });
+
+  await newTab.close();
+  await page.close();
+}
+```
+
+</CodeGroup>
+
+Here's an example working with the predicate:
 
 <CodeGroup labels={[]}>
 
