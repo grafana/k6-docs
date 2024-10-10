@@ -43,4 +43,3 @@ $ npm install --save-dev @types/k6
 Now that you have k6 configured in your code editor, you can:
 
 - Head over to [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) to learn how to create and run your first test.
-- See how to [use TypeScript in k6 scripts](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
