@@ -44,4 +44,4 @@ You can also find k6 code editor extensions for Visual Studio Code and IntelliJ 
 Now that you have k6 configured in your code editor, you can:
 
 - Head over to [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) to learn how to create and run your first test.
-- Configure your editor for [TypeScript support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)
+- Configure your editor for [TypeScript support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
