@@ -18,7 +18,7 @@ weight: 100
 
 ![Intellisense enabled in a code editor, showing autocompletion of k6 libraries](/media/docs/k6-oss/intellisense-k6-demo.gif)
 
-## VS Code & IntelliJ
+## Install k6 type definitions
 
 k6 has its [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) that you can configure with your editor to unlock code editing features.
 
@@ -32,14 +32,16 @@ $ npm init --yes
 $ npm install --save-dev @types/k6
 ```
 
-## Read more
+## Code editor extensions
+
+You can also find k6 code editor extensions for Visual Studio Code and IntelliJ IDEA:
 
 - [Visual Studio Code - k6 Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6)
 - [IntelliJ IDEA - k6 Plugin](https://plugins.jetbrains.com/plugin/16141-k6)
-- [TypeScript Editor Support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)
 
 ## Next steps
 
 Now that you have k6 configured in your code editor, you can:
 
 - Head over to [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) to learn how to create and run your first test.
+- Configure your editor for [TypeScript support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)
