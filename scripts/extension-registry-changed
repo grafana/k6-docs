@@ -6,7 +6,7 @@
 # The script is run by the extension-registry.changed.yml
 # workflow when the extension registry changes.
 #
-# The list of extensions is generated based on https://registry.k6.io/registry.json.
+# The list of extensions is generated based on https://registry.k6.io/product/oss.json.
 #
 # In the docs/sources/next/extensions/explore.md file
 # the content of the <div class="nav-cards"> HTML element
@@ -15,7 +15,7 @@
 set -euf -o pipefail
 
 generate_extension_list_partial() {
-  curl -sL https://registry.k6.io/registry.json |
+  curl -sL https://registry.k6.io/product/oss.json |
     jq -r '
  map(select(.module != "go.k6.io/k6") | { name:.repo.name, url: .repo.url, description: .description } ) |
  sort_by(.name) | map(

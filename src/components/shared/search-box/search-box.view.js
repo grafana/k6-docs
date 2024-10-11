@@ -54,7 +54,9 @@ const Stats = connectStateResults(
 );
 
 export const SearchBox = ({ inputLabel, indices }) => {
+  const enableAlgolia = false;
   if (
+    !enableAlgolia ||
     !process.env.GATSBY_ALGOLIA_APP_ID ||
     !process.env.GATSBY_ALGOLIA_SEARCH_ONLY_KEY
   ) {
