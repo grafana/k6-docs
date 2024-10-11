@@ -37,7 +37,7 @@ Run the New Relic integration as a Docker container with this command:
 
 ```bash
 docker run --rm \
-  -d --restart unless-stopped \
+  -d \
   --name newrelic-statsd \
   -h $(hostname) \
   -e NR_ACCOUNT_ID=<NR-ACCOUNT-ID> \
