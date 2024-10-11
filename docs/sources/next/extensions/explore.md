@@ -235,6 +235,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-proxy</h4>
         <p>Dynamic proxy support, allow changing the HTTP proxy settings in the script</p>
     </a>
+    <a href="https://github.com/grafana/xk6-python" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-python</h4>
+        <p>Write k6 tests in Python</p>
+    </a>
     <a href="https://github.com/acuenca-facephi/xk6-read" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-read</h4>
         <p>Read files and directories</p>
