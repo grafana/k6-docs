@@ -10,7 +10,7 @@ You can install k6 Studio on Windows and macOS.
 
 ## Before you begin
 
-- Install [Google Chrome](https://www.google.com/intl/en-US/chrome/) on your computer.
+- Install [Google Chrome](https://www.google.com/chrome/) on your computer.
 
 ## Install k6 Studio
 
