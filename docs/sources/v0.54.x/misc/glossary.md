@@ -13,6 +13,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 
 <Glossary>
 
+{{< column-list >}}
 - [Application performance monitoring](#application-performance-monitoring)
 - [Concurrent sessions](#concurrent-sessions)
 - [Checks](#checks)
@@ -56,6 +57,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Throughput](#throughput)
 - [Virtual user](#virtual-user)
 - [YAML](#yaml)
+{{< /column-list >}}
 
 </Glossary>
 
