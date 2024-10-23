@@ -17,7 +17,7 @@ jobs:
           '--skip-checks=^image.+$'
           docs/sources/k6
           /docs/k6
-          | grep -v "The 'description' parameter in the front matter must be present."
+          | awk '!/"The '"'"'description'"'"' parameter in the front matter must be present."/'
           | reviewdog
           -f=rdjsonl
           --fail-on-error
