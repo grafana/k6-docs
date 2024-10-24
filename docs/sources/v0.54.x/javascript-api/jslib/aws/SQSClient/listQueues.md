@@ -49,7 +49,7 @@ export default async function () {
   const queuesResponse = await sqs.listQueues();
 
   // If our test queue does not exist, abort the execution.
-  if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
+  if (queuesResponse.urls.filter((q) => q === testQueue).length == 0) {
     exec.test.abort();
   }
 
