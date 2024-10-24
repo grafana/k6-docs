@@ -3,7 +3,7 @@ title: Grafana k6 documentation
 menuTitle: Grafana k6
 description: The k6 documentation covers everything you need to know about k6 OSS, load testing, and performance testing.
 type: redirect
-redirectURL: /docs/k6/latest/ # needed for local dev only
+redirectURL: /docs/k6/next/ # needed for local dev only
 weight: 1
 layout: project
 cms_docs: true
