@@ -37,7 +37,7 @@ To run a simple local script:
    ```
 
    ```windows
-   PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+   PS C:\> k6 new
    ```
 
    {{< /code >}}
@@ -64,7 +64,7 @@ To run a simple local script:
    ```
 
    ```windows
-   PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
+   PS C:\> k6 run script.js
    ```
 
    {{< /code >}}
@@ -84,7 +84,7 @@ $ docker run --rm -i grafana/k6 run --vus 10 --duration 30s - <script.js
 ```
 
 ```windows
-PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30s -
+PS C:\> k6 run --vus 10 --duration 30s script.js
 ```
 
 {{< /code >}}
@@ -155,7 +155,7 @@ $ docker run --rm -i grafana/k6 run - <script.js
 ```
 
 ```windows
-PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
+PS C:\> k6 run script.js
 ```
 
 {{< /code >}}
