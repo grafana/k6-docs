@@ -311,7 +311,7 @@ This section goes over some optimizations that are not necessarily dependant on 
 
 Depending on the particular k6 test: maximum number of VUs used, number and size of JavaScript dependencies, and complexity of the test script itself, k6 can consume large amounts of system RAM during test execution. While the development is focused on reducing RAM usage as much as possible, a single test run might use tens of gigabytes of RAM under certain scenarios.
 
-As a baseline, count each VU instance to require between 1MB and 5MB of RAM, depending on your script complexity and dependencies. This is roughly between `GB and 5GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
+As a baseline, count each VU instance to require between 1MB and 5MB of RAM, depending on your script complexity and dependencies. This is roughly between 1GB and 5GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
 
 If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode).
 

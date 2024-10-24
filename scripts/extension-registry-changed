@@ -1,37 +1,39 @@
 #!/usr/bin/env bash
 
-# This script keeps the list of extensions up to date 
+# This script keeps the list of extensions up to date
 # in the docs/sources/next/extensions/explore.md file.
 #
 # The script is run by the extension-registry.changed.yml
 # workflow when the extension registry changes.
-# 
-# The list of extensions is generated based on https://registry.k6.io/registry.json.
 #
-# In the docs/sources/next/extensions/explore.md file 
+# The list of extensions is generated based on https://registry.k6.io/product/oss.json.
+#
+# In the docs/sources/next/extensions/explore.md file
 # the content of the <div class="nav-cards"> HTML element
 # is replaced with the generated extension list.
 
+set -euf -o pipefail
+
 generate_extension_list_partial() {
-curl -sL https://registry.k6.io/registry.json | 
- jq -r '
+  curl -sL https://registry.k6.io/product/oss.json |
+    jq -r '
  map(select(.module != "go.k6.io/k6") | { name:.repo.name, url: .repo.url, description: .description } ) |
  sort_by(.name) | map(
 "    <a href=\"\(.url)\" target=\"_blank\" class=\"nav-cards__item nav-cards__item--guide\">
         <h4>\(.name)</h4>
         <p>\(.description)</p>
     </a>"
-) | .[] 
+) | .[]
 '
 }
 
 replace_extension_list_partial() {
-local -r outfile="$1"
-local -r infile="$2"
+  local -r outfile="$1"
+  local -r infile="$2"
 
-ed -s "$outfile" <<EOF
+  ed -s "$outfile" <<EOF
 /<div class=.nav-cards.>/+,/<.div>/-d
-/<div class=.nav-cards.>/ r "$infile"
+/<div class=.nav-cards.>/ r $infile
 w
 q
 EOF
@@ -40,7 +42,7 @@ EOF
 scriptdir="$(dirname "$(readlink -f "$0")")"
 docfile="$scriptdir/../docs/sources/next/extensions/explore.md"
 
-tmpfile="$(mktemp)"
+tmpfile="$(mktemp /tmp/extension-registry-changed.XXXXXX)"
 
 generate_extension_list_partial > "$tmpfile"
 replace_extension_list_partial "$docfile" "$tmpfile"

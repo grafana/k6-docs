@@ -7,12 +7,17 @@ weight: 04
 
 # HTTP instrumentation for Tempo
 
-With this jslib, you can _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests, which can then be used by a tracing backend such as [Grafana Tempo](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/integration-with-grafana-cloud-traces/).
+{{< admonition type="note" >}}
+
+The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io/tree/main/lib/http-instrumentation-tempo/1.0.0) GitHub repository.
+
+{{< /admonition >}}
+
+The `http-instrumentation-tempo` module allows you to _instrument_ HTTP requests so that they emit traces as the test runs. Use it to include a tracing context in HTTP requests, which can then be used by a tracing backend such as [Grafana Tempo](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/integration-with-grafana-cloud-traces/).
 
 ## Migration from `k6/experimental/tracing`
 
 This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js'`
-
 
 ## About trace contexts
 

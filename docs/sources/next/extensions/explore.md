@@ -35,10 +35,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-ansible-vault</h4>
         <p>Encrypt and decrypt Ansible Vault</p>
     </a>
-    <a href="https://github.com/joanlopez/xk6-aws" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-aws</h4>
-        <p>Alternative to the official AWS JS Lib that relies on the AWS SDK for Go to interact with Amazon Web Services</p>
-    </a>
     <a href="https://gitlab.com/szkiba/xk6-banner" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-banner</h4>
         <p>Print ASCII art banner from k6 test</p>
@@ -50,10 +46,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/szkiba/xk6-cache" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-cache</h4>
         <p>Enable vendoring remote HTTP modules to a single source-control-friendly file</p>
-    </a>
-    <a href="https://github.com/fornfrey/xk6-celery" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-celery</h4>
-        <p>Generate load on Celery workers</p>
     </a>
     <a href="https://github.com/szkiba/xk6-chai" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-chai</h4>
@@ -95,14 +87,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-dotenv</h4>
         <p>Load env vars from a .env file</p>
     </a>
-    <a href="https://github.com/szkiba/xk6-ts" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-ts</h4>
-        <p>Add TypeScript support for k6</p>
-    </a>
-    <a href="https://github.com/BarthV/xk6-es" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-es</h4>
-        <p>Output test results to Elasticsearch</p>
-    </a>
     <a href="https://github.com/distribworks/xk6-ethereum" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-ethereum</h4>
         <p>K6 extension for ethereum protocols</p>
@@ -134,14 +118,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/skibum55/xk6-git" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-git</h4>
         <p>Clone Git repositories from tests</p>
-    </a>
-    <a href="https://github.com/AckeeCZ/xk6-google-iap" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-google-iap</h4>
-        <p>Provides access to Google Auth token</p>
-    </a>
-    <a href="https://github.com/heww/xk6-harbor" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-harbor</h4>
-        <p>Testing Harbor container registry</p>
     </a>
     <a href="https://github.com/gpiechnik2/xk6-httpagg" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-httpagg</h4>
@@ -185,15 +161,7 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     </a>
     <a href="https://github.com/pmalhaire/xk6-mqtt" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-mqtt</h4>
-        <p>mqtt extension</p>
-    </a>
-    <a href="https://github.com/ydarias/xk6-nats" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-nats</h4>
-        <p>Provides NATS support</p>
-    </a>
-    <a href="https://github.com/patrick-janeiro/xk6-neo4j" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-neo4j</h4>
-        <p>Interact with Neo4J graph databases</p>
+        <p>MQTT extension</p>
     </a>
     <a href="https://github.com/akiomik/xk6-nostr" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-nostr</h4>
@@ -214,10 +182,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/Maksimall89/xk6-output-clickhouse" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-clickhouse</h4>
         <p>Export results to ClickHouse</p>
-    </a>
-    <a href="https://github.com/dynatrace/xk6-output-dynatrace" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-dynatrace</h4>
-        <p>Export results to Dynatrace</p>
     </a>
     <a href="https://github.com/elastic/xk6-output-elasticsearch" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-elasticsearch</h4>
@@ -255,13 +219,9 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-output-timestream</h4>
         <p>Export results to AWS Timestream</p>
     </a>
-    <a href="https://github.com/wosp-io/xk6-playwright" target="_blank" class="nav-cards__item nav-cards__item--guide">
+    <a href="https://github.com/nicholasvuono/xk6-playwright" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-playwright</h4>
         <p>Browser automation and end-to-end web testing using Playwright</p>
-    </a>
-    <a href="https://github.com/mcosta74/xk6-plist" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-plist</h4>
-        <p>Parse/serialize property list (.plist) payloads</p>
     </a>
     <a href="https://github.com/szkiba/xk6-prometheus" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-prometheus</h4>
@@ -275,6 +235,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-proxy</h4>
         <p>Dynamic proxy support, allow changing the HTTP proxy settings in the script</p>
     </a>
+    <a href="https://github.com/grafana/xk6-python" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-python</h4>
+        <p>Write k6 tests in Python</p>
+    </a>
     <a href="https://github.com/acuenca-facephi/xk6-read" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-read</h4>
         <p>Read files and directories</p>
@@ -286,10 +250,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/grafana/xk6-sql" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sql</h4>
         <p>Load-test SQL Servers</p>
-    </a>
-    <a href="https://github.com/mridehalgh/xk6-sqs" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sqs</h4>
-        <p>Produce to an SQS queue</p>
     </a>
     <a href="https://github.com/phymbert/xk6-sse" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sse</h4>
@@ -303,11 +263,7 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-stomp</h4>
         <p>Client for STOMP protocol</p>
     </a>
-    <a href="https://github.com/NAlexandrov/xk6-tcp" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-tcp</h4>
-        <p>Send data to TCP port</p>
-    </a>
-    <a href="https://github.com/maksimall89/xk6-telegram" target="_blank" class="nav-cards__item nav-cards__item--guide">
+    <a href="https://github.com/Maksimall89/xk6-telegram" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-telegram</h4>
         <p>Interact with Telegram Bots</p>
     </a>
@@ -322,6 +278,10 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/kubeshop/xk6-tracetest" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-tracetest</h4>
         <p>Support for Tracetest test execution and tracing client</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-ts" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-ts</h4>
+        <p>Add TypeScript support for k6</p>
     </a>
     <a href="https://github.com/kelseyaubrecht/xk6-webtransport" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-webtransport</h4>

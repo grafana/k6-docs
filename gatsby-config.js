@@ -1,6 +1,5 @@
 const path = require('path');
 
-const queries = require('./src/utils/algolia');
 const { isProduction } = require('./src/utils/utils.node');
 
 require('dotenv').config({
@@ -157,11 +156,14 @@ const plugins = [
   },
 ];
 
+const enableAlgolia = false;
 if (
+  enableAlgolia &&
   process.env.ALGOLIA_ADMIN_KEY &&
   process.env.GATSBY_ALGOLIA_APP_ID &&
   process.env.GATSBY_ALGOLIA_SEARCH_ONLY_KEY
 ) {
+  // const queries = require('./src/utils/algolia');
   plugins.push({
     resolve: 'gatsby-plugin-algolia',
     options: {
@@ -169,7 +171,7 @@ if (
       apiKey: process.env.ALGOLIA_ADMIN_KEY,
       enablePartialUpdates: true,
       matchFields: ['title', 'slug', 'content', 'excerpt', 'heading'],
-      queries,
+      // queries,
       chunkSize: 10000, // default: 1000
     },
   });

@@ -1,31 +1,29 @@
 ---
-title: "httpx"
-description: "httpx is a wrapper library around the native k6 http module"
-weight: 02
+title: 'httpx'
+description: 'httpx is a wrapper library around the native k6 http module'
 weight: 02
 ---
 
 # httpx
 
+{{< admonition type="note" >}}
+
+The source code for this library can be found in the [grafana/k6-jslib-httpx](https://github.com/k6io/k6-jslib-httpx) GitHub repository.
+
+{{< /admonition >}}
+
 The `httpx` module is an external JavaScript library that wraps around the native [k6/http](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http) module.
-It's a http client with features that are not yet available in the native module.
+It's an HTTP client with features that are not yet available in the native module.
 
-- ability to set http options globally (such as timeout)
-- ability to set default tags and headers that will be used for all requests
-- more user-friendly arguments to request functions (get, post, put take the same arguments)
+- Ability to set HTTP options globally (such as timeout).
+- Ability to set default tags and headers that will be used for all requests.
+- More user-friendly arguments to request functions (get, post, put take the same arguments).
 
-httpx module integrates well with the expect library.
-
-The source code is [on GitHub](https://github.com/k6io/k6-jslib-httpx).
-Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-httpx/issues).
+The `httpx` module integrates well with the expect library.
 
 {{< admonition type="caution" >}}
 
-**This library is in active development.**
-
-This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io).
-
-This documentation is for the only last version only. If you discover that some of the following doesn't work, you might be using an older version.
+This library is in active development. It's stable enough to be useful, but you can watch the [GitHub repository](https://github.com/k6io/k6-jslib-httpx) to be notified when a new version is released.
 
 {{< /admonition >}}
 
