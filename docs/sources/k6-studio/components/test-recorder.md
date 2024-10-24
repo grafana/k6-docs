@@ -13,7 +13,11 @@ The Test Recorder is the first component of k6 Studio. With it, you can start a 
 The Test Recorder window is composed of:
 
 1. **Test recording name**: The name of the test recording and HAR file. This is automatically generated, but you can rename it to help keep your recordings organized.
-2. **Test Recorder actions**: On the top-right you can see the action buttons for the Test Recorder. When you click **Record flow** from the k6 Studio, the app shows the **Start recording** button. After you start a recording, the app shows the **Stop recording** button. After you click **Stop recording**, you can see the **Discard and start over** and **Create test generator** buttons. If you open an existing recording, you can see the **New recording** and **Create test generator** buttons.
+2. **Test Recorder actions**: On the top-right you can see the action buttons for the Test Recorder. Depending on whether you're starting a recording or inspecting a recording, you might see:
+   - **Start recording** or **New recording**: Starts a new recording.
+   - **Stop recording**: Stops the existing recording.
+   - **Discard and start over**: Discard the existing recording and starts a new one.
+   - **Create test generator**: Creates a test generator from the selected test recording.
 3. **Test Recorder options**: Below the test recording name, you can see:
    - **Requests**: The total number of requests in the recording
    - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
