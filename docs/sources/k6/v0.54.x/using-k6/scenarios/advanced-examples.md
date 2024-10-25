@@ -204,9 +204,9 @@ export function apitest() {
 
 ## Run specific scenario via environment variable
 
-Utilizing an [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/#environment-variables) and a bit of code, you can run a specific scenario via command line as opposed to running all configured scenarios. By default, [k6 runs all scenarios listed in a file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#scenarios).
+k6 runs all [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#scenarios) listed in a test script by default. But, with some small code changes and using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/#environment-variables), you can tell k6 to only run a specific scenario via the command-line.
 
-The following provides an example of how to add the ability to run a specific scenario among multiple configured scenarios:
+The following example shows a test script that uses a `SCENARIO` environment variable, if it exists, to choose which scenario to execute:
 {{< code >}}
 
 ```javascript
@@ -229,7 +229,7 @@ const scenarios = {
 
 const { SCENARIO } = __ENV;
 export const options = {
-  // if a scenario is supplied via cli env, then run that scenario. Otherwise, run like normal
+  // if a scenario is passed via a CLI env variable, then run that scenario. Otherwise, run
   // using the pre-configured scenarios above.
   scenarios: SCENARIO ? { [SCENARIO]: scenarios[SCENARIO] } : scenarios,
   discardResponseBodies: true,
@@ -245,7 +245,7 @@ export default function () {
 
 {{< /code >}}
 
-Alternatively, slightly modifying this approach, it can instead be used as a skip feature. Reading from the custom environment variable allows calling a specific scenario via command line:
+Then from the command line, you could run the test script and only execute the `my_web_test` scenario by running:
 
 {{< code >}}
 
