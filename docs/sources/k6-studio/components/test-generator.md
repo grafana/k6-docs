@@ -10,11 +10,21 @@ The Test Generator takes the output of a test recording and gives you options to
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-![Screenshot](a)
+![k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token](/media/docs/k6-studio/screenshot-k6-studio-test-generator.png)
 
 The Test Recorder window is composed of:
 
-1. a
+1. **Test generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
+2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Recorder. From here you can click **Save Generator** to save changes to your test generator file, or click the menu icon to:
+   - **Validate script**: Opens the [Test Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
+   - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
+   - **Delete generator**: Deletes the selected test generator.
+3. **Test Generator options**: Below the test recording name, you can see:
+   - **Requests**: The total number of requests in the recording
+   - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
+   - **Filter**: A search box that allows you to filter the list of requests by URL, method (such as GET or POST), and status code.
+4. **Test rules list**: The list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily.
+5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
 
 ## Test options
 
