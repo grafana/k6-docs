@@ -19,14 +19,6 @@ cards:
       href: ./installation/
       description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more.
       height: 24
-    - title: Get started
-      href: ./get-started/
-      description: Discover how to plan and define your performance testing strategy with these guides.
-      height: 24
-    - title: Troubleshooting
-      href: ./troubleshooting/
-      description: Explore the k6 APIs through their documentation and examples.
-      height: 24
 ---
 
 {{< docs/hero-simple key="hero" >}}
