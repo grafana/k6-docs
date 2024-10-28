@@ -1,10 +1,10 @@
 ---
-title: 'Get started'
+title: 'Record your first script'
 description: 'Learn the basics of k6 Studio. Create a test recording, configure a test generator, and run a test script'
 weight: 300
 ---
 
-# Get started
+# Record your first script
 
 This tutorial shows how to create a recording, set up custom rules, and generate a test script using k6 Studio.
 
