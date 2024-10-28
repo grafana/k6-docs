@@ -21,11 +21,11 @@ cards:
       height: 24
     - title: Get started
       href: ./get-started/
-      description: Discover how to plan and define your performance testing strategy with these guides.
+      description: Get started with k6 Studio by recording a test, creating rules, and validating the generated script.
       height: 24
     - title: Troubleshooting
       href: ./troubleshooting/
-      description: Explore the k6 APIs through their documentation and examples.
+      description: Troubleshoot common issues with k6 Studio.
       height: 24
 ---
 
