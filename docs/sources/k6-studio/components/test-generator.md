@@ -95,7 +95,7 @@ The configuration fields are:
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be extracted or replaced.
   - **Regex**: Define the regular expression to match the value to be extracted or replaced.
 
-When creating or editing a custom rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a correlation rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
 ### Custom code rule
 
