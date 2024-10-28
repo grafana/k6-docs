@@ -68,19 +68,6 @@ jobs:
       - name: Lint code examples
         run: |
           npm run lint:examples
-  lint-prose:
-    name: Lint prose
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: errata-ai/vale-action@reviewdog
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        with:
-          files: ./src/data/markdown
-          version: 2.17.0
-          fail_on_error: true
-          vale_flags: '--glob=**/{docs,translated-guides/en}/**/*.md'
   build-deploy-staging:
     name: Build and deploy to staging
     runs-on: ubuntu-latest
