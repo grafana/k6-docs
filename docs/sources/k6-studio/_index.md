@@ -12,12 +12,12 @@ cards:
   title_class: pt-0 lh-1
   items:
     - title: Introduction
-      href: ./get-started/
-      description: Learn how to install the k6 CLI, run your first k6 test, and view metric results in the terminal.
+      href: ./introduction/
+      description: An overview of k6 Studio and its components.
       height: 24
     - title: Installation
       href: ./installation/
-      description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more.
+      description: Learn how to install k6 Studio.
       height: 24
     - title: Get started
       href: ./get-started/
