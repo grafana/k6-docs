@@ -51,7 +51,7 @@ The think time option allows you to configure a fixed or random delay, between g
 
 ### Test data
 
-The test data option allows you to define variables, which you can then use in your [custom code rules](#custom-code-rule).
+The test data option allows you to define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
 
@@ -69,6 +69,7 @@ The available rules are:
 
 - Verification rule
 - Correlation rule
+- Parameterization rule
 - Custom code rule
 
 You can add multiple correlation and custom code rules to your test generator.
@@ -91,11 +92,14 @@ The configuration fields are:
 
 - **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
 - **Target**: Select the headers, body, or URL path as the target for the extractor or replacer.
-- **Type**: Select Begin-End or Regex as the way to search for the value to be extracted or replaced.
+- **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be extracted or replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be extracted or replaced.
   - **Regex**: Define the regular expression to match the value to be extracted or replaced.
+  - **JSON**: Define the JSON path to match the value to be extracted or replaced.
 
 When creating or editing a correlation rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+
+### Parameterization rule
 
 ### Custom code rule
 
