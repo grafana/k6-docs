@@ -46,10 +46,22 @@ You can also view any [logs](https://grafana.com/docs/grafana-cloud/testing/k6/a
 
 You can use the Test Validator to validate scripts that are created outside k6 Studio as well:
 
+1. From the k6 Studio homepage, click **Validate script**.
+2. Click **Open external script**.
+
+Alternatively, from the Test Validator screen you can:
+
+1. Click the menu options icon on the top-right.
+2. Click **Open external script**.
+
+You can then select a script located outside of k6 Studio, and then click **Validate script** to execute one iteration of the test.
+
+If you want to view the script under the **Scripts** section of the k6 Studio application, you can:
+
 1. Open the k6-studio Scripts folder.
    - For macOS, that can be found in `~/Documents/k6-studio/Scripts`.
    - For Windows, that can be found in `C:\Users\<USERNAME>\Documents\k6-studio`.
    - If you have a script in k6 Studio already, you can right-click on it and click **Open containing folder**.
 2. Copy your script to the Scripts folder.
 
-After that, you should be able to see your test script in k6 Studio under **Scripts**. You can then open it, and click **Validate script**.
+After that, you should be able to see your test script in k6 Studio under **Scripts**.
