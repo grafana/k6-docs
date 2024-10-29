@@ -101,6 +101,20 @@ When creating or editing a correlation rule, you can use the **Rule preview** pa
 
 ### Parameterization rule
 
+The parameterization rule allows you to parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
+
+The configuration fields are:
+
+- **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
+- **Target**: Select the headers, body, or URL path as the target for the extractor or replacer.
+- **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be replaced.
+  - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
+  - **Regex**: Define the regular expression to match the value to be replaced.
+  - **JSON**: Define the JSON path to match the value to be replaced.
+- **Replace with**: Select **Text value** or **Variables** for the value to be used as a replacement for the request data. For **Variables**, make sure that you configure the variable value to be used under **Test options** -> **Test data**.
+
+When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+
 ### Custom code rule
 
 The custom code rule allows you to insert a custom JavaScript code snippet in your test script.
