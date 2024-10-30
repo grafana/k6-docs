@@ -24,7 +24,7 @@ cascade:
     products:
       - oss
   breadcrumb_start: 4
-  search_section: Grafana k6 studio
+  search_section: Grafana k6 Studio
   search_type: doc
   public_docs: true
   github_repo: https://github.com/grafana/k6-docs/
