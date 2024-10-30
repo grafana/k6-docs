@@ -19,6 +19,18 @@ cards:
       href: ./installation/
       description: Learn how to install k6 Studio.
       height: 24
+cascade:
+  labels:
+    products:
+      - oss
+  breadcrumb_start: 4
+  search_section: Grafana k6 studio
+  search_type: doc
+  public_docs: true
+  github_repo: https://github.com/grafana/k6-docs/
+  github_branch: main
+  github_dir: /docs/sources/k6-studio
+  replace_dir: docs/k6-studio/
 ---
 
 {{< docs/hero-simple key="hero" >}}
