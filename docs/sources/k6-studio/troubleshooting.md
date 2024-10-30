@@ -16,7 +16,7 @@ The proxy doesn't capture traffic when sent directly to `localhost`. To fix that
 127.0.0.1 myapp
 ```
 
-After, if you have an application running on port 8000, you can make requests in your browser at `myapp:8000`.
+After, if you have an application running on port 8000, you can make requests in your browser at `myapp:8000`, and they'll show up in k6 Studio.
 
 ## "Proxy failed to start" error
 
