@@ -7,7 +7,7 @@ hero:
   image: /media/docs/k6/GrafanaLogo_k6Studio_orange.svg
   width: 100
   height: 100
-  description: Grafana k6 Studio is an open-source desktop application for Mac and Windows designed to help you generate k6 test scripts.
+  description: Grafana k6 Studio is an open-source desktop application for macOS and Windows designed to help you generate k6 test scripts.
 cards:
   title_class: pt-0 lh-1
   items:
@@ -27,6 +27,18 @@ cards:
       href: ./troubleshooting/
       description: Troubleshoot common issues with k6 Studio.
       height: 24
+cascade:
+  labels:
+    products:
+      - oss
+  breadcrumb_start: 4
+  search_section: Grafana k6 Studio
+  search_type: doc
+  public_docs: true
+  github_repo: https://github.com/grafana/k6-docs/
+  github_branch: main
+  github_dir: /docs/sources/k6-studio
+  replace_dir: docs/k6-studio/
 ---
 
 {{< docs/hero-simple key="hero" >}}
