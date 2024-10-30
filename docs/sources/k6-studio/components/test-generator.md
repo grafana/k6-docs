@@ -22,13 +22,13 @@ The Test Recorder window is composed of:
 3. **Test Generator options**: Below the test recording name, you can see:
    - **Requests**: The total number of requests in the recording
    - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
-   - **Filter**: A search box that allows you to filter the list of requests by URL, method (such as GET or POST), and status code.
+   - **Filter**: A search box that lets you filter the list of requests by URL, method (such as GET or POST), and status code.
 4. **Test rules list**: The list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily.
 5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
 
 ## Test options
 
-The test options tab allows you to configure three separate parts of your test script:
+The test options tab lets you configure three separate parts of your test script:
 
 - Load profile
 - Think time
@@ -47,11 +47,11 @@ Each executor has different variables you can configure. For more details, refer
 
 ### Think time
 
-The think time option allows you to configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
+The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
 
 ### Test data
 
-The test data option allows you to define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
+The test data option lets you define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
 
@@ -84,7 +84,7 @@ For more details about checks, refer to [Checks](https://grafana.com/docs/k6/lat
 
 ### Correlation rule
 
-The correlation rule allows you to extract data from your test recording, and reuse it across your test script. This is a common use case when working with applications that have unique IDs that are generated for a request, and then are passed to every subsequent request, for example.
+The correlation rule lets you extract data from your test recording, and reuse it across your test script. This is a common use case when working with applications that have unique IDs that are generated for a request, and then are passed to every subsequent request, for example.
 
 The correlation rule includes an Extractor and a Replacer. They both have the same configuration options, but the Extractor can be used to find and extract the value you want to use across the script, and the Replacer can be used to find the places where you want to replace and use the extracted value.
 
@@ -101,7 +101,7 @@ When creating or editing a correlation rule, you can use the **Rule preview** pa
 
 ### Parameterization rule
 
-The parameterization rule allows you to parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
+The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
 
 The configuration fields are:
 
@@ -117,7 +117,7 @@ When creating or editing a parameterization rule, you can use the **Rule preview
 
 ### Custom code rule
 
-The custom code rule allows you to insert a custom JavaScript code snippet in your test script.
+The custom code rule lets you insert a custom JavaScript code snippet in your test script.
 
 The custom code rule has two options:
 
