@@ -17,7 +17,7 @@ cascade:
   public_docs: true
   github_repo: https://github.com/grafana/k6-docs/
   github_branch: main
-  github_dir: /docs/sources
+  github_dir: /docs/sources/k6
   replace_dir: docs/k6/
   JSLIB_AWS_VERSION: 0.12.3
 versioned: true
