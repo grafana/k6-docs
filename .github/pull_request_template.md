@@ -23,8 +23,6 @@ the code of conduct https://github.com/grafana/k6/blob/master/CODE_OF_CONDUCT.md
 - [ ] I have reflected my changes in the relevant folders of the two previous k6 versions of the documentation (if still applicable to previous versions).
 <!-- You can use the scripts/apply-patch scripts to help you port changes from one version folder to another. For more details, refer to [Use the `apply-patch` script](../CONTRIBUTING/README.md#use-the-apply-patch-script). -->
 
-<!-- 2. If updating the documentation for the next release of k6: -->
-- [ ] I have made my changes in the `docs/sources/k6/next` folder of the documentation.
 
 ## Related PR(s)/Issue(s)
 
