@@ -20,10 +20,10 @@ The Test Generator window is composed of:
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
 3. **Test Generator options**: Below the test generator name, you can see:
-   - **Add rule**: Adds a new rule that can be chosen from a list.
-   - **Test options**: Allows for configuration of the load executor, think time and test variables.
-   - **Allowed hosts**: Showcases how many hosts are currently allowed from the recording and allows for the selection of them.
-4. **Test rules list**: the list of test rules applied to this particular generator. The rules can be moved, you can see an overview of what they are working on and can click on them to edit.
+   - **Add rule**: Opens a list of rule types that you can add to the generator.
+   - **Test options**: Configure the load executor, think time, and test variables.
+   - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
+4. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
 5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
 
 ## Test options
@@ -124,14 +124,16 @@ The custom code rule has two options:
 - **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
 - **Placement**: Select between **Before matched requests** or **After matched requests**.
 
-### Rule Selectors
+### Rule selectors
 
 For correlation and parameterization rules, you can use the following selectors:
-- **Begin-end** - Match a value between two strings
-- **JSON** - Use dot notation to match a value in JSON payload or response body
-- **Regex** - Use a regular expression to match a value
 
-#### Begin-end Selector
+- **Begin-end**: Match a value between two strings.
+- **JSON**: Use dot notation to match a value in the JSON payload or response body.
+- **Regex**: Use a regular expression to match a value.
+
+#### Begin-end selector
+
 This selector is useful when your target value is between two known strings. For example, to match a value in a URL:
 
 ```
@@ -147,8 +149,9 @@ Begin: /products/
 End: /details
 ```
 
-#### JSON Selector
-This selector is ideal when your target value is in a JSON payload or response body. It uses simple dot notation to access nested properties. For example, to match values in this JSON:
+#### JSON selector
+
+This selector is ideal when your target value is in a JSON payload or response body. It uses dot notation to access nested properties. For example, in this JSON:
 
 ```json
 {
@@ -170,7 +173,7 @@ This selector is ideal when your target value is in a JSON payload or response b
 }
 ```
 
-To replace values, use the following configurations:
+You can replace values use the following configurations:
 
 ```
 # Replace nested object value
@@ -189,7 +192,8 @@ Type: JSON
 Path: variants.0.stock
 ```
 
-### Regex Selector
+### Regex selector
+
 When the previous selectors don't meet your needs, you can use regular expressions for more granular matching. For example, to match an authorization token in a header:
 
 ```
@@ -205,7 +209,11 @@ Type: Regex
 Regex: Bearer (.+)
 ```
 
-**Note**: The regex expression must include a capturing group `()` to specify the value you want to replace.
+{{< admonition type="note" >}}
+
+The regular expression must include a capturing group `()` to specify the value you want to replace.
+
+{{< /admonition >}}
 
 ## Validate and export script
 

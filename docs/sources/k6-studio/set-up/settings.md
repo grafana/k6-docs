@@ -26,8 +26,8 @@ The port number that the proxy recorder should listen to. By default, it's set t
 
 There are two configuration options for proxy mode:
 
-- **Regular**: default mode where k6 Studio proxy requests.
-- **Upstream**: this mode is useful when your system is already behind another proxy, so you need k6 Studio to forward requests to it instead.
+- **Regular**: The default mode where k6 Studio proxies requests.
+- **Upstream**: k6 Studio forwards requests to a server you specify. This mode is useful when your system is already behind another proxy, and you need k6 Studio to forward requests to it instead.
 
 If you choose the **Upstream** mode, you have to configure a **Server URL** value, and you can optionally provide authentication credentials and a certificate file.
 

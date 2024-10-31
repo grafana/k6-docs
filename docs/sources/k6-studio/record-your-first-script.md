@@ -121,8 +121,8 @@ You'll need a way to generate the script so that it knows to get this value at r
 To add a correlation rule:
 
 1. In k6 Studio, press **+ Add rule** and select **Correlation** from the entries.
-1. In the **Begin** input insert `csrfmiddlewaretoken" value="`.
-1. In the **End** input insert `"`.
+1. Under **Extractor**, in the **Begin** field, type `csrfmiddlewaretoken" value="`.
+1. In the **End** field, type `"`.
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-9-correlation-rule.png" >}}
 
