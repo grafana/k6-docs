@@ -6,7 +6,7 @@ weight: 05
 
 # generateKey
 
-The `generateKey()` generates a new cryptographic key and returns it as a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.
+The `generateKey()` generates a new cryptographic key and returns it as a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object or a [CryptoKeyPair](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokeypair) object that can be used with the Web Crypto API.
 
 ## Usage
 
@@ -28,20 +28,20 @@ generateKey(algorithm, extractable, keyUsages)
 
 ## Return Value
 
-A `Promise` that resolves with the generated key as a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object or a [CryptoKeyPair](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokeypair).
+A `Promise` that resolves with the generated key as a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object or a [CryptoKeyPair](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokeypair) object.
 
 ### Algorithm specific input
 
-|                        | HMAC                                                                                                                     | AES                                                                                                                    | ECDH                                                                                                                 | ECDSA                                                                                                                |
-| :--------------------- | :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
-| Parameters type to use | [`HmacKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/hmackeygenparams) | [`AesKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aeskeygenparams) | [`EcKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/eckeygenparams) | [`EcKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/eckeygenparams) |
-| Possible key usages    | `sign`, `verify`                                                                                                         | `encrypt`, `decrypt`                                                                                                   | `deriveKey`, `deriveBits`                                                                                            | `sign`, `verify`                                                                                                     |
+|                        | HMAC                                                                                                                     | AES                                                                                                                    | ECDH                                                                                                                 | ECDSA                                                                                                                | RSA-OAEP |	RSASSA-PKCS1-v1_5 |	RSA-PSS |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |----- |----- |----- |
+| Parameters type to use | [`HmacKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/hmackeygenparams) | [`AesKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/aeskeygenparams) | [`EcKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/eckeygenparams) | [`EcKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/eckeygenparams) | [`RSAHashedKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/rsahashedkeygenparams) | [`RSAHashedKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/rsahashedkeygenparams) | [`RSAHashedKeyGenParams`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/rsahashedkeygenparams) |
+| Possible key usages    | `sign`, `verify`                                                                                                         | `encrypt`, `decrypt`                                                                                                   | `deriveKey`, `deriveBits`                                                                                            | `sign`, `verify`                                                                                                     | `encrypt`, `decrypt` | `sign`, `verify` | `sign`, `verify` |
 
 ## Throws
 
 | Type          | Description                                                                                  |
 | :------------ | :------------------------------------------------------------------------------------------- |
-| `SyntaxError` | Raised when the `keyUsages` parameter is empty but the key is of type `secret` or `private`. |
+| `SyntaxError` | Raised when the `keyUsages` parameter is empty, but the key is of type `secret` or `private`. |
 
 ## Example
 
