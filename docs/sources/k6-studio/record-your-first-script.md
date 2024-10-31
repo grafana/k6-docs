@@ -22,7 +22,7 @@ In this tutorial, you will:
 To complete this tutorial, you'll need to:
 
 - Have a Windows or macOS machine.
-- [Install k6 Studio](https://grafana.com/docs/k6/latest/installation/).
+- [Install k6 Studio](https://grafana.com/docs/k6-studio/set-up/install/).
 - [Install Google Chrome](https://www.google.com/chrome/).
 
 ## Create a test recording
@@ -60,7 +60,7 @@ After you finish a recording, you can visualize the request and response data fo
 
 To view the request and response data for a request, click on the request you would like to inspect from the **Requests** list.
 
-![Extension graduation](/media/docs/k6-studio/screenshot-k6-studio-recording-request-response-panels.png)
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-recorder-2.png" alt="k6 Studio Test Recorder" >}}
 
 The Request and Response panels have tabs where you can view the headers, payload, or cookies for a request, and the headers, content, and cookies for a response. For the response content tab, you can also view it in different formats, such as the raw data, or a preview.
 
