@@ -53,7 +53,7 @@ cascade:
 
 {{< admonition type="note" >}}
 
-k6 Studio is in the [experimental stage](https://grafana.com/docs/release-life-cycle/). For bug reports or feedback, open an issue in the [k6 Studio GitHub repository](https://github.com/grafana/k6-studio/issues).
+k6 Studio is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the application being made generally available. For bug reports or feedback, open an issue in the [k6 Studio GitHub repository](https://github.com/grafana/k6-studio/issues).
 
 {{< /admonition >}}
 
