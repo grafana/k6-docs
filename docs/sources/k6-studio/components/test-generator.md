@@ -12,18 +12,18 @@ You can use it to define a list of hosts to allow or remove from your script, tw
 
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-2.png" alt="k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
 
-The Test Recorder window is composed of:
+The Test Generator window is composed of:
 
 1. **Test generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
 2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Recorder. From here you can click **Save Generator** to save changes to your test generator file, or click the menu icon to:
    - **Validate script**: Opens the [Test Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
-3. **Test Generator options**: Below the test recording name, you can see:
-   - **Requests**: The total number of requests in the recording
-   - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
-   - **Filter**: A search box that lets you filter the list of requests by URL, method (such as GET or POST), and status code.
-4. **Test rules list**: The list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily.
+3. **Test Generator options**: Below the test generator name, you can see:
+   - **Add rule**: Adds a new rule that can be chosen from a list.
+   - **Test options**: Allows for configuration of the load executor, think time and test variables.
+   - **Allowed hosts**: Showcases how many hosts are currently allowed from the recording and allows for the selection of them.
+4. **Test rules list**: the list of test rules applied to this particular generator. The rules can be moved, you can see an overview of what they are working on and can click on them to edit.
 5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
 
 ## Test options
@@ -123,6 +123,89 @@ The custom code rule has two options:
 
 - **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
 - **Placement**: Select between **Before matched requests** or **After matched requests**.
+
+### Rule Selectors
+
+For correlation and parameterization rules, you can use the following selectors:
+- **Begin-end** - Match a value between two strings
+- **JSON** - Use dot notation to match a value in JSON payload or response body
+- **Regex** - Use a regular expression to match a value
+
+#### Begin-end Selector
+This selector is useful when your target value is between two known strings. For example, to match a value in a URL:
+
+```
+https://example.com/products/1234/details
+```
+
+To replace `1234` with another value, use the following configuration:
+
+```
+Target: URL
+Type: Begin-end
+Begin: /products/
+End: /details
+```
+
+#### JSON Selector
+This selector is ideal when your target value is in a JSON payload or response body. It uses simple dot notation to access nested properties. For example, to match values in this JSON:
+
+```json
+{
+  "name": "Product name",
+  "details": {
+    "id": 1234
+  },
+  "tags": ["electronics", "sale"],
+  "variants": [
+    {
+      "color": "blue",
+      "stock": 5
+    },
+    {
+      "color": "red",
+      "stock": 3
+    }
+  ]
+}
+```
+
+To replace values, use the following configurations:
+
+```
+# Replace nested object value
+Target: Body
+Type: JSON
+Path: details.id
+
+# Replace array element
+Target: Body
+Type: JSON
+Path: tags.0
+
+# Replace nested array object value
+Target: Body
+Type: JSON
+Path: variants.0.stock
+```
+
+### Regex Selector
+When the previous selectors don't meet your needs, you can use regular expressions for more granular matching. For example, to match an authorization token in a header:
+
+```
+Headers
+Authorization: Bearer eyJhbGciOiJIUzI1NiI
+```
+
+To replace `eyJhbGciOiJIUzI1NiI` with another value, use the following configuration:
+
+```
+Target: Headers
+Type: Regex
+Regex: Bearer (.+)
+```
+
+**Note**: The regex expression must include a capturing group `()` to specify the value you want to replace.
 
 ## Validate and export script
 
