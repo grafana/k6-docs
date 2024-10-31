@@ -23,6 +23,10 @@ cards:
       href: ./record-your-first-script/
       description: Get started with k6 Studio by recording a test, creating rules, and validating the generated script.
       height: 24
+    - title: Components
+      href: ./components/
+      description: Understand how the Test Recorder, Test Generator, and Test Validator components work.
+      height: 24
     - title: Troubleshooting
       href: ./troubleshooting/
       description: Troubleshoot common issues with k6 Studio.
