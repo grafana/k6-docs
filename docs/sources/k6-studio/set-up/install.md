@@ -1,10 +1,10 @@
 ---
-title: 'Installation'
+title: 'Install k6 Studio'
 description: 'Learn how to download and install k6 Studio'
-weight: 200
+weight: 100
 ---
 
-# Installation
+# Install k6 Studio
 
 You can install k6 Studio on Windows and macOS.
 

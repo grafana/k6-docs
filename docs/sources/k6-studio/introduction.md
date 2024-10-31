@@ -8,9 +8,9 @@ weight: 100
 
 k6 Studio is a free, open source desktop application designed to help you create k6 test scripts using a visual interface.
 
-![k6 Studio homepage](/media/docs/k6-studio/screenshot-k6-studio-homepage.png)
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-homepage-2.png" alt="k6 Studio homepage" >}}
 
-[Grafana k6](https://grafana.com/docs/k6/latest/) is an open source performance testing tool that allows you to run JavaScript scripts to test your applications. One of the biggest challenges users face when they're getting started with k6 is generating test scripts from scratch, especially when working with applications that you might not have easy access to the source code or documentation.
+[Grafana k6](https://grafana.com/docs/k6/latest/) is an open source performance testing tool that you can use to run JavaScript scripts to test your applications. One of the biggest challenges users face when they're getting started with k6 is generating test scripts from scratch, especially when working with applications that you might not have easy access to the source code or documentation.
 
 For users that have less experience with JavaScript or k6, k6 Studio can help you create a script from a browser session and allow you to quickly get started running test scripts to test your application. For developers who are already familiar with k6, k6 Studio can optimize the time it takes to create a new script, and give you tools to validate and debug your scripts outside of the CLI.
 

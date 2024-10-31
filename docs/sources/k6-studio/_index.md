@@ -16,8 +16,20 @@ cards:
       description: An overview of k6 Studio and its components.
       height: 24
     - title: Installation
-      href: ./installation/
+      href: ./set-up/install/
       description: Learn how to install k6 Studio.
+      height: 24
+    - title: Record your first script
+      href: ./record-your-first-script/
+      description: Get started with k6 Studio by recording a test, creating rules, and validating the generated script.
+      height: 24
+    - title: Components
+      href: ./components/
+      description: Understand how the Test Recorder, Test Generator, and Test Validator components work.
+      height: 24
+    - title: Troubleshoot
+      href: ./troubleshoot/
+      description: Troubleshoot common issues with k6 Studio.
       height: 24
 cascade:
   labels:
