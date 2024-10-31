@@ -1,10 +1,10 @@
 ---
-title: 'Troubleshooting'
+title: 'Troubleshoot'
 description: 'Common issues with k6 Studio and how to fix them'
 weight: 600
 ---
 
-# Troubleshooting
+# Troubleshoot
 
 This section details common issues with k6 Studio and how to fix them.
 
