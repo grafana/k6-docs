@@ -35,38 +35,35 @@ This tutorial uses the `test-api.k6.io` service, which is a public shared enviro
 
 To create a test recording:
 
-- Open the k6 Studio desktop application.
-- Click **Record Flow**.
-- In the input field insert "test-api.k6.io"
-- Click **Start recording**. You should see a Google Chrome window open after a few seconds, and the **Requests** within a default group in the k6 Studio application.
-- In k6 Studio, click the edit button near the group name **Default group**, name it "Homepage", and press **Enter**.
-- Next click **Create group**, name it “Go to Create Crocs”, and press **Enter**. Groups can help organize your test scripts so they're easier to edit and maintain in the future, as well as it gives you timing metrics for each group in your test script.
-- In the browser window, under **Private APIs**, click on **/my/crocodiles** next to the **POST** method. You should see an authentication dialog box in the next screen.
-- For username, enter "studio-user". For password, enter "password".
+1. Open the k6 Studio desktop application.
+1. Click **Record Flow**.
+1. Type "test-api.k6.io" under **Starting URL**.
+1. Click **Start recording**. You should see a Google Chrome window open after a few seconds, and the **Requests** header in the k6 Studio application.
+1. In k6 Studio, click the edit button next to **Default group**, rename it to "Homepage", and press **Enter**.
+1. Next click **Create group**, name it “Go to Create Crocs”, and press **Enter**. Groups can help organize your test scripts so they're easier to edit and maintain in the future, and give you timing metrics for each group in your test script.
+1. In the browser window, under **Private APIs**, click on **/my/crocodiles** next to the **POST** method. You should see an authentication dialog box in the next screen.
+1. For username, enter "studio-user". For password, enter "password".
 
 ### Create a crocodile
 
-In this next step, we'll use the form for the test service to create a crocodile.
+In this next step, you'll use the form for the test service to create a crocodile.
 
 To create a crocodile:
 
-- In k6 Studio, click **Create group**, name it "Create Croc", and press **Enter**.
-- In the browser window, you should have successfully authenticated in the previous step and be able to see the **My Crocodiles** page. Fill out the HTML form section:
-  - For **Name**, enter "Bert".
-  - For **Sex**, enter "Male".
-  - For **Date of birth**, enter "01/01/1970".
-- Click **POST** to submit the API request.
-- In k6 Studio, click **Stop recording**.
+1. In k6 Studio, click **Create group**, name it "Create Croc", and press **Enter**.
+1. In the browser window, you should have successfully authenticated in the previous step and be able to see the **My Crocodiles** page. Fill out the **Name**, **Sex**, and **Date of birth** fields of the HTML form section.
+1. Click **POST** to submit the API request.
+1. In k6 Studio, click **Stop recording**.
 
 After you click **Stop recording**, k6 Studio saves the recording as a HAR file.
 
 ### Rename the recording
 
-With the sidebar it is possible to change the name of the recording after it's created, let's try that now!
+In the sidebar, you can change the name of the recording after it's created. To do that:
 
-- In k6 Studio, right click on the sidebar the recording we just created
-- Rename it to `createc crocs`
-- Press **Enter** to confirm the changes.
+1. In k6 Studio, right click on the recording you just created in the left sidebar.
+1. Rename the recording to `createc crocs`.
+1. Press **Enter** to confirm the changes.
 
 ### Inspect response and request data
 
@@ -83,15 +80,17 @@ The Request and Response panels have tabs where you can view the headers, payloa
 To generate a script from a test recording:
 
 - If you still have the test recording open from the last step, click **Create test generator** on the top-right.
-- You will be prompt to select the hosts to use from the recording for generating the script, select `test-api.k6.io` and press **Continue**.
+- You can also click **+** next to Test Generator on the left side, and then select your recording on the right side under **Requests**.
 
-A Generator file has been created that allows for modification of the script via the user interface without having the need to dive into code.
+A dialog box shows up that lets you select the hosts to use from the recording for generating the script. Select `test-api.k6.io` and press **Continue**.
 
-We have a familiar element on the right, we can still inspect the recording from this view. Meanwhile on the left we see **Test Rules** with one already create for us called **Verification**.
+The Test Generator lets you generate and modify a k6 test script via the user interface, without having to write JavaScript code.
+
+On the right side, you can inspect the recording from this view, similar to the Test Recorder. On the left side, you can see the list of **Test rules**, with a **Verification rule** already added. And on the right side, you can inspect the recording, similar to the **Test Recorder** view.
 
 **Test rules** are objects that we can add to our generator file to modify the script generated from the recording, the default rule already present (Verification) has modified our script to add [Checks](https://grafana.com/docs/k6/latest/using-k6/checks/). These checks will verify when we run our script that the status codes we receive from responses are the same as the one we previously recorded. That's a nice safety measure for our system that we get for free!
 
-If you feel adventorous you can inspect the script that would be generated by selecting the **Script** tab in the right panel where we currently see requests.
+If you feel adventurous you can inspect the script that would be generated by selecting the **Script** tab in the right panel where we currently see requests.
 
 ## Correlate dynamic data
 
@@ -100,9 +99,9 @@ If we inspect the data of the **POST** request we can see that it makes use of a
 This is a token that was generated from a previous request and that was present in the form for security reasons, this is an example of a dynamic value that we can't possibly know when generating the script because that value is generated by the server when we reach the form and it expects it back when we send the form.
 We will need a way to generate our script in a way that it knows to get this value at runtime and replace the value from the recording from this extraction, the name of the rule for this operation is **Correlation Rule**.
 
-- In k6 Studio, press **+ Add rule** and select **Correlation** from the entries.
-- In the **Begin** input insert `csrfmiddlewaretoken" value="`
-- In the **End** input insert `""`
+1. In k6 Studio, press **+ Add rule** and select **Correlation** from the entries.
+1. In the **Begin** input insert `csrfmiddlewaretoken" value="`.
+1. In the **End** input insert `""`.
 
 We can notice that a new panel appeared called **Rule preview**, this panel is showing us the request matches for extraction of the value, the actual extracted value and finally the matched requests where this value was replaced with the runtime correlation.
 That's a lot to take in but this panel it's really powerful and updated in real-time while you edit your rule. It's useful to see when you actually have a match and where you are actually replacing values. For the extraction, at this moment only the first request matched will extract the value. For replacing it, by default the rule will try to find occurences of that value and automatically replace those, if you need more control over it you can open the toggle to customize the replacer selector.
