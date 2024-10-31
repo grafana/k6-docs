@@ -101,7 +101,7 @@ We will need a way to generate our script in a way that it knows to get this val
 
 1. In k6 Studio, press **+ Add rule** and select **Correlation** from the entries.
 1. In the **Begin** input insert `csrfmiddlewaretoken" value="`.
-1. In the **End** input insert `""`.
+1. In the **End** input insert `"`.
 
 We can notice that a new panel appeared called **Rule preview**, this panel is showing us the request matches for extraction of the value, the actual extracted value and finally the matched requests where this value was replaced with the runtime correlation.
 That's a lot to take in but this panel it's really powerful and updated in real-time while you edit your rule. It's useful to see when you actually have a match and where you are actually replacing values. For the extraction, at this moment only the first request matched will extract the value. For replacing it, by default the rule will try to find occurences of that value and automatically replace those, if you need more control over it you can open the toggle to customize the replacer selector.
