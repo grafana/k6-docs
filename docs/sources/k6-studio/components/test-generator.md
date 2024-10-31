@@ -10,7 +10,7 @@ The Test Generator takes the output of a test recording and gives you options to
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-![k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token](/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels.png)
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-2.png" alt="k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
 
 The Test Recorder window is composed of:
 
