@@ -1,7 +1,7 @@
 name: Validate documentation
 on:
   pull_request:
-    paths: ["docs/sources/**"]
+    paths: ["docs/sources/k6/**"]
   workflow_dispatch:
 jobs:
   doc-validator:
@@ -15,9 +15,9 @@ jobs:
         run: >
           doc-validator
           '--skip-checks=^image.+$'
-          docs/sources
+          docs/sources/k6
           /docs/k6
-          | grep -v "The 'description' parameter in the front matter must be present."
+          | awk '!/"The '"'"'description'"'"' parameter in the front matter must be present."/'
           | reviewdog
           -f=rdjsonl
           --fail-on-error

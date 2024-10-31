@@ -10,7 +10,7 @@ The Test Generator takes the output of a test recording and gives you options to
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-![k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token](/media/docs/k6-studio/screenshot-k6-studio-test-generator.png)
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-2.png" alt="k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
 
 The Test Recorder window is composed of:
 
@@ -22,13 +22,13 @@ The Test Recorder window is composed of:
 3. **Test Generator options**: Below the test recording name, you can see:
    - **Requests**: The total number of requests in the recording
    - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
-   - **Filter**: A search box that allows you to filter the list of requests by URL, method (such as GET or POST), and status code.
+   - **Filter**: A search box that lets you filter the list of requests by URL, method (such as GET or POST), and status code.
 4. **Test rules list**: The list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily.
 5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
 
 ## Test options
 
-The test options tab allows you to configure three separate parts of your test script:
+The test options tab lets you configure three separate parts of your test script:
 
 - Load profile
 - Think time
@@ -47,11 +47,11 @@ Each executor has different variables you can configure. For more details, refer
 
 ### Think time
 
-The think time option allows you to configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
+The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
 
 ### Test data
 
-The test data option allows you to define variables, which you can then use in your [custom code rules](#custom-code-rule).
+The test data option lets you define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
 
@@ -69,6 +69,7 @@ The available rules are:
 
 - Verification rule
 - Correlation rule
+- Parameterization rule
 - Custom code rule
 
 You can add multiple correlation and custom code rules to your test generator.
@@ -83,7 +84,7 @@ For more details about checks, refer to [Checks](https://grafana.com/docs/k6/lat
 
 ### Correlation rule
 
-The correlation rule allows you to extract data from your test recording, and reuse it across your test script. This is a common use case when working with applications that have unique IDs that are generated for a request, and then are passed to every subsequent request, for example.
+The correlation rule lets you extract data from your test recording, and reuse it across your test script. This is a common use case when working with applications that have unique IDs that are generated for a request, and then are passed to every subsequent request, for example.
 
 The correlation rule includes an Extractor and a Replacer. They both have the same configuration options, but the Extractor can be used to find and extract the value you want to use across the script, and the Replacer can be used to find the places where you want to replace and use the extracted value.
 
@@ -91,15 +92,32 @@ The configuration fields are:
 
 - **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
 - **Target**: Select the headers, body, or URL path as the target for the extractor or replacer.
-- **Type**: Select Begin-End or Regex as the way to search for the value to be extracted or replaced.
+- **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be extracted or replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be extracted or replaced.
   - **Regex**: Define the regular expression to match the value to be extracted or replaced.
+  - **JSON**: Define the JSON path to match the value to be extracted or replaced.
 
-When creating or editing a custom rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a correlation rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+
+### Parameterization rule
+
+The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
+
+The configuration fields are:
+
+- **Filter**: Define a request path that this filter applies to. Plain text and regular expression are supported.
+- **Target**: Select the headers, body, or URL path as the target for the extractor or replacer.
+- **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be replaced.
+  - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
+  - **Regex**: Define the regular expression to match the value to be replaced.
+  - **JSON**: Define the JSON path to match the value to be replaced.
+- **Replace with**: Select **Text value** or **Variables** for the value to be used as a replacement for the request data. For **Variables**, make sure that you configure the variable value to be used under **Test options** -> **Test data**.
+
+When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
 ### Custom code rule
 
-The custom code rule allows you to insert a custom JavaScript code snippet in your test script.
+The custom code rule lets you insert a custom JavaScript code snippet in your test script.
 
 The custom code rule has two options:
 

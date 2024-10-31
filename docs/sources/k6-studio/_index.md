@@ -7,26 +7,42 @@ hero:
   image: /media/docs/k6/GrafanaLogo_k6Studio_orange.svg
   width: 100
   height: 100
-  description: Grafana k6 Studio is an open-source desktop application for Mac and Windows designed to help you generate k6 test scripts.
+  description: Grafana k6 Studio is an open-source desktop application for macOS and Windows designed to help you generate k6 test scripts.
 cards:
   title_class: pt-0 lh-1
   items:
     - title: Introduction
-      href: ./get-started/
-      description: Learn how to install the k6 CLI, run your first k6 test, and view metric results in the terminal.
+      href: ./introduction/
+      description: An overview of k6 Studio and its components.
       height: 24
     - title: Installation
-      href: ./installation/
-      description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more.
+      href: ./set-up/install/
+      description: Learn how to install k6 Studio.
       height: 24
-    - title: Get started
-      href: ./get-started/
-      description: Discover how to plan and define your performance testing strategy with these guides.
+    - title: Record your first script
+      href: ./record-your-first-script/
+      description: Get started with k6 Studio by recording a test, creating rules, and validating the generated script.
+      height: 24
+    - title: Components
+      href: ./components/
+      description: Understand how the Test Recorder, Test Generator, and Test Validator components work.
       height: 24
     - title: Troubleshooting
       href: ./troubleshooting/
-      description: Explore the k6 APIs through their documentation and examples.
+      description: Troubleshoot common issues with k6 Studio.
       height: 24
+cascade:
+  labels:
+    products:
+      - oss
+  breadcrumb_start: 4
+  search_section: Grafana k6 Studio
+  search_type: doc
+  public_docs: true
+  github_repo: https://github.com/grafana/k6-docs/
+  github_branch: main
+  github_dir: /docs/sources/k6-studio
+  replace_dir: docs/k6-studio/
 ---
 
 {{< docs/hero-simple key="hero" >}}
