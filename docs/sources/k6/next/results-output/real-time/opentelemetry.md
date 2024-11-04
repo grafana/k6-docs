@@ -41,6 +41,8 @@ The following options can be configured:
 
 | Name                               | Value                                                                                                                                                               |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `K6_OTEL_SERVICE_NAME`             | The name of the service to use for the metrics exporting. Default value is `k6`.                                                                                    |
+| `K6_OTEL_SERVICE_VERSION`          | The version of the service to use for the metrics exporting. Default is version of the k6, e.g. `v0.54.0`                                                           |
 | `K6_OTEL_METRIC_PREFIX`            | Metric prefix. Default is empty.                                                                                                                                    |
 | `K6_OTEL_FLUSH_INTERVAL`           | How frequently to flush metrics from k6 metrics engine. Default is `1s`.                                                                                            |
 | `K6_OTEL_EXPORT_INTERVAL`          | Configures the intervening time between metrics exports. Default is `10s`.                                                                                          |
