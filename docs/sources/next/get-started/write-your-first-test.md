@@ -6,47 +6,72 @@ weight: 02
 
 # Write your first test
 
-k6 is a reliability testing tool. It helps developers simulate realistic user behavior and test how their systems behaves as a result. Writing tests in k6 allows you to identify issues such as slow response times or system failures before they occur in production.
+k6 is a reliability testing tool. It helps developers simulate realistic user behavior and test how their systems behave as a result. Writing tests in k6 allows you to identify potential issues, such as slow response times or system failures, before they occur in production.
 
 The goal of your test can vary. You might want to check performance, reliability, or scalability. Depending on your goal, your script may need different configurations, such as simulating many users, or running tests for a long time. (For more details, see our documentation on [reliability testing types](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/)).
 
-k6 uses JavaScript (or [TypeScript](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/#experimental-enhanced-mode)) to define the test's behavior. This makes it accessible to many developers. By writing scripts, you control what the test does and how it behaves.
+k6 tests are written using the JavaScript (or [TypeScript](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/#experimental-enhanced-mode)) programming language, making it accessible to developers, and easy to integrate in existing codebases and projects. By writing k6 test scripts, you control what the k6 does, the action it performs, and how it behaves.
 
-Follow along your first test script, and start testing the reliability of your application.
+Follow along and learn how to write your first test script, and start testing the reliability of your application.
 
 ## Before you start
 
-To write k6 scripts, basic knowledge of JavaScript or TypeScript is recommended. If you’re not familiar with these languages, you can use [k6 Studio](https://grafana.com/docs/k6/<K6_VERSION>/k6-studio/) to automatically generate tests without writing code, or any of our [test authoring methods](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/).
+To write k6 scripts, basic knowledge of JavaScript or TypeScript is recommended. If you're unfamiliar with these languages, check out [k6 Studio](https://grafana.com/docs/k6/<K6_VERSION>/k6-studio/), which helps users generate tests without writing code. Alternatively, explore our [test authoring methods](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/).
 
-Make sure k6 is installed on your system. If it’s not, follow our [set up guide](https://grafana.com/docs/k6/<K6_VERSION>/set-up/).
+Make sure k6 is installed on your system by following our [set up guide](https://grafana.com/docs/k6/<K6_VERSION>/set-up/).
 
-Finally, you’ll also need a code editor to write your scripts. We recommend using VS Code or any other editor you’re comfortable with. See our [guide for setting up your editor](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-your-code-editor/) for more details.
+Finally, you’ll also need a code editor to write your scripts. k6 is well supported in editors such as [Visual Studio Code](https://code.visualstudio.com/) and [JetBrains editors](https://www.jetbrains.com/), see our [guide for setting up your editor](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-your-code-editor/) for more details.
 
 ## Basic structure of a k6 test
 
-Every k6 test script follows a basic structure, revolving around a few core components:
+For k6 to be able to interpret and execute your test, every k6 script follows a common structure, revolving around a few core components:
 
-1. **Default function**: This is where the test logic resides. It defines what your test will do and how it will behave during execution.
-2. **Imports**: You can import additional [k6 modules](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/) or [JavaScript libraries (jslibs)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/) to extend your script’s functionality, such as making HTTP requests or simulating browser interactions. Note that k6 is not built upon NodeJS, and uses instead its own JavaScript runtime, and although it might be compatible with some npm modules, we do not guarantee it.
-3. **Options (optional)**: Enable you to configure the test conditions, like defining the number of virtual users, test duration, or setting performance thresholds. See our [options documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/) for more details.
-4. **Lifecycle functions (optional)**: These allow you to write code that will be run before and after the test, such as setting up test data or processing results.
+1. **Default function**: This is where the test logic resides. It defines what your test will do and how it will behave during execution. It should be exported as the default function in your script.
+2. **Imports**: You can import additional [k6 modules](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/) or [JavaScript libraries (jslibs)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/) to extend your script’s functionality, such as making HTTP requests or simulating browser interactions. Note that k6 is not built upon NodeJS, and instead uses its own JavaScript runtime. Compatibility with some npm modules may vary.
+3. **Options (optional)**: Enable you to configure the execution of the test, such as defining the number of virtual users, the test duration, or setting performance thresholds. See our [options documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/) for more details.
+4. **Lifecycle operations (optional)**: Because your test might need run code before and/or after the execution of the test logic, [lifecycle operations](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/) allow you to write code, either as predefined functions, or within specific code scopes, that will be executed at different stages of the test execution.
 
 ### Writing your first test script
 
-Let’s walk through creating a simple test:
+Let’s walk through creating a simple test which performs 10 `GET` HTTP requests to a URL and waits for 1 second between requests. This script will help you understand the basic structure of a k6 test script.
 
-1. **Create the test file**: Open your code editor and create a new file named `test.js`.
-2. **Write a basic test**: Here’s a simple script that makes a GET request to a URL and simulates waiting between requests.
+1. **Create a test file**: A test file can be named anything you like, and live wherever you see fit in your project, but it should have a `.js` or `.ts` extension. In this example, we'll define a JavaScript file, and call it `my-first-test.js`.
+   ```bash
+   touch my-first-test.js
+   ```
+2. **Import k6 modules**: As our end goal here is to perform HTTP requests, import the k6 `http` module at the top of the file. Furthermore, as we want to simulate a real-world scenario, we'll also import the `sleep` function from the `k6` module.
 
    ```javascript
-   // Import k6 modules exposing additional functionality such as performing
-   // HTTP requests and introducing delays.
+   // Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
+   import http from 'k6/http';
+
+   // Import the sleep function to introduce delays. From this point, you can use the `sleep` function to introduce delays in your test script.
+   import { sleep } from 'k6';
+   ```
+
+3. **Define options**: As we aim to perform 10 HTTP requests, we will define an options block to configure the test execution. In this case, we will set the number of iterations to 10 to instruct k6 to execute our default function 10 times. Right beneath the imports, add the following code:
+
+   ```javascript
    import http from 'k6/http';
    import { sleep } from 'k6';
 
-   // The default exported function is gonna be picked up by k6 as the entry point
-   // for the test script. It will be executed repeated in "iterations" for the whole
-   // duration of the test.
+   export const options = {
+     // Define the number of iterations for the test
+     iterations: 10,
+   };
+   ```
+
+4. **Define a default exported function to hold our test logic**: The default exported function is the entry point for the test script. It will be executed repeatedly the number of times we defined with the `iterations` option. In this function, we will make a `GET` request to a URL and introduce a 1-second delay between requests. Add the following code to your script:
+
+   ```javascript
+   import http from 'k6/http';
+   import { sleep } from 'k6';
+
+   export const options = {
+     iterations: 10,
+   };
+
+   // The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeated in "iterations" for the whole duration of the test.
    export default function () {
      // Make a GET request to the target URL
      http.get('https://test-api.k6.io');
@@ -56,19 +81,17 @@ Let’s walk through creating a simple test:
    }
    ```
 
-3. **Explanation**:
-   - The http module is used to make HTTP requests, in this case, a simple GET request to `https://test-api.k6.io`. You can replace this with your own API or website URL.
-   - The `sleep(1)` function pauses for 1 second after each request, mimicking real-world user behavior where not every action happens instantly.
-
 ### Going a bit further
 
-Once you’re comfortable with this basic script, there are many ways to extend its functionality:
+Once comfortable with this basic script, you can extend its functionality in many ways. Here are a few ideas to get you started:
 
 1. _Multiple requests_: You can add more `http.get()` or `http.post()` requests to simulate more complex user flows.
 2. _Using TypeScript_: If you prefer TypeScript, k6 supports it too. You can learn more in our [TypeScript guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/#experimental-enhanced-mode).
 3. _Thresholds, checks, and metrics_: You can add conditions to monitor performance. For example, you can set thresholds to ensure the response time doesn’t exceed a certain limit. Learn more about thresholds and checks in our documentation.
-4. _Browser tests_: You can use the browser module to simulate user interactions like clicking buttons or filling out forms. This is useful for testing web applications. Learn more about browser tests in our [documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/).
+4. _Browser tests_: Use the browser module to simulate user interactions like clicking buttons or filling out forms. This is useful for testing web applications. Learn more about browser tests in our [documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/).
+
+Furthermore, to speed up the process of putting together a k6 test script in the future, you can use the k6 to generate a basic script like the one we've written above using the `k6 new` command. Try it out!
 
 ## Next Steps
 
-Now that you’ve written your first k6 test script, it’s time to run it. Head over to the [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) page to learn how to execute your script and view the results.
+Now that you’ve written your first k6 test script, it’s time to run it. Visit our [Running k6](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6/) page to learn how to execute your script and analyze the results.
