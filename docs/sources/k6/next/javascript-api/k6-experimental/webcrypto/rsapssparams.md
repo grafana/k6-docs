@@ -10,10 +10,10 @@ The `RsaPssParams` represents the object that should be passed as the algorithm 
 
 ## Properties
 
-| Property | Type     | Description                                                                                           |
-| :------- | :------- | :---------------------------------------------------------------------------------------------------- |
-| name     | `string` | An algorithm name. Should be `RSA-PSS`.                                                                 |
-| saltLength     | `number` | A long integer representing the length of the random salt to use, in bytes. |
+| Property   | Type     | Description                                                                 |
+| :--------- | :------- | :-------------------------------------------------------------------------- |
+| name       | `string` | An algorithm name. Should be `RSA-PSS`.                                     |
+| saltLength | `number` | A long integer representing the length of the random salt to use, in bytes. |
 
 {{< admonition type="caution" >}}
 
