@@ -18,7 +18,7 @@ With the Streams API support in k6, you can start processing raw data with Javas
 
 ## API Overview
 
-| Class                                                                                                           | Description                           |
+| Class                                                                                                            | Description                           |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | [ReadableStream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream) | Represents a readable stream of data. |
 
@@ -31,10 +31,7 @@ import { open } from 'k6/experimental/fs';
 import { ReadableStream } from 'k6/experimental/streams';
 
 // Open a csv file containing the data to be read
-let file;
-(async function () {
-  file = await open('./data.csv');
-})();
+const file = await open('./data.csv');
 
 export default async function () {
   let lineReaderState;
