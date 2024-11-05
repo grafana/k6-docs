@@ -22,10 +22,7 @@ The `FileInfo` class represents information about a [file](https://grafana.com/d
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
-let file;
-(async function () {
-  file = await open('bonjour.txt');
-})();
+const file = await open('bonjour.txt');
 
 export default async function () {
   // Retrieve information about the file

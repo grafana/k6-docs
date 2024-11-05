@@ -35,14 +35,7 @@ The module exports functions and objects to interact with the file system:
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
-// k6 doesn't support async in the init context. We use a top-level async function for `await`.
-//
-// Each Virtual User gets its own `file` copy.
-// So, operations like `seek` or `read` won't impact other VUs.
-let file;
-(async function () {
-  file = await open('bonjour.txt');
-})();
+const file = await open('bonjour.txt');
 
 export default async function () {
   // Seek to the beginning of the file
