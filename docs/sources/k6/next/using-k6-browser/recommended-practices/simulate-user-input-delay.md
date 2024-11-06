@@ -79,7 +79,7 @@ export default async function () {
   const browserContext = browser.context();
   const [newTab] = await Promise.all([
     browserContext.waitForEvent('page'),
-    await page.locator('a[href="/my_messages.php"]').click(),
+    page.locator('a[href="/my_messages.php"]').click(),
   ]);
 
   await page.keyboard.up('ControlOrMeta');
