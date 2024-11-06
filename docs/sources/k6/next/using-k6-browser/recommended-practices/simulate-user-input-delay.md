@@ -14,7 +14,7 @@ While using the `sleep` or `page.waitForTimeout` functions to wait for element s
 
 {{< /admonition >}}
 
-# What is `sleep`?
+## What is `sleep`?
 
 [sleep](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/sleep) is a first class function built into k6. It's main use is to _"suspend VU execution for the specified duration"_ which is most useful when you want to simulate user input delay, such as:
 
@@ -30,7 +30,7 @@ The browser module predominantly provides asynchronous APIs, so it's best to avo
 
 {{< /admonition >}}
 
-# What is `wait*`?
+## What is `wait*`?
 
 In the browser modules there are various asynchronous APIs that can be used to wait for certain states:
 
@@ -43,7 +43,7 @@ In the browser modules there are various asynchronous APIs that can be used to w
 | [page.waitForTimeout](#pagewaitfortimeout)                 | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
 | [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
 
-## browserContext.waitForEvent
+### browserContext.waitForEvent
 
 [browserContext.waitForEvent](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/waitforevent) is used when waiting for specific events to fire, which then returns the element associated to that event. At the moment the only event that is available to use is `page`. It can be useful when you want to track and retrieve a new tab opening. When working with a predicate function, it can be used to wait for a specific page to open before returning `true`.
 
@@ -98,7 +98,7 @@ export default async function () {
 
 {{< /code >}}
 
-## page.waitForFunction
+### page.waitForFunction
 
 [page.waitForFunction](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforfunction) is useful when you want more control over when a test progresses with a javascript function that returns true when a condition (or many conditions) is met. It can be used to poll for changes in the DOM or non-DOM elements and variables.
 
@@ -154,7 +154,7 @@ export default async function () {
 
 {{< /code >}}
 
-## page.waitForLoadState
+### page.waitForLoadState
 
 [page.waitForLoadState](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate) is useful when there’s no explicit navigation, but you need to wait for the page or network to settle. This is mainly used when working with single-page applications or when no full page reloads happen.
 
@@ -195,7 +195,7 @@ export default async function () {
 
 {{< /code >}}
 
-## page.waitForNavigation
+### page.waitForNavigation
 
 [page.waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation) is a very useful API when performing other actions that could start a page navigation, and they don't automatically wait for the navigation to end. Usually, you'll find it in our examples with a `click` API call. Note that [goto](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/goto) is an example of an API that _doesn't_ require `waitForNavigation` since it will automatically wait for the navigation to complete before returning.
 
@@ -241,7 +241,7 @@ export default async function () {
 
 {{< /code >}}
 
-## locator.waitFor
+### locator.waitFor
 
 [locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state. For example, if elements load after some delay due to async calls, or because of slow JavaScript execution.
 
@@ -276,7 +276,7 @@ export default async function () {
 
 {{< /code >}}
 
-## page.waitForTimeout
+### page.waitForTimeout
 
 [page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#What-is-`sleep`), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
 
