@@ -40,8 +40,8 @@ In the browser modules there are various asynchronous APIs that can be used to w
 | [page.waitForFunction](#pagewaitforfunction)               | Waits for the given function to return a truthy value.                      |
 | [page.waitForLoadState](#pagewaitforloadstate)             | Waits for the specified page life cycle event.                              |
 | [page.waitForNavigation](#pagewaitfornavigation)           | Waits for the navigation to complete after one starts.                      |
-| [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
 | [page.waitForTimeout](#pagewaitfortimeout)                 | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
+| [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
 
 ## browserContext.waitForEvent
 
