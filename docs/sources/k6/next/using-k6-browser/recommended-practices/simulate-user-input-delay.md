@@ -278,7 +278,7 @@ export default async function () {
 
 ### page.waitForTimeout
 
-[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#What-is-`sleep`), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
+[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#whatissleep), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
 
 {{< code >}}
 
