@@ -255,7 +255,7 @@ Last but not least, set up proper instrumentation of the SUT and understand the 
 
 Performance testing results can highlight poor performance, such as slow responses. However, it does not show what happens internally on the SUT, such as a slow SQL query or CPU and memory saturation.
 
-To bridge the gap, work out a way to correlate testing results with how you instrument your infrastructure and application code. For instance, connecting or building custom dashboards with test results or using [trace data from your tests](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing).
+To bridge the gap, work out a way to correlate testing results with how you instrument your infrastructure and application code. For instance, connecting or building custom dashboards with test results or using [trace data from your tests](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/).
 
 Continuous testing helps detect issues and performance degradations, whether from test results or system data. Proper observability will help to find the root cause.
 
