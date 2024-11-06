@@ -34,13 +34,69 @@ The browser module predominantly provides asynchronous APIs, so it's best to avo
 
 In the browser modules there are various asynchronous APIs that can be used to wait for certain states:
 
-| Method                                           | Description                                                                 |
-| ------------------------------------------------ | --------------------------------------------------------------------------- |
-| [page.waitForFunction](#pagewaitforfunction)     | Waits for the given function to return a truthy value.                      |
-| [page.waitForLoadState](#pagewaitforloadstate)   | Waits for the specified page life cycle event.                              |
-| [page.waitForNavigation](#pagewaitfornavigation) | Waits for the navigation to complete after one starts.                      |
-| [locator.waitFor](#locatorwaitfor)               | Wait for the element to be in a particular state.                           |
-| [page.waitForTimeout](#pagewaitfortimeout)       | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
+| Method                                                     | Description                                                                 |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [browserContext.waitForEvent](#browsercontextwaitforevent) | Waits for the selected event to fire and returns its value.                 |
+| [page.waitForFunction](#pagewaitforfunction)               | Waits for the given function to return a truthy value.                      |
+| [page.waitForLoadState](#pagewaitforloadstate)             | Waits for the specified page life cycle event.                              |
+| [page.waitForNavigation](#pagewaitfornavigation)           | Waits for the navigation to complete after one starts.                      |
+| [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
+| [page.waitForTimeout](#pagewaitfortimeout)                 | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
+
+## browserContext.waitForEvent
+
+[browserContext.waitForEvent](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/waitforevent) is used when waiting for specific events to fire, which then returns the element associated to that event. At the moment the only event that is available to use is `page`. It can be useful when you want to track and retrieve a new tab opening. When working with a predicate function, it can be used to wait for a specific page to open before returning `true`.
+
+{{< code >}}
+
+<!-- eslint-skip-->
+
+```javascript
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  await page.goto('https://test.k6.io/');
+
+  await page.keyboard.down('ControlOrMeta');
+
+  // Open the link in a new tab with the help of the meta key.
+  // Wait for the new page to be created.
+  const browserContext = browser.context();
+  const [newTab] = await Promise.all([
+    browserContext.waitForEvent('page'),
+    await page.locator('a[href="/my_messages.php"]').click(),
+  ]);
+
+  await page.keyboard.up('ControlOrMeta');
+
+  // Wait for the new page (tab) to load.
+  await newTab.waitForLoadState('load');
+
+  // Take screenshots of each page.
+  await page.screenshot({ path: `screenshot-page.png` });
+  await newTab.screenshot({ path: `screenshot-newTab.png` });
+
+  await newTab.close();
+  await page.close();
+}
+```
+
+{{< /code >}}
 
 ## page.waitForFunction
 
