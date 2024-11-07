@@ -64,12 +64,8 @@ export const options = {
   iterations: 10,
 };
 
-let file;
-let parser;
-(async function () {
-  file = await open('data.csv');
-  parser = new csv.Parser(file, { skipFirstLine: true });
-})();
+const file = await open('data.csv');
+const parser = new csv.Parser(file, { skipFirstLine: true });
 
 export default async function () {
   // The `next` method attempts to read the next row from the CSV file.

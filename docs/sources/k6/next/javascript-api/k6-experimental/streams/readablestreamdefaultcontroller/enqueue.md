@@ -29,10 +29,7 @@ import { open } from 'k6/experimental/fs';
 import { ReadableStream } from 'k6/experimental/streams';
 
 // Open a csv file containing the data to be read
-let file;
-(async function () {
-  file = await open('./data.csv');
-})();
+const file = await open('./data.csv');
 
 export default async function () {
   let lineReaderState;

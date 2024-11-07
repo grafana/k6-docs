@@ -25,17 +25,13 @@ The `Options` object describes the configuration available for the operation of 
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
 
-let file;
-let parser;
-(async function () {
-  file = await open('data.csv');
-  parser = new csv.Parser(file, {
-    delimiter: ',',
-    skipFirstLine: true,
-    fromLine: 2,
-    toLine: 8,
-  });
-})();
+const file = await open('data.csv');
+const parser = new csv.Parser(file, {
+  delimiter: ',',
+  skipFirstLine: true,
+  fromLine: 2,
+  toLine: 8,
+});
 
 export default async function () {
   // The `next` method attempts to read the next row from the CSV file.

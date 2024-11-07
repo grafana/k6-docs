@@ -55,15 +55,11 @@ export const options = {
   iterations: 10,
 };
 
-let file;
-let csvRecords;
-(async function () {
-  file = await open('data.csv');
+const file = await open('data.csv');
 
-  // The `csv.parse` function consumes the entire file at once and returns
-  // the parsed records as a `SharedArray` object.
-  csvRecords = await csv.parse(file, { skipFirstLine: true });
-})();
+// The `csv.parse` function consumes the entire file at once and returns
+// the parsed records as a `SharedArray` object.
+const csvRecords = await csv.parse(file, { skipFirstLine: true });
 
 export default async function () {
   // `csvRecords` is a `SharedArray`. Each element is a record from the CSV file, represented as an array

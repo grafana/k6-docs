@@ -32,10 +32,7 @@ A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
-let file;
-(async function () {
-  file = await open('bonjour.txt');
-})();
+const file = await open('bonjour.txt');
 
 export default async function () {
   // Seek 6 bytes from the start of the file

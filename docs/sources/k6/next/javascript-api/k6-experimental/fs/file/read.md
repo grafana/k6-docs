@@ -31,10 +31,7 @@ In the following example, we open a file and read it in chunks of 128 bytes unti
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
-let file;
-(async function () {
-  file = await open('bonjour.txt');
-})();
+const file = await open('bonjour.txt');
 
 export default async function () {
   // Seek to the beginning of the file
