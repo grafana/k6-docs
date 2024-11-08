@@ -7,7 +7,9 @@ weight: 03
 
 # MetricMessage
 
-`MetricMessage` objects are dispatched by page via registering a handler with [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on). For each metric that it measured and emitted for the page, k6 browser delivers it to the registered handlers.
+A `MetricMessage` object allows tagging of metrics that are measured and emitted for the page.
+
+`MetricMessage` objects are dispatched by the page when a handler is registered with [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on). For each metric that is measured and emitted for the page, the k6 browser delivers a `MetricMessage` object to the registered handlers, allowing them to pattern match and tag metrics.
 
 ## tag
 
