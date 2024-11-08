@@ -91,9 +91,9 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
 
-  // Here we call page.on('metric). It's possible to call page.on('metric') more
-  // than once, and the callback function will be executed in the order page.on
-  // was called.
+  // We first register a handler using page.on('metric'). Calling page.on('metric')
+  // multiple times is allowed. The registered handlers will be executed in the
+  // order page.on was called.
   page.on('metric', (metric) => {
     // Using metric.tag finds a match between the current metric url and name
     // tags against the supplied regular expression in `url`.
