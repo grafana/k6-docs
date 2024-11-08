@@ -95,9 +95,10 @@ export default async function () {
   // than once, and the callback function will be executed in the order page.on
   // was called.
   page.on('metric', (metric) => {
+    // Using metric.tag finds a match between the current metric url and name
+    // tags against the supplied regular expression in `url`.
+    //
     // At the moment metric.tag is the only method on the metricMessage object.
-    // It will find a match between the current metric url and name tags against
-    // the supplied regular expression in `url`.
     metric.tag({
       // This is the new name value that will replace the existing value in the
       // url and name tags when a match is found.
