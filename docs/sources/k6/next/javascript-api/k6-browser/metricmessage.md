@@ -13,7 +13,7 @@ A `MetricMessage` object allows tagging of metrics that are measured and emitted
 
 ## tag
 
-The Metric Message exposes a single method, `tag`. It will match the given `matches` with the current metric's url and name tags. When a match is found it will use `name` to replace the existing url and name tag values.
+The `tag` method matches the given `matches` with the current metric's url and name tags. When a match is found, it will use `name` to replace the existing url and name tag values.
 
 Doing this will help group metrics with disparate url and name tags, which are in fact referencing the same resource, so that a correlation can be found over time and preventing high cardinality issues in the backend database that is storing the metrics.
 
