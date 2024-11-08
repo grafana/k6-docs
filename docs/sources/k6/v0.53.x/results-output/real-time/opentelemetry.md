@@ -49,6 +49,7 @@ The following options can be configured:
 | `K6_OTEL_TLS_CERTIFICATE`          | Configures the path to the root CA certificate file for TLS credentials. If it is not provided but TLS is enabled then the host's root CAs set is used.             |
 | `K6_OTEL_TLS_CLIENT_CERTIFICATE`   | Configures the path to the client certificate file.                                                                                                                 |
 | `K6_OTEL_TLS_CLIENT_KEY`           | Configures the path to the client key file.                                                                                                                         |
+| `K6_OTEL_EXPORTER_TYPE`   	     | Configures the type of exporter to use, valid options are `http` and `grpc`. Default is `grpc`                                                                      |
 | `K6_OTEL_GRPC_EXPORTER_INSECURE`   | Disables client transport security for the gRPC exporter.                                                                                                           |
 | `K6_OTEL_GRPC_EXPORTER_ENDPOINT`   | Configures the gRPC exporter endpoint. Default is `localhost:4317`.                                                                                                 |
 | `K6_OTEL_HTTP_EXPORTER_INSECURE`   | Disables client transport security for the HTTP exporter.                                                                                                           |
