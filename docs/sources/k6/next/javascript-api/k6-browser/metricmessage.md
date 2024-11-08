@@ -1,7 +1,7 @@
 ---
 title: 'MetricMessage'
 slug: 'metricmessage'
-description: 'Browser module: MetricMessage Class'
+description: 'Browser module: MetricMessage Object'
 weight: 03
 ---
 
