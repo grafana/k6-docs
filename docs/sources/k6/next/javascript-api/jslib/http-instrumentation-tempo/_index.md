@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../k6-experimental/tracing/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/
 title: 'HTTP instrumentation for Tempo'
 menuTitle: http-instrumentation-tempo
 description: 'k6 Tempo instrumentation API'

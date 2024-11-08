@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../k6-experimental/tracing/instrumenthttp/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/instrumenthttp/
 title: 'instrumentHTTP'
 description: 'instrumentHTTP instruments the k6 http module with tracing capabilities.'
 weight: 01
@@ -15,8 +17,8 @@ From that point forward, all requests made by the HTTP module from that point fo
 
 ## Parameters
 
-| Name      | Type                                                                                                 | Description                                                                                                                                                    |
-| :-------- | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name      | Type                                                                                                          | Description                                                                                                                                                             |
+| :-------- | :------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `options` | [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/options) | Configures the tracing behavior with the provided [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/options) object. |
 
 ## Example

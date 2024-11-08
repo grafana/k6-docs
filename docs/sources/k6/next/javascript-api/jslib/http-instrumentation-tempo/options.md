@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../k6-experimental/tracing/options/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/options/
 title: 'Options'
 description: 'Options allows to configure the tracing instrumentation behavior.'
 weight: 03
@@ -10,7 +12,7 @@ Use the `Options` object to configure the tracing instrumentation behavior. It i
 
 ## Options
 
-| Option name  | Type     | Default | Description                                                                    |
-| :----------- | :------- | :------ | :----------------------------------------------------------------------------- |
-| `propagator` | `string` | `w3c`   | The trace context propagation format. Currently supported: `w3c` and `jaeger`. |
-| `sampling` | `number` | `1`   | A number between 0 and 1 defining the sampling rate. 1 means sample always, 0 means never sample. |
+| Option name  | Type     | Default | Description                                                                                       |
+| :----------- | :------- | :------ | :------------------------------------------------------------------------------------------------ |
+| `propagator` | `string` | `w3c`   | The trace context propagation format. Currently supported: `w3c` and `jaeger`.                    |
+| `sampling`   | `number` | `1`     | A number between 0 and 1 defining the sampling rate. 1 means sample always, 0 means never sample. |
