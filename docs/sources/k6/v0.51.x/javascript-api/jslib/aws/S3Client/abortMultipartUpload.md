@@ -28,7 +28,10 @@ weight: 10
 {{< code >}}
 
 ```javascript
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.12.1/s3.js';
+import {
+  AWSConfig,
+  S3Client,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
