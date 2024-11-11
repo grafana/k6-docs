@@ -8,13 +8,13 @@ weight: 03
 
 A `MetricMessage` object allows tagging of metrics that are measured and emitted for the page.
 
-`MetricMessage` objects are dispatched by the page when a handler is registered with [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on). For each metric that is measured and emitted for the page, the k6 browser delivers a `MetricMessage` object to the registered handlers, allowing them to pattern match and tag metrics.
+`MetricMessage` objects are dispatched by the page when a handler is registered with [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on). For each metric that is measured and emitted for the page, the k6 browser module delivers a `MetricMessage` object to the registered handlers, allowing them to pattern match and tag metrics.
 
 ## tag
 
-The `tag` method matches the given `matches` with the current metric's url and name tags. When a match is found, it will use `name` to replace the existing url and name tag values.
+The `tag` method matches the given `matches` with the current metric's url and name tags. When a match is found, it will use `name` to replace the existing URL and name tag values.
 
-Doing this helps to group metrics with disparate url and name tags, which are, in fact, referencing the same resource so that a correlation can be found over time and to reduce the cardinality of the metrics.
+Doing this helps group metrics with different URL and name tags, which are, in fact, referencing the same resource so that a correlation can be found over time and to reduce the cardinality of the metrics.
 
 <TableWithNestedRows>
 
