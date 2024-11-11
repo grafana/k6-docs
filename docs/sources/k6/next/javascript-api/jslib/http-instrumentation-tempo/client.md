@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../../k6-experimental/tracing/client/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/tracing/client/
 title: 'Client'
 description: 'Client is a HTTP client attaching tracing information to its requests.'
 weight: 02
@@ -82,6 +84,6 @@ The following table lists the `Client` methods which have an equivalent in the s
 
 `Client` instances support being reconfigured using the following API:
 
-| Method                      | Description                                                                                                                                                     |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Method                      | Description                                                                                                                                                              |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Client.configure(options)` | Reconfigures the tracing client instance with the provided [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/options) |
