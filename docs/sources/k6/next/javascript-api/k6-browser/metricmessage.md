@@ -1,6 +1,5 @@
 ---
 title: 'MetricMessage'
-slug: 'metricmessage'
 description: 'Browser module: MetricMessage Object'
 weight: 03
 ---
