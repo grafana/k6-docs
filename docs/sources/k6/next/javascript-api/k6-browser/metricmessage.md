@@ -14,7 +14,7 @@ A `MetricMessage` object allows tagging of metrics that are measured and emitted
 
 The `tag` method matches the given `matches` with the current metric's url and name tags. When a match is found, it will use `name` to replace the existing URL and name tag values.
 
-Doing this helps group metrics with different URL and name tags, which are, in fact, referencing the same resource so that a correlation can be found over time and to reduce the cardinality of the metrics.
+Doing this helps group metrics with different URL and name tags that, in fact, reference the same resource, allowing for correlation over time and reducing the cardinality of the metrics.
 
 <TableWithNestedRows>
 
