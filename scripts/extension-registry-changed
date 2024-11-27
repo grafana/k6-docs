@@ -40,7 +40,7 @@ EOF
 }
 
 scriptdir="$(dirname "$(readlink -f "$0")")"
-docfile="$scriptdir/../docs/sources/next/extensions/explore.md"
+docfile="$scriptdir/../docs/sources/k6/next/extensions/explore.md"
 
 tmpfile="$(mktemp /tmp/extension-registry-changed.XXXXXX)"
 
