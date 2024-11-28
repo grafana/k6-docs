@@ -4,3 +4,4 @@
 
 # k6-engine (former k6-core) maintain open-source documentation
 /docs/sources/k6 @grafana/k6-core @heitortsergent
+/docs/sources/k6-studio @grafana/k6-Studio @heitortsergent 
