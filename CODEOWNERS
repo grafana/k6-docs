@@ -1,1 +1,6 @@
-*       @grafana/k6-core @heitortsergent
+# These owners will be the default owners for everything in
+# the repo.
+*       @heitortsergent
+
+# k6-engine (former k6-core) maintain open-source documentation
+/docs/sources/k6 @grafana/k6-core @heitortsergent
