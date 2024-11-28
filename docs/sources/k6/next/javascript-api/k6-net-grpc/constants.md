@@ -42,12 +42,12 @@ const client = new grpc.Client();
 client.load(null, 'quickpizza.proto');
 
 export default () => {
-  client.connect('grpc-quickpizza.grafana-dev.com:443', {
+  client.connect('grpc-quickpizza.grafana.com:443', {
     // plaintext: false
   });
 
   const data = { ingredients: ['Cheese'], dough: 'Thick' };
-  const response = client.invoke('quickpizza.GRPC/EvaluatePizza', data);
+  const response = client.invoke('quickpizza.GRPC/RatePizza', data);
 
   check(response, {
     'status is OK': (r) => r && r.status === grpc.StatusOK,
