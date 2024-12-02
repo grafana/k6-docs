@@ -113,7 +113,7 @@ command: `k6 cloud run --local-execution --no-archive-upload script.js`.
 
 ## Advanced settings
 
-A few [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `-o cloud`.
+A few [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `k6 cloud run script.js --local-execution`.
 
 When streaming, k6 will collect all data and send it to the cloud in batches.
 

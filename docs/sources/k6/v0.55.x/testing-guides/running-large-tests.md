@@ -174,8 +174,7 @@ If you need the response body for some requests, override the option with [Param
 
 ### When streaming, use `--no-thresholds` and `--no-summary`
 
-If you're running a local test and streaming results to the cloud (`k6 run -o cloud`), you might want to disable the terminal summary
-and local threshold calculation, because the cloud service will display the summary and calculate the thresholds.
+If you're running a local test and streaming results to the cloud (`k6 cloud run script.js --local-execution`), you might want to disable the terminal summary and local threshold calculation, because the cloud service will display the summary and calculate the thresholds.
 
 Without these options, the operations will be duplicated by both the local machine and the cloud servers.
 This will save some memory and CPU cycles.
@@ -183,8 +182,8 @@ This will save some memory and CPU cycles.
 Here are all the mentioned flags, all in one:
 
 ```bash
-k6 run scripts/website.js \
-  -o cloud \
+k6 cloud run scripts/website.js \
+  --local-execution \
   --vus=20000 \
   --duration=10m \
   --no-thresholds \
