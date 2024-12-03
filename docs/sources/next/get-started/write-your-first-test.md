@@ -1,6 +1,6 @@
 ---
 title: 'Write your first test'
-description: 'Follow along to learn how to write your first k6 test script.'
+description: 'Learn how to write your first k6 test script.'
 weight: 02
 ---
 
