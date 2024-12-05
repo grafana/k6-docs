@@ -81,8 +81,8 @@ Depending on the type of update you need to make, you'll want to make updates to
 
 If you're making any updates or fixes that apply to the latest version of k6, you'll need to:
 
-- Update the Markdown files in the `docs/sources/next` folder.
-- Update the Markdown files in the `docs/sources/v{LATEST_VERSION}` folder.
+- Update the Markdown files in the `docs/sources/k6/next` folder.
+- Update the Markdown files in the `docs/sources/k6/v{LATEST_VERSION}` folder.
   - You can do this manually or by using the [`apply-patch`](../scripts/apply-patch) script from the `scripts` folder. Refer to the [Use the `apply-patch` script](#use-the-apply-patch-script) section for more details.
 
 This is to make sure that any changes you make are also brought over to the next major release version of k6.
@@ -93,7 +93,7 @@ This is to make sure that any changes you make are also brought over to the next
 
 If you're making any updates or fixes that only apply to the next major release of k6, you'll need to:
 
-- Update the Markdown files in the `docs/sources/next` folder.
+- Update the Markdown files in the `docs/sources/k6/next` folder.
 
 Once you make any changes and open a PR, and that PR is reviewed, you can merge it without having to worry about those changes showing up in the `latest` version of the docs. The `latest` version will always display the highest numbered version folder of the docs.
 
@@ -107,16 +107,16 @@ To use the script, make sure you're in the root of the k6-docs folder and run:
 scripts/apply-patch <COMMIT> <SOURCE> <DESTINATION>
 ```
 
-For example, if you'd like to apply the changes from your last commit, from the `docs/sources/next` folder to the `docs/sources/v0.47.x`, you can run:
+For example, if you'd like to apply the changes from your last commit, from the `docs/sources/k6/next` folder to the `docs/sources/k6/v0.47.x`, you can run:
 
 ```bash
-scripts/apply-patch HEAD~ docs/sources/next docs/sources/v0.47.x
+scripts/apply-patch HEAD~ docs/sources/k6/next docs/sources/k6/v0.47.x
 ```
 
 Or if you'd like to apply the changes from your previous three commits, you can run:
 
 ```bash
-scripts/apply-patch HEAD~3 docs/sources/next docs/sources/v0.47.x
+scripts/apply-patch HEAD~3 docs/sources/k6/next docs/sources/k6/v0.47.x
 ```
 
 ### Style guides
