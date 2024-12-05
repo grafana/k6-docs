@@ -86,7 +86,7 @@ const grpcArgs = new SharedArray('grpc', () => {
   // Using SharedArray here so that not every VU gets a copy of every certificate a key
   return [
     {
-      host: 'foo1.grpcbin.test.k6.io:9001',
+      host: 'foo1.grpc-quickpizza.grafana.com:443',
       plaintext: false,
       params: {
         tls: {
@@ -97,7 +97,7 @@ const grpcArgs = new SharedArray('grpc', () => {
       },
     },
     {
-      host: 'foo2.grpcbin.test.k6.io:9002',
+      host: 'foo2.grpc-quickpizza.grafana.com:443',
       params: {
         plaintext: false,
         tls: {
@@ -111,7 +111,7 @@ const grpcArgs = new SharedArray('grpc', () => {
   ];
 });
 
-const client = new grpc.Client();
+const client = new grpc.Client(null, 'quickpizza.proto');
 
 export default () => {
   if (__ITER === 0) {
@@ -120,9 +120,7 @@ export default () => {
     client.connect(grpcArg.host, grpcArg.params);
   }
 
-  const response = client.invoke('hello.HelloService/SayHello', {
-    greeting: 'Bert',
-  });
+  const response = client.invoke('quickpizza.GRPC/Status');
 
   check(response, {
     'status is OK': (r) => r && r.status === grpc.StatusOK,
