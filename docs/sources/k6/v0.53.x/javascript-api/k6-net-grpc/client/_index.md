@@ -26,19 +26,19 @@ aliases:
 import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
-// Download addsvc.proto for https://grpcbin.test.k6.io/, located at:
-// https://raw.githubusercontent.com/moul/pb/master/addsvc/addsvc.proto
+// Download quickpizza.proto for grpc-quickpizza.grafana.com, located at:
+// https://raw.githubusercontent.com/grafana/quickpizza/refs/heads/main/proto/quickpizza.proto
 // and put it in the same folder as this script.
-client.load(null, 'addsvc.proto');
+client.load(null, 'quickpizza.proto');
 
 export default () => {
-  client.connect('grpcbin.test.k6.io:9001', { timeout: '5s' });
+  client.connect('grpc-quickpizza.grafana.com:443', { timeout: '5s' });
 
-  const response = client.invoke('addsvc.Add/Sum', {
-    a: 1,
-    b: 2,
+  const response = client.invoke('quickpizza.GRPC/RatePizza', {
+    ingredients: ['Tomatoes', 'Cheese'],
+    dough: 'Thin'
   });
-  console.log(response.message.v); // should print 3
+  console.log(response.message.starsRating); // should print a number between 1-5
 
   client.close();
 };
