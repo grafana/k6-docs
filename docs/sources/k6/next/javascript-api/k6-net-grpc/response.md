@@ -26,15 +26,15 @@ import grpc from 'k6/net/grpc';
 import { check, sleep } from 'k6';
 
 const client = new grpc.Client();
-client.load(['definitions'], 'hello.proto');
+client.load(null, 'quickpizza.proto');
 
 export default () => {
-  client.connect('grpcbin.test.k6.io:9001', {
+  client.connect('grpc-quickpizza.grafana.com:443', {
     // plaintext: false
   });
 
-  const data = { greeting: 'Bert' };
-  const response = client.invoke('hello.HelloService/SayHello', data);
+  const data = { ingredients: ['Cheese'], dough: 'Thick' };
+  const response = client.invoke('quickpizza.GRPC/RatePizza', data);
 
   check(response, {
     'status is OK': (r) => r && r.status === grpc.StatusOK,
