@@ -10,7 +10,7 @@ description: 'Browser module: page.$$(selector) method'
 
 When possible, use locator-based [`page.locator(selector)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/locator/) instead.
 
-However, using `locator`s may not always work when selecting an element from a list or table, especially if there isn't a reliable way to consistently identify a single element (e.g., due to changing or similar attributes). In such cases, $$ remains useful.
+However, using `locator`s may not always work when selecting an element from a list or table, especially if there isn't a reliable way to consistently identify a single element (for example, due to changing or non-unique attributes). In such cases, `$$` remains useful.
 
 {{< /admonition >}}
 
