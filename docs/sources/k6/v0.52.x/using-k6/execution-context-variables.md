@@ -45,7 +45,6 @@ Instance info
 Vus active: ${exec.instance.vusActive}
 Iterations completed: ${exec.instance.iterationsCompleted}
 Iterations interrupted:  ${exec.instance.iterationsInterrupted}
-Iterations completed:  ${exec.instance.iterationsCompleted}
 Iterations active:  ${exec.instance.vusActive}
 Initialized vus:  ${exec.instance.vusInitialized}
 Time passed from start of run(ms):  ${exec.instance.currentTestRunDuration}
