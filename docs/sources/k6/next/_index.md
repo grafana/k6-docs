@@ -36,8 +36,16 @@ cards:
       description: Have a particular testing need? Find k6 extensions that extend the native k6 functionality.
       height: 24
     - title: k6 script examples
-      href: ./extensions/
-      description: Learn how to script your tests with this list of common k6 examples.
+      href: ./examples/
+      description: Learn how to write test scripts with this list of common k6 examples.
+      height: 24
+    - title: Grafana Cloud k6
+      href: https://grafana.com/docs/grafana-cloud/testing/k6/
+      description: Leverage the k6 OSS capabilities in Grafana Cloud, with built-in dashboards, insights into your application performance, and the ability to bring together teams in one place to resolve issues faster.
+      height: 24
+    - title: k6 Studio
+      href: https://grafana.com/docs/k6-studio/
+      description: Use the k6 Studio desktop application to quickly generate test scripts using a visual interface.
       height: 24
 ---
 
