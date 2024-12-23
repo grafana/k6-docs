@@ -100,7 +100,7 @@ $ k6 run script.js
 
 In this example, note that the check "is status 200" succeeded 100% of the times it was called.
 
-## Add multiple checks
+## Add multiple checks.
 
 You can also add multiple checks within a single [check()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) statement:
 
