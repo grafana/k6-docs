@@ -1,0 +1,32 @@
+name: Run Updated Code Blocks (Scripts)
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/sources/k6/next/**'
+
+jobs:
+  run-code-blocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get Changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **.md
+      - uses: grafana/setup-k6-action@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run Updated Code Blocks
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            python -u scripts/md-k6.py "$file"
+            echo
+          done
