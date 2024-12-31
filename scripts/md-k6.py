@@ -72,8 +72,35 @@ def main() -> None:
 
     lang = args.lang
     text = args.file.read()
-    # Replace magic comment + "```{lang}" with "```{lang}${options}"
-    text = re.sub("<!--md-k6:([^-]+)-->\n```" + lang, "```" + lang + "$" + r"\1", text)
+
+    # A somewhat complicated regex in order to make parsing of the code block
+    # easier. Essentially, takes this:
+    #
+    # <!-- md-k6:opt1,opt2 -->
+    # ```javascript
+    # (JS code)
+    # ```
+    #
+    # And converts it into:
+    #
+    # ```javascript$opt1,opt2
+    # (JS code)
+    # ```
+    #
+    # This is done for the entire Markdown file.
+    # After that's done, we can split the text by "```javascript", and parse
+    # each part separately. If a part's first line starts with "$", then we
+    # know one or more options were specified by the user (such as "skip").
+    #
+    # Additionally, we also skip over any "<!-- eslint-skip -->" comments, to
+    # allow developers to use both md-k6 *and* ESLint skip directives in code
+    # blocks.
+
+    text = re.sub(
+        "<!-- *md-k6:([^ -]+) *-->\n+(<!-- eslint-skip -->\n+)?```" + lang,
+        "```" + lang + "$" + r"\1",
+        text,
+    )
 
     scripts = []
     blocks = [block.strip() for block in text.split("```")[1::2]]
@@ -83,7 +110,7 @@ def main() -> None:
             continue
 
         if "$" in lines[0]:
-            options = lines[0].split("$")[-1].split(",")
+            options = [opt.strip() for opt in lines[0].split("$")[-1].split(",")]
         else:
             options = []
 
@@ -104,7 +131,8 @@ def main() -> None:
         print("Invalid range.")
         exit(1)
 
-    print("Number of code blocks (scripts) to run:", len(scripts))
+    print("Number of code blocks (scripts) read:", len(scripts))
+    print("Number of code blocks (scripts) to run:", len(scripts[start:end]))
 
     for i, script in enumerate(scripts[start:end]):
         script_hash = hashlib.sha256(script.text.encode("utf-8")).hexdigest()[:16]

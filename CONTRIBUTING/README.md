@@ -164,6 +164,48 @@ export default async function () {
 ```
 ````
 
+### Code Snippets Evaluation
+
+In addition to linting code snippets, we also actually run the snippets using k6 OSS. This is done automatically in all open PRs, only for Markdown files that have been changed (when compared to `main`) in the `docs/sources/next` directory. See the `scripts/md-k6.py` script for details on how this works internally.
+
+Code snippets are run using the `-w` k6 OSS flag. If the code snippet causes k6 to exit with a nonzero status, then the script (and therefore the workflow) will fail. If any error is logged by k6 (for example, because an exception was raised), this will also fail the execution.
+
+You can control the behaviour of `md-k6.py` via magic `md-k6` HTML comments placed above the code snippets. The format is the following:
+
+```text
+<!-- md-k6:opt1,opt2,... -->
+```
+
+That is, `md-k6:` followed by a comma-separated list of options.
+Currently, the only option that exists is `skip`, which will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`).
+
+> [!TIP]
+> You can combine both `md-k6.py` and ESLint skip directives by placing the `md-k6.py` directive first:
+>
+> ````Markdown
+> <!-- md-k6:skip -->
+> <!-- eslint-skip -->
+>
+> ```javascript
+> export default async function () {
+>   const browser = chromium.launch({ headless: false });
+>   const page = browser.newPage();
+> }
+> ```
+> ````
+
+To run the `md-k6.py` script locally, invoke it using Python. For example:
+
+```bash
+python3 scripts/md-k6.py docs/sources/k6/next/examples/functional-testing.md
+```
+
+You can also read the usage information:
+
+```bash
+python3 scripts/md-k6.py --help
+```
+
 ## Deploy
 
 Once a PR is merged to the main branch, if there are any changes made to the `docs/sources` folder, the GitHub Action [`publish-technical-documentation.yml`](https://github.com/grafana/k6-docs/blob/main/.github/workflows/publish-technical-documentation.yml) will sync the changes with the grafana/website repository, and the changes will be deployed to production soon after.
