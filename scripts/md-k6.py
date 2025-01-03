@@ -17,7 +17,7 @@ from collections import namedtuple
 Script = namedtuple("Script", ["text", "options"])
 
 
-def run_k6(script: Script) -> None:
+def run_k6(script: Script, duration: str | None) -> None:
     script_file = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".js")
     script_file.write(script.text)
     script_file.close()
@@ -26,17 +26,18 @@ def run_k6(script: Script) -> None:
     logs_file.close()
 
     k6 = os.getenv("K6_PATH", "k6")
+    cmd = [
+        k6,
+        "run",
+        script_file.name,
+        "--log-format=json",
+        f"--log-output=file={logs_file.name}",
+        "-w",
+    ]
+    if duration:
+        cmd.extend(["-d", duration])
 
-    result = subprocess.run(
-        [
-            k6,
-            "run",
-            script_file.name,
-            "--log-format=json",
-            f"--log-output=file={logs_file.name}",
-            "-w",
-        ],
-    )
+    result = subprocess.run(cmd)
 
     if result.returncode:
         print("k6 returned non-zero status:", result.returncode)
@@ -66,6 +67,9 @@ def main() -> None:
         help="Python-like range of code blocks to run (0, 1, 2, 0:2, 3:, etc.).",
     )
     parser.add_argument("--lang", default="javascript", help="Code block language.")
+    parser.add_argument(
+        "--duration", "-d", default=None, help="Override script(s) duration."
+    )
     args = parser.parse_args()
 
     print("Reading from file:", args.file.name)
@@ -140,7 +144,7 @@ def main() -> None:
             f"Running script #{i} (hash: {script_hash}, options: {script.options}):\n"
         )
         print(textwrap.indent(script.text, "     "))
-        run_k6(script)
+        run_k6(script, args.duration)
         print()
 
 
