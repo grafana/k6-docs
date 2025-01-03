@@ -24,13 +24,14 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world', {
-    domain: 'httpbin.test.k6.io',
-    path: '/cookies',
+  jar.set('http://quickpizza.grafana.com', 'my_cookie', 'hello world', {
+    domain: 'quickpizza.grafana.com',
+    path: '/api/cookies',
     secure: true,
     max_age: 600,
   });
-  const res = http.get('https://httpbin.test.k6.io/cookies');
+  const res = http.get('https://quickpizza.grafana.com/api/cookies');
+  console.log(res.body);
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
