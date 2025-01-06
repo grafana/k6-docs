@@ -6,6 +6,12 @@ weight: 01
 
 # Using the k6 DevTools recorder
 
+{{< admonition type="caution" >}}
+
+The k6 DevTools recorder extension is deprecated and will be removed in a future release.
+
+{{< /admonition >}}
+
 The k6 DevTools recorder lets you record user journeys using Chrome DevTools and then export them as a k6 script.
 
 ## Before you begin
