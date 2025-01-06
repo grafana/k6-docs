@@ -36,8 +36,8 @@ cards:
       description: Have a particular testing need? Find k6 extensions that extend the native k6 functionality.
       height: 24
     - title: k6 script examples
-      href: ./extensions/
-      description: Learn how to script your tests with this list of common k6 examples.
+      href: ./examples/
+      description: Learn how to write test scripts with this list of common k6 examples.
       height: 24
 ---
 
