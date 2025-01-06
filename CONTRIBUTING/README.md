@@ -169,7 +169,7 @@ export default async function () {
 
 ### Code snippets evaluation
 
-In addition to linting code snippets, we also actually run the snippets using k6 OSS. This is done automatically for all newly opened PRs, only for Markdown files that have been changed (when compared to `main`) in the `docs/sources/next` directory. See the `scripts/md-k6.py` script for details on how this works internally.
+In addition to linting code snippets, we also run the snippets using k6 OSS. This is done automatically on PRs, only for Markdown files that have been changed in the `docs/sources/next` directory when compared to `main`. See the `scripts/md-k6.py` script for details on how this works internally.
 
 Code snippets are run using the `-w` k6 OSS flag. If the code snippet causes k6 to exit with a nonzero status, then the script (and therefore the workflow) will fail. If any error is logged by k6 (for example, because an exception was raised), this will also fail the execution.
 
