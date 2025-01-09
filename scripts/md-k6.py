@@ -71,8 +71,6 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
 
 
 def main() -> None:
-    print("Starting md-k6 script.")
-
     parser = argparse.ArgumentParser(
         description="Run k6 scripts within Markdown files."
     )
@@ -95,6 +93,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    print("Starting md-k6 script.")
     print("Reading from file:", args.file.name)
 
     lang = args.lang
@@ -124,7 +123,7 @@ def main() -> None:
     # blocks.
 
     text = re.sub(
-        "<!-- *md-k6:([^ -]+) *-->\n+(<!-- eslint-skip -->\n+)?```" + lang,
+        r"<!-- *md-k6:([^ -]+) *-->\n+(<!-- eslint-skip -->\n+)?\s*```" + lang,
         "```" + lang + "$" + r"\1",
         text,
     )
@@ -155,17 +154,27 @@ def main() -> None:
 
         scripts.append(Script(text="\n".join(lines[1:]), options=options, env=env))
 
-    range_parts = args.blocks.split(":")
-    try:
-        start = int(range_parts[0]) if range_parts[0] else 0
-        end = (
-            int(range_parts[1])
-            if len(range_parts) > 1 and range_parts[1]
-            else len(scripts)
-        )
-    except ValueError:
-        print("Invalid range.")
-        exit(1)
+    if ":" in args.blocks:
+        range_parts = args.blocks.split(":")
+        try:
+            start = int(range_parts[0]) if range_parts[0] else 0
+            end = (
+                int(range_parts[1])
+                if len(range_parts) > 1 and range_parts[1]
+                else len(scripts)
+            )
+            print(f"Blocks selection range: start = {start}, end = {end}")
+        except ValueError:
+            print("Invalid range.")
+            exit(1)
+    else:
+        try:
+            start = int(args.blocks)
+            end = start + 1
+            print(f"Block selected: index = {start}")
+        except ValueError:
+            print("Invalid range.")
+            exit(1)
 
     print("Number of code blocks (scripts) read:", len(scripts))
     print("Number of code blocks (scripts) to run:", len(scripts[start:end]))

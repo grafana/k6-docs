@@ -50,7 +50,7 @@ export default function () {
     options
   );
 
-  // Verify response (checking the echoed data from the httpbin.test.k6.io
+  // Verify response (checking the echoed data from the QuickPizza
   // basic auth test API endpoint)
   check(res, {
     'status is 200': (r) => r.status === 200,

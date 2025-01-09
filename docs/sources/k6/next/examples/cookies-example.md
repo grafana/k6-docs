@@ -25,7 +25,9 @@ import { check, group } from 'k6';
 
 export default function () {
   // Since this request redirects the `res.cookies` property won't contain the cookies
-  const res = http.get('https://httpbin.test.k6.io/cookies/set?name1=value1&name2=value2');
+  const res = http.post(
+    'http://quickpizza.grafana-dev.com:3333/api/cookies?name1=value1&name2=value2'
+  );
   check(res, {
     'status is 200': (r) => r.status === 200,
   });
@@ -97,17 +99,17 @@ export default function () {
   // that a request must match (domain, path, HTTPS or not etc.)
   // to have the cookie attached to it when sent to the server.
   const jar = http.cookieJar();
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world', {
-    domain: 'httpbin.test.k6.io',
-    path: '/cookies',
-    secure: true,
+  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie', 'hello world', {
+    domain: 'quickpizza.grafana-dev.com',
+    path: '/api/cookies',
+    secure: false, // TODO set to false
     max_age: 600,
   });
 
   // As the following request is matching the above cookie in terms of domain,
   // path, HTTPS (secure) and will happen within the specified "age" limit, the
   // cookie will be attached to this request.
-  const res = http.get('https://httpbin.test.k6.io/cookies');
+  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
@@ -130,10 +132,10 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_1', 'hello world_1');
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_2', 'hello world_2');
+  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie_1', 'hello world_1');
+  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie_2', 'hello world_2');
 
-  const res1 = http.get('https://httpbin.test.k6.io/cookies');
+  const res1 = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
   check(res1, {
     'res1 has status 200': (r) => r.status === 200,
     "res1 has cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 !== null,
@@ -142,9 +144,9 @@ export default function () {
     'res1 cookie has correct value_2': (r) => r.json().cookies.my_cookie_2 == 'hello world_2',
   });
 
-  jar.delete('https://httpbin.test.k6.io/cookies', 'my_cookie_1');
+  jar.delete('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie_1');
 
-  const res2 = http.get('https://httpbin.test.k6.io/cookies');
+  const res2 = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
   check(res2, {
     'res2 has status 200': (r) => r.status === 200,
     "res2 hasn't cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 == null,
@@ -168,17 +170,17 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world');
-  const res1 = http.get('https://httpbin.test.k6.io/cookies');
+  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie', 'hello world');
+  const res1 = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
   check(res1, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
     'cookie has correct value': (r) => r.json().cookies.my_cookie == 'hello world',
   });
 
-  jar.clear('https://httpbin.test.k6.io/cookies');
+  jar.clear('http://quickpizza.grafana-dev.com:3333/api/cookies');
 
-  const res2 = http.get('https://httpbin.test.k6.io/cookies');
+  const res2 = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
   check(res2, {
     'has status 200': (r) => r.status === 200,
     "hasn't cookie 'my_cookie'": (r) => r.json().cookies.my_cookie == null,
