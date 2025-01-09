@@ -17,29 +17,29 @@ description: 'Delete all cookies for the given URL.'
 import http from 'k6/http';
 
 export default function () {
-  http.get('https://httpbin.test.k6.io/cookies/set?one=1&two=2');
+  http.post('http://quickpizza.grafana-dev.com:3333/api/cookies?one=1&two=2');
 
-  // We'll use httpbin's reflection to see what cookies we
+  // We'll use QuickPizza's cookie reflection to see what cookies we
   // are actually sending to the server after every change
-  let httpbinResp;
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
+  let qpResp;
+  qpResp = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  console.log(JSON.stringify(qpResp.json().cookies));
   // Will print '{"one":"1","two":"2"}'
 
   const jar = http.cookieJar(); // get the VU specific jar
-  jar.set('https://httpbin.test.k6.io/cookies', 'three', '3');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
+  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'three', '3');
+  qpResp = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  console.log(JSON.stringify(qpResp.json().cookies));
   // Will print '{"one":"1","three":"3","two":"2"}'
 
-  jar.delete('https://httpbin.test.k6.io/cookies', 'one');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
+  jar.delete('http://quickpizza.grafana-dev.com:3333/api/cookies', 'one');
+  qpResp = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  console.log(JSON.stringify(qpResp.json().cookies));
   // Will print '{"three":"3","two":"2"}'
 
-  jar.clear('https://httpbin.test.k6.io/cookies');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
+  jar.clear('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  qpResp = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  console.log(JSON.stringify(qpResp.json().cookies));
   // Will print '{}'
 }
 ```

@@ -14,10 +14,10 @@ import textwrap
 import tempfile
 from collections import namedtuple
 
-Script = namedtuple("Script", ["text", "options"])
+Script = namedtuple("Script", ["text", "options", "env"])
 
 
-def run_k6(script: Script, duration: str | None) -> None:
+def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
     script_file = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".js")
     script_file.write(script.text)
     script_file.close()
@@ -32,22 +32,38 @@ def run_k6(script: Script, duration: str | None) -> None:
         script_file.name,
         "--log-format=json",
         f"--log-output=file={logs_file.name}",
-        "-w",
+        "-w",  # Promote some warnings to errors.
     ]
     if duration:
         cmd.extend(["-d", duration])
 
-    result = subprocess.run(cmd)
+    env = {**os.environ, **script.env}
+    result = subprocess.run(cmd, env=env)
 
     if result.returncode:
         print("k6 returned non-zero status:", result.returncode)
+        try:
+            with open(logs_file.name) as f:
+                logs = f.read()
+
+            print("logs:")
+            print(logs)
+        except Exception:
+            # Ignore exceptions if we fail to read the logs
+            pass
         exit(1)
 
     with open(logs_file.name) as f:
         lines = f.readlines()
 
+    # There's no way of running k6 OSS in a way that the process fails
+    # immediately after the first exception (unless this specific handling
+    # is added to the script explicitly). So here we just read the logs for
+    # any errors and fail if at least one was found.
     for line in lines:
         line = line.strip()
+        if verbose:
+            print(line)
         parsed = json.loads(line)
         if parsed["level"] == "error":
             print("error in k6 script execution:", line)
@@ -69,6 +85,13 @@ def main() -> None:
     parser.add_argument("--lang", default="javascript", help="Code block language.")
     parser.add_argument(
         "--duration", "-d", default=None, help="Override script(s) duration."
+    )
+    parser.add_argument(
+        "--verbose",
+        "-v",
+        default=False,
+        help="Enable verbose mode. All log output for tests will be printed.",
+        action="store_true",
     )
     args = parser.parse_args()
 
@@ -121,7 +144,16 @@ def main() -> None:
         if "skip" in options:
             continue
 
-        scripts.append(Script(text="\n".join(lines[1:]), options=options))
+        env = {}
+        for opt in options:
+            if not opt.startswith("env."):
+                continue
+            if "=" not in opt:
+                opt += "="
+            key, value = opt.removeprefix("env.").split("=")
+            env[key] = value
+
+        scripts.append(Script(text="\n".join(lines[1:]), options=options, env=env))
 
     range_parts = args.blocks.split(":")
     try:
@@ -144,7 +176,7 @@ def main() -> None:
             f"Running script #{i} (hash: {script_hash}, options: {script.options}):\n"
         )
         print(textwrap.indent(script.text, "     "))
-        run_k6(script, args.duration)
+        run_k6(script, args.duration, args.verbose)
         print()
 
 
