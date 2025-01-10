@@ -29,7 +29,7 @@ To run a simple local script:
    ```
 
    ```docker
-   $ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
+   $ docker run --rm -i --user $UID -v $PWD:/app -w /app grafana/k6 new
    ```
 
    ```windows
