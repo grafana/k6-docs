@@ -26,6 +26,8 @@ With this library, you get the following:
 
 This library is hosted on [jslib](https://jslib.k6.io/) and can be imported directly in your k6 script.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 ```
