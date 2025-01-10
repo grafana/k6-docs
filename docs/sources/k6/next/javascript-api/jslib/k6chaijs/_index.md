@@ -24,10 +24,12 @@ With this library, you get the following:
 
 ## Installation
 
-This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in directly in your k6 script.
+This library is hosted on [jslib](https://jslib.k6.io/) and can be imported directly in your k6 script.
+
+<!-- md-k6:skip -->
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 ```
 
 Alternatively, you can use a copy of this file stored locally. The source code is available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs).
@@ -80,4 +82,4 @@ It's possible to extend the default functionality with [Chai plugins](https://ww
 
 ## Read more
 
-- [Using chai with k6](https://k6.io/blog/k6-chai-js/)
+- [Use chai with k6](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/use-chai-with-k6/)
