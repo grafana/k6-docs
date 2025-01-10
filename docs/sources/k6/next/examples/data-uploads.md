@@ -106,6 +106,8 @@ Here's an example of uploading several binary files and a text file using the po
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -128,7 +130,7 @@ export default function () {
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
   fd.append('text', http.file(txt, 'text.txt', 'text/plain'));
 
-  const res = http.post('https://httpbin.test.k6.io/post', fd.body(), {
+  const res = http.post('http://quickpizza.grafana-dev.com:3333/api/post', fd.body(), {
     headers: { 'Content-Type': 'multipart/form-data; boundary=' + fd.boundary },
   });
   check(res, {

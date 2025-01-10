@@ -62,12 +62,14 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
     # any errors and fail if at least one was found.
     for line in lines:
         line = line.strip()
-        if verbose:
-            print(line)
         parsed = json.loads(line)
         if parsed["level"] == "error":
             print("error in k6 script execution:", line)
-            exit(1)
+
+            if "nofail" not in script.options:
+                exit(1)
+        elif verbose:
+            print(line)
 
 
 def main() -> None:
@@ -123,7 +125,7 @@ def main() -> None:
     # blocks.
 
     text = re.sub(
-        r"<!-- *md-k6:([^ -]+) *-->\n+(<!-- eslint-skip -->\n+)?\s*```" + lang,
+        r"<!-- *md-k6:([^ -]+) *-->\n+\s*(<!-- eslint-skip -->\n+)?\s*```" + lang,
         "```" + lang + "$" + r"\1",
         text,
     )
