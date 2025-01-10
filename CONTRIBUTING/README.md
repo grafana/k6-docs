@@ -181,7 +181,9 @@ You can control the behaviour of `md-k6.py` via magic `md-k6` HTML comments plac
 
 That is, `md-k6:` followed by a comma-separated list of options.
 
-Currently, the only option that exists is `skip`, which will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`). This is useful for code snippets that only showcase a very specific aspect of k6 scripting and do not contain an actually fully working script.
+### `skip` Option
+
+The `skip` option will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`). This is useful for code snippets that only showcase a very specific aspect of k6 scripting and do not contain an actually fully working script.
 
 > [!TIP]
 > You can combine both `md-k6.py` and ESLint skip directives by placing the `md-k6.py` directive first:
@@ -197,6 +199,16 @@ Currently, the only option that exists is `skip`, which will cause `md-k6.py` to
 > }
 > ```
 > ````
+
+### `nofail` Option
+
+The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail.
+
+### `env.X=Y` Option
+
+Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet.
+
+### Usage
 
 To run the `md-k6.py` script locally, invoke it using Python. For example:
 
