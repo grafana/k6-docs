@@ -22,6 +22,8 @@ You can use k6chaijs as an alternative to the [check](https://grafana.com/docs/k
 
 The k6chaijs library is hosted on [jslib](https://jslib.k6.io/) and can be imported directly in your k6 script.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 ```
@@ -36,6 +38,8 @@ Here are some of the ways you can use k6chaijs to write better tests.
 
 Using the `expect` and `describe` methods can make code easier to read and maintain. For example, writing a code snippet to check if a string length is equal to five can look like the following:
 
+<!-- md-k6:skip -->
+
 ```javascript
 if ('Hello'.length !== 5) {
   throw new Error(`Expected 'Hello' to have a length of 5 but got ${'Hello'.length}`);
@@ -43,6 +47,8 @@ if ('Hello'.length !== 5) {
 ```
 
 With Chai, that can be rewritten as follows:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
@@ -56,6 +62,8 @@ describe('should match expected length', () => {
 
 Chai can also help make your code more concise by providing automatic error messages. For example, the following code triggers an error when executed:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 
@@ -65,6 +73,8 @@ describe('should match expected length', () => {
 ```
 
 And when you run that code, you automatically get an error message without writing any additional code that says:
+
+<!-- md-k6:skip -->
 
 ```javascript
 // 🔥 AssertionError: expected 'Goodbye' to have a length of 6 but got 7
@@ -80,6 +90,8 @@ Through encapsulation, your tests can define sections for your application. This
 - Provide a logical format for adding additional tests.
 
 For example, you can encapsulate your tests for two different services in your test script as the following:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { describe } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
@@ -107,6 +119,8 @@ describe('service B', () => {
 
 Assertion libraries are typically used to write mocked unit/integration tests, but you can also use it to test any API response. For example:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import expect from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 import http from 'k6/http';
@@ -120,6 +134,8 @@ expect(response.body).to.deep.equal(expected);
 ### Error handling with `describe`
 
 The `check` function doesn't protect your tests against unsafe code. If a check fails, k6 throws an exception and restarts the script execution from the beginning. For example:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { check } from 'k6';
@@ -143,6 +159,8 @@ export default function () {
 ```
 
 With k6chaijs, error handling is provided automatically. Script errors are caught by the describe block and execution can proceed to the next set of tests. For example:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
