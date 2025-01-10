@@ -39,10 +39,9 @@ The generic procedure to create a custom metric is as follows:
 
    For example, the following creates a custom trend. The object in the script is called `myTrend`, and its metric appears in the results output as `waiting_time`.
    <!-- md-k6:skip -->
+   <!-- eslint-skip -->
 
    ```javascript
-   import { Trend } from 'k6/metrics';
-
    const myTrend = new Trend('waiting_time');
    ```
 
