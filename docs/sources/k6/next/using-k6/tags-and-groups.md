@@ -178,6 +178,8 @@ Similar to other tags tag, the tag is added to all samples collected during the 
 
 One way to tag the executed operations is to invoke the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
@@ -185,8 +187,8 @@ import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/ind
 
 export const options = {
   stages: [
-    { target: 5, duration: '5s' },
-    { target: 10, duration: '10s' },
+    { target: 5, duration: '2s' },
+    { target: 10, duration: '5s' },
   ],
 };
 
@@ -201,13 +203,15 @@ export default function () {
 
 Additionally, a profiling function `tagWithCurrentStageProfile` can add a tag with a computed profile of the current running stage:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
 import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
 
 export const options = {
-  stages: [{ target: 10, duration: '10s' }],
+  stages: [{ target: 2, duration: '5s' }],
 };
 
 export default function () {
@@ -322,16 +326,18 @@ import http from 'k6/http';
 
 const id = 5;
 
-// reconsider this type of code
-group('get post', function () {
-  http.get(`http://example.com/posts/${id}`);
-});
-group('list posts', function () {
-  const res = http.get(`http://example.com/posts`);
-  check(res, {
-    'is status 200': (r) => r.status === 200,
+export default function () {
+  // reconsider this type of code
+  group('get post', function () {
+    http.get(`http://example.com/posts/${id}`);
   });
-});
+  group('list posts', function () {
+    const res = http.get(`http://example.com/posts`);
+    check(res, {
+      'is status 200': (r) => r.status === 200,
+    });
+  });
+}
 ```
 
 {{< /code >}}

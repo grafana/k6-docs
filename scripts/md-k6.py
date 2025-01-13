@@ -16,6 +16,12 @@ from collections import namedtuple
 
 Script = namedtuple("Script", ["text", "options", "env"])
 
+SKIP = "skip"
+SKIP_ALL = "skipall"
+NO_FAIL = "nofail"
+ENV = "env."
+FIXED_SCENARIOS = "fixedscenarios"
+
 
 def has_browser_scenario(script: Script) -> bool:
     # HACK: Check for two keywords in the script to determine
@@ -40,13 +46,19 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
         f"--log-output=file={logs_file.name}",
         "-w",  # Promote some warnings to errors.
     ]
-    if duration and not has_browser_scenario(script):
+    if (
+        duration
+        and not has_browser_scenario(script)
+        and FIXED_SCENARIOS not in script.options
+    ):
         # If we add this option for tests requiring a browser, then
         # the scenario(s) defined in the script will be replaced with
         # one using the specified duration. This new scenario will not
         # have the browser type configured, which will cause the test
         # to break. Therefore, only set duration for tests that do not
         # use the browser.
+        # Is is also possible to prevent scenario modification using the
+        # `fixedscenarios` option.
         cmd.extend(["-d", duration])
 
     env = {**os.environ, **script.env}
@@ -78,7 +90,7 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
         if parsed["level"] == "error":
             print("error in k6 script execution:", line)
 
-            if "nofail" not in script.options:
+            if NO_FAIL not in script.options:
                 exit(1)
         elif verbose:
             print(line)
@@ -96,7 +108,10 @@ def main() -> None:
     )
     parser.add_argument("--lang", default="javascript", help="Code block language.")
     parser.add_argument(
-        "--duration", "-d", default=None, help="Override script(s) duration."
+        "--duration",
+        "-d",
+        default=None,
+        help="Override script(s) duration. Is not applied to browser tests.",
     )
     parser.add_argument(
         "--verbose",
@@ -113,8 +128,8 @@ def main() -> None:
     lang = args.lang
     text: str = args.file.read()
 
-    if re.search("<!-- *md-k6:skipall *-->", text):
-        print("Skipping entire file (skipall).")
+    if re.search(f"<!-- *md-k6:{SKIP_ALL} *-->", text):
+        print(f"Skipping entire file ({SKIP_ALL}).")
         return
 
     # A somewhat complicated regex in order to make parsing of the code block
@@ -158,16 +173,16 @@ def main() -> None:
         else:
             options = []
 
-        if "skip" in options:
+        if SKIP in options:
             continue
 
         env = {}
         for opt in options:
-            if not opt.startswith("env."):
+            if not opt.startswith(ENV):
                 continue
             if "=" not in opt:
                 opt += "="
-            key, value = opt.removeprefix("env.").split("=")
+            key, value = opt.removeprefix(ENV).split("=")
             env[key] = value
 
         scripts.append(Script(text="\n".join(lines[1:]), options=options, env=env))

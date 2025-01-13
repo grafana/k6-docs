@@ -206,11 +206,15 @@ The `skipall` option will cause `md-k6.py` to ignore the entire Markdown file. N
 
 ### `nofail` Option
 
-The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail.
+The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail. For this reason, using `nofail` will provide slightly better coverage than simply using `skip` on a code snippet.
 
 ### `env.X=Y` Option
 
-Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet.
+Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,`, `-`, and `$`.
+
+### `fixedscenarios` Option
+
+By default, all code snippets will are run with whatever scenarios they define via their `options` variable. However, some command line arguments to `md-k6.py` can change this, for example: `-d`/`--duration`. This option will replace the scenarios for all code snippets run with a scenario lasting only a specific amount of time. However, this behaviour may break some scripts, for this reason, it is possible to specify the `fixedscenarios` option to ensure that the code snippet scenarios will be used as they appear in the Markdown file.
 
 ### Usage
 
