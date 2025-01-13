@@ -27,6 +27,8 @@ Below is a simple example showing how to load the contents of a local file `data
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 const data = JSON.parse(open('./data.json'));
 
