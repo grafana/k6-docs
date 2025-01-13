@@ -1,7 +1,7 @@
 ---
 title: 'Calculate concurrent users for load tests'
 description: 'Learn how to use Google Analytics data to determine the optimal number of concurrent users for your load tests.'
-weight: 100
+weight: 200
 ---
 
 # Calculate concurrent users for load tests

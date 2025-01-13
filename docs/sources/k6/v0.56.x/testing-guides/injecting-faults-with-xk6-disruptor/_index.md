@@ -3,7 +3,7 @@ aliases:
   - ../javascript-api/xk6-disruptor/get-started # docs/k6/<K6_VERSION>/javascript-api/xk6-disruptor/get-started/
 title: 'Injecting faults with xk6-disruptor'
 description: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
-weight: 06
+weight: 800
 ---
 
 # Injecting faults with xk6-disruptor
