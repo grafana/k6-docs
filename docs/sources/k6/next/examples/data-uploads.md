@@ -43,6 +43,8 @@ If you want to open a binary file you need to pass in `"b"` as the second argume
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 const binFile = open('./image.png', 'b');
 
@@ -60,6 +62,8 @@ to upload this data to an API endpoint along with a regular text field (`field` 
 below):
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
