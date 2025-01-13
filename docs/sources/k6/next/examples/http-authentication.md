@@ -25,7 +25,7 @@ export default function () {
 
   // Passing username and password as part of the URL will
   // allow us to authenticate using HTTP Basic Auth.
-  const url = `http://${credentials}@quickpizza.grafana.com/api/basic-auth/${username}/${password}`;
+  const url = `https://${credentials}@quickpizza.grafana.com/api/basic-auth/${username}/${password}`;
 
   let res = http.get(url);
 

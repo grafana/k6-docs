@@ -28,5 +28,4 @@ jobs:
         run: |
           for file in ${ALL_CHANGED_FILES}; do
             python -u scripts/md-k6.py --duration 2s "$file"
-            echo
           done
