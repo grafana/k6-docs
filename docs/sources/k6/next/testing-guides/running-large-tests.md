@@ -1,7 +1,7 @@
 ---
 title: 'Running large tests'
 description: 'How to run large-scale k6 tests without distributed-execution'
-weight: 04
+weight: 500
 ---
 
 # Running large tests
