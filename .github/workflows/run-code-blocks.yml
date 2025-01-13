@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'docs/sources/k6/next/**'
+      - 'docs/sources/k6/next/**/*.md'
 
 jobs:
   run-code-blocks:
@@ -17,7 +17,7 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: |
-            **.md
+            docs/sources/k6/next/**/*.md
       - uses: grafana/setup-k6-action@v1
       - uses: actions/setup-python@v5
         with:
