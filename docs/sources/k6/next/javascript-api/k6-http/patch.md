@@ -26,7 +26,7 @@ weight: 10
 ```javascript
 import http from 'k6/http';
 
-const url = 'http://quickpizza.grafana-dev.com:3333/api/patch';
+const url = 'https://quickpizza.grafana.com/api/patch';
 
 export default function () {
   const headers = { 'Content-Type': 'application/json' };

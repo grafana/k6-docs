@@ -43,7 +43,7 @@ export default function () {
   const reqHeaders = {
     Authorization: 'Token abcdef0123456789',
   };
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/doughs', {
+  const res = http.get('https://quickpizza.grafana.com/api/doughs', {
     headers: reqHeaders,
   });
 
@@ -135,7 +135,7 @@ import http from 'k6/http';
 
 export default function () {
   // This request returns XML:
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/xml?color=green');
+  const res = http.get('https://quickpizza.grafana.com/api/xml?color=green');
 
   // Use findBetween to extract the first <value> tag encountered:
   const color = findBetween(res.body, '<value>', '</value>');

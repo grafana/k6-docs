@@ -83,7 +83,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/', {
+  const res = http.get('https://quickpizza.grafana.com/', {
     tags: {
       my_tag: "I'm a tag",
     },
@@ -149,14 +149,14 @@ export default function () {
   group('main', function () {
     http.get('https://test.k6.io');
     group('sub', function () {
-      http.get('http://quickpizza.grafana-dev.com:3333/');
+      http.get('https://quickpizza.grafana.com/');
     });
     http.get('https://test-api.k6.io');
   });
 
   delete exec.vu.tags.containerGroup;
 
-  http.get('http://quickpizza.grafana-dev.com:3333/api/delay/3');
+  http.get('https://quickpizza.grafana.com/api/delay/3');
 }
 ```
 

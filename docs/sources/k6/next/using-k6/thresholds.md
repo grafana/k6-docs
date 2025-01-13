@@ -494,7 +494,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/status/500');
+  const res = http.get('https://quickpizza.grafana.com/api/status/500');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -527,12 +527,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('http://quickpizza.grafana-dev.com:3333/api/status/500');
+  res = http.get('https://quickpizza.grafana.com/api/status/500');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('http://quickpizza.grafana-dev.com:3333/api/status/200');
+  res = http.get('https://quickpizza.grafana.com/api/status/200');
   check(
     res,
     {

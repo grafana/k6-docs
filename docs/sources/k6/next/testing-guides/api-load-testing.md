@@ -43,7 +43,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -133,7 +133,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -181,7 +181,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -256,7 +256,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, { headers });
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 
   check(res, {
     'Post status is 200': (r) => res.status === 200,
@@ -426,7 +426,7 @@ export default function () {
   });
 
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, {
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, {
     headers,
   });
 
@@ -469,7 +469,7 @@ export default function () {
     surname: user.surname,
   });
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('http://quickpizza.grafana-dev.com:3333/api/post', payload, {
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, {
     headers,
   });
 
@@ -483,7 +483,7 @@ export default function () {
     // enters only successful responses
     // otherwise, it triggers an exception
     const delPayload = JSON.stringify({ name: res.json().name });
-    http.patch('http://quickpizza.grafana-dev.com:3333/api/patch', delPayload, { headers });
+    http.patch('https://quickpizza.grafana.com/api/patch', delPayload, { headers });
   }
 }
 ```

@@ -108,13 +108,9 @@ if (__ENV.SHARED === 'true') {
 
 export default function () {
   const iterationData = data[Math.floor(Math.random() * data.length)];
-  const res = http.post(
-    'http://quickpizza.grafana-dev.com:3333/api/post',
-    JSON.stringify(iterationData),
-    {
-      headers: { 'Content-type': 'application/json' },
-    }
-  );
+  const res = http.post('https://quickpizza.grafana.com/api/post', JSON.stringify(iterationData), {
+    headers: { 'Content-type': 'application/json' },
+  });
   check(res, { 'status 200': (r) => r.status === 200 });
 }
 ```

@@ -28,7 +28,7 @@ Make a DELETE request.
 ```javascript
 import http from 'k6/http';
 
-const url = 'http://quickpizza.grafana-dev.com:3333/api/delete';
+const url = 'https://quickpizza.grafana.com/api/delete';
 
 export default function () {
   const params = { headers: { 'X-MyHeader': 'k6test' } };

@@ -29,7 +29,7 @@ weight: 16
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({
-  baseURL: 'http://quickpizza.grafana-dev.com:3333',
+  baseURL: 'https://quickpizza.grafana.com',
   timeout: 20000, // 20s timeout.
 });
 

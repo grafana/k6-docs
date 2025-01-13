@@ -22,22 +22,19 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res1 = http.post(
-    'http://quickpizza.grafana-dev.com:3333/api/cookies?my_cookie=hello%20world',
-    {
-      redirects: 0,
-    }
-  );
+  const res1 = http.post('https://quickpizza.grafana.com/api/cookies?my_cookie=hello%20world', {
+    redirects: 0,
+  });
   const jar = http.cookieJar();
-  const cookies = jar.cookiesForURL('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  const cookies = jar.cookiesForURL('https://quickpizza.grafana.com/api/cookies');
   check(res1, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
   });
 
-  jar.clear('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  jar.clear('https://quickpizza.grafana.com/api/cookies');
 
-  const res2 = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  const res2 = http.get('https://quickpizza.grafana.com/api/cookies');
   check(res2, {
     'has status 200': (r) => r.status === 200,
     "hasn't cookie 'my_cookie'": (r) => r.json().cookies.my_cookie == null,

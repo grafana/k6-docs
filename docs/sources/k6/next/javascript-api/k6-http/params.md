@@ -53,8 +53,8 @@ Here is another example using [http.batch()](https://grafana.com/docs/k6/<K6_VER
 ```javascript
 import http from 'k6/http';
 
-const url1 = 'http://quickpizza.grafana-dev.com:3333/api/get';
-const url2 = 'http://quickpizza.grafana-dev.com:3333/api/delete';
+const url1 = 'https://quickpizza.grafana.com/api/get';
+const url2 = 'https://quickpizza.grafana.com/api/delete';
 const apiToken = 'f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195';
 const requestHeaders = {
   'User-Agent': 'k6',
@@ -83,7 +83,7 @@ export default function () {}
 export function setup() {
   // Get 10 random bytes as an ArrayBuffer. Without the responseType the body
   // will be null.
-  const response = http.get('http://quickpizza.grafana-dev.com:3333/api/bytes/10', {
+  const response = http.get('https://quickpizza.grafana.com/api/bytes/10', {
     responseType: 'binary',
   });
   // response.body is an ArrayBuffer, so wrap it in a typed array view to access

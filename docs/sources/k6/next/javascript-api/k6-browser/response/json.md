@@ -37,7 +37,7 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    const res = await page.goto('http://quickpizza.grafana-dev.com:3333/api/json?foo=bar');
+    const res = await page.goto('https://quickpizza.grafana.com/api/json?foo=bar');
 
     const json = await res.json();
     console.log(`json: ${JSON.stringify(json)}`); // json: {"foo": "bar"}

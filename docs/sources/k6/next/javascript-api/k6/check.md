@@ -37,7 +37,7 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/');
+  const res = http.get('https://quickpizza.grafana.com/');
   check(res, {
     'response code was 200': (res) => res.status == 200,
   });
@@ -55,7 +55,7 @@ import http from 'k6/http';
 import { check, fail } from 'k6';
 
 export default function () {
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/');
+  const res = http.get('https://quickpizza.grafana.com/');
   const checkOutput = check(
     res,
     {

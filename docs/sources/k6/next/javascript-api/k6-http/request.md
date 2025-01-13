@@ -29,7 +29,7 @@ Using http.request() to issue a POST request:
 ```javascript
 import http from 'k6/http';
 
-const url = 'http://quickpizza.grafana-dev.com:3333/api/post';
+const url = 'https://quickpizza.grafana.com/api/post';
 
 export default function () {
   const data = { name: 'Bert' };

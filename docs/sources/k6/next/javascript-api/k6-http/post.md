@@ -28,7 +28,7 @@ weight: 10
 ```javascript
 import http from 'k6/http';
 
-const url = 'http://quickpizza.grafana-dev.com:3333/api/json';
+const url = 'https://quickpizza.grafana.com/api/json';
 const logoBin = open('./logo.png', 'b');
 
 export default function () {

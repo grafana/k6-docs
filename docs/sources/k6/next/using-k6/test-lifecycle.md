@@ -154,7 +154,7 @@ For example, you can make HTTP requests:
 import http from 'k6/http';
 
 export function setup() {
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/json');
+  const res = http.get('https://quickpizza.grafana.com/api/json');
   return { data: res.json() };
 }
 

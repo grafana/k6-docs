@@ -42,7 +42,7 @@ in subsequent requests to the server, include the cookie in the `cookies` reques
 import http from 'k6/http';
 
 export default function () {
-  http.get('http://quickpizza.grafana-dev.com:3333/api/cookies', {
+  http.get('https://quickpizza.grafana.com/api/cookies', {
     cookies: {
       my_cookie: 'hello world',
     },
@@ -64,8 +64,8 @@ import http from 'k6/http';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie', 'hello world');
-  http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie', 'hello world');
+  http.get('https://quickpizza.grafana.com/api/cookies');
 }
 ```
 
@@ -84,7 +84,7 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie', 'hello world');
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie', 'hello world');
 
   const cookies = {
     my_cookie: {
@@ -93,7 +93,7 @@ export default function () {
     },
   };
 
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies', {
+  const res = http.get('https://quickpizza.grafana.com/api/cookies', {
     cookies,
   });
 
@@ -116,12 +116,9 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.post(
-    'http://quickpizza.grafana-dev.com:3333/api/cookies?my_cookie=hello%20world',
-    {
-      redirects: 0,
-    }
-  );
+  const res = http.post('https://quickpizza.grafana.com/api/cookies?my_cookie=hello%20world', {
+    redirects: 0,
+  });
   check(res, {
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => r.cookies.my_cookie[0].value === 'hello world',
@@ -162,14 +159,11 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.post(
-    'http://quickpizza.grafana-dev.com:3333/api/cookies?my_cookie=hello%20world',
-    {
-      redirects: 0,
-    }
-  );
+  const res = http.post('https://quickpizza.grafana.com/api/cookies?my_cookie=hello%20world', {
+    redirects: 0,
+  });
   const jar = http.cookieJar();
-  const cookies = jar.cookiesForURL('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  const cookies = jar.cookiesForURL('https://quickpizza.grafana.com/api/cookies');
   check(res, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
@@ -197,13 +191,13 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('http://quickpizza.grafana-dev.com:3333/api/cookies', 'my_cookie', 'hello world', {
-    domain: 'quickpizza.grafana-dev.com',
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie', 'hello world', {
+    domain: 'quickpizza.grafana.com',
     path: '/api/cookies',
-    secure: false, // TODO set to false
+    secure: true,
     max_age: 600,
   });
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies');
+  const res = http.get('https://quickpizza.grafana.com/api/cookies');
 
   check(res, {
     'has status 200': (r) => r.status === 200,
@@ -230,20 +224,15 @@ export default function () {
 
   // Add cookie to local jar
   const cookieOptions = {
-    domain: 'quickpizza.grafana-dev.com',
+    domain: 'quickpizza.grafana.com',
     path: '/api/cookies',
-    secure: false, // TODO set to true
+    secure: true,
     max_age: 600,
   };
-  jar.set(
-    'http://quickpizza.grafana-dev.com:3333/api/cookies',
-    'my_cookie',
-    'hello world',
-    cookieOptions
-  );
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie', 'hello world', cookieOptions);
 
   // Override per-VU jar with local jar for the following request
-  const res = http.get('http://quickpizza.grafana-dev.com:3333/api/cookies', { jar });
+  const res = http.get('https://quickpizza.grafana.com/api/cookies', { jar });
   check(res, {
     'has status 200': (r) => r.status === 200,
     'cookie has correct value': (r) => r.json().cookies.my_cookie == 'hello world',

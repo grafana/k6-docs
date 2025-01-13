@@ -91,15 +91,15 @@ import { check } from 'k6';
 export default function () {
   const req1 = {
     method: 'GET',
-    url: 'http://quickpizza.grafana-dev.com:3333/api/get',
+    url: 'https://quickpizza.grafana.com/api/get',
   };
   const req2 = {
     method: 'DELETE',
-    url: 'http://quickpizza.grafana-dev.com:3333/api/delete',
+    url: 'https://quickpizza.grafana.com/api/delete',
   };
   const req3 = {
     method: 'POST',
-    url: 'http://quickpizza.grafana-dev.com:3333/api/post',
+    url: 'https://quickpizza.grafana.com/api/post',
     body: JSON.stringify({ hello: 'world!' }),
     params: {
       headers: { 'Content-Type': 'application/json' },

@@ -39,7 +39,7 @@ export default async function () {
   context.setDefaultNavigationTimeout(1000); // 1s
 
   try {
-    await page.goto('http://quickpizza.grafana-dev.com:3333/api/delay/5');
+    await page.goto('https://quickpizza.grafana.com/api/delay/5');
   } finally {
     await page.close();
   }

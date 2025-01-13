@@ -275,7 +275,7 @@ export function handleSummary(data) {
   console.log('Preparing the end-of-test summary...');
 
   // Send the results to some remote server or trigger a hook
-  const resp = http.post('http://quickpizza.grafana-dev.com:3333/api/post', JSON.stringify(data));
+  const resp = http.post('https://quickpizza.grafana.com/api/post', JSON.stringify(data));
   if (resp.status != 200) {
     console.error('Could not send summary, got status ' + resp.status);
   }

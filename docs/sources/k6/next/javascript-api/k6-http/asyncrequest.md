@@ -29,7 +29,7 @@ Using http.asyncRequest() to issue a POST request:
 ```javascript
 import http from 'k6/http';
 
-const url = 'http://quickpizza.grafana-dev.com:3333/api/post';
+const url = 'https://quickpizza.grafana.com/api/post';
 
 export default async function () {
   const data = { name: 'Bert' };
@@ -56,9 +56,9 @@ Using `http.asyncRequest()` to issue multiple requests, then [Promise.race](http
 import http from 'k6/http';
 
 export default async () => {
-  const urlOne = `http://quickpizza.grafana-dev.com:3333/api/delay/${randomInt(1, 5)}`;
-  const urlTwo = `http://quickpizza.grafana-dev.com:3333/api/delay/${randomInt(1, 5)}`;
-  const urlThree = `http://quickpizza.grafana-dev.com:3333/api/delay/${randomInt(1, 5)}`;
+  const urlOne = `https://quickpizza.grafana.com/api/delay/${randomInt(1, 5)}`;
+  const urlTwo = `https://quickpizza.grafana.com/api/delay/${randomInt(1, 5)}`;
+  const urlThree = `https://quickpizza.grafana.com/api/delay/${randomInt(1, 5)}`;
 
   const one = http.asyncRequest('GET', urlOne);
   const two = http.asyncRequest('GET', urlTwo);
