@@ -83,7 +83,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('https://httpbin.test.k6.io/', {
+  const res = http.get('https://quickpizza.grafana.com/', {
     tags: {
       my_tag: "I'm a tag",
     },
@@ -109,6 +109,7 @@ You can set these tags in two ways:
 - In the script itself:
 
   {{< code >}}
+  <!-- md-k6:skip -->
 
   ```javascript
   export const options = {
@@ -128,6 +129,8 @@ To support advanced tagging workflows, it is also possible to directly set and g
 
 [k6/execution.vu.tags](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
@@ -146,14 +149,14 @@ export default function () {
   group('main', function () {
     http.get('https://test.k6.io');
     group('sub', function () {
-      http.get('https://httpbin.test.k6.io/anything');
+      http.get('https://quickpizza.grafana.com/');
     });
     http.get('https://test-api.k6.io');
   });
 
   delete exec.vu.tags.containerGroup;
 
-  http.get('https://httpbin.test.k6.io/delay/3');
+  http.get('https://quickpizza.grafana.com/api/delay/3');
 }
 ```
 
@@ -175,6 +178,8 @@ Similar to other tags tag, the tag is added to all samples collected during the 
 
 One way to tag the executed operations is to invoke the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
@@ -182,8 +187,8 @@ import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/ind
 
 export const options = {
   stages: [
-    { target: 5, duration: '5s' },
-    { target: 10, duration: '10s' },
+    { target: 5, duration: '2s' },
+    { target: 10, duration: '5s' },
   ],
 };
 
@@ -198,13 +203,15 @@ export default function () {
 
 Additionally, a profiling function `tagWithCurrentStageProfile` can add a tag with a computed profile of the current running stage:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
 import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
 
 export const options = {
-  stages: [{ target: 10, duration: '10s' }],
+  stages: [{ target: 2, duration: '5s' }],
 };
 
 export default function () {
@@ -238,7 +245,7 @@ The profile value based on the current stage can be one of the following options
       "group ": "::my group::json ",
       "method ": "GET ",
       "status ": "200 ",
-      "url ": "https://httpbin.test.k6.io/get "
+      "url ": "http://quickpizza.grafana.com"
     }
   },
   "metric ": "http_req_duration "
@@ -319,16 +326,18 @@ import http from 'k6/http';
 
 const id = 5;
 
-// reconsider this type of code
-group('get post', function () {
-  http.get(`http://example.com/posts/${id}`);
-});
-group('list posts', function () {
-  const res = http.get(`http://example.com/posts`);
-  check(res, {
-    'is status 200': (r) => r.status === 200,
+export default function () {
+  // reconsider this type of code
+  group('get post', function () {
+    http.get(`http://example.com/posts/${id}`);
   });
-});
+  group('list posts', function () {
+    const res = http.get(`http://example.com/posts`);
+    check(res, {
+      'is status 200': (r) => r.status === 200,
+    });
+  });
+}
 ```
 
 {{< /code >}}

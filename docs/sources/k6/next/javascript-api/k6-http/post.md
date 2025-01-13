@@ -23,10 +23,12 @@ weight: 10
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 
-const url = 'https://httpbin.test.k6.io/post';
+const url = 'https://quickpizza.grafana.com/api/json';
 const logoBin = open('./logo.png', 'b');
 
 export default function () {

@@ -62,7 +62,7 @@ The JSON output has lines as follows:
 {"type":"Metric","data":{"type":"gauge","contains":"default","tainted":null,"thresholds":[],"submetrics":null},"metric":"vus"}
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.625742514+02:00","value":5,"tags":null},"metric":"vus"}
 {"type":"Metric","data":{"type":"trend","contains":"time","tainted":null,"thresholds":["avg<1000"],"submetrics":null},"metric":"http_req_duration"}
-{"type":"Point","data":{"time":"2017-05-09T14:34:45.239531499+02:00","value":459.865729,"tags":{"group":"::my group::json","method":"GET","status":"200","url":"https://httpbin.test.k6.io/get"}},"metric":"http_req_duration"}
+{"type":"Point","data":{"time":"2017-05-09T14:34:45.239531499+02:00","value":459.865729,"tags":{"group":"::my group::json","method":"GET","status":"200","url":"https://quickpizza.grafana.com/api/tools"}},"metric":"http_req_duration"}
 ```
 
 {{< /code >}}

@@ -30,10 +30,10 @@ import http from 'k6/http';
 
 export default function () {
   // Request page with links
-  let res = http.get('https://httpbin.test.k6.io/links/10/0');
+  let res = http.get('https://quickpizza.grafana.com/admin');
 
   // Now, click the 4th link on the page
-  res = res.clickLink({ selector: 'a:nth-child(4)' });
+  res = res.clickLink({ selector: 'a:nth-child(1)' });
 }
 ```
 

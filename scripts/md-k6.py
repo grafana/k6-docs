@@ -14,10 +14,22 @@ import textwrap
 import tempfile
 from collections import namedtuple
 
-Script = namedtuple("Script", ["text", "options"])
+Script = namedtuple("Script", ["text", "options", "env"])
+
+SKIP = "skip"
+SKIP_ALL = "skipall"
+NO_FAIL = "nofail"
+ENV = "env."
+FIXED_SCENARIOS = "fixedscenarios"
 
 
-def run_k6(script: Script) -> None:
+def has_browser_scenario(script: Script) -> bool:
+    # HACK: Check for two keywords in the script to determine
+    # if there's a scenario that requires a browser.
+    return "browser" in script.text and "chromium" in script.text
+
+
+def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
     script_file = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".js")
     script_file.write(script.text)
     script_file.close()
@@ -26,36 +38,65 @@ def run_k6(script: Script) -> None:
     logs_file.close()
 
     k6 = os.getenv("K6_PATH", "k6")
+    cmd = [
+        k6,
+        "run",
+        script_file.name,
+        "--log-format=json",
+        f"--log-output=file={logs_file.name}",
+        "-w",  # Promote some warnings to errors.
+    ]
+    if (
+        duration
+        and not has_browser_scenario(script)
+        and FIXED_SCENARIOS not in script.options
+    ):
+        # If we add this option for tests requiring a browser, then
+        # the scenario(s) defined in the script will be replaced with
+        # one using the specified duration. This new scenario will not
+        # have the browser type configured, which will cause the test
+        # to break. Therefore, only set duration for tests that do not
+        # use the browser.
+        # Is is also possible to prevent scenario modification using the
+        # `fixedscenarios` option.
+        cmd.extend(["-d", duration])
 
-    result = subprocess.run(
-        [
-            k6,
-            "run",
-            script_file.name,
-            "--log-format=json",
-            f"--log-output=file={logs_file.name}",
-            "-w",
-        ],
-    )
+    env = {**os.environ, **script.env}
+    result = subprocess.run(cmd, env=env)
 
     if result.returncode:
         print("k6 returned non-zero status:", result.returncode)
+        try:
+            with open(logs_file.name) as f:
+                logs = f.read()
+
+            print("logs:")
+            print(logs)
+        except Exception:
+            # Ignore exceptions if we fail to read the logs
+            pass
         exit(1)
 
     with open(logs_file.name) as f:
         lines = f.readlines()
 
+    # There's no way of running k6 OSS in a way that the process fails
+    # immediately after the first exception (unless this specific handling
+    # is added to the script explicitly). So here we just read the logs for
+    # any errors and fail if at least one was found.
     for line in lines:
         line = line.strip()
         parsed = json.loads(line)
         if parsed["level"] == "error":
             print("error in k6 script execution:", line)
-            exit(1)
+
+            if NO_FAIL not in script.options:
+                exit(1)
+        elif verbose:
+            print(line)
 
 
 def main() -> None:
-    print("Starting md-k6 script.")
-
     parser = argparse.ArgumentParser(
         description="Run k6 scripts within Markdown files."
     )
@@ -66,12 +107,30 @@ def main() -> None:
         help="Python-like range of code blocks to run (0, 1, 2, 0:2, 3:, etc.).",
     )
     parser.add_argument("--lang", default="javascript", help="Code block language.")
+    parser.add_argument(
+        "--duration",
+        "-d",
+        default=None,
+        help="Override script(s) duration. Is not applied to browser tests.",
+    )
+    parser.add_argument(
+        "--verbose",
+        "-v",
+        default=False,
+        help="Enable verbose mode. All log output for tests will be printed.",
+        action="store_true",
+    )
     args = parser.parse_args()
 
+    print("Starting md-k6 script.")
     print("Reading from file:", args.file.name)
 
     lang = args.lang
-    text = args.file.read()
+    text: str = args.file.read()
+
+    if re.search(f"<!-- *md-k6:{SKIP_ALL} *-->", text):
+        print(f"Skipping entire file ({SKIP_ALL}).")
+        return
 
     # A somewhat complicated regex in order to make parsing of the code block
     # easier. Essentially, takes this:
@@ -97,7 +156,7 @@ def main() -> None:
     # blocks.
 
     text = re.sub(
-        "<!-- *md-k6:([^ -]+) *-->\n+(<!-- eslint-skip -->\n+)?```" + lang,
+        r"<!-- *md-k6:([^ -]+) *-->\n+\s*(<!-- *eslint-skip *-->\n+)?\s*```" + lang,
         "```" + lang + "$" + r"\1",
         text,
     )
@@ -114,22 +173,41 @@ def main() -> None:
         else:
             options = []
 
-        if "skip" in options:
+        if SKIP in options:
             continue
 
-        scripts.append(Script(text="\n".join(lines[1:]), options=options))
+        env = {}
+        for opt in options:
+            if not opt.startswith(ENV):
+                continue
+            if "=" not in opt:
+                opt += "="
+            key, value = opt.removeprefix(ENV).split("=")
+            env[key] = value
 
-    range_parts = args.blocks.split(":")
-    try:
-        start = int(range_parts[0]) if range_parts[0] else 0
-        end = (
-            int(range_parts[1])
-            if len(range_parts) > 1 and range_parts[1]
-            else len(scripts)
-        )
-    except ValueError:
-        print("Invalid range.")
-        exit(1)
+        scripts.append(Script(text="\n".join(lines[1:]), options=options, env=env))
+
+    if ":" in args.blocks:
+        range_parts = args.blocks.split(":")
+        try:
+            start = int(range_parts[0]) if range_parts[0] else 0
+            end = (
+                int(range_parts[1])
+                if len(range_parts) > 1 and range_parts[1]
+                else len(scripts)
+            )
+            print(f"Blocks selection range: start = {start}, end = {end}")
+        except ValueError:
+            print("Invalid range.")
+            exit(1)
+    else:
+        try:
+            start = int(args.blocks)
+            end = start + 1
+            print(f"Block selected: index = {start}")
+        except ValueError:
+            print("Invalid range.")
+            exit(1)
 
     print("Number of code blocks (scripts) read:", len(scripts))
     print("Number of code blocks (scripts) to run:", len(scripts[start:end]))
@@ -140,7 +218,7 @@ def main() -> None:
             f"Running script #{i} (hash: {script_hash}, options: {script.options}):\n"
         )
         print(textwrap.indent(script.text, "     "))
-        run_k6(script)
+        run_k6(script, args.duration, args.verbose)
         print()
 
 

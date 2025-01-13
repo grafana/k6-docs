@@ -76,6 +76,8 @@ Code in the `init` context _always executes first_.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 // init context: importing modules
 import http from 'k6/http';
@@ -152,7 +154,7 @@ For example, you can make HTTP requests:
 import http from 'k6/http';
 
 export function setup() {
-  const res = http.get('https://httpbin.test.k6.io/get');
+  const res = http.get('https://quickpizza.grafana.com/api/json');
   return { data: res.json() };
 }
 
@@ -258,6 +260,7 @@ k6 has a few additional ways to use lifecycle functions:
 - **Scenario functions**. Instead of the `default` function, you can also run VU code in scenario functions.
 
   {{< code >}}
+  <!-- md-k6:skip -->
 
   ```javascript
   import http from 'k6/http';

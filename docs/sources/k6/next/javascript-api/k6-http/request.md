@@ -29,7 +29,7 @@ Using http.request() to issue a POST request:
 ```javascript
 import http from 'k6/http';
 
-const url = 'https://httpbin.test.k6.io/post';
+const url = 'https://quickpizza.grafana.com/api/post';
 
 export default function () {
   const data = { name: 'Bert' };
@@ -38,12 +38,12 @@ export default function () {
   let res = http.request('POST', url, JSON.stringify(data), {
     headers: { 'Content-Type': 'application/json' },
   });
-  console.log(res.json().json.name); // Bert
+  console.log(res.json().name); // Bert
 
   // Using an object as body, the headers will automatically include
   // 'Content-Type: application/x-www-form-urlencoded'.
   res = http.request('POST', url, data);
-  console.log(res.json().form.name); // Bert
+  console.log(res.body); // name=Bert
 }
 ```
 

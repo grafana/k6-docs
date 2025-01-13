@@ -13,6 +13,8 @@ When a script requests an element, k6 gives a _copy_ of that element.
 You must construct a `SharedArray` in the [`init` context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 Its constructor takes a name for the `SharedArray` and a function that needs to return an array object itself:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { SharedArray } from 'k6/data';
 
@@ -49,6 +51,8 @@ This limitation will eventually be removed, but for now, the implication is that
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { SharedArray } from 'k6/data';
 
@@ -79,6 +83,8 @@ To test this, we ran the following script on version v0.31.0 with 100 VUs.
 
 {{< code >}}
 
+<!-- md-k6:env.N=3 -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -102,7 +108,7 @@ if (__ENV.SHARED === 'true') {
 
 export default function () {
   const iterationData = data[Math.floor(Math.random() * data.length)];
-  const res = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(iterationData), {
+  const res = http.post('https://quickpizza.grafana.com/api/post', JSON.stringify(iterationData), {
     headers: { 'Content-type': 'application/json' },
   });
   check(res, { 'status 200': (r) => r.status === 200 });
