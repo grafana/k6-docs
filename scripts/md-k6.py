@@ -17,6 +17,12 @@ from collections import namedtuple
 Script = namedtuple("Script", ["text", "options", "env"])
 
 
+def has_browser_scenario(script: Script) -> bool:
+    # HACK: Check for two keywords in the script to determine
+    # if there's a scenario that requires a browser.
+    return "browser" in script.text and "chromium" in script.text
+
+
 def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
     script_file = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".js")
     script_file.write(script.text)
@@ -34,7 +40,13 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
         f"--log-output=file={logs_file.name}",
         "-w",  # Promote some warnings to errors.
     ]
-    if duration:
+    if duration and not has_browser_scenario(script):
+        # If we add this option for tests requiring a browser, then
+        # the scenario(s) defined in the script will be replaced with
+        # one using the specified duration. This new scenario will not
+        # have the browser type configured, which will cause the test
+        # to break. Therefore, only set duration for tests that do not
+        # use the browser.
         cmd.extend(["-d", duration])
 
     env = {**os.environ, **script.env}
