@@ -200,6 +200,10 @@ The `skip` option will cause `md-k6.py` to ignore the code snippet completely (i
 > ```
 > ````
 
+### `skipall` Option
+
+The `skipall` option will cause `md-k6.py` to ignore the entire Markdown file. Note that this option is special: it can be specified anywhere in the file, for example, at the very end. It also does not need to be placed above a code snippet. In order for this option to be read correctly, it must be specified alone, with no other additional options in the same HTML comment tag.
+
 ### `nofail` Option
 
 The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail.

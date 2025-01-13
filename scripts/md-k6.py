@@ -99,7 +99,11 @@ def main() -> None:
     print("Reading from file:", args.file.name)
 
     lang = args.lang
-    text = args.file.read()
+    text: str = args.file.read()
+
+    if re.search("<!-- *md-k6:skipall *-->", text):
+        print("Skipping entire file (skipall).")
+        return
 
     # A somewhat complicated regex in order to make parsing of the code block
     # easier. Essentially, takes this:
@@ -125,7 +129,7 @@ def main() -> None:
     # blocks.
 
     text = re.sub(
-        r"<!-- *md-k6:([^ -]+) *-->\n+\s*(<!-- eslint-skip -->\n+)?\s*```" + lang,
+        r"<!-- *md-k6:([^ -]+) *-->\n+\s*(<!-- *eslint-skip *-->\n+)?\s*```" + lang,
         "```" + lang + "$" + r"\1",
         text,
     )

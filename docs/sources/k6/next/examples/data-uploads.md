@@ -27,8 +27,6 @@ Below is a simple example showing how to load the contents of a local file `data
 
 {{< code >}}
 
-<!-- md-k6:skip -->
-
 ```javascript
 const data = JSON.parse(open('./data.json'));
 
@@ -42,8 +40,6 @@ export default function () {
 If you want to open a binary file you need to pass in `"b"` as the second argument.
 
 {{< code >}}
-
-<!-- md-k6:skip -->
 
 ```javascript
 const binFile = open('./image.png', 'b');
@@ -62,8 +58,6 @@ to upload this data to an API endpoint along with a regular text field (`field` 
 below):
 
 {{< code >}}
-
-<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -112,8 +106,6 @@ Here's an example of uploading several binary files and a text file using the po
 
 {{< code >}}
 
-<!-- md-k6:skip -->
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -156,3 +148,5 @@ Note that:
 - Blob is not supported or implemented. For the same functionality, use
   a simple object with the fields `data`, `content_type` (defaulting to "application/octet-stream") and optionally
   `filename` as shown for `aBinaryFile` above.
+
+<!-- md-k6:skipall -->
