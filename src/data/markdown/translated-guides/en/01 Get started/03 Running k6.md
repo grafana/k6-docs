@@ -26,7 +26,7 @@ To run a simple local script:
     ```
 
     ```bash
-    $ docker run --rm -i --user $UID -v $PWD:/app -w /app grafana/k6 new
+    $ docker run --rm -u $(id -u) -v $PWD:/app -w /app grafana/k6 new
     ```
 
     ```bash
