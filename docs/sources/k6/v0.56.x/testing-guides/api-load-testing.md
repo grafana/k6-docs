@@ -402,6 +402,8 @@ For example, consider a JSON file with a list of user info such as:
 
 You can parameterize the users with the [`SharedArray`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) object as follows:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -444,6 +446,8 @@ Though a test might be designed to induce failures, sometimes we focus on only t
 
 The test script must handle API errors to avoid runtime exceptions and to ensure that it tests how the SUT behaves under saturation according to the test goals.
 For example, we could extend our script to do some operation that depends on the result of the previous request:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { check } from 'k6';
