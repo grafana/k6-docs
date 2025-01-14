@@ -308,6 +308,8 @@ To ensure your system achieves its SLOs, test them frequently, both in pre-produ
 In k6, you can use [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) to set the test pass/fail criteria.
 This script codifies two SLOs in the `thresholds` object, one about error rate (availability) and one about request duration (latency).
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   thresholds: {
