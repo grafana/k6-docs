@@ -25,7 +25,7 @@ export default function () {
 
   // Passing username and password as part of the URL will
   // allow us to authenticate using HTTP Basic Auth.
-  const url = `https://${credentials}@httpbin.test.k6.io/basic-auth/${username}/${password}`;
+  const url = `https://${credentials}@quickpizza.grafana.com/api/basic-auth/${username}/${password}`;
 
   let res = http.get(url);
 
@@ -45,44 +45,10 @@ export default function () {
     },
   };
 
-  res = http.get(`https://httpbin.test.k6.io/basic-auth/${username}/${password}`, options);
+  res = http.get(`https://quickpizza.grafana.com/api/basic-auth/${username}/${password}`, options);
 
-  // Verify response (checking the echoed data from the httpbin.test.k6.io
+  // Verify response (checking the echoed data from the QuickPizza
   // basic auth test API endpoint)
-  check(res, {
-    'status is 200': (r) => r.status === 200,
-    'is authenticated': (r) => r.json().authenticated === true,
-    'is correct user': (r) => r.json().user === username,
-  });
-}
-```
-
-{{< /code >}}
-
-## Digest authentication
-
-{{< code >}}
-
-```javascript
-import http from 'k6/http';
-import { check } from 'k6';
-
-const username = 'user';
-const password = 'passwd';
-
-export default function () {
-  // Passing username and password as part of URL plus the auth option will
-  // authenticate using HTTP Digest authentication.
-  const credentials = `${username}:${password}`;
-  const res = http.get(
-    `https://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`,
-    {
-      auth: 'digest',
-    }
-  );
-
-  // Verify response (checking the echoed data from the httpbin.test.k6.io digest auth
-  // test API endpoint)
   check(res, {
     'status is 200': (r) => r.status === 200,
     'is authenticated': (r) => r.json().authenticated === true,
@@ -120,6 +86,8 @@ To authenticate requests to AWS APIs using [AWS Signature Version 4](https://doc
 Here's an example script to demonstrate how to sign a request to fetch an object from an S3 bucket:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';

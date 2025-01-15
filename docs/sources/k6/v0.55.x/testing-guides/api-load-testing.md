@@ -43,7 +43,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('https://httpbin.test.k6.io/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -133,7 +133,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('https://httpbin.test.k6.io/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -181,7 +181,7 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('https://httpbin.test.k6.io/post', payload, { headers });
+  http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 }
 ```
 
@@ -256,12 +256,12 @@ export default function () {
     surname: 'ipsum',
   });
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('https://httpbin.test.k6.io/post', payload, { headers });
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, { headers });
 
   check(res, {
     'Post status is 200': (r) => res.status === 200,
     'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
-    'Post response name': (r) => res.status === 200 && res.json().json.name === 'lorem',
+    'Post response name': (r) => res.status === 200 && res.json().name === 'lorem',
   });
 }
 ```
@@ -309,6 +309,8 @@ To ensure your system achieves its SLOs, test them frequently, both in pre-produ
 
 In k6, you can use [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) to set the test pass/fail criteria.
 This script codifies two SLOs in the `thresholds` object, one about error rate (availability) and one about request duration (latency).
+
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
@@ -402,6 +404,8 @@ For example, consider a JSON file with a list of user info such as:
 
 You can parameterize the users with the [`SharedArray`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) object as follows:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -422,14 +426,14 @@ export default function () {
   });
 
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('https://httpbin.test.k6.io/post', payload, {
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, {
     headers,
   });
 
   check(res, {
     'Post status is 200': (r) => res.status === 200,
     'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
-    'Post response name': (r) => res.status === 200 && res.json().json.name === user.username,
+    'Post response name': (r) => res.status === 200 && res.json().name === user.username,
   });
 }
 ```
@@ -444,6 +448,8 @@ Though a test might be designed to induce failures, sometimes we focus on only t
 
 The test script must handle API errors to avoid runtime exceptions and to ensure that it tests how the SUT behaves under saturation according to the test goals.
 For example, we could extend our script to do some operation that depends on the result of the previous request:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { check } from 'k6';
@@ -463,21 +469,21 @@ export default function () {
     surname: user.surname,
   });
   const headers = { 'Content-Type': 'application/json' };
-  const res = http.post('https://httpbin.test.k6.io/post', payload, {
+  const res = http.post('https://quickpizza.grafana.com/api/post', payload, {
     headers,
   });
 
   check(res, {
     'Post status is 200': (r) => res.status === 200,
     'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
-    'Post response name': (r) => res.status === 200 && res.json().json.name === user.username,
+    'Post response name': (r) => res.status === 200 && res.json().name === user.username,
   });
 
   if (res.status === 200) {
     // enters only successful responses
     // otherwise, it triggers an exception
-    const delPayload = JSON.stringify({ name: res.json().json.name });
-    http.patch('https://httpbin.test.k6.io/patch', delPayload, { headers });
+    const delPayload = JSON.stringify({ name: res.json().name });
+    http.patch('https://quickpizza.grafana.com/api/patch', delPayload, { headers });
   }
 }
 ```
@@ -590,6 +596,8 @@ By default, k6 supports testing the following protocols:
 - [WebSockets](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/)
 - [Redis (experimental)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/)
 - [gRPC](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/)
+
+<!-- md-k6:skip -->
 
 ```javascript
 import grpc from 'k6/net/grpc';

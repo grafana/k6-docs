@@ -181,7 +181,9 @@ You can control the behaviour of `md-k6.py` via magic `md-k6` HTML comments plac
 
 That is, `md-k6:` followed by a comma-separated list of options.
 
-Currently, the only option that exists is `skip`, which will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`). This is useful for code snippets that only showcase a very specific aspect of k6 scripting and do not contain an actually fully working script.
+### `skip` Option
+
+The `skip` option will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`). This is useful for code snippets that only showcase a very specific aspect of k6 scripting and do not contain an actually fully working script.
 
 > [!TIP]
 > You can combine both `md-k6.py` and ESLint skip directives by placing the `md-k6.py` directive first:
@@ -197,6 +199,24 @@ Currently, the only option that exists is `skip`, which will cause `md-k6.py` to
 > }
 > ```
 > ````
+
+### `skipall` Option
+
+The `skipall` option will cause `md-k6.py` to ignore the entire Markdown file. Note that this option is special: it can be specified anywhere in the file, for example, at the very end. It also does not need to be placed above a code snippet. In order for this option to be read correctly, it must be specified alone, with no other additional options in the same HTML comment tag.
+
+### `nofail` Option
+
+The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail. For this reason, using `nofail` will provide slightly better coverage than simply using `skip` on a code snippet.
+
+### `env.X=Y` Option
+
+Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,`, `-`, and `$`.
+
+### `fixedscenarios` Option
+
+By default, all code snippets are run with whatever scenarios they define via their `options` variable. However, some command line arguments to `md-k6.py` can change this, for example: `-d`/`--duration`. This option replaces the scenarios for all code snippets run with a scenario lasting only a specific amount of time. However, this behavior may break some scripts, for this reason, it is possible to specify the `fixedscenarios` option to ensure that the code snippet scenarios will be used as they appear in the Markdown file.
+
+### Usage
 
 To run the `md-k6.py` script locally, invoke it using Python. For example:
 

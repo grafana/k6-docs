@@ -39,7 +39,7 @@ function waitFor(delay) {
 }
 
 export default async function () {
-  const res = http.get('https://httpbin.test.k6.io');
+  const res = http.get('https://quickpizza.grafana.com/');
 
   const success = await check(res, {
     'passing promise as a value': waitFor(1000),

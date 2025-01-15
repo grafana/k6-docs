@@ -41,10 +41,12 @@ const only300Callback = http.expectedStatuses(300);
 
 export default () => {
   // this will use the default response callback and be marked as successful
-  http.get('https://httpbin.test.k6.io/status/200');
+  http.get('https://quickpizza.grafana.com/api/status/200');
 
   // this will be marked as a failed request as it won't get the expected status code of 300
-  http.get('https://httpbin.test.k6.io/status/200', { responseCallback: only300Callback });
+  http.get('https://quickpizza.grafana.com/api/status/200', {
+    responseCallback: only300Callback,
+  });
 
   http.setResponseCallback(http.expectedStatuses(301));
   // from here on for this VU only the 301 status code will be successful so on the next iteration of

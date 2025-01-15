@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'docs/sources/k6/next/**'
+      - 'docs/sources/k6/next/**/*.md'
 
 jobs:
   run-code-blocks:
@@ -17,8 +17,11 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: |
-            **.md
+            docs/sources/k6/next/**/*.md
       - uses: grafana/setup-k6-action@v1
+        with:
+          browser: true
+          k6-version: '0.56.0'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -27,6 +30,5 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for file in ${ALL_CHANGED_FILES}; do
-            python -u scripts/md-k6.py "$file"
-            echo
+            python -u scripts/md-k6.py --duration 2s "$file"
           done

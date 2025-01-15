@@ -15,6 +15,8 @@ Sets the default maximum navigation timeout for [Page.goto()](https://grafana.co
 
 {{< code >}}
 
+<!-- md-k6:nofail -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -37,7 +39,7 @@ export default async function () {
   context.setDefaultNavigationTimeout(1000); // 1s
 
   try {
-    await page.goto('https://httpbin.test.k6.io/delay/5');
+    await page.goto('https://quickpizza.grafana.com/api/delay/5');
   } finally {
     await page.close();
   }

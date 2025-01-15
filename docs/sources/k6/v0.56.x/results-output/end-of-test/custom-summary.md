@@ -217,6 +217,8 @@ The output is a short XML file that reports whether the test thresholds failed.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 
@@ -260,6 +262,8 @@ You can also send the generated reports to a remote server (over any protocol th
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 
@@ -271,7 +275,7 @@ export function handleSummary(data) {
   console.log('Preparing the end-of-test summary...');
 
   // Send the results to some remote server or trigger a hook
-  const resp = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(data));
+  const resp = http.post('https://quickpizza.grafana.com/api/post', JSON.stringify(data));
   if (resp.status != 200) {
     console.error('Could not send summary, got status ' + resp.status);
   }
