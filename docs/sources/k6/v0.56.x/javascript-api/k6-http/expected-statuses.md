@@ -30,7 +30,7 @@ http.setResponseCallback(
 export default () => {
   // this one will actually be marked as failed as it doesn't match any of the above listed status
   // codes
-  http.get('https://httpbin.test.k6.io/status/205');
+  http.get('https://quickpizza.grafana.com/api/status/205');
 };
 ```
 

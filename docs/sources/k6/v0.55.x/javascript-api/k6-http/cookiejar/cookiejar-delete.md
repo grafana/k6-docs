@@ -20,10 +20,10 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_1', 'hello world_1');
-  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_2', 'hello world_2');
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie_1', 'hello world_1');
+  jar.set('https://quickpizza.grafana.com/api/cookies', 'my_cookie_2', 'hello world_2');
 
-  const res1 = http.get('https://httpbin.test.k6.io/cookies');
+  const res1 = http.get('https://quickpizza.grafana.com/api/cookies');
   check(res1, {
     'res1 has status 200': (r) => r.status === 200,
     "res1 has cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 !== null,
@@ -32,9 +32,9 @@ export default function () {
     'res1 cookie has correct value_2': (r) => r.json().cookies.my_cookie_2 == 'hello world_2',
   });
 
-  jar.delete('https://httpbin.test.k6.io/cookies', 'my_cookie_1');
+  jar.delete('https://quickpizza.grafana.com/api/cookies', 'my_cookie_1');
 
-  const res2 = http.get('https://httpbin.test.k6.io/cookies');
+  const res2 = http.get('https://quickpizza.grafana.com/api/cookies');
   check(res2, {
     'res2 has status 200': (r) => r.status === 200,
     "res2 doesn't have cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 == null,

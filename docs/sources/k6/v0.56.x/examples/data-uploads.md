@@ -128,7 +128,7 @@ export default function () {
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
   fd.append('text', http.file(txt, 'text.txt', 'text/plain'));
 
-  const res = http.post('https://httpbin.test.k6.io/post', fd.body(), {
+  const res = http.post('https://quickpizza.grafana.com/api/post', fd.body(), {
     headers: { 'Content-Type': 'multipart/form-data; boundary=' + fd.boundary },
   });
   check(res, {
@@ -148,3 +148,5 @@ Note that:
 - Blob is not supported or implemented. For the same functionality, use
   a simple object with the fields `data`, `content_type` (defaulting to "application/octet-stream") and optionally
   `filename` as shown for `aBinaryFile` above.
+
+<!-- md-k6:skipall -->
