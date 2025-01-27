@@ -20,7 +20,7 @@ jobs:
         uses: grafana/writers-toolkit/build-website@4b1248585248751e3b12fd020cf7ac91540ca09c # build-website/v1.0.1
         with:
           source_directory: docs/sources/k6
-          website_directory: content/docs/k6/next
+          website_directory: content/docs/k6
 
       - name: Build website with k6 Studio docs
         uses: grafana/writers-toolkit/build-website@4b1248585248751e3b12fd020cf7ac91540ca09c # build-website/v1.0.1
