@@ -1,7 +1,7 @@
 ---
 title: 'Use Chai with k6'
 description: 'Use Chai with k6 by using the k6chaijs library. Leverage BDD assertions to write tests that scale and are easier to maintain.'
-weight: 100
+weight: 700
 ---
 
 # Use Chai with k6

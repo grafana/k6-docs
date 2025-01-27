@@ -1,7 +1,7 @@
 ---
 title: 'Running distributed tests'
 description: 'How to run distributed tests in Kubernetes'
-weight: 05
+weight: 400
 ---
 
 # Running distributed tests

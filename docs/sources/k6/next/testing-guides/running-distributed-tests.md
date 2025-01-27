@@ -1,7 +1,7 @@
 ---
 title: 'Running distributed tests'
 description: 'How to run distributed tests in Kubernetes'
-weight: 05
+weight: 400
 ---
 
 # Running distributed tests
@@ -323,6 +323,8 @@ The above YAML introduces the `runner` section. This section applies to each pod
 {{< /admonition >}}
 
 Now, with the referenced resources, our test scripts can [use environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) as in the following:
+
+<!-- md-k6:skip -->
 
 ```javascript
 export function setup() {
