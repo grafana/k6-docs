@@ -126,6 +126,8 @@ While protocol-based load testing may seem to lend itself better to component te
 
 The following is an example of a protocol-based load testing script in k6 that fetches the homepage, along with resources embedded into the page.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep, check } from 'k6';
@@ -185,6 +187,7 @@ The following is an example of a browser-based load testing script in k6 using t
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript
