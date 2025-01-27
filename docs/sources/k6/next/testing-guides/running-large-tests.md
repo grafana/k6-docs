@@ -113,6 +113,8 @@ An oversight of some scripts is to test with only the [happy path](https://grafa
 
 For example, in k6 scripts, we often see something like this _happy path_ check:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -140,6 +142,8 @@ The following change will handle the exception.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -163,6 +167,8 @@ The following k6 settings can reduce the performance costs of running large test
 By default, k6 loads the response body of the request into memory. This causes much higher memory consumption and is often unnecessary.
 
 To instruct k6 to not process all response bodies, set `discardResponseBodies` in the options object like this:
+
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
