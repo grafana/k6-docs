@@ -18,9 +18,10 @@ You can use any analytics tool that provides the same metrics to help you calcul
 
 Google Analytics tracks visitors ("Users") and their activity periods ("Sessions") on your site. During a session, users generate traffic through page loads or AJAX requests that your servers must handle. To create realistic load tests, you need to determine how many users are actively generating traffic at any given time.
 
-The recommended formula for calculating your baseline concurrent users is:
+The recommended formula for calculating your baseline of hourly concurrent users is:
 
 ```
+An hour in seconds = 3600
 Concurrent users  = Hourly sessions * Average session duration (in seconds) / 3600
 ```
 
@@ -68,13 +69,13 @@ As an example, for a website that has the following metrics:
 - 2,591 monthly sessions
 - 82 seconds per session
 
-Applying the concurrent user formula, you can find the average concurrent user:
+Applying the concurrent user formula, you can find the average concurrent users:
 
 ```
 2,591 monthly sessions x 82 seconds per session / 3600 = 59.0172
 
 // To convert monthly sessions to hourly sessions, you can divide the value by 720
-59.0172 / 720 (30 days in November x 24h per day = 720) = .08 average concurrent users in November
+59.0172 / 720 (30 days in November x 24h per day = 720) = 0.08 average concurrent users in November
 ```
 
 But, if the same website has peak hours from 3 PM to 4 PM with different metrics:
@@ -82,20 +83,20 @@ But, if the same website has peak hours from 3 PM to 4 PM with different metrics
 - 990 sessions
 - 92 seconds
 
-In this case, applying the concurrent user formula leads to:
+In this case, applying the concurrent users formula leads to:
 
 ```
-990 sessions x 92 seconds per session / 3600 = 25.3 concurrent users
+990 sessions x 92 seconds per session / 3600 = 25.3 average concurrent users
 ```
 
 This example shows how peak traffic can reach a considerably higher value than the monthly average, in this case from 0.8 to 25.3 concurrent users, highlighting the importance of testing beyond average traffic levels.
 
 ## Additional testing considerations
 
-Consider implementing these testing strategies:
+There are multiple scenarios where a different kind of test might give you a better insights on your system reliability. Consider implementing these testing strategies:
 
 - [Spike tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/spike-testing/) before major events.
 - Regular load tests at peak traffic levels.
 - Tests that exceed your highest historical traffic by a safety margin.
 
-These practices help ensure your system remains stable during unexpected traffic increases.
+These practices help ensure your system remains stable during unexpected traffic increases. Refer to [Testing guides](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides) for more details about all of the different performance testing strategies.
