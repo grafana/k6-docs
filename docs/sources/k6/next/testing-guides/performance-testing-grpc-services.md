@@ -10,7 +10,7 @@ In this guide, you'll learn the basics of gRPC and how to write a gRPC performan
 
 ## Before you begin
 
-- [Install k6 v0.29](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) or higher
+- [Install k6 v0.29](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) or higher.
 
 ## What is gRPC
 
@@ -156,7 +156,7 @@ This test script does the following:
 
 ### Run the test
 
-The test can be executed just like any other test by using the k6 run command:
+You can execute the test just like any other test by using the `k6 run` command:
 
 ```bash
 $ k6 run grpc-example.js
