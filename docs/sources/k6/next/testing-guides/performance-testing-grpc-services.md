@@ -115,6 +115,8 @@ client.load(['definitions'], 'quickpizza.proto');
 
 After that's done, add the rest of the test that calls the gRPC service.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import grpc from 'k6/net/grpc';
 import { check, sleep } from 'k6';
