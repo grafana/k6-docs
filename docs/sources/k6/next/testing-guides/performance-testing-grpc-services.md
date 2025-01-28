@@ -26,25 +26,25 @@ gRPC supports four different types of RPCs: unary, server streaming, client stre
 
 Unary calls work the same way as a regular function call: a single request is sent to the server which in turn replies with a single response.
 
-![unary call](images/grpc-unary.png)
+![Unary call](/media/docs/k6-oss/diagram-grpc-unary.png)
 
 #### Server streaming
 
 In server streaming mode, the client sends a single request to the server, which in turn replies with multiple responses.
 
-![server streaming](images/grpc-server.png)
+![Server streaming](/media/docs/k6-oss/diagram-grpc-server.png)
 
 #### Client streaming
 
 The client streaming mode is the opposite of the server streaming mode. The client sends multiple requests to the server, which in turn replies with a single response.
 
-![client streaming](images/grpc-client.png)
+![Client streaming](/media/docs/k6-oss/diagram-grpc-client.png)
 
 #### Bi-directional streaming
 
 In bi-directional streaming mode, both the client and the server may send multiple messages.
 
-![bi-directional streaming](images/grpc-bidirectional.png)
+![Bi-directional streaming](/media/docs/k6-oss/diagram-grpc-bidirectional.png)
 
 ### The `.proto` definition
 
