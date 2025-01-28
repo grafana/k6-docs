@@ -87,7 +87,7 @@ Starting with k6 v0.29.0, you can use a built-in module for gRPC communication. 
 
 ### Create the test
 
-The gRPC module is a separate module, available from your test script as `k6/net/grpc`. Before you can use it, you first have to create an instance of the client. Instantiating the client, as well as the `.load` operation, is only available during test initialization, that is, directly in the global scope.
+The gRPC module is a separate module, available from your test script as `k6/net/grpc`. Before you can use it, you first have to create an instance of the client. Instantiating the client, as well as the `load()` function, is only available during test initialization, that is, directly in the global scope.
 
 <!-- md-k6:skip -->
 
