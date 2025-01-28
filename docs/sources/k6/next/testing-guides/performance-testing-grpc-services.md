@@ -89,6 +89,8 @@ Starting with k6 v0.29.0, you can use a built-in module for gRPC communication. 
 
 The gRPC module is a separate module, available from your test script as `k6/net/grpc`. Before you can use it, you first have to create an instance of the client. Instantiating the client, as well as the `.load` operation, is only available during test initialization, that is, directly in the global scope.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import grpc from 'k6/net/grpc';
 import { check, sleep } from 'k6';
@@ -97,6 +99,8 @@ const client = new grpc.Client();
 ```
 
 Next, load a `.proto` definition applicable for the system under test. For the purpose of this article, you can use [QuickPizza](grpc-quickpizza.grafana.com:443). The `.load()` function takes two arguments, the first one being an array of paths to search for proto files, and the second being the name of the file to load.
+
+<!-- md-k6:skip -->
 
 ```javascript
 import grpc from 'k6/net/grpc';
