@@ -98,7 +98,15 @@ import { check, sleep } from 'k6';
 const client = new grpc.Client();
 ```
 
-Next, load a `.proto` definition applicable for the system under test. For the purpose of this article, you can use [QuickPizza](grpc-quickpizza.grafana.com:443). The `.load()` function takes two arguments, the first one being an array of paths to search for proto files, and the second being the name of the file to load.
+Next, load a `.proto` definition applicable to the system under test. For the purpose of this article, you can use [QuickPizza](grpc-quickpizza.grafana.com:443).
+
+{{< admonition type="note" >}}
+
+The QuickPizza gRPC service URL grpc-quickpizza.grafana.com:443 returns a 464 HTTP status code if you try to access it in your browser. However, you can still use it in your k6 test scripts, and the gRPC functionality works correctly.
+
+{{< /admonition >}}
+
+The `load()` function takes two arguments, the first one being an array of paths to search for proto files, and the second being the name of the file to load.
 
 <!-- md-k6:skip -->
 
