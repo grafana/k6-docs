@@ -10,7 +10,7 @@ In this guide, you'll learn the basics of gRPC and how to write a gRPC performan
 
 ## Before you begin
 
-- [Install k6 v0.29](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) or higher
+- [Install k6 v0.29](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) or higher.
 
 ## What is gRPC
 
@@ -87,7 +87,7 @@ Starting with k6 v0.29.0, you can use a built-in module for gRPC communication. 
 
 ### Create the test
 
-The gRPC module is a separate module, available from your test script as `k6/net/grpc`. Before you can use it, you first have to create an instance of the client. Instantiating the client, as well as the `.load` operation, is only available during test initialization, that is, directly in the global scope.
+The gRPC module is a separate module, available from your test script as `k6/net/grpc`. Before you can use it, you first have to create an instance of the client. Instantiating the client, as well as the `load()` function, is only available during test initialization, that is, directly in the global scope.
 
 <!-- md-k6:skip -->
 
@@ -98,7 +98,15 @@ import { check, sleep } from 'k6';
 const client = new grpc.Client();
 ```
 
-Next, load a `.proto` definition applicable for the system under test. For the purpose of this article, you can use [QuickPizza](grpc-quickpizza.grafana.com:443). The `.load()` function takes two arguments, the first one being an array of paths to search for proto files, and the second being the name of the file to load.
+Next, load a `.proto` definition applicable to the system under test. For the purpose of this article, you can use [QuickPizza](grpc-quickpizza.grafana.com:443).
+
+{{< admonition type="note" >}}
+
+The QuickPizza gRPC service URL grpc-quickpizza.grafana.com:443 returns a 464 HTTP status code if you try to access it in your browser. However, you can still use it in your k6 test scripts, and the gRPC functionality works correctly.
+
+{{< /admonition >}}
+
+The `load()` function takes two arguments, the first one being an array of paths to search for proto files, and the second being the name of the file to load.
 
 <!-- md-k6:skip -->
 
@@ -156,7 +164,7 @@ This test script does the following:
 
 ### Run the test
 
-The test can be executed just like any other test by using the k6 run command:
+You can execute the test just like any other test by using the `k6 run` command:
 
 ```bash
 $ k6 run grpc-example.js
