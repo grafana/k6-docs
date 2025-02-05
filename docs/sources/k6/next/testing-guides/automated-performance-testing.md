@@ -148,6 +148,8 @@ These environments are available to test upcoming releases, with each organizati
 
 As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can do that by using [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) in `options` as follows:
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   thresholds: {
