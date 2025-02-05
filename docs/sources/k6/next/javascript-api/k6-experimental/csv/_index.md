@@ -44,6 +44,8 @@ performance and memory optimization.
 
 {{< code >}}
 
+<!--md-k6:skip-->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -73,6 +75,8 @@ export default async function () {
 ### Streaming a CSV file line-by-line
 
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 import { open } from 'k6/experimental/fs';
