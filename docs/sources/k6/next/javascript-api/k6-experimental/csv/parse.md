@@ -27,6 +27,8 @@ A promise resolving to a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/
 
 {{< code >}}
 
+<!--md-k6:skip-->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -59,6 +61,8 @@ The `asObjects` option parses the CSV file into an array of objects. The object 
 Note that the first line of the CSV file is skipped, as it is assumed to contain the column names (header row).
 
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 import { open } from 'k6/experimental/fs';

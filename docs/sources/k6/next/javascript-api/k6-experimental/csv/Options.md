@@ -43,6 +43,8 @@ Will be parsed into the following array of objects:
 
 {{< code >}}
 
+<!--md-k6:skip-->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';

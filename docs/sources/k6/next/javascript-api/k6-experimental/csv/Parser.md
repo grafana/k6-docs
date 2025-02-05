@@ -37,6 +37,8 @@ A promise resolving to an object with the following properties:
 
 {{< code >}}
 
+<!--md-k6:skip-->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -73,6 +75,8 @@ The `asObjects` option parses the CSV file into an array of objects. The object 
 Note that the first line of the CSV file is skipped, as it is assumed to contain the column names (header row).
 
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 import { open } from 'k6/experimental/fs';
