@@ -32,10 +32,11 @@ performance and memory optimization.
 
 ## API
 
-| Function/Object                                                                                  | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| [csv.parse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) | Parses an entire CSV file into a SharedArray for high-performance scenarios.                      |
-| [csv.Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) | A class for streaming CSV parsing, allowing line-by-line reading with minimal memory consumption. |
+| Function/Object                                                                                | Description                                                                                                                                                                                                                                                                                                                     |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [parse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse)     | Parses an entire CSV file into a SharedArray for high-performance scenarios.                                                                                                                                                                                                                                                    |
+| [Parser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser)   | A class for streaming CSV parsing, allowing line-by-line reading with minimal memory consumption.                                                                                                                                                                                                                               |
+| [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/options) | An object that describes the configuration available for the operation of parsing CSV files using the [`parse()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parse) function and the [`csv.Parser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv/parser) class. |
 
 ## Example
 
