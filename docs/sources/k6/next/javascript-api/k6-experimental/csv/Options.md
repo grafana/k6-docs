@@ -13,7 +13,7 @@ The `Options` object describes the configuration available for the operation of 
 | Property      | Type              | Description                                                                                               |
 | :------------ | :---------------- | :-------------------------------------------------------------------------------------------------------- |
 | delimiter     | string            | The character used to separate fields in the CSV file. Default is `','`.                                  |
-| asObjects     | boolean           | Whether to parse the CSV file's lines as JavaScript objects. If it is false then they are parsed as arrays. Default is `false`.                                 |
+| asObjects     | boolean           | Whether to parse the CSV file's lines as JavaScript objects. If it is `false` then they are parsed as arrays. Default is `false`.                                 |
 | skipFirstLine | boolean           | Whether to skip the first line of the CSV file. Default is `false`.                                       |
 | fromLine      | (optional) number | The line number from which to start reading the CSV file. Default is `0`.                                 |
 | toLine        | (optional) number | The line number at which to stop reading the CSV file. If the option is not set, then read until the end. |
