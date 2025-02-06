@@ -212,6 +212,10 @@ The `nofail` option will allow the k6 code snippet to freely log errors without 
 
 Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,`, `-`, and `$`.
 
+### `nothresholds` Option
+
+The `nothresholds` options disables the processing of thresholds when running the code snippet (`--no-thresholds`).
+
 ### `fixedscenarios` Option
 
 By default, all code snippets are run with whatever scenarios they define via their `options` variable. However, some command line arguments to `md-k6.py` can change this, for example: `-d`/`--duration`. This option replaces the scenarios for all code snippets run with a scenario lasting only a specific amount of time. However, this behavior may break some scripts, for this reason, it is possible to specify the `fixedscenarios` option to ensure that the code snippet scenarios will be used as they appear in the Markdown file.

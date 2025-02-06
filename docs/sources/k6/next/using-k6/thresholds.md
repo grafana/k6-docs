@@ -35,7 +35,7 @@ The other evaluates whether 95 percent of responses happen within a certain dura
 
 {{< code >}}
 
-<!-- md-k6:skip -->
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -48,7 +48,7 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://test-api.k6.io/public/crocodiles/1/');
+  http.get('https://quickpizza.grafana.com');
 }
 ```
 
@@ -152,7 +152,7 @@ setting different types of thresholds for each:
 
 {{< code >}}
 
-<!-- md-k6:skip -->
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -178,7 +178,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res = http.get('https://quickpizza.grafana.com/api/json?name=Bert');
   const contentOK = res.json('name') === 'Bert';
 
   TrendRTT.add(res.timings.duration);
@@ -230,6 +230,8 @@ For more specific threshold examples, refer to the [Counter](https://grafana.com
 
 {{< code >}}
 
+<!-- md-k6:nothresholds -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -242,7 +244,7 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://test-api.k6.io/public/crocodiles/1/');
+  http.get('https://quickpizza.grafana.com');
   sleep(1);
 }
 ```
@@ -252,6 +254,8 @@ export default function () {
 ### Error rate is lower than 1 percent
 
 {{< code >}}
+
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -265,7 +269,7 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://test-api.k6.io/public/crocodiles/1/');
+  http.get('https://quickpizza.grafana.com');
   sleep(1);
 }
 ```
@@ -279,6 +283,8 @@ This threshold has different duration requirements for different request percent
 
 {{< code >}}
 
+<!-- md-k6:nothresholds -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -291,7 +297,7 @@ export const options = {
 };
 
 export default function () {
-  const res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res1 = http.get('https://quickpizza.grafana.com');
   sleep(1);
 }
 ```
@@ -306,7 +312,7 @@ For each group, there are different thresholds.
 
 {{< code >}}
 
-<!-- md-k6:skip -->
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -323,16 +329,16 @@ export const options = {
 
 export default function () {
   group('individualRequests', function () {
-    http.get('https://test-api.k6.io/public/crocodiles/1/');
-    http.get('https://test-api.k6.io/public/crocodiles/2/');
-    http.get('https://test-api.k6.io/public/crocodiles/3/');
+    http.get('https://quickpizza.grafana.com/api/json?letter=a');
+    http.get('https://quickpizza.grafana.com/api/json?letter=b');
+    http.get('https://quickpizza.grafana.com/api/json?letter=c');
   });
 
   group('batchRequests', function () {
     http.batch([
-      ['GET', `https://test-api.k6.io/public/crocodiles/1/`],
-      ['GET', `https://test-api.k6.io/public/crocodiles/2/`],
-      ['GET', `https://test-api.k6.io/public/crocodiles/3/`],
+      ['GET', 'https://quickpizza.grafana.com/api/json?letter=a'],
+      ['GET', 'https://quickpizza.grafana.com/api/json?letter=b'],
+      ['GET', 'https://quickpizza.grafana.com/api/json?letter=c'],
     ]);
   });
 
@@ -361,7 +367,7 @@ And here's a full example.
 
 {{< code >}}
 
-<!-- md-k6:skip -->
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -376,21 +382,21 @@ export const options = {
 };
 
 export default function () {
-  const res1 = http.get('https://test-api.k6.io/public/crocodiles/1/', {
+  const res1 = http.get('https://quickpizza.grafana.com/api/headers', {
     tags: { type: 'API' },
   });
-  const res2 = http.get('https://test-api.k6.io/public/crocodiles/2/', {
+  const res2 = http.get('https://quickpizza.grafana.com/api/json', {
     tags: { type: 'API' },
   });
 
   const responses = http.batch([
-    ['GET', 'https://test-api.k6.io/static/favicon.ico', null, { tags: { type: 'staticContent' } }],
     [
       'GET',
-      'https://test-api.k6.io/static/css/site.css',
+      'https://quickpizza.grafana.com/favicon.ico',
       null,
       { tags: { type: 'staticContent' } },
     ],
+    ['GET', 'https://quickpizza.grafana.com/admin', null, { tags: { type: 'staticContent' } }],
   ]);
 
   sleep(1);
@@ -443,7 +449,7 @@ Here is an example:
 
 {{< code >}}
 
-<!-- md-k6:skip -->
+<!-- md-k6:nothresholds -->
 
 ```javascript
 import http from 'k6/http';
@@ -457,7 +463,7 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://test-api.k6.io/public/crocodiles/1/');
+  http.get('https://quickpizza.grafana.com');
 }
 ```
 

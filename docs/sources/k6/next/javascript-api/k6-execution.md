@@ -126,6 +126,8 @@ The `name` property can be used for executing the logic based on which script is
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 
@@ -157,6 +159,8 @@ Aborting is possible during initialization:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 exec.test.abort();
@@ -167,6 +171,8 @@ exec.test.abort();
 As well as inside the `default` function:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -188,6 +194,8 @@ export function teardown() {
 Get the consolidated and derived options' values
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -222,7 +230,7 @@ export default function () {
   exec.vu.metrics.tags['mytag2'] = 2;
 
   // the metrics these HTTP requests emit will get tagged with `mytag` and `mytag2`:
-  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+  http.batch(['https://test.k6.io', 'https://quickpizza.grafana.com']);
 }
 ```
 
@@ -244,11 +252,11 @@ export default function () {
   exec.vu.metrics.metadata['trace_id'] = 'somecoolide';
 
   // the metrics these HTTP requests emit will get the metadata `trace_id`:
-  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+  http.batch(['https://test.k6.io', 'https://quickpizza.grafana.com']);
 
   delete exec.vu.metrics.metadata['trace_id']; // this will unset it
   // which will make the metrics these requests to not have the metadata `trace_id` set on them.
-  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+  http.batch(['https://test.k6.io', 'https://quickpizza.grafana.com']);
 }
 ```
 

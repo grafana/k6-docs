@@ -20,10 +20,10 @@ import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx();
 
-session.setBaseUrl('https://test-api.k6.io');
+session.setBaseUrl('https://quickpizza.grafana.com');
 
 export default function () {
-  session.get('/public/crocodiles/1/'); // baseUrl doesn't need to be repeated on every request
+  session.get('/api/names'); // baseUrl doesn't need to be repeated on every request
 }
 ```
 

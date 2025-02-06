@@ -225,9 +225,9 @@ export const options = {
 // Instantiate a new redis client
 const redisClient = new redis.Client(`redis://localhost:6379`);
 
-// Prepare an array of crocodile ids for later use
+// Prepare an array of rating ids for later use
 // in the context of the measureUsingRedisData function.
-const crocodileIDs = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+const ratingIDs = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 
 export async function measureRedisPerformance() {
   // VUs are executed in a parallel fashion,
@@ -250,31 +250,33 @@ export async function measureRedisPerformance() {
 }
 
 export async function setup() {
-  await redisClient.sadd('crocodile_ids', ...crocodileIDs);
+  await redisClient.sadd('rating_ids', ...ratingIDs);
 }
 
 export async function measureUsingRedisData() {
-  // Pick a random crocodile id from the dedicated redis set,
+  // Pick a random rating id from the dedicated redis set,
   // we have filled in setup().
-  const randomID = await redisClient.srandmember('crocodile_ids');
-  const url = `https://test-api.k6.io/public/crocodiles/${randomID}`;
-  const res = await http.asyncRequest('GET', url);
+  const randomID = await redisClient.srandmember('rating_ids');
+  const url = `https://quickpizza.grafana.com/api/ratings/${randomID}`;
+  const res = await http.asyncRequest('GET', url, {
+    headers: { Authorization: 'token abcdef0123456789' },
+  });
 
   check(res, { 'status is 200': (r) => r.status === 200 });
 
-  await redisClient.hincrby('k6_crocodile_fetched', url, 1);
+  await redisClient.hincrby('k6_rating_fetched', url, 1);
 }
 
 export async function teardown() {
-  await redisClient.del('crocodile_ids');
+  await redisClient.del('rating_ids');
 }
 
 export function handleSummary(data) {
   redisClient
-    .hgetall('k6_crocodile_fetched')
-    .then((fetched) => Object.assign(data, { k6_crocodile_fetched: fetched }))
+    .hgetall('k6_rating_fetched')
+    .then((fetched) => Object.assign(data, { k6_rating_fetched: fetched }))
     .then((data) => redisClient.set(`k6_report_${Date.now()}`, JSON.stringify(data)))
-    .then(() => redisClient.del('k6_crocodile_fetched'));
+    .then(() => redisClient.del('k6_rating_fetched'));
 
   return {
     stdout: textSummary(data, { indent: '  ', enableColors: true }),
@@ -350,3 +352,5 @@ export function handleSummary(data) {
 | Method                                                                                                                                         | Description                         |
 | :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
 | [`Client.sendCommand(command, args)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sendcommand) | Send a command to the Redis server. |
+
+<!-- md-k6:skipall -->

@@ -27,7 +27,7 @@ This method takes an object argument where the following properties can be set:
 import http from 'k6/http';
 
 export default function () {
-  const res = http.get('https://test-api.k6.io/public/crocodiles/');
+  const res = http.get('https://quickpizza.grafana.com/api/json?foo=bar');
 
   console.log(res.json());
 }

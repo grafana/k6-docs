@@ -35,19 +35,19 @@ chai.config.logFailures = true;
 
 export default function testSuite() {
   describe('Testing bad assertion.', () => {
-    const response = http.get('https://test-api.k6.io/');
+    const response = http.get('https://quickpizza.grafana.com');
 
-    expect(response.body).to.have.lengthOf.at.least(500);
+    expect(response.body).to.have.lengthOf.at.least(100);
   });
 }
 ```
 
 {{< /code >}}
 
-The resulting
+Resulting in:
 
 ```bash
 █ Testing bad assertion.
   ✓ expected '<!DOCTYPE html>\n<html lang="en">\n<hea...' to have property 'length'
-  ✓ expected '<!DOCTYPE html>\n<html lang="en">\n<hea...' to have a length at least 500 got 15714
+  ✓ expected '<!DOCTYPE html>\n<html lang="en">\n<hea...' to have a length at least 100 got 2611
 ```

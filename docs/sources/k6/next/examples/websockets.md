@@ -7,21 +7,22 @@ weight: 13
 
 # WebSockets
 
-Here's a load test for CrocoChat - a WebSocket chat API available on [https://test-api.k6.io/](https://test-api.k6.io/).
+Here's a load test for the QuickPizza WebSocket API, available on https://quickpizza.grafana.com/ws.
 
-Multiple VUs join a chat room and discuss various things for up to 1 minute, after which they disconnect.
+Multiple VUs connect using a VU-indexed user name, and send random messages.
 
-Each VU receives messages sent by all chat participants.
+Each VU receives messages sent by all other VUs.
 
 {{< code >}}
+
+<!-- md-k6:fixedscenarios -->
 
 ```javascript
 import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import ws from 'k6/ws';
 import { check, sleep } from 'k6';
 
-const sessionDuration = randomIntBetween(10000, 60000); // user session between 10s and 1m
-const chatRoomName = 'publicRoom'; // choose your chat room name
+const sessionDuration = randomIntBetween(3000, 6000); // user session between 3s and 6s
 
 export const options = {
   vus: 10,
@@ -29,18 +30,25 @@ export const options = {
 };
 
 export default function () {
-  const url = `wss://test-api.k6.io/ws/crocochat/${chatRoomName}/`;
+  const url = `wss://quickpizza.grafana.com/ws`;
   const params = { tags: { my_tag: 'my ws session' } };
+  const user = `user_${__VU}`;
 
   const res = ws.connect(url, params, function (socket) {
     socket.on('open', function open() {
       console.log(`VU ${__VU}: connected`);
 
-      socket.send(JSON.stringify({ event: 'SET_NAME', new_name: `Croc ${__VU}` }));
+      socket.send(JSON.stringify({ msg: 'Hello!', user: user }));
 
       socket.setInterval(function timeout() {
-        socket.send(JSON.stringify({ event: 'SAY', message: `I'm saying ${randomString(5)}` }));
-      }, randomIntBetween(2000, 8000)); // say something every 2-8seconds
+        socket.send(
+          JSON.stringify({
+            user: user,
+            msg: `I'm saying ${randomString(5)}`,
+            foo: 'bar',
+          })
+        );
+      }, randomIntBetween(1000, 2000)); // say something every 1-2 seconds
     });
 
     socket.on('ping', function () {
@@ -56,19 +64,13 @@ export default function () {
     });
 
     socket.on('message', function (message) {
-      const msg = JSON.parse(message);
-      if (msg.event === 'CHAT_MSG') {
-        console.log(`VU ${__VU} received: ${msg.user} says: ${msg.message}`);
-      } else if (msg.event === 'ERROR') {
-        console.error(`VU ${__VU} received:: ${msg.message}`);
-      } else {
-        console.log(`VU ${__VU} received unhandled message: ${msg.message}`);
-      }
+      const data = JSON.parse(message);
+      console.log(`VU ${__VU} received message: ${data.msg}`);
     });
 
     socket.setTimeout(function () {
-      console.log(`VU ${__VU}: ${sessionDuration}ms passed, leaving the chat`);
-      socket.send(JSON.stringify({ event: 'LEAVE' }));
+      console.log(`VU ${__VU}: ${sessionDuration}ms passed, leaving the website`);
+      socket.send(JSON.stringify({ msg: 'Goodbye!', user: user }));
     }, sessionDuration);
 
     socket.setTimeout(function () {
@@ -78,6 +80,7 @@ export default function () {
   });
 
   check(res, { 'Connected successfully': (r) => r && r.status === 101 });
+  sleep(1);
 }
 ```
 

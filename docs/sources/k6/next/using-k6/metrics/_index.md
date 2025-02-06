@@ -54,7 +54,7 @@ An aggregated summary of all _built-in_ and custom metrics outputs to `stdout` w
 import http from 'k6/http';
 
 export default function () {
-  http.get('https://test-api.k6.io/');
+  http.get('https://quickpizza.grafana.com');
 }
 ```
 
@@ -67,11 +67,12 @@ The preceding script outputs something like this:
 ```bash
 $ k6 run script.js
 
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
 
   execution: local
      script: http_get.js

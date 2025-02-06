@@ -94,6 +94,8 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.valu
 
 You can also apply [_Tags_](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to requests or code blocks. For example, this is how you can add a [`tags`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) to the [request params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
 
+<!-- md-k6:skip -->
+
 ```javascript
 const params = {
   headers: {
@@ -113,10 +115,10 @@ Create a new script named "tagged-login.js", and add a custom tag to it.
 import http from 'k6/http';
 
 export default function () {
-  const url = 'https://test-api.k6.io';
+  const url = 'https://quickpizza.grafana.com';
   const payload = JSON.stringify({
     username: 'test_case',
-    password: '1234',
+    password: '12345678',
   });
 
   const params = {
@@ -129,8 +131,8 @@ export default function () {
     },
   };
 
-  //Login with tags
-  http.post(`${url}/auth/basic/login`, payload, params);
+  //Create user, with tags
+  http.post(`${url}/api/users`, payload, params);
 }
 ```
 

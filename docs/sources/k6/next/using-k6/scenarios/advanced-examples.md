@@ -29,6 +29,8 @@ Along with `startTime`, `duration`, and `maxDuration`, note the different test l
 
 {{< code >}}
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 
@@ -38,16 +40,16 @@ export const options = {
     contacts: {
       executor: 'constant-vus',
       exec: 'contacts',
-      vus: 50,
-      duration: '30s',
+      vus: 5,
+      duration: '5s',
     },
     news: {
       executor: 'per-vu-iterations',
       exec: 'news',
-      vus: 50,
-      iterations: 100,
-      startTime: '30s',
-      maxDuration: '1m',
+      vus: 5,
+      iterations: 10,
+      startTime: '10s',
+      maxDuration: '20s',
     },
   },
 };
@@ -72,6 +74,8 @@ But, you can also set tags per scenario, which applies them to other
 [taggable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) objects as well.
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -135,6 +139,8 @@ This test has 3 scenarios, each with different `exec` functions, tags and enviro
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -194,7 +200,7 @@ export function webtest() {
 }
 
 export function apitest() {
-  http.get(`https://test-api.k6.io/public/crocodiles/${__ENV.MY_CROC_ID}/`);
+  http.get(`https://quickpizza.grafana.com/api/json?crocId=${__ENV.MY_CROC_ID}`);
   // no need for sleep() here, the iteration pacing will be controlled by the
   // arrival-rate executors above!
 }
@@ -239,7 +245,7 @@ export const options = {
 };
 
 export default function () {
-  const response = http.get('https://test-api.k6.io/public/crocodiles/');
+  const response = http.get('https://quickpizza.grafana.com');
 }
 ```
 
