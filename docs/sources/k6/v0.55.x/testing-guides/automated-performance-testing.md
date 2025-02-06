@@ -9,7 +9,7 @@ weight: 02
 
 Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of the development and release cycle. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
 
-In performance testing, automation does not remove the need to run tests manually. It’s about planning performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**.
+In performance testing, automation does not remove the need to run tests manually. It's about planning performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**.
 
 This guide provides general recommendations to help you plan and define a strategy for running automated performance tests:
 
@@ -24,7 +24,7 @@ Before we dive in, let's consider the "why" behind automation and how it unlocks
 
 ## Why automate performance tests
 
-Whether it’s a website loading in under a second, API responses in milliseconds, or instantaneous fault responses, performance is critical as it directly impacts the end-user experience. However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
+Whether it's a website loading in under a second, API responses in milliseconds, or instantaneous fault responses, performance is critical as it directly impacts the end-user experience. However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
 
 Performance is still intangible in many organizations, which react only when bad things happen. Automation changes this approach - **from reactive to proactive**.
 
@@ -40,7 +40,7 @@ Without automation, the lack of a shared framework often leads to isolated and s
 
 Automation often refers to running tests with pass/fail conditions as part of the release process within CI/CD pipelines. However, not all performance tests are suited for CI/CD workflows, nor are they solely about providing a Pass/Fail (green/red) status and acting as a release gatekeeper.
 
-[Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests in a frequent basis:
+[Automation into CI/CD pipelines](https://grafana.com/docs/k6/<K6_VERSION>/misc/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it's important to remember that there are different ways to run performance tests in a frequent basis:
 
 - Cron and cron job runners.
 - Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/schedule-a-test/).
@@ -89,7 +89,7 @@ When planning test coverage or automation, consider starting with tests that:
 
 Once one or multiple tests have been selected, you should determine the various types of traffic that need to be tested.
 
-Let’s illustrate an example with two simple tests: one test to assess the performance of a GET endpoint and one test to verify a checkout process.
+Let's illustrate an example with two simple tests: one test to assess the performance of a GET endpoint and one test to verify a checkout process.
 
 The next step is to identify the traffic the system under test (SUT) handles for these tests. In this case, we could utilize our analytics and monitoring tools to find the typical traffic patterns for the GET endpoint and checkout flow.
 
@@ -116,7 +116,7 @@ In our example, we have tests that use the same test scenario with distinct work
 - `load-get-api.js`:&nbsp;&nbsp;&nbsp;&nbsp; imports the common scenario and set 100 reqs/s during 3m.
 - `stress-get-api.js`: imports the common scenario and set 1500 reqs/s during 3m.
 
-_To learn more about configuring workloads in k6, check out [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#scenario-executors)._
+_To learn more about configuring workloads in k6, refer to [Scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios#scenario-executors)._
 
 ## Decide the testing frequency for each environment
 
@@ -134,7 +134,7 @@ In this type of environment, debugging and building our performance tests is mor
 
 ### QA environment
 
-This environment often deploys the entire application but with minimal infrastructure resources. It’s like a low-scale staging environment that all teams can use to test functional aspects and find regressions for new features.
+This environment often deploys the entire application but with minimal infrastructure resources. It's like a low-scale staging environment that all teams can use to test functional aspects and find regressions for new features.
 
 Given the infrastructure does not closely match the production environment, this type of QA environment is unsuitable for assessing the performance and scalability of the application.
 
@@ -147,6 +147,8 @@ Run all the available smoke tests: end-to-end, integration, and unit test types.
 These environments are available to test upcoming releases, with each organization using them differently as part of their unique release process.
 
 As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can do that by using [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) in `options` as follows:
+
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
@@ -163,9 +165,9 @@ export const options = {
 };
 ```
 
-However, it can be challenging to effectively assess all reliability goals. Frequently, you’ll encounter “false positives” and “true negatives” when testing with distinct types of load.
+However, it can be challenging to effectively assess all reliability goals. Frequently, you'll encounter "false positives" and "true negatives" when testing with distinct types of load.
 
-For larger tests, verifying the release based “only” on a Pass/Fail status can create a false sense of security in your performance testing and release process.
+For larger tests, verifying the release based "only" on a Pass/Fail status can create a false sense of security in your performance testing and release process.
 
 We recommend keeping the pre-release environment available for a few hours or days to thoroughly test the entire system. Our recommendations include:
 
@@ -176,9 +178,9 @@ We recommend keeping the pre-release environment available for a few hours or da
 
 ### Staging/pre-production
 
-In some cases, the staging environment acts like the “Pre-release” environment. If so, follow the strategy mentioned in the previous section.
+In some cases, the staging environment acts like the "Pre-release" environment. If so, follow the strategy mentioned in the previous section.
 
-The staging environment is always available and consistently updated with the latest changes. It’s generally suitable for assessing performance changes like performance trends, regressions, or improvements.
+The staging environment is always available and consistently updated with the latest changes. It's generally suitable for assessing performance changes like performance trends, regressions, or improvements.
 
 In this case, we should choose the tests that assess key performance indicators and schedule them for consistent execution to collect metrics over a period. Start by selecting a few tests and scheduling their runs two to three times per week.
 
@@ -215,9 +217,9 @@ Also, consider scheduling nightly tests or when the system handles less traffic.
 
 ## Plan the result analysis process
 
-Following the previous steps, you should now have an initial performance testing plan. Now, let’s see how we can analyze and interpret performance results.
+Following the previous steps, you should now have an initial performance testing plan. Now, let's see how we can analyze and interpret performance results.
 
-The first step is learning what options you have for outputting performance results. If you’re using k6, there are a few [options you can choose from](https://grafana.com/docs/k6/<K6_VERSION>/results-output/). You can review those options and the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to decide on a long-term solution to analyze the results of your test automation plan.
+The first step is learning what options you have for outputting performance results. If you're using k6, there are a few [options you can choose from](https://grafana.com/docs/k6/<K6_VERSION>/results-output/). You can review those options and the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to decide on a long-term solution to analyze the results of your test automation plan.
 
 Here are some questions to consider when creating your result analysis process.
 
@@ -247,7 +249,7 @@ Think about performance changes. Is there any particular metric to compare chang
 
 Consider creating dashboards and custom notifications that can quickly provide an overview of the latest results of any automated tests. These dashboards are the first line to indicate issues requiring investigation.
 
-Additionally, we recommend setting up alerts for important issues. Think about priority and non-priority levels and follow-up actions. Consider these [tips to design alerts](https://grafana.com/docs/grafana/latest/alerting/#design-your-alerting-system).
+Additionally, we recommend setting up alerts for important issues. Think about priority and non-priority levels and follow-up actions. Consider these [tips to design alerts](https://grafana.com/docs/grafana/latest/alerting/).
 
 ### Correlate testing and observability data
 
@@ -287,7 +289,7 @@ Focus on proving your test automation plan and solution across the software rele
 
 One of the primary objectives of continuous performance testing is assessing changes in the key metrics that define reliability and performance goals. To achieve this, we need to compare the value of these metrics between test runs over a period.
 
-It’s critical to compare test run results of the same test. Otherwise, you’re comparing apples with oranges. Compare identical test runs, the same workload, running the same scenario with the same test data against the same environment.
+It's critical to compare test run results of the same test. Otherwise, you're comparing apples with oranges. Compare identical test runs, the same workload, running the same scenario with the same test data against the same environment.
 
 Make sure not to introduce variance between test runs. If changes are necessary, rename or create a new test and start comparing test results from scratch.
 
@@ -301,7 +303,7 @@ These tests require controlled test execution and real-time analysis of test res
 
 Similarly, you might want to stop a test when the system begins to produce a flood of errors. When a system becomes completely overloaded, continuing the test execution often doesn't provide more meaningful insights and merely consumes resources.
 
-To stop a k6 test, learn how to use the [`abortOnFail` threshold option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#abort) or integrate with the k6 CLI or Grafana Cloud k6.
+To stop a k6 test, learn how to use the [`abortOnFail` threshold option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/#abort-a-test-when-a-threshold-is-crossed) or integrate with the k6 CLI or Grafana Cloud k6.
 
 ### Complement automation with a repeatable QA process
 
