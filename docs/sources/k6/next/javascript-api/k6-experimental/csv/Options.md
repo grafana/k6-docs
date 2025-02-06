@@ -13,13 +13,37 @@ The `Options` object describes the configuration available for the operation of 
 | Property      | Type              | Description                                                                                               |
 | :------------ | :---------------- | :-------------------------------------------------------------------------------------------------------- |
 | delimiter     | string            | The character used to separate fields in the CSV file. Default is `','`.                                  |
+| asObjects     | boolean           | Whether to parse the CSV file's lines as JavaScript objects. If it is `false`, then they are parsed as arrays. Default is `false`.                                 |
 | skipFirstLine | boolean           | Whether to skip the first line of the CSV file. Default is `false`.                                       |
 | fromLine      | (optional) number | The line number from which to start reading the CSV file. Default is `0`.                                 |
 | toLine        | (optional) number | The line number at which to stop reading the CSV file. If the option is not set, then read until the end. |
 
+### asObjects
+
+When `asObjects` is set to `true`, parsing operations over the CSV file will return an array of objects. The object keys are the column names from the CSV file, as inferred from the first line of the file, and the values are the field values from the CSV record. Note that the first line of the CSV file is skipped, as it is assumed to contain the column names (header row).
+
+As a result, the following CSV file:
+
+```csv
+name,age
+John,30
+Jane,25
+```
+
+Will be parsed into the following array of objects:
+
+```json
+[
+  { "name": "John", "age": "30" },
+  { "name": "Jane", "age": "25" }
+]
+```
+
 ## Example
 
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 import { open } from 'k6/experimental/fs';
