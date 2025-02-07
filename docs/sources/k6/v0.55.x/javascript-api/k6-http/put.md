@@ -26,7 +26,7 @@ weight: 10
 ```javascript
 import http from 'k6/http';
 
-const url = 'https://httpbin.test.k6.io/put';
+const url = 'https://quickpizza.grafana.com/api/put';
 
 export default function () {
   const headers = { 'Content-Type': 'application/json' };
@@ -34,7 +34,7 @@ export default function () {
 
   const res = http.put(url, JSON.stringify(data), { headers: headers });
 
-  console.log(JSON.parse(res.body).json.name);
+  console.log(JSON.parse(res.body).name);
 }
 ```
 

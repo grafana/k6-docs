@@ -24,6 +24,8 @@ For example, the `http` client make requests against the
 system under test.
 For the full list of built-in modules, refer to the [API documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api).
 
+<!--md-k6:skip-->
+
 ```javascript
 import http from 'k6/http';
 ```
@@ -34,6 +36,8 @@ These modules are stored on the local filesystem, and accessed either through re
 
 k6 adopts a **browser-like module resolution** and doesn't support [Node.js module resolution](https://nodejs.org/api/modules.html#modules_all_together). File names for `imports` must be fully specified, such as `./helpers.js`.
 
+<!--md-k6:skip-->
+
 ```javascript
 //my-test.js
 import { someHelper } from './helpers.js';
@@ -42,6 +46,8 @@ export default function () {
   someHelper();
 }
 ```
+
+<!--md-k6:skip-->
 
 ```javascript
 //helpers.js
@@ -63,7 +69,7 @@ For example, [jslib](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jsl
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 export default function () {
-  randomItem();
+  randomItem([1, 2, 3]);
 }
 ```
 
@@ -74,6 +80,8 @@ You can also build your custom Javascript libraries and distribute them via a pu
 Like the [k6 APIs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api), you can build custom modules in Go code and expose them as JavaScript modules. These custom Go-to-JS modules are known as [k6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions).
 
 Below is an example that imports the `k6/x/kubernetes` module from the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension.
+
+<!--md-k6:skip-->
 
 ```javascript
 import { Kubernetes } from 'k6/x/kubernetes';
@@ -120,6 +128,8 @@ The following options for distributing and sharing JavaScript libraries are avai
 
 You can host your modules in a public webserver like GitHub and any CDN and be imported remotely.
 
+<!--md-k6:skip-->
+
 ```javascript
 // As GitHub release assets
 import {
@@ -142,6 +152,8 @@ Be aware that k6 automatically executes remote modules, making it crucial to tru
 
 In this example, the previous remote modules have been downloaded to the `lib` folder of the testing project and imported as follows:
 
+<!--md-k6:skip-->
+
 ```javascript
 import { WorkloadConfig, sayHello } from './libs/test-commons.js';
 
@@ -161,6 +173,8 @@ k6 isn't Node.js or a browser. Packages that rely on APIs provided by Node.js, f
 {{< /admonition >}}
 
 In a JavaScript project running Node.js, modules are imported using either `import` or `require()`, using the Node.js module resolution algorithm. This means that a user can import modules by name, without providing the full filesystem path to the module. For instance:
+
+<!--md-k6:skip-->
 
 ```javascript
 import { ClassInAModule } from 'cool-module';
@@ -230,6 +244,8 @@ $ npm install --save-dev \
 
 Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
 
+<!--md-k6:skip-->
+
 ```javascript
 const path = require('path');
 
@@ -263,6 +279,8 @@ The files Webpack will use as its entry points while performing the bundling. Fr
 Webpack will automatically traverse all imports recursively until every possible dependency path has
 been exhausted. For instance:
 
+<!--md-k6:skip-->
+
 ```javascript
 // login.test.js
 
@@ -272,6 +290,8 @@ const svc = new SomeService();
 ```
 
 and:
+
+<!--md-k6:skip-->
 
 ```javascript
 // some.service.js
@@ -355,7 +375,7 @@ $ k6 run dist/signup.bundle.js \
 
 ## Use TypeScript
 
-k6 supports partial TypeScript support with the `experimental_enhanced` compatibility mode. For more details, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
+k6 supports partial TypeScript support. For more details, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
 
 ## Use modules with Docker
 
@@ -372,6 +392,8 @@ For example, say you have the following structure on your host machine:
 
 {{< code >}}
 
+<!--md-k6:skip-->
+
 ```javascript
 import { hello_world } from './modules/module.js';
 
@@ -383,6 +405,8 @@ export default function () {
 {{< /code >}}
 
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 export function hello_world() {

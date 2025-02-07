@@ -35,6 +35,8 @@ The other evaluates whether 95 percent of responses happen within a certain dura
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 
@@ -79,6 +81,7 @@ and k6 would exit with a non-zero exit code.
 To use a threshold, follow these steps:
 
 1. In the `thresholds` property of the `options` object, set a key using the name of the metric you want the threshold for:
+   <!-- md-k6:skip -->
 
    ```javascript
    export const options = {
@@ -92,6 +95,7 @@ To use a threshold, follow these steps:
 
    - The short format puts all threshold expressions as strings in an array.
    - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort-a-test-when-a-threshold-is-crossed).
+   <!-- md-k6:skip -->
 
    ```javascript
    export const options = {
@@ -148,26 +152,28 @@ setting different types of thresholds for each:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { Trend, Rate, Counter, Gauge } from 'k6/metrics';
 import { sleep } from 'k6';
 
 export const TrendRTT = new Trend('RTT');
-export const RateContentOK = new Rate('Content OK');
+export const RateContentOK = new Rate('ContentOK');
 export const GaugeContentSize = new Gauge('ContentSize');
 export const CounterErrors = new Counter('Errors');
 export const options = {
   thresholds: {
     // Count: Incorrect content cannot be returned more than 99 times.
-    'Errors': ['count<100'],
+    Errors: ['count<100'],
     // Gauge: returned content must be smaller than 4000 bytes
-    'ContentSize': ['value<4000'],
+    ContentSize: ['value<4000'],
     // Rate: content must be OK more than 95 times
-    'Content OK': ['rate>0.95'],
+    ContentOK: ['rate>0.95'],
     // Trend: Percentiles, averages, medians, and minimums
     // must be within specified milliseconds.
-    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
+    RTT: ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
   },
 };
 
@@ -195,6 +201,8 @@ Do not specify multiple thresholds for the same metric by repeating the same obj
 Since thresholds are defined as the properties of a JavaScript object, you can't specify multiple ones with the same property name.
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
@@ -298,6 +306,8 @@ For each group, there are different thresholds.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { group, sleep } from 'k6';
@@ -337,6 +347,8 @@ export default function () {
 It's often useful to specify thresholds on a single URL or specific tag.
 In k6, tagged requests create sub-metrics that you can use in thresholds:
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   thresholds: {
@@ -348,6 +360,8 @@ export const options = {
 And here's a full example.
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -398,6 +412,8 @@ After ten seconds, the test aborts if it fails the `p(99) < 10` threshold.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   thresholds: {
@@ -426,6 +442,8 @@ The fields are as follows:
 Here is an example:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -476,7 +494,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://httpbin.test.k6.io');
+  const res = http.get('https://quickpizza.grafana.com/api/status/500');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -509,12 +527,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('https://httpbin.test.k6.io');
+  res = http.get('https://quickpizza.grafana.com/api/status/500');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('https://httpbin.test.k6.io');
+  res = http.get('https://quickpizza.grafana.com/api/status/200');
   check(
     res,
     {

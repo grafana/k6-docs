@@ -9,27 +9,6 @@ weight: 30
 The `csv.Parser` class provides a streaming parser that reads CSV files line-by-line, offering fine-grained control over the parsing process and minimizing memory consumption.
 It's well-suited for scenarios where memory efficiency is crucial or when you need to process large CSV files without loading the entire file into memory.
 
-## Asynchronous nature
-
-The `csv.Parser` class methods are asynchronous and return Promises.
-Due to k6's current limitation with the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/#the-init-stage) (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper such as:
-
-{{< code >}}
-
-```javascript
-import { open } from 'k6/experimental/fs';
-import csv from 'k6/experimental/csv';
-
-let file;
-let parser;
-(async function () {
-  file = await open('data.csv');
-  parser = new csv.Parser(file);
-})();
-```
-
-{{< /code >}}
-
 ## Constructor
 
 | Parameter | Type                                                                                          | Description                                                                                               |
@@ -54,7 +33,11 @@ A promise resolving to an object with the following properties:
 
 ## Example
 
+### Basic Usage
+
 {{< code >}}
+
+<!--md-k6:skip-->
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -81,6 +64,53 @@ export default async function () {
   // We expect the `value` property to be an array of strings, where each string is a field
   // from the CSV record.
   console.log(done, value);
+}
+```
+
+{{< /code >}}
+
+### Using `asObjects`
+
+The `asObjects` option parses the CSV file into an array of objects. The object keys are the column names from the CSV file, and the values are the field values from the CSV record.
+Note that the first line of the CSV file is skipped, as it is assumed to contain the column names (header row).
+
+{{< code >}}
+
+<!--md-k6:skip-->
+
+```javascript
+import { open } from 'k6/experimental/fs';
+import csv from 'k6/experimental/csv';
+import { scenario } from 'k6/execution';
+
+export const options = {
+  iterations: 3,
+};
+
+const file = await open('data.csv');
+const parser = new csv.Parser(file, { asObjects: true });
+
+export default async function () {
+  // Will print the record for the current iteration as an object.
+  //
+  // For example, given the following CSV file:
+  //
+  // firstname,lastname
+  // francois,mitterand
+  // helmut,kohl
+  // pierre,mendes-france
+  //
+  // The test will print:
+  //
+  // { firstname: 'francois', lastname: 'mitterand' }
+  // { firstname: 'helmut', lastname: 'kohl' }
+  // { firstname: 'pierre', lastname: 'mendes-france' }
+  const { done, value } = await parser.next();
+  if (done) {
+    throw new Error('No more rows to read');
+  }
+
+  console.log(value);
 }
 ```
 

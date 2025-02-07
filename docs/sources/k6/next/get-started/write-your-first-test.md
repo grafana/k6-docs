@@ -45,25 +45,29 @@ Let’s walk through creating a simple test which performs 10 `GET` HTTP request
 
 2. **Import k6 modules**: As the end goal here is to perform HTTP requests, import the k6 `http` module at the top of the file. To help simulate a real-world scenario, import the `sleep` function from the `k6` module as well.
 
-   ```javascript
-   // Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
-   import http from 'k6/http';
+<!--md-k6:skip-->
 
-   // Import the sleep function to introduce delays. From this point, you can use the `sleep` function to introduce delays in your test script.
-   import { sleep } from 'k6';
-   ```
+```javascript
+// Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
+import http from 'k6/http';
+
+// Import the sleep function to introduce delays. From this point, you can use the `sleep` function to introduce delays in your test script.
+import { sleep } from 'k6';
+```
 
 3. **Define options**: To perform 10 HTTP requests, define an options block to configure the test execution. In this case, set the number of iterations to 10 to instruct k6 to execute the default function 10 times. Right beneath the imports, add the following code:
 
-   ```javascript
-   import http from 'k6/http';
-   import { sleep } from 'k6';
+<!--md-k6:skip-->
 
-   export const options = {
-     // Define the number of iterations for the test
-     iterations: 10,
-   };
-   ```
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export const options = {
+  // Define the number of iterations for the test
+  iterations: 10,
+};
+```
 
 4. **Define a default function**: The default exported function is the entry point for the test script. It will be executed repeatedly the number of times you define with the `iterations` option. In this function, make a `GET` request to a URL and introduce a 1-second delay between requests. Add the following code to your script:
 
@@ -90,7 +94,7 @@ Let’s walk through creating a simple test which performs 10 `GET` HTTP request
 After you're comfortable with this basic script, you can extend its functionality in many ways. Here are a few ideas to get you started:
 
 1. **Multiple requests**: You can add more `http.get()` or `http.post()` requests to simulate complex user flows.
-2. **Using TypeScript**: If you prefer TypeScript, k6 also supports it. You can learn more in our [TypeScript guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/#experimental-enhanced-mode).
+2. **Using TypeScript**: If you prefer TypeScript, k6 also supports it. You can learn more in our [TypeScript guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/#typescript-support).
 3. **Thresholds, checks, and metrics**: You can add conditions to monitor performance. For example, you can set thresholds to ensure the response time doesn’t exceed a certain limit. Refer to [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/) and [Checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks/) for more details.
 4. **Browser tests**: Use the browser module to simulate user interactions like clicking buttons or filling out forms. This is useful for testing web applications. Refer to [Using k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/) for more details.
 

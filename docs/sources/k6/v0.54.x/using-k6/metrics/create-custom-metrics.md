@@ -29,6 +29,7 @@ This limits memory and ensures that k6 can validate that all thresholds are eval
 The generic procedure to create a custom metric is as follows:
 
 1. Import the [`k6/metrics`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics) module. Optionally, specify the type of metrics you want to create with a named import:
+   <!-- md-k6:skip -->
 
    ```javascript
    import { Trend } from 'k6/metrics';
@@ -37,6 +38,8 @@ The generic procedure to create a custom metric is as follows:
 1. In init context, construct a new custom-metric object.
 
    For example, the following creates a custom trend. The object in the script is called `myTrend`, and its metric appears in the results output as `waiting_time`.
+   <!-- md-k6:skip -->
+   <!-- eslint-skip -->
 
    ```javascript
    const myTrend = new Trend('waiting_time');
@@ -57,7 +60,7 @@ import { Trend } from 'k6/metrics';
 const myTrend = new Trend('waiting_time');
 
 export default function () {
-  const r = http.get('https://httpbin.test.k6.io');
+  const r = http.get('https://quickpizza.grafana.com/');
   myTrend.add(r.timings.waiting);
   console.log(myTrend.name); // waiting_time
 }

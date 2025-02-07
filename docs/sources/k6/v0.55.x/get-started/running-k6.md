@@ -33,7 +33,7 @@ To run a simple local script:
    ```
 
    ```docker
-   $ docker run --rm -i -v $PWD:/app -w /app grafana/k6 new
+   $ docker run --rm -u $(id -u) -v $PWD:/app -w /app grafana/k6 new
    ```
 
    ```windows
@@ -180,7 +180,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://httpbin.test.k6.io/');
+  const res = http.get('https://quickpizza.grafana.com/');
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }
