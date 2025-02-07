@@ -3,26 +3,24 @@ aliases:
   - ./javascript-compatibility-mode/ # /docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode/
 title: JavaScript and TypeScript compatibility mode
 menuTitle: JavaScript and TypeScript mode
-excerpt: 'k6 supports running test scripts with different ECMAScript and TypeScript compatibility modes using --compatibility-mode'
+excerpt: 'k6 supports running test scripts with different compatibility modes using --compatibility-mode'
 weight: 19
 ---
 
-# JavaScript and TypeScript compatibility mode
+# JavaScript compatibility mode
 
-You can write k6 tests in various ECMAScript versions:
+This is option most users should no longer be using.
 
-- ES6+ JavaScript with ES modules (ESM).
-- ES6+ JavaScript with CommonJS modules.
+In previous versions k6 used to not natively support as much of the ECMAScript standard as was desired. For this reason the default mode used to use babel internally to add support for what was missing. This though had performance impact on starting k6 and might still not have supported as much as was desired. As such a different mode without babel (and core.js) was added that was much faster in initialization, but likely required transpilation from the user.
 
-k6 supports both module types and most ES6+ features in all k6 execution modes: local, distributed, and cloud.
+Since v0.53.0 this hasn't been needed and in general this option has minimal usability and is likely to be removed completely in future versions. See [issue](https://github.com/grafana/k6/issues/3864) for the last remaining difference.
 
-Additionally, k6 also has experimental support for [esbuild](https://esbuild.github.io/), to transpile TypeScript (TS) code.
+Additionally, k6 also has support for [esbuild](https://esbuild.github.io/), to transpile TypeScript (TS) code. This used to use compatibility-mode but is now enabled by default and no configuration is required.
 
 Some users prefer to bundle their test code outside k6. For this reason, k6 offers three JavaScript compatibility modes:
 
-- [Extended mode](#extended-mode): The default option.
-- [Experimental enhanced mode](#experimental-enhanced-mode): The experimental option, supporting TS.
-- [Base mode](#base-mode): After v0.53.0 this is almost the same as extended, but doesn't alias `global` to `globalThis` - a nodejs compatibility.
+- [Extended mode](#extended-mode): The default option. That is `base` + aliasing `global` to `globalThis` - a nodejs compatibility.
+- [Base mode](#base-mode): Only using native support in k6 and the underlying JS engine. After v0.53.0 it has the same functionality as `extended` apart from the `global` aliasing.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
@@ -44,23 +42,23 @@ $ k6 run script.js
 
 After v0.53.0 the only difference with base is that `global` (node's global variable) is aliased to the value of `globalThis`.
 
-## Experimental enhanced mode
+## Typescript support
 
 {{< code >}}
 
 ```cli
-$ k6 run --compatibility-mode=experimental_enhanced script.ts
+$ k6 run script.ts
 ```
 
 ```env
-$ K6_COMPATIBILITY_MODE=experimental_enhanced k6 run script.ts
+$ k6 run script.ts
 ```
 
 {{< /code >}}
 
-The experimental enhanced mode is similar to the extended mode, but it uses [esbuild](https://esbuild.github.io/) instead of Babel to transpile TypeScript (TS) code.
+It uses [esbuild](https://esbuild.github.io/) to transpile TypeScript (TS) code for all files that have the `.ts` extension.
 
-TypeScript support is partial as it removes the type information but doesn't provide type safety.
+TypeScript support is partial as it strips the type information but doesn't provide type safety.
 
 ## Base mode
 
@@ -75,8 +73,6 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
 {{< /code >}}
-
-After v0.53.0 there isn't a big reason to use this. Before that it was dropping ESM support for usually improved startup speed.
 
 ### CommonJS Example
 
