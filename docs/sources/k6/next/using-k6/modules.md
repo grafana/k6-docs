@@ -355,7 +355,7 @@ $ k6 run dist/signup.bundle.js \
 
 ## Use TypeScript
 
-k6 supports partial TypeScript support with the `experimental_enhanced` compatibility mode. For more details, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
+k6 supports partial TypeScript support. For more details, refer to [JavaScript and TypeScript compatibility mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/).
 
 ## Use modules with Docker
 
