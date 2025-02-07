@@ -45,25 +45,29 @@ Let’s walk through creating a simple test which performs 10 `GET` HTTP request
 
 2. **Import k6 modules**: As the end goal here is to perform HTTP requests, import the k6 `http` module at the top of the file. To help simulate a real-world scenario, import the `sleep` function from the `k6` module as well.
 
-   ```javascript
-   // Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
-   import http from 'k6/http';
+<!--md-k6:skip-->
 
-   // Import the sleep function to introduce delays. From this point, you can use the `sleep` function to introduce delays in your test script.
-   import { sleep } from 'k6';
-   ```
+```javascript
+// Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
+import http from 'k6/http';
+
+// Import the sleep function to introduce delays. From this point, you can use the `sleep` function to introduce delays in your test script.
+import { sleep } from 'k6';
+```
 
 3. **Define options**: To perform 10 HTTP requests, define an options block to configure the test execution. In this case, set the number of iterations to 10 to instruct k6 to execute the default function 10 times. Right beneath the imports, add the following code:
 
-   ```javascript
-   import http from 'k6/http';
-   import { sleep } from 'k6';
+<!--md-k6:skip-->
 
-   export const options = {
-     // Define the number of iterations for the test
-     iterations: 10,
-   };
-   ```
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export const options = {
+  // Define the number of iterations for the test
+  iterations: 10,
+};
+```
 
 4. **Define a default function**: The default exported function is the entry point for the test script. It will be executed repeatedly the number of times you define with the `iterations` option. In this function, make a `GET` request to a URL and introduce a 1-second delay between requests. Add the following code to your script:
 
