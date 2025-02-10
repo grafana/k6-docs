@@ -22,6 +22,8 @@ k6 offers two JavaScript compatibility modes:
 - [Base mode](#base-mode): Only uses native support in k6 and the underlying JavaScript runtime. For k6 v0.53.0 or higher, it has the same functionality as `extended` apart from the `global` aliasing.
 - [Extended mode](#extended-mode): Similar to base mode, with an additional alias from `global` to `globalThis` for Node.js compatibility. This is the default mode.
 
+After k6 v0.53.0, the only difference between the base and extended modes is that `global`, the Node.js global variable, is aliased to the value of `globalThis`.
+
 When running tests, you can change the mode by using the `--compatibility-mode` option:
 
 | Env                     | CLI                    | Code / Config file | Default      |
@@ -39,8 +41,6 @@ $ k6 run script.js
 ```
 
 {{< /code >}}
-
-After v0.53.0, the only difference from the base mode is that `global`, the Node.js global variable, is aliased to the value of `globalThis`.
 
 ## Base mode
 
