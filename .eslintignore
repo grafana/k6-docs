@@ -1,16 +1,9 @@
 .cache/
 public/
 node_modules/
-docs/sources/*/release-notes
-docs/sources/get-started/run-cloud-tests-from-the-CLI.md
-docs/sources/get-started/run-your-first-tests.md
-docs/sources/*/using-k6/metrics/create-custom-metrics.md
-/docs/sources/*/testing-guides/injecting-faults-with-xk6-disruptor/expose-your-application.md
+docs/sources/k6/*/release-notes
+docs/sources/k6/get-started/run-cloud-tests-from-the-CLI.md
+docs/sources/k6/get-started/run-your-first-tests.md
+docs/sources/k6/*/using-k6/metrics/create-custom-metrics.md
+/docs/sources/k6/*/testing-guides/injecting-faults-with-xk6-disruptor/expose-your-application.md
 CONTRIBUTING_FILE_FORMAT.md
-src/data/markdown/docs/40 xk6-disruptor/01 Get started/01 First steps.md
-src/data/markdown/docs/40 xk6-disruptor/01 Get started/04 Expose Your Application.md
-src/data/markdown/docs/40 xk6-disruptor/04 Examples/01 Inject Grpc faults into Service.md
-src/data/markdown/docs/40 xk6-disruptor/04 Examples/02 Inject HTTP faults into Pod.md
-src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/100 Test-for-functional-behavior.md
-src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/200 Test for performance.md
-src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/400 Reuse and re-run tests.md

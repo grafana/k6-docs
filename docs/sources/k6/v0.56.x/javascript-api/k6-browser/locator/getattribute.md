@@ -9,19 +9,19 @@ Returns the element attribute value for the given attribute name.
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
-| --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name            | string | `''`    | Attribute name to get the value for.                                                                                                                                                                                                                                                                                                          |
-| options         | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
+| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                         |
+| --------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name            | string | `''`    | Attribute name to get the value for.                                                                                                                                                                                                                                                                                |
+| options         | object | `null`  |                                                                                                                                                                                                                                                                                                                     |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
 </TableWithNestedRows>
 
 ### Returns
 
-| Type              | Description                                                                                               |
-| ----------------- | --------------------------------------------------------------------------------------------------------- |
-| `Promise<string | null>` | A Promise that fulfills with the string value of the attribute or `null` if the attribute is not present. |
+| Type            | Description |
+| --------------- | ----------- | --------------------------------------------------------------------------------------------------------- |
+| `Promise<string | null>`      | A Promise that fulfills with the string value of the attribute or `null` if the attribute is not present. |
 
 ### Example
 

@@ -15,8 +15,8 @@ Checks if the element is disabled.
 
 ### Returns
 
-| Type            | Description                                                                     |
-| --------------- | ------------------------------------------------------------------------------- |
+| Type            | Description                                                                   |
+| --------------- | ----------------------------------------------------------------------------- |
 | `Promise<bool>` | A Promise that fulfills with `true` if the element is disabled, else `false`. |
 
 ### Example

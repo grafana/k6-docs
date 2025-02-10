@@ -30,7 +30,7 @@ Clears text boxes and input fields (`input`, `textarea` or `contenteditable` ele
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from "https://jslib.k6.io/k6-utils/1.5.0/index.js";
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -49,7 +49,7 @@ export default async function () {
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await page.goto("https://test.k6.io/my_messages.php", {
+  await page.goto('https://test.k6.io/my_messages.php', {
     waitUntil: 'networkidle',
   });
 
@@ -59,7 +59,7 @@ export default async function () {
 
   // Check that the element has been filled with text
   await check(login, {
-    'not empty': async lo => await lo.inputValue() != '',
+    'not empty': async (lo) => (await lo.inputValue()) != '',
   });
 
   // Now clear the text from the element
@@ -67,7 +67,7 @@ export default async function () {
 
   // Check that the element is now empty
   await check(login, {
-    empty: async lo => await lo.inputValue() == '',
+    empty: async (lo) => (await lo.inputValue()) == '',
   });
 
   await page.close();

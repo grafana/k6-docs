@@ -65,7 +65,7 @@ export const options = {
 };
 
 export default async function () {
-  let page = await browser.newPage();
+  const page = await browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
@@ -79,7 +79,7 @@ export default async function () {
     await page.waitForLoadState('networkidle'); // waits until the `networkidle` event
 
     await check(page.locator('h2'), {
-      'header': async h2 => await h2.textContent() == 'Welcome, admin!'
+      header: async (h2) => (await h2.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();

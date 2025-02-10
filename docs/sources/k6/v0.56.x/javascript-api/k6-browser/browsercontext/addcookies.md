@@ -15,8 +15,8 @@ If a [cookie](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                                                                                                                                  |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                                                                                                                        |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `Promise<void>` | A Promise that fulfills when the [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/cookie) have been added to the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/). |
 
 ### Example

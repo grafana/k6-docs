@@ -29,7 +29,7 @@ Besides the [common configuration options](https://grafana.com/docs/k6/<K6_VERSI
 this executor has the following options:
 
 | Option                               | Type    | Description                                                                    | Default                             |
-|--------------------------------------|---------|--------------------------------------------------------------------------------|-------------------------------------|
+| ------------------------------------ | ------- | ------------------------------------------------------------------------------ | ----------------------------------- |
 | duration<sup>(required)</sup>        | string  | Total scenario duration (excluding `gracefulStop`).                            | -                                   |
 | rate<sup>(required)</sup>            | integer | Number of iterations to start during each `timeUnit` period.                   | -                                   |
 | preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start to preserve runtime resources. | -                                   |

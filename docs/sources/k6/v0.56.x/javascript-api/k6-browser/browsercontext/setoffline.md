@@ -7,8 +7,8 @@ description: "Toggles the BrowserContext's connectivity on/off."
 
 Toggles the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext)'s connectivity on/off.
 
-| Parameter | Type    | Default | Description                                                                                 |
-| --------- | ------- | ------- | ------------------------------------------------------------------------------------------- |
+| Parameter | Type    | Default | Description                                                                                                                                                                     |
+| --------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | offline   | boolean | `false` | Whether to emulate the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) being disconnected (`true`) or connected (`false`). |
 
 ### Returns

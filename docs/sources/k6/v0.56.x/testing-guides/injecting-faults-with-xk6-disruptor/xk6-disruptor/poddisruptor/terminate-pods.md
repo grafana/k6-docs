@@ -10,8 +10,8 @@ weight: 400
 
 `terminatePods` terminates a number of the pods matching the selector configured in the PodDisruptor.
 
-| Parameter | Type   | Description                                                                                                                              |
-| --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Parameter | Type   | Description                                                                                                                                                                  |
+| --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fault     | object | description of the [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/pod-termination) |
 
 ## Example

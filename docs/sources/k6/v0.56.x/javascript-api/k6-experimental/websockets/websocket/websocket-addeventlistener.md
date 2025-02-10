@@ -33,7 +33,7 @@ import { WebSocket } from 'k6/experimental/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');
-  ws.binaryType = "arraybuffer";
+  ws.binaryType = 'arraybuffer';
 
   ws.onopen = () => {
     console.log('connected');

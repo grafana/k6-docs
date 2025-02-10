@@ -9,10 +9,9 @@ Returns the bounding box of the element. The bounding box is calculated with res
 
 ### Returns
 
-| Type                    | Description                                                                                                                  |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Type                    | Description                                                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<null \| Rect>` | A Promise that fulfills with the bounding box of the element as a [Rect](#rect). If the element is not visible, the Promise resolves to `null`. |
-
 
 ### Rect
 
@@ -51,7 +50,9 @@ export default async function () {
 
   const element = await page.$('#text1');
   const boundingBox = await element.boundingBox();
-  console.log(`x: ${boundingBox.x}, y: ${boundingBox.y}, width: ${boundingBox.width}, height: ${boundingBox.height}`);
+  console.log(
+    `x: ${boundingBox.x}, y: ${boundingBox.y}, width: ${boundingBox.width}, height: ${boundingBox.height}`
+  );
 
   await page.close();
 }

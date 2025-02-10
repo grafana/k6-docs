@@ -23,8 +23,8 @@ Queries the element for the given selector in the [ElementHandle](https://grafan
 
 ### Returns
 
-| Type                             | Description                                                                                                                                                                            |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type                             | Description                                                                                                                                                                                                             |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<null \| ElementHandle>` | A Promise that fulfills with the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle) for the first element found. If no element is found, the Promise resolves to `null`. |
 
 ### Example

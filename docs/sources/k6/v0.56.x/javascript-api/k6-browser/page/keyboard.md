@@ -9,8 +9,8 @@ Returns the [Keyboard](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k
 
 ### Returns
 
-| Type                                                                                                  | Description                                       |
-| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Type                                                                                     | Description                                       |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | [Keyboard](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/keyboard/) | The `Keyboard` instance associated with the page. |
 
 ### Example

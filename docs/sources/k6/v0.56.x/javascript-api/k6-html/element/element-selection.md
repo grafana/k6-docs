@@ -11,8 +11,8 @@ Mimics `$(element)`.
 
 ### Returns
 
-| Type    | Description                          |
-| ------- | ------------------------------------ |
+| Type      | Description                          |
+| --------- | ------------------------------------ |
 | Selection | The Selection matching this element. |
 
 ### Example
@@ -20,15 +20,15 @@ Mimics `$(element)`.
 {{< code >}}
 
 ```javascript
-import http from "k6/http";
+import http from 'k6/http';
 
 export default () => {
-	let li = http.get("https://test.k6.io").html().find("li");
-	li.each(function(_, element) {
-		let container = element.selection().closest('ul.header-icons');
-		console.log("li.each", container.html())
-	});
-}
-
+  const li = http.get('https://test.k6.io').html().find('li');
+  li.each(function (_, element) {
+    const container = element.selection().closest('ul.header-icons');
+    console.log('li.each', container.html());
+  });
+};
 ```
+
 {{< /code >}}

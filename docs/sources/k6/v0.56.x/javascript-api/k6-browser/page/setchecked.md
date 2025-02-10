@@ -31,8 +31,8 @@ Use this method to select or unselect an `input` or `radio` checkbox.
 
 ### Returns
 
-| Type            | Description                                                |
-| --------------- | ---------------------------------------------------------- |
+| Type            | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the set check action is finished. |
 
 ### Example

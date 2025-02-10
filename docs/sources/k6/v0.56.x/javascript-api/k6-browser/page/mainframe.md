@@ -9,8 +9,8 @@ The page's main frame. Page is made up of frames in a hierarchical. At the top i
 
 ### Returns
 
-| Type                                                                                            | Description            |
-| ----------------------------------------------------------------------------------------------- | ---------------------- |
+| Type                                                                               | Description            |
+| ---------------------------------------------------------------------------------- | ---------------------- |
 | [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) | The page's main frame. |
 
 ### Example

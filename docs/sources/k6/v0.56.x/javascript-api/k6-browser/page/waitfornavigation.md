@@ -69,13 +69,10 @@ export default async function () {
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([
-      submitButton.click(),
-      page.waitForNavigation(),
-    ]);
+    await Promise.all([submitButton.click(), page.waitForNavigation()]);
 
     await check(page.locator('h2'), {
-      header: async h2 => await h2.textContent() == 'Welcome, admin!'
+      header: async (h2) => (await h2.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();

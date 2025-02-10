@@ -29,26 +29,26 @@ export const options = {
       executor: 'shared-iterations',
       options: {
         browser: {
-            type: 'chromium',
+          type: 'chromium',
         },
       },
     },
-  }
-}
+  },
+};
 
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://test.k6.io/my_messages.php', {
-    waitUntil: 'networkidle'
+    waitUntil: 'networkidle',
   });
 
   const login = page.locator('input[name="login"]');
   await login.click();
-  await page.keyboard.type("admin");
+  await page.keyboard.type('admin');
 
   const password = page.locator('input[name="password"]');
   await password.click();
-  await page.keyboard.type("123");
+  await page.keyboard.type('123');
 
   await Promise.all([
     page.keyboard.press('Enter'), // submit

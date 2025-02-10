@@ -27,19 +27,19 @@ export const options = {
       executor: 'shared-iterations',
       options: {
         browser: {
-            type: 'chromium',
+          type: 'chromium',
         },
       },
     },
-  }
-}
+  },
+};
 
 export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/', {
-    waitUntil: 'networkidle'
-});
+    waitUntil: 'networkidle',
+  });
 
   // Obtain ElementHandle for news link and navigate to it
   // by clicking in the 'a' element's bounding box

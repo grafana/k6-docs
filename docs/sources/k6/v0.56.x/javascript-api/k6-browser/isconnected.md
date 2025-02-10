@@ -16,8 +16,8 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 ### Returns
 
-| Type    | Description                                                                                                                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type    | Description                                                                                                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | boolean | Returns `true` if the [browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) is connected to the browser application. Otherwise, returns `false`. |
 
 ### Example
