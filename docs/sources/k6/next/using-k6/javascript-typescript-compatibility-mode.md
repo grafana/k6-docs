@@ -19,7 +19,7 @@ Starting on k6 v0.57, TypeScript support is enabled by default, and the `experim
 
 k6 offers two JavaScript compatibility modes:
 
-- [Base mode](#base-mode): Only uses native support in k6 and the underlying JS engine. For k6 v0.53.0 or higher, it has the same functionality as `extended` apart from the `global` aliasing.
+- [Base mode](#base-mode): Only uses native support in k6 and the underlying JavaScript runtime. For k6 v0.53.0 or higher, it has the same functionality as `extended` apart from the `global` aliasing.
 - [Extended mode](#extended-mode): Similar to base mode, with an additional alias from `global` to `globalThis` for Node.js compatibility. This is the default mode.
 
 When running tests, you can change the mode by using the `--compatibility-mode` option:
