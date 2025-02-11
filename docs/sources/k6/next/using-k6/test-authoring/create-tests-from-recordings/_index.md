@@ -1,7 +1,7 @@
 ---
 title: 'Create tests from recordings'
 description: 'In load testing, recording usually refers to the process of creating a load test from the recording of a user session.'
-weight: 02
+weight: 300
 ---
 
 # Create tests from recordings
