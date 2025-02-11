@@ -9,10 +9,6 @@
   "private": true,
   "scripts": {
     "start": "cd docs && make docs",
-    "format": "prettier --check '**/*.{js,jsx,css,scss}'",
-    "format:fix": "prettier --write '**/*.{js,jsx,css,scss}'",
-    "lint": "eslint --ext .js,.jsx .",
-    "lint:fix": "eslint --ext .js,.jsx --fix .",
     "archive-version": "./archive-js-api-version.sh",
     "prepare": "husky install"
   },
