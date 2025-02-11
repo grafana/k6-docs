@@ -9,7 +9,6 @@
   "private": true,
   "scripts": {
     "start": "cd docs && make docs",
-    "archive-version": "./archive-js-api-version.sh",
     "prepare": "husky install"
   },
   "devDependencies": {
