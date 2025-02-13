@@ -210,12 +210,12 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 
 - **Distributed**: the test execution is [distributed across a Kubernetes cluster](https://k6.io/blog/running-distributed-tests-on-k8s/).
 
-  Save the following YAML as `k6-resource.yaml`:
+  Save the following YAML as `k6-testrun-resource.yaml`:
 
   ```yaml
   ---
   apiVersion: k6.io/v1alpha1
-  kind: K6
+  kind: TestRun
   metadata:
     name: k6-sample
   spec:
@@ -229,7 +229,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   Apply the resource with the following command:
 
   ```bash
-  kubectl apply -f /path/to/k6-resource.yaml
+  kubectl apply -f /path/to/k6-testrun-resource.yaml
   ```
 
 - **Cloud**: the test runs on [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/get-started/run-cloud-tests-from-the-cli/).
