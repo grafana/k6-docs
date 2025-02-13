@@ -12,7 +12,7 @@ Writing a k6 test script from scratch can seem challenging if you're just gettin
 
 To use the k6 `new` command, you'll need:
 
-- [k6 v0.56 or higher](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) installed on your machine.
+- [k6 v0.57 or higher](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) installed on your machine.
 
 ## Use the k6 new command
 
