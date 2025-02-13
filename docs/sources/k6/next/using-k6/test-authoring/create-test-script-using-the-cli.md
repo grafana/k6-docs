@@ -1,10 +1,10 @@
 ---
-title: Create a test using the CLI
+title: Create a test script using the CLI
 description: Learn how to create a test using the k6 CLI and the k6 new command.
 weight: 100
 ---
 
-# Create a test using the CLI
+# Create a test script using the CLI
 
 Writing a k6 test script from scratch can seem challenging if you're just getting started with k6, or repetitive if you're already familiar with the tool. The k6 `new` command can help both new and experienced users quickly generate a test script, which they can use to try out k6, or use as a starting point to test out their applications and services.
 
