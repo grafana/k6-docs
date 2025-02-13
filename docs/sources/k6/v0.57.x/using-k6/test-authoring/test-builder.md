@@ -1,7 +1,7 @@
 ---
 title: 'Test builder'
 description: 'Use a graphical interface to create a k6 test.'
-weight: 01
+weight: 200
 ---
 
 # Test builder
