@@ -71,12 +71,6 @@ The k6 Operator includes custom resources called `TestRun`, `PrivateLoadZone`, a
 make install
 ```
 
-{{< admonition type="warning" >}}
-
-The `K6` CRD has been replaced by the `TestRun` CRD and will be deprecated in the future. We recommend using the `TestRun` CRD.
-
-{{< /admonition >}}
-
 ## Watch namespace
 
 By default, the k6 Operator watches the `TestRun` and `PrivateLoadZone` custom resources in all namespaces. You can also configure the k6 Operator to watch a specific namespace by setting the `WATCH_NAMESPACE` environment variable for the operator's deployment:
