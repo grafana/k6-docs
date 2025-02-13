@@ -101,7 +101,7 @@ k6 cloud upload archive.tar
 
 ### Distributed Execution
 
-[k6-operator](https://github.com/grafana/k6-operator#multi-file-tests) can distribute a k6 test across a Kubernetes cluster.
+[k6-operator](https://grafana.com/docs/k6/<K6_VERSION>/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/#multi-file-tests) can distribute a k6 test across a Kubernetes cluster.
 
 When a k6 test has multiple files, you can use the archive functionality to bundle the k6 test in a single _archived_ file and pass this file to run the test.
 
