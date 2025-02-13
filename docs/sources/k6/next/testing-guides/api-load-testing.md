@@ -148,7 +148,7 @@ To reach a request-rate target (`RequestsRate`), follow this approach:
 
 1. Set the rate frequency to the time unit of the target. Per second or per minute.
 1. Get the number of requests per iteration (`RequestsPerIteration`).
-1. Set the iteration rate to the requests per second target divided by the number of requests per iteration.  
+1. Set the iteration rate to the requests per second target divided by the number of requests per iteration.
    `rate` = `RequestsRate ÷ RequestsPerIteration`.
 
 To reach target of 50 reqs/s with the previous example:
@@ -296,7 +296,7 @@ A load test can run thousands or millions of script iterations, each with dozens
 Every test should have a goal.
 Engineering organizations set their reliability goals using [Service Level Objectives](https://en.wikipedia.org/wiki/Service-level_objective) (SLOs) to validate availability, performance, or any performance requirements.
 
-SLOs maybe defined at distinct scopes, such as on the level of an infrastructure component, of an API, or of the entire application.
+SLOs may be defined at distinct scopes, such as on the level of an infrastructure component, of an API, or of the entire application.
 Some example SLOs could be:
 
 - That 99% of APIs returning product information respond in less than 600ms.
