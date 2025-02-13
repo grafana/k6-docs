@@ -64,7 +64,7 @@ export default async function () {
   </html>`);
 
   await check(page.locator('#random'), {
-    'is zero': async random => await random.textContent() == '0'
+    'is zero': async (random) => (await random.textContent()) == '0',
   });
 
   await page.close();

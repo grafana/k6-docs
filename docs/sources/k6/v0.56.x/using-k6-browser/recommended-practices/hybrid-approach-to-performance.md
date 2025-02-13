@@ -87,7 +87,8 @@ export async function checkFrontend() {
     await page.goto(BASE_URL);
 
     await check(page.locator('h1'), {
-      'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
+      header: async (lo) =>
+        (await lo.textContent()) == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -97,7 +98,7 @@ export async function checkFrontend() {
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     await check(page.locator('div#recommendations'), {
-      'recommendation': async lo => await lo.textContent() != '',
+      recommendation: async (lo) => (await lo.textContent()) != '',
     });
   } finally {
     await page.close();
@@ -186,7 +187,8 @@ export async function checkFrontend() {
   try {
     await page.goto(BASE_URL);
     await check(page.locator('h1'), {
-      'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
+      header: async (lo) =>
+        (await lo.textContent()) == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -196,7 +198,7 @@ export async function checkFrontend() {
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     await check(page.locator('div#recommendations'), {
-      recommendation: async lo => await lo.textContent() != '',
+      recommendation: async (lo) => (await lo.textContent()) != '',
     });
   } finally {
     await page.close();

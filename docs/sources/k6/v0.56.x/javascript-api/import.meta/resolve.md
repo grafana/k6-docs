@@ -13,8 +13,8 @@ This is particularly useful as some functions within k6 are not relative to the 
 
 For more details, refer to this [issue](https://github.com/grafana/k6/issues/3857).
 
-| Parameter | Type   | Description                |
-| --------- | ------ | -------------------------- |
+| Parameter | Type   | Description  |
+| --------- | ------ | ------------ |
 | path      | string | A file path. |
 
 ### Example

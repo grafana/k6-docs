@@ -51,7 +51,7 @@ weight: 04
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from "https://jslib.k6.io/k6-utils/1.5.0/index.js";
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -86,9 +86,9 @@ export default async function () {
     await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     await check(page, {
-      'header': async p => {
+      header: async (p) => {
         const h2 = await p.$('h2');
-        return await h2.textContent() == 'Welcome, admin!';
+        return (await h2.textContent()) == 'Welcome, admin!';
       },
     });
   } finally {
@@ -133,33 +133,33 @@ export default async function () {
 
     // Check state
     await check(page, {
-      'is visible': async p => {
+      'is visible': async (p) => {
         const e = await p.$('.visible');
         return e.isVisible();
       },
-      'is hidden': async p => {
+      'is hidden': async (p) => {
         const e = await p.$('.hidden');
         return e.isHidden();
       },
-      'is editable': async p => {
+      'is editable': async (p) => {
         const e = await p.$('.editable');
         return e.isEditable();
       },
-      'is enabled': async p => {
+      'is enabled': async (p) => {
         const e = await p.$('.enabled');
         return e.isEnabled();
       },
-      'is disabled': async p => {
+      'is disabled': async (p) => {
         const e = await p.$('.disabled');
         return e.isDisabled();
       },
-      'is checked': async p => {
+      'is checked': async (p) => {
         const e = await p.$('.checked');
         return e.isChecked();
       },
-      'is unchecked': async p => {
+      'is unchecked': async (p) => {
         const e = await p.$('.unchecked');
-        return await e.isChecked() === false;
+        return (await e.isChecked()) === false;
       },
     });
   } finally {

@@ -58,18 +58,15 @@ export default async function () {
   const page = await context.newPage();
 
   try {
-    await page.goto("https://test.k6.io/my_messages.php");
+    await page.goto('https://test.k6.io/my_messages.php');
 
-    await page.locator('input[name="login"]').type("admin");
-    await page.locator('input[name="password"]').type("123");
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
 
-    await check(page.locator("h2"), {
-      'header': async h2 => await h2.textContent() == "Welcome, admin!"
+    await check(page.locator('h2'), {
+      header: async (h2) => (await h2.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();

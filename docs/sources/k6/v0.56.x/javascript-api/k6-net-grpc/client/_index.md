@@ -36,7 +36,7 @@ export default () => {
 
   const response = client.invoke('quickpizza.GRPC/RatePizza', {
     ingredients: ['Tomatoes', 'Cheese'],
-    dough: 'Thin'
+    dough: 'Thin',
   });
   console.log(response.message.starsRating); // should print a number between 1-5
 

@@ -258,13 +258,10 @@ export default async function () {
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      submitButton.click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     await check(page.locator('h2'), {
-      'header': async lo => await lo.textContent() == 'Welcome, admin!'
+      header: async (lo) => (await lo.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();
@@ -332,8 +329,8 @@ export async function browserTest() {
     await page.locator('#checkbox1').check();
 
     await check(page.locator('#checkbox-info-display'), {
-      'checkbox is checked': async lo =>
-        await lo.textContent() === 'Thanks for checking the box'
+      'checkbox is checked': async (lo) =>
+        (await lo.textContent()) === 'Thanks for checking the box',
     });
   } finally {
     await page.close();

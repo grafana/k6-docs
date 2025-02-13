@@ -7,14 +7,14 @@ description: 'Retrieves context cookies.'
 
 Returns a list of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/cookie) from the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext) filtered by the provided `urls`. If no `urls` are provided, all cookies are returned.
 
-| Parameter | Type  | Description                                                                                                                                                                                                                                                                    |
-| --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Parameter | Type  | Description                                                                                                                                                                                                                                           |
+| --------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | urls      | array | A string array of URLs to filter the [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/cookie) in the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext). |
 
 ### Returns
 
-| Type                     | Description                                                                                                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type                     | Description                                                                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<Array<Cookie>>` | A Promise that fulfills with an array of [cookies](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/cookie). |
 
 {{< admonition type="note" >}}

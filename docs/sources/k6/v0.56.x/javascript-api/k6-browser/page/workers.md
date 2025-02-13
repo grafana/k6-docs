@@ -9,8 +9,8 @@ This method returns an array of the dedicated [WebWorkers](https://grafana.com/d
 
 ### Returns
 
-| Type                                                                                                    | Description                                     |
-| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Type                                                                                       | Description                                     |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------- |
 | [WebWorkers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/worker/)[] | Array of `WebWorkers` associated with the page. |
 
 ### Example

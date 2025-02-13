@@ -15,9 +15,9 @@ Returns the element attribute value for the given attribute name.
 
 <TableWithNestedRows>
 
-| Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
-| --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name            | string | `''`    | Attribute name to get the value for.                                                                                                                                                                                                                                                                                                          |
+| Parameter | Type   | Default | Description                          |
+| --------- | ------ | ------- | ------------------------------------ |
+| name      | string | `''`    | Attribute name to get the value for. |
 
 </TableWithNestedRows>
 

@@ -9,8 +9,8 @@ Gets the [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 ### Returns
 
-| Type                                                                                                              | Description                                    |
-| ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Type                                                                                                 | Description                                    |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) | The `BrowserContext` that the page belongs to. |
 
 ### Example

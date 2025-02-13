@@ -20,8 +20,8 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 
 ### Returns
 
-| Type                | Description                                                                                                                                    |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type                | Description                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<JSHandle>` | The [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/) ) instance associated with the page. |
 
 ### Example

@@ -9,8 +9,8 @@ Clears the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript
 
 ### Returns
 
-| Type            | Description                                                                                                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                                                               |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the cookies have been cleared from the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext). |
 
 ### Example

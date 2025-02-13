@@ -9,8 +9,8 @@ The [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/f
 
 ### Returns
 
-| Type                                                                                            | Description                                                                  |
-| ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Type                                                                               | Description                                                                  |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) | The `Frame` that initiated the request which this response is associated to. |
 
 ### Example

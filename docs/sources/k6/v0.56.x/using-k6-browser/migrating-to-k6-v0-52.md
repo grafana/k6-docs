@@ -285,7 +285,7 @@ For example, before:
 
 ```javascript
 check(page.locator('h2'), {
-  header: lo => lo.textContent() == 'Welcome, admin!',
+  header: (lo) => lo.textContent() == 'Welcome, admin!',
 });
 ```
 
@@ -303,7 +303,7 @@ import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 // ...
 
 await check(page.locator('h2'), {
-  'header': async lo => await lo.textContent() === 'Welcome, admin!'
+  header: async (lo) => (await lo.textContent()) === 'Welcome, admin!',
 });
 ```
 

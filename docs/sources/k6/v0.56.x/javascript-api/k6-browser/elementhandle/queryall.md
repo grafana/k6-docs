@@ -17,8 +17,8 @@ Queries the elements for the given selector in the [ElementHandle](https://grafa
 
 ### Returns
 
-| Type                               | Description                                                                                                                                                                                                                          |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Type                               | Description                                                                                                                                                                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<null \| ElementHandle[]>` | A Promise that fulfills with an [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle) array for the elements found. If no element is found, the Promise resolves to `null`. |
 
 ### Example

@@ -27,15 +27,15 @@ export default function () {
   };
 
   ws.onclose = () => {
-      console.log('WebSocket connection closed!');
-  }
+    console.log('WebSocket connection closed!');
+  };
 
   ws.onopen = () => {
-      ws.send(JSON.stringify({ 'event': 'SET_NAME', 'new_name': `Croc ${__VU}` }));
-  }
+    ws.send(JSON.stringify({ event: 'SET_NAME', new_name: `Croc ${__VU}` }));
+  };
   ws.onerror = (err) => {
-      console.log(err)
-  }
+    console.log(err);
+  };
 }
 ```
 

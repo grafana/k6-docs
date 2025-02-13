@@ -9,8 +9,8 @@ Returns the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-b
 
 ### Returns
 
-| Type                     | Description                                                                                                                                                      |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type                     | Description                                                                                                                                         |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<Frame \| null>` | A Promise that resolves to the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) that this element is contained in |
 
 ### Example

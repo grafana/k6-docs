@@ -16,9 +16,9 @@ The method finds an element matching the specified selector within the page. If 
 
 ### Returns
 
-| Type                             | Description                                                                                                                                                                                                   |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<ElementHandle \| null>` | A Promise that fulfills with the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/)  of the selector when a matching element is found or `null`. |
+| Type                             | Description                                                                                                                                                                                     |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<ElementHandle \| null>` | A Promise that fulfills with the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle/) of the selector when a matching element is found or `null`. |
 
 ### Example
 
@@ -44,9 +44,7 @@ export default async function () {
   const page = await browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  const text = await page
-    .$('#text1')
-    .then(text => text.type('hello world'));
+  const text = await page.$('#text1').then((text) => text.type('hello world'));
 }
 ```
 

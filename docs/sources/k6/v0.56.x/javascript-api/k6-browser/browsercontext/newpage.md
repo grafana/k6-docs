@@ -9,8 +9,8 @@ Uses the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-a
 
 ### Returns
 
-| Type            | Description                                                                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Type            | Description                                                                                                                 |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `Promise<Page>` | A Promise that fulfills with a new [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/) object. |
 
 ### Example

@@ -45,7 +45,7 @@ export default async function () {
 
   const text = await page.$('#input-text-hidden');
   const isHidden = await text.isHidden();
-  if (isHidden) {  
+  if (isHidden) {
     console.log('element is hidden');
   }
 

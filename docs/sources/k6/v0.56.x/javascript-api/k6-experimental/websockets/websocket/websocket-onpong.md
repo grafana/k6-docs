@@ -28,7 +28,7 @@ export default function () {
 
   ws.onopen = () => {
     ws.ping();
-  }
+  };
 }
 ```
 
