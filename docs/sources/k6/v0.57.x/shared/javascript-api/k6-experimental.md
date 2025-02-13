@@ -4,7 +4,7 @@ title: javascript-api/k6-experimental
 
 | Modules                                                                                          | Description                                                                                                                |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| [csv](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv)               | Provides support for efficient and convenient parsing of CSV files.                                                     |
+| [csv](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/csv)               | Provides support for efficient and convenient parsing of CSV files.                                                        |
 | [fs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs)                 | Provides a memory-efficient way to handle file interactions within your test scripts.                                      |
 | [redis](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis)           | Functionality to interact with [Redis](https://redis.io/).                                                                 |
 | [streams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams)       | Provides an implementation of the Streams API specification, offering support for defining and consuming readable streams. |
