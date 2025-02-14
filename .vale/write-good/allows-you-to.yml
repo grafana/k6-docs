@@ -1,7 +1,0 @@
-extends: substitution
-message: If it's about permission, use '%s' instead of '%s'. If it's not about permission, avoid this construction.
-level: error
-ignorecase: true
-# swap maps tokens in form of bad: good
-swap:
-  allows you to: lets you

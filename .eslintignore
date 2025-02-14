@@ -1,9 +1,0 @@
-.cache/
-public/
-node_modules/
-docs/sources/k6/*/release-notes
-docs/sources/k6/get-started/run-cloud-tests-from-the-CLI.md
-docs/sources/k6/get-started/run-your-first-tests.md
-docs/sources/k6/*/using-k6/metrics/create-custom-metrics.md
-/docs/sources/k6/*/testing-guides/injecting-faults-with-xk6-disruptor/expose-your-application.md
-CONTRIBUTING_FILE_FORMAT.md
