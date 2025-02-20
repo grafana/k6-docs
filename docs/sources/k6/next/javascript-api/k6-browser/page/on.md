@@ -7,19 +7,20 @@ description: 'Browser module: page.on method'
 
 Registers a handler to be called whenever the specified event occurs.
 
-| Parameter | Type     | Default | Description                                                                                 |
-| --------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
-| event     | string   | `''`    | Event to attach the handler to. Currently, `'console'` and `'metric'` events are supported. |
-| handler   | function | `null`  | A function to be called every time the specified event is emitted.                          |
+| Parameter | Type     | Default | Description                                                          |
+| --------- | -------- | ------- | -------------------------------------------------------------------- |
+| event     | string   | `''`    | Event to attach the handler to. See the [supported events](#events). |
+| handler   | function | `null`  | A function to be called every time the specified event is emitted.   |
 
 ### Events
 
-| Event     | Description                                                                                                                                                                                                                                                          |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. |
-| `metric`  | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object.                               |
+| Event     | Description                                                                                                                                                                                                                                                                                                     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. See the [example](#console-event-example). |
+| `metric`  | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object. See the [example](#metric-event-example).                                |
+| `request` | Emitted every time a request made by the page. The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the request. See the [example](#request-event-example).                                                        |
 
-### Console event Example
+### Console event example
 
 {{< code >}}
 
@@ -68,7 +69,7 @@ export default async function () {
 
 {{< /code >}}
 
-### Metric event Example
+### Metric event example
 
 {{< code >}}
 
@@ -124,6 +125,52 @@ export default async function () {
     await page.close();
   }
 }
+```
+
+{{< /code >}}
+
+### Request event example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  // registers a handler that logs all requests made by the page
+  page.on('request', async (request) => console.log(request.url()));
+
+  await page.goto('https://quickpizza.grafana.com/', { waitUntil: 'networkidle' });
+  await page.close();
+}
+```
+
+{{< /code >}}
+
+Output:
+
+{{< code >}}
+
+```bash
+INFO[0000] https://quickpizza.grafana.com/                  source=console
+INFO[0001] https://quickpizza.grafana.com/api/tools         source=console
+INFO[0001] https://quickpizza.grafana.com/images/pizza.png  source=console
+...
 ```
 
 {{< /code >}}
