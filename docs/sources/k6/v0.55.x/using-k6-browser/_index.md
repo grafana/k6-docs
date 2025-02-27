@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ./examples/crawl-webpage # docs/k6/<K6_VERSION>/examples/crawl-webpage
 title: Using k6 browser
 description: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
 weight: 300
@@ -58,18 +60,15 @@ export default async function () {
   const page = await context.newPage();
 
   try {
-    await page.goto("https://test.k6.io/my_messages.php");
+    await page.goto('https://test.k6.io/my_messages.php');
 
-    await page.locator('input[name="login"]').type("admin");
-    await page.locator('input[name="password"]').type("123");
+    await page.locator('input[name="login"]').type('admin');
+    await page.locator('input[name="password"]').type('123');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
 
-    await check(page.locator("h2"), {
-      'header': async h2 => await h2.textContent() == "Welcome, admin!"
+    await check(page.locator('h2'), {
+      header: async (h2) => (await h2.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();
