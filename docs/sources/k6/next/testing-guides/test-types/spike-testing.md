@@ -68,7 +68,7 @@ export const options = {
 };
 
 export default () => {
-  const urlRes = http.get('https://test-api.k6.io');
+  const urlRes = http.get('https://quickpizza.grafana.com');
   sleep(1);
   // MORE STEPS
   // Add only the processes that will be on high demand

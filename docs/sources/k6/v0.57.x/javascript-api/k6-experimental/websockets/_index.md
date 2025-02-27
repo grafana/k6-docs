@@ -62,8 +62,7 @@ This example shows:
 import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 import { WebSocket } from 'k6/experimental/websockets';
 
-const chatRoomName = 'publicRoom'; // choose any chat room name
-const sessionDuration = randomIntBetween(5000, 60000); // user session between 5s and 1m
+const sessionDuration = randomIntBetween(1000, 3000); // user session between 1s and 3s
 
 export default function () {
   for (let i = 0; i < 4; i++) {
@@ -73,12 +72,12 @@ export default function () {
 
 function startWSWorker(id) {
   // create a new websocket connection
-  const ws = new WebSocket(`wss://test-api.k6.io/ws/crocochat/${chatRoomName}/`);
+  const ws = new WebSocket(`wss://quickpizza.grafana.com/ws`);
   ws.binaryType = 'arraybuffer';
 
   ws.addEventListener('open', () => {
     // change the user name
-    ws.send(JSON.stringify({ event: 'SET_NAME', new_name: `Croc ${__VU}:${id}` }));
+    ws.send(JSON.stringify({ event: 'SET_NAME', new_name: `VU ${__VU}:${id}` }));
 
     // listen for messages/errors and log them into console
     ws.addEventListener('message', (e) => {

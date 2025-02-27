@@ -15,11 +15,13 @@ _A k6 script that initiates a WebSocket connection and sets up a handler for the
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { WebSocket } from 'k6/experimental/websockets';
 
 export default function () {
-  const ws = new WebSocket('wss://test-api.k6.io/ws/crocochat/publicRoom/');
+  const ws = new WebSocket('wss://quickpizza.grafana.com/ws');
 
   ws.onping = () => {
     console.log('A ping happened!');
@@ -27,15 +29,15 @@ export default function () {
   };
 
   ws.onclose = () => {
-      console.log('WebSocket connection closed!');
-  }
+    console.log('WebSocket connection closed!');
+  };
 
   ws.onopen = () => {
-      ws.send(JSON.stringify({ 'event': 'SET_NAME', 'new_name': `Croc ${__VU}` }));
-  }
+    ws.send(JSON.stringify({ event: 'SET_NAME', new_name: `Croc ${__VU}` }));
+  };
   ws.onerror = (err) => {
-      console.log(err)
-  }
+    console.log(err);
+  };
 }
 ```
 

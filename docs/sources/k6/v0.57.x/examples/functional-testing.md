@@ -25,11 +25,13 @@ export const options = {
 
 export default function () {
   describe('Hello world!', () => {
-    const response = http.get('https://test-api.k6.io/public/crocodiles/');
+    const response = http.get('https://quickpizza.grafana.com/api/ratings', {
+      headers: { Authorization: 'Token abcdef0123456789' },
+    });
 
     expect(response.status, 'response status').to.equal(200);
     expect(response).to.have.validJsonBody();
-    expect(response.json(), 'croc list').to.be.an('array');
+    expect(response.json('ratings'), 'ratings list').to.be.an('array');
   });
 }
 ```
@@ -42,6 +44,7 @@ This test goes through several steps. It creates a new user account, authenticat
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript
@@ -61,14 +64,17 @@ export let options = {
   iterations: 1,
 };
 
-let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+let session = new Httpx({
+  baseURL: 'https://quickpizza.grafana.com',
+  headers: { Authorization: 'Token abcdef0123456789' },
+});
 
-function retrieveIndividualCrocodilesInABatch() {
-  describe('[Crocs service] Fetch public crocs one by one', () => {
+function retrieveIndividualRatingsInABatch() {
+  describe('[Ratings service] Fetch public ratings one by one', () => {
     let responses = session.batch([
-      new Get('/public/crocodiles/1/'),
-      new Get('/public/crocodiles/2/'),
-      new Get('/public/crocodiles/3/'),
+      new Get('/api/ratings/1'),
+      new Get('/api/ratings/2'),
+      new Get('/api/ratings/3'),
     ]);
 
     expect(responses, 'responses').to.be.an('array');
@@ -76,20 +82,20 @@ function retrieveIndividualCrocodilesInABatch() {
     responses.forEach((response) => {
       expect(response.status, 'response status').to.equal(200);
       expect(response).to.have.validJsonBody();
-      expect(response.json(), 'crocodile').to.be.an('object');
-      expect(response.json(), 'crocodile').to.include.keys('age', 'name', 'id', 'sex');
-      expect(response.json(), 'crocodile').to.not.have.a.property('outfit');
+      expect(response.json(), 'rating').to.be.an('object');
+      expect(response.json(), 'rating').to.include.keys('id', 'stars', 'pizza_id');
+      expect(response.json(), 'rating').to.not.have.a.property('language');
     });
   });
 }
 
-function retrieveAllPublicCrocodiles() {
+function retrieveAllPublicRatings() {
   describe('[Crocs service] Fetch a list of crocs', () => {
-    let response = session.get('/public/crocodiles');
+    let response = session.get('/api/ratings');
 
     expect(response.status, 'response status').to.equal(200);
     expect(response).to.have.validJsonBody();
-    expect(response.json(), 'croc list').to.be.an('array').lengthOf.above(5);
+    expect(response.json('ratings'), 'ratings list').to.be.an('array').lengthOf.above(2);
   });
 }
 
@@ -101,12 +107,9 @@ function validateAuthService() {
     let sampleUser = {
       username: USERNAME,
       password: PASSWORD,
-      email: USERNAME,
-      first_name: 'John',
-      last_name: 'Smith',
     };
 
-    let response = session.post(`/user/register/`, sampleUser);
+    let response = session.post(`/api/users`, JSON.stringify(sampleUser));
 
     expect(response.status, 'registration status').to.equal(201);
     expect(response).to.have.validJsonBody();
@@ -118,51 +121,50 @@ function validateAuthService() {
       password: PASSWORD,
     };
 
-    let resp = session.post(`/auth/token/login/`, authData);
+    let resp = session.post(`/api/users/token/login`, JSON.stringify(authData));
 
     expect(resp.status, 'Auth status').to.be.within(200, 204);
     expect(resp).to.have.validJsonBody();
-    expect(resp.json()).to.have.a.property('access');
-    expect(resp.json('access'), 'auth token').to.be.a('string');
+    expect(resp.json()).to.have.a.property('token');
+    expect(resp.json('token'), 'auth token').to.be.a('string');
 
-    let authToken = resp.json('access');
+    let authToken = resp.json('token');
     // set the authorization header on the session for the subsequent requests.
-    session.addHeader('Authorization', `Bearer ${authToken}`);
+    session.addHeader('Authorization', `Token ${authToken}`);
   });
 }
 
-function validateCrocodileCreation() {
+function validateRatingCreation() {
   // authentication happened before this call.
 
-  describe('[Croc service] Create a new crocodile', () => {
+  describe('[Ratings service] Create a new rating', () => {
     let payload = {
-      name: `Croc Name`,
-      sex: 'M',
-      date_of_birth: '2019-01-01',
+      stars: 2,
+      pizza_id: 1,
     };
 
-    let resp = session.post(`/my/crocodiles/`, payload);
+    let resp = session.post(`/api/ratings`, JSON.stringify(payload));
 
-    expect(resp.status, 'Croc creation status').to.equal(201);
+    expect(resp.status, 'Rating creation status').to.equal(201);
     expect(resp).to.have.validJsonBody();
 
-    session.newCrocId = resp.json('id'); // caching croc ID for the future.
+    session.newRatingId = resp.json('id'); // caching ID for the future
   });
 
-  describe('[Croc service] Fetch private crocs', () => {
-    let response = session.get('/my/crocodiles/');
+  describe('[Ratings service] Fetch private ratings', () => {
+    let response = session.get('/api/ratings');
 
     expect(response.status, 'response status').to.equal(200);
-    expect(response, 'private crocs').to.have.validJsonBody();
-    expect(response.json(), 'private crocs').to.not.be.empty;
+    expect(response, 'ratings').to.have.validJsonBody();
+    expect(response.json('ratings'), 'ratings').to.not.be.empty;
   });
 }
 
 export default function testSuite() {
-  retrieveIndividualCrocodilesInABatch();
-  retrieveAllPublicCrocodiles();
+  retrieveIndividualRatingsInABatch();
+  retrieveAllPublicRatings();
   validateAuthService();
-  validateCrocodileCreation();
+  validateRatingCreation();
 }
 ```
 
@@ -174,10 +176,11 @@ Here's an auto-generated k6 test script showcasing all examples from the [Chaijs
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript
-import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import chai, { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.5.0.1/index.js';
 
 chai.config.aggregateChecks = false;
 chai.config.logFailures = true;

@@ -29,19 +29,16 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 
-const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://quickpizza.grafana.com' });
+
+session.addHeader('Authorization', 'token abcdef0123456789');
 
 export default function () {
-  describe('01. Fetch public crocodiles all at once', (t) => {
+  describe('01. Fetch public ratings all at once', (t) => {
     const responses = session.batch(
-      [
-        new Get('/public/crocodiles/1/'),
-        new Get('/public/crocodiles/2/'),
-        new Get('/public/crocodiles/3/'),
-        new Get('/public/crocodiles/4/'),
-      ],
+      [new Get('/api/ratings/1'), new Get('/api/ratings/2'), new Get('/api/ratings/3')],
       {
-        tags: { name: 'PublicCrocs' },
+        tags: { name: 'PublicRatings' },
       }
     );
 
@@ -51,9 +48,9 @@ export default function () {
         .toEqual(200)
         .and(response)
         .toHaveValidJson()
-        .and(response.json('age'))
-        .as('croc age')
-        .toBeGreaterThan(7);
+        .and(response.json('stars'))
+        .as('rating stars')
+        .toBeGreaterThan(0);
     });
   });
 }

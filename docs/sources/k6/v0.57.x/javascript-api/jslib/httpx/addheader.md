@@ -19,12 +19,12 @@ weight: 21
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
-const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://quickpizza.grafana.com' });
 
-session.addHeader('Authorization', 'token1');
+session.addHeader('Authorization', 'token abcdef0123456789');
 
 export default function () {
-  session.get('/public/crocodiles/1/');
+  session.get('/api/ratings');
 }
 ```
 

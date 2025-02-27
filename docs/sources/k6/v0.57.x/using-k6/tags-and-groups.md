@@ -151,7 +151,7 @@ export default function () {
     group('sub', function () {
       http.get('https://quickpizza.grafana.com/');
     });
-    http.get('https://test-api.k6.io');
+    http.get('https://quickpizza.grafana.com/api/headers');
   });
 
   delete exec.vu.tags.containerGroup;

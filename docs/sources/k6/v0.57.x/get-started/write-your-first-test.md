@@ -45,7 +45,7 @@ Let’s walk through creating a simple test which performs 10 `GET` HTTP request
 
 2. **Import k6 modules**: As the end goal here is to perform HTTP requests, import the k6 `http` module at the top of the file. To help simulate a real-world scenario, import the `sleep` function from the `k6` module as well.
 
-<!--md-k6:skip-->
+<!-- md-k6:skip -->
 
 ```javascript
 // Import the http module to make HTTP requests. From this point, you can use `http` methods to make HTTP requests.
@@ -57,7 +57,7 @@ import { sleep } from 'k6';
 
 3. **Define options**: To perform 10 HTTP requests, define an options block to configure the test execution. In this case, set the number of iterations to 10 to instruct k6 to execute the default function 10 times. Right beneath the imports, add the following code:
 
-<!--md-k6:skip-->
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -82,7 +82,7 @@ export const options = {
    // The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeatedly in "iterations" for the whole duration of the test.
    export default function () {
      // Make a GET request to the target URL
-     http.get('https://test-api.k6.io');
+     http.get('https://quickpizza.grafana.com');
 
      // Sleep for 1 second to simulate real-world usage
      sleep(1);

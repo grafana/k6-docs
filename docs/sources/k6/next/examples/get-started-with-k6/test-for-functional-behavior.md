@@ -30,10 +30,10 @@ import http from 'k6/http';
 
 export default function () {
   // define URL and payload
-  const url = 'https://test-api.k6.io/auth/basic/login/';
+  const url = 'https://quickpizza.grafana.com/api/users/token/login';
   const payload = JSON.stringify({
-    username: 'test_case',
-    password: '1234',
+    username: 'default',
+    password: '12345678',
   });
 
   const params = {
@@ -74,6 +74,7 @@ As an optional step, you can log the response body to the console to make sure y
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-disable no-undef  -->
 
 ```javascript
@@ -105,11 +106,11 @@ import { check } from 'k6';
 import http from 'k6/http';
 
 export default function () {
-  // define URL and request body
-  const url = 'https://test-api.k6.io/auth/basic/login/';
+  // define URL and payload
+  const url = 'https://quickpizza.grafana.com/api/users/token/login';
   const payload = JSON.stringify({
-    username: 'test_case',
-    password: '1234',
+    username: 'default',
+    password: '12345678',
   });
   const params = {
     headers: {

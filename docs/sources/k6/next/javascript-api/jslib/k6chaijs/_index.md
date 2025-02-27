@@ -45,12 +45,12 @@ import http from 'k6/http';
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
-  describe('Fetch a list of public crocodiles', () => {
-    const response = http.get('https://test-api.k6.io/public/crocodiles');
+  describe('Fetch a list of pizza names', () => {
+    const response = http.get('https://quickpizza.grafana.com/api/names');
 
     expect(response.status, 'response status').to.equal(200);
     expect(response).to.have.validJsonBody();
-    expect(response.json().length, 'number of crocs').to.be.above(4);
+    expect(response.json('names').length, 'number of names').to.be.above(1);
   });
 }
 ```

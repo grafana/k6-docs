@@ -61,6 +61,8 @@ export default function () {
 
 {{< code >}}
 
+<!-- md-k6:nothresholds -->
+
 ```javascript
 import { Trend } from 'k6/metrics';
 import { sleep } from 'k6';
@@ -77,8 +79,8 @@ export const options = {
 };
 
 export default function () {
-  const resp = http.post('https://test-api.k6.io/auth/token/login/', {
-    username: 'test-user',
+  const resp = http.post('https://quickpizza.grafana.com/api/users/token/login', {
+    username: 'default',
     password: 'supersecure',
   });
 

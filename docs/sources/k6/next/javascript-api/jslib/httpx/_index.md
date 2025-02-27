@@ -51,62 +51,71 @@ This library is in active development. It's stable enough to be useful, but you 
 
 {{< code >}}
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import { fail } from 'k6';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
+export const options = {
+  vus: 1,
+  iterations: 1,
+};
+
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // random email address
-const PASSWORD = 'superCroc2021';
+const PASSWORD = 'secretpassword';
 
 const session = new Httpx({
-  baseURL: 'https://test-api.k6.io',
+  baseURL: 'https://quickpizza.grafana.com',
   headers: {
     'User-Agent': 'My custom user agent',
-    'Content-Type': 'application/x-www-form-urlencoded',
   },
   timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-  const registrationResp = session.post(`/user/register/`, {
-    first_name: 'Crocodile',
-    last_name: 'Owner',
-    username: USERNAME,
-    password: PASSWORD,
-  });
+  const registrationResp = session.post(
+    `/api/users`,
+    JSON.stringify({
+      username: USERNAME,
+      password: PASSWORD,
+    })
+  );
 
   if (registrationResp.status !== 201) {
     fail('registration failed');
   }
 
-  const loginResp = session.post(`/auth/token/login/`, {
-    username: USERNAME,
-    password: PASSWORD,
-  });
+  const loginResp = session.post(
+    `/api/users/token/login`,
+    JSON.stringify({
+      username: USERNAME,
+      password: PASSWORD,
+    })
+  );
 
   if (loginResp.status !== 200) {
     fail('Authentication failed');
   }
 
-  const authToken = loginResp.json('access');
+  const authToken = loginResp.json('token');
 
   // set the authorization header on the session for the subsequent requests.
   session.addHeader('Authorization', `Bearer ${authToken}`);
 
   const payload = {
-    name: `Croc Name`,
-    sex: 'M',
-    date_of_birth: '2019-01-01',
+    stars: 5,
+    pizza_id: 1,
   };
 
   // this request uses the Authorization header set above.
-  const respCreateCrocodile = session.post(`/my/crocodiles/`, payload);
+  const respCreateRating = session.post(`/api/ratings`, JSON.stringify(payload));
 
-  if (respCreateCrocodile.status !== 201) {
-    fail('Crocodile creation failed');
+  if (respCreateRating.status !== 201) {
+    fail('Rating creation failed');
   } else {
-    console.log('New crocodile created');
+    console.log('New rating created');
   }
 }
 ```

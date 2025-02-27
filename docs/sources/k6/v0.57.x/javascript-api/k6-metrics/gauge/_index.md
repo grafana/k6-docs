@@ -59,7 +59,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res = http.get('https://quickpizza.grafana.com');
   GaugeContentSize.add(res.body.length);
   sleep(1);
 }

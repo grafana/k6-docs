@@ -67,7 +67,7 @@ export const options = {
 };
 
 export default function () {
-  const resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const resp = http.get('https://quickpizza.grafana.com');
 
   errorRate.add(resp.status >= 400);
 
