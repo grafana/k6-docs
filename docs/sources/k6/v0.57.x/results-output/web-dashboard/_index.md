@@ -23,11 +23,11 @@ K6_WEB_DASHBOARD=true k6 run script.js
 ```shell
 K6_WEB_DASHBOARD=true ./k6 run script.js
 
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
      execution: local
         script: ../extensions/xk6-dashboard/script.js

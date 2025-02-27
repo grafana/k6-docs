@@ -44,9 +44,7 @@ import {
 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export default function () {
-  const res = http.post(`https://test-api.k6.io/user/register/`, {
-    first_name: randomItem(['Joe', 'Jane']), // random name
-    last_name: `Jon${randomString(1, 'aeiou')}s`, //random character from given list
+  const res = http.post(`https://quickpizza.grafana.com/api/users`, {
     username: `user_${randomString(10)}@example.com`, // random email address,
     password: uuidv4(), // random password in form of uuid
   });

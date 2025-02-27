@@ -29,12 +29,12 @@ weight: 10
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({
-  baseURL: 'https://test-api.k6.io',
+  baseURL: 'https://quickpizza.grafana.com',
   timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-  const resp = session.get(`/public/crocodiles/`);
+  const resp = session.get(`/api/names`);
 }
 ```
 

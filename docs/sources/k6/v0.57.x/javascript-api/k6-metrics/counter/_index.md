@@ -53,7 +53,7 @@ const CounterErrors = new Counter('Errors');
 export const options = { thresholds: { Errors: ['count<100'] } };
 
 export default function () {
-  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res = http.get('https://quickpizza.grafana.com/api/json?name=Bert');
   const contentOK = res.json('name') === 'Bert';
   CounterErrors.add(!contentOK);
 }
@@ -85,8 +85,8 @@ export const options = {
 };
 
 export default function () {
-  const auth_resp = http.post('https://test-api.k6.io/auth/token/login/', {
-    username: 'test-user',
+  const auth_resp = http.post('https://quickpizza.grafana.com/api/users/token/login', {
+    username: 'default',
     password: 'supersecure',
   });
 
@@ -94,7 +94,7 @@ export default function () {
     allErrors.add(1, { errorType: 'authError' }); // tagged value creates submetric (useful for making thresholds specific)
   }
 
-  const other_resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const other_resp = http.get('https://quickpizza.grafana.com/api/json');
   if (other_resp.status >= 400) {
     allErrors.add(1); // untagged value
   }

@@ -32,6 +32,8 @@ To codify the SLOs, add [_thresholds_](https://grafana.com/docs/k6/<K6_VERSION>/
 
 Thresholds are set in the [`options`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) object.
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   // define thresholds
@@ -62,9 +64,9 @@ export const options = {
 
 export default function () {
   // define URL and request body
-  const url = 'https://test-api.k6.io/auth/basic/login/';
+  const url = 'https://quickpizza.grafana.com/api/users/token/login';
   const payload = JSON.stringify({
-    username: 'test_case',
+    username: 'default',
     password: '1234',
   });
   const params = {
@@ -130,6 +132,8 @@ To simulate this, testers increase the load in _stages_.
 
 Add the following `scenario` property to your `options` object and rerun the test.
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   // define thresholds
@@ -184,6 +188,8 @@ To do this:
 
 1. Add the `abortOnFail` property to `http_req_failed`.
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   // define thresholds
@@ -196,6 +202,8 @@ export const options = {
 ```
 
 1. Update the `scenarios` property to ramp the test up until it fails.
+
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
@@ -226,6 +234,8 @@ export const options = {
 Here is the full script.
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 // import necessary modules
@@ -260,9 +270,9 @@ export const options = {
 
 export default function () {
   // define URL and request body
-  const url = 'https://test-api.k6.io/auth/basic/login/';
+  const url = 'https://quickpizza.grafana.com/api/users/token/login';
   const payload = JSON.stringify({
-    username: 'test_case',
+    username: 'default',
     password: '1234',
   });
   const params = {

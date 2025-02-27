@@ -27,7 +27,7 @@ session.addTags({
 });
 
 export default function () {
-  session.get('https://test-api.k6.io/public/crocodiles/1/');
+  session.get('https://quickpizza.grafana.com');
 }
 ```
 
