@@ -19,14 +19,14 @@ This document has two examples, one that uses the core k6 APIs (`k6/http` and `c
 
 ## Test steps
 
-In the [setup() stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#setup-and-teardown-stages) we create a user for the [k6 HTTP REST API](https://test-api.k6.io/). We then retrieve and return a bearer token to authenticate the next CRUD requests.
+In the [setup() stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#setup-and-teardown-stages) we create a user for [QuickPizza](https://quickpizza.grafana.com). We then retrieve and return a bearer token to authenticate the next CRUD requests.
 
 The steps implemented in the [VU stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle#the-vu-stage) are as follows:
 
-1. _Create_ a new resource, a "croc".
-2. _Read_ the list of "crocs".
-3. _Update_ the name of the "croc" and _read_ the "croc" to confirm the update operation.
-4. _Delete_ the "croc" resource.
+1. _Create_ a new resource, a pizza rating.
+2. _Read_ the list of ratings.
+3. _Update_ the rating's stars (e.g. to 5 stars) and _read_ the rating to confirm the update operation.
+4. _Delete_ the rating resource.
 
 ## Core k6 APIs example
 
@@ -50,33 +50,37 @@ function randomString(length, charset = '') {
 }
 
 const USERNAME = `${randomString(10)}@example.com`; // Set your own email or `${randomString(10)}@example.com`;
-const PASSWORD = 'superCroc2019';
+const PASSWORD = 'secret';
 
-const BASE_URL = 'https://test-api.k6.io';
+const BASE_URL = 'https://quickpizza.grafana.com';
 
 // Register a new user and retrieve authentication token for subsequent API requests
 export function setup() {
-  const res = http.post(`${BASE_URL}/user/register/`, {
-    first_name: 'Crocodile',
-    last_name: 'Owner',
-    username: USERNAME,
-    password: PASSWORD,
-  });
+  const res = http.post(
+    `${BASE_URL}/api/users`,
+    JSON.stringify({
+      username: USERNAME,
+      password: PASSWORD,
+    })
+  );
 
   check(res, { 'created user': (r) => r.status === 201 });
 
-  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
-    username: USERNAME,
-    password: PASSWORD,
-  });
+  const loginRes = http.post(
+    `${BASE_URL}/api/users/token/login`,
+    JSON.stringify({
+      username: USERNAME,
+      password: PASSWORD,
+    })
+  );
 
-  const authToken = loginRes.json('access');
-  check(authToken, { 'logged in successfully': () => authToken !== '' });
+  const authToken = loginRes.json('token');
+  check(authToken, { 'logged in successfully': () => authToken.length > 0 });
 
   return authToken;
 }
 
-export default (authToken) => {
+export default function (authToken) {
   // set the authorization header on the session for the subsequent requests
   const requestConfigWithTag = (tag) => ({
     headers: {
@@ -85,64 +89,63 @@ export default (authToken) => {
     tags: Object.assign(
       {},
       {
-        name: 'PrivateCrocs',
+        name: 'PrivateRatings',
       },
       tag
     ),
   });
 
-  let URL = `${BASE_URL}/my/crocodiles/`;
+  let URL = `${BASE_URL}/api/ratings`;
 
-  group('01. Create a new crocodile', () => {
+  group('01. Create a new rating', () => {
     const payload = {
-      name: `Name ${randomString(10)}`,
-      sex: 'F',
-      date_of_birth: '2023-05-11',
+      stars: 2,
+      pizza_id: 1, // Pizza ID 1 already exists in the database.
     };
 
-    const res = http.post(URL, payload, requestConfigWithTag({ name: 'Create' }));
+    const res = http.post(URL, JSON.stringify(payload), requestConfigWithTag({ name: 'Create' }));
 
-    if (check(res, { 'Croc created correctly': (r) => r.status === 201 })) {
-      URL = `${URL}${res.json('id')}/`;
+    if (check(res, { 'Rating created correctly': (r) => r.status === 201 })) {
+      URL = `${URL}/${res.json('id')}`;
     } else {
-      console.log(`Unable to create a Croc ${res.status} ${res.body}`);
+      console.log(`Unable to create rating ${res.status} ${res.body}`);
       return;
     }
   });
 
-  group('02. Fetch private crocs', () => {
-    const res = http.get(`${BASE_URL}/my/crocodiles/`, requestConfigWithTag({ name: 'Fetch' }));
-    check(res, { 'retrieved crocs status': (r) => r.status === 200 });
-    check(res.json(), { 'retrieved crocs list': (r) => r.length > 0 });
+  group('02. Fetch my ratings', () => {
+    const res = http.get(`${BASE_URL}/api/ratings`, requestConfigWithTag({ name: 'Fetch' }));
+    check(res, { 'retrieve ratings status': (r) => r.status === 200 });
+    check(res.json(), { 'retrieved ratings list': (r) => r.ratings.length > 0 });
   });
 
-  group('03. Update the croc', () => {
-    const payload = { name: 'New name' };
-    const res = http.patch(URL, payload, requestConfigWithTag({ name: 'Update' }));
+  group('03. Update the rating', () => {
+    const payload = { stars: 5 };
+    const res = http.put(URL, JSON.stringify(payload), requestConfigWithTag({ name: 'Update' }));
     const isSuccessfulUpdate = check(res, {
       'Update worked': () => res.status === 200,
-      'Updated name is correct': () => res.json('name') === 'New name',
+      'Updated stars number is correct': () => res.json('stars') === 5,
     });
 
     if (!isSuccessfulUpdate) {
-      console.log(`Unable to update the croc ${res.status} ${res.body}`);
+      console.log(`Unable to update the rating ${res.status} ${res.body}`);
       return;
     }
   });
 
-  group('04. Delete the croc', () => {
+  group('04. Delete the rating', () => {
     const delRes = http.del(URL, null, requestConfigWithTag({ name: 'Delete' }));
 
     const isSuccessfulDelete = check(null, {
-      'Croc was deleted correctly': () => delRes.status === 204,
+      'Rating was deleted correctly': () => delRes.status === 204,
     });
 
     if (!isSuccessfulDelete) {
-      console.log(`Croc was not deleted properly`);
+      console.log('Rating was not deleted properly');
       return;
     }
   });
-};
+}
 ```
 
 {{< /code >}}
@@ -167,35 +170,39 @@ export const options = {
 };
 
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // Set your own email;
-const PASSWORD = 'superCroc2019';
+const PASSWORD = 'secret';
 
-const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://quickpizza.grafana.com' });
 
 // Register a new user and retrieve authentication token for subsequent API requests
 export function setup() {
   let authToken = null;
 
   describe(`setup - create a test user ${USERNAME}`, () => {
-    const resp = session.post(`/user/register/`, {
-      first_name: 'Crocodile',
-      last_name: 'Owner',
-      username: USERNAME,
-      password: PASSWORD,
-    });
+    const resp = session.post(
+      `/api/users`,
+      JSON.stringify({
+        username: USERNAME,
+        password: PASSWORD,
+      })
+    );
 
     expect(resp.status, 'User create status').to.equal(201);
     expect(resp, 'User create valid json response').to.have.validJsonBody();
   });
 
   describe(`setup - Authenticate the new user ${USERNAME}`, () => {
-    const resp = session.post(`/auth/token/login/`, {
-      username: USERNAME,
-      password: PASSWORD,
-    });
+    const resp = session.post(
+      `/api/users/token/login`,
+      JSON.stringify({
+        username: USERNAME,
+        password: PASSWORD,
+      })
+    );
 
     expect(resp.status, 'Authenticate status').to.equal(200);
     expect(resp, 'Authenticate valid json response').to.have.validJsonBody();
-    authToken = resp.json('access');
+    authToken = resp.json('token');
     expect(authToken, 'Authentication token').to.be.a('string');
   });
 
@@ -206,54 +213,53 @@ export default function (authToken) {
   // set the authorization header on the session for the subsequent requests
   session.addHeader('Authorization', `Bearer ${authToken}`);
 
-  describe('01. Create a new crocodile', (t) => {
+  describe('01. Create a new rating', (t) => {
     const payload = {
-      name: `Croc name ${randomString(10)}`,
-      sex: randomItem(['M', 'F']),
-      date_of_birth: '2023-05-11',
+      stars: 2,
+      pizza_id: 1, // Pizza ID 1 already exists in the database
     };
 
     session.addTag('name', 'Create');
-    const resp = session.post(`/my/crocodiles/`, payload);
+    const resp = session.post(`/api/ratings`, JSON.stringify(payload));
 
-    expect(resp.status, 'Croc creation status').to.equal(201);
-    expect(resp, 'Croc creation valid json response').to.have.validJsonBody();
+    expect(resp.status, 'Rating creation status').to.equal(201);
+    expect(resp, 'Rating creation valid json response').to.have.validJsonBody();
 
-    session.newCrocId = resp.json('id');
+    session.newRatingId = resp.json('id');
   });
 
-  describe('02. Fetch private crocs', (t) => {
+  describe('02. Fetch my ratings', (t) => {
     session.clearTag('name');
-    const resp = session.get('/my/crocodiles/');
+    const resp = session.get('/api/ratings');
 
-    expect(resp.status, 'Fetch croc status').to.equal(200);
-    expect(resp, 'Fetch croc valid json response').to.have.validJsonBody();
-    expect(resp.json().length, 'Number of crocs').to.be.above(0);
+    expect(resp.status, 'Fetch ratings status').to.equal(200);
+    expect(resp, 'Fetch ratings valid json response').to.have.validJsonBody();
+    expect(resp.json('ratings').length, 'Number of ratings').to.be.above(0);
   });
 
-  describe('03. Update the croc', (t) => {
+  describe('03. Update the rating', (t) => {
     const payload = {
-      name: `New croc name ${randomString(10)}`,
+      stars: 5,
     };
 
-    const resp = session.patch(`/my/crocodiles/${session.newCrocId}/`, payload);
+    const resp = session.patch(`/api/ratings/${session.newRatingId}`, JSON.stringify(payload));
 
-    expect(resp.status, 'Croc patch status').to.equal(200);
-    expect(resp, 'Fetch croc valid json response').to.have.validJsonBody();
-    expect(resp.json('name'), 'Croc name').to.equal(payload.name);
+    expect(resp.status, 'Rating patch status').to.equal(200);
+    expect(resp, 'Fetch rating valid json response').to.have.validJsonBody();
+    expect(resp.json('stars'), 'Stars').to.equal(payload.stars);
 
-    // read "croc" again to verify the update worked
-    const resp1 = session.get(`/my/crocodiles/${session.newCrocId}/`);
+    // read rating again to verify the update worked
+    const resp1 = session.get(`/api/ratings/${session.newRatingId}`);
 
-    expect(resp1.status, 'Croc fetch status').to.equal(200);
-    expect(resp1, 'Fetch croc valid json response').to.have.validJsonBody();
-    expect(resp1.json('name'), 'Croc name').to.equal(payload.name);
+    expect(resp1.status, 'Fetch rating status').to.equal(200);
+    expect(resp1, 'Fetch rating valid json response').to.have.validJsonBody();
+    expect(resp1.json('stars'), 'Stars').to.equal(payload.stars);
   });
 
-  describe('04. Delete the croc', (t) => {
-    const resp = session.delete(`/my/crocodiles/${session.newCrocId}/`);
+  describe('04. Delete the rating', (t) => {
+    const resp = session.delete(`/api/ratings/${session.newRatingId}`);
 
-    expect(resp.status, 'Croc delete status').to.equal(204);
+    expect(resp.status, 'Rating delete status').to.equal(204);
   });
 }
 ```

@@ -156,11 +156,11 @@ You should get an output similar to the one shown below (click `Expand` button t
 {{< code >}}
 
 ```
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
   execution: local
      script: test.js
@@ -215,12 +215,11 @@ xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
 {{< code >}}
 
 ```
-
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
   execution: local
      script: disrupt-pod.js
@@ -421,3 +420,5 @@ spec:
 ```
 
 {{< /collapse >}}
+
+<!-- md-k6:skipall -->

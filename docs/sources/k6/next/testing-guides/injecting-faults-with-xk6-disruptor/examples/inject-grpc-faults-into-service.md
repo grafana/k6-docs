@@ -168,11 +168,11 @@ You should get an output similar to the following (use the `Expand` button to se
 {{< code >}}
 
 ```
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
   execution: local
      script: scripts/grpc-faults.js
@@ -220,11 +220,11 @@ xk6-disruptor --env "GRPC_HOST=$Env:GRPC_HOST" run grpc-faults.js
 {{< code >}}
 
 ```
-           /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
   execution: local
      script: scripts/grpc-faults.js
@@ -437,3 +437,5 @@ spec:
 ```
 
 {{< /collapse >}}
+
+<!-- md-k6:skipall -->

@@ -28,6 +28,8 @@ The scenario name appears in the result summary, tags, and so on.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   scenarios: {
@@ -156,11 +158,11 @@ The full output includes the summary metrics, like any default end-of-test summa
 {{< collapse title="full scenario-example.js output" >}}
 
 ```bash
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
 
   execution: local
      script: scenario-example.js

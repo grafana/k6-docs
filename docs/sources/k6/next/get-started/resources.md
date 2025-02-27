@@ -30,7 +30,6 @@ These resources help you write and run k6 tests in a safe environment and explor
 
 If you need a place to learn k6 and test your scripts, you can use these playground/demo applications:
 
-- [test-api.k6.io](https://test-api.k6.io/). A simple REST and WebSocket web application. [grafana/test-api.k6.io](https://github.com/grafana/test-api.k6.io)
 - [grafana/quickpizza](https://github.com/grafana/quickpizza). A simple demo web application.
 
 Note that these are shared testing environments - please avoid high-load tests. Alternatively, you can deploy and host them on your infrastructure and run the examples in the repository.
