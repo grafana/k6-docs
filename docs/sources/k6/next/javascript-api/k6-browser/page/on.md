@@ -14,11 +14,12 @@ Registers a handler to be called whenever the specified event occurs.
 
 ### Events
 
-| Event     | Description                                                                                                                                                                                                                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `console` | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. See the [example](#console-event-example). |
-| `metric`  | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object. See the [example](#metric-event-example).                                |
-| `request` | Emitted every time a request made by the page. The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the request. See the [example](#request-event-example).                                                        |
+| Event      | Description                                                                                                                                                                                                                                                                                                     |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `console`  | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. See the [example](#console-event-example). |
+| `metric`   | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object. See the [example](#metric-event-example).                                |
+| `request`  | Emitted every time a request made by the page. The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the request. See the [example](#request-and-response-events-example).                                          |
+| `response` | Emitted every time a response is received by the page. The handler gets a [`Response`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response) object that contains information about the response. See the [example](#request-and-response-events-example).                               |
 
 ### Console event example
 
@@ -126,7 +127,7 @@ export default async function () {
 
 {{< /code >}}
 
-### Request event example
+### Request and response events example
 
 {{< code >}}
 
@@ -151,6 +152,8 @@ export default async function () {
 
   // registers a handler that logs all requests made by the page
   page.on('request', async (request) => console.log(request.url()));
+  // registers a handler that logs all responses received by the page
+  page.on('response', async (response) => console.log(response.url()));
 
   await page.goto('https://quickpizza.grafana.com/', { waitUntil: 'networkidle' });
   await page.close();
