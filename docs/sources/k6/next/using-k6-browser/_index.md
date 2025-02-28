@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ./examples/crawl-webpage # docs/k6/<K6_VERSION>/examples/crawl-webpage
 title: Using k6 browser
 description: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
 weight: 300
