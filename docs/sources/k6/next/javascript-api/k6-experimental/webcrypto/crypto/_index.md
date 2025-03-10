@@ -6,6 +6,8 @@ weight: 01
 
 # Crypto
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 `Crypto` allows access to a cryptographically strong random number generator and to cryptographic primitives.
 
 ## Properties

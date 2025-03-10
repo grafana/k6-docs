@@ -6,6 +6,8 @@ weight: 03
 
 # SubtleCrypto
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `SubtleCrypto` interface provides a set of low-level cryptographic primitives such as encryption, decryption, digital signature generation and verification, and key generation and management. It is useful for using secure and efficient cryptographic operations within k6 scripts.
 
 ## Methods

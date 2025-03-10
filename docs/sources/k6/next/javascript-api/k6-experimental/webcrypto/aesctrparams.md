@@ -6,6 +6,8 @@ weight: 05
 
 # AesCtrParams
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `AesCtrParams` object represents the object that should be passed as the algorithm parameter into the [encrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/encrypt) and [decrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/decrypt) operation when using the AES-CTR algorithm.
 
 For more details, head to the MDN Web Crypto API documentation on [AES-CTR](https://developer.mozilla.org/en-US/docs/Web/API/AesCtrParams).
