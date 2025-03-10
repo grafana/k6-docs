@@ -6,6 +6,8 @@ weight: 02
 
 # deriveBits
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 It takes as its arguments the base key, the derivation algorithm to use, and the length of the bits to derive. It returns a Promise which will be fulfilled with an `ArrayBuffer` containing the derived bits. This array of bits can be used as a key for encryption or decryption as a shared secret.
 
 ## Usage

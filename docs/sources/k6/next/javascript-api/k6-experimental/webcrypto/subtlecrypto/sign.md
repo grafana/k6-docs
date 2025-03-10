@@ -6,6 +6,8 @@ weight: 07
 
 # sign
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `sign()` operation generates a digital signature of the provided `data`, using the given [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object.
 
 ## Usage
@@ -16,11 +18,11 @@ sign(algorithm, key, data)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                                                                                                                                           | Description                                                              |
-| :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| Name        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Description                     |
+| :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
 | `algorithm` | `string` or object with a single `name` string property (`{name: "RSASSA-PKCS1-v1_5"}`) or an [EcdsaParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/ecdsaparams/), [HmacKeyGenParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/hmackeygenparams/), or [RsaPssParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/rsapssparams/) object. | The signature algorithm to use. |
-| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                       | The key to use for signing.                                              |
-| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                     | The data to be signed.                                                   |
+| `key`       | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey)                                                                                                                                                                                                                                                                                                                                                         | The key to use for signing.     |
+| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                                                                                                                                                                                                                                                                                                                                                                                                                       | The data to be signed.          |
 
 ### Supported algorithms
 

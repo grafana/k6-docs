@@ -6,6 +6,8 @@ weight: 06
 
 # importKey
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `importKey()` imports a key from an external, portable format, and gives you a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object that can be used with the Web Crypto API.
 
 ## Usage
