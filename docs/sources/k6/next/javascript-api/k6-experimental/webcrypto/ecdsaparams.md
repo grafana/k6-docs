@@ -6,6 +6,8 @@ weight: 11
 
 # EcdsaParams
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `EcdsaParams` represents the object that should be passed as the algorithm parameter into [`sign`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/sign/) or [`verify`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify/) when using the ECDSA algorithm.
 
 ## Properties

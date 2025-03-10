@@ -6,6 +6,8 @@ weight: 10
 
 # EcdhKeyDeriveParams
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `EcdhKeyDeriveParams` represents the object that should be passed as the algorithm parameter into [`deriveBits`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/derivebits/), when using the ECDH algorithm.
 
 ECDH is a secure communication method. Parties exchange public keys and use them with their private keys to generate a unique shared secret key.

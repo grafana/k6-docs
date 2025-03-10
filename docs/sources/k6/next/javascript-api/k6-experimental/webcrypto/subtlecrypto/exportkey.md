@@ -6,6 +6,8 @@ weight: 04
 
 # exportKey
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `exportKey()` method takes a [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/cryptokey) object as input and exports it in an external, portable format.
 
 Note that for a key to be exportable, it must have been created with the `extractable` flag set to `true`.

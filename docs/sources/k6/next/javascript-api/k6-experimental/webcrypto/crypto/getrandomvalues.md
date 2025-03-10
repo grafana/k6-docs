@@ -6,6 +6,8 @@ weight: 01
 
 # getRandomValues
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `getRandomValues()` method fills the passed `TypedArray` with cryptographically sound random values.
 
 ## Usage
