@@ -10,6 +10,14 @@ As innovation sometimes requires introducing bold and extensive changes that mig
 
 In the following sections, we define workflows, guarantees, and constraints applied to k6 software, starting with version v1.0.0.
 
+{{< admonition type="note" >}}
+
+This document serves as an explicit allow list policy. Only APIs specifically mentioned within this document are covered by our stability guarantees. Any API not explicitly included is not covered by this policy and may be subject to breaking changes.
+
+If you believe an API should be added to this allow list but is currently missing, please open a new issue in the k6 repository to initiate discussion on its potential inclusion.
+
+{{< /admonition >}}
+
 ## Versioning strategy
 
 k6 strictly follows [Semantic Versioning 2.0.0](https://semver.org/) versioning scheme. This versioning scheme defines three kinds of software versions.
