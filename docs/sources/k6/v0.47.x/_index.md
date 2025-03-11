@@ -14,15 +14,15 @@ This documentation will help you go from a total beginner to a seasoned k6 exper
 ## Get started
 
 <div class="nav-cards">
-    <a href={{< relref "./get-started/installation" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=get-started/installation/ class="nav-cards__item nav-cards__item--guide">
         <h4>🚀 Installation</h4>
         <p>Get up and running in no-time, using either a package manager, standalone installer or the official Docker image.</p>
     </a>
-    <a href={{< relref "./get-started/running-k6" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=get-started/running-k6/ class="nav-cards__item nav-cards__item--guide">
         <h4>🏎️💨 Running k6</h4>
         <p>Write and execute your first load test locally using JavaScript and the k6 API, adding multiple virtual users, checks and ramping stages.</p>
     </a>
-    <a href={{< relref "./get-started/results-output" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=get-started/results-output/ class="nav-cards__item nav-cards__item--guide">
         <h4>⏱ Results output</h4>
         <p>Learn how to leverage the results output to gain actionable insight about your application's performance.</p>
     </a>
