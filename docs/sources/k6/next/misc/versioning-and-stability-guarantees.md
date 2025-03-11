@@ -112,13 +112,15 @@ Experimental modules, recognizable from their `k6/experimental` prefixed import 
 
 Our stable and supported API surface also includes the extensions API, which empowers internal and external developers to build custom modules and outputs as part of the k6 codebase or as external extensions.
 
+It covers any package publicly available in `go.k6.io/k6`. Consequentially, all the packages under `go.k6.io/k6/internal` package are excluded.
+
 This includes the [go.k6.io/k6/js/modules](https://pkg.go.dev/go.k6.io/k6@v0.57.0/js/modules) Go package that internal and external developers have available to build module extensions, as well as the [go.k6.io/k6/output](https://pkg.go.dev/go.k6.io/k6@v0.57.0/output) that can be used to build custom outputs for k6.
 
 It also includes public k6 Go packages that are exposed to developers to facilitate the development of these extensions. For example, the current  [go.k6.io/k6/lib.State](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib#State) package.
 
 ### Output
 
-We guarantee the stability and support of metrics, logs, traces, and profiling outputs that we fully control in an end-to-end flow. This includes the JSON, CSV, JSON summary exports, cloud metrics, logs and traces outputs, and OpenTelemetry formats while excluding outputs dependent on third-party platforms and protocols.
+We guarantee the stability and support of metrics, logs, traces, and profiling outputs that we fully control in an end-to-end flow. This includes the JSON, CSV, cloud metrics, logs and traces outputs, and OpenTelemetry formats while excluding outputs dependent on third-party platforms and protocols.
 
 ### Metrics
 
