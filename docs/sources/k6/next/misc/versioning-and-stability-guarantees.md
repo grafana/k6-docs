@@ -14,7 +14,7 @@ In the following sections, we define workflows, guarantees, and constraints appl
 
 This document serves as an explicit allow list policy. Only APIs specifically mentioned within this document are covered by our stability guarantees. Any API not explicitly included is not covered by this policy and may be subject to breaking changes.
 
-If you believe an API should be added to this allow list but is currently missing, please open a new issue in the k6 repository to initiate discussion on its potential inclusion.
+If you believe an API should be added to this allow list but is currently missing, please open a new issue in the [k6 repository](https://github.com/grafana/k6) to initiate discussion on its potential inclusion.
 
 {{< /admonition >}}
 
