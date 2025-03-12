@@ -44,3 +44,9 @@ To install k6 Studio on Linux:
 ```bash
 sudo dpkg -i <K6_STUDIO_EXECUTABLE>
 ```
+
+## Update k6 Studio
+
+When using k6 Studio on Mac or Windows, k6 Studio automatically updates whenever a new version is released.
+
+For Linux systems, you have to manually update the application.
