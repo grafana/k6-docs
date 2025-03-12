@@ -21,7 +21,7 @@ In this tutorial, you will:
 
 To complete this tutorial, you'll need to:
 
-- Have a Windows or macOS machine.
+- Have a Windows, macOS, or Linux machine.
 - [Install k6 Studio](https://grafana.com/docs/k6-studio/set-up/install/).
 - [Install Google Chrome](https://www.google.com/chrome/).
 

@@ -28,5 +28,6 @@ The application logs are saved in the following directory:
 
 - On macOS: ~/Library/Logs/k6 Studio/k6-studio.log
 - On Windows: %USERPROFILE%\AppData\Roaming\k6 Studio\logs\k6-studio.log
+- On Linux:
 
 If have any issues with k6 Studio, include a tail of your log file when [opening an issue on GitHub](https://github.com/grafana/k6-studio).
