@@ -54,7 +54,7 @@ k6 new --template protocol
 
 ### --project-id
 
-The `--project-id` allows you to specify a Grafana Cloud k6 project ID. The generated script is then configured to run in that project. To include the project ID in your custom template, use `{{ .ProjectID }}` as a placeholder, for example:
+The `--project-id` flag allows you to specify a Grafana Cloud k6 project ID. The generated script is then configured to run in that project. To include the project ID in your custom template, use `{{ .ProjectID }}` as a placeholder, for example:
 
 ```javascript
 export default function () {
