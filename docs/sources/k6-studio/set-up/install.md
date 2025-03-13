@@ -12,6 +12,12 @@ You can install k6 Studio on Windows, macOS, and Linux.
 
 - Install [Google Chrome](https://www.google.com/chrome/) on your computer.
 
+{{< admonition type="note" >}}
+
+For ARM64 Linux users, you can use [Chromium](https://www.chromium.org/chromium-projects/) in place of Google Chrome.
+
+{{< /admonition >}}
+
 ## Install k6 Studio on Mac
 
 To install k6 Studio on macOS:
