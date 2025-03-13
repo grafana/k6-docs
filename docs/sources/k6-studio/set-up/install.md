@@ -55,4 +55,4 @@ sudo dpkg -i <K6_STUDIO_EXECUTABLE>
 
 When using k6 Studio on Mac or Windows, k6 Studio automatically updates whenever a new version is released.
 
-For Linux systems, you have to manually update the application.
+For Linux systems, you have to manually update the application. To do so, follow the instructions on [Install k6 Studio on Linux](#install-k6-studio-on-linux) to download the latest release, and run the installation command to update the application.
