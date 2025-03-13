@@ -13,6 +13,7 @@ Writing a k6 test script from scratch can seem challenging if you're just gettin
 To use the k6 `new` command, you'll need:
 
 - [k6 v0.57 or higher](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) installed on your machine.
+- Custom templates require k6 v1.0.0-rc1 or higher.
 
 ## Use the k6 new command
 
@@ -43,8 +44,9 @@ The options are:
 - `minimal`: Creates a minimal test script with a short options configuration, and a single request and check example. This is the default option.
 - `protocol`: Creates a script that includes environment variables, stages with different durations and VUs, thresholds, and a setup function. This is ideal for learning, and as a good starting point for real-world scenarios.
 - `browser`: Creates a browser script that checks if a websites successfully loaded, looks for elements on the screen, and takes a screenshot. Similar to the `protocol` option, this is ideal for learning, and a good starting point for creating browser tests.
+- An absolute or a relative path to a local file, such as `./my-template.js` or `/path/to/my-template.js` to use a custom template. `k6` uses [Go templating syntax](https://pkg.go.dev/text/template#section-documentation) to render the script.
 
-To use the template flag, run:
+To generate a script using a template, run:
 
 ```bash
 k6 new --template protocol
@@ -52,7 +54,13 @@ k6 new --template protocol
 
 ### --project-id
 
-The `--project-id` allows you to specify a Grafana Cloud k6 project ID. The generated script is then configured to run in that project.
+The `--project-id` flag allows you to specify a Grafana Cloud k6 project ID. The generated script is then configured to run in that project. To include the project ID in your custom template, use `{{ .ProjectID }}` as a placeholder, for example:
+
+```javascript
+export default function () {
+  console.log('Hello from project {{ .ProjectID }}!');
+}
+```
 
 To use the project ID flag, run:
 
