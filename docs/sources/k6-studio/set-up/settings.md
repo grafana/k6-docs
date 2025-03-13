@@ -40,3 +40,9 @@ k6 Studio sends anonymous usage data of the k6 Studio application to Grafana. Th
 ### Send crash reports and error data
 
 k6 Studio sends anonymous crash reports and error data of the k6 Studio application to Grafana. This is enabled by default, and you can turn it off if you'd like not to send any data. Refer to [Usage collection](https://grafana.com/docs/k6-studio/set-up/usage-collection/) for more details.
+
+### Appearance
+
+#### Theme
+
+Customize the overall theme of the application. The options are: **Light**, **Dark**, and **System**.
