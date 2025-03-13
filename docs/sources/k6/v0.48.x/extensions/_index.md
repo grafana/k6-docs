@@ -11,15 +11,15 @@ Expand the potential use cases for k6.
 ## Quickstart
 
 <div class="nav-cards">
-    <a href={{< relref "./explore" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=explore/ class="nav-cards__item nav-cards__item--guide">
         <h4>🔎 Explore</h4>
         <p>A list of more than 50 available extensions.</p>
     </a>
-    <a href={{< relref "./build-k6-binary-using-go" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=build-k6-binary-using-go/ class="nav-cards__item nav-cards__item--guide">
         <h4>🧩 Bundle</h4>
         <p>Combine multiple extensions into a custom k6 binary.</p>
     </a>
-    <a href={{< relref "./create/" >}} class="nav-cards__item nav-cards__item--guide">
+    <a href=create/ class="nav-cards__item nav-cards__item--guide">
         <h4>🏗️ Create</h4>
         <p>Learn how to make your own k6 extension.</p>
     </a>
