@@ -46,3 +46,7 @@ k6 Studio sends anonymous crash reports and error data of the k6 Studio applicat
 #### Theme
 
 Customize the overall theme of the application. The options are: **Light**, **Dark**, and **System**.
+
+### Logs
+
+Shows logs from the application in real time. This can help users view if there are any errors affecting k6 Studio, and share that information if necessary when [reporting issues](https://github.com/grafana/k6-studio/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen).
