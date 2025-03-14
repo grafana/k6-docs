@@ -42,6 +42,8 @@ To select a stack:
 
 After you select a stack, click **Continue**. You're now signed in to the Grafana Cloud stack, and you can use it to run tests.
 
+You can sign in to multiple Grafana Cloud stacks at the same time by using the **Sign in to another stack** button. If you're signed in to multiple stacks, you can choose which one you want to run your Grafana Cloud tests in from the profile menu drop-down.
+
 ### Sign out from Grafana Cloud
 
 To sign out from Grafana Cloud:
