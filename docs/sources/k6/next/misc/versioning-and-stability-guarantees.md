@@ -1,6 +1,6 @@
 ---
 title: Versioning and stability guarantees
-description: Definitions and gurantees for k6 v1.0.0 and beyond.
+description: Definitions and guarantees for k6 v1.0.0 and beyond.
 weight: 8
 ---
 
