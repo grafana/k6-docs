@@ -17,11 +17,11 @@ The contents included in the usage report are:
 
 We use [Sentry](https://sentry.io/) to collect crash reports and error data. That includes:
 
-- The running program's operating system name and version (for example, macOS or Windows).
-- The running program's architecture (`arm64` or `x86_64`).
-- The k6 Studio version (for example, `0.4.0`).
+- The running program's operating system name, version, kernel version, and build (for example, macOS or Windows).
+- The running program's device information, including: architecture, boot time, CPU description, memory size, free memory, processor count and frequency, screen resolution.
+- The running program's details, including: architecture, application name, memory usage, start time, and version.
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
-- The browser name and version (`Chrome` or `Chromium`).
+- The browser name and version (`Chrome`).
 - The device's locale and timezone (for example, `en-US` and `Europe/London`).
 
 Grafana k6 is bundled with k6 Studio, and it collects and sends an anonymous usage report. For more details about the Grafana k6 data that's collected, refer to [Usage collection](https://grafana.com/docs/k6/latest/set-up/usage-collection/).
