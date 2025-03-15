@@ -34,20 +34,21 @@ To log in to Grafana Cloud from k6 Studio:
 1. In the **Authorize Application** page, confirm that the code displayed on the page is the same code as the one displayed in k6 Studio.
 1. Click **Grant**, and go back to k6 Studio.
 
-You're now logged in to your Grafana Cloud account.
-
 ### Select a Grafana Cloud stack
 
 After you log in to your Grafana Cloud account, you'll be able to see the stacks from all organizations you're a part of. To run a test script in Grafana Cloud, you must select the stack that the test will run from.
 
 To select a stack:
 
-- Click on the stack drop-down menu.
-- You can filter the list of stacks by typing on the drop-down field.
+1. Click on the stack drop-down menu.
+1. You can filter the list of stacks by typing on the drop-down field.
+1. After you select a stack, click **Continue**.
 
-After you select a stack, click **Continue**. You're now signed in to the Grafana Cloud stack, and you can use it to run tests.
+{{< admonition type="note" >}}
 
 You can sign in to multiple Grafana Cloud stacks at the same time by using the **Sign in to another stack** button. If you're signed in to multiple stacks, you can choose which one you want to run your Grafana Cloud tests in from the profile menu drop-down.
+
+{{< /admonition >}}
 
 ### Sign out from Grafana Cloud
 
