@@ -51,9 +51,19 @@ The think time option lets you configure a fixed or random delay, between groups
 
 ### Test data
 
-The test data option lets you define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
+The test data option lets you define two types of data for use in your test scripts: **variables** and **data files**.
+
+#### Variables
+
+In the **Variables** tab, you can define a name and a value, as a string. You can then use the variables in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
+
+#### Data files
+
+In the **Data files** tab, you can import and add a data file to be used in your [parameterization rules](#parameterization-rule).
+
+The supported file formats are CSV and JSON.
 
 ## Allowed hosts
 
@@ -101,7 +111,7 @@ When creating or editing a correlation rule, you can use the **Rule preview** pa
 
 ### Parameterization rule
 
-The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
+The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name or data file from the **Test data** option.
 
 The configuration fields are:
 
@@ -111,7 +121,10 @@ The configuration fields are:
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
   - **Regex**: Define the regular expression to match the value to be replaced.
   - **JSON**: Define the JSON path to match the value to be replaced.
-- **Replace with**: Select **Text value** or **Variables** for the value to be used as a replacement for the request data. For **Variables**, make sure that you configure the variable value to be used under **Test options** -> **Test data**.
+- **Replace with**: Configure how you want to replace the values when a match is found.
+  - **Text value**: Define a text value.
+  - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
+  - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run.
 
 When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
