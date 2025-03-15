@@ -68,3 +68,7 @@ To run a test script in Grafana Cloud k6:
 1. Click **Run in Grafana Cloud**.
 
 A new browser window will open, showing the test being initialized in your Grafana Cloud account.
+
+The test script uses the load profile configured in the **Generator** -> **Test options** -> **Load profile** section. If you'd like to update the stages, number of VUs or iterations, make changes to the **Load profile** section and export your script, or you can manually edit your test script file using a code editor.
+
+Refer to [Scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) for more details.
