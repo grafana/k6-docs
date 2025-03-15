@@ -60,7 +60,8 @@ If you want to view the script under the **Scripts** section of the k6 Studio ap
 
 1. Open the k6-studio Scripts folder.
    - For macOS, that can be found in `~/Documents/k6-studio/Scripts`.
-   - For Windows, that can be found in `C:\Users\<USERNAME>\Documents\k6-studio`.
+   - For Windows, that can be found in `C:\Users\<USERNAME>\Documents\k6-studio/Scripts`.
+   - For Linux, that can be found in `~/Documents/k6-studio/Scripts`.
    - If you have a script in k6 Studio already, you can right-click on it and click **Open containing folder**.
 2. Copy your script to the Scripts folder.
 

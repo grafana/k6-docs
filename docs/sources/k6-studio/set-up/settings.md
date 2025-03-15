@@ -12,9 +12,9 @@ k6 Studio includes a few settings you can configure by clicking on **Settings** 
 
 ### Automatically detect browser
 
-When this setting is enabled, k6 Studio looks for Google Chrome in the default installation path in your system.
+When this setting is enabled, k6 Studio looks for Google Chrome or Chromium in the default installation path in your system.
 
-You can turn off this setting and provide a custom path to a Google Chrome executable file.
+You can turn off this setting and provide a custom path to a Google Chrome or a Chromium-based browser executable file.
 
 ## Proxy settings
 
