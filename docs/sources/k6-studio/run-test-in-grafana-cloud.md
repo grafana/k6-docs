@@ -8,13 +8,13 @@ weight: 450
 
 After you finish creating and validating a test script in k6 Studio, you might want to run it with the scenarios you've configured in the set up phase to simulate a real-world performance test scenario.
 
-To do so, you can use the Grafana Cloud k6 integration directly inside of k6 Studio.
+To do so, you can use the [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/) integration directly inside of k6 Studio.
 
 ## Before you begin
 
 To run a test script in Grafana Cloud k6, you'll need:
 
-- A Grafana Cloud account.
+- A [Grafana Cloud](https://grafana.com/auth/sign-up/create-user) account.
 - A stack that has Grafana Cloud k6 initialized.
 
 ## Authenticate with Grafana Cloud
