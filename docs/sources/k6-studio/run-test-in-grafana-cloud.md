@@ -72,3 +72,14 @@ A new browser window will open, showing the test being initialized in your Grafa
 The test script uses the load profile configured in the **Generator** -> **Test options** -> **Load profile** section. If you'd like to update the stages, number of VUs or iterations, make changes to the **Load profile** section and export your script, or you can manually edit your test script file using a code editor.
 
 Refer to [Scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) for more details.
+
+## View and analyze test results
+
+After your test starts running in Grafana Cloud k6, you can monitor its progress and analyze the results. The dashboard displays key performance metrics such as:
+
+- Response time (p95)
+- Total number of requests
+- Request rate
+- Error rate
+
+Refer to [Analyze test results](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/) for more details.
