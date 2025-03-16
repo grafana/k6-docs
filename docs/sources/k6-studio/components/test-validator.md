@@ -13,9 +13,12 @@ The Test Validator can help you validate that a test script is working as expect
 The Test Validator window is composed of:
 
 1. **Test script name**: The name of the test script.
-2. **Test Validator actions**: On the top-right you can see the action buttons for the Test Validator. From here you can click **Validate script** to run one iteration of your test script, or click the menu icon to:
-   - **Open external script**: Open a k6 test script from your computer. After opening it, click **Validate script** to run one iteration of the test.
-   - **Delete**: Deletes the selected test script.
+2. **Test Validator actions**: On the top-right you can see the action buttons for the Test Validator. From here you can:
+   - Click **Validate script** to run one iteration of your test script.
+   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+   - Click the menu icon to:
+     - **Open external script**: Open a k6 test script from your computer. After opening it, click **Validate script** to run one iteration of the test.
+     - **Delete**: Deletes the selected test script.
 3. **Test Validator options**: Below the test recording name, you can see:
    - **Requests**: The total number of requests in the recording
    - **Filter**: A search box that lets you filter the list of requests by URL, method (such as GET or POST), and status code.
@@ -35,6 +38,12 @@ There are two ways to validate a test:
   2. Click **Validate script** on the top-right.
 
 After you click **Validate script**, k6 Studio runs one iteration of the test script and shows you the results of the test as the script is executed.
+
+## Run a test in Grafana Cloud
+
+After validating a script, you can execute the same test, but using the scenarios you have configured in the **Generator** -> **Load profile** tab, to run a performance test and see how your application behaves in a real-world scenario.
+
+k6 Studio includes a built-in integration with Grafana Cloud, that enables you to login and run a test by clicking **Run in Grafana Cloud**. For more details, refer to [Run a test script in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
 
 ## Inspect test results
 
