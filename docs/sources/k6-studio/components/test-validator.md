@@ -8,7 +8,7 @@ weight: 300
 
 The Test Validator can help you validate that a test script is working as expected. You can use it to run one iteration of your test, and visualize the request and response of any requests on your test script, as well as [checks](https://grafana.com/docs/k6/latest/using-k6/checks/) and [logs](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/). The Test Validator works with any k6 test script, not only scripts generated in k6 Studio.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-panels-2.png" alt="k6 Studio Test Validator window, showing a test script that has been executed, with a list of requests and their status code, as well as the request and response panels on the right, and the script preview" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-panels-3.png" alt="k6 Studio Test Validator window, showing a test script that has been executed, with a list of requests and their status code, as well as the request and response panels on the right, and the script preview" >}}
 
 The Test Validator window is composed of:
 
