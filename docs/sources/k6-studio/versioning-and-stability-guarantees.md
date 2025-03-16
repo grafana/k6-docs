@@ -4,13 +4,13 @@ description: Policies for versioning, releases, and breaking changes in k6 Studi
 weight: 700
 ---
 
-## Versioning and stability
+# Versioning and stability
 
 Grafana k6 Studio follows a **rolling release model**, where only the latest version is actively supported.
 
 Users are automatically upgraded to the latest version upon release.
 
-### Versioning scheme and release frequency
+## Versioning scheme and release frequency
 
 k6 Studio employs a versioning scheme inspired by [Semantic Versioning](https://semver.org/):
 
