@@ -21,7 +21,8 @@ The Test Generator window is composed of:
    - **Delete generator**: Deletes the selected test generator.
 3. **Test Generator options**: Below the test generator name, you can see:
    - **Add rule**: Opens a list of rule types that you can add to the generator.
-   - **Test options**: Configure the load executor, think time, and test variables.
+   - **Test options**: Configure the load profile, thresholds, think time, and load zones.
+   - **Test data**: Define variables, and configure data files that can be used in your test rules.
    - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
 4. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
 5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
@@ -31,8 +32,9 @@ The Test Generator window is composed of:
 The test options tab lets you configure three separate parts of your test script:
 
 - Load profile
+- Thresholds
 - Think time
-- Test data
+- Load zones
 
 ### Load profile
 
@@ -49,17 +51,17 @@ Each executor has different variables you can configure. For more details, refer
 
 The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
 
-### Test data
+## Test data
 
 The test data option lets you define two types of data for use in your test scripts: **variables** and **data files**.
 
-#### Variables
+### Variables
 
 In the **Variables** tab, you can define a name and a value, as a string. You can then use the variables in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
 
-#### Data files
+### Data files
 
 When running performance tests, it's common to use randomly generated data, or a specific set of data that's relevant to your application. In k6 Studio, you can import data files, either via the **Data files** section of the main menu, or via a **Generator** -> **Test data** -> **Data files** -> **Add data file +**, and then use them in [parameterization rules](#parameterization-rule).
 
