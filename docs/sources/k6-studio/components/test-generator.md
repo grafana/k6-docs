@@ -47,6 +47,16 @@ There are two executors available under load profiles:
 
 Each executor has different variables you can configure. For more details, refer to [Executors](https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/).
 
+### Thresholds
+
+Thresholds are the pass/fail criteria that you define for your test metrics. If the performance of the system under test (SUT) doesn't meet the conditions of your threshold, the test finishes with a failed status.
+
+Thresholds are commonly used to codify SLOs, for example, fail this test if an endpoint has a response time above 500ms. They can also be used as a way to set up alerts based on test failures.
+
+In k6 Studio, you can click on **Add threshold** to add one or more thresholds to your test script. For each threshold, you can configure the metric, as well as the failure conditions, and if you want a failure to stop the test execution.
+
+Refer to [Thresholds](https://grafana.com/docs/k6/latest/using-k6/thresholds/) for more details.
+
 ### Think time
 
 The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
