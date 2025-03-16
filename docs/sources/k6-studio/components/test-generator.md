@@ -177,10 +177,11 @@ The configuration fields are:
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
   - **Regex**: Define the regular expression to match the value to be replaced.
   - **JSON**: Define the JSON path to match the value to be replaced.
-- **Replace with**: Configure how you want to replace the values when a match is found.
+- **Replace with**: Configure how you want to replace the values when a match is found. You can use:
   - **Text value**: Define a text value.
   - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
   - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run. Refer to [Data files](#data-files) for more details.
+  - **Custom code**: Use a custom JavaScript code snippet to define a value. You must include a `return` statement with the value you'd like to use.
 
 When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
