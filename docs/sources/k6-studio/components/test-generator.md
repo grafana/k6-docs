@@ -80,7 +80,7 @@ After you import a data file, you can add it to your Generator by:
 1. Click on **Add data file +**.
 1. Select the data file from the drop-down list.
 
-After that, you can use your data file in a [parameterization rule](#parameterization-rule), in the **Replace with** section.
+After that, you can use your data file in a [parameterization rule](#parameterization-rule), in the **Replace with** section. The generated k6 test script will use a unique item from the file per iteration to simulate user behavior.
 
 ## Allowed hosts
 
