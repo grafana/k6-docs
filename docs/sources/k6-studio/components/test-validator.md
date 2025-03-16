@@ -41,7 +41,7 @@ After you click **Validate script**, k6 Studio runs one iteration of the test sc
 
 ## Run a test in Grafana Cloud
 
-After validating a script, you can execute the same test, but using the scenarios you have configured in the **Generator** -> **Load profile** tab, to run a performance test and see how your application behaves in a real-world scenario.
+After validating a script, you can execute the same test, but using the load profile and load zones you have configured in **Generator** -> **Test options**, to run a performance test and see how your application behaves in a real-world scenario.
 
 k6 Studio includes a built-in integration with Grafana Cloud, that enables you to login and run a test by clicking **Run in Grafana Cloud**. For more details, refer to [Run a test script in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
 
