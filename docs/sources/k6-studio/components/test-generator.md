@@ -61,9 +61,26 @@ After you define a variable, you can refer to them in your custom code rules by 
 
 #### Data files
 
-In the **Data files** tab, you can import and add a data file to be used in your [parameterization rules](#parameterization-rule).
+When running performance tests, it's common to use randomly generated data, or a specific set of data that's relevant to your application. In k6 Studio, you can import data files, either via the **Data files** section of the main menu, or via a **Generator** -> **Test data** -> **Data files** -> **Add data file +**, and then use them in [parameterization rules](#parameterization-rule).
 
-The supported file formats are CSV and JSON.
+The requirements for data files supported in k6 Studio are:
+
+- The file format must be CSV or JSON.
+- The maximum file size is 10 MB.
+- For CSV files:
+  - They must contain a header.
+  - They must use `,` as the separator.
+- For JSON files:
+  - They should be flat arrays without nesting. Nested values are not supported, and won't show up in parameterization rules.
+
+After you import a data file, you can add it to your Generator by:
+
+1. Click on **Test data**.
+1. Click on the **Data files** tab.
+1. Click on **Add data file +**.
+1. Select the data file from the drop-down list.
+
+After that, you can use your data file in a [parameterization rule](#parameterization-rule), in the **Replace with** section.
 
 ## Allowed hosts
 
@@ -124,7 +141,7 @@ The configuration fields are:
 - **Replace with**: Configure how you want to replace the values when a match is found.
   - **Text value**: Define a text value.
   - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
-  - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run.
+  - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run. Refer to [Data files](#data-files) for more details.
 
 When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
