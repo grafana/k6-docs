@@ -51,6 +51,33 @@ Each executor has different variables you can configure. For more details, refer
 
 The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
 
+### Load zones
+
+{{< admonition type="note" >}}
+
+Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+
+{{< /admonition >}}
+
+Load zones represent different regions that you can use to run your tests from. You can use them to get a more accurate picture of what your users are seeing when they're accessing your application from different parts of the world.
+
+In the **Load zones** tab, you can use the **Add new load zone** button to add one or more load zones to your test script. You can also use the **Distribution** toggle to manually choose the percentage of the load that runs from each zone, or to distribute them evenly.
+
+When you add a load zone to your test script, you can see it reflected in the `options` object. For example:
+
+```javascript
+export const options = {
+  cloud: {
+    distribution: {
+      'amazon:us:ashburn': { loadZone: 'amazon:us:ashburn', percent: 50 },
+      'amazon:ie:dublin': { loadZone: 'amazon:ie:dublin', percent: 50 },
+    },
+  },
+};
+```
+
+Refer to [Use load zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-load-zones/) for more details.
+
 ## Test data
 
 The test data option lets you define two types of data for use in your test scripts: **variables** and **data files**.
