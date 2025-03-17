@@ -25,7 +25,7 @@ cards:
       height: 24
     - title: Components
       href: ./components/
-      description: Understand how the Recorder, Test Generator, and Test Validator components work.
+      description: Understand how the Recorder, Generator, and Validator components work.
       height: 24
     - title: Troubleshoot
       href: ./troubleshoot/

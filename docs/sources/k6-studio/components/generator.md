@@ -1,26 +1,28 @@
 ---
-title: 'Test Generator'
-description: 'Understand how the k6 Studio Test Generator works'
+aliases:
+  - ./test-generator # docs/k6-studio/components/test-generator
+title: 'Generator'
+description: 'Understand how the k6 Studio Generator works'
 weight: 200
 ---
 
-# Test Generator
+# Generator
 
-The Test Generator takes the output of a test recording and gives you options to customize the test with a visual interface and generate a test script from it, without having to manually write JavaScript code.
+The Generator takes the output of a test recording and gives you options to customize the test with a visual interface and generate a test script from it, without having to manually write JavaScript code.
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-3.png" alt="k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-3.png" alt="k6 Studio Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
 
-The Test Generator window is composed of:
+The Generator window is composed of:
 
-1. **Test generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
-   - **Validate script**: Opens the [Test Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
+1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
+2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
+   - **Validate script**: Opens the [Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
 3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
-4. **Test Generator options**: Below the test generator name, you can see:
+4. **Generator options**: Below the test generator name, you can see:
    - **Add rule**: Opens a list of rule types that you can add to the generator.
    - **Test options**: Configure the load profile, thresholds, think time, and load zones.
    - **Test data**: Define variables, and configure data files that can be used in your test rules.
@@ -289,6 +291,6 @@ The regular expression must include a capturing group `()` to specify the value 
 
 After you're done configuring the test options and rules for your test generator, you can click the menu icon on the top-right to validate and export your script.
 
-When clicking on validate script, the Test Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
+When clicking on validate script, the Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
 
 After validating your script, you can export it so you can run it using the k6 CLI, or using Grafana Cloud k6.

@@ -1,25 +1,27 @@
 ---
-title: 'Test Validator'
-description: 'Understand how the k6 Studio Test Validator works'
+aliases:
+  - ./test-validator # docs/k6-studio/components/test-validator
+title: 'Validator'
+description: 'Understand how the k6 Studio Validator works'
 weight: 300
 ---
 
-# Test Validator
+# Validator
 
-The Test Validator can help you validate that a test script is working as expected. You can use it to run one iteration of your test, and visualize the request and response of any requests on your test script, as well as [checks](https://grafana.com/docs/k6/latest/using-k6/checks/) and [logs](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/). The Test Validator works with any k6 test script, not only scripts generated in k6 Studio.
+The Validator can help you validate that a test script is working as expected. You can use it to run one iteration of your test, and visualize the request and response of any requests on your test script, as well as [checks](https://grafana.com/docs/k6/latest/using-k6/checks/) and [logs](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/). The Validator works with any k6 test script, not only scripts generated in k6 Studio.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-panels-3.png" alt="k6 Studio Test Validator window, showing a test script that has been executed, with a list of requests and their status code, as well as the request and response panels on the right, and the script preview" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-panels-3.png" alt="k6 Studio Validator window, showing a test script that has been executed, with a list of requests and their status code, as well as the request and response panels on the right, and the script preview" >}}
 
-The Test Validator window is composed of:
+The Validator window is composed of:
 
 1. **Test script name**: The name of the test script.
-2. **Test Validator actions**: On the top-right you can see the action buttons for the Test Validator. From here you can:
+2. **Validator actions**: On the top-right you can see the action buttons for the Validator. From here you can:
    - Click **Validate script** to run one iteration of your test script.
    - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
    - Click the menu icon to:
      - **Open external script**: Open a k6 test script from your computer. After opening it, click **Validate script** to run one iteration of the test.
      - **Delete**: Deletes the selected test script.
-3. **Test Validator options**: Below the test script name, you can see:
+3. **Validator options**: Below the test script name, you can see:
    - **Requests**: The total number of requests executed from the test script run.
    - **Search**: A search box that lets you search the list of requests by URL, method (such as GET or POST), and status code. You can also use the toggle to search across all request data.
 4. **Requests and groups list**: The list of requests, and groups if any, that were executed in the test run. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily.
@@ -30,11 +32,11 @@ The Test Validator window is composed of:
 
 There are two ways to validate a test:
 
-- Use the **Test Generator** component:
-  1. Open a test generator
+- Use the **Generator** component:
+  1. Open a test generator.
   2. Click the menu icon on the top-right, and select **Validate script**.
 - Use the **Scripts** component:
-  1. Open a script
+  1. Open a script.
   2. Click **Validate script** on the top-right.
 
 After you click **Validate script**, k6 Studio runs one iteration of the test script and shows you the results of the test as the script is executed.
@@ -53,12 +55,12 @@ You can also view any [logs](https://grafana.com/docs/grafana-cloud/testing/k6/a
 
 ## Validate external script
 
-You can use the Test Validator to validate scripts that are created outside k6 Studio as well:
+You can use the Validator to validate scripts that are created outside k6 Studio as well:
 
 1. From the k6 Studio homepage, click **Validate script**.
 2. Click **Open external script**.
 
-Alternatively, from the Test Validator screen you can:
+Alternatively, from the Validator screen you can:
 
 1. Click the menu options icon on the top-right.
 2. Click **Open external script**.
