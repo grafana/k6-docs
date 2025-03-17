@@ -22,7 +22,6 @@ Fetching two different pages with a 0-30 second random sleep in between:
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-// test change
 export default function () {
   http.get('https://k6.io');
   sleep(Math.random() * 30);
