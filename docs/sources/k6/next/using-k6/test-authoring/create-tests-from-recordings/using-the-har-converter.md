@@ -54,7 +54,7 @@ The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool th
 1. Install the converter. You can use `npm`:
 
    ```bash
-   $ npm install -g har-to-k6
+   npm install -g har-to-k6
    ```
 
    For other installation options, check out the [har-to-k6 installation instructions](https://github.com/k6io/har-to-k6#installation).
@@ -62,7 +62,7 @@ The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool th
 1. Generate a k6 script from a HAR file with the convert command:
 
    ```bash
-   $ har-to-k6 myfile.har -o loadtest.js
+   har-to-k6 myfile.har -o loadtest.js
    ```
 
    This command auto-generates a k6 script for you.
@@ -157,7 +157,7 @@ Now, you can run your load test with k6. If you have not installed k6 yet, pleas
 Execute the `k6 run` command to run your k6 script:
 
 ```bash
-$ k6 run loadtest.js
+k6 run loadtest.js
 ```
 
 To learn about running k6, check out the [Running k6 tutorial](https://grafana.com/docs/k6/<K6_VERSION>/get-started/running-k6).

@@ -13,11 +13,11 @@ Pass the path for your JSON file as the flag argument:
 {{< code >}}
 
 ```bash
-$ k6 run --out json=test_results.json script.js
+k6 run --out json=test_results.json script.js
 ```
 
 ```docker
-$ docker run -it --rm \
+docker run -it --rm \
     -v <scriptdir>:/scripts \
     -v <outputdir>:/jsonoutput \
     grafana/k6 run --out json=/jsonoutput/my_test_result.json /scripts/script.js
@@ -32,11 +32,11 @@ Or if you want to get the result gzipped, like this:
 {{< code >}}
 
 ```bash
-$ k6 run --out json=test_results.gz script.js
+k6 run --out json=test_results.gz script.js
 ```
 
 ```docker
-$ docker run -it --rm \
+docker run -it --rm \
     -v <scriptdir>:/scripts \
     -v <outputdir>:/jsonoutput \
     grafana/k6 run --out json=/jsonoutput/my_test_result.gz /scripts/script.js
@@ -49,7 +49,7 @@ $ docker run -it --rm \
 To inspect the output in real time, you can use a command like `tail -f` on the file you save:
 
 ```bash
-$ tail -f test_results.json
+tail -f test_results.json
 ```
 
 ## JSON format
@@ -101,7 +101,7 @@ You can quickly create [filters][jq_filters_url] to return a particular metric o
 {{< code >}}
 
 ```bash
-$ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200")' myscript-output.json
+jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200")' myscript-output.json
 ```
 
 {{< /code >}}
@@ -111,7 +111,7 @@ And calculate an aggregated value of any metric:
 {{< code >}}
 
 ```bash
-$ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s 'add/length'
+jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s 'add/length'
 ```
 
 {{< /code >}}
@@ -119,7 +119,7 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 {{< code >}}
 
 ```bash
-$ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s min
+jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s min
 ```
 
 {{< /code >}}
@@ -127,7 +127,7 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 {{< code >}}
 
 ```bash
-$ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s max
+jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s max
 ```
 
 {{< /code >}}

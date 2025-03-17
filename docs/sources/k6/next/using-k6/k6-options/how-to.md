@@ -93,21 +93,21 @@ You can also set the options from the previous example through environment varia
 {{< code >}}
 
 ```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
+K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
 
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```windows
-C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
+set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
 
-C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```powershell
-PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
+$env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
 
-PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 {{< /code >}}

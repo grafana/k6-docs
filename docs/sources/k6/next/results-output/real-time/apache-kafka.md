@@ -41,7 +41,7 @@ You can configure the broker (or multiple ones), topic and message format direct
 {{< code >}}
 
 ```bash
-$ k6 run --out xk6-kafka=brokers=broker_host:8000,topic=k6
+k6 run --out xk6-kafka=brokers=broker_host:8000,topic=k6
 ```
 
 {{< /code >}}

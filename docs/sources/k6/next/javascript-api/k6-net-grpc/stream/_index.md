@@ -202,7 +202,7 @@ The preceding examples use a demo server, which you can run with the following c
 {{< code >}}
 
 ```bash
-$ go run -mod=mod examples/grpc_server/*.go
+go run -mod=mod examples/grpc_server/*.go
 ```
 
 {{< /code >}}

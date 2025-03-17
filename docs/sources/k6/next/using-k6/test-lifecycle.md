@@ -177,7 +177,7 @@ You can skip the execution of setup and teardown stages using the options `--no-
 {{< code >}}
 
 ```bash
-$ k6 run --no-setup --no-teardown ...
+k6 run --no-setup --no-teardown ...
 ```
 
 {{< /code >}}

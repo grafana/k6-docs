@@ -37,7 +37,7 @@ By default, k6 uses the `--compatibility-mode=extended` mode:
 {{< code >}}
 
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
 
 {{< /code >}}
@@ -47,11 +47,11 @@ $ k6 run script.js
 {{< code >}}
 
 ```cli
-$ k6 run --compatibility-mode=base script.js
+k6 run --compatibility-mode=base script.js
 ```
 
 ```env
-$ K6_COMPATIBILITY_MODE=base k6 run script.js
+K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
 {{< /code >}}
@@ -61,11 +61,11 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 {{< code >}}
 
 ```cli
-$ k6 run script.ts
+k6 run script.ts
 ```
 
 ```env
-$ k6 run script.ts
+k6 run script.ts
 ```
 
 {{< /code >}}

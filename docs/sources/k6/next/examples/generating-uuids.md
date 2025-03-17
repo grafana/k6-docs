@@ -40,7 +40,7 @@ For this to work, we first need to go through a few required steps:
    {{< code >}}
 
    ```bash
-   $ npm install uuid@3.4.0
+   npm install uuid@3.4.0
    ```
 
    {{< /code >}}
@@ -49,7 +49,7 @@ For this to work, we first need to go through a few required steps:
    {{< code >}}
 
    ```bash
-   $ browserify node_modules/uuid/index.js -s uuid > uuid.js
+   browserify node_modules/uuid/index.js -s uuid > uuid.js
    ```
 
    {{< /code >}}
