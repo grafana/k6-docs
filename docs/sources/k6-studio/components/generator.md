@@ -1,38 +1,42 @@
 ---
-title: 'Test Generator'
-description: 'Understand how the k6 Studio Test Generator works'
+aliases:
+  - ./test-generator # docs/k6-studio/components/test-generator
+title: 'Generator'
+description: 'Understand how the k6 Studio Generator works'
 weight: 200
 ---
 
-# Test Generator
+# Generator
 
-The Test Generator takes the output of a test recording and gives you options to customize the test with a visual interface and generate a test script from it, without having to manually write JavaScript code.
+The Generator takes the output of a test recording and gives you options to customize the test with a visual interface and generate a test script from it, without having to manually write JavaScript code.
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-2.png" alt="k6 Studio Test Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-3.png" alt="k6 Studio Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
 
-The Test Generator window is composed of:
+The Generator window is composed of:
 
-1. **Test generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Recorder. From here you can click **Save Generator** to save changes to your test generator file, or click the menu icon to:
-   - **Validate script**: Opens the [Test Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
+1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
+2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
+   - **Validate script**: Opens the [Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
-3. **Test Generator options**: Below the test generator name, you can see:
+3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
+4. **Generator options**: Below the test generator name, you can see:
    - **Add rule**: Opens a list of rule types that you can add to the generator.
-   - **Test options**: Configure the load executor, think time, and test variables.
+   - **Test options**: Configure the load profile, thresholds, think time, and load zones.
+   - **Test data**: Define variables, and configure data files that can be used in your test rules.
    - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
-4. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
-5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
+5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
 
 ## Test options
 
 The test options tab lets you configure three separate parts of your test script:
 
 - Load profile
+- Thresholds
 - Think time
-- Test data
+- Load zones
 
 ### Load profile
 
@@ -45,15 +49,79 @@ There are two executors available under load profiles:
 
 Each executor has different variables you can configure. For more details, refer to [Executors](https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/).
 
+### Thresholds
+
+Thresholds are the pass/fail criteria that you define for your test metrics. If the performance of the system under test (SUT) doesn't meet the conditions of your threshold, the test finishes with a failed status.
+
+Thresholds are commonly used to codify SLOs, for example, fail this test if an endpoint has a response time above 500ms. They can also be used as a way to set up alerts based on test failures.
+
+In k6 Studio, you can click on **Add threshold** to add one or more thresholds to your test script. For each threshold, you can configure the metric, as well as the failure conditions, and if you want a failure to stop the test execution.
+
+Refer to [Thresholds](https://grafana.com/docs/k6/latest/using-k6/thresholds/) for more details.
+
 ### Think time
 
 The think time option lets you configure a fixed or random delay, between groups or iterations, to simulate a more realistic test. This isn't required, but it's a best practice when creating and running performance tests.
 
-### Test data
+### Load zones
 
-The test data option lets you define variables, which you can then use in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
+{{< admonition type="note" >}}
+
+Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+
+{{< /admonition >}}
+
+Load zones represent different regions that you can use to run your tests from. You can use them to get a more accurate picture of what your users are seeing when they're accessing your application from different parts of the world.
+
+In the **Load zones** tab, you can use the **Add new load zone** button to add one or more load zones to your test script. You can also use the **Distribution** toggle to manually choose the percentage of the load that runs from each zone, or to distribute them evenly.
+
+When you add a load zone to your test script, you can see it reflected in the `options` object. For example:
+
+```javascript
+export const options = {
+  cloud: {
+    distribution: {
+      'amazon:us:ashburn': { loadZone: 'amazon:us:ashburn', percent: 50 },
+      'amazon:ie:dublin': { loadZone: 'amazon:ie:dublin', percent: 50 },
+    },
+  },
+};
+```
+
+Refer to [Use load zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-load-zones/) for more details.
+
+## Test data
+
+The test data option lets you define two types of data for use in your test scripts: **variables** and **data files**.
+
+### Variables
+
+In the **Variables** tab, you can define a name and a value, as a string. You can then use the variables in your [custom code](#custom-code-rule) and [parameterization](#parameterization-rule) rules.
 
 After you define a variable, you can refer to them in your custom code rules by using: `VARS["VARIABLE_NAME"]`.
+
+### Data files
+
+When running performance tests, it's common to use randomly generated data, or a specific set of data that's relevant to your application. In k6 Studio, you can import data files, either via the **Data files** section of the main menu, or via a **Generator** -> **Test data** -> **Data files** -> **Add data file +**, and then use them in [parameterization rules](#parameterization-rule).
+
+The requirements for data files supported in k6 Studio are:
+
+- The file format must be CSV or JSON.
+- The maximum file size is 10 MB.
+- For CSV files:
+  - They must contain a header.
+  - They must use `,` as the separator.
+- For JSON files:
+  - They should be flat arrays without nesting. Nested values are not supported, and won't show up in parameterization rules.
+
+After you import a data file, you can add it to your Generator by:
+
+1. Click on **Test data**.
+1. Click on the **Data files** tab.
+1. Click on **Add data file +**.
+1. Select the data file from the drop-down list.
+
+After that, you can use your data file in a [parameterization rule](#parameterization-rule), in the **Replace with** section. The generated k6 test script will use a unique item from the file per iteration to simulate user behavior.
 
 ## Allowed hosts
 
@@ -101,7 +169,7 @@ When creating or editing a correlation rule, you can use the **Rule preview** pa
 
 ### Parameterization rule
 
-The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name from the **Test variables** tab.
+The parameterization rule lets you parameterize your requests to use a text value, or the value from a variable. For example, you can replace a `userId` value in all requests with a test user ID defined as a text value in the rule tab, or use a variable name or data file from the **Test data** option.
 
 The configuration fields are:
 
@@ -111,7 +179,11 @@ The configuration fields are:
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
   - **Regex**: Define the regular expression to match the value to be replaced.
   - **JSON**: Define the JSON path to match the value to be replaced.
-- **Replace with**: Select **Text value** or **Variables** for the value to be used as a replacement for the request data. For **Variables**, make sure that you configure the variable value to be used under **Test options** -> **Test data**.
+- **Replace with**: Configure how you want to replace the values when a match is found. You can use:
+  - **Text value**: Define a text value.
+  - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
+  - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run. Refer to [Data files](#data-files) for more details.
+  - **Custom code**: Use a custom JavaScript code snippet to define a value. You must include a `return` statement with the value you'd like to use.
 
 When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
 
@@ -219,6 +291,6 @@ The regular expression must include a capturing group `()` to specify the value 
 
 After you're done configuring the test options and rules for your test generator, you can click the menu icon on the top-right to validate and export your script.
 
-When clicking on validate script, the Test Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
+When clicking on validate script, the Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
 
 After validating your script, you can export it so you can run it using the k6 CLI, or using Grafana Cloud k6.
