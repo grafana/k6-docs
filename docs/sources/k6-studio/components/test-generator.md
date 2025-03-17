@@ -15,17 +15,17 @@ You can use it to define a list of hosts to allow or remove from your script, tw
 The Test Generator window is composed of:
 
 1. **Test generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Recorder. From here you can click **Save Generator** to save changes to your test generator file, or click the menu icon to:
+2. **Test Generator actions**: On the top-right you can see the action buttons for the Test Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
    - **Validate script**: Opens the [Test Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
-3. **Test Generator options**: Below the test generator name, you can see:
+3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
+4. **Test Generator options**: Below the test generator name, you can see:
    - **Add rule**: Opens a list of rule types that you can add to the generator.
    - **Test options**: Configure the load profile, thresholds, think time, and load zones.
    - **Test data**: Define variables, and configure data files that can be used in your test rules.
    - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
-4. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
-5. **Request, response, script, and rule inspector**: When you click on a request from the requests list, a panel opens on the right side which shows the request and response details for that request. You can use it to inspect the headers, payload, cookies, and content of the requests.
+5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
 
 ## Test options
 
