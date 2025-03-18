@@ -62,6 +62,8 @@ The following JS snippets show some examples of how you can set options.
 
 ### Set options in the script
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 
