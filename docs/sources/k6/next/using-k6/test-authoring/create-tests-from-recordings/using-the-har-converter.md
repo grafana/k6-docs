@@ -95,6 +95,8 @@ k6 lets you configure this in several ways:
 
 - As options in the script file.
 
+  <!-- md-k6:skip -->
+
   ```javascript
   export const options = {
     vus: 10,
