@@ -201,6 +201,8 @@ With `test.options`, you can access the consolidated and derived options of your
 A common use of this feature is to log the value of a tag, but there are many possibilities.
 For example, this script accesses the value of the test's current stage:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 
