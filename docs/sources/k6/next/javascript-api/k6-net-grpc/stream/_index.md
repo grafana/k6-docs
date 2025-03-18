@@ -23,7 +23,7 @@ Using a gRPC client creates a stream. The client should be connected to the serv
 
 _A k6 script that sends several randomly chosen points from the pre-generated feature database with a variable delay in between. Prints the statistics when they are sent from the server._
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
@@ -133,11 +133,9 @@ const pointSender = (stream, point) => {
 };
 ```
 
-{{< /code >}}
-
 _A k6 script that sends a rectangle message and results (features) are streamed back to the client._
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
@@ -195,14 +193,8 @@ export default () => {
 };
 ```
 
-{{< /code >}}
-
 The preceding examples use a demo server, which you can run with the following command (Golang should be installed) in [k6 repository's root](https://github.com/grafana/k6):
-
-{{< code >}}
 
 ```bash
 go run -mod=mod examples/grpc_server/*.go
 ```
-
-{{< /code >}}
