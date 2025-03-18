@@ -62,7 +62,7 @@ The following JS snippets show some examples of how you can set options.
 
 ### Set options in the script
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -84,8 +84,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Set options with environment variables
 
 You can also set the options from the previous example through environment variables and command-line flags:
@@ -93,21 +91,21 @@ You can also set the options from the previous example through environment varia
 {{< code >}}
 
 ```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
+K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
 
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```windows
-C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
+set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
 
-C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```powershell
-PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
+$env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
 
-PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 {{< /code >}}
@@ -126,7 +124,7 @@ k6 run script.js --env MY_USER_AGENT="hello"
 Then, your script could then set the `userAgent` option based on the variable's value.
 This allows for quick configuration.
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -139,8 +137,6 @@ export default function () {
   http.get('http://test.k6.io/');
 }
 ```
-
-{{< /code >}}
 
 > **Note**: Though this method uses the `--env` flag, this is not the same as using an environment variable.
 > For an explanation, refer to the [environment variables document](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables).
@@ -158,8 +154,6 @@ k6 run --config options.json script.js
 ```
 
 This command would set test options according to the values in the `options.json` file.
-
-{{< code >}}
 
 ```json
 {
@@ -188,9 +182,9 @@ This command would set test options according to the values in the `options.json
 }
 ```
 
-{{< /code >}}
-
 For an alternative way to separate configuration from logic, you can use the `JSON.parse()` method in your script file:
+
+<!-- md-k6:skip -->
 
 ```javascript
 // load test config, used to populate exported options object:
@@ -207,7 +201,7 @@ With `test.options`, you can access the consolidated and derived options of your
 A common use of this feature is to log the value of a tag, but there are many possibilities.
 For example, this script accesses the value of the test's current stage:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -223,7 +217,3 @@ export default function () {
   console.log(exec.test.options.scenarios.default.stages[0].target); // 100
 }
 ```
-
-{{< /code >}}
-
-<br/>

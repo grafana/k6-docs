@@ -25,7 +25,7 @@ Not interested in setting up a Go environment? You can [use Docker instead](http
 Given the prerequisite Go setup, installing [xk6](https://github.com/grafana/xk6) itself requires only the following command:
 
 ```bash
-$ go install go.k6.io/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
 To confirm your installation, run `which xk6` on Linux and Mac, or `where xk6` on Windows.
@@ -41,7 +41,7 @@ Once installed, building a k6 binary with one or more extensions can be done wit
 command as follows:
 
 ```bash
-$ xk6 build latest \
+xk6 build latest \
   --with github.com/grafana/xk6-sql@v0.0.1 \
   --with github.com/grafana/xk6-output-prometheus-remote
 ```
@@ -112,7 +112,7 @@ Now that we have our newly built k6 binary, we can run scripts using the functio
 of the bundled extensions.
 
 ```bash
-$ ./k6 run my-script.js
+./k6 run my-script.js
 ```
 
 > Be sure to specify the binary just built in the current directory as `./k6`, or else

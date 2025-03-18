@@ -14,11 +14,11 @@ To construct a `PodDisruptor`, use the [PodDisruptor() constructor](https://graf
 
 ## Methods
 
-| Method                                                                                                                                 | Description                                                                                                                                         |
-| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Method                                                                                                                                                                     | Description                                                                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [PodDisruptor.injectGrpcFaults()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor/injectgrpcfaults) | Inject [gRPC faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/grpc) in the target Pods                          |
 | [PodDisruptor.injectHTTPFaults()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor/injecthttpfaults) | Inject [HTTP faults](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/http) in the target Pods                          |
-| PodDisruptor.targets()                                                                                                                 | Returns the list of target Pods of the PodDisruptor                                                                                                 |
+| PodDisruptor.targets()                                                                                                                                                     | Returns the list of target Pods of the PodDisruptor                                                                                                                                     |
 | [PodDisruptor.terminatePods()](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/poddisruptor/terminate-pods)      | executes a [Pod Termination fault](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/faults/pod-termination) in the target Pods |
 
 ## Example
@@ -27,6 +27,8 @@ This example:
 
 - Creates a selector that matches all pods in the `default` namespace with the `run=nginx` label
 - Injects a delay of 100ms and makes 10 percent of requests return an http response code `500`.
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { PodDisruptor } from 'k6/x/disruptor';
@@ -57,7 +59,7 @@ export default function () {
 You can test this script by first creating a pod running nginx with the command below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
 
 ```bash
-$ kubectl run nginx --image=nginx
+kubectl run nginx --image=nginx
 ```
 
 You can also use the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension for creating these resources from your test script.

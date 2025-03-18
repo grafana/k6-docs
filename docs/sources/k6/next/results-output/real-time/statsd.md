@@ -43,7 +43,7 @@ Using the k6 binary you built in the previous step, you can use the `--out outpu
 {{< code >}}
 
 ```bash
-$ ./k6 run --out output-statsd script.js
+./k6 run --out output-statsd script.js
 ```
 
 {{< /code >}}

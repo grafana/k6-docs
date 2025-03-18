@@ -67,7 +67,7 @@ Once the Datadog Agent service is running, run the k6 test and send the metrics 
 {{< code >}}
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
+K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
 
 {{< /code >}}

@@ -25,7 +25,7 @@ To run this tutorial, you'll need the following applications installed:
 You also need to install xk6:
 
 ```bash
-$ go install go.k6.io/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
 ## Write a simple extension
@@ -33,7 +33,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 1. First, set up a directory to work in:
 
 ```bash
-$ mkdir xk6-compare; cd xk6-compare; go mod init xk6-compare
+mkdir xk6-compare; cd xk6-compare; go mod init xk6-compare
 ```
 
 1. In the directory, make a Go file for your JavaScript extension.
@@ -123,7 +123,7 @@ func (c *Compare) IsGreater(a, b int) bool {
 To build a k6 binary with this extension, run this command:
 
 ```bash
-$ xk6 build --with xk6-compare=.
+xk6 build --with xk6-compare=.
 ```
 
 {{< admonition type="note" >}}
@@ -139,7 +139,7 @@ Now, use the extension in a test script!
 
 1. Make a file with a name like `test.js` then add this code:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import compare from 'k6/x/compare';
@@ -149,8 +149,6 @@ export default function () {
   console.log(`${compare.isGreater(1, 3)}, ${compare.comparison_result}`);
 }
 ```
-
-{{< /code >}}
 
 1. Run the test with `./k6 run test.js`.
 
@@ -302,7 +300,7 @@ func (c *Compare) GetInternalState() *InternalState {
 
 Create a test script to utilize the new `getInternalState()` function as in the following:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import compare from 'k6/x/compare';
@@ -314,8 +312,6 @@ export default function () {
   );
 }
 ```
-
-{{< /code >}}
 
 Executing the script as `./k6 run test-state.js --vus 2 --iterations 5` will produce output similar to the following:
 

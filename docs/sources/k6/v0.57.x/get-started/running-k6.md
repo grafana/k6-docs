@@ -29,15 +29,15 @@ To run a simple local script:
    {{< code >}}
 
    ```linux
-   $ k6 new
+   k6 new
    ```
 
    ```docker
-   $ docker run --rm -u $(id -u) -v $PWD:/app -w /app grafana/k6 new
+   docker run --rm -u $(id -u) -v $PWD:/app -w /app grafana/k6 new
    ```
 
    ```windows
-   PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+   docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
    ```
 
    {{< /code >}}
@@ -50,7 +50,7 @@ To run a simple local script:
    {{< code >}}
 
    ```linux
-   $ k6 run script.js
+   k6 run script.js
    ```
 
    ```docker
@@ -60,11 +60,11 @@ To run a simple local script:
    # pipe the actual file into the container with `<` or equivalent. This will
    # cause the file to be redirected into the container and be read by k6.
 
-   $ docker run --rm -i grafana/k6 run - <script.js
+   docker run --rm -i grafana/k6 run - <script.js
    ```
 
    ```windows
-   PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
+   cat script.js | docker run --rm -i grafana/k6 run -
    ```
 
    {{< /code >}}
@@ -76,15 +76,15 @@ Now run a load test with more than one virtual user and a longer duration:
 {{< code >}}
 
 ```linux
-$ k6 run --vus 10 --duration 30s script.js
+k6 run --vus 10 --duration 30s script.js
 ```
 
 ```docker
-$ docker run --rm -i grafana/k6 run --vus 10 --duration 30s - <script.js
+docker run --rm -i grafana/k6 run --vus 10 --duration 30s - <script.js
 ```
 
 ```windows
-PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30s -
+cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30s -
 ```
 
 {{< /code >}}
@@ -147,15 +147,15 @@ If you run the script without flags, k6 uses the options defined in the script:
 {{< code >}}
 
 ```linux
-$ k6 run script.js
+k6 run script.js
 ```
 
 ```docker
-$ docker run --rm -i grafana/k6 run - <script.js
+docker run --rm -i grafana/k6 run - <script.js
 ```
 
 ```windows
-PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
+cat script.js | docker run --rm -i grafana/k6 run -
 ```
 
 {{< /code >}}

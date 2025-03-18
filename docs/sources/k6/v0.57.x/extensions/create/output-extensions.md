@@ -30,7 +30,7 @@ To run this tutorial, you'll need the following applications installed:
 You also need to install xk6:
 
 ```bash
-$ go install go.k6.io/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
 ## Write a simple extension
@@ -38,7 +38,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 1. Set up a directory to work in.
 
 ```bash
-$ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
+mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
 ```
 
 1. The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
@@ -178,7 +178,7 @@ Notice a couple of things:
 To build a k6 binary with this extension, run:
 
 ```bash
-$ xk6 build --with xk6-output-logger=.
+xk6 build --with xk6-output-logger=.
 ```
 
 {{< admonition type="note" >}}
@@ -212,7 +212,7 @@ export default function () {
 1. Now, run the test.
 
 ```bash
-$ ./k6 run test.js --out logger --quiet --no-summary --iterations 2
+./k6 run test.js --out logger --quiet --no-summary --iterations 2
 ```
 
 {{< admonition type="note" >}}

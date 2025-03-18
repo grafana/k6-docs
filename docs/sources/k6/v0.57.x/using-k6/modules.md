@@ -210,7 +210,7 @@ is usually accomplished within minutes. Start by creating a project folder and i
 `npm`:
 
 ```bash
-$ mkdir ./example-project && \
+mkdir ./example-project && \
     cd "$_" && \
     npm init -y
 ```
@@ -220,7 +220,7 @@ $ mkdir ./example-project && \
 Then, install the packages needed:
 
 ```bash
-$ npm install --save-dev \
+npm install --save-dev \
     webpack \
     webpack-cli \
     @types/k6 \
@@ -421,7 +421,7 @@ To run index.js and make the modules available for import we execute the followi
 {{< code >}}
 
 ```bash
-$ docker run --rm -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
+docker run --rm -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
 ```
 
 {{< /code >}}

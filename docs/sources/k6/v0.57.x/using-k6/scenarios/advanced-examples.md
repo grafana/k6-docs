@@ -256,15 +256,15 @@ Then from the command line, you could run the test script and only execute the `
 {{< code >}}
 
 ```bash
-$ SCENARIO=my_web_test k6 run script.js
+SCENARIO=my_web_test k6 run script.js
 ```
 
 ```windows
-C:\k6> set "SCENARIO=my_web_test" && k6 run script.js
+set "SCENARIO=my_web_test" && k6 run script.js
 ```
 
 ```powershell
-PS C:\k6> $env:SCENARIO="my_web_test"; k6 run script.js
+$env:SCENARIO="my_web_test"; k6 run script.js
 ```
 
 {{< /code >}}

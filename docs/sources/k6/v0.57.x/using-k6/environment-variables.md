@@ -19,6 +19,8 @@ You can use environment variables for two main purposes:
 In k6, the environment variables are exposed through a global `__ENV` variable, a JS object.
 For reference, see the script example below:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -35,7 +37,7 @@ The recommended option to pass environment variables to your testing script is t
 {{< code >}}
 
 ```bash
-$ k6 run -e MY_HOSTNAME=test.k6.io script.js
+k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
 
 {{< /code >}}
@@ -52,15 +54,15 @@ $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 A second option to pass environment variables is to source them from the local system.
 
 ```bash
-$ MY_HOSTNAME=test.k6.io k6 run script.js
+MY_HOSTNAME=test.k6.io k6 run script.js
 ```
 
 ```windows
-C:\k6> set "MY_HOSTNAME=test.k6.io" && k6 run script.js
+set "MY_HOSTNAME=test.k6.io" && k6 run script.js
 ```
 
 ```powershell
-PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
+$env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 ```
 
 #### ⚠️ Warning
@@ -93,15 +95,15 @@ For example, this snippet configures the script to run 10 virtual users for a du
 {{< code >}}
 
 ```bash
-$ K6_VUS=10 K6_DURATION=10s k6 run script.js
+K6_VUS=10 K6_DURATION=10s k6 run script.js
 ```
 
 ```windows
-C:\k6> set "K6_VUS=10 K6_DURATION=10s" && k6 run script.js
+set "K6_VUS=10 K6_DURATION=10s" && k6 run script.js
 ```
 
 ```powershell
-PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
+$env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 ```
 
 {{< /code >}}
@@ -116,7 +118,7 @@ To ensure you're always working with the highest precedence, use command-line fl
 {{< code >}}
 
 ```bash
-$ k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
+k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
 ```
 
 {{< /code >}}

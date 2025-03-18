@@ -73,7 +73,7 @@ To run a simple local script:
    {{< code >}}
 
    ```bash
-   $ k6 run script.js
+   k6 run script.js
    ```
 
    ```docker
@@ -91,11 +91,11 @@ To run a simple local script:
    ```
 
    ```windows
-   C:\k6> k6 run script.js
+   k6 run script.js
    ```
 
    ```powershell
-   PS C:\k6> k6 run script.js
+   k6 run script.js
    ```
 
    {{< /code >}}
@@ -105,7 +105,7 @@ To run a simple local script:
    {{< code >}}
 
    ```bash
-   $ K6_BROWSER_HEADLESS=false k6 run script.js
+   K6_BROWSER_HEADLESS=false k6 run script.js
    ```
 
    ```docker
@@ -123,11 +123,11 @@ To run a simple local script:
    ```
 
    ```windows
-   C:\k6> set "K6_BROWSER_HEADLESS=false" && k6 run script.js
+   set "K6_BROWSER_HEADLESS=false" && k6 run script.js
    ```
 
    ```powershell
-   PS C:\k6> $env:K6_BROWSER_HEADLESS=false ; k6 run script.js
+   $env:K6_BROWSER_HEADLESS=false ; k6 run script.js
    ```
 
    {{< /code >}}
@@ -145,8 +145,8 @@ To run a simple local script:
    2. Update [Rosetta](<https://en.wikipedia.org/wiki/Rosetta_(software)>) and export an environment variable with the following:
 
       ```bash
-       $ softwareupdate --install-rosetta
-       $ export DOCKER_DEFAULT_PLATFORM=linux/amd64
+      softwareupdate --install-rosetta &&
+        export DOCKER_DEFAULT_PLATFORM=linux/amd64
       ```
 
    3. Select VirtuoFS in **Settings** > **General** > **VirtuoFS**.
@@ -158,7 +158,7 @@ To run a simple local script:
    6. Run the browser image with the following command (adds the `--platform` flag):
 
       ```bash
-      $ docker run --rm -i --platform linux/amd64 -v $(pwd):/home/k6/screenshots -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
+      docker run --rm -i --platform linux/amd64 -v $(pwd):/home/k6/screenshots -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
       ```
 
 ## Interact with elements on your webpage
@@ -258,13 +258,10 @@ export default async function () {
 
     const submitButton = page.locator('input[type="submit"]');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      submitButton.click(),
-    ]);
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     await check(page.locator('h2'), {
-      'header': async lo => await lo.textContent() == 'Welcome, admin!'
+      header: async (lo) => (await lo.textContent()) == 'Welcome, admin!',
     });
   } finally {
     await page.close();
@@ -332,8 +329,8 @@ export async function browserTest() {
     await page.locator('#checkbox1').check();
 
     await check(page.locator('#checkbox-info-display'), {
-      'checkbox is checked': async lo =>
-        await lo.textContent() === 'Thanks for checking the box'
+      'checkbox is checked': async (lo) =>
+        (await lo.textContent()) === 'Thanks for checking the box',
     });
   } finally {
     await page.close();

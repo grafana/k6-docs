@@ -34,24 +34,20 @@ When running tests, you can change the mode by using the `--compatibility-mode` 
 
 By default, k6 uses the `--compatibility-mode=extended` mode:
 
-{{< code >}}
-
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
-
-{{< /code >}}
 
 ## Base mode
 
 {{< code >}}
 
 ```cli
-$ k6 run --compatibility-mode=base script.js
+k6 run --compatibility-mode=base script.js
 ```
 
 ```env
-$ K6_COMPATIBILITY_MODE=base k6 run script.js
+K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
 {{< /code >}}
@@ -61,11 +57,11 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 {{< code >}}
 
 ```cli
-$ k6 run script.ts
+k6 run script.ts
 ```
 
 ```env
-$ k6 run script.ts
+k6 run script.ts
 ```
 
 {{< /code >}}
@@ -75,8 +71,6 @@ k6 uses [esbuild](https://esbuild.github.io/) to transpile TypeScript (TS) code 
 TypeScript support is partial as it strips the type information but doesn't provide type safety.
 
 ### CommonJS Example
-
-{{< code >}}
 
 ```javascript
 const http = require('k6/http');
@@ -92,8 +86,6 @@ module.exports.default = function () {
   k6.sleep(1);
 };
 ```
-
-{{< /code >}}
 
 > ### ⚠️ About require()
 >

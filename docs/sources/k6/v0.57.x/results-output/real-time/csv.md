@@ -13,7 +13,7 @@ Pass the path for your CSV file as the flag argument:
 {{< code >}}
 
 ```bash
-$ k6 run --out csv=test_results.csv script.js
+k6 run --out csv=test_results.csv script.js
 ```
 
 {{< /code >}}
@@ -23,7 +23,7 @@ You can also get the results gzipped, like this:
 {{< code >}}
 
 ```bash
-$ k6 run --out csv=test_results.gz script.js
+k6 run --out csv=test_results.gz script.js
 ```
 
 {{< /code >}}
@@ -31,7 +31,7 @@ $ k6 run --out csv=test_results.gz script.js
 To inspect the output in real time, you can use a command like `tail -f` on the file you save:
 
 ```bash
-$ tail -f test_results.csv
+tail -f test_results.csv
 ```
 
 ## CSV format
