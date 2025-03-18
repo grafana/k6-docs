@@ -139,7 +139,7 @@ Now, use the extension in a test script!
 
 1. Make a file with a name like `test.js` then add this code:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import compare from 'k6/x/compare';
@@ -149,8 +149,6 @@ export default function () {
   console.log(`${compare.isGreater(1, 3)}, ${compare.comparison_result}`);
 }
 ```
-
-{{< /code >}}
 
 1. Run the test with `./k6 run test.js`.
 
@@ -302,7 +300,7 @@ func (c *Compare) GetInternalState() *InternalState {
 
 Create a test script to utilize the new `getInternalState()` function as in the following:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import compare from 'k6/x/compare';
@@ -314,8 +312,6 @@ export default function () {
   );
 }
 ```
-
-{{< /code >}}
 
 Executing the script as `./k6 run test-state.js --vus 2 --iterations 5` will produce output similar to the following:
 
