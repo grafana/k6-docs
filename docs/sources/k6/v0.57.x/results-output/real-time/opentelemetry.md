@@ -30,7 +30,7 @@ You can use the `--out experimental-opentelemetry` option when running your test
 {{< code >}}
 
 ```bash
-$  K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o experimental-opentelemetry examples/script.js
+K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o experimental-opentelemetry examples/script.js
 ```
 
 {{< /code >}}

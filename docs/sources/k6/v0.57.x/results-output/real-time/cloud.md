@@ -41,7 +41,7 @@ so `k6 cloud run --local-execution` will consume VUH or test runs from your subs
    {{< code >}}
 
    ```bash
-   $ k6 cloud login --token <YOUR_API_TOKEN>
+   k6 cloud login --token <YOUR_API_TOKEN>
    ```
 
    {{< /code >}}
@@ -53,7 +53,7 @@ so `k6 cloud run --local-execution` will consume VUH or test runs from your subs
    {{< code >}}
 
    ```bash
-   $ k6 cloud run --local-execution script.js
+   k6 cloud run --local-execution script.js
    ```
 
    {{< /code >}}
@@ -63,7 +63,7 @@ so `k6 cloud run --local-execution` will consume VUH or test runs from your subs
    {{< code >}}
 
    ```bash
-   $ K6_CLOUD_TOKEN=<YOUR_API_TOKEN> k6 cloud run --local-execution script.js
+   K6_CLOUD_TOKEN=<YOUR_API_TOKEN> k6 cloud run --local-execution script.js
    ```
 
    {{< /code >}}

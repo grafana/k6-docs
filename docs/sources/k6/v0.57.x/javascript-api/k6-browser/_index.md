@@ -79,7 +79,7 @@ Then, you can run the test with this command. Also, see the [browser module opti
 {{< code >}}
 
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
 
 ```docker
@@ -97,11 +97,11 @@ docker run --rm -i grafana/k6:master-with-browser run - <script.js
 ```
 
 ```windows
-C:\k6> k6 run script.js
+k6 run script.js
 ```
 
 ```windows-powershell
-PS C:\k6> k6 run script.js
+k6 run script.js
 ```
 
 {{< /code >}}

@@ -7,6 +7,8 @@ weight: 02
 
 # Options reference
 
+<!-- md-k6:skipall -->
+
 Options define test-run behavior.
 Most options can be passed in multiple places.
 If an option is defined in multiple places, k6 chooses the value from the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence).
@@ -95,7 +97,7 @@ By default, the server listens on `localhost:6565`. Read more on [k6 REST API](h
 {{< code >}}
 
 ```bash
-$ k6 run --address "localhost:3000" script.js
+k6 run --address "localhost:3000" script.js
 ```
 
 {{< /code >}}
@@ -186,7 +188,7 @@ export const options = {
 {{< code >}}
 
 ```bash
-$ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
+k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 ```
 
 {{< /code >}}
@@ -204,7 +206,7 @@ Read about the different modes on the [JavaScript Compatibility Mode documentati
 {{< code >}}
 
 ```bash
-$ k6 run --compatibility-mode=base script.js
+k6 run --compatibility-mode=base script.js
 ```
 
 {{< /code >}}
@@ -245,7 +247,7 @@ Redirects logs logged by `console` methods to the provided output file. Availabl
 {{< code >}}
 
 ```bash
-$ k6 run --console-output "loadtest.log" script.js
+k6 run --console-output "loadtest.log" script.js
 ```
 
 {{< /code >}}
@@ -416,7 +418,7 @@ With this option, you can exit early and let the script run in the background. A
 {{< code >}}
 
 ```bash
-$ k6 cloud run --exit-on-running script.js
+k6 cloud run --exit-on-running script.js
 ```
 
 {{< /code >}}
@@ -490,7 +492,7 @@ Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VER
 {{< code >}}
 
 ```bash
-$ k6 run --include-system-env-vars ~/script.js
+k6 run --include-system-env-vars ~/script.js
 ```
 
 {{< /code >}}
@@ -592,7 +594,7 @@ Available in the `k6 run` command.
 {{< code >}}
 
 ```bash
-$ k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
+k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
 ```
 
 {{< /code >}}
@@ -608,7 +610,7 @@ This option specifies where to send logs to and another configuration connected 
 {{< code >}}
 
 ```bash
-$ k6 run --log-output=stdout script.js
+k6 run --log-output=stdout script.js
 ```
 
 {{< /code >}}
@@ -629,7 +631,7 @@ For additional instructions and a step-by-step guide, check out the [Loki tutori
 {{< code >}}
 
 ```bash
-$ k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
+k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
 ```
 
 {{< /code >}}
@@ -656,7 +658,7 @@ The file can be configured as below, where an explicit file path is required:
 {{< code >}}
 
 ```bash
-$ k6 run --log-output=file=./k6.log script.js
+k6 run --log-output=file=./k6.log script.js
 ```
 
 {{< /code >}}
@@ -682,7 +684,7 @@ A value specifying the log format. By default, k6 includes extra debug informati
 {{< code >}}
 
 ```bash
-$ k6 run --log-format raw test.js
+k6 run --log-format raw test.js
 ```
 
 {{< /code >}}
@@ -737,7 +739,7 @@ A boolean specifying whether colored output is disabled. Available in `k6 run` a
 {{< code >}}
 
 ```bash
-$ k6 run --no-color script.js
+k6 run --no-color script.js
 ```
 
 {{< /code >}}
@@ -794,7 +796,7 @@ Available in the `k6 run` command.
 {{< code >}}
 
 ```bash
-$ k6 run --no-summary ~/script.js
+k6 run --no-summary ~/script.js
 ```
 
 {{< /code >}}
@@ -810,7 +812,7 @@ A boolean specifying whether `setup()` function should be run. Available in `k6 
 {{< code >}}
 
 ```bash
-$ k6 run --no-setup script.js
+k6 run --no-setup script.js
 ```
 
 {{< /code >}}
@@ -826,7 +828,7 @@ A boolean specifying whether `teardown()` function should be run. Available in `
 {{< code >}}
 
 ```bash
-$ k6 run --no-teardown script.js
+k6 run --no-teardown script.js
 ```
 
 {{< /code >}}
@@ -842,7 +844,7 @@ Disables threshold execution. Available in the `k6 run` command.
 {{< code >}}
 
 ```bash
-$ k6 run --no-thresholds ~/script.js
+k6 run --no-thresholds ~/script.js
 ```
 
 {{< /code >}}
@@ -861,7 +863,7 @@ learn more, have a look at the [Usage reports](https://grafana.com/docs/k6/<K6_V
 {{< code >}}
 
 ```bash
-$ k6 run --no-usage-report ~/script.js
+k6 run --no-usage-report ~/script.js
 ```
 
 {{< /code >}}
@@ -917,7 +919,7 @@ Enables [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints under the
 {{< code >}}
 
 ```bash
-$ k6 run --profiling-enabled script.js
+k6 run --profiling-enabled script.js
 ```
 
 {{< /code >}}
@@ -933,7 +935,7 @@ A boolean, true or false, that disables the progress update bar on the console o
 {{< code >}}
 
 ```bash
-$ k6 run script.js -d 20s --quiet
+k6 run script.js -d 20s --quiet
 ```
 
 {{< /code >}}
@@ -951,7 +953,7 @@ refer to [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-outpu
 {{< code >}}
 
 ```bash
-$ k6 run --out influxdb=http://localhost:8086/k6 script.js
+k6 run --out influxdb=http://localhost:8086/k6 script.js
 ```
 
 {{< /code >}}
@@ -1060,7 +1062,7 @@ A boolean specifying whether the cloud logs are printed out to the terminal. Ava
 {{< code >}}
 
 ```bash
-$ k6 cloud run --show-logs=false script.js
+k6 cloud run --show-logs=false script.js
 ```
 
 {{< /code >}}
@@ -1095,28 +1097,28 @@ export const options = {
 ```
 
 ```bash
-$ k6 run --stage 5s:10,5m:20,10s:5 script.js
+k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-$ K6_STAGES="5s:10,5m:20,10s:5" k6 run script.js
+K6_STAGES="5s:10,5m:20,10s:5" k6 run script.js
 ```
 
 ```windows
-C:\k6> k6 run --stage 5s:10,5m:20,10s:5 script.js
+k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-C:\k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run script.js
+set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run script.js
 
 ```
 
 ```powershell
-C:\k6> k6 run --stage 5s:10,5m:20,10s:5 script.js
+k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
+$env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 ```
 
@@ -1139,29 +1141,27 @@ Available in the `k6 run` command.
 {{< code >}}
 
 ```bash
-$ k6 run --summary-export export.json script.js
+k6 run --summary-export export.json script.js
 
 # or...
 
-$ K6_SUMMARY_EXPORT="export.json" k6 run script.js
+K6_SUMMARY_EXPORT="export.json" k6 run script.js
 ```
 
 ```windows
-C:\k6> k6 run --summary-export export.json script.js
+k6 run --summary-export export.json script.js
 
 # or...
 
-C:\k6> set "K6_SUMMARY_EXPORT=export.json" && k6 run script.js
-
+set "K6_SUMMARY_EXPORT=export.json" && k6 run script.js
 ```
 
 ```powershell
-C:\k6> k6 run --summary-export export.json script.js
+k6 run --summary-export export.json script.js
 
 # or...
 
-C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
-
+$env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 ```
 
 {{< /code >}}
@@ -1192,7 +1192,7 @@ Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ se
 {{< code >}}
 
 ```bash
-$ k6 run -e FOO=bar ~/script.js
+k6 run -e FOO=bar ~/script.js
 ```
 
 {{< /code >}}
@@ -1259,7 +1259,7 @@ export const options = {
 {{< code >}}
 
 ```bash
-$ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
+k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
 
 {{< /code >}}
@@ -1445,7 +1445,7 @@ This option specifies where to send traces to. Available in the `k6 run` command
 {{< code >}}
 
 ```bash
-$ k6 run --traces-output=otel script.js
+k6 run --traces-output=otel script.js
 ```
 
 {{< /code >}}
@@ -1462,7 +1462,7 @@ Use the `traces-output` option to configure [Open Telemetry](https://opentelemet
 {{< code >}}
 
 ```bash
-$ k6 run --traces-output=otel=http://127.0.0.1:4318,proto=http,header.AdditionalHeader=example script.js
+k6 run --traces-output=otel=http://127.0.0.1:4318,proto=http,header.AdditionalHeader=example script.js
 ```
 
 {{< /code >}}
@@ -1495,7 +1495,7 @@ This would be useful if you would like to update a given test and run it later. 
 {{< code >}}
 
 ```bash
-$ k6 cloud run --upload-only script.js
+k6 cloud run --upload-only script.js
 ```
 
 {{< /code >}}
@@ -1532,7 +1532,7 @@ A boolean specifying whether verbose logging is enabled. Available in `k6 run` a
 {{< code >}}
 
 ```bash
-$ k6 run --verbose script.js
+k6 run --verbose script.js
 ```
 
 {{< /code >}}
