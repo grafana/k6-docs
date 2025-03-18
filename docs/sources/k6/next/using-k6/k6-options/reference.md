@@ -7,6 +7,8 @@ weight: 02
 
 # Options reference
 
+<!-- md-k6:skipall -->
+
 Options define test-run behavior.
 Most options can be passed in multiple places.
 If an option is defined in multiple places, k6 chooses the value from the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence).

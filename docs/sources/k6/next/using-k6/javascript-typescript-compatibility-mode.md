@@ -34,13 +34,9 @@ When running tests, you can change the mode by using the `--compatibility-mode` 
 
 By default, k6 uses the `--compatibility-mode=extended` mode:
 
-{{< code >}}
-
 ```bash
 k6 run script.js
 ```
-
-{{< /code >}}
 
 ## Base mode
 
@@ -76,8 +72,6 @@ TypeScript support is partial as it strips the type information but doesn't prov
 
 ### CommonJS Example
 
-{{< code >}}
-
 ```javascript
 const http = require('k6/http');
 const k6 = require('k6');
@@ -92,8 +86,6 @@ module.exports.default = function () {
   k6.sleep(1);
 };
 ```
-
-{{< /code >}}
 
 > ### ⚠️ About require()
 >

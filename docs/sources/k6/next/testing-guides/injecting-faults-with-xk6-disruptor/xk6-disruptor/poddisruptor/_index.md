@@ -28,6 +28,8 @@ This example:
 - Creates a selector that matches all pods in the `default` namespace with the `run=nginx` label
 - Injects a delay of 100ms and makes 10 percent of requests return an http response code `500`.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { PodDisruptor } from 'k6/x/disruptor';
 
