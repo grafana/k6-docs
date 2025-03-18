@@ -19,6 +19,8 @@ You can use environment variables for two main purposes:
 In k6, the environment variables are exposed through a global `__ENV` variable, a JS object.
 For reference, see the script example below:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
