@@ -212,14 +212,14 @@ $ k6 run --compatibility-mode=base script.js
 ## Config
 
 Specify the config file in JSON format.
-If the config file is not specified, k6 looks for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system.
+If the config file is not specified, k6 looks for `config.json` in the `k6/` directory inside the regular directory for configuration files on the operating system.
 Default config locations on different operating systems are as follows:
 
 | OS         | Default Config Path                                             |
 | ---------- | --------------------------------------------------------------- |
-| Unix-based | `${HOME}/.config/loadimpact/k6/config.json`                     |
-| macOS      | `${HOME}/Library/Application Support/loadimpact/k6/config.json` |
-| Windows    | `%AppData%/loadimpact/k6/config.json`                           |
+| Unix-based | `${HOME}/.config/k6/config.json`                     |
+| macOS      | `${HOME}/Library/Application Support/k6/config.json` |
+| Windows    | `%AppData%/k6/config.json`                           |
 
 Available in `k6 run` and `k6 cloud run` commands:
 
