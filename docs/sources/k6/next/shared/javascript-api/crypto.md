@@ -12,6 +12,6 @@ The [`crypto` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/cr
 
 {{< admonition type="note" >}}
 
-The crypto object is available globally, so you can use it in your script without including an import statement.
+The `crypto` object is available globally, so you can use it in your script without including an import statement.
 
 {{< /admonition >}}
