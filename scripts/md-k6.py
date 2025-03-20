@@ -11,16 +11,19 @@ import hashlib
 import argparse
 import subprocess
 import tempfile
+from unittest import TestCase
 from collections import namedtuple
 
-Script = namedtuple("Script", ["text", "options", "env", "text_hash"])
+Script = namedtuple("Script", ["text", "options", "env", "text_hash", "args"])
 
+JS = "javascript"
 SKIP = "skip"
 SKIP_ALL = "skipall"
 NO_FAIL = "nofail"
 ENV = "env."
 FIXED_SCENARIOS = "fixedscenarios"
 NO_THRESHOLDS = "nothresholds"
+ARG = "arg."
 
 
 def has_browser_scenario(script: Script) -> bool:
@@ -53,6 +56,7 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
         "--log-format=json",
         f"--log-output=file={logs_file.name}",
         "-w",  # Promote some warnings to errors.
+        *script.args,
     ]
     if (
         duration
@@ -116,42 +120,7 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
             print(line)
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Run k6 scripts within Markdown files."
-    )
-    parser.add_argument("file", help="Path to Markdown file.", type=argparse.FileType())
-    parser.add_argument(
-        "--blocks",
-        default=":",
-        help="Python-like range of code blocks to run (0, 1, 2, 0:2, 3:, etc.).",
-    )
-    parser.add_argument("--lang", default="javascript", help="Code block language.")
-    parser.add_argument(
-        "--duration",
-        "-d",
-        default=None,
-        help="Override script(s) duration. Is not applied to browser tests.",
-    )
-    parser.add_argument(
-        "--verbose",
-        "-v",
-        default=False,
-        help="Enable verbose mode. All log output for tests will be printed.",
-        action="store_true",
-    )
-    args = parser.parse_args()
-
-    print("Starting md-k6 script.")
-    print("Reading from file:", args.file.name)
-
-    lang = args.lang
-    text: str = args.file.read()
-
-    if re.search(f"<!-- *md-k6:{SKIP_ALL} *-->", text):
-        print(f"Skipping entire file ({SKIP_ALL}).")
-        return
-
+def extract_scripts(text: str, lang: str = JS) -> list[Script]:
     # A somewhat complicated regex in order to make parsing of the code block
     # easier. Essentially, takes this:
     #
@@ -177,9 +146,8 @@ def main() -> None:
     # multiple comments are present before the code block.
     #
     # Some " *" and "\n+" are added in to skip any present whitespace.
-
     text = re.sub(
-        r"<!-- *md-k6:([^ -]+) *-->\n+\s*(<!--.+-->\n+)?\s*```" + lang,
+        r"<!-- *md-k6:([^ ]+) *-->\n+\s*(<!--.+-->\n+)?\s*```" + lang,
         "```" + lang + "$" + r"\1",
         text,
     )
@@ -208,6 +176,14 @@ def main() -> None:
             key, value = opt.removeprefix(ENV).split("=")
             env[key] = value
 
+        args = []
+        for opt in options:
+            if not opt.startswith(ARG):
+                continue
+            if opt == ARG:
+                raise Exception("Empty argument specified! (arg.)")
+            args.append(opt.removeprefix(ARG))
+
         script_text = "\n".join(lines[1:])
         scripts.append(
             Script(
@@ -215,8 +191,50 @@ def main() -> None:
                 options=options,
                 env=env,
                 text_hash=hashlib.sha256(script_text.encode("utf-8")).hexdigest()[:16],
+                args=args,
             )
         )
+
+    return scripts
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Run k6 scripts within Markdown files."
+    )
+    parser.add_argument("file", help="Path to Markdown file.", type=argparse.FileType())
+    parser.add_argument(
+        "--blocks",
+        default=":",
+        help="Python-like range of code blocks to run (0, 1, 2, 0:2, 3:, etc.).",
+    )
+    parser.add_argument("--lang", default=JS, help="Code block language.")
+    parser.add_argument(
+        "--duration",
+        "-d",
+        default=None,
+        help="Override script(s) duration. Is not applied to browser tests.",
+    )
+    parser.add_argument(
+        "--verbose",
+        "-v",
+        default=False,
+        help="Enable verbose mode. All log output for tests will be printed.",
+        action="store_true",
+    )
+    args = parser.parse_args()
+
+    print("Starting md-k6 script.")
+    print("Reading from file:", args.file.name)
+
+    lang = args.lang
+    text: str = args.file.read()
+
+    if re.search(f"<!-- *md-k6:{SKIP_ALL} *-->", text):
+        print(f"Skipping entire file ({SKIP_ALL}).")
+        return
+
+    scripts = extract_scripts(text, lang)
 
     if ":" in args.blocks:
         range_parts = args.blocks.split(":")
@@ -251,6 +269,101 @@ def main() -> None:
         print_code(script)
         run_k6(script, args.duration, args.verbose)
         print()
+
+
+class TestMDK6(TestCase):
+    """Unit tests for this script.
+    Run them with:
+
+    $ python3 -m unittest scripts/md-k6.py
+
+    """
+
+    def testExtractScriptSimple(self):
+        text = """
+```javascript
+hello, world!
+```
+        """
+        scripts = extract_scripts(text)
+
+        self.assertEqual(len(scripts), 1)
+        self.assertEqual(scripts[0].text, "hello, world!")
+
+    def testExtractScriptOptions(self):
+        text = """
+<!-- md-k6:nofail,env.A=B,env.C=X- -->
+```javascript
+...
+```
+        """
+        scripts = extract_scripts(text)
+
+        self.assertEqual(
+            scripts,
+            [
+                Script(
+                    "...",
+                    ["nofail", "env.A=B", "env.C=X-"],
+                    {
+                        "A": "B",
+                        "C": "X-",
+                    },
+                    "ab5df625bc76dbd4",
+                    [],
+                )
+            ],
+        )
+
+    def testExtractScriptArgs(self):
+        text = """
+<!-- md-k6:arg.--verbose,arg.-h-->
+```javascript
+...
+```
+
+<!-- md-k6:arg.--verbose,arg.-h -->
+```javascript
+...
+```
+
+<!-- md-k6:arg.--verbose,arg.--->
+```javascript
+...
+```
+"""
+        scripts = extract_scripts(text)
+
+        self.assertEqual(
+            scripts[0],
+            Script(
+                "...",
+                ["arg.--verbose", "arg.-h"],
+                {},
+                "ab5df625bc76dbd4",
+                ["--verbose", "-h"],
+            ),
+        )
+        self.assertEqual(
+            scripts[1],
+            Script(
+                "...",
+                ["arg.--verbose", "arg.-h"],
+                {},
+                "ab5df625bc76dbd4",
+                ["--verbose", "-h"],
+            ),
+        )
+        self.assertEqual(
+            scripts[2],
+            Script(
+                "...",
+                ["arg.--verbose", "arg.-"],
+                {},
+                "ab5df625bc76dbd4",
+                ["--verbose", "-"],
+            ),
+        )
 
 
 if __name__ == "__main__":

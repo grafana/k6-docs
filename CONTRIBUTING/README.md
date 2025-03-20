@@ -210,7 +210,11 @@ The `nofail` option will allow the k6 code snippet to freely log errors without 
 
 ### `env.X=Y` Option
 
-Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,`, `-`, and `$`.
+Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,` and `$`.
+
+### `arg.--xyz` Option
+
+Any option in the form of `arg.VALUE` will be parsed by the `md-k6.py` script, and `VALUE` will be passed as a command-line argument to `k6 run` when executing the code snippet. Arguments will be added in the same order they were specified. Examples: `arg.--foobar`, `arg.--foobar=baz`, `arg.-f`, `arg.-`. Note that for `VALUE` the following characters are **not** allowed: `,` and `$`.
 
 ### `nothresholds` Option
 
