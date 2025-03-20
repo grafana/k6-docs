@@ -17,6 +17,8 @@ A simple example where we get a secret by it's name from the default source (if 
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import secrets from 'k6/secrets';
 
@@ -31,6 +33,8 @@ export default async () => {
 We can also get a secret source by its name then get a secret specifically from it.
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import secrets from 'k6/secrets';
@@ -48,6 +52,8 @@ In both of those cases the end logs will have `***SECRET_REDACTED***` in place o
 ### A full example with multiple secret sources and names
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import secrets from 'k6/secrets';

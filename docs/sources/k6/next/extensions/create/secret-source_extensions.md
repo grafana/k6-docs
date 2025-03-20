@@ -185,6 +185,8 @@ Now we can use the extension with a test script.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import secrets from 'k6/secrets';
 

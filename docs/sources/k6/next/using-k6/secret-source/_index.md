@@ -29,6 +29,8 @@ You can implement a secret source as an [extension](https://grafana.com/docs/k6/
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import secrets from 'k6/secrets';
 
