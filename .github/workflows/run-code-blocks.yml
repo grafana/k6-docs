@@ -21,7 +21,6 @@ jobs:
       - uses: grafana/setup-k6-action@v1
         with:
           browser: true
-          k6-version: '0.56.0'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
