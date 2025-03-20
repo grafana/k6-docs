@@ -140,11 +140,11 @@ We will first execute the test without introducing faults to have an baseline us
 {{< code >}}
 
 ```bash
-xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP disrupt-pod.js
+xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP --summary-mode=legacy disrupt-pod.js
 ```
 
 ```windows-powershell
-xk6-disruptor run --env SKIP_FAULTS=1 --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
+xk6-disruptor run --env SKIP_FAULTS=1 --env "SVC_IP=$Env:SVC_IP" --summary-mode=legacy disrupt-pod.js
 ```
 
 {{< /code >}}
@@ -203,11 +203,11 @@ We repeat the execution injecting the faults. Notice we have removed the `--env 
 {{< code >}}
 
 ```bash
-xk6-disruptor run --env SVC_IP=$SVC_IP disrupt-pod.js
+xk6-disruptor run --env SVC_IP=$SVC_IP --summary-mode=legacy disrupt-pod.js
 ```
 
 ```windows-powershell
-xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
+xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" --summary-mode=legacy disrupt-pod.js
 ```
 
 {{< /code >}}

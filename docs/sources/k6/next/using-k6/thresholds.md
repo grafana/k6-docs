@@ -62,9 +62,20 @@ After executing that script, k6 outputs something similar to this:
 {{< code >}}
 
 ```bash
-   ✓ http_req_duration..............: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
-       { expected_response:true }...: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
-   ✓ http_req_failed................: 0.00%  ✓ 0 ✗ 1
+  █ THRESHOLDS
+
+    http_req_duration
+    ✓ 'p(95)<200' p(95)=148.21ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.05%
+
+  █ TOTAL RESULTS
+
+    HTTP
+    http_req_duration..............: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
+       { expected_response:true }..: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
+    http_req_failed................: 0.00%  ✓ 0 ✗ 1
 ```
 
 {{< /code >}}

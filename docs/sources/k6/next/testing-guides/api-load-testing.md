@@ -329,44 +329,47 @@ export const options = {
 };
 ```
 
-When k6 runs a test, the test output indicates whether the metrics were within the thresholds, ✅, or whether they crossed them, ❌.
-In this output, the test met both thresholds.
-
-```bash
-✓ http_req_duration..............: avg=104.7ms  min=101.87ms med=103.92ms max=120.68ms p(90)=107.2ms  p(95)=111.38ms
-    { expected_response:true }...: avg=104.7ms  min=101.87ms med=103.92ms max=120.68ms p(90)=107.2ms  p(95)=111.38ms
-✓ http_req_failed................: 0.00%   ✓ 0         ✗ 1501
-```
-
 When the test fails, the k6 CLI returns a non-zero exit code—a necessary condition for test automation.
 As an example of a failed test, here's the output for a test with a threshold that 95 percent of requests finish in under 50ms, `http_req_duration:["p(95)<50"]`:
 
 ```bash
+  █ THRESHOLDS
+
+    http_req_duration
+    ✗ 'p(95)<200' p(95)=348.21ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.05%
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......................: 90      13.122179/s
+    checks_succeeded...................: 100.00% 90 out of 90
+    checks_failed......................: 0.00%   0 out of 90
+
+    ✓ Post status is 200
+    ✓ Post Content-Type header
+    ✓ Post response name
+
+    HTTP
+    http_req_duration..................: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+      { expected_response:true }.......: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+    http_req_failed....................: 0.00%  0 out of 45
+    http_reqs..........................: 45     6.56109/s
+
+    EXECUTION
+    iteration_duration.................: avg=152.38ms   min=119.37ms med=141.27ms max=684.62ms p(90)=147.11ms p(95)=148.39ms
+    iterations.........................: 45     6.56109/s
+    vus................................: 1      min=1       max=1
+    vus_max............................: 1      min=1       max=1
+
+    NETWORK
+    data_received......................: 519 kB 76 kB/s
+    data_sent..........................: 4.9 kB 718 B/s
+
 running (0m30.1s), 00/50 VUs, 1501 complete and 0 interrupted iterations
 my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 iters/s
-
-     ✓ Post status is 200
-     ✓ Post Content-Type header
-     ✓ Post response name
-
-     checks.........................: 100.00% ✓ 4503      ✗ 0
-     data_received..................: 1.3 MB  45 kB/s
-     data_sent......................: 313 kB  10 kB/s
-     http_req_blocked...............: avg=9.26ms   min=2µs      med=14µs     max=557.32ms p(90)=25µs     p(95)=46µs
-     http_req_connecting............: avg=3.5ms    min=0s       med=0s       max=113.46ms p(90)=0s       p(95)=0s
-   ✗ http_req_duration..............: avg=105.14ms min=102.01ms med=103.86ms max=171.56ms p(90)=112.4ms  p(95)=113.18ms
-       { expected_response:true }...: avg=105.14ms min=102.01ms med=103.86ms max=171.56ms p(90)=112.4ms  p(95)=113.18ms
-   ✓ http_req_failed................: 0.00%   ✓ 0         ✗ 1501
-     http_req_receiving.............: avg=202.86µs min=17µs     med=170µs    max=4.69ms   p(90)=264µs    p(95)=341µs
-     http_req_sending...............: avg=97.56µs  min=11µs     med=63µs     max=5.56ms   p(90)=98µs     p(95)=133µs
-     http_req_tls_handshaking.......: avg=4.14ms   min=0s       med=0s       max=169.35ms p(90)=0s       p(95)=0s
-     http_req_waiting...............: avg=104.84ms min=101.88ms med=103.6ms  max=171.52ms p(90)=112.18ms p(95)=112.85ms
-     http_reqs......................: 1501    49.834813/s
-     iteration_duration.............: avg=115.18ms min=102.51ms med=104.66ms max=704.99ms p(90)=113.68ms p(95)=115.54ms
-     iterations.....................: 1501    49.834813/s
-     vus............................: 50      min=50      max=50
-     vus_max........................: 50      min=50      max=50
-
 ERRO[0030] some thresholds have failed
 ```
 
