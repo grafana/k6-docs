@@ -226,7 +226,6 @@ Customize the summary output with these options:
 k6 offers additional ways to process and analyze test results:
 
 - [**Custom summaries**](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary): Create your own summary format with complete control over the output
-- [**Real-time outputs**](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/): Stream metrics during the test run:
-  - [CSV output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv): For spreadsheet analysis
-  - [JSON output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json): For programmatic processing
-  - Head to the [real-time outputs section](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/) for more.
+- [**Real-time output**](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/): Stream metrics during the test run and:
+  - Save them to a [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv) or [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json) file.
+  - Send them to an [external service](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/#service).
