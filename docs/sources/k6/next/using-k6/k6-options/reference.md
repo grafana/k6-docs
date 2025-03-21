@@ -59,6 +59,7 @@ Each option has its own detailed reference in a separate section.
 | [Results output](#results-output)                            | Specify the results output                                                                                                                                                                                                                                                                                                                         |
 | [RPS](#rps)                                                  | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) instead)                                                                                                                                                |
 | [Scenarios](#scenarios)                                      | Define advanced execution scenarios                                                                                                                                                                                                                                                                                                                |
+| [Secret Sources](#secret-source)                             | Specify source of secrets to be used within k6.                                                                                                                                                                                                                                                                                                    |
 | [Setup timeout](#setup-timeout)                              | Specify how long the `setup()` function is allow to run before it's terminated                                                                                                                                                                                                                                                                     |
 | [Show logs](#show-logs)                                      | A boolean specifying whether the cloud logs are printed out to the terminal                                                                                                                                                                                                                                                                        |
 | [Stages](#stages)                                            | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus)                                                  |
@@ -1032,6 +1033,28 @@ export const options = {
 ```
 
 {{< /code >}}
+
+## Secret source
+
+Specify [source of secrets](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-sources) to be used within k6 script.
+
+| Env | CLI               | Code / Config file | Default |
+| --- | ----------------- | ------------------ | ------- |
+| N/A | `--secret-source` | N/A                | N/A     |
+
+Multiple secret sources can be provided and if `name=<value>` is provided the secret source will have the given name.
+
+Additional `default` can be added to set a single default secret source. If only one is provided it will be the default by default, when multiple are provided it is required to be configured.
+
+{{< code >}}
+
+```bash
+$ k6 cloud run --secret-source=mock=name=something,key=value,key2=value2 --secret-source=mock,default,key=value3 script.js
+```
+
+{{< /code >}}
+
+The above will define two mock secret source, one of them has a name "something", while the other one is the default.
 
 ## Setup timeout
 
