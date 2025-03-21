@@ -17,7 +17,7 @@ Codeless tools to speed up the test creation.
 Code k6 scripts in your IDE of choice. Empower your development workflow with IDE extensions.
 
 - [Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6) - Run k6 tests from VS Code.
-- [IntelliJ IDEA](https://plugins.jetbrains.com/plugin/16141-k6) - Run k6 tests from IntelliJ IDEs.
+- [IntelliJ IDEA](https://plugins.jetbrains.com/plugin/16141-k6) - Run k6 tests from IntelliJ IDEs. Supports debugging a k6 test via Node.js
 - [IntelliSense](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-k6-intellisense) - Get code autocompletion and in-context documentation.
 
 ## Converters
