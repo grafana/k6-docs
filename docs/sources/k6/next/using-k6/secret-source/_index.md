@@ -12,11 +12,11 @@ The secrets are made available through the [`k6/secrets`](https://grafana.com/do
 
 ## Configure secret sources
 
-Currently the only way to configured secret sources is through the `--secret-source` cli flag. Multiple secret sources are configurable at the same time
+Currently the only way to configured secret sources is through the `--secret-source` cli flag. Multiple secret sources are configurable at the same time.
 
 ## Secret sources
 
-Current build-in secret sources are limited and are mostly meant for local testing:
+Current built-in secret sources are limited and are mostly meant for local testing:
 
 - [`file`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/file) reads secrets from a key=value file.
 - [`mock`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/mock) reads secrets from the cli flag.
@@ -50,7 +50,7 @@ cool=some
 else=source
 ```
 
-You will notice how the secrets are redacted while the script still can use them.
+You will notice how the secrets are redacted while the script still can use them, for example in protocol requests.
 
 {{< code >}}
 
