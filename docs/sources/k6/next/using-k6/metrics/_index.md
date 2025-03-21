@@ -82,25 +82,25 @@ $ k6 run script.js
            * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
 
 
+
+  █ TOTAL RESULTS
+
+    HTTP
+    http_req_duration.......................................................: avg=117.55ms min=117.55ms med=117.55ms max=117.55ms p(90)=117.55ms p(95)=117.55ms
+      { expected_response:true }............................................: avg=117.55ms min=117.55ms med=117.55ms max=117.55ms p(90)=117.55ms p(95)=117.55ms
+    http_req_failed.........................................................: 0.00%  0 out of 1
+    http_reqs...............................................................: 1      2.768749/s
+
+    EXECUTION
+    iteration_duration......................................................: avg=361.09ms min=361.09ms med=361.09ms max=361.09ms p(90)=361.09ms p(95)=361.09ms
+    iterations..............................................................: 1      2.768749/s
+
+    NETWORK
+    data_received...........................................................: 6.8 kB 19 kB/s
+    data_sent...............................................................: 541 B  1.5 kB/s
+
 running (00m03.8s), 0/1 VUs, 1 complete and 0 interrupted iterations
 default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 iters, 1 per VU
-
-     data_received..................: 22 kB 5.7 kB/s
-     data_sent......................: 742 B 198 B/s
-     http_req_blocked...............: avg=1.05s    min=1.05s    med=1.05s    max=1.05s    p(90)=1.05s    p(95)=1.05s
-     http_req_connecting............: avg=334.26ms min=334.26ms med=334.26ms max=334.26ms p(90)=334.26ms p(95)=334.26ms
-     http_req_duration..............: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
-       { expected_response:true }...: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
-     http_req_failed................: 0.00% ✓ 0        ✗ 1
-     http_req_receiving.............: avg=112.41µs min=112.41µs med=112.41µs max=112.41µs p(90)=112.41µs p(95)=112.41µs
-     http_req_sending...............: avg=294.48µs min=294.48µs med=294.48µs max=294.48µs p(90)=294.48µs p(95)=294.48µs
-     http_req_tls_handshaking.......: avg=700.6ms  min=700.6ms  med=700.6ms  max=700.6ms  p(90)=700.6ms  p(95)=700.6ms
-     http_req_waiting...............: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
-     http_reqs......................: 1     0.266167/s
-     iteration_duration.............: avg=3.75s    min=3.75s    med=3.75s    max=3.75s    p(90)=3.75s    p(95)=3.75s
-     iterations.....................: 1     0.266167/s
-     vus............................: 1     min=1      max=1
-     vus_max........................: 1     min=1      max=1
 ```
 
 {{< /code >}}

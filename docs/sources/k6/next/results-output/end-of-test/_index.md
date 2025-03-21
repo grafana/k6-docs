@@ -2,118 +2,230 @@
 title: End of test
 description: When a test finishes, k6 prints a summary of results, with aggregated metrics and meta-data about the test. You can customize this, or configure the test to write granular metrics to a file.
 weight: 100
-weight: 100
 ---
 
 # End of test
 
-When a test finishes, k6 prints a top-level overview of the aggregated results to `stdout`.
+When a test finishes, k6 prints a summary of the aggregated results to `stdout`. By default, k6 uses a "compact" summary mode that focuses on the most important metrics, but you can also use a "full" mode that shows all available information.
+
+## Summary modes
+
+k6 provides three different ways to display test results through the [`--summary-mode` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-mode):
+
+- **compact** (default): Displays the most relevant test results in a concise format.
+- **full**: Includes everything from the compact format, plus additional k6 metrics and detailed results for each group and scenario.
+- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility.
+
+### Compact mode (default)
+
+The compact mode provides a concise overview focusing on three key aspects:
+
+- Thresholds results
+- Checks results
+- Aggregated metrics results by category
 
 ```bash
-checks.........................: 50.00% ✓ 45       ✗ 45
-data_received..................: 1.3 MB 31 kB/s
-data_sent......................: 81 kB  2.0 kB/s
-group_duration.................: avg=6.45s    min=4.01s    med=6.78s    max=10.15s   p(90)=9.29s    p(95)=9.32s
-http_req_blocked...............: avg=57.62ms  min=7µs      med=12.25µs  max=1.35s    p(90)=209.41ms p(95)=763.61ms
-http_req_connecting............: avg=20.51ms  min=0s       med=0s       max=1.1s     p(90)=100.76ms p(95)=173.41ms
-http_req_duration..............: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-  { expected_response:true }...: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-http_req_failed................: 0.00%  ✓ 0        ✗ 180
-http_req_receiving.............: avg=663.96µs min=128.46µs med=759.82µs max=1.66ms   p(90)=1.3ms    p(95)=1.46ms
-http_req_sending...............: avg=88.01µs  min=43.07µs  med=78.03µs  max=318.81µs p(90)=133.15µs p(95)=158.3µs
-http_req_tls_handshaking.......: avg=29.25ms  min=0s       med=0s       max=458.71ms p(90)=108.31ms p(95)=222.46ms
-http_req_waiting...............: avg=143.8ms  min=103.5ms  med=109.5ms  max=1.14s    p(90)=203.19ms p(95)=215.56ms
-http_reqs......................: 180    4.36938/s
-iteration_duration.............: avg=12.91s   min=12.53s   med=12.77s   max=14.35s   p(90)=13.36s   p(95)=13.37s
-iterations.....................: 45     1.092345/s
-vus............................: 1      min=1      max=19
-vus_max........................: 20     min=20     max=20
+  █ THRESHOLDS
+
+    http_req_duration
+    ✓ 'p(95)<1500' p(95)=148.21ms
+    ✓ 'p(90)<2000' p(90)=146.88ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......................: 90      13.122179/s
+    checks_succeeded...................: 100.00% 90 out of 90
+    checks_failed......................: 0.00%   0 out of 90
+
+    ✓ test-api.k6.io is up
+    ✓ status is 200
+
+    CUSTOM
+    custom_waiting_time................: avg=152.355556 min=120      med=141      max=684      p(90)=147.2    p(95)=148.8
+
+    HTTP
+    http_req_duration..................: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+      { expected_response:true }.......: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+    http_req_failed....................: 0.00%  0 out of 45
+    http_reqs..........................: 45     6.56109/s
+
+    EXECUTION
+    iteration_duration.................: avg=152.38ms   min=119.37ms med=141.27ms max=684.62ms p(90)=147.11ms p(95)=148.39ms
+    iterations.........................: 45     6.56109/s
+    vus................................: 1      min=1       max=1
+    vus_max............................: 1      min=1       max=1
+
+    NETWORK
+    data_received......................: 519 kB 76 kB/s
+    data_sent..........................: 4.9 kB 718 B/s
 ```
 
-<br/>
+### Full mode
 
-Besides this default summary, k6 can output the results in other formats at the end of the test:
+The full mode provides comprehensive test results, including:
 
-| On this page                                                                                         | Result format            | Read about...                                                 |
-| ---------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------- |
-| [Custom summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) | Aggregated               | Using the `handleSummary()` to make completely custom reports |
-| [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)                         | Time-stamped data points | Writing results as a CSV file, and the structure of the data  |
-| [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json)                       | Time-stamped data points | Writing results as a JSON file, and the structure of the data |
+- All information from compact mode
+- Group-specific results
+- Scenario-specific results
 
-## The default summary
-
-The end-of-test summary reports details and aggregated statistics for the primary aspects of the test:
-
-- Summary statistics about each built-in and custom [metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics#built-in-metrics) (e.g. mean, median, p95, etc).
-- A list of the test's [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios)
-- The pass/fail results of the test's [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) and [checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks).
-
-{{< code >}}
+For example:
 
 ```bash
-Ramp_Up ✓ [======================================] 00/20 VUs  30s
-     █ GET home - https://example.com/
+  █ THRESHOLDS
 
-       ✓ status equals 200
+    http_req_duration
+    ✓ 'p(95)<1500' p(95)=145.17ms
+    ✓ 'p(90)<2000' p(90)=132.76ms
 
-     █ Create resource - https://example.com/create
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
 
-       ✗ status equals 201
-        ↳  0% — ✓ 0 / ✗ 45
 
-     checks.........................: 50.00% ✓ 45       ✗ 45
-     data_received..................: 1.3 MB 31 kB/s
-     data_sent......................: 81 kB  2.0 kB/s
-     group_duration.................: avg=6.45s    min=4.01s    med=6.78s    max=10.15s   p(90)=9.29s    p(95)=9.32s
-     http_req_blocked...............: avg=57.62ms  min=7µs      med=12.25µs  max=1.35s    p(90)=209.41ms p(95)=763.61ms
-     http_req_connecting............: avg=20.51ms  min=0s       med=0s       max=1.1s     p(90)=100.76ms p(95)=173.41ms
-   ✗ http_req_duration..............: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-       { expected_response:true }...: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-     http_req_failed................: 0.00%  ✓ 0        ✗ 180
-     http_req_receiving.............: avg=663.96µs min=128.46µs med=759.82µs max=1.66ms   p(90)=1.3ms    p(95)=1.46ms
-     http_req_sending...............: avg=88.01µs  min=43.07µs  med=78.03µs  max=318.81µs p(90)=133.15µs p(95)=158.3µs
-     http_req_tls_handshaking.......: avg=29.25ms  min=0s       med=0s       max=458.71ms p(90)=108.31ms p(95)=222.46ms
-     http_req_waiting...............: avg=143.8ms  min=103.5ms  med=109.5ms  max=1.14s    p(90)=203.19ms p(95)=215.56ms
-     http_reqs......................: 180    4.36938/s
-     iteration_duration.............: avg=12.91s   min=12.53s   med=12.77s   max=14.35s   p(90)=13.36s   p(95)=13.37s
-     iterations.....................: 45     1.092345/s
-     vus............................: 1      min=1      max=19
-     vus_max........................: 20     min=20     max=20
+  █ TOTAL RESULTS
 
-ERRO[0044] some thresholds have failed
+    checks_total.......................: 110     19.569305/s
+    checks_succeeded...................: 100.00% 110 out of 110
+    checks_failed......................: 0.00%   0 out of 110
+
+    ✓ grafana.com is up
+    ✓ status is 200
+    ✓ test-api.k6.io is up
+    ✓ crocodile exists
+
+    CUSTOM
+    custom_waiting_time................: avg=92.444444 min=56      med=63       max=365      p(90)=120      p(95)=121
+
+    HTTP
+    http_req_blocked...................: avg=4.36ms    min=0s      med=5µs      max=245.04ms p(90)=13µs     p(95)=14.59µs
+    http_req_connecting................: avg=1.99ms    min=0s      med=0s       max=115.51ms p(90)=0s       p(95)=0s
+    http_req_duration..................: avg=105.72ms  min=56.31ms med=117.44ms max=328.62ms p(90)=132.76ms p(95)=145.17ms
+      { expected_response:true }.......: avg=105.72ms  min=56.31ms med=117.44ms max=328.62ms p(90)=132.76ms p(95)=145.17ms
+    http_req_failed....................: 0.00%  0 out of 65
+    http_req_receiving.................: avg=11.83ms   min=39µs    med=168µs    max=54.2ms   p(90)=30.73ms  p(95)=31.49ms
+    http_req_sending...................: avg=43.32µs   min=11µs    med=27µs     max=485µs    p(90)=74.2µs   p(95)=81.59µs
+    http_req_tls_handshaking...........: avg=2.3ms     min=0s      med=0s       max=127.41ms p(90)=0s       p(95)=0s
+    http_req_waiting...................: avg=93.85ms   min=26.54ms med=117.12ms max=328.38ms p(90)=132.61ms p(95)=145.11ms
+    http_reqs..........................: 65     11.56368/s
+
+    EXECUTION
+    iteration_duration.................: avg=159.31ms  min=56.45ms med=62.65ms  max=570.47ms p(90)=258.2ms  p(95)=350.51ms
+    iterations.........................: 45     8.005625/s
+    vus................................: 1      min=1       max=2
+    vus_max............................: 2      min=2       max=2
+
+    NETWORK
+    data_received......................: 7.1 MB 1.3 MB/s
+    data_sent..........................: 32 kB  5.6 kB/s
+
+
+  █ SCENARIO: left
+
+    checks_total.......................: 60      10.674166/s
+    checks_succeeded...................: 100.00% 60 out of 60
+    checks_failed......................: 0.00%   0 out of 60
+
+    ✓ test-api.k6.io is up
+    ✓ status is 200
+    ✓ crocodile exists
+
+    CUSTOM
+    custom_waiting_time................: avg=130.6    min=116      med=118      max=365      p(90)=121      p(95)=133.2
+
+    HTTP
+    http_req_blocked...................: avg=6.13ms   min=2µs      med=6µs      max=245.04ms p(90)=13µs     p(95)=15.99µs
+    http_req_connecting................: avg=2.88ms   min=0s       med=0s       max=115.51ms p(90)=0s       p(95)=0s
+    http_req_duration..................: avg=134.17ms min=116.42ms med=122.02ms max=328.62ms p(90)=140.36ms p(95)=207.85ms
+    http_req_failed....................: 0.00%  0 out of 40
+    http_req_receiving.................: avg=128.64µs min=39µs     med=88µs     max=630µs    p(90)=207µs    p(95)=234.04µs
+    http_req_sending...................: avg=21.82µs  min=11µs     med=20µs     max=44µs     p(90)=29.3µs   p(95)=34.05µs
+    http_req_tls_handshaking...........: avg=3.18ms   min=0s       med=0s       max=127.41ms p(90)=0s       p(95)=0s
+    http_req_waiting...................: avg=134.02ms min=116.32ms med=121.93ms max=328.38ms p(90)=140.29ms p(95)=207.73ms
+    http_reqs..........................: 40     7.116111/s
+
+    EXECUTION
+    iteration_duration.................: avg=281.02ms min=239.75ms med=249.02ms max=570.47ms p(90)=379.3ms  p(95)=455.72ms
+    iterations.........................: 20     3.558055/s
+
+    NETWORK
+    data_received......................: 239 kB 43 kB/s
+    data_sent..........................: 4.8 kB 857 B/s
+
+    ↳ GROUP: crocodiles results
+
+      checks_total.....................: 20      3.558055/s
+      checks_succeeded.................: 100.00% 20 out of 20
+      checks_failed....................: 0.00%   0 out of 20
+
+      ✓ crocodile exists
+
+      HTTP
+      http_req_blocked.................: avg=7.75µs   min=4µs      med=6µs      max=35µs     p(90)=9.4µs    p(95)=14.09µs
+      http_req_connecting..............: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+      http_req_duration................: avg=150.15ms min=122.84ms med=130.79ms max=328.62ms p(90)=210.14ms p(95)=255.24ms
+      http_req_failed..................: 0.00% 0 out of 20
+      http_req_receiving...............: avg=130.99µs min=43µs     med=95.5µs   max=558µs    p(90)=207µs    p(95)=233.09µs
+      http_req_sending.................: avg=19.95µs  min=13µs     med=19µs     max=35µs     p(90)=23.2µs   p(95)=25.49µs
+      http_req_tls_handshaking.........: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+      http_req_waiting.................: avg=150ms    min=122.78ms med=130.46ms max=328.38ms p(90)=210.01ms p(95)=255.02ms
+      http_reqs........................: 20    3.558055/s
 ```
 
-{{< /code >}}
+## Understanding the summary components
 
-Above's an example of a report that k6 generated after a test run.
+The summary report organizes information into several key sections:
 
-- It has a scenario, `Ramp_Up`
-- The requests are split into two groups:
-  - `GET home`, which has a check that responses are `200` (all passed)
-  - `Create resource`, which has a check that responses are `201` (all failed)
-- The test has one threshold, requiring that 95% of requests have a duration under 200ms (failed)
+### Metrics by category
+
+The summary displays metrics based on their source:
+
+- **Protocol-specific metrics**: Results from modules like `k6/http`, `k6/net/grpc`, or `k6/browser`
+- **Execution metrics**: Test execution details like iterations and virtual users (VUs)
+- **Network metrics**: Data transfer statistics
+
+{{< admonition type="note" >}}
+
+Categories appear only when relevant. For example, browser metrics appear only when using the `k6/browser` module.
+
+{{< /admonition >}}
+
+### Checks and thresholds
+
+- [**Thresholds**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/): Pass/fail results of performance requirements defined in your test options
+
+  - Example: Response time limits or error rate limits
+  - Always displayed at the top of the results
+  - Clear indication of success (✓) or failure (✗)
+
+- [**Checks**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks/): Results of test assertions that verify specific behaviors
+  - Example: Response status codes or response body content
+  - Shows pass/fail ratio for each check
+  - In full mode, checks appear under their respective groups or scenarios
+
+### Groups and scenarios (full mode only)
+
+When using full mode, you'll see additional sections:
+
+- [**Groups**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/): Results for logical groupings of related requests
+- [**Scenarios**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/): Results for each test scenario configuration
 
 ## Summary options
 
-k6 provides some options to filter or silence summary output:
+Customize the summary output with these options:
 
-- The [`--summary-trend-stats` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats) defines which [Trend metric](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) statistics to calculate and show.
-- The [`--summary-time-unit` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
-- The [`--no-summary` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
+- [`--summary-mode`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-mode): Choose between compact, full, or legacy display
+- [`--no-summary`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-summary): Disable the end-of-test report
+- [`--summary-trend-stats`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats): Select which statistics to show for Trend metrics
+- [`--summary-time-unit`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-time-unit): Set a consistent time unit for all values
 
-{{< collapse title="Summary export to a JSON file (Discouraged)" >}}
+## Going further
 
-### Summary export to a JSON file
+k6 offers additional ways to process and analyze test results:
 
-k6 also has the [`--summary-export=path/to/file.json` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-export), which exports some summary report data to a JSON file.
-
-The format of `--summary-export` is similar to the `data` parameter of the `handleSummary()` function.
-Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.
-For example, groups and checks are unordered,
-and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
-
-We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on in CI pipelines.
-But, the recommended approach to export to a JSON file is to use the `handleSummary()` function].
-The `--summary-export` option will likely be deprecated in the future.
-
-{{< /collapse >}}
+- [**Custom summaries**](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary): Create your own summary format with complete control over the output
+- [**Real-time output**](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/): Stream metrics during the test run and:
+  - Save them to a [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv) or [JSON](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json) file.
+  - Send them to an [external service](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/#service).

@@ -161,52 +161,60 @@ export function handleSummary(data) {
 
 {{< /code >}}
 
-In the collapsible, you can use the tabs to compare default and modified reports.
+In the collapsible section, you can compare the default and modified reports.
 
 {{< collapse title="Compare the default and modified reports" >}}
 
-To see the output of the preceding script,
-select **Modified**.
 For compactness, these outputs were limited with the `summaryTrendStats` option.
 
-{{< code >}}
+The default report would be:
 
 ```
-     data_received..................: 63 kB 42 kB/s
-     data_sent......................: 830 B 557 B/s
-     http_req_blocked...............: med=10.39µs  count=5 p(99)=451.07ms p(99.99)=469.67ms
-     http_req_connecting............: med=0s       count=5 p(99)=223.97ms p(99.99)=233.21ms
-     http_req_duration..............: med=202.26ms count=5 p(99)=225.81ms p(99.99)=226.71ms
-       { expected_response:true }...: med=202.26ms count=5 p(99)=225.81ms p(99.99)=226.71ms
-     http_req_failed................: 0.00% ✓ 0        ✗ 5
-     http_req_receiving.............: med=278.27µs count=5 p(99)=377.64µs p(99.99)=381.29µs
-     http_req_sending...............: med=47.57µs  count=5 p(99)=108.42µs p(99.99)=108.72µs
-     http_req_tls_handshaking.......: med=0s       count=5 p(99)=204.42ms p(99.99)=212.86ms
-     http_req_waiting...............: med=201.77ms count=5 p(99)=225.6ms  p(99.99)=226.5ms
-     http_reqs......................: 5     3.352646/s
-     iteration_duration.............: med=204.41ms count=5 p(99)=654.78ms p(99.99)=672.43ms
-     iterations.....................: 5     3.352646/s
-     vus............................: 1     min=1      max=1
-     vus_max........................: 1     min=1      max=1
+    HTTP
+    http_req_blocked...............: med=10.39µs  count=5 p(99)=451.07ms p(99.99)=469.67ms
+    http_req_connecting............: med=0s       count=5 p(99)=223.97ms p(99.99)=233.21ms
+    http_req_duration..............: med=202.26ms count=5 p(99)=225.81ms p(99.99)=226.71ms
+      { expected_response:true }...: med=202.26ms count=5 p(99)=225.81ms p(99.99)=226.71ms
+    http_req_failed................: 0.00% ✓ 0        ✗ 5
+    http_req_receiving.............: med=278.27µs count=5 p(99)=377.64µs p(99.99)=381.29µs
+    http_req_sending...............: med=47.57µs  count=5 p(99)=108.42µs p(99.99)=108.72µs
+    http_req_tls_handshaking.......: med=0s       count=5 p(99)=204.42ms p(99.99)=212.86ms
+    http_req_waiting...............: med=201.77ms count=5 p(99)=225.6ms  p(99.99)=226.5ms
+    http_reqs......................: 5     3.352646/s
+
+    EXECUTION
+    iteration_duration.............: med=204.41ms count=5 p(99)=654.78ms p(99.99)=672.43ms
+    iterations.....................: 5     3.352646/s
+    vus............................: 1     min=1      max=1
+    vus_max........................: 1     min=1      max=1
+
+    NETWORK
+    data_received..................: 63 kB 42 kB/s
+    data_sent......................: 830 B 557 B/s
 ```
 
-```
-→    data_received..............: 63 kB 39 kB/s
-→    data_sent..................: 830 B 507 B/s
-→    http_req_blocked...........: med=10.98µs  count=5 p(99)=485.16ms p(99.99)=505.18ms
-→    http_req_connecting........: med=0s       count=5 p(99)=245.05ms p(99.99)=255.15ms
-→    http_req_duration..........: med=208.68ms count=5 p(99)=302.87ms p(99.99)=306.61ms
-→    http_req_failed............: 0.00% ✓ 0        ✗ 5
-→    http_req_receiving.........: med=206.12µs count=5 p(99)=341.05µs p(99.99)=344.13µs
-→    http_req_sending...........: med=47.8µs   count=5 p(99)=166.94µs p(99.99)=170.92µs
-→    http_req_tls_handshaking...: med=0s       count=5 p(99)=207.2ms  p(99.99)=215.74ms
-→    http_req_waiting...........: med=208.47ms count=5 p(99)=302.49ms p(99.99)=306.23ms
-→    http_reqs..................: 5     3.054928/s
-→    vus........................: 1     min=1      max=1
-→    vus_max....................: 1     min=1      max=1
-```
+The modified report would be:
 
-{{< /code >}}
+```
+    HTTP
+→   http_req_blocked...........: med=10.98µs  count=5 p(99)=485.16ms p(99.99)=505.18ms
+→   http_req_connecting........: med=0s       count=5 p(99)=245.05ms p(99.99)=255.15ms
+→   http_req_duration..........: med=208.68ms count=5 p(99)=302.87ms p(99.99)=306.61ms
+→   http_req_failed............: 0.00% ✓ 0        ✗ 5
+→   http_req_receiving.........: med=206.12µs count=5 p(99)=341.05µs p(99.99)=344.13µs
+→   http_req_sending...........: med=47.8µs   count=5 p(99)=166.94µs p(99.99)=170.92µs
+→   http_req_tls_handshaking...: med=0s       count=5 p(99)=207.2ms  p(99.99)=215.74ms
+→   http_req_waiting...........: med=208.47ms count=5 p(99)=302.49ms p(99.99)=306.23ms
+→   http_reqs..................: 5     3.054928/s
+
+    EXECUTION
+→   vus........................: 1     min=1      max=1
+→   vus_max....................: 1     min=1      max=1
+
+    NETWORK
+→   data_received..............: 63 kB 39 kB/s
+→   data_sent..................: 830 B 507 B/s
+```
 
 {{< /collapse >}}
 

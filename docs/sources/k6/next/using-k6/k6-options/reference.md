@@ -66,6 +66,7 @@ Each option has its own detailed reference in a separate section.
 | [Supply environment variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                                                                                                                                                                                                                                                                                 |
 | [System tags](#system-tags)                                  | Specify which System Tags will be in the collected metrics                                                                                                                                                                                                                                                                                         |
 | [Summary export](#summary-export)                            | Output the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) report to a JSON file (discouraged, use [handleSummary()](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) instead)                                                                                       |
+| [Summary mode](#summary-mode)                                | Define how detailed the end-of-test summary should be                                                                                                                                                                                                                                                                                              |
 | [Summary trend stats](#summary-trend-stats)                  | Define stats for trend metrics in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                                   |
 | [Summary time unit](#summary-time-unit)                      | Time unit to be used for _all_ time values in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                       |
 | [Tags](#tags)                                                | Specify tags that should be set test-wide across all metrics                                                                                                                                                                                                                                                                                       |
@@ -1191,6 +1192,81 @@ $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 
 See an example file on the [Results Output](https://grafana.com/docs/k6/<K6_VERSION>/get-started/results-output#summary-export) page.
 
+## Summary mode
+
+Define how detailed the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/) should be. Available in the `k6 run` command.
+
+| Env               | CLI              | Code / Config file | Default     |
+| ----------------- | ---------------- | ------------------ | ----------- |
+| `K6_SUMMARY_MODE` | `--summary-mode` | N/A                | `"compact"` |
+
+The following modes are available:
+
+- **compact** (default): Shows the most relevant test results in a concise format, focusing on:
+  - Thresholds results
+  - Checks results
+  - Aggregated metrics by category
+- **full**: Shows all available information, including:
+  - Everything from compact mode
+  - Detailed metrics for each protocol-specific category
+  - Group-specific results
+  - Scenario-specific results
+- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility
+
+{{< code >}}
+
+```bash
+k6 run --summary-mode=full script.js
+```
+
+{{< /code >}}
+
+## Summary trend stats
+
+Define which stats for [`Trend` metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), use the [`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
+
+| Env                      | CLI                     | Code / Config file  | Default                       |
+| ------------------------ | ----------------------- | ------------------- | ----------------------------- |
+| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `avg,min,med,max,p(90),p(95)` |
+
+{{< code >}}
+
+```javascript
+export const options = {
+  summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(90)', 'p(95)', 'p(99.99)', 'count'],
+};
+```
+
+{{< /code >}}
+
+{{< code >}}
+
+```bash
+k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
+```
+
+{{< /code >}}
+
+## Summary time unit
+
+Define which time unit will be used for _all_ time values in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
+
+| Env                    | CLI                   | Code / Config file | Default |
+| ---------------------- | --------------------- | ------------------ | ------- |
+| `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`  | `null`  |
+
+{{< code >}}
+
+```javascript
+export const options = {
+  summaryTimeUnit: 'ms',
+};
+```
+
+{{< /code >}}
+
 ## Supply environment variables
 
 Add/override an [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) with `VAR=value`in a k6 script. Available in `k6 run` and `k6 cloud` commands.
@@ -1237,52 +1313,6 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 export const options = {
   systemTags: ['status', 'method', 'url'],
 };
-```
-
-{{< /code >}}
-
-## Summary time unit
-
-Define which time unit will be used for _all_ time values in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
-
-| Env                    | CLI                   | Code / Config file | Default |
-| ---------------------- | --------------------- | ------------------ | ------- |
-| `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`  | `null`  |
-
-{{< code >}}
-
-```javascript
-export const options = {
-  summaryTimeUnit: 'ms',
-};
-```
-
-{{< /code >}}
-
-## Summary trend stats
-
-Define which stats for [`Trend` metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
-
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), use the [`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
-
-| Env                      | CLI                     | Code / Config file  | Default                       |
-| ------------------------ | ----------------------- | ------------------- | ----------------------------- |
-| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `avg,min,med,max,p(90),p(95)` |
-
-{{< code >}}
-
-```javascript
-export const options = {
-  summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'p(99.99)', 'count'],
-};
-```
-
-{{< /code >}}
-
-{{< code >}}
-
-```bash
-k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
 
 {{< /code >}}

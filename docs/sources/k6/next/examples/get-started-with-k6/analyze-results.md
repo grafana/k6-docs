@@ -22,24 +22,43 @@ By default, the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/r
 {{< code >}}
 
 ```bash
-checks.........................: 50.00% ✓ 45       ✗ 45
-data_received..................: 1.3 MB 31 kB/s
-data_sent......................: 81 kB  2.0 kB/s
-group_duration.................: avg=6.45s    min=4.01s    med=6.78s    max=10.15s   p(90)=9.29s    p(95)=9.32s
-http_req_blocked...............: avg=57.62ms  min=7µs      med=12.25µs  max=1.35s    p(90)=209.41ms p(95)=763.61ms
-http_req_connecting............: avg=20.51ms  min=0s       med=0s       max=1.1s     p(90)=100.76ms p(95)=173.41ms
-http_req_duration..............: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-  { expected_response:true }...: avg=144.56ms min=104.11ms med=110.47ms max=1.14s    p(90)=203.54ms p(95)=215.95ms
-http_req_failed................: 0.00%  ✓ 0        ✗ 180
-http_req_receiving.............: avg=663.96µs min=128.46µs med=759.82µs max=1.66ms   p(90)=1.3ms    p(95)=1.46ms
-http_req_sending...............: avg=88.01µs  min=43.07µs  med=78.03µs  max=318.81µs p(90)=133.15µs p(95)=158.3µs
-http_req_tls_handshaking.......: avg=29.25ms  min=0s       med=0s       max=458.71ms p(90)=108.31ms p(95)=222.46ms
-http_req_waiting...............: avg=143.8ms  min=103.5ms  med=109.5ms  max=1.14s    p(90)=203.19ms p(95)=215.56ms
-http_reqs......................: 180    4.36938/s
-iteration_duration.............: avg=12.91s   min=12.53s   med=12.77s   max=14.35s   p(90)=13.36s   p(95)=13.37s
-iterations.....................: 45     1.092345/s
-vus............................: 1      min=1      max=19
-vus_max........................: 20     min=20     max=20
+  █ THRESHOLDS
+
+    http_req_duration
+    ✓ 'p(95)<1500' p(95)=148.21ms
+    ✓ 'p(90)<2000' p(90)=146.88ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......................: 90      13.122179/s
+    checks_succeeded...................: 100.00% 90 out of 90
+    checks_failed......................: 0.00%   0 out of 90
+
+    ✓ test-api.k6.io is up
+    ✓ status is 200
+
+    CUSTOM
+    custom_waiting_time................: avg=152.355556 min=120      med=141      max=684      p(90)=147.2    p(95)=148.8
+
+    HTTP
+    http_req_duration..................: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+      { expected_response:true }.......: avg=140.36ms   min=119.08ms med=140.96ms max=154.63ms p(90)=146.88ms p(95)=148.21ms
+    http_req_failed....................: 0.00%  0 out of 45
+    http_reqs..........................: 45     6.56109/s
+
+    EXECUTION
+    iteration_duration.................: avg=152.38ms   min=119.37ms med=141.27ms max=684.62ms p(90)=147.11ms p(95)=148.39ms
+    iterations.........................: 45     6.56109/s
+    vus................................: 1      min=1       max=1
+    vus_max............................: 1      min=1       max=1
+
+    NETWORK
+    data_received......................: 519 kB 76 kB/s
+    data_sent..........................: 4.9 kB 718 B/s
 ```
 
 {{< /code >}}

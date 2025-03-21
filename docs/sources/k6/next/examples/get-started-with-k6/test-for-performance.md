@@ -96,9 +96,13 @@ k6 run api-test.js
 Inspect the console output to determine whether performance crossed a threshold.
 
 ```
-✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms
-       { expected_response:true }...: avg=198.42ms   min=198.42ms   med=198.42ms   max=198.42ms   p(90)=198.42ms   p(95)=198.42ms
-✗ http_req_failed................: 0.00% ✓ 0        ✗ 1
+  █ THRESHOLDS
+
+    http_req_duration
+    ✓ 'p(99)<1000' p(99)=148.21ms
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=20.%
 ```
 
 The ✓ and ✗ symbols indicate whether the performance thresholds passed or failed.
