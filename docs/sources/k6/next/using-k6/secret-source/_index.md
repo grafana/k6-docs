@@ -8,7 +8,7 @@ weight: 14
 
 Secret sources are a way for k6 to acquire secrets to be used with k6.
 
-The secrets are made available through the `[k6/secrets`]() JS API and will be redacted from any logs.
+The secrets are made available through the [`k6/secrets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-secrets) JS API and will be redacted from any logs.
 
 ## Configure secret sources
 

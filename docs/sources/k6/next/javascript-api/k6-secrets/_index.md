@@ -1,15 +1,22 @@
 ---
-title: 'k6/secrest'
+title: 'k6/secrets'
 description: 'k6 secrest API'
-weight: 04
+weight: 11
 ---
 
 # k6/secrets
 
-| Property         | Description                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------------- |
-| get([String])    | asynchrounsly get a secret from the default secret source                                           |
-| source([String]) | returns a source for the provided name that can than be used to get a secret from a concrete source |
+{{< docs/shared source="k6" lookup="javascript-api/k6-secrets.md" version="<K6_VERSION>" >}}
+
+## get
+
+get returns the value of the secret for the provided name from the default secret source. If there is no default secret source, there is no secret with that name or some other error is returned an exception will thrown.
+
+## source
+
+source returns a secret source for the name provided. The name is defined when running k6.
+
+The returned object has one method get with the same functionality as the global [get](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-secrets#get)
 
 ## Example
 
