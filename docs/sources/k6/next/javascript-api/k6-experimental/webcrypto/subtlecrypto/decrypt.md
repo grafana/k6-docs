@@ -6,6 +6,8 @@ weight: 01
 
 # decrypt
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `decrypt()` method decrypts some encrypted data.
 
 ## Usage

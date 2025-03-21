@@ -6,6 +6,8 @@ weight: 12
 
 # RsaHashedImportParams
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `RsaHashedImportParams` represents the object that should be passed as the algorithm parameter into [`importKey`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey/) when using the RSA algorithm.
 
 ## Properties

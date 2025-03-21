@@ -6,6 +6,8 @@ weight: 07
 
 # AesKeyGenParams
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `AesKeyGenParams` object represents the object that should be passed as the algorithm parameter into the [generateKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) operation when generating an AES key.
 
 ## Properties
