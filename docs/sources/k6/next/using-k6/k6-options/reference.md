@@ -1047,7 +1047,7 @@ Additional `default` can be added to set a single default secret source. If only
 {{< code >}}
 
 ```bash
-$ k6 cloud run --secret-source=mock=name=something,key=value,key2=value2  --secret-source=mock,default,key=value3 script.js
+$ k6 cloud run --secret-source=mock=name=something,key=value,key2=value2 --secret-source=mock,default,key=value3 script.js
 ```
 
 {{< /code >}}
