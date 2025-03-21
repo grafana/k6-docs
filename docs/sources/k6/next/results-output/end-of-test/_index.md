@@ -12,9 +12,9 @@ When a test finishes, k6 prints a summary of the aggregated results to `stdout`.
 
 k6 provides three different ways to display test results through the [`--summary-mode` option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-mode):
 
-- **compact** (default): Displays the most relevant test results in a concise format
-- **full**: Includes everything from the compact format, plus additional k6 metrics and detailed results for each group and scenario
-- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility
+- **compact** (default): Displays the most relevant test results in a concise format.
+- **full**: Includes everything from the compact format, plus additional k6 metrics and detailed results for each group and scenario.
+- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility.
 
 ### Compact mode (default)
 
