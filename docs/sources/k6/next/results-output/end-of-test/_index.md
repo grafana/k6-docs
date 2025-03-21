@@ -186,7 +186,11 @@ The summary displays metrics based on their source:
 - **Execution metrics**: Test execution details like iterations and virtual users (VUs)
 - **Network metrics**: Data transfer statistics
 
-Note: Categories appear only when relevant. For example, browser metrics appear only when using the `k6/browser` module.
+{{< admonition type="note" >}}
+
+Categories appear only when relevant. For example, browser metrics appear only when using the `k6/browser` module.
+
+{{< /admonition >}}
 
 ### Checks and thresholds
 
