@@ -35,7 +35,7 @@ Currently, k6 supports two ways to extend its native functionality:
 
 - **Output extensions** send metrics to a custom file format or service. Add custom processing and dispatching.
 
-- **Secret Source extensions** provide secrets to you tests.
+- **Secret Source extensions** provide secrets to your tests.
 
 ## xk6 makes custom binaries
 

@@ -20,7 +20,7 @@ The returned object has one method get with the same functionality as the global
 
 ## Example
 
-A simple example where we get a secret by it's name from the default source (if defined).
+A simple example where we get a secret by its name from the default source (if defined).
 
 {{< code >}}
 
