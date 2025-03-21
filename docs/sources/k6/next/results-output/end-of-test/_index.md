@@ -206,7 +206,7 @@ Note: Categories appear only when relevant. For example, browser metrics appear 
 When using full mode, you'll see additional sections:
 
 - [**Groups**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/): Results for logical groupings of related requests
-- [**Scenarios**](https://grafana.com/docs/k6/latest/using-k6/scenarios/): Results for each test scenario configuration
+- [**Scenarios**](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/): Results for each test scenario configuration
 
 ## Summary options
 
