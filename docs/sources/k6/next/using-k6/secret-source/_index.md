@@ -32,13 +32,18 @@ You can implement a secret source as an [extension](https://grafana.com/docs/k6/
 <!-- md-k6:skip -->
 
 ```javascript
+import http from 'k6/http';
 import secrets from 'k6/secrets';
 
 export default async () => {
   const my_secret = await secrets.get('cool'); // get secret from a source with the provided identifier
   console.log(my_secret);
-  await secrets.get('else'); // get secret from a source with the provided identifier
-  console.log(my_secret);
+  const response = await http.asyncRequest('GET', 'https://httpbin.org/get', null, {
+    headers: {
+      'Custom-Authentication': `Bearer ${await secrets.get('else')}`,
+    },
+  });
+  console.log(response.body);
 };
 ```
 
@@ -58,7 +63,17 @@ You will notice how the secrets are redacted while the script still can use them
 $ k6 run --secret-source=file=file.secret secrets.test.js
 ...
 INFO[0000] ***SECRET_REDACTED***                         source=console
-INFO[0000] ***SECRET_REDACTED***                         ***SECRET_REDACTED***=console
+INFO[0001] {
+  "args": {},
+  "headers": {
+    "Custom-Authentication": "Bearer ***SECRET_REDACTED***",
+    "Host": "httpbin.org",
+    "User-Agent": "k6/0.57.0 (https://k6.io/)",
+    "X-Amzn-Trace-Id": "Root=1-67dd638b-4243896a2fa1b1b45bc63eaa"
+  },
+  "origin": "<my actual IP>",
+  "url": "https://httpbin.org/get"
+}  ***SECRET_REDACTED***=console
 ```
 
 {{</ code >}}
