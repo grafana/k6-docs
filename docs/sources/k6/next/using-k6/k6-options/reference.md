@@ -218,8 +218,8 @@ Specify the config file in JSON format.
 If the config file is not specified, k6 looks for `config.json` in the `k6/` directory inside the regular directory for configuration files on the operating system.
 Default config locations on different operating systems are as follows:
 
-| OS         | Default Config Path                                             |
-| ---------- | --------------------------------------------------------------- |
+| OS         | Default Config Path                                  |
+| ---------- | ---------------------------------------------------- |
 | Unix-based | `${HOME}/.config/k6/config.json`                     |
 | macOS      | `${HOME}/Library/Application Support/k6/config.json` |
 | Windows    | `%AppData%/k6/config.json`                           |
@@ -1303,8 +1303,19 @@ tag. Available in `k6 run` and `k6 cloud` commands.
 export const options = {
   tags: {
     name: 'value',
+    another: 'different value',
   },
 };
+```
+
+{{< /code >}}
+
+Multiple cli flags can be provided to set more than one tag at a time:
+
+{{< code >}}
+
+```shell
+k6 run --tag name=value --tag another="different value" script.js
 ```
 
 {{< /code >}}
