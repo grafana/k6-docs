@@ -161,15 +161,13 @@ export function handleSummary(data) {
 
 {{< /code >}}
 
-In the collapsible, you can use the tabs to compare default and modified reports.
+In the collapsible section, you can compare the default and modified reports.
 
 {{< collapse title="Compare the default and modified reports" >}}
 
-To see the output of the preceding script,
-select **Modified**.
 For compactness, these outputs were limited with the `summaryTrendStats` option.
 
-{{< code >}}
+The default report would be:
 
 ```
     HTTP
@@ -195,6 +193,8 @@ For compactness, these outputs were limited with the `summaryTrendStats` option.
     data_sent......................: 830 B 557 B/s
 ```
 
+The modified report would be:
+
 ```
     HTTP
 →   http_req_blocked...........: med=10.98µs  count=5 p(99)=485.16ms p(99.99)=505.18ms
@@ -215,8 +215,6 @@ For compactness, these outputs were limited with the `summaryTrendStats` option.
 →   data_received..............: 63 kB 39 kB/s
 →   data_sent..................: 830 B 507 B/s
 ```
-
-{{< /code >}}
 
 {{< /collapse >}}
 
