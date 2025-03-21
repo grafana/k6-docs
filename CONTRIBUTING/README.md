@@ -16,6 +16,9 @@ When you contribute to the docs, it helps to know how things work.
     - [Use the `apply-patch` script](#use-the-apply-patch-script)
     - [Style Guides](#style-guides)
     - [Shortcodes](#shortcodes)
+    - [Shortcodes](#shortcodes)
+    - [Code snippets and ESLint](#code-snippets-and-eslint)
+    - [Code snippets evaluation](#code-snippets-evaluation)
 - [Deploy](#deploy)
 - [Create a new release](#create-a-new-release)
 
@@ -81,8 +84,8 @@ Depending on the type of update you need to make, you'll want to make updates to
 
 If you're making any updates or fixes that apply to the latest version of k6, you'll need to:
 
-- Update the Markdown files in the `docs/sources/next` folder.
-- Update the Markdown files in the `docs/sources/v{LATEST_VERSION}` folder.
+- Update the Markdown files in the `docs/sources/k6/next` folder.
+- Update the Markdown files in the `docs/sources/k6/v{LATEST_VERSION}` folder.
   - You can do this manually or by using the [`apply-patch`](../scripts/apply-patch) script from the `scripts` folder. Refer to the [Use the `apply-patch` script](#use-the-apply-patch-script) section for more details.
 
 This is to make sure that any changes you make are also brought over to the next major release version of k6.
@@ -93,7 +96,7 @@ This is to make sure that any changes you make are also brought over to the next
 
 If you're making any updates or fixes that only apply to the next major release of k6, you'll need to:
 
-- Update the Markdown files in the `docs/sources/next` folder.
+- Update the Markdown files in the `docs/sources/k6/next` folder.
 
 Once you make any changes and open a PR, and that PR is reviewed, you can merge it without having to worry about those changes showing up in the `latest` version of the docs. The `latest` version will always display the highest numbered version folder of the docs.
 
@@ -107,16 +110,16 @@ To use the script, make sure you're in the root of the k6-docs folder and run:
 scripts/apply-patch <COMMIT> <SOURCE> <DESTINATION>
 ```
 
-For example, if you'd like to apply the changes from your last commit, from the `docs/sources/next` folder to the `docs/sources/v0.47.x`, you can run:
+For example, if you'd like to apply the changes from your last commit, from the `docs/sources/k6/next` folder to the `docs/sources/k6/v0.47.x`, you can run:
 
 ```bash
-scripts/apply-patch HEAD~ docs/sources/next docs/sources/v0.47.x
+scripts/apply-patch HEAD~ docs/sources/k6/next docs/sources/k6/v0.47.x
 ```
 
 Or if you'd like to apply the changes from your previous three commits, you can run:
 
 ```bash
-scripts/apply-patch HEAD~3 docs/sources/next docs/sources/v0.47.x
+scripts/apply-patch HEAD~3 docs/sources/k6/next docs/sources/k6/v0.47.x
 ```
 
 ### Style guides
@@ -163,6 +166,77 @@ export default async function () {
 }
 ```
 ````
+
+### Code snippets evaluation
+
+In addition to linting code snippets, we also run the snippets using k6 OSS. This is done automatically on PRs, only for Markdown files that have been changed in the `docs/sources/next` directory when compared to `main`. See the `scripts/md-k6.py` script for details on how this works internally.
+
+Code snippets are run using the `-w` k6 OSS flag. If the code snippet causes k6 to exit with a nonzero status, then the script (and, therefore, the workflow) will fail. If any error is logged by k6, for example, because an exception was raised, this will also fail the execution.
+
+You can control the behaviour of `md-k6.py` via magic `md-k6` HTML comments placed above the code snippets. The format is the following:
+
+```text
+<!-- md-k6:opt1,opt2,... -->
+```
+
+That is, `md-k6:` followed by a comma-separated list of options.
+
+### `skip` Option
+
+The `skip` option will cause `md-k6.py` to ignore the code snippet completely (i.e. `<!-- md-k6:skip -->`). This is useful for code snippets that only showcase a very specific aspect of k6 scripting and do not contain an actually fully working script.
+
+> [!TIP]
+> You can combine both `md-k6.py` and ESLint skip directives by placing the `md-k6.py` directive first:
+>
+> ````Markdown
+> <!-- md-k6:skip -->
+> <!-- eslint-skip -->
+>
+> ```javascript
+> export default async function () {
+>   const browser = chromium.launch({ headless: false });
+>   const page = browser.newPage();
+> }
+> ```
+> ````
+
+### `skipall` Option
+
+The `skipall` option will cause `md-k6.py` to ignore the entire Markdown file. Note that this option is special: it can be specified anywhere in the file, for example, at the very end. It also does not need to be placed above a code snippet. In order for this option to be read correctly, it must be specified alone, with no other additional options in the same HTML comment tag.
+
+### `nofail` Option
+
+The `nofail` option will allow the k6 code snippet to freely log errors without failing. However, if k6 exits with a nonzero status, the `md-k6.py` script will still fail. For this reason, using `nofail` will provide slightly better coverage than simply using `skip` on a code snippet.
+
+### `env.X=Y` Option
+
+Any option taking the form of `env.KEY=VALUE` will be parsed by the `md-k6.py` script, and the corresponding `KEY=VALUE` pairing will be added to the environment variables when executing the k6 code snippet. Note that for `KEY` and `VALUE` the following characters are **not** allowed: `,` and `$`.
+
+### `arg.--xyz` Option
+
+Any option in the form of `arg.VALUE` will be parsed by the `md-k6.py` script, and `VALUE` will be passed as a command-line argument to `k6 run` when executing the code snippet. Arguments will be added in the same order they were specified. Examples: `arg.--foobar`, `arg.--foobar=baz`, `arg.-f`, `arg.-`. Note that for `VALUE` the following characters are **not** allowed: `,` and `$`.
+
+### `nothresholds` Option
+
+The `nothresholds` options disables the processing of thresholds when running the code snippet (`--no-thresholds`).
+
+### `fixedscenarios` Option
+
+By default, all code snippets are run with whatever scenarios they define via their `options` variable. However, some command line arguments to `md-k6.py` can change this, for example: `-d`/`--duration`. This option replaces the scenarios for all code snippets run with a scenario lasting only a specific amount of time. However, this behavior may break some scripts, for this reason, it is possible to specify the `fixedscenarios` option to ensure that the code snippet scenarios will be used as they appear in the Markdown file.
+
+### Usage
+
+To run the `md-k6.py` script locally, invoke it using Python. For example:
+
+```bash
+python3 scripts/md-k6.py docs/sources/k6/next/examples/functional-testing.md
+```
+
+You can also read the usage information:
+
+```bash
+python3 scripts/md-k6.py --help
+```
 
 ## Deploy
 

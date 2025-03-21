@@ -1,12 +1,13 @@
 module.exports = {
   root: true,
   env: {
-    es2017: true,
+    es2022: true,
     commonjs: true,
   },
   parserOptions: {
-    ecmaVersion: '2017',
+    ecmaVersion: '2024',
     sourceType: 'module',
+    requireConfigFile: false, // <== ADD THIS
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],

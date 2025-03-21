@@ -2,8 +2,5 @@
   "docs/sources/**/*.md": [
     "prettier --parser markdown --write",
     "eslint -c ./docs/sources/.eslintrc.js --fix"
-  ],
-  "*.{js,jsx,css,scss}": "prettier --write",
-  "*.{js,jsx}": "eslint --fix",
-  "src/data/markdown/**/*.{md,mdx}": "eslint -c ./src/data/markdown/.eslintrc.js --fix"
+  ]
 }
