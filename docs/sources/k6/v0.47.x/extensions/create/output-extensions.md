@@ -133,7 +133,7 @@ func (*Logger) Description() string {
 
 // Start initializes any state needed for the output, establishes network
 // connections, etc.
-func (*Logger) Start() error {
+func (o *Logger) Start() error {
     return nil
 }
 
