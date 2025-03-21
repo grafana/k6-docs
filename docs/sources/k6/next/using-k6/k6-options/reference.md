@@ -1310,7 +1310,7 @@ export const options = {
 
 {{< /code >}}
 
-Multiple cli flags can be provided to set more than one tag at a time:
+Multiple CLI flags can be provided to set more than one tag at a time:
 
 {{< code >}}
 
