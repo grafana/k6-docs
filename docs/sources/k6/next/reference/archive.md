@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../misc/archive # docs/k6/<K6_VERSION>/misc/archive
 title: 'Archive Command'
 description: 'A k6 archive is simply a tar file with all files needed to execute a k6 test.'
 weight: 05

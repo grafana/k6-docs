@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../misc/glossary # docs/k6/<K6_VERSION>/misc/archive
 title: Glossary
 description: 'A list of technical terms commonly used when discussing k6, with definitions.'
 weight: 07
@@ -14,6 +16,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 <Glossary>
 
 {{< column-list >}}
+
 - [Application performance monitoring](#application-performance-monitoring)
 - [Concurrent sessions](#concurrent-sessions)
 - [Checks](#checks)
@@ -57,7 +60,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Throughput](#throughput)
 - [Virtual user](#virtual-user)
 - [YAML](#yaml)
-{{< /column-list >}}
+  {{< /column-list >}}
 
 </Glossary>
 

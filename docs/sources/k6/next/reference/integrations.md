@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../misc/integrations # docs/k6/<K6_VERSION>/misc/archive
 title: Integrations & Tools
 weight: 01
 ---
@@ -33,6 +35,7 @@ Generate a k6 script quickly from an existing file.
 k6 can output test results to various formats and 3rd-party services.
 
 {{< column-list >}}
+
 - [Amazon CloudWatch](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/amazon-cloudwatch)
 - [Apache Kafka](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/apache-kafka)
 - [CSV](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/csv)
@@ -49,13 +52,14 @@ k6 can output test results to various formats and 3rd-party services.
 - [Prometheus](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/prometheus-remote-write)
 - [StatsD](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/statsd)
 - [TimescaleDB](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/timescaledb)
-{{< /column-list >}}
+  {{< /column-list >}}
 
 ## Continuous Integration and Continuous Delivery
 
 By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.
 
 {{< column-list >}}
+
 - [AWS CodeBuild](https://k6.io/blog/integrating-k6-with-aws-codebuild/)
 - [Azure Pipelines](https://k6.io/blog/integrating-load-testing-with-azure-pipelines/)
 - [Bamboo](https://k6.io/blog/integrating-k6-with-bamboo/)
@@ -68,7 +72,7 @@ By automating load testing with your CI / CD tools, you can quickly see when a c
 - [Jenkins](https://k6.io/blog/integrating-load-testing-with-jenkins/)
 - [Keptn](https://k6.io/blog/performance-testing-in-keptn-using-k6/)
 - [TeamCity](https://k6.io/blog/load-testing-using-teamcity-and-k6/)
-{{< /column-list >}}
+  {{< /column-list >}}
 
 ## Chaos engineering
 
