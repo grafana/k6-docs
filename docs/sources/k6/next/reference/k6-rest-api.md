@@ -1,4 +1,6 @@
 ---
+aliases:
+    - ../misc/k6-rest-api # docs/k6/<K6_VERSION>/misc/archive
 title: 'k6 REST API'
 description: 'With this API you can see and control different execution aspects like
 number of VUs, pause or resume the test, list groups, set and get the
