@@ -6,6 +6,8 @@ weight: 02
 
 # digest
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `digest()` method generates a cryptographically secure [digest](https://developer.mozilla.org/en-US/docs/Glossary/Digest) of the given data. A digest is a short fixed-length value derived from some input data. The `digest()` method is commonly used to compute a checksum of data or to verify the integrity of data.
 
 ## Usage

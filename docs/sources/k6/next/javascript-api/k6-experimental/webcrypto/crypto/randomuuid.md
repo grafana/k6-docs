@@ -6,6 +6,8 @@ weight: 02
 
 # randomUUID
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `randomUUID` method produces a 36-characters long string that contains a cryptographically random UUID v4.
 
 ## Usage

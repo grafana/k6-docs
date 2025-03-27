@@ -6,6 +6,8 @@ weight: 03
 
 # encrypt
 
+{{< docs/shared source="k6" lookup="webcrypto/deprecated.md" version="<K6_VERSION>" >}}
+
 The `encrypt()` method encrypts some data.
 
 ## Usage
