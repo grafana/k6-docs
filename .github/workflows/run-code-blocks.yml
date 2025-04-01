@@ -43,9 +43,9 @@ jobs:
         run: |
           cd k6
           go build -o k6main -v
-
-      - name: Copy k6 binary to root directory
-        run: mv k6/k6main .
+          cd ..
+          mv k6/k6main .
+          ./k6main version
 
       - name: Run Updated Code Blocks
         env:
