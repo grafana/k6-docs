@@ -42,15 +42,15 @@ jobs:
       - name: Build k6
         run: |
           cd k6
-          go build -o k6main -v
+          go build -o k6master -v
           cd ..
-          mv k6/k6main .
-          ./k6main version
+          mv k6/k6master .
+          ./k6master version
 
       - name: Run Updated Code Blocks
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for file in ${ALL_CHANGED_FILES}; do
-            K6_PATH=./k6main python -u scripts/md-k6.py --duration 2s "$file"
+            K6_PATH=./k6master python -u scripts/md-k6.py --duration 2s "$file"
           done
