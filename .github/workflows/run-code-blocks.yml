@@ -21,9 +21,32 @@ jobs:
       - uses: grafana/setup-k6-action@v1
         with:
           browser: true
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+
+      - name: Checkout k6 repository
+        uses: actions/checkout@v4
+        with:
+          repository: grafana/k6
+          path: k6
+          fetch-depth: 1
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: k6/go.mod
+          cache-dependency-path: k6/go.sum
+
+      - name: Build k6
+        run: |
+          cd k6
+          go build
+
+      - name: Copy k6 binary to root directory
+        run: mv k6/k6 .
+
       - name: Run Updated Code Blocks
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
