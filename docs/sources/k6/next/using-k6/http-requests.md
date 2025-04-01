@@ -4,8 +4,6 @@ description: 'Define the HTTP requests and methods you want to use. k6 adds tags
 weight: 01
 ---
 
-foo
-
 # HTTP Requests
 
 When you create a new load test, one of the first steps is to define the HTTP requests that you would like to test.
