@@ -149,14 +149,16 @@ There are two types of breaking changes:
 1. Removal
 2. Update
 
-#### Steps to remove an API or a feature
+when a breaking change is added then te k6 team will follow the following steps:
+
+#### Remove an API or a feature
 
 1. Deprecate a current API or a feature by following the dedicated policy.
 2. If necessary, add an alternative solution. Ideally, this would be an experimental version within a minor release within the current maintained state. Alternatively, it might be available in a Preview release.
 3. Provide documentation for the migration path.
 4. Proceed with removing the API and releasing a new major version.
 
-#### Steps to update an API or a feature
+#### Update an API or a feature
 
 1. Apply the changes, then publish them in the next major version. If the change is significant, it might be convenient to make it available in a Preview release that can support the migration path until a version is globally available.
 2. Provide documentation for the migration path.
