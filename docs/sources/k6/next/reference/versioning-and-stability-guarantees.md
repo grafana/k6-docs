@@ -168,7 +168,7 @@ when a breaking change is added then te k6 team will follow the following steps:
 When the k6 team intends to remove an API or a feature, it will be marked as *deprecated*. This occurs when an API becomes obsolete, superseded by another API, or otherwise discontinued for business or technological reasons.
 Deprecated APIs remain available through their deprecated phase, which guarantees they will remain available at least throughout the entire life cycle of the current major version.
 
-A deprecation has several layers of communication necessary to be implemented and respected before it can be officially applied:
+A deprecation will be announced through several layers of communication before it will be officially applied:
 
 1. Release notes and CHANGELOGs.
 2. Official documentation.
@@ -177,8 +177,8 @@ A deprecation has several layers of communication necessary to be implemented an
 
 ### Migration
 
-When a breaking change is introduced, or an API is superseded, then documentation for a migration guide must be provided to users to help them understand how to move from version to version.
-The migration path must be available in the official documentation, and it is recommended to be mentioned in all other communication channels.
+When a breaking change is introduced, or an API is superseded, then documentation for a migration guide will be provided to users to help them understand how to move from version to version.
+The migration path will be available in the official documentation, and it will be mentioned in all other communication channels.
 
 ## Support and development policies
 
@@ -195,9 +195,9 @@ Any past version of k6 that’s neither being developed, maintained, or supporte
 
 ### Guidelines
 
-1. _We don't backport features_ from one major version to any previous ones.
-2. We only provide changes on the latest release of each support category: _at any point in time, there are single officially under-development and actively maintained versions_. We do not support multiple versions of each support path. For example, suppose a bug is found in v1.1.0, and the latest v1.Y.Z published release is v1.3.2. In that case, if and only if the latest release is affected, and the bug or security issue is deemed important enough, only then does the development team define as a priority to publish a fix that will be released in v1.3.3. Users cannot expect a v1.1.1 fix release.
-3. Our products, services, and teams building upon k6 are expected to develop their versioning integration built on our support policies.
+1. _Features are not backported_ from one major version to any previous ones.
+2. Only changes on the latest release of each support category are provided: _at any point in time, there are single officially under-development and actively maintained versions_. We do not support multiple versions of each support path. For example, suppose a bug is found in v1.1.0, and the latest v1.Y.Z published release is v1.3.2. In that case, if and only if the latest release is affected, and the bug or security issue is deemed important enough, only then does the development team define as a priority to publish a fix that will be released in v1.3.3. Users cannot expect a v1.1.1 fix release.
+3. Other Grafana products, services, and teams building upon k6 are expected to develop their versioning integration built on our support policies.
 
 #### Bugs & Security issues
 
