@@ -40,7 +40,7 @@ The preceding example uses a WebSocket echo server, which you can run with the f
 {{< code >}}
 
 ```bash
-$ docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
+docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
 
 {{< /code >}}

@@ -29,13 +29,13 @@ We presume that you already have a machine that supports both running k6 and Clo
 2. Download the CloudWatch Agent package suitable for your operating system. For example, on Debian 10 (Buster), we've used the following link. For other operating systems, please refer to this [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
 
    ```bash
-   $ wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
+   wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
    ```
 
 3. Install the package:
 
    ```bash
-   $ sudo dpkg -i amazon-cloudwatch-agent.deb
+   sudo dpkg -i amazon-cloudwatch-agent.deb
    ```
 
 4. Configure the agent to receive data from k6. For this, create a file called "_/opt/aws/amazon-cloudwatch-agent/etc/statsd.json_" and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
@@ -58,13 +58,13 @@ We presume that you already have a machine that supports both running k6 and Clo
 5. Run the following command to start the agent:
 
    ```bash
-   $ sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
+   sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
    ```
 
 6. You can check the status of the agent using the following command:
 
    ```bash
-   $ amazon-cloudwatch-agent-ctl -a status
+   amazon-cloudwatch-agent-ctl -a status
    ```
 
 ## Run the k6 test
@@ -74,7 +74,7 @@ Once the agent is running, you can run your test with:
 {{< code >}}
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
+K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
 
 {{< /code >}}

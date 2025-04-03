@@ -22,7 +22,7 @@ Let's say that you normally execute a test using:
 {{< code >}}
 
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
 
 {{< /code >}}
@@ -35,7 +35,7 @@ into a tar file:
 {{< code >}}
 
 ```bash
-$ k6 archive script.js
+k6 archive script.js
 ```
 
 {{< /code >}}
@@ -52,7 +52,7 @@ files you can execute:
 {{< code >}}
 
 ```bash
-$ k6 run archive.tar
+k6 run archive.tar
 ```
 
 {{< /code >}}
