@@ -180,11 +180,7 @@ The migration path must be available in the official documentation, and it is re
 
 ## Support and development policies
 
-We define k6 support and development policies according to four states where a k6 version can be implemented.
-
-### The states of k6 releases
-
-At any given time, we have:
+We define k6 support and development policies according to four states where a k6 version can be implemented. At any given time, we have:
 
 * **The under-development** version is the next upcoming version of k6. Note that this version might either start a new major version, for example, developing v3.0.0 while the latest release is v2.8.2, or it might be a new minor or patch iteration over the latest release.
 * **The actively maintained** version is the latest released major version of k6.
@@ -207,11 +203,7 @@ Bugs and security issues come in all shapes and sizes and vary widely in impact.
 
 The k6 open-source core team, with input from affected stakeholders, is responsible for assessing the severity of these issues.
 
-##### Bugs
-
 We classify bug severity based on their impact on users or product functionality. High-severity bugs prevent a subset of users from using the software properly or at all. Depending on the severity, the team will either release an immediate patch or, for less critical bugs, delay the fix to the next scheduled release.
-
-##### Security
 
 Security issues are classified using the CVSS (Common Vulnerability Scoring System) score when available. In its absence, we evaluate the threat in collaboration with the security team and affected teams. This assessment considers the potential threat to customers, users, system health, and data integrity. Like bug fixes, the response will be either an immediate patch release for high-severity issues or a delayed fix for lower-severity issues.
 
@@ -266,7 +258,7 @@ If the issue also affects deprecated versions of k6, we take no action and invit
 
 An issue (security or bug) is spotted in a **deprecated** version. We only recommend that users upgrade their version of k6.
 
-### Experimental
+## Experimental
 
 Within k6, some APIs, features, and modules are explicitly marked as experimental.
 
