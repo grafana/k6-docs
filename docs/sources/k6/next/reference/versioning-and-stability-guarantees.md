@@ -20,15 +20,13 @@ If you believe an API should be added to this allow list but is currently missin
 
 ## Versioning strategy
 
-k6 strictly follows [Semantic Versioning 2.0.0](https://semver.org/) versioning scheme. This versioning scheme defines three kinds of software versions.
+k6 strictly follows [Semantic Versioning 2.0.0](https://semver.org/) versioning scheme. This versioning scheme defines three kinds of software versions, categorizing their relationship to the key concept of breaking changes.
 
 ### Breaking change
 
 As per the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) specification, we define a breaking change as a change to k6 that's not backward compatible.
 
 Breaking changes imply that the consumer of k6 is expected to make some effort to adapt to the changes being made.
-
-Although it's possible that, in certain cases, the new major version containing breaking changes might be compatible with the previous version, this isn't expected.
 
 ### Major version
 
@@ -37,6 +35,8 @@ A major version contains backward incompatible API changes.
 Quoting the [SemVer 2.0.0 specification on major versions](https://semver.org/#spec-item-8) directly:
 
 > *Major version X (X.y.z | X \> 0\) **MUST** be incremented if any backward-incompatible changes are introduced to the public API. This may also include minor and patch-level changes. Patch and minor versions **MUST** be reset to 0 when the major version is incremented.*
+
+Although it's possible that, in certain cases, the new major version containing breaking changes might be compatible with the previous version, this isn't expected.
 
 ### Minor version
 
