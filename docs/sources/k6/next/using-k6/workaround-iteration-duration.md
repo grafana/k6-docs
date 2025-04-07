@@ -6,6 +6,8 @@ _build:
 weight: 20
 ---
 
+foo
+
 # Workaround to calculate iteration_duration
 
 A common requested case is to track the `iteration_duration` metric without including time spent for `setup` and `teardown` functions.
