@@ -10,9 +10,23 @@ weight: 01
 
 An alternative approach to [browser-based load testing](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites/#browser-based-load-testing) that's much less resource-intensive is combining a small number of virtual users for a browser test with a large number of virtual users for a protocol-level test.
 
-You can achieve hybrid performance in multiple ways, often by using different tools. To simplify the developer experience, you can combine k6 browser with core k6 features to write hybrid tests in a single script.
+You can achieve [hybrid performance](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/load-testing-websites#hybrid-load-testing) in multiple ways, often by using different tools. To simplify the developer experience, you can combine k6 browser with core k6 features to write hybrid tests in a single script.
+
+Some of the advantages of running a hybrid performance test are:
+
+- Testing real user flows on the frontend while generating a higher load in the backend.
+- Measuring backend and frontend performance in the same test execution
+- Increased collaboration between backend and frontend teams since the same tool can be used.
+
+{{< admonition type="note" >}}
+
+Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
+
+{{< /admonition >}}
 
 ## Browser and HTTP test
+
+To run a browser-level and protocol-level test concurrently in k6, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios).
 
 The code below shows an example of combining a browser and HTTP test in a single script. While the script exposes the backend to the typical load, it also checks the frontend for any unexpected issues. It also defines thresholds to check both HTTP and browser metrics against pre-defined SLOs.
 
@@ -87,7 +101,8 @@ export async function checkFrontend() {
     await page.goto(BASE_URL);
 
     await check(page.locator('h1'), {
-      'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
+      header: async (lo) =>
+        (await lo.textContent()) == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -97,7 +112,7 @@ export async function checkFrontend() {
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     await check(page.locator('div#recommendations'), {
-      'recommendation': async lo => await lo.textContent() != '',
+      recommendation: async (lo) => (await lo.textContent()) != '',
     });
   } finally {
     await page.close();
@@ -186,7 +201,8 @@ export async function checkFrontend() {
   try {
     await page.goto(BASE_URL);
     await check(page.locator('h1'), {
-      'header': async lo => await lo.textContent() == 'Looking to break out of your pizza routine?'
+      header: async (lo) =>
+        (await lo.textContent()) == 'Looking to break out of your pizza routine?',
     });
 
     await Promise.all([
@@ -196,7 +212,7 @@ export async function checkFrontend() {
     await page.screenshot({ path: `screenshots/${__ITER}.png` });
 
     await check(page.locator('div#recommendations'), {
-      recommendation: async lo => await lo.textContent() != '',
+      recommendation: async (lo) => (await lo.textContent()) != '',
     });
   } finally {
     await page.close();
