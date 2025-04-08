@@ -1,7 +1,7 @@
 ---
 title: 'Browser options'
 description: 'An overview of the different options you can use to customize the browser module behavior when running browser tests.'
-weight: 04
+weight: 500
 ---
 
 # Browser options
