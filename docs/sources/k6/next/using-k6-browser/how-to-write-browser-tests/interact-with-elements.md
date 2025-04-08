@@ -1,7 +1,7 @@
 ---
 title: Interact with elements on your webpage
 description: 'Learn how to interact with elements on a webpage using the k6 browser module.'
-weight: 100
+weight: 200
 ---
 
 # Interact with elements on your webpage
