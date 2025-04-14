@@ -76,21 +76,15 @@ For example, if v1.3.5 is the latest major release:
 
 ### Frequency
 
-New k6 versions follow this release schedule:
-* **Major Versions**: Released **once per year**.
-* **Minor Versions**: Released every six weeks.
-* **Patch Versions**: Released **as needed**, based on priority. This includes critical bug fixes and security patches.
+The release schedule followed by the new k6 versions:
 
-We aim to release a new major version once a year, in alignment with the practice observed in the Grafana ecosystem. This affords us to maintain a regular rhythm, offering opportunities for better feature planning, communication and visibility around releases, and regular cleanup of deprecated functionalities, helping reduce technical debt over time.
+| Version | Cadence |
+| ------- | ------- |
+| Major   | Once per year |
+| Minor   | Every six weeks |
+| Patch   | As needed, based on priorities |
 
-#### Minor versions
-
-Minor versions are expected to be released every six weeks as a part of a regular process.
-
-#### Patch versions
-
-A new patch version is released only if needed and is priority-based. Otherwise, fixes and changes that don’t introduce a new API or change the existing one will be released with the next minor version.
-The priority includes different factors: risks, opportunities, timing, and many others.
+In alignment with the practice observed in the Grafana ecosystem, they affords us to maintain a regular rhythm, offering opportunities for better feature planning, communication and visibility around releases, and regular cleanup of deprecated functionalities, helping reduce technical debt over time.
 
 ## What is our stable and supported API surface?
 
