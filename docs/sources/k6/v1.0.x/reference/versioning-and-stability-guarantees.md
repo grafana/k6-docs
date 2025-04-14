@@ -76,7 +76,10 @@ For example, if v1.3.5 is the latest major release:
 
 ### Frequency
 
-#### Major versions
+New k6 versions follow this release schedule:
+* **Major Versions**: Released **once per year**.
+* **Minor Versions**: Released every six weeks.
+* **Patch Versions**: Released **as needed**, based on priority. This includes critical bug fixes and security patches.
 
 We aim to release a new major version once a year, in alignment with the practice observed in the Grafana ecosystem. This affords us to maintain a regular rhythm, offering opportunities for better feature planning, communication and visibility around releases, and regular cleanup of deprecated functionalities, helping reduce technical debt over time.
 
