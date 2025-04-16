@@ -55,11 +55,11 @@ This will complete the requests for the "Generate pizza" group.
 
 In this next step, you'll log in to the service to be able to rate a pizza:
 
-1. In the k6 Studio application, click **Create group**, name it "Login", and press **Enter**.
+1. In the k6 Studio application, click **Create group**, name it "Log in", and press **Enter**.
 1. In the browser, in the top-right of the screen press the **Login/Profile** link. You should see an authentication dialog box.
 1. For username, enter "studio-user". For password, enter "k6studiorocks".
 
-You'll be logged in to the test service, and this will complete the requests for the "Login" group.
+You'll be logged in to the test service, and this will complete the requests for the "Log in" group.
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-3-test-api-service-login.png" >}}
 
