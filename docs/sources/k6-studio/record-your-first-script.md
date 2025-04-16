@@ -194,17 +194,6 @@ You can make use of the **Custom Code** rule to insert a custom JavaScript snipp
 
 If you open the **Script** tab, you can see the script getting updated in real-time with the snippet being inserted before every request.
 
-## Validate your updated test script
-
-After adding the correlation and parameterization rules, you can validate your script again to make sure that the requests are returning a 200 status code.
-
-To validate your test script:
-
-1. In k6 Studio, click on the **Script** tab next to **Requests**.
-1. Click **Validate** on the top-right.
-
-You should see the Validator run the script successfully, with the two previous requests that were failing returning a 201 status code instead. You can also run the script multiple times, and inspect the requests and see that the CSRF token, and `pizza.id` properties are updated on each test run.
-
 ## Export a test script
 
 To export a test script:
