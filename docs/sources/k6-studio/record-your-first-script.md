@@ -45,15 +45,15 @@ To create a test recording:
 1. In k6 Studio, click the edit button next to **Default group**, rename it to "Homepage", and press **Enter**.
 1. Next click **Create group**, name it “Generate pizza”, and press **Enter**. Groups can help organize your test scripts so they're easier to edit and maintain in the future, and give you timing metrics for each group in your test script.
 1. In the browser window, press the **Pizza, Please!** button. You should see a generated recommendation.
-1. Under the recommendation, press the **Love it!** button, a message asking to login will appear.
+1. Under the recommendation, press the **Love it!** button. A message saying, "Please log in first." will appear.
 
 This will complete the requests for the "Generate pizza" group.
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-2-test-api-service-2.png" >}}
 
-### Login in the service
+### Log in to the service
 
-Here we will login into the service to allow us to rate a pizza!
+In this next step, you'll log in to the service to be able to rate a pizza:
 
 1. In the k6 Studio application, click **Create group**, name it “Login”, and press **Enter**.
 1. In the browser, in the top-right of the screen press the **Login/Profile** link. You should see an authentication dialog box.
