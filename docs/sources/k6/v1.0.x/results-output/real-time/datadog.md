@@ -44,11 +44,9 @@ docker run --rm -d \
 
 {{< /code >}}
 
-For `DD_SITE`, be sure to use the correct datadog region url.
+For `DD_SITE`, make sure to use the correct [Datadog site URL](https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site).
 
 Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
-
-If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
 
 {{< admonition type="note" >}}
 
