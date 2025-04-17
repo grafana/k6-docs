@@ -44,9 +44,9 @@ docker run --rm -d \
 
 {{< /code >}}
 
-Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
+For `DD_SITE`, make sure to use the correct [Datadog site URL](https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site).
 
-If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
+Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
 
 {{< admonition type="note" >}}
 
