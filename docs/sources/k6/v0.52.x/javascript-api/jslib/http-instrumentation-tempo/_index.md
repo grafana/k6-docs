@@ -11,7 +11,7 @@ With this jslib, you can _instrument_ HTTP requests so that they emit traces as 
 
 ## Migration from `k6/experimental/tracing`
 
-This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js'`
+This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/1.0.1/index.js'`
 
 ## About trace contexts
 
@@ -34,7 +34,7 @@ This example demonstrates how to use the tracing API to instrument every HTTP re
 
 ```javascript
 import { check } from 'k6';
-import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js';
+import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.1/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the http module

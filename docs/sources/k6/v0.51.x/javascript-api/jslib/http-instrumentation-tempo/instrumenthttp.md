@@ -15,8 +15,8 @@ From that point forward, all requests made by the HTTP module from that point fo
 
 ## Parameters
 
-| Name      | Type                                                                                                 | Description                                                                                                                                                    |
-| :-------- | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name      | Type                                                                                                          | Description                                                                                                                                                             |
+| :-------- | :------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `options` | [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/options) | Configures the tracing behavior with the provided [`Options`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo/options) object. |
 
 ## Example
@@ -27,7 +27,7 @@ This example demonstrates how to call the `instrumentHTTP` function in the scrip
 
 ```javascript
 import { check } from 'k6';
-import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js';
+import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.1/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the http module
