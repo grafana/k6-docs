@@ -35,7 +35,7 @@ docker run --rm -d \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     -v /proc/:/host/proc/:ro \
     -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
-    -e DD_SITE="datadoghq.com" \
+    -e DD_SITE="us3.datadoghq.com" \
     -e DD_API_KEY=<YOUR_DATADOG_API_KEY> \
     -e DD_DOGSTATSD_NON_LOCAL_TRAFFIC=1 \
     -p 8125:8125/udp \
@@ -44,9 +44,9 @@ docker run --rm -d \
 
 {{< /code >}}
 
-Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
+For `DD_SITE`, make sure to use the correct [Datadog site URL](https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site).
 
-If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
+Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
 
 {{< admonition type="note" >}}
 
