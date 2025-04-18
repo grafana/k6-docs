@@ -27,7 +27,7 @@ This example demonstrates how to call the `instrumentHTTP` function in the scrip
 
 ```javascript
 import { check } from 'k6';
-import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js';
+import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/{{< param "JSLIB_TEMPO_VERSION" >}}/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the http module
