@@ -13,7 +13,7 @@ In this tutorial, you will:
 - Create a test recording using the https://quickpizza.grafana.com/ service.
 - Learn how to create groups to organize your test recordings.
 - View the request and response data from a test recording.
-- Use the Generator to create a correlation and a custom code rule.
+- Use the Generator to create a correlation, parameterization, and a custom code rule.
 - Validate your test script from the Generator.
 - Export your test script.
 
