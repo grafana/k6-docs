@@ -1,6 +1,6 @@
 ---
 aliases:
-  - ./examples/crawl-webpage # docs/k6/<K6_VERSION>/examples/crawl-webpage
+  - ./using-k6-browser # docs/k6/<K6_VERSION>/using-k6-browser
 title: Using k6 browser
 description: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
 weight: 300
@@ -31,58 +31,26 @@ The main use case for the browser module is to test performance on the browser l
 - Are all my elements interactive on the frontend?
 - Are there any loading spinners that take a long time to disappear?
 
-## A simple browser test
+## Create a browser test
 
-{{< code >}}
+To create a browser test, you first need to:
 
-```javascript
-import { browser } from 'k6/browser';
-import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
+- [Install k6](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/) in your machine.
+- Install a Chromium-based browser, such as Google Chrome, in your machine.
 
-export const options = {
-  scenarios: {
-    ui: {
-      executor: 'shared-iterations',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-  thresholds: {
-    checks: ['rate==1.0'],
-  },
-};
+After, run the `k6 new` command with the `--template` option set to `browser`:
 
-export default async function () {
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  try {
-    await page.goto('https://test.k6.io/my_messages.php');
-
-    await page.locator('input[name="login"]').type('admin');
-    await page.locator('input[name="password"]').type('123');
-
-    await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
-
-    await check(page.locator('h2'), {
-      header: async (h2) => (await h2.textContent()) == 'Welcome, admin!',
-    });
-  } finally {
-    await page.close();
-  }
-}
+```bash
+k6 new --template browser browser-script.js
 ```
 
-{{< /code >}}
+The command creates a test script you can run right away with the `k6 run` command:
 
-The preceding code launches a Chromium-based browser, visits the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
+```bash
+k6 run browser-script.js
+```
 
-After running the test, the following [browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics) will be reported.
-
-{{< code >}}
+After running the test, you can see the [end of test results](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/). It contains metrics that show the performance of the website on the script.
 
 ```bash
          /\      Grafana   /‾‾/
@@ -91,38 +59,69 @@ After running the test, the following [browser metrics](https://grafana.com/docs
   /          \   |   (  |  (‾)  |
  / __________ \  |_|\_\  \_____/
 
-  execution: local
-     script: test.js
-     output: -
+     execution: local
+        script: script.js
+        output: -
 
-  scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
-           * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+              * ui: 1 iterations shared among 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
 
 
-running (00m01.3s), 0/1 VUs, 1 complete and 0 interrupted iterations
-ui   ✓ [======================================] 1 VUs  00m01.3s/10m0s  1/1 shared iters
 
-     ✓ header
+  █ TOTAL RESULTS
 
-     browser_data_received.......: 2.6 kB  2.0 kB/s
-     browser_data_sent...........: 1.9 kB  1.5 kB/s
-     browser_http_req_duration...: avg=215.4ms  min=124.9ms med=126.65ms max=394.64ms p(90)=341.04ms p(95)=367.84ms
-     browser_http_req_failed.....: 0.00%   ✓ 0        ✗ 3
-     browser_web_vital_cls.......: avg=0        min=0       med=0        max=0        p(90)=0        p(95)=0
-     browser_web_vital_fcp.......: avg=344.15ms min=269.2ms med=344.15ms max=419.1ms  p(90)=404.11ms p(95)=411.6ms
-     browser_web_vital_fid.......: avg=200µs    min=200µs   med=200µs    max=200µs    p(90)=200µs    p(95)=200µs
-     browser_web_vital_inp.......: avg=8ms      min=8ms     med=8ms      max=8ms      p(90)=8ms      p(95)=8ms
-     browser_web_vital_lcp.......: avg=419.1ms  min=419.1ms med=419.1ms  max=419.1ms  p(90)=419.1ms  p(95)=419.1ms
-     browser_web_vital_ttfb......: avg=322.4ms  min=251ms   med=322.4ms  max=393.8ms  p(90)=379.52ms p(95)=386.66ms
-   ✓ checks......................: 100.00% ✓ 1        ✗ 0
-     data_received...............: 0 B     0 B/s
-     data_sent...................: 0 B     0 B/s
-     iteration_duration..........: avg=1.28s    min=1.28s   med=1.28s    max=1.28s    p(90)=1.28s    p(95)=1.28s
-     iterations..................: 1       0.777541/s
-     vus.........................: 1       min=1      max=1
-     vus_max.....................: 1       min=1      max=1
+    checks_total.......................: 2       0.300669/s
+    checks_succeeded...................: 100.00% 2 out of 2
+    checks_failed......................: 0.00%   0 out of 2
+
+    ✓ header
+    ✓ recommendation
+
+    HTTP
+    http_req_duration.......................................................: avg=122ms    min=122ms    med=122ms   max=122ms p(90)=122ms    p(95)=122ms
+      { expected_response:true }............................................: avg=122ms    min=122ms    med=122ms   max=122ms p(90)=122ms    p(95)=122ms
+    http_req_failed.........................................................: 0.00%  0 out of 1
+    http_reqs...............................................................: 1      0.150334/s
+
+    EXECUTION
+    iteration_duration......................................................: avg=4.39s    min=4.39s    med=4.39s   max=4.39s p(90)=4.39s    p(95)=4.39s
+    iterations..............................................................: 1      0.150334/s
+    vus.....................................................................: 1      min=0       max=1
+    vus_max.................................................................: 1      min=1       max=1
+
+    NETWORK
+    data_received...........................................................: 6.9 kB 1.0 kB/s
+    data_sent...............................................................: 543 B  82 B/s
+
+    BROWSER
+    browser_data_received...................................................: 357 kB 54 kB/s
+    browser_data_sent.......................................................: 4.9 kB 738 B/s
+    browser_http_req_duration...............................................: avg=355.28ms min=124.04ms med=314.4ms max=1.45s p(90)=542.75ms p(95)=753.09ms
+    browser_http_req_failed.................................................: 0.00%  0 out of 18
+
+    WEB_VITALS
+    browser_web_vital_cls...................................................: avg=0        min=0        med=0       max=0     p(90)=0        p(95)=0
+    browser_web_vital_fcp...................................................: avg=2.33s    min=2.33s    med=2.33s   max=2.33s p(90)=2.33s    p(95)=2.33s
+    browser_web_vital_fid...................................................: avg=300µs    min=300µs    med=300µs   max=300µs p(90)=300µs    p(95)=300µs
+    browser_web_vital_inp...................................................: avg=56ms     min=56ms     med=56ms    max=56ms  p(90)=56ms     p(95)=56ms
+    browser_web_vital_lcp...................................................: avg=2.33s    min=2.33s    med=2.33s   max=2.33s p(90)=2.33s    p(95)=2.33s
+    browser_web_vital_ttfb..................................................: avg=1.45s    min=1.45s    med=1.45s   max=1.45s p(90)=1.45s    p(95)=1.45s
 ```
 
-{{< /code >}}
+You can also see at the end of the output the browser and Web Vital metrics that report performance specific to browser testing.
 
-This gives you a representation of browser performance, via the web vitals, as well as the HTTP requests that came from the browser.
+```bash
+BROWSER
+browser_data_received.........: 357 kB 54 kB/s
+browser_data_sent.............: 4.9 kB 738 B/s
+browser_http_req_duration.....: avg=355.28ms min=124.04ms med=314.4ms max=1.45s p(90)=542.75ms p(95)=753.09ms
+browser_http_req_failed.......: 0.00%  0 out of 18
+
+WEB_VITALS
+browser_web_vital_cls.........: avg=0        min=0        med=0       max=0     p(90)=0        p(95)=0
+browser_web_vital_fcp.........: avg=2.33s    min=2.33s    med=2.33s   max=2.33s p(90)=2.33s    p(95)=2.33s
+browser_web_vital_fid.........: avg=300µs    min=300µs    med=300µs   max=300µs p(90)=300µs    p(95)=300µs
+browser_web_vital_inp.........: avg=56ms     min=56ms     med=56ms    max=56ms  p(90)=56ms     p(95)=56ms
+browser_web_vital_lcp.........: avg=2.33s    min=2.33s    med=2.33s   max=2.33s p(90)=2.33s    p(95)=2.33s
+browser_web_vital_ttfb........: avg=1.45s    min=1.45s    med=1.45s   max=1.45s p(90)=1.45s    p(95)=1.45s
+```
