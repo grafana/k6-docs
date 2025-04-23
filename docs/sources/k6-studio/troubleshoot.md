@@ -26,9 +26,9 @@ If you're on a Mac, make sure you're not running the k6 Studio application from 
 
 k6 Studio is unable to establish a connection with your network if your operating system is configured to use a proxy. In this case, additional configuration is needed.
 
-### 1. Check if your network is using another proxy
+### 1. Check if your network is using a proxy
 
-#### Windows 
+#### Windows
 
 - Open Settings > Network & Internet > Proxy
 - Check if "Automatic proxy setup" or "Manual proxy setup" are enabled
