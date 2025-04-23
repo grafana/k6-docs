@@ -51,10 +51,11 @@ cascade:
 
 ## Overview
 
-k6 Studio is a desktop application that can help you:
+k6 Studio is a desktop application that lets you:
 
 - Record a user flow from browser interactions and generate a HAR file.
 - Generate and customize a k6 test script from a HAR file, including the ability to use rules to quickly iterate on the script creation process.
+- Generate a k6 browser test script, including browser interactions such as navigating to pages, interacting with elements on the page, text assertions, and more.
 - Test and debug k6 scripts using a visual interface. Inspect the request and response details for any request in your script.
 
 The scripts you create in k6 Studio can be used to run performance tests in [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/), or as k6 scripted checks in [Synthetic Monitoring](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/).
