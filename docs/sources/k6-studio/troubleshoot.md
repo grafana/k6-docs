@@ -22,6 +22,39 @@ After, if you have an application running on port 8000, you can make requests in
 
 If you're on a Mac, make sure you're not running the k6 Studio application from the Downloads folder. If that's the case, close the app, move the application file to the Applications folder, and start the app again.
 
+## "502 Bad Gateway" error
+
+k6 Studio is unable to establish a connection with your network if your operating system is configured to use a proxy. In this case, additional configuration is needed.
+
+### 1. Check if your network is using another proxy
+
+#### Windows 
+
+- Open Settings > Network & Internet > Proxy
+- Check if "Automatic proxy setup" or "Manual proxy setup" are enabled
+
+#### macOS
+
+- Open System Settings > Network
+- Select your active network interface (e.g., Wi-Fi), then click Details
+- Go to the Proxies tab
+- Check if any proxies are enabled (HTTP, HTTPS, etc.)
+
+#### Linux
+
+- Open Settings > Network > Network Proxy
+- Check if the proxy is set to "Manual"
+
+### 2. Configure k6 Studio to connect to your proxy
+
+Once you've confirmed that your system is configured to use a proxy, configure k6 Studio:
+
+- Open Settings > Proxy
+- Change "Proxy mode" to "upstream"
+- In "Server URL", use the same proxy and port being used by your system
+
+Some proxies or HTTPS sites may require a certificate to establish a trusted connection. In this case, specify the certificate in the "Certificate path" field.
+
 ## Application logs
 
 The application logs are saved in the following directory:
