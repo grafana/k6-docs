@@ -65,7 +65,7 @@ To export a browser event test script:
   - Type in a name for your script.
   - Click **Export**.
 
-After you save your script, you can view it under the **Scripts** section.
+After you save your script, you can view it under the **Scripts** section. Refer to [Using k6 browser](https://grafana.com/docs/k6/latest/using-k6-browser/) for more details on how to customize your browser test script.
 
 ## Disable browser events
 
