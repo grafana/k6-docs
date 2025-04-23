@@ -16,7 +16,7 @@ For users that have less experience with JavaScript or k6, k6 Studio can help yo
 
 The k6 Studio desktop application consists of three components:
 
-- **Recorder**: The Recorder can help you generate a HAR file. When you start a recording, the application uses a proxy recorder and launches an instance of Google Chrome, and records the traffic from your actions on the browser.
+- **Recorder**: The Recorder can help you generate a HAR file. When you start a recording, the application uses a proxy recorder and launches an instance of Google Chrome, and records the traffic from your actions on the browser. The recording includes protocol-level requests, such as HTTP requests, and browser events, such as interacting with elements on a page.
 - **Generator**: The Generator takes the output of a test recording and gives you options to customize the test with a visual interface and generate a test script from it. You can use it to define a list of hosts to allow or remove from your script, include variables or data files in your script, and configure rules to extract values, parameterize requests, and more.
 - **Validator**: The Validator can help you validate that a test script is working as expected. You can use it to run one iteration of your test, and visualize the request and response of any requests on your test script. The Validator works with any k6 test script, not only scripts generated via the Generator.
 
