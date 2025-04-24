@@ -106,10 +106,10 @@ This ensures that users can write and execute scripts with predictable behavior 
 
 ### Modules
 
-The *“core”* modules exposed directly to a script by k6, for example, `k6`, `k6/http`, `k6/execution`, are another critical aspect of the k6 experience and of the interface between k6 and its users. As such, they're part of the stable and supported API surface.
+The [_core_ modules](https://grafana.com/docs/k6/latest/javascript-api) exposed directly to a script by k6, for example, `k6`, `k6/http`, `k6/execution`, are another critical aspect of the k6 experience and of the interface between k6 and its users. As such, they're part of the stable and supported API surface.
 It includes any class, properties, methods, function, or relative signature that is part of the module and is publicly exposed and documented.
 
-The full list of the `core` modules: `k6`, `k6/browser`, `k6/crypto`, `k6/crypto/x509`, `k6/data`, `k6/encoding`, `k6/execution`,  `k6/http`, `k6/metrics`, `k6/net/grpc`, `k6/timers`, `k6/ws`.
+The full list of the _core_ modules is avalilable on the [JavaScript API](https://grafana.com/docs/k6/latest/javascript-api) page.
 
 Experimental modules, recognizable from their `k6/experimental` prefixed import path, are explicitly excluded from the stable and supported API surface.
 
@@ -121,7 +121,7 @@ It covers any package publicly available in `go.k6.io/k6`. Consequentially, all 
 
 This includes the [go.k6.io/k6/js/modules](https://pkg.go.dev/go.k6.io/k6@v0.57.0/js/modules) Go package that internal and external developers have available to build module extensions, as well as the [go.k6.io/k6/output](https://pkg.go.dev/go.k6.io/k6@v0.57.0/output) that can be used to build custom outputs for k6.
 
-It also includes public k6 Go packages that are exposed to developers to facilitate the development of these extensions. For example, the current  [go.k6.io/k6/lib.State](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib#State) package.
+It also includes public k6 Go packages that are exposed to developers to facilitate the development of these extensions. For example, the current [go.k6.io/k6/lib](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib) package where the popular [go.k6.io/k6/lib.State](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib#State) type is placed .
 
 ### Output
 
@@ -146,7 +146,7 @@ There are two types of breaking changes:
 1. Removal
 2. Update
 
-when a breaking change is added then te k6 team will follow the following steps:
+when a breaking change is added, the k6 team will follow the following steps:
 
 #### Remove an API or a feature
 
@@ -192,7 +192,7 @@ Any past version of k6 that’s neither being developed, maintained, or supporte
 
 ### Guidelines
 
-1. _Features are not backported_ from one major version to any previous ones.
+1. _Features are not backported_ from one major version to any previous one.
 2. Only changes on the latest release of each support category are provided: _at any point in time, there are single officially under-development and actively maintained versions_. We do not support multiple versions of each support path. For example, suppose a bug is found in v1.1.0, and the latest v1.Y.Z published release is v1.3.2. In that case, if and only if the latest release is affected, and the bug or security issue is deemed important enough, only then does the development team define as a priority to publish a fix that will be released in v1.3.3. Users cannot expect a v1.1.1 fix release.
 3. Other Grafana products, services, and teams building upon k6 are expected to develop their versioning integration built on our support policies.
 
@@ -206,7 +206,6 @@ We classify bug severity based on their impact on users or product functionality
 
 Security issues are classified using the CVSS (Common Vulnerability Scoring System) score when available. In its absence, we evaluate the threat in collaboration with the security team and affected teams. This assessment considers the potential threat to customers, users, system health, and data integrity. Like bug fixes, the response will be either an immediate patch release for high-severity issues or a delayed fix for lower-severity issues.
 
-Following the practice of the Grafana project, *security-related releases follow the same process but* ***MUST*** *be prepared in secret. They* ***MUST NOT*** *include changes that are not related to the security fix.*
 
 ### Guarantees
 
@@ -221,7 +220,7 @@ The next version of k6 can be a [major](#major-version), [minor](#minor-version)
 The latest version, released under the currently active [major version](#major-version), is maintained.
 
 In the event of a bug, security issue, or necessary dependency update:
-* **If** **the under-development version is expected to remain within the same [major version](#major-version) scope**, the fix or update is expected to land in said version, which will become, in turn, the next maintained version once released.
+* **If the under-development version is expected to remain within the same [major version](#major-version) scope**, the fix or update is expected to land in said version, which will become, in turn, the next maintained version once released.
 * **If the under-development version is expected to switch to a new [major version](#major-version) scope**, the fix or update will be included in the currently maintained major version scope and released as the latest maintained version (patch).
 
 #### Supported k6 version
@@ -237,7 +236,7 @@ The same applies to a minor version.
 
 #### A major (bug or security) issue is found with the latest release of k6
 
-The latest release of k6 is **actively** **maintained**. Within this version’s major scope is a single maintained version, the latest one.
+The latest release of k6 is **actively maintained**. Within this version’s major scope is a single maintained version, the latest one.
 
 Thus, when a security issue or bug affects the actively maintained version, the k6 team puts together a fix and publishes a new [patch version](#patch-version) of the currently maintained version. Although the under-development version should integrate those changes, we still reserve the right to release a new intermediary release.
 
@@ -249,13 +248,13 @@ If the issue also affects a deprecated version of k6, we take no action and invi
 
 When a security issue or bug is found in the currently **supported** version of k6, the k6 team creates a fix in the support version’s branch. It publishes a new [patch version](#patch-version) of the supported version, which becomes the new supported version of k6.
 
-If the issue also affects the k6 version, which is currently the [major version](#major-version), a separate fix should be released and released as a [patch version](#patch-version) within the maintained version’s major scope.
+If the issue also affects the k6 version, which is currently the [major version](#major-version), a separate fix should be released as a [patch version](#patch-version) within the maintained version’s major scope.
 
 If the issue also affects deprecated versions of k6, we take no action and invite users to upgrade to at least the latest *supported version* of k6.
 
 #### An issue is found in a deprecated version of k6
 
-An issue (security or bug) is spotted in a **deprecated** version. We only recommend that users upgrade their version of k6.
+If an issue (security-related or a bug) is found in a **deprecated** version, we do not take action and recommend that users upgrade to a supported version of k6.
 
 ## Experimental
 
