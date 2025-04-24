@@ -1,0 +1,14 @@
+# To run locally
+# npx @techdocs/cli serve -v -c ./mkdocs.yml
+# 
+site_name: 'k6-docs Internal Documentation'
+repo_url: https://github.com/grafana/k6-docs
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+
+plugins:
+  - techdocs-core

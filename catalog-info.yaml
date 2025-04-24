@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: k6-docs
+  title: k6-docs
+  description: |
+    Technical documentation for the k6 departement.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: grafana/k6-docs
+spec:
+  type: documentation
+  owner: group:default/k6-everyone
+  lifecycle: production
