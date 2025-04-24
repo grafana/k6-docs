@@ -10,7 +10,7 @@ weight: 100
 
 The Recorder is the first component of k6 Studio. With it, you can start a recording which opens a browser window, and then navigate through a website or application to record a user flow you want to test.
 
-k6 Studio collects every request and response, as well as browser interactions. After you stop the recording, it generates a HAR file and a list of browser events. You can then inspect every request and response to see if your test recording accurately reflects a user flow, and then use it as the source for your test script.
+k6 Studio collects every request and response, as well as browser interactions. After you stop the recording, it generates a HAR file including the browser events. You can then inspect every request and response to see if your test recording accurately reflects a user flow, and then use it as the source for your test script.
 
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-recorder-panels-2.png" alt="k6 Studio Recorder window, showing a completed test recording with eight requests, and numbers next to each section of the application" >}}
 
