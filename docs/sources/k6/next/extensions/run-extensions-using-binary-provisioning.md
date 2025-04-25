@@ -91,6 +91,8 @@ You can run it locally using the following command:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```linux
 k6 cloud run --local-execution faker.js
 ```
