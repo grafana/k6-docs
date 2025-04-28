@@ -20,7 +20,7 @@ If you believe an API should be added to this allow list but is currently missin
 
 ## Versioning strategy
 
-k6 strictly follows [Semantic Versioning 2.0.0](https://semver.org/) versioning scheme. This versioning scheme defines three kinds of software versions, categorizing their relationship to the key concept of breaking changes.
+k6 strictly follows the [Semantic Versioning 2.0.0](https://semver.org/) versioning scheme. This versioning scheme defines three kinds of software versions, categorizing their relationship to the key concept of breaking changes.
 
 ### Breaking change
 
@@ -36,7 +36,7 @@ Quoting the [SemVer 2.0.0 specification on major versions](https://semver.org/#s
 
 > *Major version X (X.y.z | X \> 0\) **MUST** be incremented if any backward-incompatible changes are introduced to the public API. This may also include minor and patch-level changes. Patch and minor versions **MUST** be reset to 0 when the major version is incremented.*
 
-Although it's possible that, in certain cases, the new major version containing breaking changes might be compatible with the previous version, this isn't expected.
+While it's possible that a new major version with breaking changes may remain compatible with the previous version, this should not be expected.
 
 ### Minor version
 
@@ -61,22 +61,11 @@ Quoting the [SemVer 2.0.0 specification on patch versions](https://semver.org/#s
 
 A k6 release is a set of changes that updates or adds new functionalities to the product, made globally available under a unique and new identifiable version.
 
-k6 follows and aligns with the [Grafana Labs release stages](https://grafana.com/docs/release-life-cycle). Not all changes follow a strict and sequential path through all the various steps. Most of the changes directly pass from Experimental to General availability (GA).
-
-### Preview
-
-A preview release includes changes that should be considered unstable or under development but are ready for users to start testing or to prepare their migrations.
-
-As soon as the development team starts to work on a new set of changes or breaking changes, opening the need for a new version, a next version should be available under a dedicated versioning format suffixing the `-next` text.
-
-For example, if v1.3.5 is the latest major release:
-
-- All the newly introduced breaking changes would be available under the `v2.0.0-next` version.
-- All the backward-compatible changes would be available under `v1.4.0-next` or `v1.3.6-next`.
+k6 follows and aligns with the [Grafana Labs release stages](https://grafana.com/docs/release-life-cycle). Not all changes follow every step of the release stages in a strict or sequential manner. Most of the changes directly pass from Experimental to General availability (GA).
 
 ### Frequency
 
-The release schedule followed by the new k6 versions:
+The release schedule for new k6 versions is:
 
 | Version | Cadence |
 | ------- | ------- |
@@ -84,7 +73,7 @@ The release schedule followed by the new k6 versions:
 | Minor   | Every six weeks |
 | Patch   | As needed, based on priorities |
 
-In alignment with the practice observed in the Grafana ecosystem, they affords us to maintain a regular rhythm, offering opportunities for better feature planning, communication and visibility around releases, and regular cleanup of deprecated functionalities, helping reduce technical debt over time.
+In alignment with the practice observed in the Grafana ecosystem, this allows us to maintain a regular rhythm, offering opportunities for better feature planning, communication, and visibility around releases, as well as regular cleanup of deprecated functionalities, helping reduce technical debt over time.
 
 ## What is our stable and supported API surface?
 
@@ -92,7 +81,7 @@ In defining the stable API surface for k6, we aim to provide clear and stable in
 
 Any change to one of the APIs described below will be considered breaking. Note that the following list is intended as an allowlist, and any APIs, libraries, or components not explicitly mentioned are considered excluded. For example, the k6 REST API is an example of an accessible API not covered by the supported API surface.
 
-### Options & Command-line interface
+### Options & command-line interface
 
 Our stable and supported API surface includes the k6 options set, as exposed to users via the various configuration methods k6 supports: the options object, config file, environment variables, etc.
 
@@ -121,7 +110,7 @@ It covers any package publicly available in `go.k6.io/k6`. Consequentially, all 
 
 This includes the [go.k6.io/k6/js/modules](https://pkg.go.dev/go.k6.io/k6@v0.57.0/js/modules) Go package that internal and external developers have available to build module extensions, as well as the [go.k6.io/k6/output](https://pkg.go.dev/go.k6.io/k6@v0.57.0/output) that can be used to build custom outputs for k6.
 
-It also includes public k6 Go packages that are exposed to developers to facilitate the development of these extensions. For example, the current [go.k6.io/k6/lib](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib) package where the popular [go.k6.io/k6/lib.State](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib#State) type is placed .
+It also includes public k6 Go packages that are exposed to developers to facilitate the development of these extensions. For example, the current [go.k6.io/k6/lib](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib) package where the [go.k6.io/k6/lib.State](https://pkg.go.dev/go.k6.io/k6@v0.57.0/lib#State) type is placed.
 
 ### Output
 
@@ -146,24 +135,24 @@ There are two types of breaking changes:
 1. Removal
 2. Update
 
-when a breaking change is added, the k6 team will follow the following steps:
+When a breaking change is added, the k6 team will follow the following steps:
 
 #### Remove an API or a feature
 
 1. Deprecate a current API or a feature by following the dedicated policy.
-2. If necessary, add an alternative solution. Ideally, this would be an experimental version within a minor release within the current maintained state. Alternatively, it might be available in a Preview release.
-3. Provide documentation for the migration path.
-4. Proceed with removing the API and releasing a new major version.
+1. If necessary, add an alternative solution. Ideally, this would be an experimental version within a minor release within the current maintained state. Alternatively, it might be available in a Preview release.
+1. Provide documentation for the migration path.
+1. Proceed with removing the API and releasing a new major version.
 
 #### Update an API or a feature
 
 1. Apply the changes, then publish them in the next major version. If the change is significant, it might be convenient to make it available in a Preview release that can support the migration path until a version is globally available.
-2. Provide documentation for the migration path.
+1. Provide documentation for the migration path.
 
 ### Deprecation
 
 When the k6 team intends to remove an API or a feature, it will be marked as *deprecated*. This occurs when an API becomes obsolete, superseded by another API, or otherwise discontinued for business or technological reasons.
-Deprecated APIs remain available through their deprecated phase, which guarantees they will remain available at least throughout the entire life cycle of the current major version.
+Deprecated APIs remain available during their deprecation phase, and we guarantee they will be maintained for the entire lifecycle of the current major version.
 
 A deprecation will be announced through several layers of communication before it will be officially applied:
 
@@ -188,7 +177,7 @@ We define k6 support and development policies according to four states where a k
 
 As such, during its development and support workflow, the k6 open source project actively develops the next version of k6, maintains the latest major release, supports the previous major version, and doesn't provide any support for releases older than the supported one.
 
-Any past version of k6 that’s neither being developed, maintained, or supported is considered **deprecated** and will not support further updates or development. Users are free to use them at their own risk.
+Any past version of k6 that’s neither being developed, maintained, or supported is considered **deprecated** and will not receive further updates or development, including bug fixes or security updates. Users are free to use them at their own risk.
 
 ### Guidelines
 
@@ -205,8 +194,6 @@ The k6 open-source core team, with input from affected stakeholders, is responsi
 We classify bug severity based on their impact on users or product functionality. High-severity bugs prevent a subset of users from using the software properly or at all. Depending on the severity, the team will either release an immediate patch or, for less critical bugs, delay the fix to the next scheduled release.
 
 Security issues are classified using the CVSS (Common Vulnerability Scoring System) score when available. In its absence, we evaluate the threat in collaboration with the security team and affected teams. This assessment considers the potential threat to customers, users, system health, and data integrity. Like bug fixes, the response will be either an immediate patch release for high-severity issues or a delayed fix for lower-severity issues.
-
-
 ### Guarantees
 
 #### Under development
@@ -229,7 +216,7 @@ At any point, the prior major version will be in **support** mode. The supported
 
 #### Deprecated k6 versions
 
-A major version of k6, which is two major versions away from the past (*e.g.,* v1.0.0, when the latest version is v3.0.0), is considered **deprecated** and won’t receive any form of support whatsoever anymore.
+A major version of k6, which is two major versions away from the past (for example, v1.0.0, when the latest version is v3.0.0), is considered **deprecated** and won’t receive any form of support anymore.
 The same applies to a minor version.
 
 ### Real-world scenarios
@@ -262,16 +249,14 @@ Within k6, some APIs, features, and modules are explicitly marked as experimenta
 
 Those APIs, features, and modules are either made of changes or new capabilities, which we believe are valuable to our users and the development of k6. Still, they are **not yet stable**.
 
-An experimental API, feature, or module **can undergo a breaking change and be completely removed without prior notice**. Our support policy does not cover experimental APIs, features, and modules. As such, we advise products, projects, and teams not to rely on them explicitly for mission-critical operations and to build upon them if possible.
+An experimental API, feature, or module _can undergo a breaking change and be completely removed without prior notice_. Our support policy does not cover experimental APIs, features, and modules. As such, we advise products, projects, and teams not to rely on them explicitly for mission-critical operations and to build upon them if possible.
 
-Experimental APIs, features, and modules may eventually become stable. However, they also may not.
-
-They should be marked and communicated internally and, most importantly, externally. When a user interacts with an experimental feature or module, it **must** be explicitly communicated to them. How to do it depends on the layer where the change is introduced and can vary case by case.
+They should be marked and communicated internally and, most importantly, externally. When a user interacts with an experimental feature or module, it _must_ be explicitly communicated to them. How to do it depends on the layer where the change is introduced and can vary case by case.
 
 For example, a JavaScript module should be recognizable as an experimental module by its import path, which includes the `k6/experimental/` prefix. Advertising the experimental state via the official documentation is also highly encouraged. However, using it as a unique level shouldn’t be considered sufficient communication.
-However, the development team is responsible to decide which is the reasonable level to apply based on the specific case.
+The development team is responsible for deciding what the reasonable level is based on the specific case.
 
-When an experimental API, feature, or module becomes stable, it will lead to a new minor version of k6 in most cases. The experimental module import path becomes deprecated and will be removed in a couple of minor releases with the future notice.
+Experimental APIs, features, and modules may eventually become stable. When that happens, it will lead to a new minor version of k6 in most cases. The experimental module import path becomes deprecated and will be removed in a couple of minor releases with a future notice.
 
 ## Versioning policy
 
