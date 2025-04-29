@@ -55,6 +55,8 @@ Once you've confirmed that your system is configured to use a proxy, configure k
 
 Some proxies or HTTPS sites may require a certificate to establish a trusted connection. In this case, specify the certificate in the "Certificate path" field.
 
+Optionally, you can bypass SSL/TLS validation in trusted environments by checking the "Skip SSL/TLS validation" option in k6 Studio settings. This introduces vulnerabilities to TLS interception, please use it carefully.
+
 ## Application logs
 
 The application logs are saved in the following directory:
