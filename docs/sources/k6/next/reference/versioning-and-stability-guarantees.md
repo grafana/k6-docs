@@ -156,7 +156,7 @@ Deprecated APIs remain available during their deprecation phase, and we guarante
 
 A deprecation will be announced through several layers of communication before it will be officially applied:
 
-1. Release notes and CHANGELOGs.
+1. Release notes.
 2. Official documentation.
 3. When the user directly interacts with the feature.
 4. An alternative already available is recommended, but it shouldn’t be considered mandatory.
@@ -247,7 +247,7 @@ If an issue (security-related or a bug) is found in a **deprecated** version, we
 
 Within k6, some APIs, features, and modules are explicitly marked as experimental.
 
-Those APIs, features, and modules are either made of changes or new capabilities, which we believe are valuable to our users and the development of k6. Still, they are **not yet stable**.
+Those APIs, features, and modules are either made of changes or new capabilities, which we believe are valuable to our users and the development of k6. Still, they are _not yet stable_.
 
 An experimental API, feature, or module _can undergo a breaking change and be completely removed without prior notice_. Our support policy does not cover experimental APIs, features, and modules. As such, we advise products, projects, and teams not to rely on them explicitly for mission-critical operations and to build upon them if possible.
 
