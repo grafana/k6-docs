@@ -22,19 +22,25 @@ on:
   repository_dispatch:
     types: [extension-registry-changed]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
+        with:
+          persist-credentials: false
         uses: actions/checkout@v4
 
       - name: Generate Files
         run: ${{ github.workspace }}/scripts/extension-registry-changed
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
         with:
           branch: extension-registry-changed
           commit-message: |
