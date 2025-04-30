@@ -1,7 +1,7 @@
 ---
 title: 'Run a test in Grafana Cloud k6'
 description: 'Learn how to log in to your Grafana Cloud k6 account and run a test script directly from k6 Studio.'
-weight: 450
+weight: 375
 ---
 
 # Run a test script in Grafana Cloud k6
