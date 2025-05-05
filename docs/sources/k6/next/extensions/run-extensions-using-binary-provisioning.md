@@ -1,6 +1,6 @@
 ---
 title: 'Run extensions using Binary Provisioning'
-description: 'Guide to run scripts that require extensions using Binary provisioning.'
+description: 'Learn how to run scripts that require extensions using Binary Provisioning.'
 weight: 04
 ---
 
@@ -12,19 +12,11 @@ This is an experimental feature. Breaking changes might occur prior to the featu
 
 {{< /admonition >}}
 
-k6 now supports natively running scripts that use extensions using the Binary Provisioning feature.
+Starting from v1.0, k6 supports automatic extension management through the Binary Provisioning feature.
 
-When enabled, this feature will automatically provide a custom binary including all the required extensions and will execute the script using this binary.
+When you execute tests in Grafana Cloud using `cloud run` or `cloud run --local-execution`, k6 analyzes your test script, identifies any used extensions, builds a custom binary that includes all required extensions, and runs the test with that binary. This removes the need to manually create a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) using `xk6` when running tests locally and streaming results to Grafana Cloud. The `archive` and `inspect` commands also support Binary Provisioning to allow creating archives for  Grafana Cloud.
 
-Currently, it only supports extensions [supported in Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud).
-
-If your test requires other extensions, you can create a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
-
-The feature requires authentication to Grafana Cloud and therefore is supported only in the `cloud run` command.
-
-Running scripts locally with the `run` command will not use Binary Provisioning, but you can use `cloud run --local-execution` instead.
-
-The `archive` and `inspect` commands also support Binary provisioning to allow creating archives to the cloud.
+Binary Provisioning requires authentication with a Grafana Cloud account and must be explicitly enabled by setting the `K6_BINARY_PROVISIONING` environment variable. The feature only supports [extensions that are available in Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud); if your test uses other extensions, you will still need to build a custom binary manually. Additionally, Binary Provisioning is not available when using `k6 run`; in those cases, a custom binary created with `xk6` is still required.
 
 To enable the Binary Provisioning, you must set the `K6_BINARY_PROVISIONING` environment variable to `true`:
 
@@ -49,7 +41,7 @@ $Env:K6_BINARY_PROVISIONING = "true"
 {{< /code >}}
 
 
-In order to use the Binary Provisioning, the user must be authenticated to Grafana Cloud. You can [authenticate](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/#authenticate-with-the-login-command) using the `k6 cloud login` command:
+To use Binary Provisioning, you must [authenticate to Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/#authenticate-with-the-login-command) using the `k6 cloud login` command:
 
 {{< code >}}
 
@@ -137,7 +129,7 @@ time="2025-04-24T12:59:24+02:00" level=info msg=Zelma source=console
 
 Notice the messages indicating the Binary Provisioning feature was used, which dependencies were detected and what versions of these dependencies were used to run the test.
 
-## Known issues and limitations
+## Limitations
 
 - Only extensions supported in Grafana Cloud are supported
 - Output extensions are not supported
