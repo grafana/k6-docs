@@ -520,7 +520,7 @@ Other times, you might just choose the location based on convenience or practica
 Either way, when you set the location of the load generator, keep the following in mind:
 
 - **Required locations.** To compare performance or ensure accurate results, some load tests need to measure the latency from specific locations. These tests launch the load generators from locations that match their user's region.
-- **Optional locations.** Other tests try to measure against a performance baseline—how the system performance changes from a particular performance status or time. To avoid skewed latency results, ensure that the location of the load generator is constant across test tuns, and avoid running the tests from locations that are too close to the SUT.
+- **Optional locations.** Other tests try to measure against a performance baseline—how the system performance changes from a particular performance status or time. To avoid skewed latency results, ensure that the location of the load generator is constant across test runs, and avoid running the tests from locations that are too close to the SUT.
 
 ### Internal APIs
 
