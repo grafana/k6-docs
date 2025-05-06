@@ -34,7 +34,7 @@ This module, by default, adds three key-value pairs:
 
 ## Example
 
-This example demonstrates how to use the this library to instrument every HTTP request made in a script with the `baggage` header.
+This example demonstrates how to use the this library to instrument every HTTP request made in a script with the `baggage` header TEST.
 
 {{< code >}}
 
