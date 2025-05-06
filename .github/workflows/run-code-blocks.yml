@@ -35,5 +35,5 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for file in ${ALL_CHANGED_FILES}; do
-            python -u scripts/md-k6.py --duration 2s "$file"
+            python -u scripts/md-k6.py --duration 2s "$file" --index-file docs/sources/k6/_index.md
           done
