@@ -103,7 +103,6 @@ k6.exe cloud run --local-execution --quiet faker.js
 
 You should see an output similar to the following:
 
-{{< code >}}
 
 ```sh
 INFO[0000] The current k6 binary doesn't satisfy all dependencies, it is required to provision a custom binary.  deps="k6/x/faker*"
@@ -121,8 +120,6 @@ time="2025-04-24T12:59:24+02:00" level=info msg=Zelma source=console
     data_received..........................: 0 B 0 B/s
     data_sent..............................: 0 B 0 B/s
 ```
-
-{{< /code >}}
 
 Notice the messages indicating the Binary Provisioning feature was used, which dependencies were detected and what versions of these dependencies were used to run the test.
 
