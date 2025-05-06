@@ -4,6 +4,7 @@
 # Usage:
 #   python3 md-k6.py <file>
 
+import io
 import os
 import re
 import json
@@ -221,10 +222,11 @@ def read_front_matter_env(f: TextIO) -> dict[str, str]:
             continue
 
         parts = line.strip().split(":")
-        key, value = parts[0].strip(), parts[1].strip()
+        key = parts[0].strip()
+        value = ":".join(parts[1:]).strip()
 
         # Look for YAML keys with ALL_CAPS_NAMES
-        if re.match(r"[A-Z0-9_]", key) and value:
+        if re.match(r"^[A-Z0-9_]+$", key) and value:
             result[key] = value
 
     return result
@@ -343,6 +345,26 @@ hello, world!
 
         self.assertEqual(len(scripts), 1)
         self.assertEqual(scripts[0].text, "testing testing")
+
+    def testReadIndexEnvFile(self):
+        text = io.StringIO(
+            """
+---
+title: Testing
+FOO_BAR: 1234
+   FOO_BAR2:1234
+FOO_BAR3: some:value
+not_added: foo
+not_added2:
+NOT_ADDED3:
+---
+"""
+        )
+        env = read_front_matter_env(text)
+
+        self.assertEqual(
+            env, {"FOO_BAR": "1234", "FOO_BAR2": "1234", "FOO_BAR3": "some:value"}
+        )
 
     def testExtractScriptOptions(self):
         text = """
