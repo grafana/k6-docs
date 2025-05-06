@@ -67,7 +67,7 @@ k6 cloud login --token <API_TOKEN>
 
 Consider the following script that uses the [xk6-faker](https://github.com/grafana/xk6-faker) extension to create a random person name and prints it to the console:
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import faker from 'k6/x/faker';
@@ -77,13 +77,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 You can run it locally using the following command:
 
 {{< code >}}
 
-<!-- md-k6:skip -->
 
 ```linux
 k6 cloud run --local-execution faker.js
