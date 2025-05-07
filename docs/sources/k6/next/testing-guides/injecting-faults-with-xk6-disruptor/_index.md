@@ -44,7 +44,7 @@ Common use cases are:
 
 ## Learn more
 
-Lear more about [Fault injection](https://k6.io/blog/democratize-chaos-testing/) and [Building Resilience early in the development cycle](https://k6.io/blog/building-resilience-early-in-the-development-cycle/).
+Learn more about [Fault injection](https://k6.io/blog/democratize-chaos-testing/) and [Building Resilience early in the development cycle](https://k6.io/blog/building-resilience-early-in-the-development-cycle/).
 
 Check the [first steps](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps) to get started with the disruptor.
 
