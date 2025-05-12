@@ -51,4 +51,4 @@ jobs:
             The [k6 Extension Registry](https://registry.k6.io) has changed.
             This pull request contains the files generated from the k6 Extension Registry.
           add-paths: |
-            docs/sources/next/extensions/explore.md
+            docs/sources/k6/next/extensions/explore.md
