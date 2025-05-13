@@ -26,4 +26,4 @@ If you find an error similar to the following when using the xk6-disruptor, cont
 > ERROR\[0000\] error creating PodDisruptor: pods "nginx" is forbidden: violates PodSecurity "baseline:latest": non-default capabilities (container "xk6-agent" must not include "NET_ADMIN", "NET_RAW" in securityContext.capabilities.add)
 
 You also need to ensure your test application is accessible from the machine where the tests run.
-Refer to [Expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section for instructions on how to make your application available from outside the Kubernetes cluster..
+Refer to [Expose your application](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/expose--your-application) section for instructions on how to make your application available from outside the Kubernetes cluster.
