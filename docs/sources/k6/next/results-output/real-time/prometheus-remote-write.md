@@ -16,6 +16,8 @@ For instance, when using the `experimental-prometheus-rw` output, k6 can send te
 The output, during the `k6 run` execution, gets all the generated time-series data points for the [k6 metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
 It then generates the equivalent Prometheus time series and sends them to the Prometheus remote write endpoint.
 
+Alternatively, this module can send metrics to a Prometheus Pushgateway instead of a remote write endpoint.
+
 ## Metrics mapping
 
 All [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) are converted into an equivalent [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/).
@@ -149,6 +151,31 @@ In the Prometheus Web UI, they appear like this:
 
 ![k6 metrics as seen in the Prometheus UI](/media/docs/k6-oss/query-k6-metrics-in-the-prometheus-web-ui.png)
 
+## Send test metrics to a Prometheus Pushgateway
+
+This module can also send metrics to a Prometheus Pushgateway. You can enable this feature using the `K6_PROMETHEUS_RW_USE_PUSHGATEWAY` option.
+The job name must be specified with `K6_PROMETHEUS_RW_PUSHGATEWAY_JOB`. However, using remote write is recommended whenever possible. See [Limitations](#limitations) for details.
+
+```bash
+K6_PROMETHEUS_RW_SERVER_URL=http://pushgateway:9091 \
+K6_PROMETHEUS_RW_USE_PUSHGATEWAY=true \
+K6_PROMETHEUS_RW_PUSHGATEWAY_JOB=my-job \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+You can configure additional options, including the push interval, custom HTTP headers, Bearer token, HTTP Basic authentication, trend statistics, and exporting trends as native histograms.
+
+### Limitations
+
+Using a Pushgateway is only recommended when remote write is not an option due to the following drawbacks:
+
+- Although the Pushgateway accepts native histograms, it cannot expose them via OpenMetrics to Prometheus. Therefore, when using the Pushgateway, enabling the native histogram option is not recommended. Instead, trends should be exported as counters and gauges.
+- This module does not control Prometheus scrape interval. If k6 updates the metrics in the Pushgateway more frequently than Prometheus scrapes them, some measurements may be lost.
+- For the same reason, stale markers cannot be sent to the Pushgateway, meaning all metrics retain their last values after the test finishes.
+- When trends are exported as counters and gauges, k6 maintains an internal representation of these statistics, which always reflect the entire test duration.  
+  As a result, trends cannot be visualized for specific time ranges (e.g., displaying p(99) for the last 5 minutes).  
+  This limitation makes it difficult to observe performance improvements over time. For example, if response times improve significantly due to a reduced load, the earlier slower requests will still dominate the metric calculation, potentially masking recent improvements.
+
 ## Options
 
 k6 has special options for remote write output.
@@ -171,6 +198,8 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_SIGV4_REGION`              | `string`                             | Sets the AWS region where the workspace is. Along with the others `K6_PROMETHEUS_RW_SIGV4_*` configurations enables signing requests.                                                                                                                                                  |
 | `K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY`          | `string`                             | Sets the AWS access key.                                                                                                                                                                                                                                                               |
 | `K6_PROMETHEUS_RW_SIGV4_SECRET_KEY`          | `string`                             | Sets the AWS secret key.                                                                                                                                                                                                                                                               |
+| `K6_PROMETHEUS_RW_USE_PUSHGATEWAY`           | `boolean`                            | If true, sends the metrics to a Pushgateway instead of a remote write endpoint.                                                                                                                                                                                                        |
+| `K6_PROMETHEUS_RW_PUSHGATEWAY_JOB`           | `string`                             | Sets the job name used to push metrics to the Pushgateway.                                                                                                                                                                                                                             |
 
 ### Stale trend metrics
 
