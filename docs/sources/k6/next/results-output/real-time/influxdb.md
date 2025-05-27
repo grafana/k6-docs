@@ -12,7 +12,7 @@ k6 supports sending output metrics to InfluxDB v1.0 and v2.0.
 
 k6 has built-in support to send metrics to InfluxDB v1.0.
 
-You can use the `--out` command with the `influxdb` option:
+You can use the `--out` flag with the `influxdb` option:
 
 ```bash
 k6 run --out influxdb=http://localhost:8086/myk6db script.js
