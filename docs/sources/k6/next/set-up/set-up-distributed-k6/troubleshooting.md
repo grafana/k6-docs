@@ -1,9 +1,11 @@
 ---
+aliases:
+  - ./troubleshooting # docs/k6/<K6_VERSION>/set-up/set-up-distributed-k6/troubleshooting
 weight: 400
-title: Troubleshooting
+title: Troubleshoot
 ---
 
-# Troubleshooting
+# Troubleshoot
 
 This topic includes instructions to help you troubleshoot common issues with the k6 Operator.
 
