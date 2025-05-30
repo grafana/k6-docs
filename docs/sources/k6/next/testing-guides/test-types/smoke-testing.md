@@ -56,6 +56,7 @@ export const options = {
 
 export default () => {
   const urlRes = http.get('https://quickpizza.grafana.com');
+  check(urlRes, { 'status returned 200': (r) => r.status == 200 })
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script
