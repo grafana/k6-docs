@@ -1,6 +1,9 @@
 ---
+labels:
+  products:
+    - cloud
 title: 'Run extensions using Binary Provisioning'
-description: 'Guide to run scripts that require extensions using Binary provisioning.'
+description: 'Learn how to run scripts that require extensions using Binary Provisioning.'
 weight: 04
 ---
 
@@ -12,13 +15,22 @@ This is an experimental feature. Breaking changes might occur prior to the featu
 
 {{< /admonition >}}
 
-Starting from v1.0, k6 supports automatic extension management through the Binary Provisioning feature.
+k6 supports [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) as a way of extending k6 native functionality, and support a wider variety of use cases.
 
-When you execute tests in Grafana Cloud using `cloud run` or `cloud run --local-execution`, k6 analyzes your test script, identifies any used extensions, builds a custom binary that includes all required extensions, and runs the test with that binary. This removes the need to manually create a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) using `xk6` when running tests locally and streaming results to Grafana Cloud. The `archive` and `inspect` commands also support Binary Provisioning to allow creating archives for  Grafana Cloud.
+Using k6 with extensions locally requires users to build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) that includes the extension, which can then be used to run a test script. With the Binary Provisioning feature, Grafana Cloud k6 users can run tests with a [limited set of extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud), without having to manually build a k6 binary.
 
-Binary Provisioning requires authentication with a Grafana Cloud account and must be explicitly enabled by setting the `K6_BINARY_PROVISIONING` environment variable. The feature only supports [extensions that are available in Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud); if your test uses other extensions, you will still need to build a custom binary manually. Additionally, Binary Provisioning is not available when using `k6 run`; in those cases, a custom binary created with `xk6` is still required.
+The `archive` and `inspect` commands also support Binary Provisioning to allow creating archives for Grafana Cloud.
 
-To enable the Binary Provisioning, you must set the `K6_BINARY_PROVISIONING` environment variable to `true`:
+## Before you begin
+
+To use Binary Provisioning, you'll need:
+
+- k6 v1.0 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
+- A [Grafana Cloud account](https://grafana.com/auth/sign-up/create-user).
+
+## Set the Binary Provsioning environment flag
+
+To enable Binary Provisioning, you must set the `K6_BINARY_PROVISIONING` environment variable to `true`:
 
 {{< code >}}
 
@@ -35,39 +47,43 @@ $Env:K6_BINARY_PROVISIONING = "true"
 
 ```
 
-```windows
-```
-
 {{< /code >}}
 
+## Log in to Grafana Cloud
 
-In order to use the Binary Provisioning, the user must be authenticated to Grafana Cloud. You can [authenticate](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/#authenticate-with-the-login-command) using the `k6 cloud login` command:
+To use Binary Provisioning, you must [authenticate to Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/#authenticate-with-the-login-command) using the `k6 cloud login` command:
+
+```bash
+k6 cloud login --token <API_TOKEN>
+```
+
+## Run a test
+
+After setting the `K6_BINARY_PROVISIONING` environment variable and logging in to Grafana Cloud, you can run a test using the `k6 cloud run` command:
 
 {{< code >}}
 
 ```linux
-k6 cloud login --token <API_TOKEN>
+k6 cloud run --local-execution script.js
 ```
 
 ```mac
-k6 cloud login --token <API_TOKEN>
+k6 cloud run --local-execution --quiet script.js
 ```
 
 ```windows-powershell
-
+k6.exe cloud run --local-execution --quiet script.js
 ```
 
 ```windows
+k6.exe cloud run --local-execution --quiet script.js
 ```
 
 {{< /code >}}
 
+As an example, you can save this script to your machine and run it in Grafana Cloud. It uses the [xk6-faker](https://github.com/grafana/xk6-faker) extension to generate a random first name.
 
-## Example
-
-Consider the following script that uses the [xk6-faker](https://github.com/grafana/xk6-faker) extension to create a random person name and prints it to the console:
-
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import faker from 'k6/x/faker';
@@ -77,34 +93,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
-You can run it locally using the following command:
-
-{{< code >}}
-
-```linux
-k6 cloud run --local-execution faker.js
-```
-
-```mac
-k6 cloud run --local-execution --quiet faker.js
-```
-
-```windows-powershell
-k6.exe cloud run --local-execution --quiet faker.js
-
-```
-
-```windows
-k6.exe cloud run --local-execution --quiet faker.js
-```
-
-{{< /code >}}
-
 You should see an output similar to the following:
-
-{{< code >}}
 
 ```sh
 INFO[0000] The current k6 binary doesn't satisfy all dependencies, it is required to provision a custom binary.  deps="k6/x/faker*"
@@ -123,13 +112,11 @@ time="2025-04-24T12:59:24+02:00" level=info msg=Zelma source=console
     data_sent..............................: 0 B 0 B/s
 ```
 
-{{< /code >}}
+The output includes information about which dependencies were detected, and the version for the dependencies used to run the test.
 
-Notice the messages indicating the Binary Provisioning feature was used, which dependencies were detected and what versions of these dependencies were used to run the test.
+## Limitations
 
-## Known issues and limitations
-
-- Only extensions supported in Grafana Cloud are supported
-- Output extensions are not supported
-- Running scripts from stdin is not supported
-- Only files with extensions `.js`, `.ts` or `.tar` can be used. Other extensions will not invoke the Binary Provisioning mechanism
+- Only extensions supported in Grafana Cloud are supported.
+- Output extensions are not supported.
+- Running scripts from stdin is not supported.
+- Only files with extensions `.js`, `.ts` or `.tar` can be used. Other extensions will not invoke the Binary Provisioning mechanism.
