@@ -1,7 +1,7 @@
 ---
 title: 'Secret source Extensions'
 description: 'Follow these steps to build an secret source extension for k6.'
-weight: 03
+weight: 500
 ---
 
 # Secret Source Extensions
