@@ -15,7 +15,7 @@ A Pod Termination fault is defined by the following attributes:
 | Attribute | Type                  | Default  | Description                                                                                                                                                                   |
 | --------- | --------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | count     | integer or percentage | Required | the number of pods to be terminated. It can be specified as a integer number or as a percentage, for example `30%`, that defines the fraction of target pods to be terminated |
-| timeout   | duration              | 10s      | how long to wait for pods to be terminated before terminating the process with an error
+| timeout   | duration              | 10s      | how long to wait for pods to be terminated. If exceeded, the fault injection completes with an error
 
 {{< admonition type="note" >}}
 
