@@ -12,3 +12,4 @@ This section presents some examples and recommended practices when working with 
 - [Page object model pattern](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/page-object-model-pattern)
 - [Selecting elements](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements)
 - [Simulate user input delay](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/simulate-user-input-delay)
+- [Preventing too many time series](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/preventing-too-many-time-series-issue)
