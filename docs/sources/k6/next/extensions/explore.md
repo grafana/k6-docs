@@ -31,6 +31,10 @@ docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
 Use the table to explore the many extensions. Questions? Feel free to join the discussion about extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
 <div class="nav-cards">
+    <a href="https://github.com/prmuthu/xk6-amqp" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-amqp</h4>
+        <p>Access resources using the Advanced Message Queueing Protocol (AMQP)</p>
+    </a>
     <a href="https://github.com/szkiba/xk6-ansible-vault" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-ansible-vault</h4>
         <p>Encrypt and decrypt Ansible Vault</p>
