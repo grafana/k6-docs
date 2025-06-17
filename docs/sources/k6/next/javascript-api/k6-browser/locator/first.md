@@ -5,7 +5,7 @@ description: 'Browser module: locator.first method'
 
 # first()
 
-Returns a `locator` to the first matching element.
+Returns a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) to the first matching element.
 
 ### Returns
 
