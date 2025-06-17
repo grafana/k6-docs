@@ -5,7 +5,7 @@ description: 'Browser module: locator.nth method'
 
 # nth(number)
 
-Returns locator to the n-th matching element. It's zero based, `nth(0)` selects the first element.
+Returns [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) to the n-th matching element. It's zero based, `nth(0)` selects the first element.
 
 ### Returns
 
