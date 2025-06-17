@@ -1,7 +1,7 @@
 ---
 title: 'Create an extension with a template'
 menuTitle: 'Create an extension with a template'
-description: 'Learn how to to create a k6 extension that handles ascii85 encoding using the xk6-template GitHub repository and GitHub Codespaces, along with best practices.'
+description: 'Learn how to to create a k6 extension that handles ascii85 encoding using the xk6-example GitHub repository and GitHub Codespaces, along with best practices.'
 weight: 200
 ---
 
@@ -30,7 +30,7 @@ Having a GitHub account simplifies the process of developing k6 extensions, whic
 
 ## Create a GitHub repository
 
-The first step is to create a GitHub repository using the [grafana/xk6-example](https://github.com/grafana/xk6-example) template repository. This can be done interactively in a browser by clicking [here](https://github.com/new?template_name=xk6-example&template_owner=grafana). Name the repository "xk6-example-ascii85".
+The first step is to create a GitHub repository using the [grafana/xk6-example](https://github.com/grafana/xk6-example) template repository. This can be done interactively in a browser by clicking [here](https://github.com/new?template_name=xk6-example&template_owner=grafana). Name the repository "xk6-example-ascii85", and set the visibility to **Public**.
 
 Alternatively, use the [GitHub CLI](https://cli.github.com/) to create the repository.
 
