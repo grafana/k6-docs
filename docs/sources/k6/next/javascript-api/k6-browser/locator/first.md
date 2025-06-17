@@ -5,7 +5,7 @@ description: 'Browser module: locator.first method'
 
 # first()
 
-Returns locator to the first matching element.
+Returns a `locator` to the first matching element.
 
 ### Returns
 
