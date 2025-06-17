@@ -5,7 +5,7 @@ description: 'Browser module: page.on method'
 
 # on(event, handler)
 
-Registers a handler to be called whenever the specified event occurs.
+Registers a handler to be called whenever the specified event occurs. This method can also be used to prevent the `too many time series` error when using the k6 browser module. For more details, refer to [Prevent too many time series error](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/prevent-too-many-time-series-error).
 
 | Parameter | Type     | Default | Description                                                                                 |
 | --------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
