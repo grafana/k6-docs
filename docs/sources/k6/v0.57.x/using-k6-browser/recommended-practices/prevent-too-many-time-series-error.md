@@ -4,7 +4,7 @@ description: 'A guide on how to prevent the `too many time series` issue when us
 weight: 05
 ---
 
-# Preventing too many time series issue
+# Prevent too many time series error
 
 Modern websites are complex and make a large number of requests to function as intended by their developers. These requests no longer serve only content for display to the end user but also retrieve insights, analytics, advertisements, and cache-busting purposes. Such requests are usually generated dynamically and may contain frequently changing IDs, posing challenges when correlating and analyzing your k6 test results.
 
@@ -29,14 +29,14 @@ export const options = {
       executor: 'shared-iterations',
       options: {
         browser: {
-            type: 'chromium',
+          type: 'chromium',
         },
       },
     },
   },
-}
+};
 
-export default async function() {
+export default async function () {
   const page = await browser.newPage();
 
   // Here, we set up an event listener using page.on('metric').
@@ -57,8 +57,8 @@ export default async function() {
         // When a method is specified, the metric must match both the URL pattern
         // and the method. If no method is provided, the pattern will match all
         // HTTP methods.
-        {url: /^https:\/\/test\.k6\.io\/\?q=[0-9a-z]+$/, method: 'GET'},
-      ]
+        { url: /^https:\/\/test\.k6\.io\/\?q=[0-9a-z]+$/, method: 'GET' },
+      ],
     });
   });
 
@@ -72,7 +72,6 @@ export default async function() {
     await page.close();
   }
 }
-
 ```
 
 {{< /code >}}
