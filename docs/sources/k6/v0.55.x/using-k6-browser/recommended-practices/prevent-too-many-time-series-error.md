@@ -4,15 +4,15 @@ description: 'A guide on how to prevent the `too many time series` issue when us
 weight: 05
 ---
 
-# Preventing too many time series issue
+# Prevent too many time series error
 
-Modern websites are complex and make a large number of requests to function as intended by their developers. These requests no longer serve only content for display to the end user but also retrieve insights, analytics, advertisements, and cache-busting purposes. Such requests are usually generated dynamically and may contain frequently changing IDs, posing challenges when correlating and analyzing your k6 test results.
+Modern websites are complex and make a large number of requests to function as intended by their developers. These requests no longer serve only content for display to the end user but also retrieve insights, analytics, advertisements, and cache-busting purposes. Such requests are usually generated dynamically and may contain frequently changing IDs, posing challenges when correlating and analyzing your K6 test results.
 
-When load testing a website using the k6 browser module, these dynamic requests can result in a high number of similar-looking requests, making it difficult to correlate them and extract valuable insights. This can also lead to test errors, such as a `too-many-metrics` error, due to high cardinality from metrics tagged with similar but dynamically changing URLs.
+When load testing a website using the k6 browser module, these dynamic requests can result in a high number of similar-looking requests, making it difficult to correlate them and extract valuable insights. This can also lead to test errors, such as a _too-many-metrics_ error, due to high cardinality from metrics tagged with similar but dynamically changing URLs.
 
 This issue also affects synthetic tests. While you may not encounter the _too-many-metrics_ error, you may end up with a large amount of uncorrelated metric data that cannot be tracked effectively over time.
 
-To address this, the browser module has a [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) method, which allows you to define URL patterns using regex for matching. When a match is found, the URL and name tags for the metric are replaced with the new name.
+To address this in the browser module has a [page.on('metric')](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) method, which allows you to define URL patterns using regex for matching. When a match is found, the URL and name tags for the metric are replaced with the new name.
 
 ## Example usage
 
@@ -29,14 +29,14 @@ export const options = {
       executor: 'shared-iterations',
       options: {
         browser: {
-            type: 'chromium',
+          type: 'chromium',
         },
       },
     },
   },
-}
+};
 
-export default async function() {
+export default async function () {
   const page = await browser.newPage();
 
   // Here, we set up an event listener using page.on('metric').
@@ -57,8 +57,8 @@ export default async function() {
         // When a method is specified, the metric must match both the URL pattern
         // and the method. If no method is provided, the pattern will match all
         // HTTP methods.
-        {url: /^https:\/\/test\.k6\.io\/\?q=[0-9a-z]+$/, method: 'GET'},
-      ]
+        { url: /^https:\/\/test\.k6\.io\/\?q=[0-9a-z]+$/, method: 'GET' },
+      ],
     });
   });
 
@@ -72,7 +72,6 @@ export default async function() {
     await page.close();
   }
 }
-
 ```
 
 {{< /code >}}
