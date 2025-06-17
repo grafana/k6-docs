@@ -1,6 +1,6 @@
 ---
 title: 'Prevent too many time series error'
-description: 'A guide on how to prevent the `too many time series` issue when using k6 browser.'
+description: 'A guide on how to prevent the `too many time series` error when using k6 browser.'
 weight: 05
 ---
 
