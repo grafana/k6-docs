@@ -1,7 +1,7 @@
 ---
 title: 'Output Extensions'
 description: 'Follow these steps to build an output extension for k6.'
-weight: 02
+weight: 400
 ---
 
 # Output Extensions
@@ -133,7 +133,7 @@ func (*Logger) Description() string {
 
 // Start initializes any state needed for the output, establishes network
 // connections, etc.
-func (o *Logger) Start() error {
+func (*Logger) Start() error {
     return nil
 }
 

@@ -11,7 +11,7 @@ weight: 04
 
 {{< admonition type="note" >}}
 
-The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io/tree/main/lib/http-instrumentation-tempo/1.0.0) GitHub repository.
+The source code for this library can be found in the [grafana/jslib.k6.io](https://github.com/grafana/jslib.k6.io/tree/main/lib/http-instrumentation-tempo) GitHub repository.
 
 {{< /admonition >}}
 
@@ -19,7 +19,7 @@ The `http-instrumentation-tempo` module allows you to _instrument_ HTTP requests
 
 ## Migration from `k6/experimental/tracing`
 
-This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js'`
+This jslib is a drop in replacement, so all you need to migrate to it is to replace `'k6/experimental/tracing'` import with `'https://jslib.k6.io/http-instrumentation-tempo/{{< param "JSLIB_TEMPO_VERSION" >}}/index.js'`
 
 ## About trace contexts
 
@@ -42,7 +42,7 @@ This example demonstrates how to use the tracing API to instrument every HTTP re
 
 ```javascript
 import { check } from 'k6';
-import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/1.0.0/index.js';
+import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/{{< param "JSLIB_TEMPO_VERSION" >}}/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the http module

@@ -8,6 +8,9 @@ on:
       - ".github/workflows/build-website.yml"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build-website:
     runs-on: ubuntu-latest

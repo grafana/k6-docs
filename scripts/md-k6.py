@@ -4,6 +4,7 @@
 # Usage:
 #   python3 md-k6.py <file>
 
+import io
 import os
 import re
 import json
@@ -11,6 +12,7 @@ import hashlib
 import argparse
 import subprocess
 import tempfile
+from typing import TextIO
 from unittest import TestCase
 from collections import namedtuple
 
@@ -120,7 +122,11 @@ def run_k6(script: Script, duration: str | None, verbose: bool) -> None:
             print(line)
 
 
-def extract_scripts(text: str, lang: str = JS) -> list[Script]:
+def extract_scripts(
+    text: str, lang: str = JS, index_env: dict[str, str] | None = None
+) -> list[Script]:
+    index_env = index_env or {}
+
     # A somewhat complicated regex in order to make parsing of the code block
     # easier. Essentially, takes this:
     #
@@ -185,6 +191,13 @@ def extract_scripts(text: str, lang: str = JS) -> list[Script]:
             args.append(opt.removeprefix(ARG))
 
         script_text = "\n".join(lines[1:])
+        for key, value in index_env.items():
+            # Replace instances of '{{< param "FOO_BAR" >}}' with '1234', assuming
+            # the env value of FOO_BAR=1234.
+            script_text = re.sub(
+                r"{{ *< *param *\"" + key + '" *> *}}', value, script_text
+            )
+
         scripts.append(
             Script(
                 text=script_text,
@@ -196,6 +209,27 @@ def extract_scripts(text: str, lang: str = JS) -> list[Script]:
         )
 
     return scripts
+
+
+def read_front_matter_env(f: TextIO) -> dict[str, str]:
+    # Read a Front Matter .md file with environment variables.
+    # The variables are actually in a YAML dictionary, but since
+    # I want to avoid 3rd party library, I will just try to parse
+    # them line-by-line.
+    result = {}
+    for line in f.readlines():
+        if ":" not in line:
+            continue
+
+        parts = line.strip().split(":")
+        key = parts[0].strip()
+        value = ":".join(parts[1:]).strip()
+
+        # Look for YAML keys with ALL_CAPS_NAMES
+        if re.match(r"^[A-Z0-9_]+$", key) and value:
+            result[key] = value
+
+    return result
 
 
 def main() -> None:
@@ -216,6 +250,12 @@ def main() -> None:
         help="Override script(s) duration. Is not applied to browser tests.",
     )
     parser.add_argument(
+        "--index-file",
+        type=argparse.FileType(),
+        default=None,
+        help="Path to Front Matter _index.md file containing environment variables.",
+    )
+    parser.add_argument(
         "--verbose",
         "-v",
         default=False,
@@ -223,8 +263,13 @@ def main() -> None:
         action="store_true",
     )
     args = parser.parse_args()
+    index_env = read_front_matter_env(args.index_file)
 
     print("Starting md-k6 script.")
+    print("Front Matter variables:")
+    for key, value in index_env.items():
+        print(f"  {key}={value}")
+
     print("Reading from file:", args.file.name)
 
     lang = args.lang
@@ -234,7 +279,7 @@ def main() -> None:
         print(f"Skipping entire file ({SKIP_ALL}).")
         return
 
-    scripts = extract_scripts(text, lang)
+    scripts = extract_scripts(text, lang, index_env)
 
     if ":" in args.blocks:
         range_parts = args.blocks.split(":")
@@ -289,6 +334,37 @@ hello, world!
 
         self.assertEqual(len(scripts), 1)
         self.assertEqual(scripts[0].text, "hello, world!")
+
+    def testExtractScriptIndexEnv(self):
+        text = """
+```javascript
+{{< param "FOO_BAR" >}} {{  < param    "FOO_BAR"   > }}
+```
+        """
+        scripts = extract_scripts(text, JS, {"FOO_BAR": "testing"})
+
+        self.assertEqual(len(scripts), 1)
+        self.assertEqual(scripts[0].text, "testing testing")
+
+    def testReadIndexEnvFile(self):
+        text = io.StringIO(
+            """
+---
+title: Testing
+FOO_BAR: 1234
+   FOO_BAR2:1234
+FOO_BAR3: some:value
+not_added: foo
+not_added2:
+NOT_ADDED3:
+---
+"""
+        )
+        env = read_front_matter_env(text)
+
+        self.assertEqual(
+            env, {"FOO_BAR": "1234", "FOO_BAR2": "1234", "FOO_BAR3": "some:value"}
+        )
 
     def testExtractScriptOptions(self):
         text = """

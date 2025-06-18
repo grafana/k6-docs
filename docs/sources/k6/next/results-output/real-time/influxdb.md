@@ -1,14 +1,30 @@
 ---
 title: 'InfluxDB'
-description: 'k6 has an output extension to store k6 metrics in InfluxDB v2. This document shows you how to configure this integration.'
+description: 'k6 has built-in support for InfluxDB v1, and provides an output extension to store k6 metrics in InfluxDB v2. This document shows you how to configure this integration.'
 weight: 00
 ---
 
 # InfluxDB
 
+k6 supports sending output metrics to InfluxDB v1.0 and v2.0.
+
+## Send k6 metrics to InfluxDB v1.0
+
+k6 has built-in support to send metrics to InfluxDB v1.0.
+
+You can use the `--out` flag with the `influxdb` option:
+
+```bash
+k6 run --out influxdb=http://localhost:8086/myk6db script.js
+```
+
+The example command makes k6 connect to a local InfluxDB instance and send the results from the test to a database named `myk6db`. If the database doesn't exist, k6 creates one automatically.
+
+## Send k6 metrics to InfluxDB v2.0
+
 Using the [InfluxDB extension](https://github.com/grafana/xk6-output-influxdb), you can store k6 metrics in [InfluxDB v2.0](https://docs.influxdata.com/influxdb/v2.0/) and analyze your performance results with Grafana or [other tools](https://docs.influxdata.com/influxdb/cloud-serverless/query-data/tools/).
 
-## Build the k6 version
+### Build the k6 version
 
 To build a k6 binary with the extension, first, make sure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed on your machine.
 
@@ -34,7 +50,7 @@ To learn more about how to build custom k6 versions, check out [xk6](https://git
 
 {{< /admonition >}}
 
-## Run the test
+### Run the test
 
 Check that the InfluxDB instance to store the k6 metrics is running.
 
@@ -54,7 +70,7 @@ k6 runs the test script and sends the [k6 metrics](https://grafana.com/docs/k6/<
 
 ![InfluxDB Data Explorer / k6 bucket](/media/docs/k6-oss/influxdb-data-explorer-k6-bucket.png)
 
-## Options
+### Options
 
 Here is the full list of options that can be configured and passed to the extension:
 
@@ -71,10 +87,10 @@ Here is the full list of options that can be configured and passed to the extens
 | K6_INFLUXDB_PRECISION         | 1ns                   | The timestamp [Precision](https://docs.influxdata.com/influxdb/v2.7/reference/glossary/#precision).                                                                                                                                                                                                                 |
 | K6_INFLUXDB_HTTP_PROXY        |                       | Sets an HTTP proxy for the InfluxDB output.                                                                                                                                                                                                                                                                         |
 
-## Grafana Dashboards
+### Grafana Dashboards
 
 You can use Grafana to query and visualize data from an InfluxDB instance. The instructions are available on [InfluxDB](https://docs.influxdata.com/influxdb/v2.7/tools/grafana/) and [Grafana](https://grafana.com/docs/grafana/latest/datasources/influxdb/).
 
 You can also build a [custom Grafana dashboard](https://grafana.com/docs/k6/<K6_VERSION>/results-output/grafana-dashboards) to visualize the testing results in your own way.
 
-For testing purposes, the [influxdb extension](https://github.com/grafana/xk6-output-influxdb) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-influxdb#docker-compose) with two basic dashboards.
+For testing purposes, the [InfluxDB extension](https://github.com/grafana/xk6-output-influxdb) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-influxdb#docker-compose) with two basic dashboards.

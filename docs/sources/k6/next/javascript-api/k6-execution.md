@@ -66,6 +66,7 @@ Control the test execution.
 | Property        | Type     | Description                                                                                                                                                                                                                                                                                                                                              |
 | --------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | abort([String]) | function | It aborts the test run with the exit code `108`, and an optional string parameter can provide an error message. Aborting the test will not prevent the `teardown()` execution.                                                                                                                                                                           |
+| fail([String])  | function | It fails the test run with the exit code `110`, and an optional string parameter can provide an error message. Failing the test will not interrupt test execution, allowing iterations to finish normally.                                                                                                                                               |
 | options         | Object   | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
 
 ### vu
@@ -184,6 +185,33 @@ export default function () {
 
 export function teardown() {
   console.log('teardown will still be called after test.abort()');
+}
+```
+
+{{< /code >}}
+
+### Test Fail
+
+The `execution.test.fail` function enables controlled test failure reporting without interrupting the test execution. When called, this method marks the entire test run as failed while allowing all iterations to complete normally. The test will exit with code `110`, making failures detectable by external systems. This provides graceful error handling for scenarios akin to [functional testing](https://github.com/grafana/k6-jslib-testing).
+
+{{< code >}}
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+
+export const options = {
+  iterations: 10,
+};
+
+export default function () {
+  http.get('https://quickpizza.grafana.com');
+
+  if (exec.vu.iterationInInstance === 3) {
+    exec.test.fail(`iteration ${exec.vu.iterationInInstance}: marked the test as failed`);
+  }
+
+  console.log(`iteration ${exec.vu.iterationInInstance} executed`);
 }
 ```
 

@@ -40,7 +40,7 @@ This example demonstrates how to use the this library to instrument every HTTP r
 
 ```javascript
 import { check } from 'k6';
-import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/1.0.1/index.js';
+import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/{{< param "JSLIB_PYROSCOPE_VERSION" >}}/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the http module
