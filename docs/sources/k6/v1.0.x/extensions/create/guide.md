@@ -56,17 +56,6 @@ Alternatively, use the [GitHub CLI](https://cli.github.com/) to create the codes
 gh codespace create --repo USER/xk6-example-ascii85 --web
 ```
 
-## Remove example code
-
-The xk6-example-ascii85 repository includes integration examples between Go and the k6 JavaScript runtime. These files can be useful as learning resources, but they’re not required for this extension.
-
-You can use the `.starter.patch` file with the `git apply` command to delete these files.
-
-```bash
-git apply .starter.patch
-rm .starter.patch
-```
-
 ## API declaration
 
 This step is optional but recommended. It is a good practice to document the API of the k6 extension before implementing it.
