@@ -1,7 +1,7 @@
 ---
 title: 'Output Extensions'
 description: 'Follow these steps to build an output extension for k6.'
-weight: 02
+weight: 400
 ---
 
 # Output Extensions
