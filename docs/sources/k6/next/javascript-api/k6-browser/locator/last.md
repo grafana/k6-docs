@@ -5,7 +5,7 @@ description: 'Browser module: locator.last method'
 
 # last()
 
-Returns [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) to the last matching element.
+Returns a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) to the last matching element.
 
 ### Returns
 
