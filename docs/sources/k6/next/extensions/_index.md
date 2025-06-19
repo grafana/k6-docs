@@ -65,7 +65,7 @@ The extensions ecosystem provides endless possibilities to expand the functional
 
 - **To add support for a new network protocol**
 
-  For example, [xk6-amqp](https://github.com/grafana/xk6-amqp) gives access to resources using the Advanced Message Queueing Protocol (AMQP). With xk6-amqp, your scripts can create message queues and seed messages for tests that include systems like RabbitMQ or ActiveMQ (among others).
+  For example, [xk6-amqp](https://github.com/grafana/xk6-amqp) gives access to resources using the Advanced Message Queueing Protocol (AMQP). With xk6-amqp, your scripts can create message queues and seed messages for tests that include systems like RabbitMQ or ActiveMQ (among others). This extension is compatible with AMQP1.0.
 
 - **To incorporate a client library for test dependency**
 
