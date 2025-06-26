@@ -24,7 +24,6 @@ These resources help you write and run k6 tests in a safe environment and explor
 ## Community
 
 - [The k6 community forum](https://community.grafana.com/). Get support from the k6 team and community.
-- [Get in touch](https://k6.io/community/#join-the-conversation). Slack, Meetup, Twitter, Stack Overflow, LinkedIn, and more.
 
 ## Test servers
 
