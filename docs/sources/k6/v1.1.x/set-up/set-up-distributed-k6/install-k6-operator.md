@@ -71,9 +71,10 @@ The k6 Operator includes custom resources called `TestRun`, `PrivateLoadZone`, a
 make install
 ```
 
-## Watch namespace
+## Watch namespaces
 
-By default, the k6 Operator watches the `TestRun` and `PrivateLoadZone` custom resources in all namespaces. You can also configure the k6 Operator to watch a specific namespace by setting the `WATCH_NAMESPACE` environment variable for the operator's deployment:
+By default, the k6 Operator watches the `TestRun` and `PrivateLoadZone` custom resources in all namespaces.
+You can also configure the k6 Operator to watch specific namespaces by setting the `WATCH_NAMESPACES` environment variable for the operator's deployment to a comma-separated list of namespaces:
 
 ```yaml
 apiVersion: apps/v1
@@ -86,10 +87,10 @@ spec:
     spec:
       containers:
         - name: manager
-          image: ghcr.io/grafana/k6-operator:controller-v0.0.14
+          image: ghcr.io/grafana/k6-operator:controller-v0.0.22
           env:
-            - name: WATCH_NAMESPACE
-              value: 'some-ns'
+            - name: WATCH_NAMESPACES
+              value: "some-ns,some-other-namespace"
 # ...
 ```
 
