@@ -6,6 +6,8 @@ weight: 01
 
 # Explore k6 extensions
 
+Test
+
 With over 50 available extensions, the k6 extension ecosystem has many options to meet your requirements and help you incorporate new protocol access, embed a particular client, or improve your test performance. Extensions are developed both by the k6 developers and by the open-source developer community.
 
 Extensions are composable; you can combine any extensions, or mix and match different test cases. You can use [Go and xk6](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go/) or [Docker](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-docker/) to build your custom k6 binary:
