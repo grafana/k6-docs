@@ -6,7 +6,7 @@ weight: 01
 
 # Explore k6 extensions
 
-Test
+Test?
 
 With over 50 available extensions, the k6 extension ecosystem has many options to meet your requirements and help you incorporate new protocol access, embed a particular client, or improve your test performance. Extensions are developed both by the k6 developers and by the open-source developer community.
 
