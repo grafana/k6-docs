@@ -9,7 +9,7 @@ on:
   pull_request:
     types: [opened, reopened]
     paths:
-        - 'docs/k6/**/extensions/explore.md'
+        - 'docs/sources/k6/**/extensions/explore.md'
 
 permissions:
   pull-requests: read
