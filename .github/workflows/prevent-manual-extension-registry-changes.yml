@@ -6,9 +6,10 @@
 
 name: Prevent file change
 on:
-  pull_request_target:
+  pull_request:
+    types: [opened, reopened]
     paths:
-      - 'docs/k6/*/extensions/explore.md'
+        - 'docs/k6/**/extensions/explore.md'
 
 permissions:
   pull-requests: read
