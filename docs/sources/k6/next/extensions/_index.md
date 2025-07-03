@@ -65,7 +65,7 @@ The extensions ecosystem provides endless possibilities to expand the functional
 
 - **To add support for a new network protocol**
 
-  For example, [xk6-amqp](https://github.com/grafana/xk6-amqp) gives access to resources using the Advanced Message Queueing Protocol (AMQP). With xk6-amqp, your scripts can create message queues and seed messages for tests that include systems like RabbitMQ or ActiveMQ (among others).
+  For example, [xk6-dns](https://github.com/grafana/xk6-dns) lets users resolve DNS names to IP addresses in k6 scripts. With xk6-dns, you can assert the performance of custom DNS servers under load, and provide a way to resolve DNS names to IP addresses using a specific DNS server.
 
 - **To incorporate a client library for test dependency**
 
