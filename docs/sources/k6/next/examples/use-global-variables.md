@@ -12,6 +12,18 @@ A common use case is when you need to extract a value from a page, such as a CSR
 
 There are multiple ways to use global variables in JavaScript, each with benefits and drawbacks.
 
+Before going into the examples, it's important to note a caveat with how the k6 test lifecycle works, and how that can affect the usage of global variables.
+
+## VU isolation and global variables
+
+In k6, variables defined in the `init` context are copied to each Virtual User (VU) when the test starts. Each VU runs in complete isolation from the others, so any changes made to global variables during the test are local to the VU making them.
+
+This means that if you have, for example, 2 VUs and 4 iterations, and you increment a property on a global variable in each iteration, you might expect the final value to be 8. However, in reality, each VU will have its own copy, and the value will be 4 for each VU.
+
+For _read-only use-cases_ where you only use static values or set them once at the beginning, for example, in the `setup()` function, this is not a problem. But if you modify global variables during the test, remember that each VU has its own instance, and changes are not shared between VUs.
+
+Refer to [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/) for more details about the test lifecycle stages.
+
 ## Option 1: use `import` and `export`
 
 The first option is to declare a global variables object in your main script and export it.
