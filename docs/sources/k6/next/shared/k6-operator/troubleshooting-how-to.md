@@ -20,7 +20,7 @@ That ensures that the script has correct syntax and can be parsed with k6 in the
 
 ### `TestRun` deployment
 
-#### The pods
+#### The Jobs and Pods
 
 In case of one `TestRun` Custom Resource (CR) creation with `parallelism: n`, there are certain repeating patterns:
 
@@ -38,21 +38,21 @@ In case of one `TestRun` Custom Resource (CR) creation with `parallelism: n`, th
    kubectl logs mytest-initializer-xxxxx
    ```
 
-If the Pods seem to be working but not producing an expected result and there's not enough information in the logs, you can use the k6 [verbose option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/#options) in the `TestRun` spec:
+#### `TestRun` with `cleanup` option
 
-```yaml
-apiVersion: k6.io/v1alpha1
-kind: TestRun
-metadata:
-  name: k6-sample
-spec:
-  parallelism: 2
-  script:
-    configMap:
-      name: 'test'
-      file: 'test.js'
-  arguments: --verbose
-```
+If a `TestRun` has [`spec.cleanup` option](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/#clean-up-resources) set, as for example [`PrivateLoadZone`](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/) tests always do, it may be harder to locate and analyze the Pod before it's deleted.
+
+In that case, we recommend using observability solutions, like Prometheus and Loki, to store metrics and logs for later analysis.
+
+As an alternative, it is also possible to watch for the resources manually with the following commands:
+
+  ```bash
+  kubectl get jobs -n my-namespace -w
+  kubectl get pods -n my-namespace -w
+
+  # To get detailed information (this one is quite verbose so use with caution):
+  kubectl get pods -n my-namespace -w -o yaml
+  ```
 
 #### k6 Operator
 
@@ -64,7 +64,7 @@ kubectl -n k6-operator-system -c manager logs k6-operator-controller-manager-xxx
 
 #### Inspect `TestRun` resource
 
-After you deploy a `TestRun` CR, you can inspect it the same way as any other resource:
+After you or `PrivateLoadZone` deployed a `TestRun` CR, you can inspect it the same way as any other resource:
 
 ```bash
 kubectl describe testrun my-testrun
@@ -101,3 +101,21 @@ Status:
 If `Stage` is equal to `error`, you can check the logs of k6 Operator.
 
 Conditions can be used as a source of info as well, but it's a more advanced troubleshooting option that should be used if the previous steps weren't enough to diagnose the issue. Note that conditions that start with the `Cloud` prefix only matter in the setting of k6 Cloud test runs, for example, for cloud output and PLZ test runs.
+
+#### Debugging k6 process
+
+If the script is working locally as expected, and the previous steps show no errors as well, yet you do not see an expected result of a test and suspect k6 process is at fault, you can use the k6 [verbose option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/#options) in the `TestRun` spec:
+
+```yaml
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: k6-sample
+spec:
+  parallelism: 2
+  script:
+    configMap:
+      name: 'test'
+      file: 'test.js'
+  arguments: --verbose
+```
