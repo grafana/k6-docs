@@ -56,33 +56,24 @@ Using [kind](https://kind.sigs.k8s.io/) or [k3d](https://k3d.io/) are awesome op
 ## 1. Install the operator
 
 The first step to running distributed tests in Kubernetes is to install the operator if not already installed in the cluster.
-At this time, installation does require having the project source code downloaded onto your system.
-Installation commands must be run from the source directory.
 
 {{< admonition type="note" >}}
 
 Besides privileged access to a Kubernetes cluster, installation will require that the system performing the installation has the following tools installed:
 
-- [Git](https://git-scm.com/downloads)
-- [Go](https://go.dev/doc/install)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-- [Kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/)
-- [Make](https://www.gnu.org/software/make/)
 
 {{< /admonition >}}
 
-From your command-line, execute the following:
-
-```shell
-git clone https://github.com/grafana/k6-operator && cd k6-operator
-```
-
 Ensure that your `kubectl` tool is set for the appropriate Kubernetes cluster.
-Then, from the `k6-operator` directory, you may now perform the installation:
+
+Then, from your command-line, execute the following:
 
 ```shell
-make deploy
+curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl apply -f -
 ```
+
+There are other ways to install the k6 Operator, more on that [here](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/install-k6-operator/).
 
 By default, the operator will be installed into a new namespace, `k6-operator-system`.
 You can verify the successful installation by listing available resources within the namespace:
@@ -405,7 +396,9 @@ spec:
 
 Sadly nothing works perfectly all the time, so knowing where you can go for help is important.
 
-Be sure to search the [k6-operator category in the community forum](https://community.grafana.com/c/grafana-k6/k6-operator/73).
+Be sure to check the [troubleshooting guide](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/troubleshooting/) as it contains many common pitfalls.
+
+You can also search the [k6-operator category in the community forum](https://community.grafana.com/c/grafana-k6/k6-operator/73).
 k6 has a growing and helpful community of engineers working with k6-operator, so there's a good chance your issue has already been discussed and overcome.
 It's also in these forums where you'll be able to get help from members of the k6 development team.
 
