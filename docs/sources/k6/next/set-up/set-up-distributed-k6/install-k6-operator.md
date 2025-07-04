@@ -16,7 +16,7 @@ To install k6 Operator, you'll need:
 
 ## Deploy the operator
 
-There are three different options that you can use to deploy the k6 Operator.
+There are three different methods to deploy the k6 Operator. The first two methods, with bundle and with Helm, install the latest official release of the k6 Operator by default. The third method installs from the branch of the [k6-operator repository](https://github.com/grafana/k6-operator) and is meant for development purposes or for folk who have their own `kustomize` pipeline on top.
 
 ### Deploy with bundle
 
@@ -50,25 +50,54 @@ You can find a complete list of Helm options in the [k6 Operator charts folder](
 
 ### Deploy with Makefile
 
-In order to install the operator with a Makefile, you'll need:
+This is a more manual, low-level way to install the k6 Operator. It installs from the branch of the k6-operator repository. By default, it's the `main` branch, which is not guaranteed to be always stable. In general case, deployment from the branch is meant for development purposes.
+
+However, this method can also be useful for folk who have the `kustomize` pipeline and wish to adjust manifests with `kustomize`. To use this method for regular, production deployments, it is recommended to do that from the tagged commits:
+
+```bash
+git clone https://github.com/grafana/k6-operator && cd k6-operator
+git checkout v0.0.22
+```
+
+The tagged commits correspond to the official releases and are expected to be stable.
+
+In order to install the operator with the Makefile, you need:
 
 - [go](https://go.dev/doc/install)
 - [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/)
 
-A more manual, low-level way to install the k6 operator is by running the command below:
+Then, you can install the k6 Operator by running the command below from the root of the cloned repository:
 
 ```bash
 make deploy
 ```
 
-This method may be more useful for development of the k6 Operator, depending on specifics of the setup.
+### Install the CRDs
 
-## Install the CRD
-
-The k6 Operator includes custom resources called `TestRun`, `PrivateLoadZone`, and `K6`. They're automatically installed when you do a deployment or install a bundle, but you can also manually install them by running:
+The k6 Operator includes custom resources called `TestRun` and `PrivateLoadZone`. They're automatically installed when you use one of the three installation methods above. But you can also manually install the CRDs by running:
 
 ```bash
 make install
+```
+
+## Uninstall k6 Operator
+
+Removal of the k6 Operator depends on the installation method. If you use bundle installation, you can remove all of the resources created by the k6 Operator with the following:
+
+```bash
+curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl delete -f -
+```
+
+If you use Helm installation, then removal should be done with the `helm` command:
+
+```bash
+helm uninstall k6-operator
+```
+
+Finally, if you use Makefile installation, use `make` command to uninstall:
+
+```bash
+make delete
 ```
 
 ## Watch namespaces
@@ -100,18 +129,4 @@ spec:
             # - name: WATCH_NAMESPACES
             #   value: "some-ns,some-other-namespace"
 # ...
-```
-
-## Uninstall k6 Operator
-
-You can remove all of the resources created by the k6 Operator with `bundle`:
-
-```bash
-curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl delete -f -
-```
-
-Or with the `make` command:
-
-```bash
-make delete
 ```
