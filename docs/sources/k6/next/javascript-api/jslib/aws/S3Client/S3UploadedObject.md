@@ -26,6 +26,8 @@ weight: 20
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,
@@ -75,6 +77,8 @@ export default async function () {
 For multipart uploads, the `S3UploadedObject` is returned by the `completeMultipartUpload` method:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import crypto from 'k6/crypto';

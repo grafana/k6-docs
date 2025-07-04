@@ -37,6 +37,8 @@ With it, the user can send messages to specified queues, receive messages from q
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 

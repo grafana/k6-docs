@@ -38,6 +38,8 @@ weight: 10
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,
