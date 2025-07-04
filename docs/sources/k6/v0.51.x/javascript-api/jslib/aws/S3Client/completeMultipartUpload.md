@@ -20,9 +20,9 @@ weight: 10
 
 ### Returns
 
-| Type            | Description                                                           |
-| :-------------- | :-------------------------------------------------------------------- |
-| `Promise<void>` | A Promise that fulfills when the multipart upload has been completed. |
+| Type                                                                                                                     | Description                                                                                                                                                                                                                                      |
+| :----------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Promise<[S3UploadedObject](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3uploadedobject)> | A Promise that fulfills with an [S3UploadedObject](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3uploadedobject) containing metadata about the completed multipart upload, including ETag and optional checksums. |
 
 ### Example
 
@@ -32,7 +32,10 @@ weight: 10
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.12.1/s3.js';
+import {
+  AWSConfig,
+  S3Client,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -85,10 +88,24 @@ export default async function () {
   );
 
   // Complete the multipart upload
-  await s3.completeMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId, [
-    firstPart,
-    secondPart,
-  ]);
+  const uploadResult = await s3.completeMultipartUpload(
+    testBucketName,
+    testFileKey,
+    multipartUpload.uploadId,
+    [firstPart, secondPart]
+  );
+
+  // Access the upload metadata
+  console.log('Multipart upload completed! ETag:', uploadResult.eTag);
+
+  if (uploadResult.size) {
+    console.log('Total object size:', uploadResult.size);
+  }
+
+  // For multipart uploads, the checksum type will typically be "COMPOSITE"
+  if (uploadResult.checksumType) {
+    console.log('Checksum type:', uploadResult.checksumType);
+  }
 
   // Let's redownload it verify it's correct, and delete it
   const obj = await s3.getObject(testBucketName, testFileKey);

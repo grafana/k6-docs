@@ -19,7 +19,7 @@ cascade:
   github_branch: main
   github_dir: /docs/sources/k6
   replace_dir: docs/k6/
-  JSLIB_AWS_VERSION: 0.13.0
+  JSLIB_AWS_VERSION: 0.14.0
   JSLIB_PYROSCOPE_VERSION: 1.0.2
   JSLIB_TEMPO_VERSION: 1.0.1
 versioned: true

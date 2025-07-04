@@ -12,26 +12,26 @@ weight: 10
 
 ### Parameters
 
-| Name          | Type                                                 | Description                                                                                          |
-| :------------ | :--------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
-| `queueUrl`    | string                                               | The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive. |
-| `messageBody` | string                                               | The message to send. The minimum size is one character. The maximum size is 256 KB.                  |
-| `options`     | [SendMessageOptions](#sendmessageoptions) (optional) | Options for the request.                                                                             |
+| Name        | Type                                                 | Description                                                                                          |
+| :---------- | :--------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| queueUrl    | string                                               | The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive. |
+| messageBody | string                                               | The message to send. The minimum size is one character. The maximum size is 256 KB.                  |
+| options     | [SendMessageOptions](#sendmessageoptions) (optional) | Options for the request.                                                                             |
 
 #### SendMessageOptions
 
-| Name                     | Type              | Description                                                                                                                                                                                                                                                                                                                  |
-| :----------------------- | :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `messageDeduplicationId` | string (optional) | The token used for deduplication of sent messages. This parameter applies only to FIFO (first-in-first-out) queues. If a message with a particular MessageDeduplicationId is sent successfully, any messages with the same MessageDeduplicationId are accepted but not delivered during the 5-minute deduplication interval. |
-| `messageGroupId`         | string (optional) | The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner. Messages in different message groups might be processed out of order.                                                                                              |
-| `messageAttributes`      | object (optional) | Each message attribute consists of a `Name`, `Type`, and `Value`. For more information, see [Amazon SQS Message Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html).                                                                                         |
-| `delaySeconds`           | number (optional) | The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive `delaySeconds` value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies.                 |
+| Name                   | Type              | Description                                                                                                                                                                                                                                                                                                                  |
+| :--------------------- | :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| messageDeduplicationId | string (optional) | The token used for deduplication of sent messages. This parameter applies only to FIFO (first-in-first-out) queues. If a message with a particular MessageDeduplicationId is sent successfully, any messages with the same MessageDeduplicationId are accepted but not delivered during the 5-minute deduplication interval. |
+| messageGroupId         | string (optional) | The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner. Messages in different message groups might be processed out of order.                                                                                              |
+| messageAttributes      | object (optional) | Each message attribute consists of a `Name`, `Type`, and `Value`. For more information, see [Amazon SQS Message Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html).                                                                                         |
+| delaySeconds           | number (optional) | The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive `delaySeconds` value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies.                 |
 
 ### Returns
 
-| Type              | Description                                                                                                                                                                                                                                               |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<object>` | A Promise that fulfills with the message that was sent, as an object containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string. |
+| Type            | Description                                                                                                                                                                                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Promise<object> | A Promise that fulfills with the message that was sent, as an object containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string. |
 
 ### Example
 
@@ -58,7 +58,7 @@ const testQueue = 'https://sqs.us-east-1.amazonaws.com/000000000/test-queue';
 export default async function () {
   // If our test queue does not exist, abort the execution.
   const queuesResponse = await sqs.listQueues();
-  if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
+  if (queuesResponse.urls.filter((q) => q === testQueue).length == 0) {
     exec.test.abort();
   }
 

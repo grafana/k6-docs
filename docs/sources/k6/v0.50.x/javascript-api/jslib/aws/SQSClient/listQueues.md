@@ -12,15 +12,15 @@ weight: 10
 
 ### Parameters
 
-| Name      | Type              | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| :-------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `options` | object (optional) | Options for the request. Accepted properties are: `queueNamePrefix` (optional string) setting the prefix filter for the returned queue list, `maxResults` (optional number) setting the maximum number of results to include in the response (1 <= `maxResults` <= 1000>), and `nextToken` (optional string) setting the pagination token to request the next set of results. |
+| Name    | Type              | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| :------ | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options | object (optional) | Options for the request. Accepted properties are: `queueNamePrefix` (optional string) setting the prefix filter for the returned queue list, `maxResults` (optional number) setting the maximum number of results to include in the response (1 <= `maxResults` <= 1000>), and `nextToken` (optional string) setting the pagination token to request the next set of results. |
 
 ### Returns
 
-| Type              | Description                                                                                                                                                                                               |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<object>` | A Promise that fulfills with an object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
+| Type            | Description                                                                                                                                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Promise<object> | A Promise that fulfills with an object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
 
 ### Example
 
@@ -29,7 +29,10 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.11.0/sqs.js';
+import {
+  AWSConfig,
+  SQSClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/sqs.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -46,7 +49,7 @@ export default async function () {
   const queuesResponse = await sqs.listQueues();
 
   // If our test queue does not exist, abort the execution.
-  if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
+  if (queuesResponse.urls.filter((q) => q === testQueue).length == 0) {
     exec.test.abort();
   }
 

@@ -1,7 +1,6 @@
 ---
 title: 'Bucket'
 head_title: 'Bucket'
-slug: 'bucket'
 description: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
 weight: 20
 ---
@@ -20,7 +19,10 @@ Bucket is returned by the S3Client.\* methods that query S3 buckets. Namely, `li
 {{< code >}}
 
 ```javascript
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.11.0/s3.js';
+import {
+  AWSConfig,
+  S3Client,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

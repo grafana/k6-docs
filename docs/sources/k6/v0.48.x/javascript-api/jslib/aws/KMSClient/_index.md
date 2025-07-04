@@ -39,7 +39,10 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 ```javascript
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.11.0/kms.js';
+import {
+  AWSConfig,
+  KMSClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

@@ -1,7 +1,6 @@
 ---
 title: 'getParameter'
 head_title: 'SystemsManagerClient.getParameter()'
-slug: 'systemsmanagerclient-getparameter'
 description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 weight: 10
 ---
@@ -23,7 +22,10 @@ weight: 10
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.11.0/ssm.js';
+import {
+  AWSConfig,
+  SystemsManagerClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/ssm.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

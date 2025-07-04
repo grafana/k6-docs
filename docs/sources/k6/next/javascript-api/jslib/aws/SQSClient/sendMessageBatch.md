@@ -5,42 +5,44 @@ description: 'SQSClient.sendMessageBatch Delivers up to ten messages to the spec
 weight: 10
 ---
 
-# sendMessage
+# sendMessageBatch
 
 `SQSClient.sendMessageBatch(queueUrl, entries)` delivers up to ten messages to the specified Amazon Simple Queue
 Service (SQS) queue.
 
 ### Parameters
 
-| Name       | Type                                            | Description                                                                                          |
-| :--------- | :---------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
-| `queueUrl` | string                                          | The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive. |
-| `entries`  | [SendMessageBatchEntry](#sendmessagebatchentry) | A list of up to ten messages to send.                                                                |
+| Name     | Type                                            | Description                                                                                          |
+| :------- | :---------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| queueUrl | string                                          | The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive. |
+| entries  | [SendMessageBatchEntry](#sendmessagebatchentry) | A list of up to ten messages to send.                                                                |
 
 #### SendMessageBatchEntry
 
-| Name              | Type                                                                                                                   | Description                                                                         |
-| :---------------- | :--------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| `messageId`       | string                                                                                                                 | The identifier of the batch entry message.                                          |
-| `messageBody`     | string                                                                                                                 | The message to send. The minimum size is one character. The maximum size is 256 KB. |
-| `messageOptions?` | [SendMessageOptions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/sqs/sendmessageoption)>) (optional) | Options for the request.                                                            |
+| Name            | Type                                                                                                                   | Description                                                                         |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| messageId       | string                                                                                                                 | The identifier of the batch entry message.                                          |
+| messageBody     | string                                                                                                                 | The message to send. The minimum size is one character. The maximum size is 256 KB. |
+| messageOptions? | [SendMessageOptions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/sqs/sendmessageoption)>) (optional) | Options for the request.                                                            |
 
 ### Returns
 
-| Type                                                     | Description                                                     |
-| :------------------------------------------------------- | :-------------------------------------------------------------- |
-| `Promise<[MessageBatchResponse](#messagebatchresponse)>` | A Promise that fulfills with a batch message creation response. |
+| Type                                                   | Description                                                     |
+| :----------------------------------------------------- | :-------------------------------------------------------------- |
+| Promise<[MessageBatchResponse](#messagebatchresponse)> | A Promise that fulfills with a batch message creation response. |
 
 #### MessageBatchResponse
 
-| Name         | Type              | Description                                                                                                                                                                                                                   |
-| :----------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `successful` | object[]          | A list of succesful messages as objects containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string.. |
-| `failed`     | SQSServiceError[] | A list of error responses.                                                                                                                                                                                                    |
+| Name       | Type              | Description                                                                                                                                                                                                                   |
+| :--------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| successful | object[]          | A list of succesful messages as objects containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string.. |
+| failed     | SQSServiceError[] | A list of error responses.                                                                                                                                                                                                    |
 
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
