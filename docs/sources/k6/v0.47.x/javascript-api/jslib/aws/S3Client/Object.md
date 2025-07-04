@@ -1,15 +1,14 @@
 ---
 title: 'Object'
 head_title: 'Object'
-slug: 'object'
 description: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
 weight: 20
 ---
 
 # Object
 
-Object is returned by the S3Client.\* methods that query S3 buckets' objects. Namely, [`listObjects`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-listobjects), [`getObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-getobject), [`putObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-putobject),
-and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-deleteobject). The Object construct describes an Amazon S3 object.
+Object is returned by the S3Client.\* methods that query S3 buckets' objects. Namely, [`listObjects`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/listobjects), [`getObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/getobject), [`putObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/putobject),
+and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/deleteobject). The Object construct describes an Amazon S3 object.
 
 | Name                  | Type                                                                                                                                      | Description                                                                                                                                                                                 |
 | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -31,7 +30,7 @@ import {
   // listBuckets,
   AWSConfig,
   S3Client,
-} from 'https://jslib.k6.io/aws/0.11.0/s3.js';
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

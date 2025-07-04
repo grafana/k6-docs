@@ -12,15 +12,15 @@ weight: 10
 
 ### Parameters
 
-| Name      | Type              | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| :-------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `options` | object (optional) | Options for the request. Accepted properties are: `queueNamePrefix` (optional string) setting the prefix filter for the returned queue list, `maxResults` (optional number) setting the maximum number of results to include in the response (1 <= `maxResults` <= 1000>), and `nextToken` (optional string) setting the pagination token to request the next set of results. |
+| Name    | Type              | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| :------ | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options | object (optional) | Options for the request. Accepted properties are: `queueNamePrefix` (optional string) setting the prefix filter for the returned queue list, `maxResults` (optional number) setting the maximum number of results to include in the response (1 <= `maxResults` <= 1000>), and `nextToken` (optional string) setting the pagination token to request the next set of results. |
 
 ### Returns
 
-| Type              | Description                                                                                                                                                                                               |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<object>` | A Promise that fulfills with an object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
+| Type            | Description                                                                                                                                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Promise<object> | A Promise that fulfills with an object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
 
 ### Example
 
