@@ -52,6 +52,8 @@ Each record in the `records` array should be an object with the following proper
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,

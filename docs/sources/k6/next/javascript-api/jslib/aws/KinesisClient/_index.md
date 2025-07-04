@@ -40,6 +40,8 @@ KinesisClient methods will throw errors in case of failure.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import exec from 'k6/execution';
@@ -106,6 +108,8 @@ export default async function () {
 #### Stream management
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {
