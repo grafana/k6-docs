@@ -7,14 +7,20 @@ on:
     paths:
       - 'docs/sources/k6/next/**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   run-code-blocks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Get Changed files
         id: changed-files
-        uses: step-security/changed-files@v45
+        uses: step-security/changed-files@3dbe17c78367e7d60f00d78ae6781a35be47b4a1 # v45.0.1
         with:
           files: |
             docs/sources/k6/next/**/*.md
@@ -24,10 +30,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Check script readiness
+        run: python -m unittest scripts/md-k6.py
       - name: Run Updated Code Blocks
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for file in ${ALL_CHANGED_FILES}; do
-            python -u scripts/md-k6.py --duration 2s "$file"
+            python -u scripts/md-k6.py --duration 2s "$file" --index-file docs/sources/k6/_index.md
           done

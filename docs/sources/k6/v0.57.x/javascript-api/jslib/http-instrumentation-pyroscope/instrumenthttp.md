@@ -16,9 +16,9 @@ For details about propagation, refer to [About baggage header](https://grafana.c
 
 ## Parameters
 
-| Name      | Type                                                                                                 | Description                                                                                                                                                    |
-| :-------- | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `generateHeaders` | `function(method, body, params) headersMap` | A function taking the request method, body and params and returning a map of headers that will be attached. By default adding baggage header as explained in the [about baggage header]((https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header)) |
+| Name              | Type                                        | Description                                                                                                                                                                                                                                                                                                    |
+| :---------------- | :------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `generateHeaders` | `function(method, body, params) headersMap` | A function taking the request method, body and params and returning a map of headers that will be attached. By default adding baggage header as explained in the [about baggage header](<(https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header)>) |
 
 ## Example
 
@@ -28,7 +28,7 @@ This example demonstrates how to use the this library to instrument every HTTP r
 
 ```javascript
 import { check } from 'k6';
-import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/1.0.1/index.js';
+import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/{{< param "JSLIB_PYROSCOPE_VERSION" >}}/index.js';
 import http from 'k6/http';
 
 // instrumentHTTP will ensure that all requests made by the `http` module

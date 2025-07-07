@@ -80,7 +80,7 @@ Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/
 ## Troubleshooting
 
 If installation fails, check the [list of common installation issues](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/troubleshooting).
-If your problem is not listed and persists, reach out via the channel `#community-discussion` on our [official Slack](https://k6io.slack.com/), or report it on our [community forum](https://community.grafana.com/).
+If your problem is not listed and persists, open an issue in the [k6 GitHub repository](https://github.com/grafana/k6), or report it on our [community forum](https://community.grafana.com/).
 
 ## Next steps
 
