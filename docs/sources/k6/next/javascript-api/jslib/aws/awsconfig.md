@@ -38,7 +38,9 @@ S3 Client methods will throw errors in case of failure.
 
 ### Example
 
-{{< code >}}
+An example showing how you can use k6 to instantiate an `AWSConfig` object and use it to configure a `SecretsManagerClient` instance.
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -62,7 +64,3 @@ export default function () {
   // ...
 }
 ```
-
-_k6 will instantiate an `AWSConfig` object and use it to configure a `SecretsManagerClient` instance_
-
-{{< /code >}}
