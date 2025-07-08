@@ -48,7 +48,7 @@ That command is a shortened version of what the initializer Pod is executing. If
 If the standalone `k6 inspect --execution-requirements` executes successfully, then it's likely a problem with `TestRun` deployment specific to your Kubernetes setup. A couple of recommendations here are:
 
 - Review the output of the initializer Pod: is it logged by the k6 process or by something else?
-  - :information_source: k6 Operator expects the initializer logs to contain only the output of `k6 inspect`. If there are any other log lines present, then the k6 Operator will fail to parse it and the test won't start. Refer to this [issue](https://github.com/grafana/k6-operator/issues/193) for more details.
+  - k6 Operator expects the initializer logs to contain only the output of `k6 inspect`. If there are any other log lines present, then the k6 Operator will fail to parse it and the test won't start. Refer to this [issue](https://github.com/grafana/k6-operator/issues/193) for more details.
 - Check events in the initializer Job and Pod as they may contain another hint about what's wrong.
 
 {{< docs/shared source="k6" lookup="k6-operator/troubleshooting-common-scenarios.md" version="<K6_VERSION>" >}}
