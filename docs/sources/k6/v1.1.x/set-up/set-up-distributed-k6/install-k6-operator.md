@@ -74,8 +74,12 @@ make install
 ## Watch namespaces
 
 By default, the k6 Operator watches the `TestRun` and `PrivateLoadZone` custom resources in all namespaces.
-You can also configure the k6 Operator to watch a specific namespace by setting the `WATCH_NAMESPACE` environment variable for the operator's deployment.
-Alternatively, you can configure the k6 Operator to watch multiple namespaces by setting the `WATCH_NAMESPACES` environment vairable to a comma-separated list of namespaces:
+You can also configure the k6 Operator to watch specific namespaces by setting either of the following environment variables on the controller's deployment:
+
+* `WATCH_NAMESPACE` — expects the name of a single namespace
+* `WATCH_NAMESPACES` — expects a comma-separated list of namespaces
+
+Do not set both variables. If `WATCH_NAMESPACES` is set, `WATCH_NAMESPACE` will be ignored.
 
 ```yaml
 apiVersion: apps/v1
