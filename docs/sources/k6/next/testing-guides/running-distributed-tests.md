@@ -73,7 +73,7 @@ Then, from your command-line, execute the following:
 curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl apply -f -
 ```
 
-There are other ways to install the k6 Operator, more on that [here](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/install-k6-operator/).
+Refer to [Install k6 Operator](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/install-k6-operator/) for other installation methods.
 
 By default, the operator will be installed into a new namespace, `k6-operator-system`.
 You can verify the successful installation by listing available resources within the namespace:
