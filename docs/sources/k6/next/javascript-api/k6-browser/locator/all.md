@@ -11,7 +11,7 @@ When multiple elements match the selector, returns an array of [Locator](https:/
 
 | Type                                                                                   | Description                                              |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | Array of `Locator`. |
+| Array<[Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/)> | An array of `Locator`. |
 
 ### Example
 
