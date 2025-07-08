@@ -40,11 +40,11 @@ In case of one `TestRun` Custom Resource (CR) creation with `parallelism: n`, th
 
 #### `TestRun` with `cleanup` option
 
-If a `TestRun` has [`spec.cleanup` option](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/#clean-up-resources) set, as for example [`PrivateLoadZone`](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/) tests always do, it may be harder to locate and analyze the Pod before it's deleted.
+If a `TestRun` has the [`spec.cleanup` option](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/executing-k6-scripts-with-testrun-crd/#clean-up-resources) set, as [`PrivateLoadZone`](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/) tests always do, for example, it may be harder to locate and analyze the Pod before it's deleted.
 
 In that case, we recommend using observability solutions, like Prometheus and Loki, to store metrics and logs for later analysis.
 
-As an alternative, it is also possible to watch for the resources manually with the following commands:
+As an alternative, it's also possible to watch for the resources manually with the following commands:
 
   ```bash
   kubectl get jobs -n my-namespace -w
@@ -104,7 +104,7 @@ Conditions can be used as a source of info as well, but it's a more advanced tro
 
 #### Debugging k6 process
 
-If the script is working locally as expected, and the previous steps show no errors as well, yet you do not see an expected result of a test and suspect k6 process is at fault, you can use the k6 [verbose option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/#options) in the `TestRun` spec:
+If the script is working locally as expected, and the previous steps show no errors as well, yet you don't see an expected result of a test and suspect k6 process is at fault, you can use the k6 [verbose option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/#options) in the `TestRun` spec:
 
 ```yaml
 apiVersion: k6.io/v1alpha1

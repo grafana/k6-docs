@@ -4,16 +4,16 @@ title: Shared scenarios for troubleshooting k6 Operator
 
 ### k6 runners do not start
 
-The k6 runners do not start and in the k6 Operator logs, you see an error `Waiting for initializing pod to finish`.
+The k6 runners fail to start, and in the k6 Operator logs, you see the error `Waiting for initializing pod to finish`.
 
-In this case, it is most likely that an initializer Pod was not being able to start for some reason.
+In this case, it's most likely that an initializer Pod was not able to start for some reason.
 
 #### How to fix
 
-Refer to [this section](#the-jobs-and-pods) to see how to:
+Refer to [The Jobs and Pods](#the-jobs-and-pods) section to see how to:
 
 1. Check if the initializer Pod has started and finished.
-1. See an issue in initializer Job's description that prevents a Pod from being scheduled.
+1. See an issue in the initializer Job's description that prevents a Pod from being scheduled.
 
 Once the error preventing the initializer Pod from starting and completing is resolved, redeploy the `TestRun` or, in case of a `PrivateLoadZone` test, restart the k6 process.
 
@@ -65,16 +65,16 @@ If there's at least one runner Pod that OOM-ed, the whole test will be [stuck](h
 kubectl delete testrun my-test
 ```
 
-A `PrivateLoadZone` test or a `TestRun` [with cloud output](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/#cloud-output) will be aborted by the Grafana Cloud k6 after its expected duration is up.
+A `PrivateLoadZone` test or a `TestRun` [with cloud output](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/#cloud-output) will be aborted by Grafana Cloud k6 after its expected duration is up.
 
 #### How to fix
 
-In the case of OOM, it makes sense to review the k6 script to understand what kind of resource usage this script requires. It may be that the k6 script can be improved to be more performant. Then, set the `spec.runner.resources` in the `TestRun` CRD, or `spec.resources` in the `PrivateLoadZone` CRD accordingly.
+In the case of OOM, review your k6 script to understand what kind of resource usage the script requires. It may be that the k6 script can be improved to be more performant. Then, set the `spec.runner.resources` in the `TestRun` CRD, or `spec.resources` in the `PrivateLoadZone` CRD accordingly.
 
 ### Disruption of the k6 runners
 
-The k6 test can execute for a long time. But depending on the Kubernetes setup, it may happen that the Pods running k6 are disrupted and moved elsewhere during execution. This will skew the result of the test. In the case of a `PrivateLoadZone` test or a `TestRun` [with cloud output](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/#cloud-output), the test run may additionally be aborted by Grafana Cloud k6 once its expected duration is up, regardless of the exact state of k6 processes.
+A k6 test can be executed for a long time. But depending on the Kubernetes setup, it's possible that the Pods running k6 are disrupted and moved elsewhere during execution. This will skew the test results. In the case of a `PrivateLoadZone` test or a `TestRun` [with cloud output](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/#cloud-output), the test run may additionally be aborted by Grafana Cloud k6 once its expected duration is up, regardless of the exact state of k6 processes.
 
 #### How to fix
 
-Ensure that k6 Pods cannot be disrupted by the Kubernetes setup, e.g. with [PodDisruptionBudget](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) and less aggressive configuration of autoscaler.
+Ensure that k6 Pods can't be disrupted by the Kubernetes setup, for example, with [PodDisruptionBudget](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) and a less aggressive configuration of the autoscaler.
