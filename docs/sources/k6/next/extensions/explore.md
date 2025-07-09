@@ -30,6 +30,65 @@ docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
 
 Use the table to explore the many extensions. Questions? Feel free to join the discussion about extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
+## Official extensions
+
+These are the official extensions, which are owned and maintained by the Grafana organization.
+
+<div class="nav-cards">
+    <a href="https://github.com/grafana/xk6-client-prometheus-remote" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-client-prometheus-remote</h4>
+        <p>Test Prometheus Remote Write-compatible endpoints</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-dashboard" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-dashboard</h4>
+        <p>Create a web-based metrics dashboard</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-disruptor" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-disruptor</h4>
+        <p>Inject faults to test 💣</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-exec" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-exec</h4>
+        <p>Run external commands</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-faker" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-faker</h4>
+        <p>Generate fake data in your tests</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-kubernetes" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-kubernetes</h4>
+        <p>Interact with Kubernetes clusters</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-output-influxdb" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-output-influxdb</h4>
+        <p>Export results to InfluxDB v2</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-sql" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-sql</h4>
+        <p>Load-test SQL Servers</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-sql-driver-mysql" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-sql-driver-mysql</h4>
+        <p>xk6-sql driver extension for MySQL database support</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-sql-driver-postgres" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-sql-driver-postgres</h4>
+        <p>xk6-sql driver extension for Postgres database support</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-sql-driver-sqlite3" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-sql-driver-sqlite3</h4>
+        <p>xk6-sql driver extension for SQLite v3 database support</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-ssh" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-ssh</h4>
+        <p>Use SSH connections in your tests</p>
+    </a>
+</div>
+
+## Community extensions
+
+These are the community extension, which are owned by our community members. The Grafana team makes a best-effort assistance to keep these extensions in compliance.
+
 <div class="nav-cards">
     <a href="https://github.com/prmuthu/xk6-amqp" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-amqp</h4>
@@ -50,10 +109,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/szkiba/xk6-cache" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-cache</h4>
         <p>Enable vendoring remote HTTP modules to a single source-control-friendly file</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-client-prometheus-remote" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-client-prometheus-remote</h4>
-        <p>Test Prometheus Remote Write-compatible endpoints</p>
     </a>
     <a href="https://github.com/grafana/xk6-client-tracing" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-client-tracing</h4>
@@ -79,14 +134,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-csv</h4>
         <p>Parse CSV values</p>
     </a>
-    <a href="https://github.com/grafana/xk6-dashboard" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-dashboard</h4>
-        <p>Create a web-based metrics dashboard</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-disruptor" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-disruptor</h4>
-        <p>Inject faults to test 💣</p>
-    </a>
     <a href="https://github.com/szkiba/xk6-dotenv" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-dotenv</h4>
         <p>Load env vars from a .env file</p>
@@ -94,14 +141,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/distribworks/xk6-ethereum" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-ethereum</h4>
         <p>K6 extension for ethereum protocols</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-exec" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-exec</h4>
-        <p>Run external commands</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-faker" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-faker</h4>
-        <p>Generate fake data in your tests</p>
     </a>
     <a href="https://github.com/domsolutions/xk6-fasthttp" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-fasthttp</h4>
@@ -138,10 +177,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/mostafa/xk6-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-kafka</h4>
         <p>Load test Apache Kafka. Includes support for Avro messages.</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-kubernetes" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-kubernetes</h4>
-        <p>Interact with Kubernetes clusters</p>
     </a>
     <a href="https://github.com/oleiade/xk6-kv" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-kv</h4>
@@ -183,10 +218,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-output-elasticsearch</h4>
         <p>Export results to Elasticsearch 8.x</p>
     </a>
-    <a href="https://github.com/grafana/xk6-output-influxdb" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-influxdb</h4>
-        <p>Export results to InfluxDB v2</p>
-    </a>
     <a href="https://github.com/grafana/xk6-output-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-kafka</h4>
         <p>Export k6 results in real-time to Kafka</p>
@@ -203,13 +234,13 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-output-statsd</h4>
         <p>Enables real-time output of test metrics to a StatsD service</p>
     </a>
-    <a href="https://github.com/grafana/xk6-output-timescaledb" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-timescaledb</h4>
-        <p>Export k6 results to TimescaleDB</p>
-    </a>
     <a href="https://github.com/leonyork/xk6-output-timestream" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-timestream</h4>
         <p>Export results to AWS Timestream</p>
+    </a>
+    <a href="https://github.com/grafana/xk6-output-timescaledb" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-output-timescaledb</h4>
+        <p>Export k6 results to TimescaleDB</p>
     </a>
     <a href="https://github.com/nicholasvuono/xk6-playwright" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-playwright</h4>
@@ -219,13 +250,13 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-plugin</h4>
         <p>Create k6 plugins using JavaScript and Node.js</p>
     </a>
-    <a href="https://github.com/szkiba/xk6-prometheus" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-prometheus</h4>
-        <p>Prometheus HTTP exporter for k6</p>
-    </a>
     <a href="https://github.com/Juandavi1/xk6-prompt" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-prompt</h4>
         <p>Support for input arguments via UI</p>
+    </a>
+    <a href="https://github.com/szkiba/xk6-prometheus" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-prometheus</h4>
+        <p>Prometheus HTTP exporter for k6</p>
     </a>
     <a href="https://github.com/SYM01/xk6-proxy" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-proxy</h4>
@@ -247,10 +278,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-smtp</h4>
         <p>Use SMTP protocol to send emails</p>
     </a>
-    <a href="https://github.com/grafana/xk6-sql" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql</h4>
-        <p>Load-test SQL Servers</p>
-    </a>
     <a href="https://github.com/grafana/xk6-sql-driver-azuresql" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sql-driver-azuresql</h4>
         <p>xk6-sql driver extension for Microsoft Azure SQL database support</p>
@@ -259,21 +286,9 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-sql-driver-clickhouse</h4>
         <p>xk6-sql driver extension for ClickHouse database support</p>
     </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-mysql" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-mysql</h4>
-        <p>xk6-sql driver extension for MySQL database support</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-postgres" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-postgres</h4>
-        <p>xk6-sql driver extension for Postgres database support</p>
-    </a>
     <a href="https://github.com/grafana/xk6-sql-driver-ramsql" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sql-driver-ramsql</h4>
         <p>xk6-sql driver extension for RamSQL database support</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-sqlite3" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-sqlite3</h4>
-        <p>xk6-sql driver extension for SQLite v3 database support</p>
     </a>
     <a href="https://github.com/grafana/xk6-sql-driver-sqlserver" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sql-driver-sqlserver</h4>
@@ -282,10 +297,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
     <a href="https://github.com/phymbert/xk6-sse" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sse</h4>
         <p>Server Sent Event</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-ssh" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-ssh</h4>
-        <p>Use SSH connections in your tests</p>
     </a>
     <a href="https://github.com/walterwanderley/xk6-stomp" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-stomp</h4>
