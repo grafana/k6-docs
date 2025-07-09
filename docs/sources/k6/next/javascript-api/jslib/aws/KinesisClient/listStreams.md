@@ -13,7 +13,7 @@ weight: 10
 
 | Parameter | Type   | Description                                       |
 | :-------- | :----- | :------------------------------------------------ |
-| options   | object | Optional configuration for the listing operation. |
+| options   | object (optional) | Configuration for the listing operation. |
 
 #### Options
 
