@@ -1,7 +1,4 @@
 ---
-labels:
-  products:
-    - cloud
 title: 'Run extensions using Binary Provisioning'
 description: 'Learn how to run scripts that require extensions using Binary Provisioning.'
 weight: 04
@@ -9,26 +6,17 @@ weight: 04
 
 # Run extensions using Binary Provisioning
 
-{{< admonition type="caution" >}}
-
-This is an experimental feature. Breaking changes might occur prior to the feature being made generally available.
-
-{{< /admonition >}}
-
 k6 supports [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) as a way of extending k6 native functionality, and support a wider variety of use cases.
 
-Using k6 with extensions locally requires users to build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) that includes the extension, which can then be used to run a test script. With the Binary Provisioning feature, Grafana Cloud k6 users can run tests with a [limited set of extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud), without having to manually build a k6 binary.
-
-The `archive` and `inspect` commands also support Binary Provisioning to allow creating archives for Grafana Cloud.
+Using k6 with extensions requires users to build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) that includes the extension, which can then be used to run a test script. With the Binary Provisioning feature, k6 users can run tests using extensions without having to manually build a k6 binary.
 
 ## Before you begin
 
 To use Binary Provisioning, you'll need:
 
-- k6 v1.0 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
-- A [Grafana Cloud account](https://grafana.com/auth/sign-up/create-user).
+- k6 v1.2 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
 
-## Set the Binary Provsioning environment flag
+## Set the Binary Provisioning environment flag
 
 To enable Binary Provisioning, you must set the `K6_BINARY_PROVISIONING` environment variable to `true`:
 
@@ -49,13 +37,27 @@ $Env:K6_BINARY_PROVISIONING = "true"
 
 {{< /code >}}
 
-## Log in to Grafana Cloud
+## Enable community extensions (Optional)
 
-To use Binary Provisioning, you must [authenticate to Grafana Cloud](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/#authenticate-with-the-login-command) using the `k6 cloud login` command:
+By default the Binary Provisioning allows using [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud). With the `ENABLE_COMMUNITY_EXTENSIONS` all extension in the extensions registry are available.
 
-```bash
-k6 cloud login --token <API_TOKEN>
+> When running tests in the cloud only the officially supported extensions are allowed.
+
+{{< code >}}
+
+```linux
+export ENABLE_COMMUNITY_EXTENSIONS=true
 ```
+
+```mac
+export ENABLE_COMMUNITY_EXTENSIONS=true
+```
+
+```windows-powershell
+$Env:ENABLE_COMMUNITY_EXTENSIONS = "true"
+
+```
+{{< /code >}}
 
 ## Run a test
 
@@ -97,7 +99,7 @@ You should see an output similar to the following:
 
 ```sh
 INFO[0000] The current k6 binary doesn't satisfy all dependencies, it is required to provision a custom binary.  deps="k6/x/faker*"
-INFO[0000] A new k6 binary has been provisioned with version(s): k6:v1.0.0 k6/x/faker:v0.4.3
+INFO[0000] A new k6 binary has been provisioned with version(s): k6:v1.2.0 k6/x/faker:v0.4.3
 time="2025-04-24T12:59:24+02:00" level=info msg=Zelma source=console
 
 
@@ -116,7 +118,4 @@ The output includes information about which dependencies were detected, and the 
 
 ## Limitations
 
-- Only extensions supported in Grafana Cloud are supported.
 - Output extensions are not supported.
-- Running scripts from stdin is not supported.
-- Only files with extensions `.js`, `.ts` or `.tar` can be used. Other extensions will not invoke the Binary Provisioning mechanism.
