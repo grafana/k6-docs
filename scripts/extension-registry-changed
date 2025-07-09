@@ -14,26 +14,45 @@
 
 set -euf -o pipefail
 
+# Generate extension list for a given tier (official or community)
 generate_extension_list_partial() {
+  local tier="$1"
   curl -sL https://registry.k6.io/product/oss.json |
-    jq -r '
- map(select(.module != "go.k6.io/k6") | { name:.repo.name, url: .repo.url, description: .description } ) |
- sort_by(.name) | map(
-"    <a href=\"\(.url)\" target=\"_blank\" class=\"nav-cards__item nav-cards__item--guide\">
-        <h4>\(.name)</h4>
-        <p>\(.description)</p>
-    </a>"
-) | .[]
-'
+    jq -r --arg tier "$tier" '
+      map(select(.module != "go.k6.io/k6" and .tier == $tier) | { name:.repo.name, url: .repo.url, description: .description }) |
+      sort_by(.name) | map(
+        "    <a href=\"\(.url)\" target=\"_blank\" class=\"nav-cards__item nav-cards__item--guide\">\n        <h4>\(.name)</h4>\n        <p>\(.description)</p>\n    </a>"
+      ) | .[]
+    '
 }
 
+# Replace the nav-cards section after a given heading with the generated list
 replace_extension_list_partial() {
   local -r outfile="$1"
   local -r infile="$2"
+  local -r heading="$3"
 
+  # Find the line number of the heading
+  local heading_line
+  heading_line=$(grep -n "^## $heading" "$outfile" | cut -d: -f1 | head -n1)
+  if [[ -z "$heading_line" ]]; then
+    echo "Heading '$heading' not found in $outfile" >&2
+    exit 1
+  fi
+
+  # Find the first <div class="nav-cards"> after the heading
+  local div_line
+  div_line=$(awk -v start=$heading_line 'NR>=start && /<div class=\".nav-cards\">/ {print NR; exit}' "$outfile")
+  if [[ -z "$div_line" ]]; then
+    echo "<div class=\".nav-cards\"> not found after heading '$heading' in $outfile" >&2
+    exit 1
+  fi
+
+  # Use ed to replace the section
   ed -s "$outfile" <<EOF
+$div_line
 /<div class=.nav-cards.>/+,/<.div>/-d
-/<div class=.nav-cards.>/ r $infile
+$div_line r $infile
 w
 q
 EOF
@@ -42,9 +61,13 @@ EOF
 scriptdir="$(dirname "$(readlink -f "$0")")"
 docfile="$scriptdir/../docs/sources/k6/next/extensions/explore.md"
 
-tmpfile="$(mktemp /tmp/extension-registry-changed.XXXXXX)"
+tmpfile_official="$(mktemp /tmp/extension-registry-changed.official.XXXXXX)"
+tmpfile_community="$(mktemp /tmp/extension-registry-changed.community.XXXXXX)"
 
-generate_extension_list_partial > "$tmpfile"
-replace_extension_list_partial "$docfile" "$tmpfile"
+generate_extension_list_partial "official" > "$tmpfile_official"
+generate_extension_list_partial "community" > "$tmpfile_community"
 
-rm -f "$tmpfile"
+replace_extension_list_partial "$docfile" "$tmpfile_official" "Official extensions"
+replace_extension_list_partial "$docfile" "$tmpfile_community" "Community extensions"
+
+rm -f "$tmpfile_official" "$tmpfile_community"
