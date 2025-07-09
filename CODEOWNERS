@@ -4,4 +4,15 @@
 
 # k6-engine (former k6-core) maintain open-source documentation
 /docs/sources/k6 @grafana/k6-core @heitortsergent
-/docs/sources/k6-studio @grafana/k6-Studio @heitortsergent 
+/docs/sources/k6-studio @grafana/k6-Studio @heitortsergent
+
+# k6 Browser documentation
+/docs/sources/k6/*/using-k6-browser @grafana/k6-browser @heitortsergent
+/docs/sources/k6/*/javascript-api/k6-browser @grafana/k6-browser @heitortsergent
+
+# k6 Operator documentation
+/docs/sources/k6/*/set-up/set-up-distributed-k6 @yorugac @heitortsergent
+/docs/sources/k6/*/shared/k6-operator @yorugac @heitortsergent
+
+# k6 Extensions documentation
+/docs/sources/k6/*/extensions @grafana/k6-extensions @heitortsergent
