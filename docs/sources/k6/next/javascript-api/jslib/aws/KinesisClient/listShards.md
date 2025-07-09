@@ -42,8 +42,8 @@ weight: 10
 | Property              | Type   | Description                                         |
 | :-------------------- | :----- | :-------------------------------------------------- |
 | shardId               | string | The unique identifier of the shard.                 |
-| parentShardId         | string | The shard ID of the parent shard (if any).          |
-| adjacentParentShardId | string | The shard ID of the adjacent parent shard (if any). |
+| parentShardId         | string (optional) | The shard ID of the parent shard (if any).          |
+| adjacentParentShardId | string (optional) | The shard ID of the adjacent parent shard (if any). |
 | hashKeyRange          | Object | The hash key range for the shard.                   |
 | sequenceNumberRange   | Object | The sequence number range for the shard.            |
 
