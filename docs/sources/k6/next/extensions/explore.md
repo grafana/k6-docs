@@ -167,10 +167,6 @@ Use the table to explore the many extensions. Questions? Feel free to join the d
         <h4>xk6-nostr</h4>
         <p>Interact with Nostr relays</p>
     </a>
-    <a href="https://github.com/grafana/xk6-notification" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-notification</h4>
-        <p>Create notifications</p>
-    </a>
     <a href="https://github.com/frankhefeng/xk6-oauth-pkce" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-oauth-pkce</h4>
         <p>Generate OAuth PKCE code verifier and code challenge</p>
