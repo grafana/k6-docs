@@ -16,7 +16,7 @@ To install k6 Operator, you'll need:
 
 ## Deploy the operator
 
-There are three different methods to deploy the k6 Operator. The first two methods, with bundle and with Helm, install the latest official release of the k6 Operator by default. The third method installs from the branch of the [k6-operator repository](https://github.com/grafana/k6-operator) and is meant for development purposes or for folk who have their own `kustomize` pipeline on top.
+There are three different methods to deploy the k6 Operator. The first two methods, with bundle and Helm, install the latest official release of the k6 Operator by default. The third method installs from the branch of the [k6-operator repository](https://github.com/grafana/k6-operator) and is intended for development purposes or for users who have their own `kustomize` pipeline.
 
 ### Deploy with bundle
 
@@ -50,9 +50,12 @@ You can find a complete list of Helm options in the [k6 Operator charts folder](
 
 ### Deploy with Makefile
 
-This is a more manual, low-level way to install the k6 Operator. It installs from the branch of the k6-operator repository. By default, it's the `main` branch, which is not guaranteed to be always stable. In general case, deployment from the branch is meant for development purposes.
+This method installs the k6 Operator from the GitHub repository, using the latest files in a branch. By default, it uses the `main` branch, which is not guaranteed to be stable at all times. This method is helpful for:
 
-However, this method can also be useful for folk who have the `kustomize` pipeline and wish to adjust manifests with `kustomize`. To use this method for regular, production deployments, it is recommended to do that from the tagged commits:
+- Development purposes.
+- Users who have a `kustomize` pipeline and want to adjust manifests with it.
+
+To use this method for production deployments, it's recommended to do that from the tagged commits:
 
 ```bash
 git clone https://github.com/grafana/k6-operator && cd k6-operator
@@ -82,7 +85,7 @@ make install
 
 ## Uninstall k6 Operator
 
-Removal of the k6 Operator depends on the installation method. If you use bundle installation, you can remove all of the resources created by the k6 Operator with the following:
+Removal of the k6 Operator depends on the installation method. If you use the bundle installation method, you can remove all of the resources created by the k6 Operator with the following:
 
 ```bash
 curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl delete -f -
@@ -94,7 +97,7 @@ If you use Helm installation, then removal should be done with the `helm` comman
 helm uninstall k6-operator
 ```
 
-Finally, if you use Makefile installation, use `make` command to uninstall:
+Finally, if you use Makefile installation, use the `make` command to uninstall:
 
 ```bash
 make delete
