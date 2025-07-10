@@ -314,7 +314,7 @@ Never use full stops at the end of unordered list items, for example:
 
 ```markdown
 - Works with all languages and frameworks (correct)
-- Works with all languages and frameworks (wrong)
+- Works with all languages and frameworks. (wrong)
 ```
 
 Always start every ordered list item with 1, for example:
