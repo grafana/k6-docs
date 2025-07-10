@@ -234,13 +234,13 @@ These are the community extension, which are owned by our community members. The
         <h4>xk6-output-statsd</h4>
         <p>Enables real-time output of test metrics to a StatsD service</p>
     </a>
-    <a href="https://github.com/leonyork/xk6-output-timestream" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-timestream</h4>
-        <p>Export results to AWS Timestream</p>
-    </a>
     <a href="https://github.com/grafana/xk6-output-timescaledb" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-output-timescaledb</h4>
         <p>Export k6 results to TimescaleDB</p>
+    </a>
+    <a href="https://github.com/leonyork/xk6-output-timestream" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-output-timestream</h4>
+        <p>Export results to AWS Timestream</p>
     </a>
     <a href="https://github.com/nicholasvuono/xk6-playwright" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-playwright</h4>
@@ -250,13 +250,13 @@ These are the community extension, which are owned by our community members. The
         <h4>xk6-plugin</h4>
         <p>Create k6 plugins using JavaScript and Node.js</p>
     </a>
-    <a href="https://github.com/Juandavi1/xk6-prompt" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-prompt</h4>
-        <p>Support for input arguments via UI</p>
-    </a>
     <a href="https://github.com/szkiba/xk6-prometheus" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-prometheus</h4>
         <p>Prometheus HTTP exporter for k6</p>
+    </a>
+    <a href="https://github.com/Juandavi1/xk6-prompt" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-prompt</h4>
+        <p>Support for input arguments via UI</p>
     </a>
     <a href="https://github.com/SYM01/xk6-proxy" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-proxy</h4>
