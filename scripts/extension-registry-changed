@@ -48,14 +48,31 @@ replace_extension_list_partial() {
     exit 1
   fi
 
-  # Use ed to replace the section
-  ed -s "$outfile" <<EOF
-$div_line
-/<div class=nav-cards.>/+,/<.div>/-d
-$div_line r $infile
-w
-q
-EOF
+  # Find the closing </div> line
+  local end_div_line
+  end_div_line=$(awk -v start=$((div_line + 1)) 'NR>=start && /<\/div>/ {print NR; exit}' "$outfile")
+  if [[ -z "$end_div_line" ]]; then
+    echo "</div> not found after <div class=\"nav-cards\"> in $outfile" >&2
+    exit 1
+  fi
+
+  # Create a temporary file with the replacement content
+  local temp_replacement
+  temp_replacement=$(mktemp)
+  
+  # Write the content before the div
+  sed -n "1,$((div_line - 1))p" "$outfile" > "$temp_replacement"
+  
+  # Write the new div content
+  echo '<div class="nav-cards">' >> "$temp_replacement"
+  cat "$infile" >> "$temp_replacement"
+  echo '</div>' >> "$temp_replacement"
+  
+  # Write the content after the div
+  sed -n "$((end_div_line + 1)),\$p" "$outfile" >> "$temp_replacement"
+  
+  # Replace the original file
+  mv "$temp_replacement" "$outfile"
 }
 
 scriptdir="$(dirname "$(readlink -f "$0")")"
