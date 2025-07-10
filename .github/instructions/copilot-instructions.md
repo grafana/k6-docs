@@ -51,11 +51,10 @@ use the full name on first use and short name after, for example:
 - Grafana Beyla (full), Beyla (short)
 
 Refer to the "OpenTelemetry Collector" as "Collector" after the first use.
-Still use "OpenTelemetry Collector" when refering to a distribution,
+Still use "OpenTelemetry Collector" when referring to a distribution,
 and for headings and links.
 
 Always use the full name for "Grafana Cloud".
-Always capitalize and use the full name for Application Observability.
 
 Never use abbreviations for product names unless specifically asked to,
 for example:
@@ -84,13 +83,12 @@ Focus on Grafana and not the partner product, for example:
 - For an integration with Azure don't document Azure set up
 - For a migration from DataDog don't document DataDog set up or usage
 
-## frontmatter
+## Front matter
 
 Never remove front matter content at the start of the file.
-This includes all content from the start of the file,
-inbetween a pair of tripple dashes (---).
+This includes all content from the start of the file that's between a pair of triple dashes (`---`).
 
-Never removed YAML front matter meta data unless specifically asked to.
+Never removed YAML front matter metadata unless specifically asked to.
 
 For example, never remove or delete this or other front matter:
 
@@ -104,19 +102,19 @@ cascade:
 
 # OpenTelemetry
 
-Markdown content...
+<MARKDOWN CONTENT>
 ```
 
 Only edit front matter copy if specifically asked to.
 When performing a copy edit task,
 ask the user if they'd like you to also edit the front matter copy.
-Still never remove front matter meta data properpties.
+Still never remove front matter metadata fields.
 
 ## Structure
 
 Structure articles into sections with headings.
 
-The frontmatter YAML `title` and the content h1 (#) heading should be the same.
+The front matter YAML `title` and the content h1 (#) heading should be the same.
 Never remove the content h1 heading, this redundancy is required.
 
 Always include copy after a heading, for example:
@@ -143,11 +141,9 @@ Add a blank line after headings, for example:
 Copy after the heading and a blank line.
 ```
 
-The immediate copy after a heading should introduce and overview what is
-covered in the section.
+The immediate copy after a heading should introduce and overview what's covered in the section.
 
-Start articles with an introduction that covers the goal of the article,
-example goals:
+Start articles with an introduction that covers the goal of the article, example goals:
 
 - Learn concepts
 - Set up or install something
@@ -163,12 +159,12 @@ Follow the goal with a list of prerequisites, for example:
 ```markdown
 Before you begin ensure you have the following:
 
-- <Prerequisite 1>
-- <Prerequisite 2>
+- <PREREQUISITE 1>
+- <PREREQUISITE 2>
 - ...
 ```
 
-Suggest and link to next steps and related resources at the end of the article,
+If asked to do so, suggest and link to next steps and related resources at the end of the article,
 for example:
 
 - Learn more about A, B, C
@@ -177,9 +173,9 @@ for example:
 - Use X to achieve Z
 - Project homepage or documentation
 - Project repository (for example, GitHub, GitLab)
-- Project package (for example, pip or npm)
+- Project package (for example, pip or NPM)
 
-You don't need to use the "Refer to..." syntax for next steps,
+You don't need to use the "Refer to" syntax for next steps,
 use the list time text for the link text.
 
 ## Style
@@ -199,7 +195,7 @@ Always use contractions over multiple words, for example:
 - use "isn't" and not "is not"
 - use "that's" and not "that is"
 - use "you're" and not "you are"
-- use "Don't" and not "do not"
+- use "don't" and not "do not"
 
 Don't use filler words or phrases, for example:
 
@@ -210,8 +206,7 @@ Don't use filler words or phrases, for example:
 - "keep in mind"
 
 In most cases, use verbs and nouns without adverbs or adjectives.
-You may use minimal adverbs and adjectives,
-when introucing or overviewing a Grafana Labs product.
+You may use minimal adverbs and adjectives when introducing a Grafana Labs product.
 
 Don't use figures of speech.
 
@@ -223,7 +218,7 @@ Never use cultural references or charged language.
 
 Write in present simple tense.
 
-Avoid present continous tense.
+Avoid present continuous tense.
 
 Only write in future tense to show future actions.
 
@@ -239,7 +234,7 @@ Address users as "you".
 
 Don't use first person perspective.
 
-## Wordlist
+## Word list
 
 Use allowlist/blocklist instead of whitelist/blacklist.
 
@@ -310,7 +305,7 @@ Never use asterisks for unordered lists, for example:
 * List item 3 (wrong)
 ```
 
-Never use full stops at the end of unordered list items, for example:
+Use full stops at the end of list items if the item is a full sentence, otherwise, omit it.
 
 ```markdown
 - Works with all languages and frameworks (correct)
@@ -341,15 +336,6 @@ Always start the next list item immediately on the next line, for example:
 - List item 3
 ```
 
-Never use new lines between list items, for example:
-
-```markdown
-- List item 1
-
-- List item 2 (wrong)
-
-- List item 3 (wrong)
-```
 
 If a list starts with a keyword, bold the keyword and follow with a colon,
 for example:
@@ -373,10 +359,10 @@ For example:
 
 ## Code
 
-Use single code backticks for:
+Use single code backticks \` for:
 
 - user input
-- placeholders in markdown, for example _`<PLACEHOLDER_NAME>`_
+- placeholders in Markdown, for example _`<PLACEHOLDER_NAME>`_
 - files and directories, for example `/opt/file.md`
 - source code keywords and identifiers,
   for example variables, function and class names
@@ -410,7 +396,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=<OTLP_ENDPOINT>
 The placeholder includes the name and the less than and greater than symbols,
 for example <PLACEHOLDER_NAME>.
 
-If the placeholder is markdown emphasize it with underscores,
+If the placeholder is Markdown emphasize it with underscores,
 for example _`<PLACEHOLDER_NAME>`_.
 
 In code blocks use the placeholder without additional backticks or emphasis,
@@ -479,7 +465,7 @@ kubectl get pods --namespace default
 ```
 ````
 
-The output will resemble the following:
+The output resembles the following:
 
 ```text
 NAME                               READY   STATUS    RESTARTS   AGE
@@ -503,7 +489,7 @@ Use the following values for option:
 
 - YAML/JSON, code, or parameter field if one exists for that configuration
 - Environment variable field if one exists for that configuration
-- If there is a YAML and Environment variable option separate them with `<br>`
+- Use semantic HTML inside table cells for multiple paragraphs or list items.
 
 Use a short sentence for the summary.
 After the summary sentence and in the same cell,
@@ -524,7 +510,7 @@ An example configuration table:
 | `logging.level`<br>`LOG_LEVEL` | Sets the logging verbosity. Refer to [logging level](#logging-level) for details.                    | No       | String | `debug`, `info`, `warn`, `error`     | `info`  |
 ```
 
-In some ocassions you can drop the Values column, for example,
+In some occasions you can drop the Values column, for example,
 when all the configuration have a Boolean type (yes/no) or (1/0).
 
 After the table, for each configuration, add a sub-section.
@@ -614,9 +600,6 @@ with <TYPE> as "note", "caution", or "warning":
 Use admonitions sparingly.
 Only include exceptional information in admonitions,
 this means you will use it more often for warnings than notes and cautions.
-
-When an admonition is used, place it after any initial written information to
-the user. Do not place admonitions right at the end of sections where they might be missed.
 
 Never delete Hugo shortcodes unless specifically asked to,
 for example don't delete shortcodes:
