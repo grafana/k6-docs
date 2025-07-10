@@ -75,7 +75,13 @@ replace_extension_list_partial() {
   mv "$temp_replacement" "$outfile"
 }
 
-scriptdir="$(dirname "$(readlink -f "$0")")"
+# Get the directory of the script - use BASH_SOURCE if available, otherwise fall back to relative path
+if [[ -n "${BASH_SOURCE[0]:-}" ]]; then
+  scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  # Fallback: assume script is in scripts/ directory relative to current working directory
+  scriptdir="$(pwd)"
+fi
 docfile="$scriptdir/../docs/sources/k6/next/extensions/explore.md"
 
 tmpfile_official="$(mktemp /tmp/extension-registry-changed.official.XXXXXX)"
