@@ -42,16 +42,16 @@ replace_extension_list_partial() {
 
   # Find the first <div class="nav-cards"> after the heading
   local div_line
-  div_line=$(awk -v start=$heading_line 'NR>=start && /<div class=\".nav-cards\">/ {print NR; exit}' "$outfile")
+  div_line=$(awk -v start=$heading_line 'NR>=start && /<div class=\"nav-cards\">/ {print NR; exit}' "$outfile")
   if [[ -z "$div_line" ]]; then
-    echo "<div class=\".nav-cards\"> not found after heading '$heading' in $outfile" >&2
+    echo "<div class=\"nav-cards\"> not found after heading '$heading' in $outfile" >&2
     exit 1
   fi
 
   # Use ed to replace the section
   ed -s "$outfile" <<EOF
 $div_line
-/<div class=.nav-cards.>/+,/<.div>/-d
+/<div class=nav-cards.>/+,/<.div>/-d
 $div_line r $infile
 w
 q
