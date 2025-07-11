@@ -1,0 +1,23 @@
+extends: substitution
+level: warning
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/capitalization-punctuation/#kubernetes-objects
+message: Use '%s' instead of '%s'.
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  cron job: CronJob
+
+  # It would be nice to have deployment -> Deployment but I foresee more false positives.
+  # deployment: Deployment
+  "[Kk]ubernetes deployment": Kubernetes Deployment
+
+  "d[ae][ae]mon[Ss]et": DaemonSet
+  "replica[Ss]et": ReplicaSet
+  "stateful[Ss]et": StatefulSet
+  pod: Pod
+
+  "[Kk]ubelet": "`kubelet`"
+  "[Kk]ubectl": "`kubectl`"

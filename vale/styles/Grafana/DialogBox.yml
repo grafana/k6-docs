@@ -1,0 +1,13 @@
+extends: substitution
+level: warning
+message: Use '%s' rather than '%s'.
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#dialog-box
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  dialog box appears: dialog box opens
+  modal: dialog box
+  "dialog(?! box)": dialog box

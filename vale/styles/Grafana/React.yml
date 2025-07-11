@@ -1,0 +1,12 @@
+extends: substitution
+level: warning
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#react
+message: Use '%s' instead of '%s'.
+
+ignorecase: false
+nonword: true
+
+action:
+  name: replace
+swap:
+  "[Rr]eact[. ]?[Jj][Ss]": React

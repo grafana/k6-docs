@@ -1,0 +1,13 @@
+"action":
+  "name": "edit"
+  "params":
+    - "trim_right"
+    - "."
+"extends": "existence"
+"level": "warning"
+"link": "https://developers.google.com/style/capitalization#capitalization-in-titles-and-headings"
+"message": "Don't put a period at the end of a heading."
+"nonword": true
+"scope": "heading"
+"tokens":
+  - "[a-z0-9][.]\\s*$"

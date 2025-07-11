@@ -1,0 +1,30 @@
+extends: existence
+level: suggestion
+link: https://developers.google.com/style/timeless-documentation
+message: |
+  Avoid using '%s' to keep the documentation timeless.
+
+  In general, document the current version of a product or feature.
+
+  It reduces the maintenance required to keep documentation up to date.
+  It avoids assuming the reader is familiar with earlier versions of the product.
+
+  If you're writing procedural or time-stamped content such as press releases, blog posts, or release notes, such time-based words and phrases are OK.
+
+tokens:
+  - as of this writing
+  - currently
+  - does not yet
+  - eventually
+  - existing
+  - future
+  - in the future
+  - latest
+  - new
+  - newer
+  - now
+  - old
+  - older
+  - presently
+  - at present
+  - soon

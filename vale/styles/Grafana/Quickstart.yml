@@ -1,0 +1,9 @@
+extends: substitution
+message: Use the compound adjective '%s' without a hyphen instead of '%s' whether the noun is implied or explicit. For example, you can use _quickstart guide_ or just _quickstart_.
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#quickstart
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  "quick start": quickstart

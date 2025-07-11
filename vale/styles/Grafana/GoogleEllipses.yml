@@ -1,0 +1,9 @@
+"action":
+  "name": "remove"
+"extends": "existence"
+"level": "warning"
+"link": "https://developers.google.com/style/ellipses"
+"message": "In general, don't use an ellipsis."
+"nonword": true
+"tokens":
+  - "\\.\\.\\."

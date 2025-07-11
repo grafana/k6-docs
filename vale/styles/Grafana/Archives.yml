@@ -1,0 +1,13 @@
+extends: substitution
+level: suggestion
+link: https://developers.google.com/style/word-list#extract
+message: Use '%s' instead of '%s'.
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  "[Uu]n(?:archive|compress|tar|zip)": extract
+  unzip: extract
+  "[Zz][Ii][Pp](?: file)?": archive|compressed file

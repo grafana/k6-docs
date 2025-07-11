@@ -1,0 +1,12 @@
+extends: substitution
+level: suggestion
+link: https://developers.google.com/style/word-list#oauth-20
+message: Use '%s' instead of '%s'.
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  "O[Aa]uth 2(?!\\.0)": OAuth 2.0
+  "O[Aa]uth(?! 2\\.0)": OAuth 2.0

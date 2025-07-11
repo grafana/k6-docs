@@ -1,0 +1,7 @@
+"condition": "> 0"
+"extends": "metric"
+"formula": |
+  (0.0588 * (characters / words) * 100) - (0.296 * (sentences / words) * 100) - 15.8
+"level": "suggestion"
+"link": "https://en.wikipedia.org/wiki/Coleman%E2%80%93Liau_index"
+"message": "%s aim for below 9."

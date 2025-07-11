@@ -1,0 +1,11 @@
+extends: existence
+ignorecase: false
+level: warning
+message: |
+  Don't use `grafana.com`, instead use one of the following:
+
+  - If you're talking about Grafana Cloud, use `Grafana Cloud`.
+  - If you're talking about the company, use `Grafana Labs`.
+  - If you're linking to a page on the website, use the page title or the full URL including scheme. For example, `https://grafana.com/`.
+tokens:
+  - 'grafana\.com'

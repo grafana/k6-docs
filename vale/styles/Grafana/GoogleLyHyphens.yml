@@ -1,0 +1,14 @@
+"action":
+  "name": "edit"
+  "params":
+    - "regex"
+    - "-"
+    - " "
+"extends": "existence"
+"ignorecase": false
+"level": "error"
+"link": "https://developers.google.com/style/hyphens"
+"message": "'%s' doesn't need a hyphen."
+"nonword": true
+"tokens":
+  - "\\b[^\\s-]+ly-\\w+\\b"

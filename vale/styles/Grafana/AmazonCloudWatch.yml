@@ -1,0 +1,13 @@
+extends: substitution
+level: warning
+link: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html
+message: Use '%s' instead of '%s'.
+
+action:
+  name: replace
+swap:
+  AWS CloudWatch: Amazon CloudWatch
+  aws CloudWatch: Amazon CloudWatch
+  Cloudwatch: CloudWatch
+  cloudwatch: CloudWatch
+  cloudWatch: CloudWatch

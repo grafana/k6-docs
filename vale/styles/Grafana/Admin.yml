@@ -1,0 +1,10 @@
+extends: substitution
+message: |
+  Use '%s' instead of '%s' unless it's the name of the UI label like in the Grafana 'Admin' role.
+link: https://developers.google.com/style/word-list#admin
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  admin: administrator

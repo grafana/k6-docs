@@ -1,0 +1,10 @@
+"extends": "existence"
+"ignorecase": true
+"level": "warning"
+"link": "https://developers.google.com/style/spelling"
+"message": "In general, use American spelling instead of '%s'."
+"tokens":
+  - "(?:\\w+)nised?"
+  - "colour"
+  - "labour"
+  - "centre"

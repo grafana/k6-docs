@@ -1,0 +1,12 @@
+"action":
+  "name": "edit"
+  "params":
+    - "trim_right"
+    - "(s)"
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/plurals-parentheses"
+"message": "Don't use plurals in parentheses such as in '%s'."
+"nonword": true
+"tokens":
+  - "\\b\\w+\\(s\\)"

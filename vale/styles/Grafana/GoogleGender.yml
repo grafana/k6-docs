@@ -1,0 +1,9 @@
+"extends": "existence"
+"ignorecase": true
+"level": "error"
+"link": "https://developers.google.com/style/pronouns#gender-neutral-pronouns"
+"message": "Don't use '%s' as a gender-neutral pronoun."
+"tokens":
+  - "he/she"
+  - "s/he"
+  - "\\(s\\)he"

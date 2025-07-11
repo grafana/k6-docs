@@ -1,0 +1,9 @@
+extends: substitution
+level: warning
+message: Use '%s' rather than '%s'.
+
+action:
+  name: replace
+swap:
+  "[Dd]ocs? (?:[Ss]quad|[Tt]eam)": the Grafana Labs documentation team
+  "[Dd]ocumentation (?:[Ss]quad|Team)": the Grafana Labs documentation team

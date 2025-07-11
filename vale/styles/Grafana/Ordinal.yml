@@ -1,0 +1,14 @@
+extends: existence
+level: error
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/style-conventions/#numbers
+message: For ordinals, write out first through ninth. For 10th on, use numerals.
+tokens:
+  - 1st
+  - 2nd
+  - 3rd
+  - 4th
+  - 5th
+  - 6th
+  - 7th
+  - 8th
+  - 9th

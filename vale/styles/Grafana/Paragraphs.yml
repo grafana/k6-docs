@@ -1,0 +1,9 @@
+extends: script
+scope: raw
+level: error
+link: https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element
+message: |
+  br elements must be used only for line breaks that are actually part of the content, as in poems or addresses.
+
+  In tables, instead of br elements, use p for paragraphs, and ul or ol for list items.
+script: Paragraphs.tengo

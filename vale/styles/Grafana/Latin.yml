@@ -1,0 +1,10 @@
+action:
+  name: replace
+extends: substitution
+ignorecase: true
+level: error
+link: https://developers.google.com/style/abbreviations#dont-use
+message: Use '%s' instead of '%s'.
+swap:
+  'e\.?g[,.]?': for example
+  'i\.?e[,.]?': that is

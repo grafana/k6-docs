@@ -1,0 +1,7 @@
+"condition": "> 0"
+"extends": "metric"
+"formula": |
+  (words / sentences) + ((long_words * 100) / words)
+"level": "suggestion"
+"link": "https://en.wikipedia.org/wiki/Lix_(readability_test)"
+"message": "%s aim for below 35."
