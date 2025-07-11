@@ -11,6 +11,8 @@ weight: 01
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.
 
+You can also use the k6 Studio desktop application to help you generate k6 scripts from a browser recording. Refer to [k6 Studio] for more details.
+
 ## Linux
 
 ### Debian/Ubuntu
@@ -81,6 +83,13 @@ Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/
 
 If installation fails, check the [list of common installation issues](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/troubleshooting).
 If your problem is not listed and persists, open an issue in the [k6 GitHub repository](https://github.com/grafana/k6), or report it on our [community forum](https://community.grafana.com/).
+
+## k6 Studio
+
+k6 Studio is a desktop application for Windows, macOS, and Linux, that can help you generate k6 scripts from a browser recording, and quickly test your application. You can generate protocol and browser scripts, and test and debug your scripts with a visual interface, without having to touch any code.
+
+- For installation instructions, refer to [Install k6 Studio](https://grafana.com/docs/k6-studio/set-up/install/).
+- For more details about k6 Studio, refer to the [k6 Studio docs](https://grafana.com/docs/k6-studio/).
 
 ## Next steps
 
