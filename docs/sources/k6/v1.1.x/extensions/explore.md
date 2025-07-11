@@ -87,7 +87,8 @@ These are the official extensions, which are owned and maintained by the Grafana
 
 ## Community extensions
 
-These are the community extension, which are owned by our community members. The Grafana team makes a best-effort assistance to keep these extensions in compliance.
+These are the community extensions, which are owned by our community members.
+The Grafana team makes a best-effort assistance to keep these extensions in compliance.
 
 <div class="nav-cards">
     <a href="https://github.com/prmuthu/xk6-amqp" target="_blank" class="nav-cards__item nav-cards__item--guide">

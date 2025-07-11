@@ -34,7 +34,7 @@ replace_extension_list_partial() {
 
   # Find the line number of the heading
   local heading_line
-  heading_line=$(grep -n "^## $heading" "$outfile" | cut -d: -f1 | head -n1)
+  heading_line=$(awk "/^## $heading/ {print NR; exit}" "$outfile")
   if [[ -z "$heading_line" ]]; then
     echo "Heading '$heading' not found in $outfile" >&2
     exit 1
@@ -60,16 +60,16 @@ replace_extension_list_partial() {
   local temp_replacement
   temp_replacement=$(mktemp)
   
-  # Write the content before the div
-  sed -n "1,$((div_line - 1))p" "$outfile" > "$temp_replacement"
-  
-  # Write the new div content
-  echo '<div class="nav-cards">' >> "$temp_replacement"
-  cat "$infile" >> "$temp_replacement"
-  echo '</div>' >> "$temp_replacement"
-  
-  # Write the content after the div
-  sed -n "$((end_div_line + 1)),\$p" "$outfile" >> "$temp_replacement"
+  {
+    # Write the content before the div
+    sed -n "1,$((div_line - 1))p" "$outfile" 
+    # Write the new div content
+    echo '<div class="nav-cards">'
+    cat "$infile"
+    echo '</div>'
+    # Write the content after the div
+    sed -n "$((end_div_line + 1)),\$p" "$outfile"
+  } >> "$temp_replacement"
   
   # Replace the original file
   mv "$temp_replacement" "$outfile"
