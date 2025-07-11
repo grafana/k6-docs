@@ -1,0 +1,28 @@
+DEBUG := false
+
+fmt := import("fmt")
+text := import("text")
+
+matches := []
+ruleActive := true
+
+cursor := 0
+for line in text.split(scope, "\n") {
+  if DEBUG {
+    fmt.println(text.pad_left(text.itoa(cursor), 3, " "), ": ",  text.quote(line), " ", len(line))
+  }
+
+  if ruleActive {
+    for match in text.re_find(`\({{[%<] *relref`, line, -1) {
+      matches = append(matches, {begin: cursor + match[0].begin, end: cursor + match[0].end})
+    }
+  }
+
+  cursor += len(line) + 1
+}
+
+if DEBUG {
+  for match in matches {
+    fmt.println(match)
+  }
+}

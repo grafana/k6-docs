@@ -1,0 +1,11 @@
+extends: substitution
+level: warning
+link: https://developers.google.com/style/word-list#wish
+message: Use '%s' instead of '%s'.
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  wish: need|want

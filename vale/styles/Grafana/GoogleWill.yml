@@ -1,0 +1,10 @@
+"extends": "existence"
+"ignorecase": true
+"level": "warning"
+"link": "https://developers.google.com/style/tense"
+"message": |
+  Avoid using '%s'.
+
+  Use present tense for statements that describe general behavior that's not associated with a particular time.
+"tokens":
+  - "will"

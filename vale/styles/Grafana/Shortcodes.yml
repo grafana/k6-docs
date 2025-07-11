@@ -1,0 +1,17 @@
+extends: script
+message: |
+  Prefer `{{<` and `>}}` instead of `{{%` and `%}}`
+
+  It has the most consistent semantics.
+
+  The percent syntax is used for special behavior that isn't required with this shortcode.
+link: https://grafana.com/docs/writers-toolkit/write/shortcodes/#admonition
+scope: raw
+script: |
+  text := import("text")
+
+  matches := []
+
+  for match in text.re_find(`{{% +/?admonition .*%}}`, scope, -1) {
+    matches = append(matches, {begin: match[0].begin, end: match[0].end})
+  }

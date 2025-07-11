@@ -1,0 +1,11 @@
+"extends": "existence"
+"ignorecase": true
+"level": "error"
+"link": "https://developers.google.com/style/abbreviations"
+"message": "Don't use internet slang abbreviations such as '%s'."
+"tokens":
+  - "tl;dr"
+  - "ymmv"
+  - "rtfm"
+  - "imo"
+  - "fwiw"

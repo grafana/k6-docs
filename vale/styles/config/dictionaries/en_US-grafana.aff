@@ -1,0 +1,51 @@
+SET UTF-8
+TRY esianrtolcdugmphbyfvkwzESIANRTOLCDUGMPHBYFVKWZ'
+ICONV 1
+ICONV ’ '
+NOSUGGEST !
+
+PFX d Y 1
+PFX d   0     de         .
+
+PFX u Y 1
+PFX u   0     un         .
+
+PFX m Y 1
+PFX m   0     mis        .
+
+PFX p Y 1
+PFX p   0     pre        .
+
+SFX A Y 2
+SFX A   e     able       e
+SFX A   0     able       .
+
+SFX D Y 4
+SFX D   0     d          e
+SFX D   y     ied        [^aeiou]y
+SFX D   0     ed         [^ey]
+SFX D   0     ed         [aeiou]y
+
+SFX G Y 2
+SFX G   e     ing        e
+SFX G   0     ing        [^e]
+
+SFX M Y 2
+SFX M   0     '          s
+SFX M   0     's         [^s]
+
+SFX N Y 3
+SFX N   e     ion        e
+SFX N   y     ication    y
+SFX N   0     en         [^ey]
+
+SFX R Y 2
+SFX R   0     r          e
+SFX R   0     ed         .
+
+SFX S Y 5
+SFX S   y     ies        [^aeiou]y
+SFX S   0     s          [aeiou]y
+SFX S   0     s          ph
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]

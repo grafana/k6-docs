@@ -1,0 +1,13 @@
+"extends": "existence"
+"ignorecase": true
+"level": "warning"
+"link": "https://developers.google.com/style/pronouns#personal-pronouns"
+"message": "Avoid first-person pronouns such as '%s'."
+"nonword": true
+"tokens":
+  - "(?:^|\\s)I\\s"
+  - "(?:^|\\s)I,\\s"
+  - "\\bI'm\\b"
+  - "\\bme\\b"
+  - "\\bmy\\b"
+  - "\\bmine\\b"

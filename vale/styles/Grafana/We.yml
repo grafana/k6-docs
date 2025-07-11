@@ -1,0 +1,16 @@
+extends: existence
+message: |
+  Use first person plural pronouns like '%s' carefully.
+
+  Don't use 'we' when you're talking about the reader, instead use 'you'.
+
+  It's OK to use 'we' when you're talking about Grafana Labs.
+link: https://developers.google.com/style/person#use-first-person-plural-pronouns-carefully
+level: suggestion
+ignorecase: true
+tokens:
+  - we
+  - we'(?:ve|re)
+  - ours?
+  - us
+  - let's

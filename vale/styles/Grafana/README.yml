@@ -1,0 +1,11 @@
+extends: substitution
+message: Use '%s' instead of '%s' unless you're referring to a specific file which has that spelling.
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#readme
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  '[Rr]eadme\.md': README.md
+  "[Rr]eadme": README
+  "[Rr]eadmes": READMEs

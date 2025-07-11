@@ -1,0 +1,9 @@
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/word-list"
+"message": "Use 'AM' or 'PM' (preceded by a space)."
+"nonword": true
+"tokens":
+  - "\\d{1,2}[AP]M\\b"
+  - "\\d{1,2} ?[ap]m\\b"
+  - "\\d{1,2} ?[aApP]\\.[mM]\\."

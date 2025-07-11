@@ -1,0 +1,7 @@
+"extends": "conditional"
+"first": "\\b(Kubernetes Engine)\\b"
+"level": "warning"
+"link": "https://grafana.com/docs/writers-toolkit/write/style-guide/capitalization-punctuation/#google-products"
+"message": "Use the full Google product name in the first instance."
+"scope": "text"
+"second": "Google (Kubernetes Engine)"

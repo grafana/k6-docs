@@ -1,0 +1,42 @@
+DEBUG := false
+
+fmt := import("fmt")
+text := import("text")
+
+matches := []
+ruleActive := true
+info := ""
+
+cursor := 0
+for line in text.split(scope, "\n") {
+  if DEBUG {
+    fmt.println(text.pad_left(text.itoa(cursor), 3, " "), ": ",  text.quote(line), " ", len(line))
+  }
+
+  if text.re_find(`<!-- vale Grafana.CommandLinePrompts = NO -->`, line, -1) {
+    ruleActive = false
+  }
+
+  if text.re_find(`<!-- vale Grafana.CommandLinePrompts = YES -->`, line, -1) {
+    ruleActive = true
+  }
+
+  start := text.re_find("```(.*)", line, -1)
+  if start {
+     info = start[0][1].text
+  } else {
+    if text.contains(line, "```") {
+      info = ""
+    }
+  }
+
+  if ruleActive {
+    if info == "bash" || info == "console" || info == "sh" || info == "shell" {
+      for match in text.re_find(`^ *[#$] `, line, -1) {
+        matches = append(matches, {begin: cursor + match[0].begin, end: cursor + match[0].end})
+      }
+    }
+  }
+
+  cursor += len(line) + 1
+}

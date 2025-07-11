@@ -1,0 +1,10 @@
+extends: script
+scope: raw
+level: warning
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/write-for-developers/#command-lines
+message: |
+  Don't add `$` or `#` as prompts before commands so users can copy and paste them.
+
+  Also, don't use `#` to include comments in commands.
+  That explanation should be outside of the code block.
+script: CommandLinePrompts.tengo

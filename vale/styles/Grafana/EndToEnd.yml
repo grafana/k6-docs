@@ -1,0 +1,9 @@
+extends: substitution
+message: |
+  Use '%s' instead of '%s'.
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#end-to-end
+level: warning
+action:
+  name: replace
+swap:
+  "[eE]2[eE]": end-to-end

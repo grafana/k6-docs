@@ -1,0 +1,7 @@
+"extends": "conditional"
+"first": "\\b(Mesos)\\b"
+"level": "warning"
+"link": "https://grafana.com/docs/writers-toolkit/write/style-guide/capitalization-punctuation/#apache-projects"
+"message": "Use the full Apache project name in the first instance."
+"scope": "text"
+"second": "Apache (Mesos)"

@@ -1,0 +1,7 @@
+"condition": "> 0"
+"extends": "metric"
+"formula": |
+  0.4 * ((words / sentences) + 100 * (complex_words / words))
+"level": "suggestion"
+"link": "https://en.wikipedia.org/wiki/Gunning_fog_index"
+"message": "%s aim for below 10."

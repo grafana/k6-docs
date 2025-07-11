@@ -1,0 +1,28 @@
+extends: existence
+message: |
+  Don't use any variation of okay in prose.
+  The exceptions are when you’re referencing or quoting:
+
+  - A user interface
+  - HTTP status codes or other code
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#ok-okay
+level: warning
+ignorecase: false
+tokens:
+  - O.K.
+  - OK
+  - ok
+  - Ok
+  - Okay
+  - okay
+
+  - A-OK
+  - hokay
+  - k
+  - keh
+  - kk
+  - M'kay
+  - oka
+  - okeh
+  - Okie dokie
+  - Okily Dokily

@@ -1,0 +1,8 @@
+extends: existence
+message: "It's great to be polite, but using 'please' in a set of instructions is overdoing the politeness."
+level: error
+link: https://developers.google.com/style/tone#politeness
+ignorecase: true
+limit: 1
+tokens:
+  - please
