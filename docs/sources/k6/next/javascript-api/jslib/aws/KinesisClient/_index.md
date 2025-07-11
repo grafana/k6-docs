@@ -1,6 +1,5 @@
 ---
 title: 'KinesisClient'
-head_title: 'KinesisClient'
 description: 'KinesisClient allows interacting with AWS Kinesis streams'
 weight: 00
 ---
