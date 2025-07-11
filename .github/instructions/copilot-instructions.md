@@ -286,7 +286,7 @@ Avoid using words created for UI features when possible, for example
 
 Write complete sentences for lists, for example:
 
-- Works with all languages and frameworks. (correct)
+- Works with all languages and frameworks (correct)
 - all languages and frameworks (wrong)
 
 Always use dashes for unordered lists, for example
@@ -308,8 +308,8 @@ Never use asterisks for unordered lists, for example:
 Use full stops at the end of list items if the item is a full sentence, otherwise, omit it.
 
 ```markdown
-- Works with all languages and frameworks. (correct)
-- Works with all languages and frameworks (wrong)
+- Works with all languages and frameworks (correct)
+- Works with all languages and frameworks. (wrong)
 ```
 
 Always start every ordered list item with 1, for example:
