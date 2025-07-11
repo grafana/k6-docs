@@ -1,6 +1,5 @@
 ---
 title: 'getShardIterator'
-head_title: 'KinesisClient.getShardIterator(streamName, shardId, shardIteratorType, [options])'
 description: 'KinesisClient.getShardIterator gets a shard iterator for reading records from a Kinesis stream'
 weight: 10
 ---
@@ -32,8 +31,8 @@ weight: 10
 
 | Parameter              | Type   | Description                                                                                          |
 | :--------------------- | :----- | :--------------------------------------------------------------------------------------------------- |
-| startingSequenceNumber | string | The sequence number to start from (required for AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER types). |
-| timestamp              | Date   | The timestamp to start from (required for AT_TIMESTAMP type).                                        |
+| startingSequenceNumber | string | The sequence number to start from (required for `AT_SEQUENCE_NUMBER` and `AFTER_SEQUENCE_NUMBER` types). |
+| timestamp              | Date   | The timestamp to start from (required for `AT_TIMESTAMP` type).                                        |
 
 ### Returns
 
@@ -49,7 +48,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -111,4 +109,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

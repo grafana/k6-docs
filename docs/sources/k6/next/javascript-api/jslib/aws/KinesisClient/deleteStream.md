@@ -1,6 +1,5 @@
 ---
 title: 'deleteStream'
-head_title: 'KinesisClient.deleteStream(streamName)'
 description: 'KinesisClient.deleteStream deletes a Kinesis stream'
 weight: 10
 ---
@@ -23,7 +22,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -50,4 +48,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

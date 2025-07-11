@@ -1,6 +1,5 @@
 ---
 title: 'listShards'
-head_title: 'KinesisClient.listShards(streamName, [options])'
 description: 'KinesisClient.listShards lists shards in a Kinesis stream'
 weight: 10
 ---
@@ -49,7 +48,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -99,4 +97,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

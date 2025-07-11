@@ -37,7 +37,6 @@ KinesisClient methods will throw errors in case of failure.
 
 ### Examples
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -102,11 +101,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
 
 #### Stream management
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -144,4 +141,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

@@ -1,6 +1,5 @@
 ---
 title: 'createStream'
-head_title: 'KinesisClient.createStream(streamName, [options])'
 description: 'KinesisClient.createStream creates a new Kinesis stream'
 weight: 10
 ---
@@ -32,7 +31,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -65,4 +63,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

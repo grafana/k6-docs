@@ -1,6 +1,5 @@
 ---
 title: 'putRecords'
-head_title: 'KinesisClient.putRecords(streamName, records)'
 description: 'KinesisClient.putRecords puts multiple records into a Kinesis stream'
 weight: 10
 ---
@@ -50,7 +49,6 @@ Each record in the `records` array should be an object with the following proper
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -119,4 +117,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

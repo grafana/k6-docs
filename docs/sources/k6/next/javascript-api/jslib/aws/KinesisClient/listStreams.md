@@ -1,6 +1,5 @@
 ---
 title: 'listStreams'
-head_title: 'KinesisClient.listStreams([options])'
 description: 'KinesisClient.listStreams lists Kinesis streams'
 weight: 10
 ---
@@ -37,7 +36,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -75,4 +73,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}

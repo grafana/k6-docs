@@ -1,6 +1,5 @@
 ---
 title: 'getRecords'
-head_title: 'KinesisClient.getRecords(shardIterator, [options])'
 description: 'KinesisClient.getRecords gets records from a Kinesis stream shard'
 weight: 10
 ---
@@ -47,7 +46,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -115,4 +113,3 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
