@@ -15,9 +15,9 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 ### Methods
 
-| Function                                                                                                                                 | Description                                        |
-| :--------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
-| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerclient-getparameter) | Retrieves a parameter from Amazon Systems Manager. |
+| Function                                                                                                            | Description                                        |
+| :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
+| [getParameter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/systemsmanagerclient/getparameter) | Retrieves a parameter from Amazon Systems Manager. |
 
 ### Throws
 
@@ -35,7 +35,10 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.11.0/ssm.js';
+import {
+  AWSConfig,
+  SystemsManagerClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/ssm.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

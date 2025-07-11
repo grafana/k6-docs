@@ -47,7 +47,11 @@ You can override SignatureV4 options in the context of this specific request. To
 ```javascript
 import http from 'k6/http';
 
-import { AWSConfig, Endpoint, SignatureV4 } from 'https://jslib.k6.io/aws/0.12.1/signature.js';
+import {
+  AWSConfig,
+  Endpoint,
+  SignatureV4,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/signature.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

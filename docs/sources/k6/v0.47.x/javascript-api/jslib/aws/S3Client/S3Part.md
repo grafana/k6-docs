@@ -8,7 +8,7 @@ weight: 20
 
 # S3Part
 
-S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumber, data)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/s3client-uploadpart/) method when uploading a part to a multipart upload. The S3Part object describes an Amazon S3 Part.
+S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumber, data)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/aws/s3client/uploadpart) method when uploading a part to a multipart upload. The S3Part object describes an Amazon S3 Part.
 
 | Name                  | Type   | Description        |
 | :-------------------- | :----- | :----------------- |
@@ -23,7 +23,10 @@ S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumb
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.11.0/s3.js';
+import {
+  AWSConfig,
+  S3Client,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
