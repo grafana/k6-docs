@@ -32,8 +32,8 @@ KinesisClient methods will throw errors in case of failure.
 
 | Error                 | Condition                                                  |
 | :-------------------- | :--------------------------------------------------------- |
-| InvalidSignatureError | when invalid credentials were provided.                    |
-| KinesisServiceError   | when AWS replied to the requested operation with an error. |
+| InvalidSignatureError | When invalid credentials are provided.                    |
+| KinesisServiceError   | When AWS replies to the requested operation with an error. |
 
 ### Examples
 
