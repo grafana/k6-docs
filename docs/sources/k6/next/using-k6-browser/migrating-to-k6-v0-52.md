@@ -3,7 +3,7 @@ aliases:
   - ./migrating-to-k6-v0-46/ # docs/k6/<K6_VERSION>/using-k6-browser/migrating-to-k6-v0-46
 title: 'Migrating browser scripts to k6 v0.52'
 description: 'A migration guide to ease the process of transitioning to the new k6 browser module version bundled with k6 v0.52'
-weight: 05
+weight: 600
 ---
 
 # Migrating browser scripts to k6 v0.52
@@ -285,7 +285,7 @@ For example, before:
 
 ```javascript
 check(page.locator('h2'), {
-  header: lo => lo.textContent() == 'Welcome, admin!',
+  header: (lo) => lo.textContent() == 'Welcome, admin!',
 });
 ```
 
@@ -303,7 +303,7 @@ import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 // ...
 
 await check(page.locator('h2'), {
-  'header': async lo => await lo.textContent() === 'Welcome, admin!'
+  header: async (lo) => (await lo.textContent()) === 'Welcome, admin!',
 });
 ```
 
