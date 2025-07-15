@@ -142,7 +142,7 @@ The following code shows an example of how you could use the xk6-disruptor exten
 
 To find out more information about injecting faults to your service, check out the [Get started with xk6-disruptor guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/first-steps/).
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -219,8 +219,6 @@ export async function checkFrontend() {
   }
 }
 ```
-
-{{< /code >}}
 
 ## Recommended practices
 
