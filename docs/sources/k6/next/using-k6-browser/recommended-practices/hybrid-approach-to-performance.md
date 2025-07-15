@@ -85,7 +85,7 @@ export function getPizza() {
   const res = http.post(`${BASE_URL}/api/pizza`, JSON.stringify(restrictions), {
     headers: {
       'Content-Type': 'application/json',
-      'X-User-ID': randomIntBetween(1, 30000),
+      'Authorization': 'token abcdef0123456789',
     },
   });
 
