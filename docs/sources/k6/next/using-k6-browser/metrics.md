@@ -86,7 +86,7 @@ Currently, you can only use URLs to specify thresholds for different pages. If y
 
 {{< /admonition >}}
 
-{{< code >}}
+<!-- md-k6:skip -->
 
 ```javascript
 export const options = {
@@ -97,8 +97,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 When the test is run, you should see a similar output as the one below.
 
