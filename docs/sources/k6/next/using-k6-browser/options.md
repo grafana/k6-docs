@@ -8,6 +8,8 @@ weight: 500
 
 To enable browser testing, add the `browser` configuration within the `options` property of the [Scenario options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#options).
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   scenarios: {
