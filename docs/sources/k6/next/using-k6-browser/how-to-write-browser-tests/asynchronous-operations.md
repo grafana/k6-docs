@@ -8,6 +8,20 @@ weight: 100
 
 Most methods in the browser module return [JavaScript promises](#why-the-browser-module-uses-asynchronous-apis), and k6 scripts must be written to handle this properly. This usually means using the `await` keyword to wait for the async operation to complete.
 
+For example:
+
+<!-- eslint-skip -->
+
+```js
+const page = await browser.newPage();
+
+await page.goto('https://quickpizza.grafana.com/');
+
+const locator = page.locator('button[name="pizza-please"]');
+
+await locator.click();
+```
+
 There are two recommended methods to handle async operations in browser scripts: using `Promise.all`, or using the `waitFor` method.
 
 ## Promise.all
