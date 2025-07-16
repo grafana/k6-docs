@@ -128,7 +128,7 @@ If you don't add `await` on asynchronous APIs, it can cause the script to finish
 ```js
 const page = browser.newPage();
 
-page.goto('https://quickpizza.grafana.com/');
+page.goto('https://quickpizza.grafana.com/'); // An error should occur since we're not using await in the line above.
 
 const locator = page.locator('button[name="pizza-please"]');
 
