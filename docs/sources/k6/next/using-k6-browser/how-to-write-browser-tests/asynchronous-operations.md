@@ -6,7 +6,7 @@ weight: 100
 
 # Asynchronous operations
 
-Most methods in the browser module return JavaScript promises, and k6 scripts must be written to handle this properly. This usually means using the `await` keyword to wait for the async operation to complete.
+Most methods in the browser module return [JavaScript promises](#why-the-browser-module-uses-asynchronous-apis), and k6 scripts must be written to handle this properly. This usually means using the `await` keyword to wait for the async operation to complete.
 
 There are two recommended methods to handle async operations in browser scripts: using `Promise.all`, or using the `waitFor` method.
 
