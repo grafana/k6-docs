@@ -1,0 +1,22 @@
+extends: substitution
+level: warning
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#sql-structured-query-language
+message: |
+  Use '%s' instead of '%s'.
+
+  The article—a or an—that you use before the acronym SQL depends on how the word is pronounced.
+
+  When referring to the product Microsoft SQL Server, SQL should be pronounced "sequel".
+  In this case, use the article 'a', as in "a SQL Server analysis".
+
+  When referring to the term in any other context, such as SQL databases, errors, or servers, SQL should be pronounced "ess-cue-el".
+  In this case, use the article 'an', as in "an SQL error".
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  "[Aa] SQL server": an SQL server|a SQL Server
+  "[Aa] SQL(?! [Ss]erver)": an SQL
+  "[Aa]n SQL Server": a SQL Server

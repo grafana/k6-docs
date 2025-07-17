@@ -1,0 +1,7 @@
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/abbreviations"
+"message": "Don't use periods with acronyms or initialisms such as '%s'."
+"nonword": true
+"tokens":
+  - "\\b(?:[A-Z]\\.){3,}"

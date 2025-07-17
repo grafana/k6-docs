@@ -1,0 +1,12 @@
+"action":
+  "name": "edit"
+  "params":
+    - "trim"
+    - " "
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/dashes"
+"message": "Don't put a space before or after a dash."
+"nonword": true
+"tokens":
+  - "\\s[—–]\\s"

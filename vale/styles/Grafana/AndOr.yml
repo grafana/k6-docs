@@ -1,0 +1,11 @@
+extends: existence
+level: warning
+link: https://developers.google.com/style/slashes#and-or
+message: |
+  Avoid writing and/or except when space is limited, such as in tables.
+
+  Often, 'and' implies 'or', so you don't need to write both words.
+
+  If you need to specify both in your content, write something like "You can export raw events, processed events, or both."
+tokens:
+  - and/or

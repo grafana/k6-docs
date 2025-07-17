@@ -56,7 +56,7 @@ import {
   SignatureV4,
   AMZ_CONTENT_SHA256_HEADER,
   UNSIGNED_PAYLOAD,
-} from 'https://jslib.k6.io/aws/0.12.1/signature.js';
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/signature.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

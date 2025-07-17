@@ -1,0 +1,10 @@
+"action":
+  "name": "remove"
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/sentence-spacing"
+"message": "'%s' should have one space."
+"nonword": true
+"tokens":
+  - "[a-z][.?!] {2,}[A-Z]"
+  - "[a-z][.?!][A-Z]"

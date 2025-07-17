@@ -1,0 +1,20 @@
+extends: script
+message: |
+  For a task-based heading, start with a [bare infinitive](https://en.wikipedia.org/wiki/Infinitive#English), also known as a plain form or [base form](https://en.wikipedia.org/wiki/English_verbs#Base_form) verb.
+  In English, the imperative mood also uses the base form verb, so it looks the same as the bare infinitive.
+
+  Task-based headings are frequently used in quickstarts, how-to documents, and tutorials.
+
+  For a conceptual or non-task-based heading, use a [noun phrase](https://en.wikipedia.org/wiki/Noun_phrase) that doesn't start with an -ing verb.
+
+  Noun-phrase headings are frequently used in concept documentation.
+link: https://developers.google.com/style/headings#heading-and-title-text
+scope: heading
+script: |
+  text := import("text")
+
+  matches := []
+
+  for match in text.re_find(`^ *[A-Z][a-zA-Z]*ing .*$`, scope, -1) {
+    matches = append(matches, {begin: match[0].begin, end: match[0].end})
+  }

@@ -1,0 +1,9 @@
+action:
+  name: remove
+extends: existence
+level: warning
+link: https://developers.google.com/style/tone#some-things-to-avoid-where-possible
+message: Avoid exclamation points in text, except in rare really exciting moments.
+nonword: true
+tokens:
+  - "\\w+!(?:\\s|$)"

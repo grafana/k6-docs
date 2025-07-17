@@ -1,0 +1,10 @@
+extends: substitution
+message: |
+  Use '%s' instead of '%s' when talking about Grafana deployment methods.
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#self-managed
+level: warning
+action:
+  name: replace
+swap:
+  self-hosted: self-managed
+  "on-prem(?:ise)?": self-managed

@@ -20,6 +20,7 @@ It takes an options object as its single parameter, with the following propertie
 | accessKeyID             | string | The AWS access key ID credential to use for authentication.                                                               |
 | secretAccessKey         | string | The AWS secret access credential to use for authentication.                                                               |
 | sessionToken (optional) | string | The AWS secret access token to use for authentication.                                                                    |
+| endpoint (optional)     | string | The AWS endpoint. Useful for local testing.                                                                               |
 
 ### Methods
 
@@ -44,7 +45,10 @@ import exec from 'k6/execution';
 
 // Note that you AWSConfig is also included in the dedicated service
 // client bundles such as `s3.js` and `secrets-manager.js`
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.11.0/aws.js';
+import {
+  AWSConfig,
+  SecretsManagerClient,
+} from 'https://jslib.k6.io/aws/{{< param "JSLIB_AWS_VERSION" >}}/aws.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

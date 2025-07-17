@@ -1,0 +1,13 @@
+"action":
+  "name": "edit"
+  "params":
+    - "replace"
+    - "-"
+    - "—"
+"extends": "existence"
+"level": "error"
+"link": "https://developers.google.com/style/dashes"
+"message": "Use an em dash ('—') instead of '–'."
+"nonword": true
+"tokens":
+  - "–"

@@ -1,0 +1,11 @@
+extends: substitution
+message: |
+  Did you mean '%s' instead of '%s'?
+
+  Allows to is a common wording error.
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  allows to: allows you to|makes it possible to

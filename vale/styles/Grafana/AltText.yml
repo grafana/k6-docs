@@ -1,0 +1,10 @@
+extends: script
+message: All images must have alt text.
+link: https://grafana.com/docs/writers-toolkit/write/image-guidelines/#alt-text
+scope: raw
+script: |
+  text := import("text")
+  matches := []
+  for match in text.re_find(`!\[\]\(.*?\)`, scope, -1) {
+    matches = append(matches, {begin: match[0].begin, end: match[0].end})
+  }

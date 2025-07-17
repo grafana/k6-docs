@@ -20,6 +20,7 @@ It takes an options object as its single parameter, with the following propertie
 | accessKeyID             | string | The AWS access key ID credential to use for authentication.                                                               |
 | secretAccessKey         | string | The AWS secret access credential to use for authentication.                                                               |
 | sessionToken (optional) | string | The AWS secret access token to use for authentication.                                                                    |
+| endpoint (optional)     | string | The AWS endpoint. Useful for local testing.                                                                               |
 
 ### Methods
 
@@ -37,7 +38,9 @@ S3 Client methods will throw errors in case of failure.
 
 ### Example
 
-{{< code >}}
+An example showing how you can use k6 to instantiate an `AWSConfig` object and use it to configure a `SecretsManagerClient` instance.
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -61,7 +64,3 @@ export default function () {
   // ...
 }
 ```
-
-_k6 will instantiate an `AWSConfig` object and use it to configure a `SecretsManagerClient` instance_
-
-{{< /code >}}

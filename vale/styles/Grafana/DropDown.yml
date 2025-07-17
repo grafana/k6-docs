@@ -1,0 +1,14 @@
+extends: substitution
+level: suggestion
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#drop-down
+message: |
+  Use '%s' instead of '%s'.
+
+  Use drop-down as a modifier rather than as a standalone noun. For example: _drop-down menu_.
+
+ignorecase: false
+
+action:
+  name: replace
+swap:
+  "drop ?down": drop-down

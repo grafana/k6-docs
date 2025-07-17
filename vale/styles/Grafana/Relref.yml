@@ -1,0 +1,9 @@
+extends: script
+scope: raw
+level: error
+link: https://grafana.com/docs/writers-toolkit/write/links/
+message: |
+  Don't use the relref shortcode for any links as they don't follow redirects and have confusing semantics.
+
+  Instead use one of the links described in [links](https://grafana.com/docs/writers-toolkit/write/links/).
+script: Relref.tengo

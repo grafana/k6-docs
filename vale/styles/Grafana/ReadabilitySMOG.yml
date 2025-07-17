@@ -1,0 +1,7 @@
+"condition": "> 0"
+"extends": "metric"
+"formula": |
+  1.0430 * math.sqrt((polysyllabic_words * 30.0) / sentences) + 3.1291
+"level": "suggestion"
+"link": "https://en.wikipedia.org/wiki/SMOG"
+"message": "%s aim for below 10."

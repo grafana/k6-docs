@@ -1,0 +1,17 @@
+action:
+  name: remove
+extends: existence
+level: warning
+link: https://grafana.com/docs/writers-toolkit/write/style-guide/word-list/#simple
+message: |
+  Avoid the word easy or simple -- what might be simple for you might not be simple for others.
+
+  Try eliminating this word from the sentence because usually you can convey the same meaning without it.
+tokens:
+  - "easy(?![ -]to[ -]understand)"
+  - easily
+  - simple
+  - simply
+exceptions:
+  - easy to understand
+  - easy-to-understand

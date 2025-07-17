@@ -1,0 +1,8 @@
+"extends": "existence"
+"level": "suggestion"
+"link": "https://developers.google.com/style/semicolons"
+"message": "Use semicolons judiciously."
+"nonword": true
+"scope": "sentence"
+"tokens":
+  - ";"

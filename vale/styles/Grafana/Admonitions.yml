@@ -1,0 +1,15 @@
+extends: script
+message: |
+  Prefer the `admonition` shortcode over blockquotes.
+
+  The admonition shortcode renders its content in a blockquote with consistent styling across the website.
+link: https://grafana.com/docs/writers-toolkit/write/shortcodes/#admonition
+scope: raw
+script: |
+  text := import("text")
+
+  matches := []
+
+  for match in text.re_find(`(?i)> \*\*(?:note|warning|caution|tip):?\*\*`, scope, -1) {
+    matches = append(matches, {begin: match[0].begin, end: match[0].end})
+  }

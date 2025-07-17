@@ -1,0 +1,7 @@
+"extends": "existence"
+"level": "warning"
+"link": "https://developers.google.com/style/hyphens"
+"message": "Don't add words such as 'from' or 'between' to describe a range of numbers."
+"nonword": true
+"tokens":
+  - "(?:from|between)\\s\\d+\\s?-\\s?\\d+"
