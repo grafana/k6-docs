@@ -22,7 +22,7 @@ const locator = page.locator('button[name="pizza-please"]');
 await locator.click();
 ```
 
-There are two recommended methods to handle async operations in browser scripts: using `Promise.all`, or using the `waitFor` method.
+In addition to using `await`, another important part of writing k6 browser tests is handling page navigations. There are two recommended methods for doing that: using `Promise.all` or using the `waitFor` method.
 
 ## Promise.all
 
