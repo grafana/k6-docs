@@ -1,7 +1,7 @@
 ---
 title: 'testing'
 head_title: 'testing'
-description: 'k6 testing library for advanced assertions'
+description: 'The k6 testing library provides test assertion capabilities for both protocol and browser testing.'
 weight: 00
 ---
 

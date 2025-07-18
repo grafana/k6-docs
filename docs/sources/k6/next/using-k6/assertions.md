@@ -1,6 +1,6 @@
 ---
 title: 'Assertions'
-description: 'Advanced test assertions in k6 using the k6-testing library for both protocol and browser testing'
+description: 'Test assertions in k6 using the k6-testing library for both protocol and browser testing'
 weight: 04
 ---
 
