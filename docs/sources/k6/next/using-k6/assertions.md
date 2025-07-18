@@ -111,7 +111,7 @@ export default function () {
 [Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions) automatically retry until conditions become true or a timeout is reached. They're designed for [browser testing](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser) scenarios where elements may take time to load, update, or become interactable.
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export default async function() {

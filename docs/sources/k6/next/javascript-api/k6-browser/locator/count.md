@@ -18,7 +18,7 @@ Returns the number of elements matching the selector. This does not wait for act
 {{< code >}}
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/0.4.0/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
