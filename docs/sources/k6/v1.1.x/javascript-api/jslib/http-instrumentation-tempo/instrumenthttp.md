@@ -13,7 +13,7 @@ The `instrumentHTTP` function instruments the k6 http module with tracing capabi
 The `instrumentHTTP` automatically adds tracing information to HTTP requests performed using the `k6/http` module functions (mentioned above).
 This means that, to instrument the HTTP requests, you don't need to rewrite any code.
 Instead, call it once in the init context.
-From that point forward, all requests made by the HTTP module from that point forward will have a trace context header added to them, and the metadata for the data-point output will have the used `trace_id`. For details about propagation, refer to [About trace contexts](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo#about-trace-contexts).
+From that point forward, all requests made by the HTTP module will have a trace context header added to them, and the metadata for the data-point output will have the used `trace_id`. For details about propagation, refer to [About trace contexts](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-tempo#about-trace-contexts).
 
 ## Parameters
 
