@@ -1,13 +1,13 @@
 ---
 title: 'testing'
 head_title: 'testing'
-description: 'k6 testing library for advanced assertions and Playwright-compatible testing'
+description: 'k6 testing library for advanced assertions with testing inspired by Playwright patterns'
 weight: 00
 ---
 
 # testing
 
-The k6 testing library provides assertion capabilities for both protocol and browser testing, and aims for compatibility with Playwright's test API. The entire library is centered around the [`expect()`]({{< relref "./expect" >}}) function, which can be configured for convenience.
+The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from Playwright's test API design. The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) function, which can be configured for convenience.
 
 {{< admonition type="note" >}}
 The k6 testing library source code can be found on [GitHub](https://github.com/grafana/k6-jslib-testing).
@@ -15,7 +15,7 @@ The k6 testing library source code can be found on [GitHub](https://github.com/g
 
 ## Features
 
-- **Playwright-compatible assertions**: API designed for familiarity with Playwright's testing patterns
+- **Playwright-inspired assertions**: API designed with patterns inspired by Playwright's testing approach
 - **[Protocol and browser testing](#demo)**: Works with both HTTP/API testing and browser automation
 - **[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect#retrying-assertions)**: Automatically retry assertions until they pass or timeout
 - **[Soft assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect#soft-assertions)**: Continue test execution even after assertion failures

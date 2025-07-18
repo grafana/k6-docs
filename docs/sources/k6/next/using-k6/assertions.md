@@ -8,11 +8,11 @@ weight: 04
 
 # Assertions
 
-k6 provides test assertions in the form of the `expect` function. Assertions validate that your application behaves as expected during testing. 
+k6 provides test assertions in the form of the [`expect`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) function. Assertions validate that your application behaves as expected during testing. 
 
-Define assertions by passing a value to `expect()` and chaining it with a matcher that defines your expected outcome. The library provides expressive matchers that work with both protocol testing (HTTP/API) and browser testing scenarios.
+Define assertions by passing a value to [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) and chaining it with a matcher that defines your expected outcome. The library provides expressive matchers that work with both protocol testing [HTTP/API](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols) and [browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser) testing scenarios.
 
-The assertions API is compatible with Playwright's assertion syntax, providing a fluent interface that improves test readability and reliability. 
+The assertions API is inspired by Playwright's assertion syntax, providing a fluent interface that improves test readability and reliability. 
 
 ## Getting started
 
@@ -38,7 +38,6 @@ export async function browserTest() {
 
   try {
     await page.goto("https://quickpizza.grafana.com/");
-    await page.waitForLoadState("networkidle"); // waits until the `networkidle` event
 
     // Assert the "Pizza Please" button is visible
     await expect(page.locator("button[name=pizza-please]")).toBeVisible();
@@ -109,7 +108,7 @@ export default function () {
 
 ### Auto-retrying assertions
 
-[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions) automatically retry until conditions become true or a timeout is reached. They're designed for browser testing scenarios where elements may take time to load, update, or become interactable.
+[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions) automatically retry until conditions become true or a timeout is reached. They're designed for [browser testing](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser) scenarios where elements may take time to load, update, or become interactable.
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
@@ -227,7 +226,7 @@ export default function () {
 
 ### Soft assertions
 
-Soft assertions continue test execution even when they fail, marking the test as failed but allowing subsequent assertions to run:
+Soft assertions continue test execution even when they fail, marking the test as failed but allowing subsequent assertions to run. Unlike [checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks), soft assertions do not measure failures or emit dedicated metrics. If you need failure-related metrics, consider using [checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) instead:
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -281,7 +280,9 @@ const configuredExpect = expect.configure({
   timeout: 10000,     // 10 seconds for retrying assertions
   interval: 500,      // Retry check every 500ms (on retriable assertions)
   colorize: true,     // Enable colored output
-  softMode: 'fail'    // How soft assertions behave
+
+  // Setting `softMode` to 'throw', will make soft assertions fail the current iteration instead of the whole test.
+  softMode: 'fail'    
 });
 
 export default function () {
