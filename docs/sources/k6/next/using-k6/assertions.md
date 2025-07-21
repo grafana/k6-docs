@@ -279,7 +279,7 @@ import http from 'k6/http';
 // Configure global settings
 const configuredExpect = expect.configure({
   timeout: 10000,     // 10 seconds for retrying assertions
-  interval: 500,      // Check every 500ms
+  interval: 500,      // Retry check every 500ms (on retriable assertions)
   colorize: true,     // Enable colored output
   softMode: 'fail'    // How soft assertions behave
 });
