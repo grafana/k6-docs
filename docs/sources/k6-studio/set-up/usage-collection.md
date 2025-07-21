@@ -8,11 +8,12 @@ weight: 300
 
 By default, k6 Studio sends anonymous usage reports, as well as crash reports and error data, so that we can track how users are using the product and its features. We use that information to prioritize the roadmap with the features that will benefit a majority of users, and reduce the impact of any changes we make. The data doesn't contain any information about you or what you are testing.
 
-The contents included in the usage report are:
+A usage report includes the following information:
 
-- The running program's operating system (`mac`, `win`, or `linux`).
+- The event name (for example, `app_installed` or `recording_created`).
+- The running program's operating system (`win`, `mac`, or `linux`).
 - The running program's architecture (`arm64` or `x86_64`).
-- The k6 Studio version (for example, `1.4.0`).
+- The k6 Studio version (for example, `1.5.0`).
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
 
 We use [Sentry](https://sentry.io/) to collect crash reports and error data. That includes:
