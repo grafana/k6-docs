@@ -1,7 +1,7 @@
 ---
 title: 'testing'
 head_title: 'testing'
-description: 'k6 testing library for advanced assertions with testing inspired by Playwright patterns'
+description: 'k6 testing library for advanced assertions'
 weight: 00
 ---
 
