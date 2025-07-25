@@ -85,7 +85,7 @@ const myExpect = expect.configure({
 });
 ```
 
-## Assertion Types
+## Assertion types
 
 The testing library provides two types of assertions:
 
