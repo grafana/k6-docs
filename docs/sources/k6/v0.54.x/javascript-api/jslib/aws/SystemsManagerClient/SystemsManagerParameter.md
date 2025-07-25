@@ -1,6 +1,5 @@
 ---
 title: 'SystemsManagerParameter'
-head_title: 'SystemsManagerParameter'
 slug: 'systemsmanagerparameter'
 description: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query parameters'
 weight: 20

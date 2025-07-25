@@ -1,6 +1,5 @@
 ---
 title: 'invoke'
-head_title: 'LambdaClient.invoke(name, payload, [options])'
 description: 'LambdaClient.invoke invokes an AWS Lamba function'
 weight: 10
 ---

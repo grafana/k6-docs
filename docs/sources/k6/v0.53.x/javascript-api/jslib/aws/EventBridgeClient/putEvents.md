@@ -1,7 +1,5 @@
 ---
 title: 'putEvents'
-head_title: 'EventBridgeClient.putEvents'
-description: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
 description: 'EventBridgeClient.putEvents sends custom events to Amazon EventBridge'
 weight: 10
 ---

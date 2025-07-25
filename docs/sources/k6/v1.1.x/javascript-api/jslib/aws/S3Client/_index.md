@@ -1,6 +1,5 @@
 ---
 title: 'S3Client'
-head_title: 'S3Client'
 description: 'S3Client allows interacting with AWS S3 buckets and objects'
 description: 'S3Client class allows interacting with AWS S3 buckets and objects'
 weight: 00

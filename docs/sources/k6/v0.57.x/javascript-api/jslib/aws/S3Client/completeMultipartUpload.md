@@ -1,6 +1,5 @@
 ---
 title: 'completeMultipartUpload'
-head_title: 'S3Client.completeMultipartUpload(bucketName, objectKey, uploadId, parts)'
 description: 'S3Client.completeMultipartUpload uploads a multipar object to a bucket'
 weight: 10
 ---
