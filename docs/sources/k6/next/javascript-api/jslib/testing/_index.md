@@ -35,7 +35,7 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default function () {
   const response = http.get('https://test-api.k6.io/public/crocodiles/1/');
@@ -55,7 +55,7 @@ export default function () {
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default async function () {
   const page = browser.newPage();
@@ -73,7 +73,7 @@ export default async function () {
 Create configured `expect` instances for custom behavior:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create configured expect instance
 const myExpect = expect.configure({

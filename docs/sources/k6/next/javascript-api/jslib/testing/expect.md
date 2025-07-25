@@ -37,7 +37,7 @@ The `expect()` function wraps a value and returns an expectation object that pro
 Standard assertions evaluate immediately and do not retry:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 expect(42).toBe(42);
 expect([1, 2, 3]).toContain(2);
@@ -49,7 +49,7 @@ Retrying assertions automatically retry until they pass or timeout. These are pa
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default async function () {
   const page = browser.newPage();
@@ -66,7 +66,7 @@ export default async function () {
 All assertions can be negated using the `.not` property:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 expect(42).not.toBe(43);
 expect('hello').not.toContain('world');
@@ -78,7 +78,7 @@ By default, failed assertions will terminate the test execution. Soft assertions
 
 ```javascript
 import exec from "k6/execution";
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export const options = {
   vus: 2,
@@ -98,7 +98,7 @@ export default function () {
 Note that soft assertions can be [configured](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) to throw an exception (and effectively failing the iteration where it happens) instead.
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Configure soft mode globally
 expect.configure({ softMode: 'continue' });
@@ -116,7 +116,7 @@ export default function () {
 
 ```javascript
 import http from 'k6/http';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default function () {
   const response = http.get('https://test-api.k6.io/public/crocodiles/1/');
@@ -140,7 +140,7 @@ export default function () {
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default async function () {
   const page = browser.newPage();

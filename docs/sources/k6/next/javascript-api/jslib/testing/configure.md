@@ -60,7 +60,7 @@ const slowExpect = expect.configure({
 The `display` and `colorize` options control how assertion failures are reported:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create expect instance with inline output and no colors
 const inlineExpect = expect.configure({
@@ -74,7 +74,7 @@ const inlineExpect = expect.configure({
 The `softMode` option controls whether failed assertions stop test execution:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // The default behavior of soft assertions is mark the test as failed, the `softMode` option
 // allows to configure soft assertions to throw an exception and fail the current iteration instead. 
@@ -107,7 +107,7 @@ k6 run test.js
 ### Basic Configuration
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create a configured expect instance
 const myExpect = expect.configure({
@@ -130,7 +130,7 @@ export default function () {
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create expect instance configured for browser testing with longer timeouts
 const browserExpect = expect.configure({
@@ -150,7 +150,7 @@ export default async function () {
 ### CI/CD Configuration
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create expect instance configured for CI environment
 const ciExpect = expect.configure({
@@ -163,7 +163,7 @@ const ciExpect = expect.configure({
 ### Development vs Production
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Different configuration based on environment
 const isDevelopment = __ENV.NODE_ENV === 'development';
@@ -179,7 +179,7 @@ const envExpect = expect.configure({
 ### Multiple Configured Instances
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default function () {
   // Create specific expect instances for different scenarios
@@ -206,7 +206,7 @@ export default function () {
 
 ```javascript
 import http from 'k6/http';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create expect instance with soft assertions enabled
 const softExpect = expect.configure({
