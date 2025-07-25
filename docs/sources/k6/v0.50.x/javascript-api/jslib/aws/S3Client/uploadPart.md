@@ -1,6 +1,5 @@
 ---
 title: 'uploadPart'
-head_title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 weight: 10
 ---

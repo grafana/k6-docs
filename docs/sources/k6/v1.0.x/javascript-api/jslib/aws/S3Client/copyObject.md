@@ -1,6 +1,5 @@
 ---
 title: 'copyObject'
-head_title: 'S3Client.copyObject'
 description: 'S3Client.copyObject copies an object from a bucket to another'
 weight: 10
 ---

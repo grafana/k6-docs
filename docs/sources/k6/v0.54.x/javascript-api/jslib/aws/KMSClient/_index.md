@@ -1,7 +1,5 @@
 ---
 title: 'KMSClient'
-head_title: 'KMSClient'
-description: 'KMSClient allows interacting with the AWS Key Management Service'
 description: 'KMSClient allows interacting with the AWS Key Management Service'
 weight: 00
 ---

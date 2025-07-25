@@ -1,6 +1,5 @@
 ---
 title: 'getParameter'
-head_title: 'SystemsManagerClient.getParameter()'
 description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 weight: 10
 ---

@@ -1,7 +1,6 @@
 ---
 title: 'KMSDataKey'
 slug: 'kmsdatakey'
-head_title: 'KMSDataKey'
 description: 'KMSDataKey is returned by the KMSClient.*DataKey methods that query KMS data keys'
 weight: 20
 ---

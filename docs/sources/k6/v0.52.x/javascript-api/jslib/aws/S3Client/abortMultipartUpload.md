@@ -1,6 +1,5 @@
 ---
 title: 'abortMultipartUpload'
-head_title: 'S3Client.abortMultipartUpload(bucketName, objectKey, uploadId)'
 description: 'S3Client.abortMultipartUpload aborts a multipart upload to a bucket'
 weight: 10
 ---

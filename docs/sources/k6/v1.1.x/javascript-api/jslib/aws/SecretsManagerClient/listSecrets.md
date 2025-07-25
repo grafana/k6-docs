@@ -1,6 +1,5 @@
 ---
 title: 'listSecrets'
-head_title: 'SecretsManagerClient.listSecrets()'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 weight: 10
 ---

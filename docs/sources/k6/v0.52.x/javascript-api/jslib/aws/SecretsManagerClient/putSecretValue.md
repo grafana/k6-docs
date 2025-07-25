@@ -1,6 +1,5 @@
 ---
 title: 'putSecretValue'
-head_title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])'
 description: "SecretsManagerClient.putSecretValue updates an existing secret's value"
 weight: 10
 ---

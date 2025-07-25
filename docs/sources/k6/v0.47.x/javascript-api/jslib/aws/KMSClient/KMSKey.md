@@ -1,7 +1,5 @@
 ---
 title: 'KMSKey'
-head_title: 'KMSKey'
-description: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 description: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 weight: 20
 ---

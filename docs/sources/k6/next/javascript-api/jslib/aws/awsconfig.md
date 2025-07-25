@@ -1,7 +1,5 @@
 ---
 title: 'AWSConfig'
-head_title: 'AWSConfig'
-description: 'AWSConfig is used to configure an AWS service client instances'
 description: 'AWSConfig is used to configure an AWS service client instances'
 weight: 00
 ---
