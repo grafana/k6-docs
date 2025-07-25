@@ -1,6 +1,5 @@
 ---
 title: 'testing'
-head_title: 'testing'
 description: 'The k6 testing library provides test assertion capabilities for both protocol and browser testing.'
 weight: 00
 ---
@@ -10,7 +9,7 @@ weight: 00
 The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from Playwright's test API design. The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) function, which can be configured for convenience.
 
 {{< admonition type="note" >}}
-The k6 testing library source code can be found on [GitHub](https://github.com/grafana/k6-jslib-testing).
+The k6 testing library source code is available on [GitHub](https://github.com/grafana/k6-jslib-testing).
 {{< /admonition >}}
 
 ## Features
@@ -23,7 +22,7 @@ The k6 testing library source code can be found on [GitHub](https://github.com/g
 
 ## Usage
 
-To use the testing library in your k6 script, import it in your tests, directly from the jslib repository:
+To use the testing library in your k6 script, import it in your tests directly from the jslib repository:
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
@@ -71,7 +70,7 @@ export default async function () {
 
 ## Configuration
 
-Create configured expect instances for custom behavior:
+Create configured `expect` instances for custom behavior:
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
@@ -90,17 +89,19 @@ const myExpect = expect.configure({
 
 The testing library provides two types of assertions:
 
-### [Non-Retrying Assertions]({{< relref "./non-retrying-assertions" >}})
-Synchronous assertions that evaluate immediately - perfect for testing static values, API responses, and any scenario where the expected condition should be true at the moment of evaluation.
+### [Non-Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect/non-retrying-assertions/)
 
-### [Retrying Assertions]({{< relref "./retrying-assertions" >}})
-Asynchronous assertions that automatically retry until conditions become true or timeout - ideal for browser testing, dynamic content, and any scenario where conditions may change over time.
+Synchronous assertions that evaluate immediately. These are ideal for testing static values, API responses, and scenarios where the expected condition should be true at the moment of evaluation.
+
+### [Retrying Assertions]((https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect/retrying-assertions/)
+
+Asynchronous assertions that automatically retry until conditions become true or timeout. These are suitable for browser testing, dynamic content, and scenarios where conditions may change over time.
 
 ## API Reference
 
 | Function | Description |
 | --- | --- |
-| [expect()]({{< relref "./expect" >}}) | Main assertion function |
-| [expect.configure()]({{< relref "./configure" >}}) | Create configured expect instances |
-| [Non-Retrying Assertions]({{< relref "./non-retrying-assertions" >}}) | Synchronous assertions for immediate evaluation |
-| [Retrying Assertions]({{< relref "./retrying-assertions" >}}) | Asynchronous assertions for dynamic content |
+| [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) | Main assertion function |
+| [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) | Create configured expect instances |
+| [Non-Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/non-retrying-assertions) | Synchronous assertions for immediate evaluation |
+| [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions) | Asynchronous assertions for dynamic content |

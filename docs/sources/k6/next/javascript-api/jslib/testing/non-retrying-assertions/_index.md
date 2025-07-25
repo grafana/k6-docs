@@ -1,6 +1,5 @@
 ---
 title: 'Non-Retrying Assertions'
-head_title: 'Non-Retrying Assertions'
 description: 'Synchronous assertions that evaluate immediately'
 weight: 40
 ---
@@ -9,7 +8,6 @@ weight: 40
 
 Non-retrying assertions are synchronous assertions that allow to test any conditions, but do not auto-retry. They are ideal for testing static values, API responses, and any scenario where the expected condition should be true at the moment of evaluation. 
 
-## Overview
 
 Non-retrying assertions differ from [retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions) in that they:
 
@@ -44,7 +42,7 @@ Non-retrying assertions are best suited for:
 - **Known state verification** - Checking values that should be immediately available
 
 
-## Available Non-Retrying Assertions
+## Non-retrying assertions methods
 
 ### Equality Assertions
 

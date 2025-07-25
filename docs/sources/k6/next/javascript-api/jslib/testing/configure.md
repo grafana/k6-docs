@@ -7,7 +7,7 @@ weight: 20
 
 # expect.configure()
 
-The `expect.configure()` method creates a new configured expect instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior. The original expect instance remains unchanged.
+The `expect.configure()` method creates a new configured `expect` instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior. The original `expect` instance remains unchanged.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ const configuredExpect = expect.configure(options)
 | --- | --- | --- | --- |
 | timeout | number | `5000` | Default timeout in milliseconds for retrying assertions |
 | interval | number | `100` | Polling interval in milliseconds for retrying assertions |
-| colorize | boolean | `true` | Enable colored output in assertion messages |
+| colorize | boolean | `true` | Enable colorized output in assertion messages |
 | display | string | `"pretty"` | Output format for assertion messages (`"pretty"` or `"inline"`) |
 | softMode | string | `"fail"` | Soft assertion behavior (`"fail"` or `"throw"`) |
 
@@ -41,7 +41,7 @@ const configuredExpect = expect.configure(options)
 
 The `expect.configure()` method creates a new expect instance with custom configuration options. This new instance can be used in place of the default expect function, and will apply the specified configuration to all assertions made with it. The original expect instance remains unchanged and continues to use the default configuration.
 
-### Timeout Configuration
+### Timeout configuration
 
 The `timeout` option controls how long retrying assertions will wait for a condition to become true:
 

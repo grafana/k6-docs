@@ -1,7 +1,6 @@
 ---
 title: 'expect()'
-head_title: 'expect()'
-description: 'Main assertion function for creating expectations in k6 tests'
+description: 'expect() is the main function for creating assertions in k6 tests'
 weight: 10
 ---
 
@@ -75,7 +74,7 @@ expect('hello').not.toContain('world');
 
 ### Soft Assertions
 
-By default, failed assertions will terminate the test execution. The k6 testing library also supports soft assertions: failed soft assertions do not terminate the test execution, but mark the test as failed, leading k6 to eventually exit with code `110`.
+By default, failed assertions will terminate the test execution. Soft assertions, on the other hand, don't terminate the test execution when they fail, but mark the test as failed, leading k6 to eventually exit with code `110`.
 
 ```javascript
 import exec from "k6/execution";
@@ -161,7 +160,7 @@ export default async function () {
 }
 ```
 
-## Available Assertion Methods
+## Assertion methods
 
 ### Non-Retrying Assertions
 
