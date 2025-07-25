@@ -46,7 +46,7 @@ const configuredExpect = expect.configure(options)
 The `timeout` option controls how long retrying assertions will wait for a condition to become true:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // Create a configured expect instance with longer timeout for slow-loading elements
 const slowExpect = expect.configure({

@@ -25,7 +25,7 @@ The k6 testing library source code is available on [GitHub](https://github.com/g
 To use the testing library in your k6 script, import it in your tests directly from the jslib repository:
 
 ```javascript
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_AWS_VERSION" >}}/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 ```
 
 ## Demo

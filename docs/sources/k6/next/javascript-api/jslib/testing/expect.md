@@ -6,7 +6,7 @@ weight: 10
 
 # expect()
 
-The `expect()` function is the main entry point for creating assertions in the k6 testing library. It provides a fluent API for both retrying and non-retrying assertions.
+The `expect()` function is the main entry point for creating assertions in the k6 testing library. It provides an intuitive  API for both retrying and non-retrying assertions.
 
 ## Syntax
 
