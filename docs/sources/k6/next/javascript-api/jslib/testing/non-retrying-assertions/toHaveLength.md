@@ -38,17 +38,10 @@ The `toHaveLength()` method checks if an object has a `length` property that equ
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default function () {
-  const fruits = ['apple', 'banana', 'orange'];
-  const emptyArray = [];
-  const numbers = [1, 2, 3, 4, 5];
-  
-  expect(fruits).toHaveLength(3);
-  expect(emptyArray).toHaveLength(0);
-  expect(numbers).toHaveLength(5);
-  
-  // Negative test
-  expect(fruits).not.toHaveLength(2);
-  expect(emptyArray).not.toHaveLength(1);
+  const fruit = 'mango';
+
+  expect(fruit).toHaveLength(5);
+  expect(fruit).not.toHaveLength(2);
 }
 ```
 
