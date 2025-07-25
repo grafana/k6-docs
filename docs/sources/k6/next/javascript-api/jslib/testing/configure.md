@@ -7,7 +7,11 @@ weight: 20
 
 # expect.configure()
 
-The `expect.configure()` method creates a new configured `expect` instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior. The original `expect` instance remains unchanged.
+The `expect.configure()` method creates a new configured `expect` instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior. 
+
+This new instance can be used in place of the default expect function, and will apply the specified configuration to all assertions made with it. 
+
+The imported `expect` instance remains unchanged and continues to use the default configuration, allowing different assertion configurations to co-exist within a test.
 
 ## Syntax
 
@@ -36,10 +40,6 @@ const configuredExpect = expect.configure(options)
 | Type | Description |
 | --- | --- |
 | Expect | A new expect instance with the specified configuration |
-
-## Description
-
-The `expect.configure()` method creates a new expect instance with custom configuration options. This new instance can be used in place of the default expect function, and will apply the specified configuration to all assertions made with it. The original expect instance remains unchanged and continues to use the default configuration.
 
 ### Timeout configuration
 
@@ -225,8 +225,3 @@ export default function () {
   console.log('Test completed');
 }
 ```
-
-## See Also
-
-- [expect()]({{< relref "./expect" >}}) - Main assertion function
-- [Environment Variables]({{< relref "../../../using-k6/environment-variables" >}}) - k6 environment variable usage
