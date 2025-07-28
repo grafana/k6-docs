@@ -7,7 +7,7 @@ on:
       - synchronize
       - closed
     paths:
-      - "docs/sources/k6/**"
+      - "docs/sources/k6/next/**"
 
 jobs:
   deploy-pr-preview:
@@ -21,10 +21,11 @@ jobs:
       sources: |
         [
           {
-            "relative_prefix": "/docs/k6/",
+            "index_file": "content/docs/k6/_index.md",
+            "relative_prefix": "/docs/k6/next/",
             "repo": "k6-docs",
-            "source_directory": "docs/sources/k6",
             "source_directory": "docs/sources/k6/next",
             "website_directory": "content/docs/k6/next"
+          }
         ]
       title: ${{ github.event.pull_request.title }}
