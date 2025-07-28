@@ -31,6 +31,8 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,
