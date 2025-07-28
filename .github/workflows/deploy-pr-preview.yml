@@ -21,7 +21,7 @@ jobs:
       sources: |
         [
           {
-            "relative_prefix": "/docs/grafana-cloud/k6-docs/",
+            "relative_prefix": "/docs/k6/",
             "repo": "k6-docs",
             "source_directory": "docs/sources/k6",
             "website_directory": "content/docs/k6"
