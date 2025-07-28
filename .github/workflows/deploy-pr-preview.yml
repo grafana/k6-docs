@@ -24,7 +24,7 @@ jobs:
             "relative_prefix": "/docs/k6/",
             "repo": "k6-docs",
             "source_directory": "docs/sources/k6",
-            "website_directory": "content/docs/k6"
-          }
+            "source_directory": "docs/sources/k6/next",
+            "website_directory": "content/docs/k6/next"
         ]
       title: ${{ github.event.pull_request.title }}
