@@ -1,9 +1,7 @@
 ---
 title: 'sign'
-head_title: 'sign'
 slug: 'sign'
 description: 'Signaturev4.sign signs an HTTP request with the AWS Signature V4 algorithm'
-description: 'SignatureV4.sign signs an HTTP request with the AWS Signature V4 algorithm'
 ---
 
 # sign

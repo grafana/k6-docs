@@ -1,6 +1,5 @@
 ---
 title: 'deleteObject'
-head_title: 'S3Client.deleteObject(bucketName, objectKey)'
 description: 'S3Client.deleteObject deletes an object from a bucket'
 weight: 10
 ---

@@ -1,6 +1,5 @@
 ---
 title: 'SystemsManagerClient'
-head_title: 'SystemsManagerClient'
 description: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
 weight: 00
 ---

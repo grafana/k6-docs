@@ -1,6 +1,5 @@
 ---
 title: 'S3UploadedObject'
-head_title: 'S3UploadedObject'
 description: 'S3UploadedObject represents the response from S3 upload operations'
 weight: 20
 ---

@@ -1,6 +1,5 @@
 ---
 title: 'createSecret'
-head_title: 'SecretsManagerClient.createSecret(name, secretString, description, [versionID], [tags])'
 description: 'SecretsManagerClient.createSecret creates a new secret'
 weight: 10
 ---

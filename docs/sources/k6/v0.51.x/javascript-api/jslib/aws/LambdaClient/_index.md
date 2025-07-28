@@ -1,6 +1,5 @@
 ---
 title: 'LambdaClient'
-head_title: 'LambdaClient'
 description: 'LambdaClient allows interacting with the AWS Lambda service'
 weight: 00
 ---

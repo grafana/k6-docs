@@ -1,6 +1,5 @@
 ---
 title: 'SecretsManagerClient'
-head_title: 'SecretsManagerClient'
 description: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 weight: 00
 ---
