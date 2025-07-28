@@ -1,7 +1,6 @@
 ---
 title: 'EventBridgeClient'
 description: 'EventBridgeClient allows interacting with AWS EventBridge service'
-description: 'EventBridgeClient class allows sending custom events to Amazon EventBridge so that they can be matched to rules.'
 weight: 00
 ---
 
