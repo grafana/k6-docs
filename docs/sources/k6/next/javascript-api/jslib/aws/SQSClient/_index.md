@@ -1,7 +1,6 @@
 ---
 title: 'SQSClient'
 description: 'SQSClient enables interaction with the AWS Simple Queue Service (SQS)'
-description: 'SQSClient allows interacting with the AWS Simple Queue Service (SQS)'
 weight: 00
 ---
 
