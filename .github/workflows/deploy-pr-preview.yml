@@ -1,0 +1,30 @@
+name: Deploy pr preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+    paths:
+      - "docs/sources/k6/**"
+
+jobs:
+  deploy-pr-preview:
+    if: "!github.event.pull_request.head.repo.fork"
+    uses: grafana/writers-toolkit/.github/workflows/deploy-preview.yml@main
+    with:
+      branch: ${{ github.head_ref }}
+      event_number: ${{ github.event.number }}
+      repo: k6-docs
+      sha: ${{ github.event.pull_request.head.sha }}
+      sources: |
+        [
+          {
+            "relative_prefix": "/docs/grafana-cloud/k6-docs/",
+            "repo": k6-docs,
+            "source_directory": "docs/sources/k6",
+            "website_directory": "content/docs/k6"
+          }
+        ]
+      title: ${{ github.event.pull_request.title }}
