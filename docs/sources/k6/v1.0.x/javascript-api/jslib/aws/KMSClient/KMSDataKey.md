@@ -21,6 +21,8 @@ For instance, the [`generateDataKey`](https://grafana.com/docs/k6/<K6_VERSION>/j
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 

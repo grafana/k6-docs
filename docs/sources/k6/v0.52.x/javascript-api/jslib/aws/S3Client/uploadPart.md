@@ -26,6 +26,8 @@ weight: 10
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';

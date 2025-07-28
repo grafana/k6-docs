@@ -32,6 +32,8 @@ EventBridgeClient methods will throw errors in case of failure.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,

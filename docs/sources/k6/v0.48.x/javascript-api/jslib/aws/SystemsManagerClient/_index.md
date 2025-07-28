@@ -31,6 +31,8 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 

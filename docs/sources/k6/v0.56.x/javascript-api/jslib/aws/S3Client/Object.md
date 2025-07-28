@@ -22,6 +22,8 @@ and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jsl
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 
