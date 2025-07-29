@@ -183,6 +183,10 @@ The Grafana team makes a best-effort assistance to keep these extensions in comp
         <h4>xk6-kv</h4>
         <p>Share key-value data between VUs</p>
     </a>
+    <a href="https://github.com/kressnick25/xk6-ldap" target="_blank" class="nav-cards__item nav-cards__item--guide">
+        <h4>xk6-ldap</h4>
+        <p>Load-testing for the LDAP protocol</p>
+    </a>
     <a href="https://github.com/grafana/xk6-loki" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-loki</h4>
         <p>Test Grafana Loki log ingestion endpoints</p>
