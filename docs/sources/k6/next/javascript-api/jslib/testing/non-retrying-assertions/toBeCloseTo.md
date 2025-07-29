@@ -1,6 +1,5 @@
 ---
 title: 'toBeCloseTo()'
-head_title: 'expect(actual).toBeCloseTo(expected, precision)'
 description: 'Asserts that a number is close to another number within a specified precision'
 weight: 41
 ---
@@ -11,24 +10,26 @@ The `toBeCloseTo()` method asserts that a number is close to another number with
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeCloseTo(expected)
-expect(actual).toBeCloseTo(expected, precision)
-expect(actual).not.toBeCloseTo(expected)
-expect(actual).not.toBeCloseTo(expected, precision)
+expect(actual).toBeCloseTo(expected);
+expect(actual).toBeCloseTo(expected, precision);
+expect(actual).not.toBeCloseTo(expected);
+expect(actual).not.toBeCloseTo(expected, precision);
 ```
 
 ## Parameters
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| expected | number | | The expected number |
-| precision | number | `2` | Number of decimal digits to check |
+| Parameter | Type   | Default | Description                       |
+| --------- | ------ | ------- | --------------------------------- |
+| expected  | number |         | The expected number               |
+| precision | number | `2`     | Number of decimal digits to check |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -46,10 +47,10 @@ export default function () {
   // Floating-point arithmetic precision issues
   expect(0.1 + 0.2).toBeCloseTo(0.3);
   expect(0.1 + 0.2).toBeCloseTo(0.3, 2);
-  
+
   // These would fail with toBe()
   // expect(0.1 + 0.2).toBe(0.3); // This fails!
-  
+
   // More examples
   expect(1.005).toBeCloseTo(1, 0);
   expect(1.005).toBeCloseTo(1.01, 1);

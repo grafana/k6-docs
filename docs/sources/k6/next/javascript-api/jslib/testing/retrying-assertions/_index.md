@@ -1,6 +1,5 @@
 ---
 title: 'Retrying Assertions'
-head_title: 'Retrying Assertions'
 description: 'Auto-retrying assertions that wait for conditions to become true'
 weight: 50
 ---
@@ -39,13 +38,13 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');
-  
+
   // Wait for element to become visible
   await expect(page.locator('h1')).toBeVisible();
-  
+
   // Wait for specific text content
   await expect(page.locator('h1')).toHaveText('Looking to break out of your pizza routine?');
-  
+
   // Wait for element to be enabled
   await expect(page.locator('button[name="pizza-please"]')).toBeEnabled();
 }
@@ -61,22 +60,22 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 // Create configured expect instance
 const slowExpect = expect.configure({
-  timeout: 10000,  // 10 seconds timeout
-  interval: 200,   // Check every 200ms
+  timeout: 10000, // 10 seconds timeout
+  interval: 200, // Check every 200ms
 });
 
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');
-  
+
   // Use configured timeout
   await slowExpect(page.locator('h1')).toBeVisible();
-  
+
   // Override timeout for specific assertion
   await slowExpect(page.locator('button[name="pizza-please"]')).toBeVisible({
-    timeout: 30000
+    timeout: 30000,
   });
-  
+
   // Original expect instance still available with defaults
   await expect(page.locator('h1')).toBeVisible();
 }
@@ -84,17 +83,17 @@ export default async function () {
 
 ## Available Retrying Assertions
 
-| Method | Description |
-| --- | --- |
-| [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible) | Element is visible on the page |
-| [toBeHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobehidden) | Element is hidden or not visible |
-| [toBeEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled) | Element is enabled and interactive |
-| [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled) | Element is disabled |
-| [toBeChecked()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobechecked) | Checkbox or radio button is checked |
-| [toBeEditable()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeeditable) | Element is editable |
-| [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext) | Element has specific text content |
-| [toContainText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tocontaintext) | Element contains specific text |
-| [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue) | Input element has specific value |
+| Method                                                                                                                            | Description                          |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible)         | Element is visible on the page       |
+| [toBeHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobehidden)           | Element is hidden or not visible     |
+| [toBeEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled)         | Element is enabled and interactive   |
+| [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled)       | Element is disabled                  |
+| [toBeChecked()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobechecked)         | Checkbox or radio button is checked  |
+| [toBeEditable()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeeditable)       | Element is editable                  |
+| [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext)           | Element has specific text content    |
+| [toContainText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tocontaintext)     | Element contains specific text       |
+| [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue)         | Input element has specific value     |
 | [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohaveattribute) | Element has specific attribute value |
 
 ## See Also

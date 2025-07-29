@@ -1,6 +1,5 @@
 ---
 title: 'toBeLessThanOrEqual()'
-head_title: 'expect(actual).toBeLessThanOrEqual(expected)'
 description: 'Asserts that a numeric value is less than or equal to another value'
 weight: 49
 ---
@@ -11,21 +10,23 @@ The `toBeLessThanOrEqual()` method asserts that a numeric value is less than or 
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeLessThanOrEqual(expected)
-expect(actual).not.toBeLessThanOrEqual(expected)
+expect(actual).toBeLessThanOrEqual(expected);
+expect(actual).not.toBeLessThanOrEqual(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | number | The value to compare against |
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| expected  | number | The value to compare against |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -40,14 +41,14 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 export default function () {
   const response = http.get('https://quickpizza.grafana.com/');
-  
+
   // Check response timing constraints
   expect(response.timings.duration).toBeLessThanOrEqual(2000); // Max 2 seconds
-  expect(response.timings.waiting).toBeLessThanOrEqual(1500);  // Max 1.5 seconds
-  
+  expect(response.timings.waiting).toBeLessThanOrEqual(1500); // Max 1.5 seconds
+
   // Basic numeric comparisons
   expect(3).toBeLessThanOrEqual(5);
-  expect(5).toBeLessThanOrEqual(5);  // Equal values pass
+  expect(5).toBeLessThanOrEqual(5); // Equal values pass
   expect(10).not.toBeLessThanOrEqual(5);
 }
 ```

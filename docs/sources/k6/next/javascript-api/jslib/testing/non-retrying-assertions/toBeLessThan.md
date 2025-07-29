@@ -1,6 +1,5 @@
 ---
 title: 'toBeLessThan()'
-head_title: 'expect(actual).toBeLessThan(expected)'
 description: 'Asserts that a numeric value is less than another value'
 weight: 45
 ---
@@ -11,21 +10,23 @@ The `toBeLessThan()` method asserts that a numeric value is less than another va
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeLessThan(expected)
-expect(actual).not.toBeLessThan(expected)
+expect(actual).toBeLessThan(expected);
+expect(actual).not.toBeLessThan(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | number | The value to compare against |
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| expected  | number | The value to compare against |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description

@@ -1,6 +1,5 @@
 ---
 title: 'toBeNaN()'
-head_title: 'expect(actual).toBeNaN()'
 description: 'Asserts that a value is NaN (Not a Number)'
 weight: 51
 ---
@@ -11,15 +10,17 @@ The `toBeNaN()` method asserts that a value is `NaN` (Not a Number).
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeNaN()
-expect(actual).not.toBeNaN()
+expect(actual).toBeNaN();
+expect(actual).not.toBeNaN();
 ```
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -34,18 +35,18 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default function () {
   const formData = {
     age: '25',
-    invalidNumber: 'not-a-number'
+    invalidNumber: 'not-a-number',
   };
-  
+
   // Validate numeric conversions
   expect(Number(formData.age)).not.toBeNaN();
   expect(Number(formData.invalidNumber)).toBeNaN();
-  
+
   // Mathematical operations that result in NaN
   expect(0 / 0).toBeNaN();
   expect(Math.sqrt(-1)).toBeNaN();
   expect(Infinity - Infinity).toBeNaN();
-  
+
   // Valid numbers are not NaN
   expect(123).not.toBeNaN();
   expect(Infinity).not.toBeNaN();

@@ -1,6 +1,5 @@
 ---
 title: 'toBeChecked()'
-head_title: 'expect(locator).toBeChecked()'
 description: 'Asserts that a checkbox or radio button is checked'
 weight: 10
 ---
@@ -11,22 +10,24 @@ The `toBeChecked()` method asserts that a checkbox or radio button is checked. T
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-await expect(locator).toBeChecked()
-await expect(locator).not.toBeChecked()
-await expect(locator).toBeChecked(options)
+await expect(locator).toBeChecked();
+await expect(locator).not.toBeChecked();
+await expect(locator).toBeChecked(options);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| options | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options |
+| Parameter | Type                                                                                                                    | Description                    |
+| --------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type          | Description                                       |
+| ------------- | ------------------------------------------------- |
 | Promise<void> | A promise that resolves when the assertion passes |
 
 ## Description
@@ -43,18 +44,18 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 export default async function () {
   const page = await browser.newPage();
-  
+
   // Go to a test page that demonstrates checkbox functionality
   await page.goto('https://quickpizza.grafana.com');
-  
+
   // Check a checkbox
   await page.locator('#accept-terms').check();
   await expect(page.locator('#accept-terms')).toBeChecked();
-  
+
   // Check a radio button
   await page.locator('input[name="gender"][value="male"]').check();
   await expect(page.locator('input[name="gender"][value="male"]')).toBeChecked();
-  
+
   // Verify another option is not checked
   await expect(page.locator('input[name="gender"][value="female"]')).not.toBeChecked();
 }

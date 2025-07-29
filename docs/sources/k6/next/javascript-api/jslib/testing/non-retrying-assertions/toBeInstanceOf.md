@@ -1,6 +1,5 @@
 ---
 title: 'toBeInstanceOf()'
-head_title: 'expect(actual).toBeInstanceOf(expected)'
 description: 'Asserts that a value is an instance of a specific class or constructor'
 weight: 50
 ---
@@ -11,21 +10,23 @@ The `toBeInstanceOf()` method asserts that a value is an instance of a specific 
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeInstanceOf(expected)
-expect(actual).not.toBeInstanceOf(expected)
+expect(actual).toBeInstanceOf(expected);
+expect(actual).not.toBeInstanceOf(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | Function | The constructor function or class to check against |
+| Parameter | Type     | Description                                        |
+| --------- | -------- | -------------------------------------------------- |
+| expected  | Function | The constructor function or class to check against |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -46,15 +47,15 @@ class User {
 
 export default function () {
   const response = http.get('https://quickpizza.grafana.com/');
-  
+
   // Check response object types
   expect(response).toBeInstanceOf(Object);
   expect(response.headers).toBeInstanceOf(Object);
-  
+
   // Check built-in types
   expect([1, 2, 3]).toBeInstanceOf(Array);
   expect(new Date()).toBeInstanceOf(Date);
-  
+
   // Check custom classes
   const user = new User('John');
   expect(user).toBeInstanceOf(User);

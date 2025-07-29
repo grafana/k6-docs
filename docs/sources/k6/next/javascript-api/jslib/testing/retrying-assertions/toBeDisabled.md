@@ -1,6 +1,5 @@
 ---
 title: 'toBeDisabled()'
-head_title: 'expect(locator).toBeDisabled()'
 description: 'Asserts that an element is disabled'
 weight: 20
 ---
@@ -11,22 +10,24 @@ The `toBeDisabled()` method asserts that an element is disabled. This is a retry
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-await expect(locator).toBeDisabled()
-await expect(locator).not.toBeDisabled()
-await expect(locator).toBeDisabled(options)
+await expect(locator).toBeDisabled();
+await expect(locator).not.toBeDisabled();
+await expect(locator).toBeDisabled(options);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| options | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options |
+| Parameter | Type                                                                                                                    | Description                    |
+| --------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type          | Description                                       |
+| ------------- | ------------------------------------------------- |
 | Promise<void> | A promise that resolves when the assertion passes |
 
 ## Description
@@ -44,16 +45,16 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');
-  
+
   // Click the pizza button to see the recommendation
   await page.locator('button[name="pizza-please"]').click();
-  
+
   // Wait for the recommendation to appear
   await expect(page.locator('h2[id="pizza-name"]')).toBeVisible();
-  
+
   // The pizza button should now be disabled (no longer clickable)
   await expect(page.locator('button[name="pizza-please"]')).toBeDisabled();
-  
+
   // Verify that we can check for disabled state
   await expect(page.locator('button[name="pizza-please"]')).not.toBeEnabled();
 }

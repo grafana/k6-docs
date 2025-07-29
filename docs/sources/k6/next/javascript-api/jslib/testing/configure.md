@@ -1,44 +1,45 @@
 ---
 title: 'expect.configure()'
-head_title: 'expect.configure(options)'
 description: 'Configure global assertion behavior for the k6 testing library'
 weight: 20
 ---
 
 # expect.configure()
 
-The `expect.configure()` method creates a new configured `expect` instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior. 
+The `expect.configure()` method creates a new configured `expect` instance with custom behavior for the k6 testing library, including timeouts, display options, and soft assertion behavior.
 
-This new instance can be used in place of the default expect function, and will apply the specified configuration to all assertions made with it. 
+This new instance can be used in place of the default expect function, and will apply the specified configuration to all assertions made with it.
 
 The imported `expect` instance remains unchanged and continues to use the default configuration, allowing different assertion configurations to co-exist within a test.
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-const configuredExpect = expect.configure(options)
+const configuredExpect = expect.configure(options);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| options | object | Configuration options object |
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| options   | object | Configuration options object |
 
 ### Options
 
-| Property | Type | Default | Description |
-| --- | --- | --- | --- |
-| timeout | number | `5000` | Default timeout in milliseconds for retrying assertions |
-| interval | number | `100` | Polling interval in milliseconds for retrying assertions |
-| colorize | boolean | `true` | Enable colorized output in assertion messages |
-| display | string | `"pretty"` | Output format for assertion messages (`"pretty"` or `"inline"`) |
-| softMode | string | `"fail"` | Soft assertion behavior (`"fail"` or `"throw"`) |
+| Property | Type    | Default    | Description                                                     |
+| -------- | ------- | ---------- | --------------------------------------------------------------- |
+| timeout  | number  | `5000`     | Default timeout in milliseconds for retrying assertions         |
+| interval | number  | `100`      | Polling interval in milliseconds for retrying assertions        |
+| colorize | boolean | `true`     | Enable colorized output in assertion messages                   |
+| display  | string  | `"pretty"` | Output format for assertion messages (`"pretty"` or `"inline"`) |
+| softMode | string  | `"fail"`   | Soft assertion behavior (`"fail"` or `"throw"`)                 |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type   | Description                                            |
+| ------ | ------------------------------------------------------ |
 | Expect | A new expect instance with the specified configuration |
 
 ### Timeout configuration
@@ -50,8 +51,8 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 // Create a configured expect instance with longer timeout for slow-loading elements
 const slowExpect = expect.configure({
-  timeout: 10000,  // 10 seconds
-  interval: 500,   // Check every 500ms
+  timeout: 10000, // 10 seconds
+  interval: 500, // Check every 500ms
 });
 ```
 
@@ -77,7 +78,7 @@ The `softMode` option controls whether failed assertions stop test execution:
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 // The default behavior of soft assertions is mark the test as failed, the `softMode` option
-// allows to configure soft assertions to throw an exception and fail the current iteration instead. 
+// allows to configure soft assertions to throw an exception and fail the current iteration instead.
 const softExpect = expect.configure({
   softMode: 'throw',
 });
@@ -87,13 +88,13 @@ const softExpect = expect.configure({
 
 Configuration options can also be set using environment variables:
 
-| Environment Variable | Option | Description |
-| --- | --- | --- |
-| `K6_TESTING_TIMEOUT` | `timeout` | Default timeout in milliseconds |
-| `K6_TESTING_INTERVAL` | `interval` | Polling interval in milliseconds |
-| `K6_TESTING_COLORIZE` | `colorize` | Enable colored output (`true`/`false`) |
-| `K6_TESTING_DISPLAY` | `display` | Output format (`pretty`/`inline`) |
-| `K6_TESTING_SOFT_MODE` | `softMode` | Soft assertion mode (`fail`/`throw`) |
+| Environment Variable   | Option     | Description                            |
+| ---------------------- | ---------- | -------------------------------------- |
+| `K6_TESTING_TIMEOUT`   | `timeout`  | Default timeout in milliseconds        |
+| `K6_TESTING_INTERVAL`  | `interval` | Polling interval in milliseconds       |
+| `K6_TESTING_COLORIZE`  | `colorize` | Enable colored output (`true`/`false`) |
+| `K6_TESTING_DISPLAY`   | `display`  | Output format (`pretty`/`inline`)      |
+| `K6_TESTING_SOFT_MODE` | `softMode` | Soft assertion mode (`fail`/`throw`)   |
 
 ```bash
 # Set environment variables
@@ -106,6 +107,8 @@ k6 run test.js
 
 ### Basic Configuration
 
+<!-- eslint-skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -114,13 +117,13 @@ const myExpect = expect.configure({
   timeout: 8000,
   interval: 200,
   colorize: true,
-  display: 'pretty'
+  display: 'pretty',
 });
 
 export default function () {
   // Use the configured instance
   myExpect(response.status).toBe(200);
-  
+
   // Original expect instance still works with defaults
   expect(response.status).toBe(200);
 }
@@ -134,14 +137,14 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 // Create expect instance configured for browser testing with longer timeouts
 const browserExpect = expect.configure({
-  timeout: 15000,  // Longer timeout for browser operations
-  interval: 500,   // Less frequent polling
+  timeout: 15000, // Longer timeout for browser operations
+  interval: 500, // Less frequent polling
 });
 
 export default async function () {
   const page = browser.newPage();
   await page.goto('https://test.k6.io');
-  
+
   // Will wait up to 15 seconds for element to be visible
   await browserExpect(page.locator('h1')).toBeVisible();
 }
@@ -154,9 +157,9 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 // Create expect instance configured for CI environment
 const ciExpect = expect.configure({
-  colorize: false,    // Disable colors in CI logs
+  colorize: false, // Disable colors in CI logs
   display: 'inline', // inline output for CI
-  timeout: 30000,     // Longer timeout for CI environment
+  timeout: 30000, // Longer timeout for CI environment
 });
 ```
 
@@ -178,6 +181,8 @@ const envExpect = expect.configure({
 
 ### Multiple Configured Instances
 
+<!-- eslint-skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -187,16 +192,16 @@ export default function () {
     timeout: 1000,
     interval: 50,
   });
-  
+
   const slowExpect = expect.configure({
     timeout: 30000,
     softMode: 'continue',
   });
-  
+
   // Use appropriate instance for each test
   fastExpect(quickOperation()).toBe(true);
   slowExpect(slowOperation()).toBe(true);
-  
+
   // Original expect instance still available
   expect(normalOperation()).toBe(true);
 }
@@ -215,12 +220,12 @@ const softExpect = expect.configure({
 
 export default function () {
   const response = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  
+
   // These assertions will not stop test execution on failure
   softExpect(response.status).toBe(200);
   softExpect(response.json()).toHaveProperty('name');
   softExpect(response.json()).toHaveProperty('age');
-  
+
   // Test continues even if assertions fail
   console.log('Test completed');
 }

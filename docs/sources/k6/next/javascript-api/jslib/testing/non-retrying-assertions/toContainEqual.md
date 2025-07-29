@@ -1,6 +1,5 @@
 ---
 title: 'toContainEqual()'
-head_title: 'expect(actual).toContainEqual(expected)'
 description: 'Asserts that an array or set contains an element that is deeply equal to the expected value'
 weight: 48
 ---
@@ -11,21 +10,23 @@ The `toContainEqual()` method asserts that an array or set contains an element t
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toContainEqual(expected)
-expect(actual).not.toContainEqual(expected)
+expect(actual).toContainEqual(expected);
+expect(actual).not.toContainEqual(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | any | The value to search for using deep equality |
+| Parameter | Type | Description                                 |
+| --------- | ---- | ------------------------------------------- |
+| expected  | any  | The value to search for using deep equality |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -40,20 +41,20 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 export default function () {
   const response = http.get('https://quickpizza.grafana.com/');
-  
+
   // Create test data to demonstrate toContainEqual
   const pizzaOptions = [
     { name: 'Margherita', toppings: ['tomato', 'mozzarella'] },
     { name: 'Pepperoni', toppings: ['tomato', 'mozzarella', 'pepperoni'] },
-    { name: 'Veggie', toppings: ['tomato', 'mozzarella', 'peppers'] }
+    { name: 'Veggie', toppings: ['tomato', 'mozzarella', 'peppers'] },
   ];
-  
+
   // Check if array contains specific pizza objects
   expect(pizzaOptions).toContainEqual({
     name: 'Margherita',
-    toppings: ['tomato', 'mozzarella']
+    toppings: ['tomato', 'mozzarella'],
   });
-  
+
   // Works with various data types
   const mixedArray = ['string', 123, { key: 'value' }, [1, 2, 3]];
   expect(mixedArray).toContainEqual({ key: 'value' });

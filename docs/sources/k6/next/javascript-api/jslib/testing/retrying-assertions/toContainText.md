@@ -1,6 +1,5 @@
 ---
 title: 'toContainText()'
-head_title: 'expect(locator).toContainText(expected)'
 description: 'Asserts that an element contains specific text'
 weight: 52
 ---
@@ -11,31 +10,33 @@ The `toContainText()` method asserts that an element contains specific text as a
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-await expect(locator).toContainText(expected)
-await expect(locator).not.toContainText(expected)
-await expect(locator).toContainText(expected, options)
+await expect(locator).toContainText(expected);
+await expect(locator).not.toContainText(expected);
+await expect(locator).toContainText(expected, options);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | string \| RegExp | The text to search for |
-| options | object | Optional configuration options |
+| Parameter | Type             | Description                    |
+| --------- | ---------------- | ------------------------------ |
+| expected  | string \| RegExp | The text to search for         |
+| options   | object           | Optional configuration options |
 
 ### Options
 
 This method accepts all [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) properties plus:
 
-| Property | Type | Default | Description |
-| --- | --- | --- | --- |
+| Property     | Type    | Default | Description                          |
+| ------------ | ------- | ------- | ------------------------------------ |
 | useInnerText | boolean | `false` | Use innerText instead of textContent |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type          | Description                                       |
+| ------------- | ------------------------------------------------- |
 | Promise<void> | A promise that resolves when the assertion passes |
 
 ## Description
@@ -55,14 +56,14 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');
-  
+
   // Check that elements contain expected text
   await expect(page.locator('h1')).toContainText('pizza');
   await expect(page.locator('h1')).toContainText('routine');
-  
+
   // Click the pizza button to get a recommendation
   await page.locator('button[name="pizza-please"]').click();
-  
+
   // Check that the recommendation contains expected text
   await expect(page.locator('h2')).toContainText('QuickPizza');
 }

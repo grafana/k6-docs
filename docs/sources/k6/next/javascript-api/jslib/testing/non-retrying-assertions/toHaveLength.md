@@ -1,6 +1,5 @@
 ---
 title: 'toHaveLength()'
-head_title: 'expect(actual).toHaveLength(expected)'
 description: 'Asserts that an object has a specific length property'
 weight: 42
 ---
@@ -11,21 +10,23 @@ The `toHaveLength()` method asserts that an object has a specific length propert
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toHaveLength(expected)
-expect(actual).not.toHaveLength(expected)
+expect(actual).toHaveLength(expected);
+expect(actual).not.toHaveLength(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | number | The expected length value |
+| Parameter | Type   | Description               |
+| --------- | ------ | ------------------------- |
+| expected  | number | The expected length value |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description

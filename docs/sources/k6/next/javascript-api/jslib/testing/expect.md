@@ -6,26 +6,28 @@ weight: 10
 
 # expect()
 
-The `expect()` function is the main entry point for creating assertions in the k6 testing library. It provides an intuitive  API for both retrying and non-retrying assertions.
+The `expect()` function is the main entry point for creating assertions in the k6 testing library. It provides an intuitive API for both retrying and non-retrying assertions.
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual)
-expect(actual, message)
+expect(actual);
+expect(actual, message);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| actual | any | The value to test against |
-| message | string | Optional custom error message |
+| Parameter | Type   | Description                   |
+| --------- | ------ | ----------------------------- |
+| actual    | any    | The value to test against     |
+| message   | string | Optional custom error message |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type        | Description                                  |
+| ----------- | -------------------------------------------- |
 | Expectation | An expectation object with assertion methods |
 
 ## Description
@@ -54,7 +56,7 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default async function () {
   const page = browser.newPage();
   await page.goto('https://test.k6.io');
-  
+
   // Auto-retrying assertions
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('h1')).toHaveText('Welcome to the k6 test site');
@@ -77,7 +79,7 @@ expect('hello').not.toContain('world');
 By default, failed assertions will terminate the test execution. Soft assertions, on the other hand, don't terminate the test execution when they fail, but mark the test as failed, leading k6 to eventually exit with code `110`.
 
 ```javascript
-import exec from "k6/execution";
+import exec from 'k6/execution';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export const options = {
@@ -96,6 +98,8 @@ export default function () {
 ```
 
 Note that soft assertions can be [configured](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) to throw an exception (and effectively failing the iteration where it happens) instead.
+
+<!-- eslint-skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -121,16 +125,16 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 export default function () {
   const response = http.get('https://test-api.k6.io/public/crocodiles/1/');
   const data = response.json();
-  
+
   // Basic assertions
   expect(response.status).toBe(200);
   expect(response.headers['Content-Type']).toContain('application/json');
-  
+
   // Object assertions
   expect(data).toHaveProperty('id');
   expect(data.name).toBeDefined();
   expect(data.age).toBeGreaterThan(0);
-  
+
   // With custom error message
   expect(data.status, 'Crocodile should be alive').toBe('alive');
 }
@@ -144,17 +148,17 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 export default async function () {
   const page = browser.newPage();
-  
+
   await page.goto('https://test.k6.io/my_messages.php');
-  
+
   // Form interaction with assertions
   await expect(page.locator('#username')).toBeVisible();
   await page.locator('#username').fill('admin');
   await expect(page.locator('#username')).toHaveValue('admin');
-  
+
   await page.locator('#password').fill('123');
   await page.locator('input[type="submit"]').click();
-  
+
   // Verify navigation
   await expect(page.locator('h2')).toContainText('Welcome, admin!');
 }
@@ -164,41 +168,41 @@ export default async function () {
 
 ### Non-Retrying Assertions
 
-| Method | Description |
-| --- | --- |
-| [toBe(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobe) | Exact equality using Object.is() |
-| [toBeCloseTo(expected, precision?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobecloseto) | Floating point comparison |
-| [toBeDefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobedefined) | Value is not undefined |
-| [toBeFalsy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobefalsy) | Value is falsy |
-| [toBeGreaterThan(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthan) | Greater than comparison |
-| [toBeGreaterThanOrEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthanorequal) | Greater than or equal comparison |
-| [toBeInstanceOf(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeinstanceof) | Value is an instance of a class |
-| [toBeLessThan(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthan) | Less than comparison |
-| [toBeLessThanOrEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthanorequal) | Less than or equal comparison |
-| [toBeNaN()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenan) | Value is NaN |
-| [toBeNull()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenull) | Value is null |
-| [toBeTruthy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobetruthy) | Value is truthy |
-| [toBeUndefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeundefined) | Value is undefined |
-| [toContain(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontain) | Array/string contains value |
-| [toContainEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontainorequal) | Array or Set contains a similar element |
-| [toEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/toequal) | Deep equality comparison |
-| [toHaveLength(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tohavelength) | Value has a expected length |
-| [toHaveProperty(path, expected?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tohaveproperty) | Property at provided path exists in the object and optionally checks that it is equal to expected |
+| Method                                                                                                                                                      | Description                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [toBe(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobe)                                     | Exact equality using Object.is()                                                                  |
+| [toBeCloseTo(expected, precision?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobecloseto)           | Floating point comparison                                                                         |
+| [toBeDefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobedefined)                               | Value is not undefined                                                                            |
+| [toBeFalsy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobefalsy)                                   | Value is falsy                                                                                    |
+| [toBeGreaterThan(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthan)               | Greater than comparison                                                                           |
+| [toBeGreaterThanOrEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthanorequal) | Greater than or equal comparison                                                                  |
+| [toBeInstanceOf(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeinstanceof)                 | Value is an instance of a class                                                                   |
+| [toBeLessThan(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthan)                     | Less than comparison                                                                              |
+| [toBeLessThanOrEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthanorequal)       | Less than or equal comparison                                                                     |
+| [toBeNaN()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenan)                                       | Value is NaN                                                                                      |
+| [toBeNull()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenull)                                     | Value is null                                                                                     |
+| [toBeTruthy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobetruthy)                                 | Value is truthy                                                                                   |
+| [toBeUndefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeundefined)                           | Value is undefined                                                                                |
+| [toContain(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontain)                           | Array/string contains value                                                                       |
+| [toContainEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontainorequal)               | Array or Set contains a similar element                                                           |
+| [toEqual(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/toequal)                               | Deep equality comparison                                                                          |
+| [toHaveLength(expected)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tohavelength)                     | Value has a expected length                                                                       |
+| [toHaveProperty(path, expected?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tohaveproperty)          | Property at provided path exists in the object and optionally checks that it is equal to expected |
 
 ### Retrying Assertions
 
-| Method | Description |
-| --- | --- |
-| [toBeChecked(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobechecked) | Checkbox is checked |
-| [toBeDisabled(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled) | Element is disabled |
-| [toBeEditable(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeeditable) | Element is editable |
-| [toBeEnabled(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled) | Element is enabled |
-| [toBeHidden(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobehidden) | Element is hidden |
-| [toBeVisible(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible) | Element is visible |
-| [toContainText(text, options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tocontaintext) | Element contains text |
+| Method                                                                                                                                             | Description             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| [toBeChecked(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobechecked)                  | Checkbox is checked     |
+| [toBeDisabled(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled)                | Element is disabled     |
+| [toBeEditable(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeeditable)                | Element is editable     |
+| [toBeEnabled(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled)                  | Element is enabled      |
+| [toBeHidden(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobehidden)                    | Element is hidden       |
+| [toBeVisible(options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible)                  | Element is visible      |
+| [toContainText(text, options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tocontaintext)        | Element contains text   |
 | [toHaveAttribute(attribute, value?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohaveattribute) | Element attribute value |
-| [toHaveText(text, options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext) | Element text content |
-| [toHaveValue(value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue) | Input element value |
+| [toHaveText(text, options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext)              | Element text content    |
+| [toHaveValue(value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue)                     | Input element value     |
 
 ## See Also
 

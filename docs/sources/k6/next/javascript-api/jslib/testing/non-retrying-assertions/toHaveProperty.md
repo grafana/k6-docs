@@ -1,6 +1,5 @@
 ---
 title: 'toHaveProperty()'
-head_title: 'expect(actual).toHaveProperty(keyPath, value)'
 description: 'Asserts that an object has a specific property, optionally with a specific value'
 weight: 43
 ---
@@ -11,29 +10,32 @@ The `toHaveProperty()` method asserts that an object has a specific property, op
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toHaveProperty(keyPath)
-expect(actual).toHaveProperty(keyPath, value)
-expect(actual).not.toHaveProperty(keyPath)
-expect(actual).not.toHaveProperty(keyPath, value)
+expect(actual).toHaveProperty(keyPath);
+expect(actual).toHaveProperty(keyPath, value);
+expect(actual).not.toHaveProperty(keyPath);
+expect(actual).not.toHaveProperty(keyPath, value);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| keyPath | string \| Array<string> | The property path to check |
-| value | any | Optional expected value for the property |
+| Parameter | Type                    | Description                              |
+| --------- | ----------------------- | ---------------------------------------- |
+| keyPath   | string \| Array<string> | The property path to check               |
+| value     | any                     | Optional expected value for the property |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
 
 The `toHaveProperty()` method checks if an object has a specific property. The property path can be:
+
 - A simple property name (e.g., `'name'`)
 - A nested property path using dot notation (e.g., `'user.address.city'`)
 - An array of property keys (e.g., `['user', 'address', 'city']`)
@@ -50,15 +52,15 @@ export default function () {
     id: 123,
     name: 'John Doe',
     email: 'john@example.com',
-    active: true
+    active: true,
   };
-  
+
   // Check property existence
   expect(user).toHaveProperty('id');
   expect(user).toHaveProperty('name');
   expect(user).toHaveProperty('email');
   expect(user).toHaveProperty('active');
-  
+
   // Check missing property
   expect(user).not.toHaveProperty('phone');
   expect(user).not.toHaveProperty('address');

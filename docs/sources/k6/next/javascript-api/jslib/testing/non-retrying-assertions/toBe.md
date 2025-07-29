@@ -1,6 +1,5 @@
 ---
 title: 'toBe()'
-head_title: 'expect(actual).toBe(expected)'
 description: 'Asserts that two values are exactly equal using Object.is() comparison'
 weight: 30
 ---
@@ -11,21 +10,23 @@ The `toBe()` method asserts that the actual value is exactly equal to the expect
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBe(expected)
-expect(actual).not.toBe(expected)
+expect(actual).toBe(expected);
+expect(actual).not.toBe(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | any | The expected value |
+| Parameter | Type | Description        |
+| --------- | ---- | ------------------ |
+| expected  | any  | The expected value |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description

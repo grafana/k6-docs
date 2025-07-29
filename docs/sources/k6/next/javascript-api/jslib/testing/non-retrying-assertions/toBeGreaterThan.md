@@ -1,6 +1,5 @@
 ---
 title: 'toBeGreaterThan()'
-head_title: 'expect(actual).toBeGreaterThan(expected)'
 description: 'Asserts that a numeric value is greater than another value'
 weight: 40
 ---
@@ -11,21 +10,23 @@ The `toBeGreaterThan()` method asserts that a numeric value is greater than anot
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeGreaterThan(expected)
-expect(actual).not.toBeGreaterThan(expected)
+expect(actual).toBeGreaterThan(expected);
+expect(actual).not.toBeGreaterThan(expected);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| expected | number | The value to compare against |
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| expected  | number | The value to compare against |
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description

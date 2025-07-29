@@ -1,6 +1,5 @@
 ---
 title: 'toBeDefined()'
-head_title: 'expect(actual).toBeDefined()'
 description: 'Asserts that a value is defined (not undefined)'
 weight: 37
 ---
@@ -11,15 +10,17 @@ The `toBeDefined()` method asserts that a value is defined, meaning it is not `u
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeDefined()
-expect(actual).not.toBeDefined()
+expect(actual).toBeDefined();
+expect(actual).not.toBeDefined();
 ```
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description

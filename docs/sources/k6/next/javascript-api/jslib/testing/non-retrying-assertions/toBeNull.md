@@ -1,6 +1,5 @@
 ---
 title: 'toBeNull()'
-head_title: 'expect(actual).toBeNull()'
 description: 'Asserts that a value is null'
 weight: 46
 ---
@@ -11,15 +10,17 @@ The `toBeNull()` method asserts that a value is exactly `null`.
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeNull()
-expect(actual).not.toBeNull()
+expect(actual).toBeNull();
+expect(actual).not.toBeNull();
 ```
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
@@ -34,17 +35,17 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 export default function () {
   const response = http.get('https://quickpizza.grafana.com/');
-  
+
   // Check for null values in response
   const maybeNull = null;
   if (maybeNull === null) {
     expect(maybeNull).toBeNull();
   }
-  
+
   // Check that required fields are not null
   expect(response.body).not.toBeNull();
   expect(response.status).not.toBeNull();
-  
+
   // Basic null checks
   expect(null).toBeNull();
   expect(undefined).not.toBeNull();

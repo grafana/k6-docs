@@ -1,6 +1,5 @@
 ---
 title: 'toBeFalsy()'
-head_title: 'expect(actual).toBeFalsy()'
 description: 'Asserts that a value is falsy'
 weight: 36
 ---
@@ -11,20 +10,23 @@ The `toBeFalsy()` method asserts that a value is falsy in JavaScript. A value is
 
 ## Syntax
 
+<!-- eslint-skip -->
+
 ```javascript
-expect(actual).toBeFalsy()
-expect(actual).not.toBeFalsy()
+expect(actual).toBeFalsy();
+expect(actual).not.toBeFalsy();
 ```
 
 ## Returns
 
-| Type | Description |
-| --- | --- |
+| Type | Description     |
+| ---- | --------------- |
 | void | No return value |
 
 ## Description
 
 The `toBeFalsy()` method checks if a value is falsy. In JavaScript, the following values are falsy:
+
 - `false`
 - `0`
 - `-0`
