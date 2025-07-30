@@ -35,6 +35,8 @@ The `interval` property specifies the time (in milliseconds) between retry attem
 
 You can pass a `RetryConfig` object as the last parameter to any retrying assertion:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -60,6 +62,8 @@ export default async function () {
 ### Creating a Configured Expect Instance
 
 You can create a new expect instance with custom default configuration using `expect.configure()`:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -97,8 +101,8 @@ export default async function () {
 - **Standard elements (5 seconds):** Use the default timeout for most scenarios
 - **Slow-loading content (10-30 seconds):** Use longer timeouts for elements that take time to load
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
-
 ```javascript
 // Fast UI feedback - short timeout
 await expect(page.locator('#validation-message')).toBeVisible({
@@ -123,8 +127,8 @@ await expect(page.locator('#report-complete')).toBeVisible({
 - **Standard checking (100-200ms):** For most UI interactions
 - **Coarse checking (500-1000ms):** For slow operations or to reduce CPU usage
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
-
 ```javascript
 // Rapid state changes - frequent checking
 await expect(page.locator('#animation')).toBeVisible({
@@ -142,8 +146,3 @@ await expect(page.locator('#batch-job-status')).toContainText('Complete', {
 });
 ```
 
-## See Also
-
-- [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/configure) - Create configured expect instances
-- [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions) - Overview of retrying assertions
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

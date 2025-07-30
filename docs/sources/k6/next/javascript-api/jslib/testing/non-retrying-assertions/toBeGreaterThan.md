@@ -11,6 +11,7 @@ The `toBeGreaterThan()` method asserts that a numeric value is greater than anot
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBeGreaterThan(expected);
@@ -35,6 +36,8 @@ The `toBeGreaterThan()` method performs a numeric comparison using the `>` opera
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -46,9 +49,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBeLessThan()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthan) - Numeric less than comparison
-- [toBeGreaterThanOrEqual()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthanorequal) - Numeric greater than or equal comparison
-- [toBeCloseTo()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobecloseto) - Floating point comparison
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

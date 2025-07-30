@@ -11,6 +11,7 @@ The `toEqual()` method asserts that the actual value is deeply equal to the expe
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toEqual(expected);
@@ -37,6 +38,8 @@ Use `toEqual()` when you want to assert that two values have the same structure 
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -49,8 +52,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobe) - Exact equality comparison
-- [toContain()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontain) - Array/string containment
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

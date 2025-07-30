@@ -15,6 +15,7 @@ The imported `expect` instance remains unchanged and continues to use the defaul
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 const configuredExpect = expect.configure(options);
@@ -46,6 +47,8 @@ const configuredExpect = expect.configure(options);
 
 The `timeout` option controls how long retrying assertions will wait for a condition to become true:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -60,6 +63,8 @@ const slowExpect = expect.configure({
 
 The `display` and `colorize` options control how assertion failures are reported:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -73,6 +78,8 @@ const inlineExpect = expect.configure({
 ### Soft Assertion Mode
 
 The `softMode` option controls whether failed assertions stop test execution:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -108,6 +115,7 @@ k6 run test.js
 ### Basic Configuration
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -131,6 +139,8 @@ export default function () {
 
 ### Browser Testing Configuration
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -152,6 +162,8 @@ export default async function () {
 
 ### CI/CD Configuration
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -164,6 +176,8 @@ const ciExpect = expect.configure({
 ```
 
 ### Development vs Production
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -182,6 +196,7 @@ const envExpect = expect.configure({
 ### Multiple Configured Instances
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -208,6 +223,8 @@ export default function () {
 ```
 
 ### Soft Assertion Examples
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';

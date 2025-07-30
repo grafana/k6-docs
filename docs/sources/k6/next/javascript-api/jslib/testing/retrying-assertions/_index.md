@@ -31,6 +31,8 @@ Retrying assertions are best suited for:
 
 All retrying assertions must be awaited since they return promises:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -53,6 +55,8 @@ export default async function () {
 ## Configuration
 
 You can configure timeout and polling behavior by creating a configured expect instance or per assertion:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -96,11 +100,5 @@ export default async function () {
 | [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue)         | Input element has specific value     |
 | [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohaveattribute) | Element has specific attribute value |
 
-## See Also
-
-- [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) - Configuration options for retrying assertions
-- [Non-retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions) - Synchronous assertions for immediate evaluation
-- [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/configure) - Create configured expect instances
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function
 
 {{< section >}}

@@ -42,6 +42,8 @@ This is a retrying assertion that will automatically re-check the element's edit
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -66,9 +68,3 @@ export default async function () {
 }
 ```
 
-## See Also
-
-- [toBeEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled) - Assert element is enabled
-- [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled) - Assert element is disabled
-- [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible) - Assert element is visible
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

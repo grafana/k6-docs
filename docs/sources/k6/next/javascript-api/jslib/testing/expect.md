@@ -11,6 +11,7 @@ The `expect()` function is the main entry point for creating assertions in the k
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual);
@@ -38,6 +39,8 @@ The `expect()` function wraps a value and returns an expectation object that pro
 
 Standard assertions evaluate immediately and do not retry:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -48,6 +51,8 @@ expect([1, 2, 3]).toContain(2);
 ### Retrying Assertions
 
 Retrying assertions automatically retry until they pass or timeout. These are particularly useful for browser testing where elements may not be immediately available:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -67,6 +72,8 @@ export default async function () {
 
 All assertions can be negated using the `.not` property:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -77,6 +84,8 @@ expect('hello').not.toContain('world');
 ### Soft Assertions
 
 By default, failed assertions will terminate the test execution. Soft assertions, on the other hand, don't terminate the test execution when they fail, but mark the test as failed, leading k6 to eventually exit with code `110`.
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -100,6 +109,7 @@ export default function () {
 Note that soft assertions can be [configured](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) to throw an exception (and effectively failing the iteration where it happens) instead.
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -117,6 +127,8 @@ export default function () {
 ## Examples
 
 ### API Testing
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -141,6 +153,8 @@ export default function () {
 ```
 
 ### Browser Testing
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -204,7 +218,3 @@ export default async function () {
 | [toHaveText(text, options?)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext)              | Element text content    |
 | [toHaveValue(value)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue)                     | Input element value     |
 
-## See Also
-
-- [expect.configure()]({{< relref "./configure" >}}) - Configure global assertion behavior
-- [Playwright Test Assertions](https://playwright.dev/docs/test-assertions) - Playwright's assertion documentation

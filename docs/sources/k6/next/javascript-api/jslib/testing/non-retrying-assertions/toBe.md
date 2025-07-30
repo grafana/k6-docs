@@ -11,6 +11,7 @@ The `toBe()` method asserts that the actual value is exactly equal to the expect
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBe(expected);
@@ -37,6 +38,8 @@ Use `toBe()` when you want to assert that two values are the same reference or p
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
@@ -49,8 +52,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toEqual()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/toequal) - Deep equality comparison
-- [toBeCloseTo()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobecloseto) - Floating point comparison
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

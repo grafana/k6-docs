@@ -11,6 +11,7 @@ The `toBeNull()` method asserts that a value is exactly `null`.
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBeNull();
@@ -28,6 +29,8 @@ expect(actual).not.toBeNull();
 The `toBeNull()` method checks if a value is exactly `null`. It only passes for the `null` value and fails for all other values, including `undefined`, `false`, `0`, and empty strings.
 
 ## Usage
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -54,10 +57,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBeUndefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeundefined) - Assert value is undefined
-- [toBeDefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobedefined) - Assert value is defined
-- [toBeFalsy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobefalsy) - Assert value is falsy
-- [toBeTruthy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobetruthy) - Assert value is truthy
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

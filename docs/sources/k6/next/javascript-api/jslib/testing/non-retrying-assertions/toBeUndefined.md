@@ -11,6 +11,7 @@ The `toBeUndefined()` method asserts that a value is exactly `undefined`.
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBeUndefined();
@@ -28,6 +29,8 @@ expect(actual).not.toBeUndefined();
 The `toBeUndefined()` method checks if a value is exactly `undefined`. It only passes for the `undefined` value and fails for all other values, including `null`, `false`, `0`, and empty strings.
 
 ## Usage
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -56,10 +59,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBeDefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobedefined) - Assert value is defined
-- [toBeNull()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenull) - Assert value is null
-- [toBeFalsy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobefalsy) - Assert value is falsy
-- [toBeTruthy()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobetruthy) - Assert value is truthy
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

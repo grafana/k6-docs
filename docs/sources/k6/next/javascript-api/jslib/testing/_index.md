@@ -24,6 +24,8 @@ The k6 testing library source code is available on [GitHub](https://github.com/g
 
 To use the testing library in your k6 script, import it in your tests directly from the jslib repository:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 ```
@@ -31,6 +33,8 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 ## Demo
 
 ### Protocol Testing
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { check } from 'k6';
@@ -53,6 +57,8 @@ export default function () {
 
 ### Browser Testing
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -71,6 +77,8 @@ export default async function () {
 ## Configuration
 
 Create configured `expect` instances for custom behavior:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';

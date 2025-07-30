@@ -11,6 +11,7 @@ The `toBeInstanceOf()` method asserts that a value is an instance of a specific 
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBeInstanceOf(expected);
@@ -34,6 +35,8 @@ expect(actual).not.toBeInstanceOf(expected);
 The `toBeInstanceOf()` method uses the `instanceof` operator to check if the actual value is an instance of the expected constructor or class. It checks the prototype chain to determine if the constructor function appears anywhere in the object's prototype chain.
 
 ## Usage
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';
@@ -63,10 +66,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobe) - Exact equality comparison
-- [toEqual()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/toequal) - Deep equality comparison
-- [toBeNull()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobenull) - Assert value is null
-- [toBeUndefined()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobeundefined) - Assert value is undefined
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

@@ -39,6 +39,8 @@ This is a retrying assertion that will automatically re-check the element's valu
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -69,9 +71,3 @@ export default async function () {
 }
 ```
 
-## See Also
-
-- [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext) - Assert element has specific text
-- [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohaveattribute) - Assert element has specific attribute
-- [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible) - Assert element is visible
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

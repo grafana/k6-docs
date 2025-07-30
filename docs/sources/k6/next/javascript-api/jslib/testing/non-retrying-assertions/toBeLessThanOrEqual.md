@@ -11,6 +11,7 @@ The `toBeLessThanOrEqual()` method asserts that a numeric value is less than or 
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toBeLessThanOrEqual(expected);
@@ -35,6 +36,8 @@ The `toBeLessThanOrEqual()` method performs a numeric comparison using the `<=` 
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -53,10 +56,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toBeLessThan()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobelessthan) - Numeric less than comparison
-- [toBeGreaterThanOrEqual()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthanorequal) - Numeric greater than or equal comparison
-- [toBeGreaterThan()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobegreaterthan) - Numeric greater than comparison
-- [toBeCloseTo()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tobecloseto) - Floating point comparison
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

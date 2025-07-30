@@ -35,6 +35,8 @@ The `toContainEqual()` method checks if an array or set contains an element that
 
 ## Usage
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -63,9 +65,3 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [toContain()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tocontain) - Array/string contains value with strict equality
-- [toEqual()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/toequal) - Deep equality comparison
-- [toHaveLength()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions/tohavelength) - Assert array/string length
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function

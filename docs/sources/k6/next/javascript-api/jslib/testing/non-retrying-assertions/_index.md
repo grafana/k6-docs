@@ -15,6 +15,8 @@ Non-retrying assertions differ from [retrying assertions](https://grafana.com/do
 - **Have no timeout behavior** - They either pass or fail instantly
 - **Are ideal for static content** - Perfect for testing values that don't change over time
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -94,6 +96,7 @@ Non-retrying assertions are best suited for:
 ### API Response Validation
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 export default function () {
@@ -118,6 +121,7 @@ export default function () {
 ### Data Validation
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 export default function () {
@@ -148,6 +152,7 @@ export default function () {
 ### Configuration Testing
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 export default function () {
@@ -172,6 +177,7 @@ export default function () {
 ### Graceful Error Handling
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 export default function () {
@@ -190,10 +196,5 @@ export default function () {
 }
 ```
 
-## See Also
-
-- [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions) - Asynchronous assertions for dynamic content
-- [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/configure) - Configure global assertion behavior
-- [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) - Main assertion function
 
 {{< section >}}
