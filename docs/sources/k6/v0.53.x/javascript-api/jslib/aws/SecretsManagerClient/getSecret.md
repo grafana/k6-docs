@@ -1,6 +1,5 @@
 ---
 title: 'getSecret'
-head_title: 'SecretsManagerClient.getSecret(secretID)'
 description: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS secrets manager'
 weight: 10
 ---
@@ -22,6 +21,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

@@ -12,12 +12,13 @@ The Locator API makes it easier to work with dynamically changing elements. Some
 - Helps with writing robust tests by finding an element even if the underlying frame navigates.
 - Makes it easier to work with dynamic web pages and SPAs built with Svelte, React, Vue, etc.
 - Enables the use of test abstractions like the Page Object Model (POM) pattern to simplify and organize tests.
-- `strict` mode is enabled for all `locator` methods, which means that if more than one element matches the given selector it will throw an error.
+- `strict` mode is enabled for all `locator` methods that are expected to target a single DOM element, meaning that if more than one element matches the given selector, an error will be thrown.
 
 Locator can be created with the [page.locator(selector[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/locator) method.
 
 | Method                                                                                                                                                 | Description                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| [all()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/all)                                                                | When multiple elements match the selector, returns an array of `locator`.                                                                         |
 | [check([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/check) {{< docs/bwipt id="471" >}}                       | Select the input checkbox.                                                                                              |
 | [clear([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/clear)                                                   | Clears text boxes and input fields of any existing values.                                                              |
 | [click([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/click) {{< docs/bwipt id="471" >}}                       | Mouse click on the chosen element.                                                                                      |

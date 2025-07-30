@@ -1,6 +1,5 @@
 ---
 title: 'deleteObject'
-head_title: 'S3Client.deleteObject(bucketName, objectKey)'
 description: 'S3Client.deleteObject deletes an object from a bucket'
 weight: 10
 ---
@@ -25,6 +24,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

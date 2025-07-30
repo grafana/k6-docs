@@ -1,8 +1,6 @@
 ---
 title: 'EventBridgeClient'
-head_title: 'EventBridgeClient'
 description: 'EventBridgeClient allows interacting with AWS EventBridge service'
-description: 'EventBridgeClient class allows sending custom events to Amazon EventBridge so that they can be matched to rules.'
 weight: 00
 ---
 
@@ -32,6 +30,8 @@ EventBridgeClient methods will throw errors in case of failure.
 ### Examples
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {

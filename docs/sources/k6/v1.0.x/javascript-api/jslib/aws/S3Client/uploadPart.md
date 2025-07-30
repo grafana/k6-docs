@@ -1,6 +1,5 @@
 ---
 title: 'uploadPart'
-head_title: 'S3Client.uploadPart(bucketName, objectKey, uploadId,partNumber, data)'
 description: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 weight: 10
 ---
@@ -26,6 +25,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import crypto from 'k6/crypto';

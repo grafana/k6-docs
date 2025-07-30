@@ -1,9 +1,7 @@
 ---
 title: 'sign'
-head_title: 'sign'
 slug: 'sign'
 description: 'Signaturev4.sign signs an HTTP request with the AWS Signature V4 algorithm'
-description: 'SignatureV4.sign signs an HTTP request with the AWS Signature V4 algorithm'
 ---
 
 # sign
@@ -43,6 +41,8 @@ You can override SignatureV4 options in the context of this specific request. To
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';

@@ -1,6 +1,5 @@
 ---
 title: 'LambdaClient'
-head_title: 'LambdaClient'
 description: 'LambdaClient allows interacting with the AWS Lambda service'
 weight: 00
 ---
@@ -31,6 +30,8 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 ### Examples
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {

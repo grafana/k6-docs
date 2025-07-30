@@ -1,6 +1,5 @@
 ---
 title: 'Secret'
-head_title: 'Secret'
 description: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
 weight: 20
 ---
@@ -24,6 +23,8 @@ Secret is returned by the SecretsManagerClient.\* methods that query secrets. Na
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

@@ -1,8 +1,6 @@
 ---
 title: 'SignatureV4'
-head_title: 'SignatureV4'
 description: 'SignatureV4 is used to sign or pre-sign requests to AWS services using the Signature V4 algorithm'
-description: 'SignatureV4 is used to sign and pre-sign requests to AWS services using the Signature V4 algorithm'
 weight: 00
 ---
 
@@ -47,6 +45,8 @@ SignatureV4 methods throw errors on failure.
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';

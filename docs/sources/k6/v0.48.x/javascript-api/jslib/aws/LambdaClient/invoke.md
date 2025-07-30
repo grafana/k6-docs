@@ -1,6 +1,5 @@
 ---
 title: 'invoke'
-head_title: 'LambdaClient.invoke(name, payload, [options])'
 description: 'LambdaClient.invoke invokes an AWS Lamba function'
 weight: 10
 ---
@@ -49,6 +48,8 @@ InvocationResponse is an object that represents the response of an invocation. I
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {

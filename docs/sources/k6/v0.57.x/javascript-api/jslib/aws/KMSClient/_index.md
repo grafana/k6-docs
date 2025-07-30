@@ -1,7 +1,5 @@
 ---
 title: 'KMSClient'
-head_title: 'KMSClient'
-description: 'KMSClient allows interacting with the AWS Key Management Service'
 description: 'KMSClient allows interacting with the AWS Key Management Service'
 weight: 00
 ---
@@ -35,6 +33,8 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';

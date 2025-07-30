@@ -1,6 +1,5 @@
 ---
 title: 'listSecrets'
-head_title: 'SecretsManagerClient.listSecrets()'
 description: 'SecretsManagerClient.listSecrets lists the secrets the authenticated user has access to'
 weight: 10
 ---
@@ -18,6 +17,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

@@ -1,6 +1,5 @@
 ---
 title: 'deleteSecret'
-head_title: 'SecretsManagerClient.deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})'
 description: 'SecretsManagerClient.deleteSecret deletes a secret'
 weight: 10
 ---
@@ -25,6 +24,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {

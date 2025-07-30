@@ -1,7 +1,5 @@
 ---
 title: 'S3Client'
-head_title: 'S3Client'
-description: 'S3Client allows interacting with AWS S3 buckets and objects'
 description: 'S3Client class allows interacting with AWS S3 buckets and objects'
 weight: 00
 ---
@@ -43,6 +41,8 @@ S3 Client methods will throw errors in case of failure.
 ### Examples
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { check } from 'k6';
@@ -109,6 +109,8 @@ export async function handleSummary(data) {
 #### Multipart uploads
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import crypto from 'k6/crypto';

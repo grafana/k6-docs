@@ -1,6 +1,5 @@
 ---
 title: 'listBuckets'
-head_title: 'S3Client.listBuckets()'
 description: 'S3Client.listBuckets lists the buckets the authenticated user has access to'
 weight: 10
 ---
@@ -18,6 +17,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

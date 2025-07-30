@@ -1,6 +1,5 @@
 ---
 title: 'createMultipartUpload'
-head_title: 'S3Client.createMultipartUpload(bucketName, objectKey)'
 description: 'S3Client.createMultipartUpload creates a multipart upload for an object key to a bucket'
 weight: 10
 ---
@@ -23,6 +22,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import {

@@ -1,6 +1,5 @@
 ---
 title: 'S3Part'
-head_title: 'S3Part'
 slug: 's3part'
 description: 'S3Part is returned by the S3Client.uploadPart method when uploading a part to a multipart upload.'
 weight: 20
@@ -18,6 +17,8 @@ S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumb
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import crypto from 'k6/crypto';

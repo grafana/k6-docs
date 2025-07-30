@@ -17,6 +17,8 @@ S3MultipartUpload is returned by the [`createMultipartUpload(bucketName, objectK
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,

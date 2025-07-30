@@ -1,6 +1,5 @@
 ---
 title: 'SystemsManagerClient'
-head_title: 'SystemsManagerClient'
 description: 'SystemsManagerClient allows interacting with the AWS Systems Manager Service'
 weight: 00
 ---
@@ -31,6 +30,8 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

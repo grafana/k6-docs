@@ -1,6 +1,5 @@
 ---
 title: 'listObjects'
-head_title: 'S3Client.listObjects(bucketName, [prefix])'
 description: 'S3Client.listObjects lists the objects contained in a bucket'
 weight: 10
 ---
@@ -25,6 +24,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

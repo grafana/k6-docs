@@ -1,7 +1,5 @@
 ---
 title: 'listKeys'
-head_title: 'KMSClient.listKeys()'
-description: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 description: "KMSClient.listKeys lists all the KMS keys in the caller's AWS account and region"
 weight: 10
 ---
@@ -19,6 +17,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

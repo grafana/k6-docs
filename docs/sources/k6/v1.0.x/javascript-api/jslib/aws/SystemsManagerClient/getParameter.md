@@ -1,6 +1,5 @@
 ---
 title: 'getParameter'
-head_title: 'SystemsManagerClient.getParameter()'
 description: "SystemsManagerClient.getParameter gets a Systems Manager parameter in the caller's AWS account and region"
 weight: 10
 ---
@@ -18,6 +17,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

@@ -55,7 +55,7 @@ Scenario info
 Name of the running scenario: ${exec.scenario.name}
 Executor type: ${exec.scenario.executor}
 Scenario start timestamp: ${exec.scenario.startTime}
-Percenatage complete: ${exec.scenario.progress}
+Percentage complete: ${exec.scenario.progress}
 Iteration in instance: ${exec.scenario.iterationInInstance}
 Iteration in test: ${exec.scenario.iterationInTest}
 

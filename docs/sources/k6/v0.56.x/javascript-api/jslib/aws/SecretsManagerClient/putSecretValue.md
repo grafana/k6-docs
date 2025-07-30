@@ -1,6 +1,5 @@
 ---
 title: 'putSecretValue'
-head_title: 'SecretsManagerClient.putSecretValue(secretID, secretString, [versionID], [tags])'
 description: "SecretsManagerClient.putSecretValue updates an existing secret's value"
 weight: 10
 ---
@@ -25,6 +24,8 @@ weight: 10
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

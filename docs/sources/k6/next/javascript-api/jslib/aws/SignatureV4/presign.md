@@ -1,9 +1,7 @@
 ---
 title: 'presign'
-head_title: 'presign'
 slug: 'presign'
 description: 'Signaturev4.presign pre-signs a URL with the AWS Signature V4 algorithm'
-description: 'SignatureV4.sign pre-signs a URL with the AWS Signature V4 algorithm'
 ---
 
 # presign
@@ -45,6 +43,8 @@ The `presign` operation returns an Object with the following properties.
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import http from 'k6/http';

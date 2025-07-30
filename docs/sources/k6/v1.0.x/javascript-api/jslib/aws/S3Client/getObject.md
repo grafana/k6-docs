@@ -1,6 +1,5 @@
 ---
 title: 'getObject'
-head_title: 'S3Client.getObject(bucketName, objectKey)'
 description: 'S3Client.getObject downloads an object from a bucket'
 weight: 10
 ---
@@ -32,6 +31,8 @@ receive the data as an `ArrayBuffer`, you can pass [`additionalHeaders`](#parame
 #### Downloading a text file from AWS S3
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
@@ -72,6 +73,8 @@ _A k6 script that will download an object from a bucket_
 #### Downloading a binary file from AWS S3
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

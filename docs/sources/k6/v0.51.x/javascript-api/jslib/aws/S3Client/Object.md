@@ -1,6 +1,5 @@
 ---
 title: 'Object'
-head_title: 'Object'
 description: "Object is returned by the S3Client.* methods who query S3 buckets' objects."
 weight: 20
 ---
@@ -22,6 +21,8 @@ and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jsl
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

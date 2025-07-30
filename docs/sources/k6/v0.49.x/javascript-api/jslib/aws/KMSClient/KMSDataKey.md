@@ -1,7 +1,6 @@
 ---
 title: 'KMSDataKey'
 slug: 'kmsdatakey'
-head_title: 'KMSDataKey'
 description: 'KMSDataKey is returned by the KMSClient.*DataKey methods that query KMS data keys'
 weight: 20
 ---
@@ -21,6 +20,8 @@ For instance, the [`generateDataKey`](https://grafana.com/docs/k6/<K6_VERSION>/j
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';

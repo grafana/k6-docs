@@ -1,6 +1,5 @@
 ---
 title: 'SystemsManagerParameter'
-head_title: 'SystemsManagerParameter'
 slug: 'systemsmanagerparameter'
 description: 'SystemsManagerParameter is returned by the SystemsManagerClient.* methods that query parameters'
 weight: 20
@@ -25,6 +24,8 @@ weight: 20
 ### Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import exec from 'k6/execution';
