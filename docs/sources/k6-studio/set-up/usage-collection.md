@@ -11,15 +11,15 @@ By default, k6 Studio sends anonymous usage reports, as well as crash reports an
 A usage report includes the following information:
 
 - The event name:
-  - `app_installed` - when k6 Studio is installed and opened for the first time.
-  - `user_logged_in` - when a user logs in to Grafana Cloud.
-  - `recording_created` - when a new recording is created.
-  - `recording_imported` - when a recording is imported.
-  - `generator_created` - when a new generator is created.
-  - `generator_updated` - when a generator is updated.
-  - `script_exported` - when a script is exported.
-  - `script_validated` - when a script is validated.
-  - `script_run_in_cloud` - when a script is run in the cloud.
+  - `app_installed`: when k6 Studio is installed and opened for the first time.
+  - `user_logged_in`: when a user logs in to Grafana Cloud.
+  - `recording_created`: when a new recording is created.
+  - `recording_imported`: when a recording is imported.
+  - `generator_created`: when a new generator is created.
+  - `generator_updated`: when a generator is updated.
+  - `script_exported`: when a script is exported.
+  - `script_validated`: when a script is validated.
+  - `script_run_in_cloud`: when a script is run in the cloud.
 - The running program's operating system (`win`, `mac`, or `linux`).
 - The running program's architecture (`arm64` or `x86_64`).
 - The k6 Studio version (for example, `1.5.0`).
