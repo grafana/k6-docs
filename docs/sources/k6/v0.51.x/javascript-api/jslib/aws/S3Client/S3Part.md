@@ -18,6 +18,8 @@ S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumb
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';

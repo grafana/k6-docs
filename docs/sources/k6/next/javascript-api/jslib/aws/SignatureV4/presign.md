@@ -44,6 +44,8 @@ The `presign` operation returns an Object with the following properties.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';

@@ -35,6 +35,8 @@ S3 Client methods will throw errors in case of failure.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 

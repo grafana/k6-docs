@@ -42,6 +42,8 @@ You can override SignatureV4 options in the context of this specific request. To
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 

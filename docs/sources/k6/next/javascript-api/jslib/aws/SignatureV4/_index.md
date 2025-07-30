@@ -46,6 +46,8 @@ SignatureV4 methods throw errors on failure.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import http from 'k6/http';
 

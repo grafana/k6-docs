@@ -42,6 +42,8 @@ S3 Client methods will throw errors in case of failure.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { check } from 'k6';
 import exec from 'k6/execution';
@@ -107,6 +109,8 @@ export async function handleSummary(data) {
 #### Multipart uploads
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import crypto from 'k6/crypto';

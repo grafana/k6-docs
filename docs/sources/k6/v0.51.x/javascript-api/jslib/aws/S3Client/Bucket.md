@@ -17,6 +17,8 @@ Bucket is returned by the S3Client.\* methods that query S3 buckets. Namely, `li
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,

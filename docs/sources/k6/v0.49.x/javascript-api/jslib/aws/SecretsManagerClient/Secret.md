@@ -24,6 +24,8 @@ Secret is returned by the SecretsManagerClient.\* methods that query secrets. Na
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import exec from 'k6/execution';
 

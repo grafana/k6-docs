@@ -49,6 +49,8 @@ InvocationResponse is an object that represents the response of an invocation. I
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import {
   AWSConfig,
