@@ -161,6 +161,14 @@ INFO[0000] false, 1 is NOT greater than 3                source=console
 
 ## Use the advanced module API
 
+{{< admonition type="caution" >}}
+
+The advanced module API adds significant complexity to your extension. Consider whether you actually need access to internal
+k6 objects before implementing this pattern. For simple modules that don't need VU state or runtime access, the basic approach
+shown above is sufficient.
+
+{{< /admonition >}}
+
 Suppose your extension needs access to internal k6 objects to, for example, inspect the state of the test during execution.
 We will need to make slightly more complicated changes to the above example.
 
@@ -173,12 +181,6 @@ to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) to in
 
 Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
 interface to serve as a factory of `Compare` instances for each VU.
-
-{{< admonition type="caution" >}}
-
-The significance depends on the size of your module.
-
-{{< /admonition >}}
 
 Here's what that would look like:
 
