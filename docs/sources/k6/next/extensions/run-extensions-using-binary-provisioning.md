@@ -39,7 +39,7 @@ $Env:K6_BINARY_PROVISIONING = "true"
 
 ## Enable community extensions (Optional)
 
-By default the Binary Provisioning allows using [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud). With the `ENABLE_COMMUNITY_EXTENSIONS` all extension in the extensions registry are available.
+By default the Binary Provisioning allows using [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud). With the `ENABLE_COMMUNITY_EXTENSIONS` all extension in the extensions registry are available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
 
 > When running tests in the cloud only the officially supported extensions are allowed.
 
