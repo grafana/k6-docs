@@ -48,6 +48,19 @@ This is a retrying assertion that will automatically re-check the element's attr
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  }
+};
+
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');

@@ -41,6 +41,19 @@ You can pass a `RetryConfig` object as the last parameter to any retrying assert
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  }
+};
+
 export default async function () {
   const page = await browser.newPage();
   await page.goto('https://quickpizza.grafana.com/');
@@ -68,6 +81,19 @@ You can create a new expect instance with custom default configuration using `ex
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  }
+};
 
 // Create a new expect instance with custom retry configuration
 const myExpect = expect.configure({

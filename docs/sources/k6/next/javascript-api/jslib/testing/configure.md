@@ -145,6 +145,19 @@ export default function () {
 import { browser } from 'k6/experimental/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  }
+};
+
 // Create expect instance configured for browser testing with longer timeouts
 const browserExpect = expect.configure({
   timeout: 15000, // Longer timeout for browser operations

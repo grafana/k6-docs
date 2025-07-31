@@ -63,6 +63,19 @@ export default function () {
 import { browser } from 'k6/experimental/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  }
+};
+
 export default async function () {
   const page = browser.newPage();
   
