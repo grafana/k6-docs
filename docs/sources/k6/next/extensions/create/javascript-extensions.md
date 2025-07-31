@@ -325,9 +325,6 @@ INFO[0000] Active VUs: 2, Iteration: 1, VU ID: 1, VU ID from runtime: 1  source=
 INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=console
 ```
 
-> For a more extensive usage example of this API, look at the
-> [`k6/execution`](https://github.com/grafana/k6/blob/master/js/modules/k6/execution/execution.go) module.
-
 ## Things to keep in mind
 
 - The code in the `default` function (or another function specified by
