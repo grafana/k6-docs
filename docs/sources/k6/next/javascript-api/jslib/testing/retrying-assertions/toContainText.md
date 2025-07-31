@@ -11,6 +11,7 @@ The `toContainText()` method asserts that an element contains specific text as a
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toContainText(expected);

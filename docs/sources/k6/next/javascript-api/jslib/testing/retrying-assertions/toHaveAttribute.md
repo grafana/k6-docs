@@ -11,6 +11,7 @@ The `toHaveAttribute()` method asserts that an element has a specific attribute 
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toHaveAttribute(attribute);

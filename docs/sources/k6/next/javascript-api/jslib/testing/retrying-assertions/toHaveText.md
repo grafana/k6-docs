@@ -11,6 +11,7 @@ The `toHaveText()` method asserts that an element has specific text content. Thi
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toHaveText(expected);

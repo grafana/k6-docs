@@ -11,6 +11,7 @@ The `toBeChecked()` method asserts that a checkbox or radio button is checked. T
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toBeChecked();

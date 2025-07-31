@@ -11,6 +11,7 @@ The `toBeHidden()` method asserts that an element is hidden on the page. This is
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toBeHidden();

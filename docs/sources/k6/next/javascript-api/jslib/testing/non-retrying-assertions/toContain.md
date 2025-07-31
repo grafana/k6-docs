@@ -11,6 +11,7 @@ The `toContain()` method asserts that an array contains a specific item or a str
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toContain(expected);

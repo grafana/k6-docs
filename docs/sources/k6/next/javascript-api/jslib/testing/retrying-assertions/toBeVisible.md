@@ -11,6 +11,7 @@ The `toBeVisible()` method asserts that an element is visible on the page. This 
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toBeVisible();

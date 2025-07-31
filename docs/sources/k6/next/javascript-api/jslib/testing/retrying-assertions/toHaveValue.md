@@ -11,6 +11,7 @@ The `toHaveValue()` method asserts that an element has a specific value. This is
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toHaveValue(value);

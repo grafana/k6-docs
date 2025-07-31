@@ -11,6 +11,7 @@ The `toHaveLength()` method asserts that an object has a specific length propert
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toHaveLength(expected);

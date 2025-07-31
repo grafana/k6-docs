@@ -11,6 +11,7 @@ The `toBeDisabled()` method asserts that an element is disabled. This is a retry
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toBeDisabled();

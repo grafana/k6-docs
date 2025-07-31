@@ -11,6 +11,7 @@ The `toContainEqual()` method asserts that an array or set contains an element t
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toContainEqual(expected);

@@ -11,6 +11,7 @@ The `toBeEnabled()` method asserts that an element is enabled and interactive. T
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 await expect(locator).toBeEnabled();

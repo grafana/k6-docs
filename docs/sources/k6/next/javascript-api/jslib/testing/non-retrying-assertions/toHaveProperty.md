@@ -11,6 +11,7 @@ The `toHaveProperty()` method asserts that an object has a specific property, op
 ## Syntax
 
 <!-- eslint-skip -->
+<!-- md-k6:skip -->
 
 ```javascript
 expect(actual).toHaveProperty(keyPath);
