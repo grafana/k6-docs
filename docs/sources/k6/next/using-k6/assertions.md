@@ -18,6 +18,7 @@ The assertions API is inspired by Playwright's assertion syntax, providing a flu
 
 Assertions are provided by the [k6-testing library](https://jslib.k6.io). Import the library to start using assertions:
 
+
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
@@ -146,6 +147,19 @@ async function pizzaRecipeIsDisplayed(page) {
 
   return textContent;
 }
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
 ```
 
 ## Assertions vs. checks
@@ -226,6 +240,19 @@ export default async function () {
 
   await expect(page.locator('.error-message')).not.toBeVisible();
 }
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
 ```
 
 ### Soft assertions
@@ -252,6 +279,8 @@ export default function () {
 ### Custom error messages
 
 Provide descriptive error messages for better debugging:
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
