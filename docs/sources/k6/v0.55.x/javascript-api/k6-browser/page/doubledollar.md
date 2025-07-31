@@ -1,5 +1,5 @@
 ---
-title: 'page.$$(selector)'
+title: '$$(selector)'
 slug: 'page-doubledollar'
 description: 'Browser module: page.$$(selector) method'
 ---
