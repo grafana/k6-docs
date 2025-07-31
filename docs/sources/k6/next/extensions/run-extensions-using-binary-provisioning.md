@@ -14,11 +14,11 @@ Using k6 with extensions requires users to build a [custom k6 binary](https://gr
 
 To use Binary Provisioning, you'll need:
 
-- k6 v1.2 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
+- k6 v1.2.0 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
 
 ## Set the Binary Provisioning environment flag
 
-To enable Binary Provisioning, you must set the `K6_BINARY_PROVISIONING` environment variable to `true`:
+Set the `K6_BINARY_PROVISIONING` environment variable to `true` to enable the feature:
 
 {{< code >}}
 
@@ -39,22 +39,22 @@ $Env:K6_BINARY_PROVISIONING = "true"
 
 ## Enable community extensions (Optional)
 
-By default the Binary Provisioning allows using [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud). With the `ENABLE_COMMUNITY_EXTENSIONS` all extension in the extensions registry are available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
+By default [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) can be used. With the `K6_ENABLE_COMMUNITY_EXTENSIONS` the full list of available extensions is available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
 
 > When running tests in the cloud only the officially supported extensions are allowed.
 
 {{< code >}}
 
 ```linux
-export ENABLE_COMMUNITY_EXTENSIONS=true
+export K6_ENABLE_COMMUNITY_EXTENSIONS=true
 ```
 
 ```mac
-export ENABLE_COMMUNITY_EXTENSIONS=true
+export K6_ENABLE_COMMUNITY_EXTENSIONS=true
 ```
 
 ```windows-powershell
-$Env:ENABLE_COMMUNITY_EXTENSIONS = "true"
+$Env:K6_ENABLE_COMMUNITY_EXTENSIONS = "true"
 
 ```
 {{< /code >}}
