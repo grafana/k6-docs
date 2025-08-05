@@ -22,6 +22,7 @@ cascade:
   JSLIB_AWS_VERSION: 0.14.0
   JSLIB_PYROSCOPE_VERSION: 1.0.2
   JSLIB_TEMPO_VERSION: 1.0.1
+  JSLIB_TESTING_VERSION: 0.5.0
 versioned: true
 versioned_next: true
 ---
