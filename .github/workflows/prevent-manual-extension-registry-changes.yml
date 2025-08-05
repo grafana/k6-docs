@@ -1,0 +1,32 @@
+# This workflow prevents users from manually changing the
+# docs/sources/next/extensions/explore.md file.
+
+# Changes to the registry should only be made automatically
+# by the extension-registry-changed workflow.
+
+name: Prevent file change
+on:
+  pull_request:
+    types: [opened, reopened]
+    paths:
+        - 'docs/sources/k6/**/extensions/explore.md'
+
+permissions:
+  pull-requests: read
+
+jobs:
+  prevent-file-change:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        with:
+          persist-credentials: false
+        uses: actions/checkout@v4
+
+      - name: Prevent manual changes to the extension registry file
+        uses: xalvarez/prevent-file-change-action@4e88b842aed52bb42b94537ad9736eac06930266 # v2.0.0
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          pattern: .*\extensions/explore\.md
+          trustedAuthors: heitortsergent, szkiba, pablochacin, andrewslotin, mstoykov, inancgumus, oleiade, ankur22, codebien, joanlopez, AgnesToulet
+          allowNewFiles: true # To prevent issues when we release a new version of k6
