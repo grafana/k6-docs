@@ -7,7 +7,7 @@ weight: 72
 
 # Rate
 
-_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
+_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [metric types](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
 
 | Parameter | Type   | Description                    |
 | --------- | ------ | ------------------------------ |
