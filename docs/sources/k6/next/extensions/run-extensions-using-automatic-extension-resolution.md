@@ -1,46 +1,46 @@
 ---
-title: 'Run extensions using Binary Provisioning'
-description: 'Learn how to run scripts that require extensions using Binary Provisioning.'
+title: 'Run scripts using automatic extension resolution'
+description: 'Learn how to run scripts that require extensions.'
 weight: 04
 ---
 
-# Run extensions using Binary Provisioning
+# Run extensions
 
 k6 supports [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) as a way of extending k6 native functionality, and support a wider variety of use cases.
 
-Using k6 with extensions requires users to build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries) that includes the extension, which can then be used to run a test script. With the Binary Provisioning feature, k6 users can run tests using extensions without having to manually build a k6 binary.
+The Automatic Extension Resolution feature allows k6 users run tests using any of the [official extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) without having to manually build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
+
 
 ## Before you begin
 
-To use Binary Provisioning, you'll need:
+To use Automatic Extension Resolution, you'll need:
 
 - k6 v1.2.0 or greater [installed on your machine](https://grafana.com/docs/k6/latest/set-up/install-k6/).
 
-## Set the Binary Provisioning environment flag
+## Disable the Automatic Extension Resolution
 
-Set the `K6_BINARY_PROVISIONING` environment variable to `true` to enable the feature:
+This feature can be disable using the `K6_AUTO_EXTENSION_RESOLUTION` environment variable to `false`.
 
 {{< code >}}
 
 ```linux
-export K6_BINARY_PROVISIONING=true
+export K6_AUTO_EXTENSION_RESOLUTION=false
 ```
 
 ```mac
-export K6_BINARY_PROVISIONING=true
+export K6_AUTO_EXTENSION_RESOLUTION=false
 ```
 
 ```windows-powershell
-$Env:K6_BINARY_PROVISIONING = "true"
+$Env:K6_AUTO_EXTENSION_RESOLUTION = "false"
 
 ```
-
 {{< /code >}}
 
 ## Enable community extensions (Optional)
 
 By default [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) can be used. With the `K6_ENABLE_COMMUNITY_EXTENSIONS` the full list of available extensions is available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
-
+tfalserue
 > When running tests in the cloud only the officially supported extensions are allowed.
 
 {{< code >}}
@@ -59,9 +59,11 @@ $Env:K6_ENABLE_COMMUNITY_EXTENSIONS = "true"
 ```
 {{< /code >}}
 
-## Run a test
+## Using unsupported extension
 
-After setting the `K6_BINARY_PROVISIONING` environment variable and logging in to Grafana Cloud, you can run a test using the `k6 cloud run` command:
+Users requiring extensions not supported by the Automatic Extension Resolution can build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
+
+## Run a test
 
 {{< code >}}
 
