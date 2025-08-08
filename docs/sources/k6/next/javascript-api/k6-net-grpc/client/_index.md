@@ -16,6 +16,7 @@ aliases:
 | [Client.loadProtoset(protosetPath)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-loadprotoset) | Loads and parses the given protoset file to be made available for RPC requests.                                                                         |
 | [Client.connect(address [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-connect)      | Opens a connection to the given gRPC server.                                                                                                            |
 | [Client.invoke(url, request [,params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-invoke)   | Makes an unary RPC for the given service/method and returns a [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/response). |
+| [Client.healthCheck([service])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-health-check) | Check the status of the service using the [Health Checking](https://grpc.io/docs/guides/health-checking) protocol. |
 | [Client.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-close)                           | Close the connection to the gRPC service.                                                                                                               |
 
 ### Examples
@@ -36,7 +37,7 @@ export default () => {
 
   const response = client.invoke('quickpizza.GRPC/RatePizza', {
     ingredients: ['Tomatoes', 'Cheese'],
-    dough: 'Thin'
+    dough: 'Thin',
   });
   console.log(response.message.starsRating); // should print a number between 1-5
 
