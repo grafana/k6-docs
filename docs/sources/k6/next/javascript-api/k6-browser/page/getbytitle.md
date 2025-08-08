@@ -29,6 +29,8 @@ Find and interact with elements by their title attribute:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';

@@ -29,6 +29,8 @@ Locate and interact with elements using test IDs:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 

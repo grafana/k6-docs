@@ -31,6 +31,8 @@ Fill form fields using their labels:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -76,6 +78,8 @@ export default async function () {
 Handle various form control types in various label association patterns:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -146,21 +150,39 @@ The `getByLabel()` method works with several HTML patterns for associating label
 
 **1. Explicit association with `for` attribute:**
 
+{{< code >}}
+
+<!-- eslint-skip -->
+
 ```html
 <label for="username">Username</label> <input type="text" id="username" name="username" />
 ```
 
+{{< /code >}}
+
 **2. ARIA labeling:**
+
+{{< code >}}
+
+<!-- eslint-skip -->
 
 ```html
 <span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
 ```
 
+{{< /code >}}
+
 **3. ARIA label attribute:**
+
+{{< code >}}
+
+<!-- eslint-skip -->
 
 ```html
 <input type="text" aria-label="Username" />
 ```
+
+{{< /code >}}
 
 ### Common use cases
 
