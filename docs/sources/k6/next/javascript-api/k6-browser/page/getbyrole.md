@@ -170,6 +170,7 @@ The following roles are supported and can be used with `getByRole()`, organized 
 **Form Testing:**
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript
@@ -192,6 +193,7 @@ await page.getByRole('switch', { name: 'Enable notifications' }).click();
 **Navigation Testing:**
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript
@@ -205,6 +207,7 @@ await expect(page.getByRole('tabpanel', { name: 'Overview' })).toBeVisible();
 **Content Verification:**
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```javascript

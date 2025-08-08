@@ -77,6 +77,7 @@ Consider the following DOM structure:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```html
@@ -90,6 +91,7 @@ You can locate by text substring, exact string, or a regular expression:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
 <!-- eslint-skip -->
 
 ```js
