@@ -31,6 +31,8 @@ Sends the request to the network with optional overrides.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 

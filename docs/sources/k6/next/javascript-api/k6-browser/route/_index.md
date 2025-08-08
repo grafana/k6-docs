@@ -23,6 +23,8 @@ When several routes match the given pattern, they run in the order opposite to t
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 

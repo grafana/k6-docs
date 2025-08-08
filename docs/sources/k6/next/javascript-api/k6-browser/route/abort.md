@@ -21,6 +21,8 @@ Aborts the request with the given error code.
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
