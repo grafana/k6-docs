@@ -17,6 +17,8 @@ Returns the matching [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascri
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -38,17 +40,15 @@ export default async function () {
 
   try {
     await page.route(/.*\/api\/pizza/, async function (route) {
-      await route.continue(
-        {
-          headers: {
-            ...route.request().headers(),
-            'Content-Type': 'application/json',
-          },
-          postData: JSON.stringify({
-              'customName': 'My Pizza'
-          }),
-        }
-      );
+      await route.continue({
+        headers: {
+          ...route.request().headers(),
+          'Content-Type': 'application/json',
+        },
+        postData: JSON.stringify({
+          customName: 'My Pizza',
+        }),
+      });
     });
 
     await page.goto('https://quickpizza.grafana.com/');
