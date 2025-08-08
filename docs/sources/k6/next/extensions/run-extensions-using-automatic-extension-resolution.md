@@ -4,13 +4,11 @@ description: 'Learn how to run scripts that require extensions.'
 weight: 04
 ---
 
-# Run extensions
+# Run scripts using automatic extension resolution
 
 k6 supports [extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) as a way of extending k6 native functionality, and support a wider variety of use cases.
 
-The Automatic Extension Resolution feature allows k6 users run tests using any of the [official extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) without having to manually build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
-
-
+The Automatic Extension Resolution feature allows k6 users to run tests using any of the [official extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) without having to manually build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
 ## Before you begin
 
 To use Automatic Extension Resolution, you'll need:
@@ -19,7 +17,7 @@ To use Automatic Extension Resolution, you'll need:
 
 ## Disable the Automatic Extension Resolution
 
-This feature can be disable using the `K6_AUTO_EXTENSION_RESOLUTION` environment variable to `false`.
+This feature can be disabled by setting the `K6_AUTO_EXTENSION_RESOLUTION` environment variable to `false`.
 
 {{< code >}}
 
@@ -37,11 +35,14 @@ $Env:K6_AUTO_EXTENSION_RESOLUTION = "false"
 ```
 {{< /code >}}
 
-## Enable community extensions (Optional)
+## Enable community extensions
 
-By default [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) can be used. With the `K6_ENABLE_COMMUNITY_EXTENSIONS` the full list of available extensions is available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
-tfalserue
-> When running tests in the cloud only the officially supported extensions are allowed.
+By default [a limited set of officially supported extensions](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions/#supported-extensions-in-grafana-cloud) can be used. With the `K6_ENABLE_COMMUNITY_EXTENSIONS`, the full list of extensions is available, including the [community extensions](https://grafana.com/docs/k6/latest/extensions/explore/#community-extensions).
+{{< admonition type="note" >}}
+
+When running tests in the cloud, only a subset of the officially supported extensions is allowed.
+
+{{< /admonition >}}
 
 {{< code >}}
 
@@ -59,11 +60,11 @@ $Env:K6_ENABLE_COMMUNITY_EXTENSIONS = "true"
 ```
 {{< /code >}}
 
-## Using unsupported extension
+## Use unsupported extensions
 
 Users requiring extensions not supported by the Automatic Extension Resolution can build a [custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/#xk6-makes-custom-binaries).
 
-## Run a test
+## Run a test with extensions
 
 {{< code >}}
 
