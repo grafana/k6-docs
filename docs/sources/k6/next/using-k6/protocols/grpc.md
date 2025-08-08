@@ -263,6 +263,7 @@ It's important to note how k6 handles requests and messages. First, it tries to 
 A limitation during this process is that the object you pass as a request/message must be serializable. That means structs like `Map` don't work.
 
 The benefit of using `protojson` is the canonical JSON encoding support. The [Protocol Buffers documentation](https://protobuf.dev/programming-guides/proto3/#json) describes this mapping.
+Also note that according to [ProtoJSON docs](https://protobuf.dev/programming-guides/json/), the JSON value of a non-numeric float (e.g. `NaN` or `Infinity`) will be their equivalent string representation. 
 
 #### Examples
 
