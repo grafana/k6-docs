@@ -69,19 +69,19 @@ Users requiring extensions not supported by the Automatic Extension Resolution c
 {{< code >}}
 
 ```linux
-k6 cloud run --local-execution script.js
+k6 run script.js
 ```
 
 ```mac
-k6 cloud run --local-execution --quiet script.js
+k6 run script.js
 ```
 
 ```windows-powershell
-k6.exe cloud run --local-execution --quiet script.js
+k6.exe run script.js
 ```
 
 ```windows
-k6.exe cloud run --local-execution --quiet script.js
+k6.exe run script.js
 ```
 
 {{< /code >}}
