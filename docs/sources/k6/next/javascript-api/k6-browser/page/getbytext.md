@@ -29,6 +29,8 @@ Find and click elements by their visible text:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 

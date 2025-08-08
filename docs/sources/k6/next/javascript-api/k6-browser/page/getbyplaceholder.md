@@ -29,6 +29,8 @@ Find and fill inputs by their placeholder text:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 

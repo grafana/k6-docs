@@ -31,6 +31,8 @@ Find and click an image by its alt text:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -72,6 +74,8 @@ Use exact matching for precise alt text:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -112,6 +116,8 @@ export default async function () {
 Find images using pattern matching:
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';

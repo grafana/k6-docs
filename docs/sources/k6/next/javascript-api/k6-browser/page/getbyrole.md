@@ -39,6 +39,8 @@ Find and click a button by its role:
 
 {{< code >}}
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
