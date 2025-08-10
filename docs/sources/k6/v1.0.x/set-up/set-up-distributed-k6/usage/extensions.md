@@ -59,3 +59,12 @@ spec:
 ```
 
 Note that this examples overrides the default image with `k6-extended:latest`, and it includes environment variables that are required by the `xk6-output-influxdb` extension.
+
+## Troubleshooting
+
+If a `TestRun` with a custom image does not start the test and the k6 Operator [logs an error about the initializer](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/troubleshooting/#an-error-on-reading-output-of-the-initializer-pod), check the following command:
+```sh
+docker run --entrypoint sh k6-extended:local -c "ls -l && k6 version"
+```
+
+This command should execute without an error.
