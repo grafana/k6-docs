@@ -40,8 +40,6 @@ Events can be either:
 
 ### Examples
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -90,13 +88,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Valid usage patterns for waitForURL
 
 Use one of the following patterns to coordinate the action that triggers navigation with waiting for the final URL.
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -107,11 +101,7 @@ await Promise.all([
 ]);
 ```
 
-{{< /code >}}
-
 or
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -121,11 +111,7 @@ await frame.locator('a[href="/my_messages.php"]').click();
 await navPromise;
 ```
 
-{{< /code >}}
-
 Unlike [waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation), `waitForURL` will first check whether it is already on the page with the given URL before proceeding to wait. If it is already there and the `waitUntil` condition has also been met, it will return straight away. This means that it is safe to do this:
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -133,8 +119,6 @@ Unlike [waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-a
 await frame.locator('a[href="/my_messages.php"]').click();
 await frame.waitForURL('https://quickpizza.grafana.com/my_messages.php');
 ```
-
-{{< /code >}}
 
 ### Best practices
 
