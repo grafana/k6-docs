@@ -19,7 +19,15 @@ generate_extension_list_partial() {
   local tier="$1"
   curl -sL https://registry.k6.io/product/oss.json |
     jq -r --arg tier "$tier" '
-      map(select(.module != "go.k6.io/k6" and .tier == $tier) | { name:.repo.name, url: .repo.url, description: .description }) |
+      map(
+        select(
+          .module != "go.k6.io/k6"
+          and .tier == $tier
+          and .repo.name != "xk6-kafka"
+          and .repo.name != "xk6-sse"
+        )
+        | { name:.repo.name, url: .repo.url, description: .description }
+      ) |
       sort_by(.name) | map(
         "    <a href=\"\(.url)\" target=\"_blank\" class=\"nav-cards__item nav-cards__item--guide\">\n        <h4>\(.name)</h4>\n        <p>\(.description)</p>\n    </a>"
       ) | .[]
@@ -84,13 +92,12 @@ else
 fi
 docfile="$scriptdir/../docs/sources/k6/next/extensions/explore.md"
 
-tmpfile_official="$(mktemp /tmp/extension-registry-changed.official.XXXXXX)"
 tmpfile_community="$(mktemp /tmp/extension-registry-changed.community.XXXXXX)"
 
-generate_extension_list_partial "official" > "$tmpfile_official"
+# Only generate extension list for "community" (now "Other extensions")
 generate_extension_list_partial "community" > "$tmpfile_community"
 
-replace_extension_list_partial "$docfile" "$tmpfile_official" "Official extensions"
-replace_extension_list_partial "$docfile" "$tmpfile_community" "Community extensions"
+# Replace "Community extensions" with "Other extensions"
+replace_extension_list_partial "$docfile" "$tmpfile_community" "Other extensions"
 
-rm -f "$tmpfile_official" "$tmpfile_community"
+rm -f "$tmpfile_community"

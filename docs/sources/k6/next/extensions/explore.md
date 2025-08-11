@@ -1,94 +1,39 @@
 ---
-title: 'Explore k6 extensions'
+title: 'Explore extensions'
 menuTitle: 'Explore extensions'
+description: 'Explore the k6 extension ecosystem to find extensions that meet your requirements.'
 weight: 01
 ---
 
-# Explore k6 extensions
+# Explore extensions
 
-With over 50 available extensions, the k6 extension ecosystem has many options to meet your requirements and help you incorporate new protocol access, embed a particular client, or improve your test performance. Extensions are developed both by the k6 developers and by the open-source developer community.
+There are three categories of extensions:
 
-Extensions are composable; you can combine any extensions, or mix and match different test cases. You can use [Go and xk6](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-go/) or [Docker](https://grafana.com/docs/k6/<K6_VERSION>/extensions/build-k6-binary-using-docker/) to build your custom k6 binary:
+| Category      | Maintainer                      | Audited | Cloud support | How to use them                                                                                                                                                                       |
+| ------------- | ----------------------------------- | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Official**  | Grafana Labs                 | ✅ Yes   | ✅ Yes         | [Import them in your test](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-automatic-extension-loading)      |
+| **Community** | Community  | ✅ Yes   | ⚠️ Partial\*  | [Import them in your test](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-automatic-extension-loading)                           |
+| **Other**     | Community | ❌ No    | ⚠️ Partial\*  | [Build a custom k6 binary](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-other-extensions) |
 
-{{< code >}}
+\* *Partial* means that they can be used in the CLI with the `--local-execution` mode. Also, on Private Load Zones if a custom image is build. They don't work on Grafana Cloud k6 Public Load Zones.
 
-```go-and-xk6
-xk6 build \
-  --with github.com/grafana/xk6-sql@v0.0.1 \
-  --with github.com/grafana/xk6-output-prometheus-remote
-```
-
-```docker-in-linux
-docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
-  --with github.com/grafana/xk6-sql@v0.0.1 \
-  --with github.com/grafana/xk6-output-prometheus-remote
-```
-
-{{< /code >}}
-
-<br/>
-
-Use the table to explore the many extensions. Questions? Feel free to join the discussion about extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
 ## Official extensions
 
-These are the official extensions, which are owned and maintained by the Grafana organization.
-
-<div class="nav-cards">
-    <a href="https://github.com/grafana/xk6-client-prometheus-remote" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-client-prometheus-remote</h4>
-        <p>Test Prometheus Remote Write-compatible endpoints</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-dashboard" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-dashboard</h4>
-        <p>Create a web-based metrics dashboard</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-disruptor" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-disruptor</h4>
-        <p>Inject faults to test 💣</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-exec" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-exec</h4>
-        <p>Run external commands</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-faker" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-faker</h4>
-        <p>Generate fake data in your tests</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-kubernetes" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-kubernetes</h4>
-        <p>Interact with Kubernetes clusters</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-output-influxdb" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-output-influxdb</h4>
-        <p>Export results to InfluxDB v2</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql</h4>
-        <p>Load-test SQL Servers</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-mysql" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-mysql</h4>
-        <p>xk6-sql driver extension for MySQL database support</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-postgres" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-postgres</h4>
-        <p>xk6-sql driver extension for Postgres database support</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-sql-driver-sqlite3" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sql-driver-sqlite3</h4>
-        <p>xk6-sql driver extension for SQLite v3 database support</p>
-    </a>
-    <a href="https://github.com/grafana/xk6-ssh" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-ssh</h4>
-        <p>Use SSH connections in your tests</p>
-    </a>
-</div>
+TBD
 
 ## Community extensions
 
-These are the community extensions, which are owned by our community members.
-The Grafana team makes a best-effort assistance to keep these extensions in compliance.
+TBD
+
+## Other extensions
+{{< admonition type="caution" >}}
+
+The extensions listed below are not maintained nor audited by Grafana Labs.
+
+{{< /admonition >}}
+
+Many other extensions, maintained by members of the k6 community are available in [GitHub](https://github.com/topics/xk6). You can find some of them listed below. All these fullfil our list of [minimum requirements](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/extensions-registry/#registry-requirements).
 
 <div class="nav-cards">
     <a href="https://github.com/prmuthu/xk6-amqp" target="_blank" class="nav-cards__item nav-cards__item--guide">
@@ -174,10 +119,6 @@ The Grafana team makes a best-effort assistance to keep these extensions in comp
     <a href="https://github.com/deejiw/xk6-interpret" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-interpret</h4>
         <p>Interpret Go code</p>
-    </a>
-    <a href="https://github.com/mostafa/xk6-kafka" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-kafka</h4>
-        <p>Load test Apache Kafka. Includes support for Avro messages.</p>
     </a>
     <a href="https://github.com/oleiade/xk6-kv" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-kv</h4>
@@ -298,10 +239,6 @@ The Grafana team makes a best-effort assistance to keep these extensions in comp
     <a href="https://github.com/grafana/xk6-sql-driver-sqlserver" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-sql-driver-sqlserver</h4>
         <p>xk6-sql driver extension for Microsoft SQL Server database support</p>
-    </a>
-    <a href="https://github.com/phymbert/xk6-sse" target="_blank" class="nav-cards__item nav-cards__item--guide">
-        <h4>xk6-sse</h4>
-        <p>Server Sent Event</p>
     </a>
     <a href="https://github.com/walterwanderley/xk6-stomp" target="_blank" class="nav-cards__item nav-cards__item--guide">
         <h4>xk6-stomp</h4>
