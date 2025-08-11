@@ -30,6 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Install chromium
+        run: sudo apt update && sudo apt install chromium-browser
       - name: Check script readiness
         run: python -m unittest scripts/md-k6.py
       - name: Run Updated Code Blocks
