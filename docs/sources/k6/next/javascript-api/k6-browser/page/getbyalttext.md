@@ -56,6 +56,8 @@ export default async function () {
     const logo = page.getByAltText('LOGO');
     await logo.waitFor();
 
+    error on purpose
+
     await logo.click();
     await page.waitForLoadState();
   } finally {
