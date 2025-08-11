@@ -27,8 +27,6 @@ Returns a locator for elements with the specified `title` attribute. This method
 
 Find and interact with elements by their title attribute:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -72,8 +70,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Common use cases
 

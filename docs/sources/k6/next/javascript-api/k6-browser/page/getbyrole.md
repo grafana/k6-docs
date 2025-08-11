@@ -37,8 +37,6 @@ Returns a locator for elements with the specified ARIA role. This is the preferr
 
 Find and click a button by its role:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -69,8 +67,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Complete ARIA roles reference
 
@@ -168,7 +164,6 @@ The following roles are supported and can be used with `getByRole()`, organized 
 #### Usage Examples by Category
 
 **Form Testing:**
-{{< code >}}
 
 <!-- md-k6:skip -->
 <!-- eslint-skip -->
@@ -188,10 +183,7 @@ await page.getByRole('slider', { name: 'Volume' }).fill('75');
 await page.getByRole('switch', { name: 'Enable notifications' }).click();
 ```
 
-{{< /code >}}
-
 **Navigation Testing:**
-{{< code >}}
 
 <!-- md-k6:skip -->
 <!-- eslint-skip -->
@@ -202,10 +194,7 @@ await page.getByRole('tab', { name: 'Overview' }).click();
 await expect(page.getByRole('tabpanel', { name: 'Overview' })).toBeVisible();
 ```
 
-{{< /code >}}
-
 **Content Verification:**
-{{< code >}}
 
 <!-- md-k6:skip -->
 <!-- eslint-skip -->
@@ -219,8 +208,6 @@ await expect(page.getByRole('heading', { level: 1 })).toHaveText('Welcome');
 await expect(page.getByRole('alert')).toHaveText('Form submitted successfully');
 await expect(page.getByRole('status')).toHaveText('3 items selected');
 ```
-
-{{< /code >}}
 
 ### Best practices
 

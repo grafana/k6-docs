@@ -27,8 +27,6 @@ Returns a locator for elements containing the specified text. This method finds 
 
 Find and click elements by their visible text:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -63,8 +61,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Text matching behavior
 
 **Whitespace normalization**: Text matching automatically normalizes whitespace, meaning:
@@ -75,8 +71,6 @@ export default async function () {
 
 Consider the following DOM structure:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 <!-- eslint-skip -->
 
@@ -85,11 +79,7 @@ Consider the following DOM structure:
 <div>Hello</div>
 ```
 
-{{< /code >}}
-
 You can locate by text substring, exact string, or a regular expression:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 <!-- eslint-skip -->
@@ -106,8 +96,6 @@ page.getByText(/Hello/);
 // Matches second <div>
 page.getByText(/^hello$/i);
 ```
-
-{{< /code >}}
 
 ### Common use cases
 

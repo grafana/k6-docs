@@ -27,8 +27,6 @@ Returns a locator for elements with the specified test ID attribute. This method
 
 Locate and interact with elements using test IDs:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -65,8 +63,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Best practices
 
