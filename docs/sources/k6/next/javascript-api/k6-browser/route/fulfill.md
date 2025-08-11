@@ -21,13 +21,13 @@ Fulfills the request with the given response.
 | options.headers     | object           | null    | Response headers.                               |
 | options.status      | number           | `200`   | Response status code.                           |
 
-### Returns
+## Returns
 
 | Type            | Description                                            |
 | --------------- | ------------------------------------------------------ |
 | `Promise<void>` | A Promise that fulfills when the request is fulfilled. |
 
-### Example
+## Example
 
 {{< code >}}
 

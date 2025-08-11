@@ -14,13 +14,13 @@ When several routes match the given pattern, they run in the order opposite to t
 | url       | string or Regexp                                                                             | `''`    | URL to match during routing.                        |
 | handler   | function([Route](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/route/)) | null    | Handler function executed when routing the request. |
 
-### Returns
+## Returns
 
 | Type            | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | `Promise<void>` | A Promise that fulfills when the route is added to the page. |
 
-### Example
+## Example
 
 {{< code >}}
 

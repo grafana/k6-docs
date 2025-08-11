@@ -7,13 +7,13 @@ description: 'Browser module: Route.request method'
 
 Returns the matching [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object.
 
-### Returns
+## Returns
 
 | Type      | Description           |
 | --------- | --------------------- |
 | `Request` | The `Request` object. |
 
-### Example
+## Example
 
 {{< code >}}
 
