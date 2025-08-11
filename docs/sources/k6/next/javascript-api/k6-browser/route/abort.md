@@ -11,13 +11,13 @@ Aborts the request with the given error code.
 | --------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | errorCode | string | `'failed'` | Error code when aborting the request. Can be one of the following: `'aborted'`, `'accessdenied'`, `'addressunreachable'`, `'blockedbyclient'`, `'blockedbyresponse'`, `'connectionaborted'`,`'connectionclosed'`, `'connectionfailed'`, `'connectionrefused'`, `'connectionreset'`, `'internetdisconnected'`, `'namenotresolved'`, `'timedout'`, `'failed'`. |
 
-### Returns
+## Returns
 
 | Type            | Description                                          |
 | --------------- | ---------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the request is aborted. |
 
-### Example
+## Example
 
 {{< code >}}
 

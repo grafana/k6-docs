@@ -21,13 +21,13 @@ Sends the request to the network with optional overrides.
 | options.postData | string or Buffer | `''`    | Post data of the request.          |
 | options.url      | string           | `''`    | Request URL.                       |
 
-### Returns
+## Returns
 
 | Type            | Description                                          |
 | --------------- | ---------------------------------------------------- |
 | `Promise<void>` | A Promise that fulfills when the request is resumed. |
 
-### Example
+## Example
 
 {{< code >}}
 
