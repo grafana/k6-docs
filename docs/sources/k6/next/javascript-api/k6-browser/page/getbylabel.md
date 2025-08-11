@@ -29,8 +29,6 @@ Returns a locator for form controls associated with the specified label text. Th
 
 Fill form fields using their labels:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -71,13 +69,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 #### Working with different input types
 
 Handle various form control types in various label association patterns:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -142,15 +136,11 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Label association patterns
 
 The `getByLabel()` method works with several HTML patterns for associating labels with form controls:
 
 **1. Explicit association with `for` attribute:**
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -158,11 +148,7 @@ The `getByLabel()` method works with several HTML patterns for associating label
 <label for="username">Username</label> <input type="text" id="username" name="username" />
 ```
 
-{{< /code >}}
-
 **2. ARIA labeling:**
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -170,19 +156,13 @@ The `getByLabel()` method works with several HTML patterns for associating label
 <span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
 ```
 
-{{< /code >}}
-
 **3. ARIA label attribute:**
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
 ```html
 <input type="text" aria-label="Username" />
 ```
-
-{{< /code >}}
 
 ### Common use cases
 

@@ -29,8 +29,6 @@ Returns a locator for elements with the specified alt text. This method is usefu
 
 Find and click an image by its alt text:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -66,13 +64,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 #### Exact alt text matching
 
 Use exact matching for precise alt text:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -109,13 +103,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 #### Using regular expressions
 
 Find images using pattern matching:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -151,8 +141,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Common use cases
 

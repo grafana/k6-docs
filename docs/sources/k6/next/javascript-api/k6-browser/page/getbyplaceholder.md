@@ -27,8 +27,6 @@ Returns a locator for input elements with the specified `placeholder` attribute.
 
 Find and fill inputs by their placeholder text:
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -70,8 +68,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Common use cases
 
