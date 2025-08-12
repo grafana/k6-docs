@@ -912,7 +912,12 @@ export const options = {
 
 ## Profiling Enabled
 
-Enables [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints under the k6's REST API [address](#address). These endpoints help debug and profile k6 itself. k6's REST API should be enabled as well.
+Enables profiling endpoints under the [k6 REST API [address](#address) to help debug and profile k6 itself:
+
+* [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints for CPU and memory profiling
+* Prometheus [/metrics](https://prometheus.io/docs/guides/go-application/#how-go-exposition-works) endpoint for exporting Go runtime metrics
+
+The k6 REST API must be enabled for these endpoints to be available (this is the default behavior).
 
 | Env                    | CLI                   | Code / Config file | Default                              |
 | ---------------------- | --------------------- | ------------------ | ------------------------------------ |
