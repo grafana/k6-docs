@@ -70,7 +70,7 @@ You can do this locally with [Go](https://grafana.com/docs/k6/<K6_VERSION>/exten
 ```go-and-xk6
 xk6 build \
   --with github.com/grafana/xk6-sql@v0.0.1 \
-  --with github.com/grafana/xk6-output-prometheus-remote
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```docker-in-linux
