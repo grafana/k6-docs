@@ -8,5 +8,4 @@ weight: 700
 
 <!-- TODO: Add content -->
 
-{{< section >}}
-
+{{< section withDescriptions="true" >}}
