@@ -76,7 +76,6 @@ xk6 build \
 ```docker-in-linux
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
   --with github.com/grafana/xk6-sql@v0.0.1 \
-  --with github.com/grafana/xk6-output-prometheus-remote
 ```
 
 {{< /code >}}
