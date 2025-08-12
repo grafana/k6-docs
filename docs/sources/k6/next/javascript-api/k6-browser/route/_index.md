@@ -8,7 +8,7 @@ weight: 12
 
 Route represents a network request intercepted by the [`page.route()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/route) function and allows to modify its behavior. Once routing is enabled, every request intercepted by a route will stall unless it's continued, fulfilled or aborted.
 
-When several routes match the given pattern, they run in the order opposite to their registration. That way the last registered route can always override all the previous ones.
+When several routes match the given pattern, only the last registered route handler will run, and all others will be skipped.
 
 ## Supported APIs
 

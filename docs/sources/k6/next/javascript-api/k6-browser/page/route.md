@@ -7,7 +7,7 @@ description: 'Browser module: page.route(url, handler) method'
 
 The method adds a route that allows modifying network requests matching the provided url. The handler is a function taking a [Route](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/route/) input that provides functions to [continue](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/route/continue), [fulfill](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/route/fulfill) or [abort](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/route/abort) the request. Once routing is enabled, every request matching the url pattern will stall unless one of these functions is called.
 
-When several routes match the given pattern, they run in the order opposite to their registration. That way the last registered route can always override all the previous ones.
+When several routes match the given pattern, only the last registered route handler will run, and all others will be skipped.
 
 | Parameter | Type                                                                                         | Default | Description                                         |
 | --------- | -------------------------------------------------------------------------------------------- | ------- | --------------------------------------------------- |
