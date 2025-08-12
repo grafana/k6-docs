@@ -263,7 +263,7 @@ It's important to note how k6 handles requests and messages. First, it tries to 
 A limitation during this process is that the object you pass as a request/message must be serializable. That means structs like `Map` don't work.
 
 The benefit of using `protojson` is the canonical JSON encoding support. The [Protocol Buffers documentation](https://protobuf.dev/programming-guides/proto3/#json) describes this mapping.
-Also note that according to [ProtoJSON docs](https://protobuf.dev/programming-guides/json/), the JSON value of a non-numeric float (e.g. `NaN` or `Infinity`) will be their equivalent string representation. 
+Also note that according to [ProtoJSON docs](https://protobuf.dev/programming-guides/json/), the JSON value of a non-numeric float (e.g. `NaN` or `Infinity`) will be their equivalent string representation.
 
 #### Examples
 
@@ -341,3 +341,9 @@ const respWithID = client.invoke('testing.Service/Test', { id: 123 });
 ```
 
 {{< /code >}}
+
+## Health Checking protocol
+
+There is a dedicated support for the [Health Checking](https://grpc.io/docs/guides/health-checking) protocol, which provides a standard way to check if a gRPC service is healthy and ready to serve requests. It eliminates the need to use the generic `invoke` method for health checks.
+
+The [Client.healthCheck()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/client/client-health-check) method implements this protocol and returns the health status of the specified service. If no service name is provided, it checks the overall server health.
