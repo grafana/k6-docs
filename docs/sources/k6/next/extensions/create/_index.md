@@ -1,7 +1,7 @@
 ---
 title: 'Create a new extension'
 menuTitle: 'Create a new extension'
-description: 'Creating k6 extensions does not have to be a daunting task, but there are some prerequisites to succeed.'
+description: 'Learn how to create a k6 extension.'
 weight: 04
 ---
 

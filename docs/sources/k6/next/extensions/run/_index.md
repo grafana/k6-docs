@@ -1,13 +1,13 @@
 ---
 title: 'Run a test with extensions'
 menuTitle: 'Run a test with extensions'
-description: 'Run k6 with extensions to cover use cases not supported natively in the core.'
+description: 'Learn how to run a k6 test with extensions.'
 weight: 03
 ---
 
 # Run a test with extensions
 
-As explained in the [Explore extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) page, there are extensions that can be used directly in your test script, and others that require building a custom k6 binary. 
+As explained in the [Explore extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) page, there are extensions that can be used directly in your test script, and others that require building a custom k6 binary.
 
 ## Using automatic extension resolution
 
@@ -31,7 +31,6 @@ k6 run script.js
 
 To use community extensions you must have `K6_ENABLE_COMMUNITY_EXTENSIONS` set to `true`.
 
-
 ```sh
 K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 run test.js
 ```
@@ -43,19 +42,20 @@ K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 run test.js
 - Only works with Official and Community extensions.
 - Output extensions are not supported.
 - Running scripts from stdin is not supported.
-- Only files with extensions `.js`, `.ts` or `.tar` can be used. 
+- Only files with extensions `.js`, `.ts` or `.tar` can be used.
 
 ### How to disable this feature
 
 You can disable this feature by setting the environment variable `K6_AUTO_EXTENSION_RESOLUTION` to `false`. If provided, the previous example
-fails because k6 can't load the extension dynamically. 
+fails because k6 can't load the extension dynamically.
+
 ```bash
 K6_AUTO_EXTENSION_RESOLUTION=false k6 run test.js
 ```
 
 ## Using extensions that require building a custom k6 binary
 
-To run other extensions (including ones you create), you need to build a custom k6 binary with [xk6](https://github.com/grafana/xk6/).  
+To run other extensions (including ones you create), you need to build a custom k6 binary with [xk6](https://github.com/grafana/xk6/).
 
 You can do this locally with [Go](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/build-k6-binary-using-go/) or use the [xk6 Docker image](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/build-k6-binary-using-docker/).
 
