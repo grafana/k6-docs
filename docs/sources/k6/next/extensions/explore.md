@@ -54,7 +54,7 @@ We are working on process for community folks to submit their extensions to be i
 
 If you have developed your own k6 extension or want to use an extension that's not available through automatic extension resolution, you'll need to build a custom k6 binary. This process involves using the xk6 tool to compile k6 with your desired extensions included. Custom binaries give you the flexibility to incorporate any extension from the k6 ecosystem.
 
-Check out how to [build a custom k6 binary guide](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-automatic-extension-loading) to learn how to create your own k6 binary with custom extensions.
+Check out how to [build a custom k6 binary guide](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-extensions-that-require-building-a-custom-k6-binary) to learn how to create your own k6 binary with custom extensions.
 
 ### More ecosystem extensions
 
