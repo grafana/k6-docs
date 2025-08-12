@@ -1,11 +1,11 @@
 ---
-title: 'Create a new extension'
-menuTitle: 'Create a new extension'
+title: 'Create a k6 extension'
+menuTitle: 'Create an extension'
 description: 'Learn how to create a k6 extension.'
 weight: 04
 ---
 
-# Create a new k6 extension
+# Create a k6 extension
 
 If you find a gap in your testing process that no k6 extension can fix,
 consider building your own extension. Use the tutorials below to get started.
