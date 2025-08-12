@@ -49,7 +49,6 @@ K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 run test.js
 - Output extensions are not supported.
 - Running scripts from stdin is not supported.
 - Only files with extensions `.js`, `.ts` or `.tar` can be used. 
-   - Other extensions will not invoke this native loading mechanism.
 
 ### How to disable this feature
 
