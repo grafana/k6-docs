@@ -7,12 +7,7 @@ weight: 03
 
 # Run a test with extensions
 
-As listed in the [Explore extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) page, extensions fall into three categories. 
-
-How you run them depends on their category:
-
-- **Official & Community** → You can import them directly in your test. If your local binary doesn’t already include them, k6 automatically loads a compatible version when you run your test.
-- **Other** (from the ecosystem or your own) → These require building a custom k6 binary with [xk6](https://github.com/grafana/xk6).
+As explained in the [Explore extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) page, there are extensions that can be used directly in your test script, and others that require building a custom k6 binary. 
 
 ## Using automatic extension resolution
 
@@ -58,9 +53,9 @@ fails because k6 can't load the extension dynamically.
 K6_AUTO_EXTENSION_RESOLUTION=false k6 run test.js
 ```
 
-## Using other extensions
+## Using extensions that require building a custom k6 binary
 
-To run other extensions (including ones you create), build a custom k6 binary with [xk6](https://github.com/grafana/xk6/).  
+To run other extensions (including ones you create), you need to build a custom k6 binary with [xk6](https://github.com/grafana/xk6/).  
 
 You can do this locally with [Go](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/build-k6-binary-using-go/) or use the [xk6 Docker image](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/build-k6-binary-using-docker/).
 
