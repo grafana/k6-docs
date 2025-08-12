@@ -7,20 +7,16 @@ weight: 01
 
 # Explore extensions
 
-## Supported by automatic extension resolution
-
-These extensions can be used in your test without any additional configuration. They are automatically resolved and loaded by k6 when you [import them in your test script](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-automatic-extension-loading).
-
-We have two categories of extensions:
+Extensions can be used to extend the core k6 features to fit your performance-testing use cases. There are two main categories of extensions:
 
 | Category      | Maintainer   | Audited | Cloud support |
 | ------------- | ------------ | ------- | ------------- |
 | **Official**  | Grafana Labs | ✅ Yes  | ✅ Yes        |
 | **Community** | Community    | ✅ Yes  | ⚠️ Partial\*  |
 
-\* _Partial_ means that they can be used in the CLI with the `--local-execution` mode. Also, on Private Load Zones if a custom image is build. They don't work on Grafana Cloud k6 Public Load Zones.
+\* _Partial_ cloud support means that the extensions can be used in the CLI with the `--local-execution` mode, and on Private Load Zones with a custom image. They don't work on Grafana Cloud k6 Public Load Zones.
 
-### Official extensions
+## Official extensions
 
 | Extension                                                                               | Description                                       | Versions                                 |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------- |
@@ -32,11 +28,11 @@ We have two categories of extensions:
 | [xk6-sql-driver-postgres](https://github.com/grafana/xk6-sql-driver-postgres)           | SQL driver for Postgres                           | 0.1.0, 0.1.1                             |
 | [xk6-ssh](https://github.com/grafana/xk6-ssh)                                           | Use SSH connections in your tests                 | 0.1.0, 0.1.1, 0.1.2, 0.1.3               |
 
-### Community extensions
+## Community extensions
 
 {{< admonition type="note" >}}
 
-We are working on process for community folks to submit their extensions to be included here.
+We're working on a process for community folks to submit their extensions.
 
 {{< /admonition >}}
 
@@ -48,20 +44,22 @@ We are working on process for community folks to submit their extensions to be i
 | [xk6-sql-driver-sqlserver](https://github.com/grafana/xk6-sql-driver-sqlserver)   | SQL driver for SQLite3             | 0.1.0, 0.1.1   |
 | [xk6-sse](https://github.com/phymbert/xk6-sse)                                    | Test with Server-Sent Events (SSE) | 0.1.10, 0.1.11 |
 
-## Require building a custom k6 binary
+## Use extensions
 
-### Your own extensions
+There are two ways to use extensions when running a k6 test script.
 
-If you have developed your own k6 extension or want to use an extension that's not available through automatic extension resolution, you'll need to build a custom k6 binary. This process involves using the xk6 tool to compile k6 with your desired extensions included. Custom binaries give you the flexibility to incorporate any extension from the k6 ecosystem.
+### Automatic extension resolution
 
-Check out how to [build a custom k6 binary guide](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-extensions-that-require-building-a-custom-k6-binary) to learn how to create your own k6 binary with custom extensions.
+These extensions can be used in your test without any additional configuration. They are automatically resolved and loaded by k6 when you [import them in your test script](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#using-automatic-extension-loading).
 
-### More ecosystem extensions
+### Custom k6 binary
+
+If you have developed your own k6 extension or want to use an extension that's not available through automatic extension resolution, you have to build a custom k6 binary. The process involves using the xk6 tool to compile k6 with your desired extensions included. Custom binaries give you the flexibility to incorporate any extension from the k6 ecosystem.
+
+Refer to [build a custom k6 binary guide](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#use-extensions-with-a-custom-k6-binary) to learn how to create your own k6 binary with custom extensions.
 
 {{< admonition type="caution" >}}
 
-The extensions in this category are not maintained nor audited by Grafana Labs.
+Many other extensions maintained by members of the k6 ecosystem are available in [GitHub](https://github.com/topics/xk6). These extensions aren't maintained nor audited by Grafana Labs.
 
 {{< /admonition >}}
-
-Many other extensions, maintained by members of the k6 ecosystem are available in [GitHub](https://github.com/topics/xk6).
