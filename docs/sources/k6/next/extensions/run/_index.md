@@ -14,7 +14,7 @@ How you run them depends on their category:
 - **Official & Community** → You can import them directly in your test. If your local binary doesn’t already include them, k6 automatically loads a compatible version when you run your test.
 - **Other** (from the ecosystem or your own) → These require building a custom k6 binary with [xk6](https://github.com/grafana/xk6).
 
-## Using automatic extension loading
+## Using automatic extension resolution
 
 It is as easy as importing them. Example with [xk6-faker](https://github.com/grafana/xk6-faker):
 
