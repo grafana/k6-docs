@@ -1,10 +1,10 @@
 ---
-title: 'JavaScript Extensions'
+title: 'JavaScript extensions'
 description: 'Follow these steps to build a JS extension for k6.'
 weight: 300
 ---
 
-# JavaScript Extensions
+# JavaScript extensions
 
 Take advantage of Go's speed, power, and efficiency while providing the flexibility of using JavaScript APIs
 within your test scripts.
