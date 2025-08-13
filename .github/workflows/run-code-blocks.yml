@@ -24,12 +24,14 @@ jobs:
         with:
           files: |
             docs/sources/k6/next/**/*.md
-      - uses: grafana/setup-k6-action@v1
-        with:
-          browser: true
+      - uses: actions/setup-go@v5
+      - name: Install k6 from github master
+        run: go install go.k6.io/k6@master
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Install chromium
+        run: sudo apt update && sudo apt install chromium-browser
       - name: Check script readiness
         run: python -m unittest scripts/md-k6.py
       - name: Run Updated Code Blocks
