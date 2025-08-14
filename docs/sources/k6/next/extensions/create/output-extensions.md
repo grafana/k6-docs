@@ -1,10 +1,10 @@
 ---
-title: 'Output Extensions'
+title: 'Output extensions'
 description: 'Follow these steps to build an output extension for k6.'
 weight: 400
 ---
 
-# Output Extensions
+# Output extensions
 
 k6 provides many [metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) and [output formats](https://grafana.com/docs/k6/<K6_VERSION>/results-output/), but it cannot directly support all possibilities.
 To store or alter metrics captured during an active k6 test,

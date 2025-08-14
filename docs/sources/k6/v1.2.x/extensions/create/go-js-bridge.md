@@ -1,7 +1,7 @@
 ---
 title: About the Go-to-JS bridge
 description: Technical details about how JavaScript works in the sobek engine.
-weight: 02
+weight: 700
 ---
 
 # About the Go-to-JS bridge

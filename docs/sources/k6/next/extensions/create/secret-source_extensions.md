@@ -1,10 +1,10 @@
 ---
-title: 'Secret source Extensions'
+title: 'Secret source extensions'
 description: 'Follow these steps to build an secret source extension for k6.'
 weight: 500
 ---
 
-# Secret Source Extensions
+# Secret Source extensions
 
 Secret source extension allow users to write or use written by other users extensions in order to get secrets to be used within k6 tests.
 

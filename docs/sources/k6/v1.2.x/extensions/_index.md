@@ -6,7 +6,10 @@ weight: 700
 
 # Extensions
 
-<!-- TODO: Add content -->
+With k6 extensions, you can extend the core k6 functionality with new features to support your specific reliability-testing needs.
 
-{{< section >}}
+k6 supports three types of extensions:
 
+- **JavaScript extensions** extend the JavaScript APIs available to your test scripts. They can add support for new network protocols, improve performance compared to equivalent JS libraries, or add features.
+- **Output extensions** send metrics to a custom file format or service. They can add custom processing and dispatching methods.
+- **Secret Source extensions** provide secrets to your tests.

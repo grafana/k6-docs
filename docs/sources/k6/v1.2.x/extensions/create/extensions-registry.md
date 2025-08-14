@@ -1,7 +1,7 @@
 ---
 title: About the Extensions Registry
 description: Reasons for the registry and what is required to be included.
-weight: 01
+weight: 600
 ---
 
 # About the Extensions Registry
@@ -18,7 +18,7 @@ To ensure quality, we need a well-maintained, curated listing of extensions.
 Our pledge to the community is to make our best attempt to ensure the listed projects meet certain standards.
 While we cannot guarantee the quality of community-provided extensions, we _can_ aid the evaluation by requiring certain consistencies.
 
-## Registry Requirements
+## Registry requirements
 
 At minimum, each source code repository must have the following:
 
@@ -55,7 +55,7 @@ At minimum, each source code repository must have the following:
   For example, if latest version of k6 is `v0.100`, the extension must build with at least version `v0.98`.
   Be sure to also match the version of Go as determined by the version of k6.
 
-## Naming Conventions
+## Naming conventions
 
 Some extensions may be very specific, where others are more general.
 Multiple extensions may even be created for the same product with different levels of support based upon version.
@@ -76,7 +76,7 @@ Our goal is to quickly understand the intent of the extension.
 
 {{< /admonition >}}
 
-## Potential for De-listing
+## Potential for de-listing
 
 Given our desire to provide the best developer experience when using k6, we reserve the right to de-list any extension we deem is no longer maintaining standards.
 Before any action takes place, the extension maintainers will be contacted to be given a chance to rectify the project and thus avoid de-listing.
