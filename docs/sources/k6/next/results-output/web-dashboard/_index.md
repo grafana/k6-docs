@@ -6,7 +6,7 @@ weight: 200
 
 # Web dashboard
 
-k6 provides a built-in web dashboard that you can enable to visualize and monitor your tests results in real-time.
+k6 provides a built-in web dashboard, enabled by default, to visualize and monitor your tests results in real-time.
 
 ![Web dashboard screenshot](/media/docs/k6-oss/web-dashboard-overview.png)
 
@@ -14,14 +14,10 @@ The dashboard provides a real-time overview of the performance observed by k6 wh
 
 ## How to use
 
-The web dashboard is a built-in feature of k6. You can enable it by setting the `K6_WEB_DASHBOARD` environment variable to `true` when running your test script, for example:
+The web dashboard is a built-in feature of k6 and is enabled by default.
 
 ```shell
-K6_WEB_DASHBOARD=true k6 run script.js
-```
-
-```shell
-K6_WEB_DASHBOARD=true ./k6 run script.js
+./k6 run script.js
 
          /\      Grafana   /‾‾/
     /\  /  \     |\  __   /  /
@@ -37,11 +33,17 @@ K6_WEB_DASHBOARD=true ./k6 run script.js
 
 By default, the web dashboard is available on localhost port `5665`. You can change the host and port by using the [dashboard options](#dashboard-options).
 
+You can disable the web dashboard by setting the `K6_NO_WEB_DASHBOARD` environment variable to `true` when running your test script, for example:
+
+```shell
+K6_NO_WEB_DASHBOARD=true k6 run script.js
+```
+
 {{< admonition type="note" >}}
 
 The k6 process waits to exit as long as there's at least one open browser window for the dashboard extension.
 
-In certain environments, such as a CI/CD pipeline, the k6 process has to exit after the test run completes. In that case, it's advisable to disable the HTTP port by setting it to `-1`.
+In certain environments, such as a CI/CD pipeline, the k6 process has to exit after the test run completes. In that case, it's advisable to disable the web dashboard by setting `K6_NO_WEB_DASHBOARD` to `true`.
 
 {{< /admonition >}}
 
@@ -62,7 +64,7 @@ To generate a report from the web dashboard, click **Report** on the dashboard's
 To automatically generate a report from the command line once the test finishes running, use the `K6_WEB_DASHBOARD_EXPORT` option. For example:
 
 ```shell
-K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run script.js
+K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run script.js
 ```
 
 {{< admonition type="note" >}}
@@ -77,7 +79,7 @@ The web dashboard can be configured using environment variables:
 
 | Environment variable       | Description                                                                                                                                        | Default value |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `K6_WEB_DASHBOARD`         | Enable the web dashboard                                                                                                                           | `false`       |
+| `K6_NO_WEB_DASHBOARD`         | Disable the web dashboard                                                                                                                           | `false`       |
 | `K6_WEB_DASHBOARD_HOST`    | Host to bind the web dashboard to                                                                                                                  | `localhost`   |
 | `K6_WEB_DASHBOARD_PORT`    | Port to bind the web dashboard to                                                                                                                  | `5665`        |
 | `K6_WEB_DASHBOARD_PERIOD`  | Period in seconds to update the web dashboard                                                                                                      | `10s`         |
