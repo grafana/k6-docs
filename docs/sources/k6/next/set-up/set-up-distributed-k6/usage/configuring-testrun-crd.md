@@ -1,13 +1,13 @@
 ---
 weight: 300
-title: Configuring TestRun CRD
+title: Configure the TestRun CRD
 ---
 
-# Configuring `TestRun` CRD
+# Configure the TestRun CRD
 
 <!-- TODO: consider removing this page once machine-generated reference becomes part of the docs -->
 
-The only options that are required as part of the `TestRun` CRD spec are `script` and `parallelism`. But there are many other options that can be set in `TestRun` CRD. Refer to the [crd-generated.md](https://github.com/grafana/k6-operator/blob/main/docs/crd-generated.md) for a complete list of all available fields.
+The only options that are required as part of the `TestRun` CRD spec are `script` and `parallelism`. But there are many other options that can be set in `TestRun` CRD. Refer to the [crd-generated.md](https://github.com/grafana/k6-operator/blob/main/docs/crd-generated.md) file in the k6-operator GitHub repository for a complete list of all available fields.
 
 Let's look at some of the most common options in greater detail.
 
