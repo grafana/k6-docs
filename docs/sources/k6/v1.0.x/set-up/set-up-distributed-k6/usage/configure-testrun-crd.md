@@ -1,9 +1,9 @@
 ---
 weight: 300
-title: Configuring TestRun CRD
+title: Configure the TestRun CRD
 ---
 
-# Configuring `TestRun` CRD
+# Configure the TestRun CRD
 
 <!-- TODO: consider removing this page once machine-generated reference becomes part of the docs -->
 
