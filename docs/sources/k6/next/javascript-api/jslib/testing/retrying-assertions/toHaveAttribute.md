@@ -26,7 +26,7 @@ await expect(locator).not.toHaveAttribute(attribute);
 | --------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | attribute | string                                                                                                                  | The attribute name to check for        |
 | value     | string                                                                                                                  | Optional. The expected attribute value |
-| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options         |
+| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/retryconfig) | Optional configuration options         |
 
 ## Returns
 
