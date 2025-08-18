@@ -6,7 +6,7 @@ weight: 00
 
 # testing
 
-The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from Playwright's test API design. The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect) function, which can be configured for convenience.
+The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from Playwright's test API design. The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) function, which can be configured for convenience.
 
 {{< admonition type="note" >}}
 The k6 testing library source code is available on [GitHub](https://github.com/grafana/k6-jslib-testing).
@@ -16,9 +16,9 @@ The k6 testing library source code is available on [GitHub](https://github.com/g
 
 - **Playwright-inspired assertions**: API designed with patterns inspired by Playwright's testing approach
 - **[Protocol and browser testing](#demo)**: Works with both HTTP/API testing and browser automation
-- **[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect#retrying-assertions)**: Automatically retry assertions until they pass or timeout
-- **[Soft assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/expect#soft-assertions)**: Continue test execution even after assertion failures
-- **[Configurable timeouts](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/configure)**: Customizable timeout and polling intervals
+- **[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect#retrying-assertions)**: Automatically retry assertions until they pass or timeout
+- **[Soft assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect#soft-assertions)**: Continue test execution even after assertion failures
+- **[Configurable timeouts](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure)**: Customizable timeout and polling intervals
 
 ## Usage
 
@@ -110,11 +110,11 @@ const myExpect = expect.configure({
 
 The testing library provides two types of assertions:
 
-### [Non-Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect/non-retrying-assertions/)
+### [Non-Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/non-retrying-assertions/)
 
 Synchronous assertions that evaluate immediately. These are ideal for testing static values, API responses, and scenarios where the expected condition should be true at the moment of evaluation.
 
-### [Retrying Assertions]((https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect/retrying-assertions/)
+### [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/)
 
 Asynchronous assertions that automatically retry until conditions become true or timeout. These are suitable for browser testing, dynamic content, and scenarios where conditions may change over time.
 

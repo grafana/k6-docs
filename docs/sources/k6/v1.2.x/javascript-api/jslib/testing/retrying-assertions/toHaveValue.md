@@ -24,7 +24,7 @@ await expect(locator).toHaveValue(value, options);
 | Parameter | Type                                                                                                                    | Description                    |
 | --------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
 | value     | string                                                                                                                  | The expected value             |
-| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) | Optional configuration options |
+| options   | [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/retryconfig) | Optional configuration options |
 
 ## Returns
 

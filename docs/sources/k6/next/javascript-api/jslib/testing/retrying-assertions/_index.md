@@ -10,7 +10,7 @@ Retrying assertions are asynchronous assertions that automatically retry until a
 
 ## Overview
 
-Retrying assertions differ from [non-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/non-retrying-assertions) in that they:
+Retrying assertions differ from [non-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/non-retrying-assertions) in that they:
 
 - **Automatically retry** - They continuously check the condition until it passes or times out
 - **Are asynchronous** - They return promises and must be `await`-ed
@@ -102,16 +102,16 @@ export default async function () {
 
 | Method                                                                                                                            | Description                          |
 | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobevisible)         | Element is visible on the page       |
-| [toBeHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobehidden)           | Element is hidden or not visible     |
-| [toBeEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeenabled)         | Element is enabled and interactive   |
-| [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobedisabled)       | Element is disabled                  |
-| [toBeChecked()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobechecked)         | Checkbox or radio button is checked  |
-| [toBeEditable()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tobeeditable)       | Element is editable                  |
-| [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavetext)           | Element has specific text content    |
-| [toContainText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tocontaintext)     | Element contains specific text       |
-| [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohavevalue)         | Input element has specific value     |
-| [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/tohaveattribute) | Element has specific attribute value |
+| [toBeVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobevisible)         | Element is visible on the page       |
+| [toBeHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobehidden)           | Element is hidden or not visible     |
+| [toBeEnabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobeenabled)         | Element is enabled and interactive   |
+| [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobedisabled)       | Element is disabled                  |
+| [toBeChecked()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobechecked)         | Checkbox or radio button is checked  |
+| [toBeEditable()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobeeditable)       | Element is editable                  |
+| [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohavetext)           | Element has specific text content    |
+| [toContainText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tocontaintext)     | Element contains specific text       |
+| [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohavevalue)         | Input element has specific value     |
+| [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohaveattribute) | Element has specific attribute value |
 
 
 {{< section >}}

@@ -28,7 +28,7 @@ await expect(locator).toHaveText(expected, options);
 
 ### Options
 
-This method accepts all [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6-testing/retrying-assertions/retryconfig) properties plus:
+This method accepts all [RetryConfig](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/retryconfig) properties plus:
 
 | Property     | Type    | Default | Description                          |
 | ------------ | ------- | ------- | ------------------------------------ |
