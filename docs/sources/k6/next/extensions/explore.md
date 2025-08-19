@@ -16,6 +16,8 @@ Extensions can be used to extend the core k6 features to fit your performance-te
 
 \* _Partial_ cloud support means that the extensions can be used in the CLI with the `--local-execution` mode, and on Private Load Zones with a custom image. They don't work on Grafana Cloud k6 Public Load Zones.
 
+## Official extensions
+
 {{< docs/shared source="k6" lookup="official-extensions.md" version="<K6_VERSION>" >}}
 
 ## Community extensions
