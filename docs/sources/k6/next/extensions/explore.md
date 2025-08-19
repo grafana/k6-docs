@@ -16,17 +16,7 @@ Extensions can be used to extend the core k6 features to fit your performance-te
 
 \* _Partial_ cloud support means that the extensions can be used in the CLI with the `--local-execution` mode, and on Private Load Zones with a custom image. They don't work on Grafana Cloud k6 Public Load Zones.
 
-## Official extensions
-
-| Extension                                                                               | Description                                       | Versions                                 |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------- |
-| [xk6-client-prometheus-remote](https://github.com/grafana/xk6-client-prometheus-remote) | Test Prometheus Remote Write-compatible endpoints | 0.3.2                                    |
-| [xk6-faker](https://github.com/grafana/xk6-faker)                                       | Generate fake data in your tests                  | 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.4.4        |
-| [xk6-loki](https://github.com/grafana/xk6-loki)                                         | Test Grafana Loki log ingestion endpoints         | 1.0.0, 1.0.1                             |
-| [xk6-sql](https://github.com/grafana/xk6-sql)                                           | Test SQL servers                                  | 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5 |
-| [xk6-sql-driver-mysql](https://github.com/grafana/xk6-sql-driver-mysql)                 | SQL driver for MySQL                              | 0.1.0, 0.2.0, 0.2.1                      |
-| [xk6-sql-driver-postgres](https://github.com/grafana/xk6-sql-driver-postgres)           | SQL driver for Postgres                           | 0.1.0, 0.1.1                             |
-| [xk6-ssh](https://github.com/grafana/xk6-ssh)                                           | Use SSH connections in your tests                 | 0.1.0, 0.1.1, 0.1.2, 0.1.3               |
+{{< docs/shared source="k6" lookup="official-extensions.md" version="<K6_VERSION>" >}}
 
 ## Community extensions
 
@@ -36,13 +26,7 @@ We're working on a process for community folks to submit their extensions.
 
 {{< /admonition >}}
 
-| Extension                                                                         | Description                        | Versions       |
-| --------------------------------------------------------------------------------- | ---------------------------------- | -------------- |
-| [xk6-kafka](https://github.com/mostafa/xk6-kafka)                                 | Load test Apache Kafka             | 1.0.0          |
-| [xk6-sql-driver-azuresql](https://github.com/grafana/xk6-sql-driver-azuresql)     | SQL driver for AzureSQL            | 0.1.0, 0.1.1   |
-| [xk6-sql-driver-clickhouse](https://github.com/grafana/xk6-sql-driver-clickhouse) | SQL driver for Clickhouse          | 0.1.0, 0.1.1   |
-| [xk6-sql-driver-sqlserver](https://github.com/grafana/xk6-sql-driver-sqlserver)   | SQL driver for SQLite3             | 0.1.0, 0.1.1   |
-| [xk6-sse](https://github.com/phymbert/xk6-sse)                                    | Test with Server-Sent Events (SSE) | 0.1.10, 0.1.11 |
+{{< docs/shared source="k6" lookup="community-extensions.md" version="<K6_VERSION>" >}}
 
 ## Use extensions
 
