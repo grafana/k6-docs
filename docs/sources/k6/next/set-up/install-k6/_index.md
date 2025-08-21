@@ -11,7 +11,7 @@ weight: 01
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.
 
-You can also use the k6 Studio desktop application to help you generate k6 scripts from a browser recording. Refer to [k6 Studio] for more details.
+You can also use the k6 Studio desktop application to help you generate k6 scripts from a browser recording. Refer to [k6 Studio](#k6-studio) for more details.
 
 ## Linux
 
