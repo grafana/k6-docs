@@ -18,7 +18,7 @@ For details about propagation, refer to [About baggage header](https://grafana.c
 
 | Name              | Type                                        | Description                                                                                                                                                                                                                                                                                                    |
 | :---------------- | :------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `generateHeaders` | `function(method, body, params) headersMap` | A function taking the request method, body and params and returning a map of headers that will be attached. By default adding baggage header as explained in the [about baggage header](<(https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header)>) |
+| `generateHeaders` | `function(method, body, params) headersMap` | A function taking the request method, body and params and returning a map of headers that will be attached. By default adding baggage header as explained in the [about baggage header](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/http-instrumentation-pyroscope#about-baggage-header) |
 
 ## Example
 
