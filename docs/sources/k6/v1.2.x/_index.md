@@ -2,7 +2,7 @@
 aliases:
   - /docs/k6/
 description: 'The k6 documentation covers everything you need to know about k6 OSS, load testing, and performance testing.'
-nmenuTitle: Grafana k6
+menuTitle: Grafana k6
 title: Grafana k6
 weight: -10
 hero:
@@ -89,8 +89,6 @@ Engineering teams, including Developers, QA Engineers, SDETs, and SREs, commonly
 Watch the video below to learn more about k6 and why it could be the missing puzzle in your Grafana stack.
 
 {{< youtube id="1mtYVDA2_iQ" >}}
-
-TESTING AGAIN
 
 ## Explore
 
