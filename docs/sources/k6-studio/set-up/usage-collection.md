@@ -11,14 +11,12 @@ By default, k6 Studio sends anonymous usage reports, as well as crash reports an
 
 A usage report includes the following information:
 
-- The event name.
+- The event name (see table below).
 - The event payload - additional information about the event (every event includes the boolean property`isLoggedIn`).
 - The running program's operating system (`win`, `mac`, or `linux`).
 - The running program's architecture (`arm64` or `x86_64`).
 - The k6 Studio version (for example, `1.5.0`).
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
-
-The following table lists the event names, their payload or properties, and the version in which each event was introduced:
 
 | Event name           | Description                                           | Additional event properties       | Version introduced |
 | -------------------- | ----------------------------------------------------- |---------------------------------- | ------------------ |
