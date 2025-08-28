@@ -8,7 +8,6 @@ weight: 300
 
 By default, k6 Studio sends anonymous usage reports, as well as crash reports and error data, so that we can track how users are using the product and its features. We use that information to prioritize the roadmap with the features that will benefit a majority of users, and reduce the impact of any changes we make. The data doesn't contain any information about you or what you are testing.
 
-
 A usage report includes the following information:
 
 - The event name (see table below).
