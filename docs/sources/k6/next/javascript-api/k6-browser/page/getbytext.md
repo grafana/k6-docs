@@ -7,23 +7,19 @@ description: 'Browser module: page.getByText(text[, options]) method'
 
 Returns a locator for elements containing the specified text. This method finds elements by their visible text content, making it ideal for locating user-facing content like buttons, links, headings, and other text elements.
 
-<TableWithNestedRows>
+| Parameter       | Type             | Default | Description                                                                                                 |
+| --------------- | ---------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| `text`          | string \| RegExp | -       | Required. The text content to search for. Can be a string for exact match or a RegExp for pattern matching. |
+| `options`       | object           | `null`  |                                                                                                             |
+| `options.exact` | boolean          | `false` | Whether to match the text exactly with case sensitivity. When `true`, performs a case-sensitive match.      |
 
-| Parameter     | Type           | Default | Description                                                                                                 |
-| ------------- | -------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| text          | string\|RegExp | -       | Required. The text content to search for. Can be a string for exact match or a RegExp for pattern matching. |
-| options       | object         | `null`  |                                                                                                             |
-| options.exact | boolean        | `false` | Whether to match the text exactly with case sensitivity. When `true`, performs a case-sensitive match.      |
+## Returns
 
-</TableWithNestedRows>
+| Type                                                                                   | Description                                                                                    |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the elements containing the specified text. |
 
-### Returns
-
-| Type                                                                                   | Description                                                                                      |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the element(s) containing the specified text. |
-
-### Examples
+## Examples
 
 Find and click elements by their visible text:
 
@@ -61,7 +57,7 @@ export default async function () {
 }
 ```
 
-### Text matching behavior
+## Text matching behavior
 
 **Whitespace normalization**: Text matching automatically normalizes whitespace, meaning:
 
@@ -97,7 +93,7 @@ page.getByText(/Hello/);
 page.getByText(/^hello$/i);
 ```
 
-### Common use cases
+## Common use cases
 
 - **Button interactions**: Submit, Cancel, Delete, Edit buttons
 - **Navigation**: Menu items, breadcrumbs, pagination links
@@ -105,21 +101,16 @@ page.getByText(/^hello$/i);
 - **Form interactions**: Checkbox labels, radio button options
 - **Status indicators**: Active, Inactive, Pending states
 
-### Best practices
+## Best practices
 
 1. **User-focused testing**: Using `getByText()` ensures your tests interact with content as users see it.
+1. **Avoid brittle text**: Be cautious with exact text that might change frequently (like dates, counts, or user-generated content).
+1. **Use meaningful text**: Prefer descriptive button text and labels over generic terms like "Click here" or "Button".
+1. **Handle dynamic content**: Use regular expressions for text that contains variable parts (timestamps, user names, counts).
+1. **Consider accessibility**: Text-based selection encourages better accessibility practices in your application.
+1. **Internationalization**: For multi-language applications, consider using test IDs or roles instead of text for critical interactions.
 
-2. **Avoid brittle text**: Be cautious with exact text that might change frequently (like dates, counts, or user-generated content).
-
-3. **Use meaningful text**: Prefer descriptive button text and labels over generic terms like "Click here" or "Button".
-
-4. **Handle dynamic content**: Use regular expressions for text that contains variable parts (timestamps, user names, counts).
-
-5. **Consider accessibility**: Text-based selection encourages better accessibility practices in your application.
-
-6. **Internationalization**: For multi-language applications, consider using test IDs or roles instead of text for critical interactions.
-
-### Related
+## Related
 
 - [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
 - [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text
