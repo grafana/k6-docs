@@ -2,12 +2,11 @@
 title: 'Trend'
 description: 'Trend is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles)'
 weight: 73
-weight: 73
 ---
 
 # Trend
 
-_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [metrics types](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
+_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It's one of the four [metric types](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |
