@@ -7,25 +7,21 @@ description: 'Browser module: page.getByLabel(text[, options]) method'
 
 Returns a locator for form controls associated with the specified label text. This method is ideal for interacting with form elements in an accessible and user-focused way, as it mirrors how users typically identify form fields.
 
-<TableWithNestedRows>
+| Parameter       | Type             | Default | Description                                                                                                  |
+| --------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
+| `text`          | string \| RegExp | -       | Required. The label text to search for. Can be a string for exact match or a RegExp for pattern matching.    |
+| `options`       | object           | `null`  |                                                                                                              |
+| `options.exact` | boolean          | `false` | Whether to match the label text exactly with case sensitivity. When `true`, performs a case-sensitive match. |
 
-| Parameter     | Type           | Default | Description                                                                                                  |
-| ------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
-| text          | string\|RegExp | -       | Required. The label text to search for. Can be a string for exact match or a RegExp for pattern matching.    |
-| options       | object         | `null`  |                                                                                                              |
-| options.exact | boolean        | `false` | Whether to match the label text exactly with case sensitivity. When `true`, performs a case-sensitive match. |
-
-</TableWithNestedRows>
-
-### Returns
+## Returns
 
 | Type                                                                                   | Description                                                                                              |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the form control associated with the specified label. |
 
-### Examples
+## Examples
 
-#### Basic form interaction
+### Basic form interaction
 
 Fill form fields using their labels:
 
@@ -69,7 +65,7 @@ export default async function () {
 }
 ```
 
-#### Working with different input types
+### Working with different input types
 
 Handle various form control types in various label association patterns:
 
@@ -136,52 +132,49 @@ export default async function () {
 }
 ```
 
-### Label association patterns
+## Label association patterns
 
 The `getByLabel()` method works with several HTML patterns for associating labels with form controls:
 
-**1. Explicit association with `for` attribute:**
+1. Explicit association with `for` attribute:
 
-<!-- eslint-skip -->
+   <!-- eslint-skip -->
 
-```html
-<label for="username">Username</label> <input type="text" id="username" name="username" />
-```
+   ```html
+   <label for="username">Username</label> <input type="text" id="username" name="username" />
+   ```
 
-**2. ARIA labeling:**
+1. ARIA labeling:
 
-<!-- eslint-skip -->
+   <!-- eslint-skip -->
 
-```html
-<span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
-```
+   ```html
+   <span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
+   ```
 
-**3. ARIA label attribute:**
+1. ARIA label attribute:
 
-<!-- eslint-skip -->
+   <!-- eslint-skip -->
 
-```html
-<input type="text" aria-label="Username" />
-```
+   ```html
+   <input type="text" aria-label="Username" />
+   ```
 
-### Common use cases
+## Common use cases
 
 - **Form testing**: Login forms, registration forms, contact forms
 - **E-commerce**: Checkout forms, shipping information, payment details
 - **Settings pages**: User preferences, account settings, configuration forms
 - **Accessibility testing**: Ensuring proper label association and screen reader compatibility
 
-### Best practices
+## Best practices
 
 1. **Accessibility-first approach**: Using `getByLabel()` ensures your tests work the same way users with assistive technology interact with forms.
+1. **Meaningful labels**: Encourage developers to use descriptive, unique label text that clearly identifies the form control's purpose.
+1. **Required field indicators**: When testing required fields, include any visual indicators (like asterisks) in your label text matching.
+1. **Form validation testing**: Use labels to test form validation scenarios, as they provide a stable way to identify fields regardless of styling changes.
 
-2. **Meaningful labels**: Encourage developers to use descriptive, unique label text that clearly identifies the form control's purpose.
-
-3. **Required field indicators**: When testing required fields, include any visual indicators (like asterisks) in your label text matching.
-
-4. **Form validation testing**: Use labels to test form validation scenarios, as they provide a stable way to identify fields regardless of styling changes.
-
-### Related
+## Related
 
 - [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
 - [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text

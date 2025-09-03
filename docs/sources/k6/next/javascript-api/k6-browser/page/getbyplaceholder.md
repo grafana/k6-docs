@@ -7,23 +7,19 @@ description: 'Browser module: page.getByPlaceholder(placeholder[, options]) meth
 
 Returns a locator for input elements with the specified `placeholder` attribute. This method is useful for locating form fields that use `placeholder` attribute to provide hints or examples to users about the expected input format.
 
-<TableWithNestedRows>
+| Parameter       | Type             | Default | Description                                                                                                        |
+| --------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| `placeholder`   | string \| RegExp | -       | Required. The placeholder text to search for. Can be a string for exact match or a RegExp for pattern matching.    |
+| `options`       | object           | `null`  |                                                                                                                    |
+| `options.exact` | boolean          | `false` | Whether to match the placeholder text exactly with case sensitivity. When `true`, performs a case-sensitive match. |
 
-| Parameter     | Type           | Default | Description                                                                                                        |
-| ------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| placeholder   | string\|RegExp | -       | Required. The placeholder text to search for. Can be a string for exact match or a RegExp for pattern matching.    |
-| options       | object         | `null`  |                                                                                                                    |
-| options.exact | boolean        | `false` | Whether to match the placeholder text exactly with case sensitivity. When `true`, performs a case-sensitive match. |
+## Returns
 
-</TableWithNestedRows>
+| Type                                                                                   | Description                                                                                                    |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the input elements matching the specified placeholder text. |
 
-### Returns
-
-| Type                                                                                   | Description                                                                                                      |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the input element(s) matching the specified placeholder text. |
-
-### Examples
+## Examples
 
 Find and fill inputs by their placeholder text:
 
@@ -69,40 +65,32 @@ export default async function () {
 }
 ```
 
-### Common use cases
+## Common use cases
 
-**Form field identification:**
+- **Form field identification:**
+  - Login and registration forms without explicit labels
+  - Quick search boxes
+  - Filter and input controls
+  - Comment and feedback forms
+- **E-commerce:**
+  - Product search bars
+  - Quantity input fields
+  - Promo code entry
+  - Address and payment information
+- **Interactive applications:**
+  - Chat input fields
+  - Command input interfaces
+  - Settings and configuration forms
+  - Data entry applications
 
-- Login and registration forms without explicit labels
-- Quick search boxes
-- Filter and input controls
-- Comment and feedback forms
-
-**E-commerce:**
-
-- Product search bars
-- Quantity input fields
-- Promo code entry
-- Address and payment information
-
-**Interactive applications:**
-
-- Chat input fields
-- Command input interfaces
-- Settings and configuration forms
-- Data entry applications
-
-### Best practices
+## Best practices
 
 1. **Complement, don't replace labels**: Placeholder text should supplement, not replace proper form labels for accessibility.
+1. **Use descriptive placeholders**: Ensure placeholder text clearly indicates the expected input format or content.
+1. **Consider internationalization**: When testing multi-language applications, be aware that placeholder text may change.
+1. **Accessibility considerations**: Remember that placeholder text alone may not be sufficient for users with disabilities.
 
-2. **Use descriptive placeholders**: Ensure placeholder text clearly indicates the expected input format or content.
-
-3. **Consider internationalization**: When testing multi-language applications, be aware that placeholder text may change.
-
-4. **Accessibility considerations**: Remember that placeholder text alone may not be sufficient for users with disabilities.
-
-### Related
+## Related
 
 - [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
 - [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text
