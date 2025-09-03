@@ -1,13 +1,12 @@
 ---
 title: 'Counter'
-description: 'Counter is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.'
-weight: 70
+description: 'Counter is an object for representing a custom cumulative counter metric.'
 weight: 70
 ---
 
 # Counter
 
-_Counter_ is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.
+_Counter_ is an object for representing a custom cumulative counter metric. It's one of the four [metric types](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics).
 
 | Parameter | Type   | Description                    |
 | --------- | ------ | ------------------------------ |
