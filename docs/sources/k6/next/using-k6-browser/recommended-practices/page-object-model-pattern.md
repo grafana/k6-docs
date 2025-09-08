@@ -8,11 +8,11 @@ weight: 02
 
 # Page object model
 
-When working with large test suites, a popular design pattern to improve your code’s maintainability and readability is the [page object model](https://martinfowler.com/bliki/PageObject.html).
+When working with large test suites, a popular design pattern to improve your code's maintainability and readability is the [page object model](https://martinfowler.com/bliki/PageObject.html).
 
-A page object commonly represents an HTML page or significant elements/components within a page, such as a header or a footer. It is a form of encapsulation that hides the details of the UI structure from other places, such as your test files. Through page object models, any changes you need to make on a specific page or element within a page are constrained into a single place, resulting in ease of maintenance and avoiding code duplication.
+A page object commonly represents an HTML page or significant elements/components within a page, such as a header or a footer. It's a form of encapsulation that hides the details of the UI structure from other places, such as your test files. Through page object models, any changes you need to make on a specific page or element within a page are constrained into a single place, resulting in ease of maintenance and avoiding code duplication.
 
-Since k6 browser aims to provide rough compatibility with the Playwright API, you can leverage any existing page objects you have and easily re-use them with your k6 browser tests.
+Since k6 browser is inspired by Playwright, you can leverage any existing page objects you have and re-use them with your k6 browser tests.
 
 ## Implementation
 

@@ -10,8 +10,6 @@ weight: 300
 
 The browser module brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 
-This module aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
-
 {{< admonition type="note" >}}
 
 To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases), and install a Chromium-based browser on your machine (such as [Google Chrome](https://www.google.com/chrome/)).
