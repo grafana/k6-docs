@@ -14,21 +14,21 @@ A usage report includes the following information:
 - The event payload - additional information about the event (every event includes the boolean property`isLoggedIn`).
 - The running program's operating system (`win`, `mac`, or `linux`).
 - The running program's architecture (`arm64` or `x86_64`).
-- The k6 Studio version (for example, `1.5.0`).
+- The k6 Studio version (for example, `1.7.0`).
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
 
-| Event name           | Description                                           | Additional event properties       | Version introduced |
-| -------------------- | ----------------------------------------------------- |---------------------------------- | ------------------ |
-| `app_installed`      | k6 Studio is installed and opened for the first time  |                                   | 1.6.0              |
-| `user_logged_in`     | The user logs in to Grafana Cloud                     |                                   | 1.6.0              |
-| `recording_created`  | A new recording is created                            |                                   | 1.6.0              |
-| `recording_imported` | A recording is imported                               |                                   | 1.6.0              |
-| `generator_created`  | A new generator is created                            |                                   | 1.6.0              |
-| `generator_updated`  | An existing generator is updated                      | `rules` - object containing the total number of test rules per rule type and the total number of disabled rules                     | 1.6.0              |
-| `script_copied`      | A script is copied into the clipboard                 |                                   | 1.7.0              |
-| `script_exported`    | A script is exported                                  |                                   | 1.6.0              |
-| `script_validated`   |  A script is validated                                |                                   | 1.6.0              |
-| `script_run_in_cloud`|  A script is run in the cloud                         |                                   | 1.6.0              |
+| Event name           | Description                                           | Event payload                     |
+| -------------------- | ----------------------------------------------------- |---------------------------------- |
+| `app_installed`      | k6 Studio is installed and opened for the first time  |                                   |
+| `user_logged_in`     | The user logs in to Grafana Cloud                     |                                   |
+| `recording_created`  | A new recording is created                            |                                   |
+| `recording_imported` | A recording is imported                               |                                   |
+| `generator_created`  | A new generator is created                            |                                   |
+| `generator_updated`  | An existing generator is updated                      | The total number of test rules per rule type and the total number of disabled rules                     |
+| `script_copied`      | A script is copied into the clipboard                 |                                   |
+| `script_exported`    | A script is exported                                  |                                   |
+| `script_validated`   |  A script is validated                                |                                   |
+| `script_run_in_cloud`|  A script is run in the cloud                         |                                   |
 
 We use [Sentry](https://sentry.io/) to collect crash reports and error data. That includes:
 
