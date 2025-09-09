@@ -65,9 +65,7 @@ export default async function () {
     `);
   
     // Use locator.locator to find specific products within the list
-    const productList = page.locator('div[data-testid="products"]');
-    const fruitProducts = productList.locator('div[data-category="fruits"]');
-    const appleProduct = fruitProducts.locator('div[data-product="apple"]');
+    const appleProduct = page.locator('div[data-product="apple"]');
     const addToCartButton = appleProduct.locator('//button[text()="Add to Cart"]');
       
     // Interact with the nested locators
