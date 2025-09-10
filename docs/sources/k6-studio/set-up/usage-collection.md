@@ -10,20 +10,25 @@ By default, k6 Studio sends anonymous usage reports, as well as crash reports an
 
 A usage report includes the following information:
 
-- The event name:
-  - `app_installed`: when k6 Studio is installed and opened for the first time.
-  - `user_logged_in`: when a user logs in to Grafana Cloud.
-  - `recording_created`: when a new recording is created.
-  - `recording_imported`: when a recording is imported.
-  - `generator_created`: when a new generator is created.
-  - `generator_updated`: when a generator is updated.
-  - `script_exported`: when a script is exported.
-  - `script_validated`: when a script is validated.
-  - `script_run_in_cloud`: when a script is run in the cloud.
+- The event name. Refer to the table below for a list of event names and details.
+- The event payload - additional information about the event. Every event includes the boolean property `isLoggedIn`.
 - The running program's operating system (`win`, `mac`, or `linux`).
 - The running program's architecture (`arm64` or `x86_64`).
-- The k6 Studio version (for example, `1.5.0`).
+- The k6 Studio version (for example, `1.7.0`).
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
+
+| Event name            | Description                                          | Event payload                                                                       |
+| --------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `app_installed`       | k6 Studio is installed and opened for the first time |                                                                                     |
+| `user_logged_in`      | The user logs in to Grafana Cloud                    |                                                                                     |
+| `recording_created`   | A new recording is created                           |                                                                                     |
+| `recording_imported`  | A recording is imported                              |                                                                                     |
+| `generator_created`   | A new generator is created                           |                                                                                     |
+| `generator_updated`   | An existing generator is updated                     | The total number of test rules per rule type and the total number of disabled rules |
+| `script_copied`       | A script is copied into the clipboard                |                                                                                     |
+| `script_exported`     | A script is exported                                 |                                                                                     |
+| `script_validated`    | A script is validated                                |                                                                                     |
+| `script_run_in_cloud` | A script is run in the cloud                         |                                                                                     |
 
 We use [Sentry](https://sentry.io/) to collect crash reports and error data. That includes:
 
