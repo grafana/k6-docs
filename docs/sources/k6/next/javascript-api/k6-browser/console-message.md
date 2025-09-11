@@ -1,6 +1,5 @@
 ---
 title: 'ConsoleMessage'
-slug: 'consolemessage'
 description: 'Browser module: ConsoleMessage Class'
 weight: 03
 ---
@@ -11,7 +10,7 @@ weight: 03
 
 ## Supported APIs
 
-| Method                                                                                                          | Playwright Relevant Distinctions |
+| Method                                                                                                          | Relevant Distinctions |
 | --------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-args" target="_blank" >args()</a> | -                                |
 | <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-page" target="_blank" >page()</a> | -                                |

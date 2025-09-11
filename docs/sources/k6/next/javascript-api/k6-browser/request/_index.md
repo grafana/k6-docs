@@ -12,7 +12,7 @@ The request that the browser performs can be retrieved from the [Response](https
 
 ## Supported APIs
 
-| Method                                                                                                                            | Playwright Relevant Distinctions                                                                                     |
+| Method                                                                                                                            | Relevant Distinctions                                                                                     |
 | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | [allHeaders()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/allheaders) {{< docs/bwipt id="965" >}} | Returns an object of headers associated to the request including headers added by the browser.                       |
 | [frame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/frame)                                       | The [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) that initiated the request.   |
