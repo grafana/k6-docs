@@ -4,7 +4,7 @@ aliases:
 title: JavaScript and TypeScript compatibility mode
 menuTitle: JavaScript and TypeScript mode
 excerpt: 'k6 supports running test scripts with different compatibility modes using --compatibility-mode'
-weight: 19
+weight: 1800
 ---
 
 # JavaScript compatibility mode
