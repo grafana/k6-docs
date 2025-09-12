@@ -112,8 +112,8 @@ export default async function () {
     `);
 
     // Inputs
-    page.getByLabel('Username (hint: default)', { exact: true }).fill('default');
-    page.getByLabel(/^Password.*$/).fill('12345678');
+    await page.getByLabel('Username (hint: default)', { exact: true }).fill('default');
+    await page.getByLabel(/^Password.*$/).fill('12345678');
 
     // Checkbox
     await page.getByLabel('Subscribe to newsletter').check();

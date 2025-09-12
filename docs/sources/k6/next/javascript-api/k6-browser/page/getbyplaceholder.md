@@ -19,7 +19,7 @@ Returns a locator for input elements with the specified `placeholder` attribute.
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the input elements matching the specified placeholder text. |
 
-## Examples
+## Example
 
 Find and fill inputs by their placeholder text:
 

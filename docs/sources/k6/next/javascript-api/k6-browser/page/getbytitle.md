@@ -27,7 +27,6 @@ Find and interact with elements by their title attribute:
 
 ```javascript
 import { browser } from 'k6/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
 
 export const options = {
   scenarios: {
