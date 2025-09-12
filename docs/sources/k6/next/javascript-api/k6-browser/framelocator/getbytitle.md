@@ -1,6 +1,6 @@
 ---
 title: 'getByTitle(title[, options])'
-description: 'Browser module: page.getByTitle(title[, options]) method'
+description: 'Browser module: frameLocator.getByTitle(title[, options]) method'
 ---
 
 # getByTitle(title[, options])
@@ -45,7 +45,7 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.setContent(`
+    const iframeHTML = `
       <button title="Hello World">Hi</button>
       <select title="Favorite Color">
         <option value="Red">Red</option>
@@ -53,13 +53,19 @@ export default async function () {
         <option value="Blue">Blue</option>
       </select>
       <input type="checkbox" title="Check me">
+    `;
+
+    await page.setContent(`
+      <iframe id="my_frame" src="data:text/html,${encodeURIComponent(iframeHTML)}"></iframe>
     `);
 
-    await page.getByTitle('Hello World').click();
+    const frameLocator = page.locator("#my_frame").contentFrame();
 
-    await page.getByTitle('Favorite Color').selectOption('Red');
+    await frameLocator.getByTitle('Hello World').click();
 
-    await page.getByTitle('Check me').check();
+    await frameLocator.getByTitle('Favorite Color').selectOption('Red');
+
+    await frameLocator.getByTitle('Check me').check();
   } finally {
     await page.close();
   }
@@ -95,9 +101,9 @@ export default async function () {
 
 ## Related
 
-- [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
-- [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text
-- [page.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbylabel/) - Locate by form labels
-- [page.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyplaceholder/) - Locate by placeholder text
-- [page.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytestid/) - Locate by test ID
-- [page.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytext/) - Locate by visible text
+- [frameLocator.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyrole/) - Locate by ARIA role
+- [frameLocator.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyalttext/) - Locate by alt text
+- [frameLocator.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbylabel/) - Locate by form labels
+- [frameLocator.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyplaceholder/) - Locate by placeholder text
+- [frameLocator.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytestid/) - Locate by test ID
+- [frameLocator.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytext/) - Locate by visible text

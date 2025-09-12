@@ -1,6 +1,6 @@
 ---
 title: 'getByPlaceholder(placeholder[, options])'
-description: 'Browser module: page.getByPlaceholder(placeholder[, options]) method'
+description: 'Browser module: frameLocator.getByPlaceholder(placeholder[, options]) method'
 ---
 
 # getByPlaceholder(placeholder[, options])
@@ -45,20 +45,25 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.setContent(`
+    const iframeHTML = `
       <input type="text" placeholder="First name">
       <input type="text" placeholder="Last name">
       <input type="text" placeholder="dd/mm/yyyy">
       <input type="text" placeholder="your.email@example.com">
       <input type="text" placeholder="+1 (555) 123-4567">
+    `;
+
+    await page.setContent(`
+      <iframe id="my_frame" src="data:text/html,${encodeURIComponent(iframeHTML)}"></iframe>
     `);
 
-    await page.getByPlaceholder('First name').fill('First');
-    await page.getByPlaceholder('Last name').fill('Last');
-    await page.getByPlaceholder('dd/mm/yyyy').fill('01/01/1990');
+    const frameLocator = page.locator("#my_frame").contentFrame();
+    await frameLocator.getByPlaceholder('First name').fill('First');
+    await frameLocator.getByPlaceholder('Last name').fill('Last');
+    await frameLocator.getByPlaceholder('dd/mm/yyyy').fill('01/01/1990');
 
-    await page.getByPlaceholder('your.email@example.com').fill('first.last@example.com');
-    await page.getByPlaceholder('+1 (555) 123-4567').fill('+1 (555) 987-6543');
+    await frameLocator.getByPlaceholder('your.email@example.com').fill('first.last@example.com');
+    await frameLocator.getByPlaceholder('+1 (555) 123-4567').fill('+1 (555) 987-6543');
   } finally {
     await page.close();
   }
@@ -92,9 +97,9 @@ export default async function () {
 
 ## Related
 
-- [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
-- [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text
-- [page.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbylabel/) - Locate by form labels (preferred for accessibility)
-- [page.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytestid/) - Locate by test ID
-- [page.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytitle/) - Locate by title attribute
-- [page.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytext/) - Locate by visible text
+- [frameLocator.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyrole/) - Locate by ARIA role
+- [frameLocator.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyalttext/) - Locate by alt text
+- [frameLocator.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbylabel/) - Locate by form labels (preferred for accessibility)
+- [frameLocator.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytestid/) - Locate by test ID
+- [frameLocator.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytitle/) - Locate by title attribute
+- [frameLocator.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytext/) - Locate by visible text
