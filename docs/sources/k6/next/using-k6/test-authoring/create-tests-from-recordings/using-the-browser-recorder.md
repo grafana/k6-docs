@@ -6,7 +6,7 @@ weight: 01
 
 # Using the browser recorder
 
-{{< admonition type="caution" >}} 
+{{< admonition type="caution" >}}
 
 The Grafana k6 Browser Recorder extension is deprecated and will be removed in a future release. Use [k6 Studio](https://grafana.com/docs/k6-studio) to record network traffic.
 
