@@ -53,6 +53,14 @@ To run a test locally and stream the results to Grafana Cloud k6, use the `k6 cl
 k6 cloud run --local-execution cloud_demo.js
 ```
 
+{{< admonition type="note" >}}
+
+The `k6 cloud run --local-execution` command uploads the test archive k6 produces from your test script and resources to Grafana Cloud.
+
+You can change this behavior by adding the `--no-archive-upload` option to your command. For example: `k6 cloud run --local-execution --no-archive-upload script.js`.
+
+{{< /admonition >}}
+
 To learn more about Grafana Cloud k6, refer to:
 
 - [Grafana Cloud k6 documentation](https://grafana.com/docs/grafana-cloud/testing/k6/).
