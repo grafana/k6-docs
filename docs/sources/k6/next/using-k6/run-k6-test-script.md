@@ -13,7 +13,7 @@ There are several ways you can use the Grafana k6 command-line tool (CLI) to run
 To run a CLI test, you'll need:
 
 - A machine with [k6 installed](https://grafana.com/docs/k6/<K6_VERSION>/get-started/installation/).
-- A test file.
+- A [test file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-test-script-using-the-cli/).
 
 ## Run a test on your local machine
 
