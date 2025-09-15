@@ -5,6 +5,12 @@ description: 'Browser module: elementHandle.boundingBox method'
 
 # boundingBox()
 
+{{< admonition type="warning" >}}
+
+Use [locator.boundingBox([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/boundingbox) instead.
+
+{{< /admonition >}}
+
 Returns the bounding box of the element. The bounding box is calculated with respect to the position of the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame) of the current [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle), which is usually the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page)'s main frame.
 
 ### Returns
