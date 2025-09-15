@@ -1,7 +1,7 @@
 ---
 title: 'k6-testing'
 description: 'The k6 testing library provides test assertion capabilities for both protocol and browser testing.'
-weight: 100
+weight: 00
 ---
 
 # k6-testing
@@ -39,8 +39,8 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 ```javascript
 import { check } from 'k6';
-import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
-import { randomString } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
+import { randomString } from 'https://jslib.k6.io/k6-utils/{{< param "JSLIB_UTILS_VERSION" >}}/index.js';
 import http from 'k6/http';
 
 export default function () {
@@ -69,7 +69,7 @@ export default function () {
 
 ```javascript
 import { browser } from 'k6/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export const options = {
   scenarios: {
