@@ -33,6 +33,12 @@ Grafana Cloud k6 makes it easier to visualize and compare test results by provid
 
 To run a cloud test from the CLI, you'll need an [API token](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/) for authenticating the k6 CLI with the Grafana Cloud k6 application.
 
+After you retrieve an API token, you can authenticate with the CLI by running the following command:
+
+```bash
+k6 cloud login --token <API_TOKEN>
+```
+
 With the CLI authentication configured, you can run cloud tests by using the `k6 cloud` command:
 
 ```bash
