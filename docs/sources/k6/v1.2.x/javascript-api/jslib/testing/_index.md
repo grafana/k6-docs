@@ -1,12 +1,13 @@
 ---
-title: 'testing'
+title: 'k6-testing'
 description: 'The k6 testing library provides test assertion capabilities for both protocol and browser testing.'
-weight: 00
+weight: 100
 ---
 
-# testing
+# k6-testing
 
-The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from Playwright's test API design. The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) function, which can be configured for convenience.
+The k6 testing library provides assertion capabilities for both protocol and browser testing, and draws inspiration from _Playwright_'s test API design.  
+The entire library is centered around the [`expect()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) function, which can be configured for convenience.
 
 {{< admonition type="note" >}}
 The k6 testing library source code is available on [GitHub](https://github.com/grafana/k6-jslib-testing).
@@ -14,7 +15,7 @@ The k6 testing library source code is available on [GitHub](https://github.com/g
 
 ## Features
 
-- **Playwright-inspired assertions**: API designed with patterns inspired by Playwright's testing approach
+- **[Playwright-inspired assertions](https://playwright.dev/docs/test-assertions)**: API designed with patterns inspired by Playwright's testing approach
 - **[Protocol and browser testing](#demo)**: Works with both HTTP/API testing and browser automation
 - **[Auto-retrying assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect#retrying-assertions)**: Automatically retry assertions until they pass or timeout
 - **[Soft assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect#soft-assertions)**: Continue test execution even after assertion failures
@@ -38,20 +39,27 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 ```javascript
 import { check } from 'k6';
+import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
+import { randomString } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import http from 'k6/http';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 
 export default function () {
-  const response = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  
-  // Traditional k6 check
-  check(response, {
-    'status is 200': (r) => r.status === 200,
+  const payload = JSON.stringify({
+    username: `${randomString(5)}_default@example.com`,
+    password: 'secret',
   });
-  
-  // Using expect assertions
-  expect(response.status).toBe(200);
-  expect(response.json()).toHaveProperty('name');
+  const response = http.post(`https://quickpizza.grafana.com/api/users`, payload); // create user
+
+  console.info(response.json());
+
+  //Traditional k6 check
+  check(response, {
+    'status is 201': (r) => r.status === 201,
+  });
+
+  //Using expect assertions
+  expect(response.status).toBe(201);
+  expect(response.json()).toHaveProperty('id');
 }
 ```
 
@@ -60,8 +68,8 @@ export default function () {
 <!-- md-k6:skip -->
 
 ```javascript
-import { browser } from 'k6/experimental/browser';
-import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
+import { browser } from 'k6/browser';
+import { expect } from 'https://jslib.k6.io/k6-testing/0.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -73,23 +81,23 @@ export const options = {
         },
       },
     },
-  }
+  },
 };
 
 export default async function () {
-  const page = browser.newPage();
-  
-  await page.goto('https://test.k6.io');
-  
-  // Auto-retrying assertions
+  const page = await browser.newPage();
+
+  await page.goto('https://quickpizza.grafana.com');
+
+  // Retrying Assertions
   await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('h1')).toHaveText('Welcome to the k6 test site');
+  await expect(page.locator('h1')).toHaveText('Looking to break out of your pizza routine?');
 }
 ```
 
 ## Configuration
 
-Create configured `expect` instances for custom behavior:
+Create configured [`expect.configure()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) instances for custom behavior:
 
 <!-- md-k6:skip -->
 
@@ -98,11 +106,11 @@ import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_
 
 // Create configured expect instance
 const myExpect = expect.configure({
-  timeout: 10000,     // Default timeout for retrying assertions
-  interval: 200,      // Polling interval for retrying assertions
-  colorize: true,     // Enable colored output
-  display: 'pretty',  // Output format
-  softMode: 'fail'    // Soft assertion behavior
+  timeout: 10000, // Default timeout for retrying assertions
+  interval: 200, // Polling interval for retrying assertions
+  colorize: true, // Enable colored output
+  display: 'pretty', // Output format
+  softMode: 'fail', // Soft assertion behavior
 });
 ```
 
@@ -120,9 +128,9 @@ Asynchronous assertions that automatically retry until conditions become true or
 
 ## API Reference
 
-| Function | Description |
-| --- | --- |
-| [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) | Main assertion function |
-| [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure) | Create configured expect instances |
+| Function                                                                                                                 | Description                                     |
+| ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| [expect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect)                                 | Main assertion function                         |
+| [expect.configure()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/configure)                    | Create configured expect instances              |
 | [Non-Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/non-retrying-assertions) | Synchronous assertions for immediate evaluation |
-| [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions) | Asynchronous assertions for dynamic content |
+| [Retrying Assertions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions)         | Asynchronous assertions for dynamic content     |
