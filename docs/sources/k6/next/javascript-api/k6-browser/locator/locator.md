@@ -1,19 +1,30 @@
 ---
-title: 'locator(selector)'
-description: 'Browser module: locator.locator method'
+title: 'locator(selector[, options])'
+description: 'Browser module: locator.locator(selector[, options]) method'
 ---
 
-# locator(selector)
+# locator(selector[, options])
 
-The method finds all elements matching the selector and creates a new [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) that matches all of them. This method can be used to further refine the locator by chaining additional selectors.
+Creates and returns a new locator chained/relative to the current locator. Locators resolve to the element when the action takes place, which means locators can span over navigations where the underlying dom changes.
 
 This allows you to define locators relative to a parent locator, enabling more precise element targeting by creating nested locators.
 
+<TableWithNestedRows>
+
+| Parameter           | Type             | Default | Description                                                                                                                                                                                                                           |
+| ------------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| selector            | string           | `''`    | A selector to use when resolving DOM element.                                                                                                                                                                                        |
+| options             | object           | `null`  |                                                                                                                                                                                                                                       |
+| options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
+| options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
+
+</TableWithNestedRows>
+
 ### Returns
 
-| Type                                                                                   | Description                                              |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | The new `Locator` associated with the selector. |
+| Type                                                                                   | Description                                               |
+| -------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A new chained `Locator` that can be used for further actions. |
 
 ### Example
 
@@ -38,7 +49,7 @@ export const options = {
 
 export default async function () {
   const page = await browser.newPage();
-  
+
   try {
     await page.setContent(`
       <div>
@@ -63,13 +74,18 @@ export default async function () {
         </div>
       </div>
     `);
-  
+
     // Use locator.locator to find specific products within the list
     const appleProduct = page.locator('div[data-product="apple"]');
     const addToCartButton = appleProduct.locator('//button[text()="Add to Cart"]');
-      
+
+    // Use locator.locator with options to find specific items
+    const fruitsSection = page.locator('div[data-category="fruits"]');
+    const orangeButton = fruitsSection.locator('button', { hasText: 'Add to Cart' });
+
     // Interact with the nested locators
     await addToCartButton.click();
+    await orangeButton.click();
   } finally {
     await page.close();
   }
