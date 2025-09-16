@@ -11,7 +11,7 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 
 | Parameter           | Type             | Default | Description                                                                                                                                                                                                                           |
 | ------------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| selector            | string           | `''`    | A selector to use when resolving DOM element.                                                                                                                                                                                        |
+| selector            | string           | `''`    | A selector to use when resolving a DOM element.                                                                                                                                                                                        |
 | options             | object           | `null`  |                                                                                                                                                                                                                                       |
 | options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
 | options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
@@ -47,11 +47,15 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
 
-  await page.goto('https://quickpizza.grafana.com');
+  try {
+    await page.goto('https://quickpizza.grafana.com');
   
-  // Create a locator with text filtering options
-  const submitButton = page.locator('button', { hasText: 'Pizza, Please!' });
-  await submitButton.click();
+    // Create a locator with text filtering options
+    const submitButton = page.locator('button', { hasText: 'Pizza, Please!' });
+    await submitButton.click();
+  } finally {
+    await page.close();
+  }
 }
 ```
 
