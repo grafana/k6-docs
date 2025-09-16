@@ -10,9 +10,9 @@ weight: 03
 
 ## Supported APIs
 
-| Method                                                                                                          | Relevant Distinctions |
-| --------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-args" target="_blank" >args()</a> | -                                |
-| <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-page" target="_blank" >page()</a> | -                                |
-| <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-text" target="_blank" >text()</a> | -                                |
-| <a href="https://playwright.dev/docs/api/class-consolemessage#console-message-type" target="_blank" >type()</a> | -                                |
+| Method | Description                                                      |
+| ------ | ---------------------------------------------------------------- |
+| args() | List of arguments passed to a `console` function call.           |
+| page() | The page that produced this console message.                     |
+| text() | The text of the console message.                                 |
+| type() | The type of the console message. For example: `log`, or `debug`. |
