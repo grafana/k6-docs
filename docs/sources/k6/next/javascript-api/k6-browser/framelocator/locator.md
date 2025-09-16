@@ -5,13 +5,13 @@ description: 'Browser module: frameLocator.locator(selector[, options]) method'
 
 # locator(selector[, options])
 
-The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/). Locators resolve to the element when the action takes place, which means locators can span over navigations where the underlying dom changes.
+The method returns an element's [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/). Locators resolve to the element when the action takes place, which means locators can span over navigations where the underlying DOM changes.
 
 <TableWithNestedRows>
 
 | Parameter           | Type             | Default | Description                                                                                                                                                                                                                           |
 | ------------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| selector            | string           | `''`    | A selector to use when resolving DOM element.                                                                                                                                                                                        |
+| selector            | string           | `''`    | A selector to use when resolving a DOM element.                                                                                                                                                                                        |
 | options             | object           | `null`  |                                                                                                                                                                                                                                       |
 | options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
 | options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
@@ -22,7 +22,7 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 
 | Type                                                                                   | Description                                      |
 | -------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | The element `Locator` associated with the frame. |
+| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | The element's `Locator` associated with the frame. |
 
 ### Example
 
