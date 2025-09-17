@@ -8,11 +8,9 @@ weight: 02
 
 # browser
 
-The browser module APIs aim for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright).
+The browser module APIs are inspired by Playwright and other frontend testing frameworks.
 
-Note that because k6 does not run in NodeJS, the browser module APIs will slightly differ from their Playwright counterparts.
-
-You can find examples of using [the browser module API](#browser-module-api) in our [getting started guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser).
+You can find examples of using [the browser module API](#browser-module-api) in the [getting started guide](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser).
 
 {{< admonition type="note" >}}
 

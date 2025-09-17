@@ -12,7 +12,7 @@ The request that the browser performs can be retrieved from the [Response](https
 
 ## Supported APIs
 
-| Method                                                                                                                            | Playwright Relevant Distinctions                                                                                     |
+| Method                                                                                                                            | Description                                                                                                          |
 | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | [allHeaders()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/allheaders) {{< docs/bwipt id="965" >}} | Returns an object of headers associated to the request including headers added by the browser.                       |
 | [frame()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/frame)                                       | The [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) that initiated the request.   |
@@ -25,7 +25,7 @@ The request that the browser performs can be retrieved from the [Response](https
 | [postDataBuffer()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/postdatabuffer)                     | Request's post body in a binary form, if any.                                                                        |
 | [resourceType()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/resourcetype)                         | Contains the request's resource type as it was perceived by the rendering engine.                                    |
 | [response()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/response)                                 | Returns the matching [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response) object. |
-| [size()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/size)                                         | Unlike Playwright, this method returns an object containing the sizes of request headers and body.                   |
+| [size()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/size)                                         | Returns an object containing the size of the request headers and body.                   |
 | [timing()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/timing)                                     | Returns resource timing information for given request.                                                               |
 | [url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/url)                                           | URL of the request.                                                                                                  |
 
