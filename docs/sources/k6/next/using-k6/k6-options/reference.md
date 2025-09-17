@@ -786,7 +786,7 @@ export const options = {
 
 ## No summary
 
-{{< admonition type="warning" >}}
+{{< admonition type="caution" >}}
 
 This option is deprecated since v1.3.0 and its support will be completely removed by v2.0.
 
@@ -1208,7 +1208,7 @@ See an example file on the [Results Output](https://grafana.com/docs/k6/<K6_VERS
 
 ## Summary mode
 
-{{< admonition type="warning" >}}
+{{< admonition type="caution" >}}
 
 The `legacy` mode is deprecated since v1.3.0 and its support will be completely removed by v2.0.
 
