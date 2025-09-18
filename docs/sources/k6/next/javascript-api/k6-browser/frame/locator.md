@@ -49,8 +49,8 @@ export default async function () {
 
   await page.goto('https://quickpizza.grafana.com');
 
-  // Get frame
-  const frame = page.frames()[1];
+  // Get the mainframe of the page
+  const frame = page.mainFrame();
 
   // Create a locator with text filtering options
   const submitButton = frame.locator('button', { hasText: 'Pizza, Please!' });
