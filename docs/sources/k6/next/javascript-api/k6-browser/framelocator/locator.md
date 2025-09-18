@@ -47,13 +47,13 @@ export const options = {
 export default async function () {
   const page = await browser.newPage();
 
-  await page.goto('https://quickpizza.grafana.com');
+  await page.setContent(`<iframe src='https://quickpizza.grafana.com'></iframe>`);
 
   // Get a locator for an iframe element
   const frameLocator = page.locator('iframe').contentFrame();
 
   // Create a locator within the frame with text filtering options
-  const submitButton = frameLocator.locator('button', { hasText: 'Submit Order' });
+  const submitButton = frameLocator.locator('button', { hasText: 'Pizza, Please!' });
   await submitButton.click();
 }
 ```
