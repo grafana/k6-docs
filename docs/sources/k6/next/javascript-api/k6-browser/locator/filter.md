@@ -9,11 +9,11 @@ Returns a new [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 
 <TableWithNestedRows>
 
-| Parameter           | Type   | Default | Description                                                                                                                                                                                                                           |
-| ------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options             | object | `null`  |                                                                                                                                                                                                                                       |
-| options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
-| options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
+| Parameter          | Type             | Default | Description                                                                                           |
+| ------------------ | ---------------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| options            | object           | `null`  | If not provided, the method behaves like a no-op and returns a locator identical to the original one. |
+| options.hasText    | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.        |
+| options.hasNotText | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional. |
 
 </TableWithNestedRows>
 
