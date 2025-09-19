@@ -5,7 +5,7 @@ description: 'Browser module: page.waitForResponse(urlPattern[, options]) method
 
 # waitForResponse(urlPattern[, options])
 
-Waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resource loads to complete before proceeding with the test.
+Waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resources to be loaded before proceeding with the test.
 
 <TableWithNestedRows>
 
