@@ -17,7 +17,7 @@ Waits for an HTTP response that matches the specified URL pattern. This method i
 
 | Type                                                                                                       | Description                                                                                        |
 | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Promise<[Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/)> | A Promise that fulfills with the [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/) object when a URL matches and the response is recieved. |
+| Promise<[Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/)> | A Promise that fulfills with the [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/) object when a URL matches and the response is received. |
 
 ### Examples
 
