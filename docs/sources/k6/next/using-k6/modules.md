@@ -2,7 +2,7 @@
 title: 'Modules'
 description: 'While writing test scripts, it is common to import different modules, or part of modules, for
 usage throughout the script. In k6, it is possible to import three different kinds of modules.'
-weight: 07
+weight: 900
 ---
 
 # Modules
