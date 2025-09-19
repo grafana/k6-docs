@@ -2,7 +2,6 @@
 title: "Locator"
 description: "Browser module: Locator Class"
 weight: 08
-weight: 08
 ---
 
 # Locator
@@ -27,6 +26,7 @@ Locator can be created with the [page.locator(selector[, options])](https://graf
 | [dblclick([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/dblclick) {{< docs/bwipt id="471" >}}                 | Mouse double click on the chosen element.                                                                               |
 | [dispatchEvent(type, eventInit, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/dispatchevent)                  | Dispatches HTML DOM event types e.g. `'click'`.                                                                         |
 | [fill(value, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill)                                              | Fill an `input`, `textarea` or `contenteditable` element with the provided value.                                       |
+| [filter(options)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/filter)                                                   | Returns a new `locator` that matches only elements containing or excluding specified text.                               |
 | [first()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/first)                                                            | Returns a `locator` to the first matching element.                                                                        |
 | [focus([options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/focus)                                                   | Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on the element, if it can be focused. |
 | [getAttribute(name, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getattribute)                               | Returns the element attribute value for the given attribute name.                                                       |
@@ -41,7 +41,7 @@ Locator can be created with the [page.locator(selector[, options])](https://graf
 | [isHidden()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/ishidden)                                                      | Checks if the element is `hidden`.                                                                                      |
 | [isVisible()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/isvisible)                                                    | Checks if the element is `visible`.                                                                                     |
 | [last()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/last)                                                              | Returns a `locator` to the last matching element.                                                                         |
-| [locator(selector)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/locator)                                                              | Creates a nested locator relative to the current locator, allowing for more precise element targeting by chaining selectors.                                                                         |
+| [locator(selector[, options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/locator)                                     | Returns a new chained `locator` for the given `selector`.                                                                 |
 | [nth()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/nth)                                                                | Returns a `locator` to the n-th matching element.                                                                         |
 | [press(key, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press)                                              | Press a single key on the keyboard or a combination of keys.                                                            |
 | [selectOption(values, [options])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/selectoption) {{< docs/bwipt id="470" >}} | Select one or more options which match the values.                                                                      |

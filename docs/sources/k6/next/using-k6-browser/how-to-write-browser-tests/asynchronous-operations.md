@@ -116,7 +116,7 @@ This avoids the use of `Promise.all` which can be confusing to work with, and in
 The browser module uses asynchronous APIs that require `await` for several reasons:
 
 1. JavaScript is single-threaded with a single event loop. Asynchronous APIs prevent blocking the thread and event loop with long-running or I/O-based tasks.
-1. Consistency with [Playwright](https://playwright.dev/), a popular browser automation library.
+1. Consistency with [Playwright](https://playwright.dev/) and other frontend testing frameworks.
 1. Alignment with how developers expect to work with modern JavaScript APIs.
 
 For example:
