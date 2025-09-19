@@ -83,7 +83,7 @@ export default async function () {
    const response = await page.waitForResponse('/api/data');
    ```
 
-3. **Verify response content**: After waiting for the response, verify that the response status and content match your expectations.
+1. **Verify response content**: After waiting for the response, verify that the response status and content match your expectations.
 
 ### Related
 
