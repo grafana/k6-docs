@@ -786,6 +786,15 @@ export const options = {
 
 ## No summary
 
+{{< admonition type="caution" >}}
+
+This option has been deprecated since v1.3.0 and will be removed by v2.0.
+
+Use the `disabled` [summary mode](#summary-mode) instead.
+
+{{< /admonition >}}
+
+
 Disables [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) generation,
 including calls to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) and `--summary-export`.
 
@@ -1199,6 +1208,12 @@ See an example file on the [Results Output](https://grafana.com/docs/k6/<K6_VERS
 
 ## Summary mode
 
+{{< admonition type="caution" >}}
+
+The `legacy` mode has been deprecated since v1.3.0, and its support will be removed by v2.0.
+
+{{< /admonition >}}
+
 Define how detailed the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/) should be. Available in the `k6 run` command.
 
 | Env               | CLI              | Code / Config file | Default     |
@@ -1216,12 +1231,35 @@ The following modes are available:
   - Detailed metrics for each protocol-specific category
   - Group-specific results
   - Scenario-specific results
-- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility
+- **disabled**: Completely disables the summary generation, including:
+  - Calls to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary)
+  - The use of `--summary-export`
+- **legacy** (*deprecated*): Uses the pre-v1.0.0 summary format for backward compatibility
 
 {{< code >}}
 
 ```bash
 k6 run --summary-mode=full script.js
+
+# or...
+
+K6_SUMMARY_MODE="full" k6 run script.js
+```
+
+```windows
+k6 run --summary-mode=full script.js
+
+# or...
+
+set "K6_SUMMARY_MODE=full" && k6 run script.js
+```
+
+```powershell
+k6 run --summary-mode=full script.js
+
+# or...
+
+$env:K6_SUMMARY_MODE="full"; k6 run script.js
 ```
 
 {{< /code >}}
