@@ -9,8 +9,6 @@ description: 'Browser module: frameLocator.getByPlaceholder(placeholder[, option
 
 Find and fill inputs by their placeholder text:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
