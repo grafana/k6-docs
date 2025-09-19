@@ -70,7 +70,7 @@ export default async function () {
    - Exact strings for known, static API endpoints
    - RegExp for pattern-based matching and dynamic URLs
 
-2. **Set up promise before trigger**: Always set up the `waitForResponse` promise before triggering the action that causes the request:
+1. **Set up promise before trigger**: Always set up the `waitForResponse` promise before triggering the action that causes the request:
 
    ```javascript
    // Correct
