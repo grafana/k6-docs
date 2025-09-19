@@ -7,15 +7,11 @@ description: 'Browser module: page.waitForResponse(urlPattern[, options]) method
 
 Waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resources to be loaded before proceeding with the test.
 
-<TableWithNestedRows>
-
 | Parameter        | Type           | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ---------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | urlPattern       | string \| RegExp | -       | Required. URL or URL pattern to match against responses. Can be an exact URL string, a regular expression, or an empty string to match any response.                                                                                                                                                                |
 | options          | object         | `null`  |                                                                                                                                                                                                                                                                                                                     |
 | options.timeout  | number         | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
-
-</TableWithNestedRows>
 
 ### Returns
 
