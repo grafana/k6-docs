@@ -3,21 +3,7 @@ title: 'getByText(text[, options])'
 description: 'Browser module: frameLocator.getByText(text[, options]) method'
 ---
 
-# getByText(text[, options])
-
-Returns a locator for elements containing the specified text. This method finds elements by their visible text content, making it ideal for locating user-facing content like buttons, links, headings, and other text elements.
-
-| Parameter       | Type             | Default | Description                                                                                                 |
-| --------------- | ---------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| `text`          | string \| RegExp | -       | Required. The text content to search for. Can be a string for exact match or a RegExp for pattern matching. |
-| `options`       | object           | `null`  |                                                                                                             |
-| `options.exact` | boolean          | `false` | Whether to match the text exactly with case sensitivity. When `true`, performs a case-sensitive match.      |
-
-## Returns
-
-| Type                                                                                   | Description                                                                                    |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) | A locator object that can be used to interact with the elements containing the specified text. |
+{{< docs/shared source="k6" lookup="browser/getby-apis/getbytext-spec.md" version="<K6_VERSION>" >}}
 
 ## Examples
 
@@ -60,58 +46,7 @@ export default async function () {
 }
 ```
 
-## Text matching behavior
-
-**Whitespace normalization**: Text matching automatically normalizes whitespace, meaning:
-
-- Multiple spaces become single spaces
-- Line breaks become spaces
-- Leading and trailing whitespace is ignored
-
-Consider the following DOM structure:
-
-<!-- md-k6:skip -->
-<!-- eslint-skip -->
-
-```html
-<div>Hello <span>world</span></div>
-<div>Hello</div>
-```
-
-You can locate by text substring, exact string, or a regular expression:
-
-<!-- md-k6:skip -->
-<!-- eslint-skip -->
-
-```js
-// Matches <span>
-frameLocator.getByText('world');
-// Matches first <div>
-frameLocator.getByText('Hello world');
-// Matches second <div>
-frameLocator.getByText('Hello', { exact: true });
-// Matches both <div>s
-frameLocator.getByText(/Hello/);
-// Matches second <div>
-frameLocator.getByText(/^hello$/i);
-```
-
-## Common use cases
-
-- **Button interactions**: Submit, Cancel, Delete, Edit buttons
-- **Navigation**: Menu items, breadcrumbs, pagination links
-- **Content verification**: Success messages, error messages, headings
-- **Form interactions**: Checkbox labels, radio button options
-- **Status indicators**: Active, Inactive, Pending states
-
-## Best practices
-
-1. **User-focused testing**: Using `getByText()` ensures your tests interact with content as users see it.
-1. **Avoid brittle text**: Be cautious with exact text that might change frequently (like dates, counts, or user-generated content).
-1. **Use meaningful text**: Prefer descriptive button text and labels over generic terms like "Click here" or "Button".
-1. **Handle dynamic content**: Use regular expressions for text that contains variable parts (timestamps, user names, counts).
-1. **Consider accessibility**: Text-based selection encourages better accessibility practices in your application.
-1. **Internationalization**: For multi-language applications, consider using test IDs or roles instead of text for critical interactions.
+{{< docs/shared source="k6" lookup="browser/getby-apis/getbytext-tips.md" version="<K6_VERSION>" >}}
 
 ## Related
 
