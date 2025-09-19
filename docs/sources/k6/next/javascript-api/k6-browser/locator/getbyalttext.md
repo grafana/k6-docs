@@ -35,7 +35,7 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com');
 
-    const logo = page.locator('document').getByAltText('LOGO');
+    const logo = page.locator(':root').getByAltText('LOGO');
     await logo.waitFor();
 
     await logo.click();
