@@ -9,8 +9,6 @@ description: 'Browser module: frame.getByText(text[, options]) method'
 
 Find and click elements by their visible text:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
