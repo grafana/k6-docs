@@ -1,6 +1,6 @@
 ---
 title: 'getByLabel(text[, options])'
-description: 'Browser module: page.getByLabel(text[, options]) method'
+description: 'Browser module: frameLocator.getByLabel(text[, options]) method'
 ---
 
 {{< docs/shared source="k6" lookup="browser/getby-apis/getbylabel-spec.md" version="<K6_VERSION>" >}}
@@ -33,15 +33,20 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.setContent(`
+    const iframeHTML = `
       <label for="username">Username (hint: default)</label>
       <input type="text" id="username" name="username">
       <label for="password">Password (hint: 12345678)</label>
       <input type="password" id="password" name="password">
+    `;
+
+    await page.setContent(`
+      <iframe id="my_frame" src="data:text/html,${encodeURIComponent(iframeHTML)}"></iframe>
     `);
 
-    const username = page.getByLabel('Username (hint: default)', { exact: true });
-    const password = page.getByLabel(/^Password.*$/);
+    const frameLocator = page.locator("#my_frame").contentFrame();
+    const username = frameLocator.getByLabel('Username (hint: default)', { exact: true });
+    const password = frameLocator.getByLabel(/^Password.*$/);
 
     await username.fill('default');
     await password.fill('12345678');
@@ -77,7 +82,7 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.setContent(`
+    const iframeHTML = `
       <label for="username">Username (hint: default)</label>
       <input type="text" id="username" name="username">
       <span id="password-label">Password (hint: 12345678)</span>
@@ -95,64 +100,42 @@ export default async function () {
         <option value="system">System</option>
       </select>
       <textarea aria-label="Comments"></textarea>
+    `;
+
+    await page.setContent(`
+      <iframe id="my_frame" src="data:text/html,${encodeURIComponent(iframeHTML)}"></iframe>
     `);
 
+    const frameLocator = page.locator("#my_frame").contentFrame();
+
     // Inputs
-    await page.getByLabel('Username (hint: default)', { exact: true }).fill('default');
-    await page.getByLabel(/^Password.*$/).fill('12345678');
+    await frameLocator.getByLabel('Username (hint: default)', { exact: true }).fill('default');
+    await frameLocator.getByLabel(/^Password.*$/).fill('12345678');
 
     // Checkbox
-    await page.getByLabel('Subscribe to newsletter').check();
+    await frameLocator.getByLabel('Subscribe to newsletter').check();
 
     // Radio button
-    await page.getByLabel('Email', { exact: true }).check();
+    await frameLocator.getByLabel('Email', { exact: true }).check();
 
     // Select dropdown
-    await page.getByLabel('Theme').selectOption('light');
+    await frameLocator.getByLabel('Theme').selectOption('light');
 
     // Textarea
-    await page.getByLabel('Comments').fill('This is a test comment');
+    await frameLocator.getByLabel('Comments').fill('This is a test comment');
   } finally {
     await page.close();
   }
 }
 ```
 
-## Label association patterns
-
-The `getByLabel()` method works with several HTML patterns for associating labels with form controls:
-
-1. Explicit association with `for` attribute:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <label for="username">Username</label> <input type="text" id="username" name="username" />
-   ```
-
-1. ARIA labeling:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
-   ```
-
-1. ARIA label attribute:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <input type="text" aria-label="Username" />
-   ```
-
 {{< docs/shared source="k6" lookup="browser/getby-apis/getbylabel-tips.md" version="<K6_VERSION>" >}}
 
 ## Related
 
-- [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
-- [page.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) - Locate by alt text
-- [page.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyplaceholder/) - Locate by placeholder text
-- [page.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytestid/) - Locate by test ID
-- [page.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytitle/) - Locate by title attribute
-- [page.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytext/) - Locate by text content
+- [frameLocator.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyrole/) - Locate by ARIA role
+- [frameLocator.getByAltText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyalttext/) - Locate by alt text
+- [frameLocator.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyplaceholder/) - Locate by placeholder text
+- [frameLocator.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytestid/) - Locate by test ID
+- [frameLocator.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytitle/) - Locate by title attribute
+- [frameLocator.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbytext/) - Locate by text content

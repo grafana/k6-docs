@@ -1,6 +1,6 @@
 ---
 title: 'getByAltText(altText[, options])'
-description: 'Browser module: page.getByAltText(altText[, options]) method'
+description: 'Browser module: frame.getByAltText(altText[, options]) method'
 ---
 
 {{< docs/shared source="k6" lookup="browser/getby-apis/getbyalttext-spec.md" version="<K6_VERSION>" >}}
@@ -35,7 +35,7 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com');
 
-    const logo = page.getByAltText('LOGO');
+    const logo = page.mainFrame().getByAltText('LOGO');
     await logo.waitFor();
 
     await logo.click();
@@ -74,7 +74,7 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com');
 
-    const logo = page.getByAltText('logo', { exact: true });
+    const logo = page.mainFrame().getByAltText('logo', { exact: true });
     await logo.waitFor();
 
     await logo.click();
@@ -113,7 +113,7 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com');
 
-    const logo = page.getByAltText(/logo/s);
+    const logo = page.mainFrame().getByAltText(/logo/s);
     await logo.waitFor();
 
     await logo.click();
@@ -128,9 +128,9 @@ export default async function () {
 
 ## Related
 
-- [page.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyrole/) - Locate by ARIA role
-- [page.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbylabel/) - Locate by form labels
-- [page.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyplaceholder/) - Locate by placeholder text
-- [page.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytestid/) - Locate by test ID
-- [page.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytitle/) - Locate by title attribute
-- [page.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbytext/) - Locate by visible text
+- [frame.getByRole()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbyrole/) - Locate by ARIA role
+- [frame.getByLabel()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbylabel/) - Locate by form labels
+- [frame.getByPlaceholder()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbyplaceholder/) - Locate by placeholder text
+- [frame.getByTestId()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbytestid/) - Locate by test ID
+- [frame.getByTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbytitle/) - Locate by title attribute
+- [frame.getByText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbytext/) - Locate by visible text
