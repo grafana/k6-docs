@@ -250,6 +250,8 @@ export default function () {
 
 Or if you have a big data set and just want no VU to use any data any other VU. But you want to have a set number of VUs. In that case you can use modulo operator to get a user out of the data set for each VU so no other ones does.
 
+This also allows us to loop over the data set while still making certain no two VUs will use the same data at the same time. Or during the test for that matter.
+
 {{< code >}}
 
 ```javascript
@@ -265,16 +267,14 @@ const vus = 100;
 export const options = {
   scenarios: {
     login: {
-      executor: 'shared-iterations',
+      executor: 'constant-vus',
       vus: vus,
-      iterations: 20,
-      maxDuration: '1h30m',
+      duration: '1h30m',
     },
   },
 };
 
 export default function () {
-  // VU identifiers are one-based and arrays are zero-based, thus we need - 1
   console.log(`Users name: ${users[scenario.iterationsInTest % vus].username}`);
   sleep(1);
 }
