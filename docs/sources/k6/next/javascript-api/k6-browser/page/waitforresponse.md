@@ -72,6 +72,8 @@ export default async function () {
 
 1. **Set up promise before trigger**: Always set up the `waitForResponse` promise before triggering the action that causes the request:
 
+  <!-- md-k6:skip -->
+
    ```javascript
    // Correct
    const responsePromise = page.waitForResponse('/api/data');
