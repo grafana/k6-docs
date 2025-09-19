@@ -11,8 +11,6 @@ description: 'Browser module: frameLocator.getByAltText(altText[, options]) meth
 
 Find and click an image by its alt text:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -52,8 +50,6 @@ export default async function () {
 
 Use exact matching for precise alt text:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -92,8 +88,6 @@ export default async function () {
 ### Using regular expressions
 
 Find images using pattern matching:
-
-<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';

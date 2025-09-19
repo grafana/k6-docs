@@ -9,8 +9,6 @@ description: 'Browser module: locator.getByTitle(title[, options]) method'
 
 Find and interact with elements by their title attribute:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
