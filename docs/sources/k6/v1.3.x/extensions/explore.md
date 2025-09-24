@@ -18,7 +18,7 @@ Extensions can be used to extend the core k6 features to fit your performance-te
 
 ## Official extensions
 
-{{< k6/official-extensions >}}
+{{< docs/k6/official-extensions >}}
 
 ## Community extensions
 
@@ -28,7 +28,7 @@ We're working on a process for community folks to submit their extensions.
 
 {{< /admonition >}}
 
-{{< k6/community-extensions >}}
+{{< docs/k6/community-extensions >}}
 
 ## Use extensions
 
