@@ -363,7 +363,7 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 
 [Grafana Cloud k6](https://grafana.com/products/cloud/k6/), our commercial offering, provides an instant solution for running large-scale tests, among other [benefits](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
-If you aren't sure whether OSS or Cloud is a better fit for your project, we recommend reading this [white paper](https://k6.io/files/what-to-consider-when-building-or-buying-a-load-testing-solution-white-paper-2021.pdf) to learn more about the risks and features to consider when building a scalable solution.
+If you aren't sure whether OSS or Cloud is a better fit for your project, we recommend reading this [white paper](https://grafana.com/media/docs/k6/what-to-consider-when-building-or-buying-a-load-testing-solution-white-paper-2021.pdf) to learn more about the risks and features to consider when building a scalable solution.
 
 ## Read more
 
@@ -371,4 +371,4 @@ If you aren't sure whether OSS or Cloud is a better fit for your project, we rec
 - [JavaScript Compatibility Mode](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-compatibility-mode)
 
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
-- [White paper: what to consider when building or buying a load testing solution](https://k6.io/files/what-to-consider-when-building-or-buying-a-load-testing-solution-white-paper-2021.pdf)
+- [White paper: what to consider when building or buying a load testing solution](https://grafana.com/media/docs/k6/what-to-consider-when-building-or-buying-a-load-testing-solution-white-paper-2021.pdf)
