@@ -799,6 +799,13 @@ POSIX_HERESTRING
     volumes="${volumes} --volume=${_repo}/Makefile:/hugo/Makefile:z"
     volumes="${volumes} --volume=${_repo}/layouts:/hugo/layouts:z"
     volumes="${volumes} --volume=${_repo}/scripts:/hugo/scripts:z"
+  elif [ "${_project}" = k6 ]; then
+    # Mount k6-specific shortcodes from k6-docs repository
+    _k6_repo="$(repo_path k6-docs)"
+    if [ -d "${_k6_repo}/layouts/shortcodes/k6" ]; then
+      volumes="${volumes} --volume=${_k6_repo}/layouts/shortcodes/k6:/hugo/layouts/shortcodes/k6:z"
+    fi
+    unset _k6_repo
   fi
   unset _project _repo
 done
