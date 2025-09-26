@@ -1,7 +1,7 @@
 ---
 title: 'Cookies'
 description: 'k6 will transparently manage the receiving, storage and sending of cookies as described above, so that testing of your cookie-based web site or app will just work.'
-weight: 09
+weight: 1100
 ---
 
 # Cookies

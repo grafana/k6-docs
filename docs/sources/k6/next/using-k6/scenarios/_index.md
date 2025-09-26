@@ -1,7 +1,7 @@
 ---
 title: Scenarios
 description: 'Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests.'
-weight: 13
+weight: 1500
 ---
 
 # Scenarios
