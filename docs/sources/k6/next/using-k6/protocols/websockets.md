@@ -22,7 +22,7 @@ Currently, it's available as an experimental module [`k6/experimental/websockets
 {{< /admonition >}}
 
 Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
-The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now runs an asynchronous event loop.
+The primary difference is that instead of continuously looping the main function (`export default function () { ... }`) over and over, each VU is now runs an asynchronous event loop.
 
 The basic structure of a WebSocket test looks like this:
 
