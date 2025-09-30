@@ -21,7 +21,7 @@ The following events can close the connection:
 
 | Parameter | Type     | Description                                                                                                                                                                                                                                                                                                      |
 | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                                                    |
+| url       | string   | Request URL (e.g. "wss://echo.websocket.org").                                                                                                                                                                                                                                                                    |
 | params    | object   | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/params) object containing additional request parameters.                                                                                                                                                                                  |
 | callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
 
@@ -39,7 +39,7 @@ The following events can close the connection:
 import ws from 'k6/ws';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const resp = ws.connect(url, null, function (socket) {
     socket.on('open', function () {
       console.log('WebSocket connection established!');

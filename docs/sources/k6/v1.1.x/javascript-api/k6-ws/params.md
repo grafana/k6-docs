@@ -28,7 +28,7 @@ _A k6 script that will make a WebSocket request with a custom header and tag res
 import ws from 'k6/ws';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = {
     headers: { 'X-MyHeader': 'k6test' },
     tags: { k6test: 'yes' },
