@@ -1,7 +1,7 @@
 ---
 title: 'Assertions'
 description: 'Test assertions in k6 using the k6-testing library for both protocol and browser testing'
-weight: 04
+weight: 500
 ---
 
 {{< docs/shared source="k6" lookup="preview-feature.md" version="<K6_VERSION>" >}}

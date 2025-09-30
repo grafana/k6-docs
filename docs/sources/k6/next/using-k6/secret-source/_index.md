@@ -1,7 +1,7 @@
 ---
-title: Secret Source
+title: Secret source
 description: 'Secret source are used so k6 can get and use secrets in a secure way'
-weight: 14
+weight: 1600
 ---
 
 # Secret source

@@ -2,7 +2,7 @@
 title: 'Tags and Groups'
 description: 'k6 provides the Tags and Groups APIs to help you during the analysis and easily visualize, sort and
 filter your test results.'
-weight: 08
+weight: 1000
 ---
 
 # Tags and Groups
