@@ -1,7 +1,7 @@
 ---
 title: 'Thresholds'
 description: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
-weight: 04
+weight: 600
 ---
 
 # Thresholds
