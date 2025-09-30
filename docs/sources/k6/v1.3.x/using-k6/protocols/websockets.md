@@ -33,7 +33,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -65,7 +65,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -97,7 +97,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -132,7 +132,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -164,7 +164,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const response = ws.connect(url, params, function (socket) {

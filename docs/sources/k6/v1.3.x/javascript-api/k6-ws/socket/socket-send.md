@@ -22,7 +22,7 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 import ws from 'k6/ws';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const response = ws.connect(url, null, function (socket) {
     socket.on('open', function () {
       socket.send('my-message');
