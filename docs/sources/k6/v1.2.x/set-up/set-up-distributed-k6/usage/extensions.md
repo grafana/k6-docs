@@ -13,7 +13,7 @@ For example, this is a `Dockerfile` that builds a k6 binary with the `xk6-output
 
 ```Dockerfile
 # Build the k6 binary with the extension
-FROM golang:1.20 as builder
+FROM golang:1.25.1 as builder
 
 RUN go install go.k6.io/xk6/cmd/xk6@latest
 
