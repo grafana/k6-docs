@@ -248,6 +248,39 @@ export default function () {
 
 {{< /code >}}
 
+Or if you have a big data set and just want no VU to use any data any other VU. But you want to have a set number of VUs. In that case you can use modulo operator to get a user out of the data set for each VU so no other ones does.
+
+This also allows us to loop over the data set while still making certain no two VUs will use the same data at the same time. Or during the test for that matter.
+
+{{< code >}}
+
+```javascript
+import { sleep } from 'k6';
+import { SharedArray } from 'k6/data';
+import { scenario } from 'k6/execution';
+
+const users = new SharedArray('users', function () {
+  return JSON.parse(open('./data.json')).users;
+});
+
+const vus = 100;
+export const options = {
+  scenarios: {
+    login: {
+      executor: 'constant-vus',
+      vus: vus,
+      duration: '1h30m',
+    },
+  },
+};
+
+export default function () {
+  console.log(`Users name: ${users[scenario.iterationsInTest % vus].username}`);
+  sleep(1);
+}
+```
+
+{{< /code >}}
 ## Generating data using faker.js
 
 The following articles show how to use faker.js in k6 to generate realistic data during the test execution:
