@@ -11,8 +11,6 @@ description: 'Browser module: page.getByRole(role[, options]) method'
 
 Find and click a button by its role:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 

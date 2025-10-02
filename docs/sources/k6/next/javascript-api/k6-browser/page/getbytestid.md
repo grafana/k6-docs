@@ -11,8 +11,6 @@ description: 'Browser module: page.getByTestId(testId) method'
 
 Locate and interact with elements using test IDs:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
