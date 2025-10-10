@@ -88,9 +88,10 @@ and `k6 cloud run ...`, which you can use to override options specified in the c
 
 ## Address
 
-Address of the API server. When executing scripts with `k6 run` an HTTP server with a REST API is spun up,
+Address of the API server. When executing scripts with `k6 run`, an HTTP server with a REST API is spun up,
 which can be used to control some of the parameters of the test execution.
-By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api).
+
+By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api). You can disable the HTTP server by setting the address value to an empty string, for example: `k6 run -a '' script.js`.
 
 | Env | CLI               | Code / Config file | Default          |
 | --- | ----------------- | ------------------ | ---------------- |

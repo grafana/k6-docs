@@ -64,3 +64,37 @@ k6 run script.sample.ts
 ```
 
 Make sure to replace `script.sample.ts` with the name of your generated test script. Depending on the API you're testing and the OpenAPI schema that you're using, you may need to edit the TypeScript file to update any authentication parameters or headers to run the test script successfully.
+
+## Options
+
+You can use the following configuration options when running `openapi-to-k6` in the CLI.
+
+### `--mode`
+
+The `--mode` or `-m` option specifies the mode to be used when generating the client. The options are:
+
+- `single`: This is the default mode. It generates the TypeScript client with all the types and implementation as a single file.
+- `split`: This mode splits the types and implementation into separate files.
+- `tags`: This modes splits your OpenAPI definition based on the tags and generates a separate client for each tag. If a route has no tag set, the client is included in the default.ts file.
+
+### `--only-tags`
+
+`--only-tags` filters the generated client to only include routes with specific tags from your OpenAPI definition. You can specify multiple tags to include routes matching any of those tags. Routes without tags are excluded. This is useful for generating focused clients that only contain the endpoints you need.
+
+For example: `openapi-to-k6 <path-to-openapi-schema> <output path> --only-tags ItemsHeader` generates a client with only the routes that have the `ItemsHeader` tag. You can specify multiple tags by using multiple `--only-tags` flags or by separating them with spaces: `--only-tags tag1 --only-tags tag2`.
+
+### `--disable-analytics`
+
+`--disable-analytics` disables anonymous usage analytics reporting. You can also use the `DISABLE_ANALYTICS=true` environment variable to turn off this feature.
+
+### `--include-sample-script`
+
+`--include-sample-script` generates a sample k6 script. The generated sample script uses the examples defined in the OpenAPI definition requests to make the script usable out of the box. If the examples aren't defined, it uses Faker to generate random data.
+
+### `--verbose`
+
+`--verbose` or `-v` enables verbose logging to show a more detailed logging output.
+
+### `--help`
+
+`--help` or `-h` displays the openapi-to-k6 help message, including a list of all available configuration options.

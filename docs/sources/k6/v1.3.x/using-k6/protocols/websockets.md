@@ -22,7 +22,7 @@ Currently, it's available as an experimental module [`k6/experimental/websockets
 {{< /admonition >}}
 
 Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
-The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now runs an asynchronous event loop.
+The primary difference is that instead of continuously looping the main function (`export default function () { ... }`) over and over, each VU is now runs an asynchronous event loop.
 
 The basic structure of a WebSocket test looks like this:
 
@@ -33,7 +33,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -65,7 +65,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -97,7 +97,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -132,7 +132,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const res = ws.connect(url, params, function (socket) {
@@ -164,7 +164,7 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  const url = 'ws://echo.websocket.org';
+  const url = 'wss://echo.websocket.org';
   const params = { tags: { my_tag: 'hello' } };
 
   const response = ws.connect(url, params, function (socket) {
