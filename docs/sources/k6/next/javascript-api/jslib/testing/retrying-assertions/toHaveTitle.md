@@ -34,7 +34,7 @@ await expect(page).toHaveTitle(expected, options);
 
 ## Description
 
-The `toHaveTitle()` method checks if a page has a specific title. The title is retrieved from the page's `<title>` element in the document head.
+The `toHaveTitle()` method checks if a page has a specific title. It retrives the title from the page's `<title>` element in the document's `<head>`.
 
 When a string is provided, it performs an exact match. When a RegExp is provided, it tests the title against the regular expression pattern.
 
