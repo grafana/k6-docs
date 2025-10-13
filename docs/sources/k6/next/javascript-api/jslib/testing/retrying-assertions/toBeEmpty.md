@@ -6,7 +6,7 @@ weight: 35
 
 # toBeEmpty()
 
-The `toBeEmpty()` method asserts that an element is empty. This is a retrying assertion that automatically waits for the element to become empty.
+The `toBeEmpty()` method asserts that an element is empty. It automatically retries the assertion until the element becomes empty or the timeout is reached.
 
 ## Syntax
 
