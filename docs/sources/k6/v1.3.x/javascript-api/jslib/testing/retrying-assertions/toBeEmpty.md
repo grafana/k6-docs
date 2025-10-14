@@ -6,7 +6,7 @@ weight: 35
 
 # toBeEmpty()
 
-The `toBeEmpty()` method asserts that an element is empty. This is a retrying assertion that automatically waits for the element to become empty.
+The `toBeEmpty()` method asserts that an element is empty. It automatically retries the assertion until the element becomes empty or the timeout is reached.
 
 ## Syntax
 
@@ -38,7 +38,7 @@ The `toBeEmpty()` method checks if an element is empty. An element is considered
 - For input elements: the value is an empty string (`""`)
 - For other elements: the text content is empty (no visible text)
 
-This is a retrying assertion that will automatically re-check the element's content until it becomes empty or the timeout is reached.
+This method automatically retries the assertion until the element's content becomes empty or the timeout is reached.
 
 ## Usage
 
@@ -76,4 +76,3 @@ export default async function () {
   await expect(page.locator('#pizza-name')).not.toBeEmpty();
 }
 ```
-

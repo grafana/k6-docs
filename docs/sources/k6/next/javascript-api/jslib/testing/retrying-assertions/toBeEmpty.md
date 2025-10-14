@@ -76,4 +76,3 @@ export default async function () {
   await expect(page.locator('#pizza-name')).not.toBeEmpty();
 }
 ```
-
