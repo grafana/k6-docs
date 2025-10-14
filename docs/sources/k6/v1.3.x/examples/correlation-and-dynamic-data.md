@@ -3,7 +3,7 @@ title: 'Correlation and Dynamic Data'
 slug: '/correlation-and-dynamic-data'
 description: |
   Scripting examples on how to correlate dynamic data in your test script. Correlation is
-  often required when using the Chrome Extension or HAR converter to generate your test script.
+  often required when using the HAR converter to generate your test script.
   This is due to the fact that those tools will capture session IDs, CSRF tokens, VIEWSTATE,
   wpnonce, and other dynamic values from your specific session.
 weight: 04
@@ -12,7 +12,7 @@ weight: 04
 # Correlation and Dynamic Data
 
 Scripting examples on how to correlate dynamic data in your test script. Correlation is often
-required when using the Chrome Extension or HAR converter to generate your test script. This
+required when using the HAR converter to generate your test script. This
 is because those tools will capture session IDs, CSRF tokens, VIEWSTATE, wpnonce, and other
 dynamic values from your specific session. These tokens typically expire very quickly. This
 is one of the most common things that users will script for when testing user journeys across
