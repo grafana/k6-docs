@@ -12,7 +12,6 @@ weight: 01
 Codeless tools to speed up the test creation.
 
 - [Test Builder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/test-builder) - Inspired by the Postman API Builder. Codeless UI tool to generate a k6 test quickly.
-- [Browser Recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) - Record a user journey to create your k6 test.
 
 ## IDE extensions
 

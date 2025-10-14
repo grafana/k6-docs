@@ -41,6 +41,5 @@ If you want to run tests with high loads, you can deploy and host them on your i
 
 - [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribute test execution across a Kubernetes cluster.
 - [xk6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions). Custom k6 binaries to support the tool you need.
-- [The browser recorder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder). Make test scripts from browser sessions.
 - [Use TypeScript in k6 scripts](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/javascript-typescript-compatibility-mode/)
 - [Integrations](https://grafana.com/docs/k6/<K6_VERSION>/misc/integrations)
