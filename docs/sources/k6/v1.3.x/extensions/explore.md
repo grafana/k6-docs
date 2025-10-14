@@ -7,18 +7,17 @@ weight: 01
 
 # Explore extensions
 
-Extensions can be used to extend the core k6 features to fit your performance-testing use cases. There are two main categories of extensions:
-
-| Category      | Maintainer   | Audited | Cloud support | Guaranteed updates |
-| ------------- | ------------ | ------- | ------------- | ------------------ | 
-| **Official**  | Grafana Labs | ✅ Yes  | ✅ Yes        | ✅ Yes             |        
-| **Community** | Community    | ✅ Yes  | ✅ Yes        | ⚠️ No              |
+Extensions can be used to extend the core k6 features to fit your performance-testing use cases. There are two main categories of extensions: official and community.
 
 ## Official extensions
 
-{{< docs/shared source="k6" lookup="official-extensions.md" version="<K6_VERSION>" >}}
+These are extensions owned and maintained by Grafana Labs, with support for a wide range of versions.
+
+{{< docs/k6/official-extensions >}}
 
 ## Community extensions
+
+These are extensions developed by the community, with support for specific versions.
 
 {{< admonition type="note" >}}
 
