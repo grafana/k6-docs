@@ -14,24 +14,44 @@ weight: 600
   - API testing
   - Component testing
   - general purpose browser automation
+
 - k6 browser use cases are to complement protocol load tests to measure how backend under load impacts frontend performance, and for synthetic monitoring using Grafana SM product. Over the last year k6 has evolved to bring more functional paradigms such as the asserts library. We are evaluating work to align with other JS test frameworks.
+
 - When to migrate and why:
   - want to perform load testing and FE testing at the same time -- non-functional testing.
   - same script can be easily transferred over to Grafana SM -- functional testing.
-  - (in the future) Tighter integration with FARO for RUM vs lab data.
-- What this guide covers:
-  - a basic example of migrasting a PW script to k6 browser;
-  - overview of some of the config migration;
-  - running the script locally and on Grafana cloud;
-  - some differences that are worth mentioning.
-- What this guide covers and doesn't cover:
-  - we don't yet provide a list of APIs between k6 browser and playwright, including future work. Check the docs to see what is available. We have feeling that we have covered a lot of the most used APIs for browser frontend testing.
+
+## Key Differences & Limitations
+
+### Main differences
+
+TODO: Code snippets, if there are any
+
+- Test isolation patterns -- in k6 there is [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) whereas in Playwright there is a dedicated test framework. The difference stems from k6 being a load testing tool. We are [evaluating](https://github.com/grafana/k6-jslib-testing/issues/30) a test framework, but it's still early days.
+
+- web vitals will be reported on; we are evaluating further work to bring about more measurements such as JS heap size, long task and more.
+- k6 reports on many metrics which we think are useful out of the box, such as request/response times, request/response data size etc.
+
 - Important terminology in k6. Because it was originally designed as a load testing tool:
   - VU: virtual user;
   - Iteration: number of times a single VU will run the iteration;
   - thresholds and check: in load testing we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, e.g. 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
 
+### Browser context restrictions;
+
+  Unlike in Playwright, k6 can only work with a single `browserContext` at a time. So in k6 you won't be able to do:
+
+  ```js
+    const bc1 = await browser.newContext();
+    // This next call will result in an error "existing browser context must be closed before creating a new one"
+    const bc2 = await browser.newContext();
+  ```
+
+  You'll have to close the existing `browserContext` first, before creating a new one.
+
 ## Migration steps
+
+TODO: Add multiple tests in the example
 
 Let's work with this Playwright test script:
 
@@ -183,7 +203,37 @@ To understand the CLI output results, go here: https://grafana.com/docs/k6/lates
 - Test lifecycle: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
 - Recommended practices: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/
 
+- we don't yet provide a list of APIs between k6 browser and playwright, including future work. Check the docs to see what is available. We have feeling that we have covered a lot of the most used APIs for browser frontend testing.
+
+## Configuration Migration
+
+- Playwright config → k6 options mapping
+  - k6 browser doesn't work with a work directory, so you need to supply the exact script to run relative to the current directory.
+  - Scenarios are independent of each other -- they are parallel by default. Add `startTime` to make them [sequential](https://grafana.com/docs/k6/latest/using-k6/scenarios/#scenarios).
+  - test.only -- no equivalent
+  - retries: No auto retry mechanism
+  - workers -- depends on the number of scenarios, which is like a single playwright worker, but also very different.
+  - reporter -- to change the output of the result take a look [here](https://grafana.com/docs/k6/latest/results-output/end-of-test/) for end of test summary, [here](https://grafana.com/docs/k6/latest/results-output/real-time/) for real time, [web dashboard](https://grafana.com/docs/k6/latest/results-output/web-dashboard/) and [grafana dashboard](https://grafana.com/docs/k6/latest/results-output/grafana-dashboards/).
+  - baseURL -- no such equivalent
+  - trace -- work with grafana k6 to see a timeline view of the test run
+  - projects -- no such equivalent
+  - webServer -- no such equivalent
+  - outputDir -- depends on the output you use
+  - globalSetup -- no such equivalent
+  - globalTeardown -- no such equivalent
+  - timeout -- use K6_BROWSER_TIMEOUT env var
+  - expect.timeout -- no way to set this as a config, needs to be done in the main test block
+  - expect.toHaveScreenshot -- no such equivalent
+  - expect.toMatchSnapshot -- no such equivalent
+  - sharding -- work with grafana k6 for easy multi region, multi load generator setup, with results automatically merged into a single report.
+  - typescript is supported
+- Browser launch options
+  - https://grafana.com/docs/k6/latest/using-k6-browser/options/
+  - K6_BROWSER_WS_URL to work with an existing CDP ws url presented by chromium.
+
 ## Sequential vs Parallel Tests
+
+TODO: This might be dropped as it's not really something I think most users will face problems with.
 
 - Scenarios run in parallel. They're designed that way as in most cases when working with load tests we want to run things in parallel -- i.e. load test the backend with protocol based tests, and in parallel run a browser test to assert that the frontend is behaving as you'd expect.
 - Curerntly there is no way for a scenario to start after another, one way to do this is to work with the `startTime` (as detailed [here](https://grafana.com/docs/k6/latest/using-k6/scenarios/)). See an example below:
@@ -276,22 +326,9 @@ export async function adminLogin() {
 - k6 Studio: https://grafana.com/docs/k6-studio/
 - k6 Studio: record a browser events: https://grafana.com/docs/k6-studio/record-browser-events/
 
-## Key Differences & Limitations
-
-- Browser context restrictions;
-
-  Unlike in Playwright, k6 can only work with a single `browserContext` at a time. So in k6 you won't be able to do:
-
-  ```js
-    const bc1 = await browser.newContext();
-    // This next call will result in an error "existing browser context must be closed before creating a new one"
-    const bc2 = await browser.newContext();
-  ```
-
-  You'll have to close the existing `browserContext` first, before creating a new one.
+## Limitations
 
 - Fixtures isn't supported in k6 browser as well as no test framework. Abstractions will need to be hand coded.
-- Test isolation patterns -- in k6 there is [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) whereas in Playwright there is a dedicated test framework. The difference stems from k6 being a load testing tool. We are [evaluating](https://github.com/grafana/k6-jslib-testing/issues/30) a test framework, but it's still early days.
 - File uploads/downloads
   - It's not supported in k6 browser. We are evaluating the possibility and have issues for this:
     - https://github.com/grafana/k6/issues/4233
@@ -306,30 +343,3 @@ export async function adminLogin() {
   - Work with the [xk6-redis extension](https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/) which is currently experimental but will be non-experimental very soon.
   - All browserContexts are incognito. An evaluation and more feedback is needed to understand its use case [issue](https://github.com/grafana/k6/issues/4378).
 - Files can only be read during the init phase and not during the test runtime with the [experimental fs module](https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/fs/).
-- web vitals will be reported on; we are evaluating further work to bring about more measurements such as JS heap size, long task and more.
-
-## Configuration Migration
-
-- Playwright config → k6 options mapping
-  - k6 browser doesn't work with a work directory, so you need to supply the exact script to run relative to the current directory.
-  - Scenarios are independent of each other -- they are parallel by default. Add `startTime` to make them [sequential](https://grafana.com/docs/k6/latest/using-k6/scenarios/#scenarios).
-  - test.only -- no equivalent
-  - retries: No auto retry mechanism
-  - workers -- depends on the number of scenarios, which is like a single playwright worker, but also very different.
-  - reporter -- to change the output of the result take a look [here](https://grafana.com/docs/k6/latest/results-output/end-of-test/) for end of test summary, [here](https://grafana.com/docs/k6/latest/results-output/real-time/) for real time, [web dashboard](https://grafana.com/docs/k6/latest/results-output/web-dashboard/) and [grafana dashboard](https://grafana.com/docs/k6/latest/results-output/grafana-dashboards/).
-  - baseURL -- no such equivalent
-  - trace -- work with grafana k6 to see a timeline view of the test run
-  - projects -- no such equivalent
-  - webServer -- no such equivalent
-  - outputDir -- depends on the output you use
-  - globalSetup -- no such equivalent
-  - globalTeardown -- no such equivalent
-  - timeout -- use K6_BROWSER_TIMEOUT env var
-  - expect.timeout -- no way to set this as a config, needs to be done in the main test block
-  - expect.toHaveScreenshot -- no such equivalent
-  - expect.toMatchSnapshot -- no such equivalent
-  - sharding -- work with grafana k6 for easy multi region, multi load generator setup, with results automatically merged into a single report.
-  - typescript is supported
-- Browser launch options
-  - https://grafana.com/docs/k6/latest/using-k6-browser/options/
-  - K6_BROWSER_WS_URL to work with an existing CDP ws url presented by chromium.
