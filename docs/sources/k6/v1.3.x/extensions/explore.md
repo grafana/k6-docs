@@ -25,7 +25,7 @@ We're working on a process for community folks to submit their extensions.
 
 {{< /admonition >}}
 
-{{< docs/shared source="k6" lookup="community-extensions.md" version="<K6_VERSION>" >}}
+{{< docs/k6/community-extensions >}}
 
 ## Use extensions
 
