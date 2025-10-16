@@ -168,8 +168,6 @@ export function Homepage() {
 }
 ```
 
-[Recording browser traffic](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder) helps you prototype to test websites on the protocol level.
-
 ### Browser-based load testing
 
 Browser-based load testing verifies the frontend performance of an application by simulating real users using a browser to access your website.

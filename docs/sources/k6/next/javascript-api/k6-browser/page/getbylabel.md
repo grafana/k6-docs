@@ -11,8 +11,6 @@ description: 'Browser module: page.getByLabel(text[, options]) method'
 
 Fill form fields using their labels:
 
-<!-- md-k6:skip -->
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -54,8 +52,6 @@ export default async function () {
 ### Working with different input types
 
 Handle various form control types in various label association patterns:
-
-<!-- md-k6:skip -->
 
 ```javascript
 import { browser } from 'k6/browser';
