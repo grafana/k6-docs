@@ -22,10 +22,6 @@ For most browser-based scenarios, you should **use `page.waitForTimeout()`** to 
 - Sleeping for one second to simulate a user looking for a specific element on the page  
 - Clicking on the element 
 
-### Example
-
-```javascript
-```
 ## What is `page.waitForTimeout()`?
 
 `page.waitForTimeout()` is a function provided by the **k6 browser module** that pauses script execution for a specified amount of time **without blocking** the JavaScript event loop.  
@@ -34,8 +30,3 @@ Unlike `sleep()`, it is **asynchronous**, meaning other browser activities—suc
 
 You can use `page.waitForTimeout()` to simulate real user pauses, like reading a page, waiting for a visual change, or mimicking natural interaction timing, all without interrupting the browser’s internal processes.
 
-
-### Example
-
-```javascript
-```
