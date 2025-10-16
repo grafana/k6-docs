@@ -1,0 +1,57 @@
+---
+title: "When To Use sleep() and page.waitForTimeout()"
+heading: "When To Use sleep() and page.waitForTimeout()"
+head_title: "sleep() vs page.waitForTimeout() in k6 browser"
+description: "Learn when to use sleep() and when to use page.waitForTimeout() in k6 browser tests to ensure accurate and realistic user simulation."
+weight: 01
+---
+
+## Overview
+
+In k6, both `sleep()` and `page.waitForTimeout()` can be used to introduce delays in your test scripts. However, they behave very differently under the hood. When writing browser tests in k6, it’s important to understand the difference between `sleep()` and `page.waitForTimeout()`, and why you should **prefer `page.waitForTimeout()`** in most browser-based scenarios.
+
+- **`sleep()`** is **synchronous**, blocking the thread and halting all background activity.
+- **`page.waitForTimeout()`** is **asynchronous**, allowing background events to continue while pausing the script.
+
+Because browser tests often rely on background work (network requests, rendering, async event handling, etc.), using `page.waitForTimeout()` ensures these operations are not blocked.
+
+## What is `sleep()`?
+
+`sleep()` is a built-in k6 function designed to suspend Virtual User (VU) execution for a specified duration.
+
+### Example
+
+```javascript
+import { sleep } from 'k6';
+
+export default function () {
+  // Navigate to a page
+  page.goto('https://example.com');
+
+  // Simulate a user pausing for a second
+  sleep(1);
+
+  // Click an element
+  page.click('#submit');
+}
+```
+## What is `page.waitForTimeout()`?
+
+`sleep()` is a built-in k6 function designed to suspend Virtual User (VU) execution for a specified duration.
+
+### Example
+
+```javascript
+import { sleep } from 'k6';
+
+export default function () {
+  // Navigate to a page
+  page.goto('https://example.com');
+
+  // Simulate a user pausing for a second
+  sleep(1);
+
+  // Click an element
+  page.click('#submit');
+}
+```
