@@ -100,6 +100,8 @@ $ k6 run --address "localhost:3000" script.js
 
 {{< /code >}}
 
+If you don't want to enable the HTTP server then sets the value to an empty string `k6 run -a '' script.js`.
+
 ## Batch
 
 The maximum number of simultaneous/parallel connections in total that an

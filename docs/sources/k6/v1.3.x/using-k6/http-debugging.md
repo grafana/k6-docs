@@ -22,7 +22,7 @@ Given the following script:
 ```javascript
 import http from "k6/http";
 
-export default function() {
+export default function () {
       http.get("https://google.com/");
 }
 ```

@@ -1,7 +1,7 @@
 ---
 title: 'Execution context variables'
 description: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
-weight: 12
+weight: 1400
 ---
 
 # Execution context variables

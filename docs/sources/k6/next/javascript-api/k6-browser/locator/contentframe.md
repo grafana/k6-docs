@@ -5,19 +5,15 @@ description: 'Browser module: locator.contentFrame method'
 
 # contentFrame()
 
-This method returns a [FrameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/) object pointing to the same `iframe` as this locator.
+This method returns a [FrameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/) object pointing to the same `iframe` as this locator. This is useful when you have a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) object obtained somewhere, and later on would like to interact with the content inside the frame.
 
-Useful when you have a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/) object obtained somewhere, and later on would like to interact with the content inside the frame.
-
-### Returns
+## Returns
 
 | Type                                                                                   | Description                                              |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | [FrameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/) | The `FrameLocator` pointing to the same`iframe` as this locator. |
 
-### Example
-
-{{< code >}}
+## Example
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -53,5 +49,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
