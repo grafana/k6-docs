@@ -7,20 +7,17 @@ weight: 01
 
 # Explore extensions
 
-Extensions can be used to extend the core k6 features to fit your performance-testing use cases. There are two main categories of extensions:
-
-| Category      | Maintainer   | Audited | Cloud support |
-| ------------- | ------------ | ------- | ------------- |
-| **Official**  | Grafana Labs | ✅ Yes  | ✅ Yes        |
-| **Community** | Community    | ✅ Yes  | ⚠️ Partial\*  |
-
-\* _Partial_ cloud support means that the extensions can be used in the CLI with the `--local-execution` mode, and on Private Load Zones with a custom image. They don't work on Grafana Cloud k6 Public Load Zones.
+Extensions can be used to extend the core k6 features to fit your performance-testing use cases. There are two main categories of extensions: official and community.
 
 ## Official extensions
+
+These are extensions owned and maintained by Grafana Labs, with support for a wide range of versions.
 
 {{< docs/k6/official-extensions >}}
 
 ## Community extensions
+
+These are extensions developed by the community, with support for specific versions.
 
 {{< admonition type="note" >}}
 
