@@ -108,10 +108,12 @@ export default async function () {
 | [toBeDisabled()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobedisabled)       | Element is disabled                  |
 | [toBeChecked()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobechecked)         | Checkbox or radio button is checked  |
 | [toBeEditable()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobeeditable)       | Element is editable                  |
+| [toBeEmpty()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tobeempty)             | Element is empty                     |
 | [toHaveText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohavetext)           | Element has specific text content    |
 | [toContainText()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tocontaintext)     | Element contains specific text       |
 | [toHaveValue()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohavevalue)         | Input element has specific value     |
 | [toHaveAttribute()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohaveattribute) | Element has specific attribute value |
+| [toHaveTitle()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/retrying-assertions/tohavetitle)         | Page has specific title              |
 
 
 {{< section >}}
