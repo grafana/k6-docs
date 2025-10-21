@@ -1,6 +1,6 @@
 ---
 title: 'Importance of Page.close in k6 browser'
-description: 'The Importance of calling Page.close in k6 browser test'
+description: 'The importance of calling page.close in k6 browser test'
 weight: 01
 ---
 # Page.close in k6 browser
@@ -8,7 +8,7 @@ weight: 01
 When running k6 browser tests with event-based APIs, such as `page.on`, tests may not always properly flush metrics or clean up resources automatically, which can lead to incomplete metric reporting or leftover event handlers. 
 To prevent this, always call `page.close()` at the end of your browser tests. Doing so ensures accurate and complete metric collection, cleans up event listeners to prevent resource leaks, and simplifies test teardown for improved reliability.
 
-# Example
+## Example
 ```javascript
 import { browser } from "k6/browser";
 import { check } from "k6";
