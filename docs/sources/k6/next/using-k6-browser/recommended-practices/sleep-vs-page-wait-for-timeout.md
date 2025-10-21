@@ -1,12 +1,10 @@
 ---
 title: "When To Use sleep() and page.waitForTimeout()"
-heading: "When To Use sleep() and page.waitForTimeout()"
-head_title: "sleep() vs page.waitForTimeout() in k6 browser"
 description: "Learn when to use sleep() and when to use page.waitForTimeout() in k6 browser tests to ensure accurate and realistic user simulation."
 weight: 01
 ---
 
-## Overview
+# Overview
 
 In Grafana k6, both `sleep()` and `page.waitForTimeout()` can be used to add pauses in your test scripts, but they work very differently. Understanding these differences is essential for accurate and reliable browser testing.  
 
