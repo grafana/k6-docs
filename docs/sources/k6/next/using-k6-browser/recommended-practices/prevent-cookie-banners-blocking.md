@@ -17,7 +17,6 @@ To avoid these failures, trigger and dismiss the cookie banner early in the test
 
 The example below navigates to a page and takes a screenshot. Replace the placeholder steps with a click or scroll that reveals and dismisses your site's cookie banner.
 
-<!-- md-k6:skip -->
 ```javascript
 import { browser } from 'k6/browser';
 
