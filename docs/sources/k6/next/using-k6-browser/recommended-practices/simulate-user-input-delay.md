@@ -313,9 +313,12 @@ export default async function () {
   }
 }
 ```
+{{< /code >}}
+
+
 ### page.waitForURL
 [page.waitForURL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl) waits for the page to navigate to the specified URL. This method is useful for ensuring that navigation to a particular URL has completed before proceeding with the test. This is especially useful if there are multiple redirects before hitting the end destination.
-
+{{< code >}}
 ```js
 import { browser } from 'k6/browser';
 
@@ -353,11 +356,12 @@ export default async function () {
   }
 }
 ```
+{{< /code >}}
 
 ### page.waitForResponse
 [page.waitForResponse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitForResponse) waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resources to be loaded before proceeding with the test.
-
-```javascript
+{{< code >}}
+```js
 import { browser } from 'k6/browser';
 import { check } from 'k6';
 
@@ -397,4 +401,4 @@ export default async function () {
   }
 }
 ```
-
+{{< /code >}}
