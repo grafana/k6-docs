@@ -153,6 +153,8 @@ export default async function () {
 
 [page.waitForLoadState](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate) is useful when there’s no explicit navigation, but you need to wait for the page or network to settle. This is mainly used when working with single-page applications or when no full page reloads happen.
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -299,7 +301,7 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io');
+    await page.goto('https://quickpizza.grafana.com/');
 
     // Slow the test down to mimic a user looking for the element on the page.
     await page.waitForTimeout(1000);
