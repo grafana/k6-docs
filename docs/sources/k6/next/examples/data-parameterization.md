@@ -248,9 +248,7 @@ export default function () {
 
 {{< /code >}}
 
-Or if you have a big data set and just want no VU to use any data any other VU. But you want to have a set number of VUs. In that case you can use modulo operator to get a user out of the data set for each VU so no other ones does.
-
-This also allows us to loop over the data set while still making certain no two VUs will use the same data at the same time. Or during the test for that matter.
+If you have a large dataset and want to make sure no two VUs use the same value in the data set at the same time (while keeping a fixed number of VUs), use the modulo operator with the global iteration index. This gives you a round-robin assignment over the dataset and avoids collisions during a run.
 
 {{< code >}}
 
