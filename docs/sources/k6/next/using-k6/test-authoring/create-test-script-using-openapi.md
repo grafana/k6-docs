@@ -8,7 +8,7 @@ weight: 150
 
 Creating a k6 test script from scratch requires some JavaScript/TypeScript knowledge, as well as understanding k6 concepts such as the test lifecycle and k6 JavaScript APIs.
 
-The OpenAPI specification has become popular over the years and is commonly used across development teams. It lets developers create a schema that includes details about an API, including authentication methods, endpoints, responses, and more. Once teams have an OpenAPI definition file, they can also use third-party tools to automatically create documentation, integrate with testing tools, or create mock servers.
+The OpenAPI specification lets developers create a schema that includes details about an API, including authentication methods, endpoints, responses, and more. Once teams have an OpenAPI definition file, they can also use third-party tools to automatically create documentation, integrate with testing tools, or create mock servers.
 
 The [openapi-to-k6](https://github.com/grafana/openapi-to-k6) project lets you use an existing OpenAPI schema to generate a TypeScript client that can be used to quickly test API endpoints with k6. The generated client exports a class with methods for each endpoint in the OpenAPI schema. You can import the client into your script, create an instance of the class, and use the methods to call any endpoints.
 
