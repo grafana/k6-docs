@@ -26,7 +26,7 @@ While using the `sleep` or `page.waitForTimeout` functions to wait for element s
 
 `sleep` is a synchronous function that blocks the JavaScript event loop, which means that all asynchronous work will also be suspended until `sleep` completes.
 
-The browser module predominantly provides asynchronous APIs, so it's best to avoid working with `sleep`. Instead, _use the [page.waitForTimeout](#pagewaitfortimeout) function_.
+The browser module predominantly provides asynchronous APIs, so it's best to avoid working with `sleep`. Instead, _use the [page.waitForTimeout](#pagewaitfortimeout) function_. Refer to [When to use sleep() and page.waitForTimeout()](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/sleep-vs-page-wait-for-timeout/) for more details.
 
 {{< /admonition >}}
 
