@@ -1,7 +1,7 @@
 ---
 title: 'Simulate user input delay'
 description: 'A guide on how to simulate user input delay.'
-weight: 04
+weight: 600
 ---
 
 # Simulate user input delay

@@ -3,7 +3,7 @@ title: 'Page object model'
 heading: 'Page object model with k6 browser'
 head_title: 'Page object model with k6 browser'
 description: 'An example on how to implement page object model design pattern with k6 browser'
-weight: 02
+weight: 300
 ---
 
 # Page object model

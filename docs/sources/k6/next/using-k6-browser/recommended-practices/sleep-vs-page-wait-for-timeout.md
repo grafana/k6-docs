@@ -1,7 +1,7 @@
 ---
 title: "When To Use sleep() and page.waitForTimeout()"
 description: "Learn when to use sleep() and when to use page.waitForTimeout() in k6 browser tests to ensure accurate and realistic user simulation."
-weight: 01
+weight: 700
 ---
 
 # Overview

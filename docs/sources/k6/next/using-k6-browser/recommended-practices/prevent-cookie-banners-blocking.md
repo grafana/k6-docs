@@ -1,7 +1,7 @@
 ---
 title: "How to prevent cookie banners from blocking interactions"
 description: "How to reveal and dismiss cookie banners in k6 Browser tests to prevent blocked interactions and improve test reliability."
-weight: 01
+weight: 100
 ---
 
 # How to prevent cookie banners from blocking interactions
