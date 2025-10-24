@@ -1,24 +1,21 @@
 ---
-title: 'Data Parameterization'
+title: 'Data parameterization'
 description: |
-  Scripting examples on how to parameterize data in a test script. Parameterization is typically
-  necessary when Virtual Users(VUs) will make a POST, PUT, or PATCH request in a test.
-
-  Parameterization helps to prevent server-side caching from impacting your load test.
-  This will, in turn, make your test more realistic.
+  Scripting examples on how to parameterize data in a test script.
 weight: 05
 ---
 
-# Data Parameterization
+# Data parameterization
+
+<!-- md-k6:skipall -->
 
 _Data parameterization_ is the process of turning test values into reusable parameters, for example, through variables and shared arrays.
 
 This page gives some examples of how to parameterize data in a test script.
-Parameterization is typically necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a test.
+Parameterization is typically necessary when Virtual Users (VUs) make a POST, PUT, or PATCH request in a test.
 You can also use parameterization when you need to add test data from a separate file.
 
-Parameterization helps to prevent server-side caching from impacting your load test.
-This will, in turn, make your test more realistic.
+Parameterization helps to prevent server-side caching from impacting your load test, which makes your tests more realistic.
 
 ## Performance implications of `SharedArray`
 
@@ -38,8 +35,6 @@ A note on performance characteristics of `SharedArray` can be found within its [
 
 ## From a JSON file
 
-{{< code >}}
-
 ```json
 {
   "users": [
@@ -48,10 +43,6 @@ A note on performance characteristics of `SharedArray` can be found within its [
   ]
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -68,15 +59,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## From a CSV file
 
 k6 doesn't parse CSV files natively, but you can use an external library, [Papa Parse](https://www.papaparse.com/).
 
 You can download the library and import it locally like this:
-
-{{< code >}}
 
 ```javascript
 import papaparse from './papaparse.js';
@@ -94,11 +81,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
-
-{{< code >}}
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
@@ -117,12 +100,8 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Here's an example using Papa Parse to parse a CSV file of username/password pairs and using that
 data to login to the test.k6.io test site:
-
-{{< code >}}
 
 ```javascript
 /*  Where contents of data.csv is:
@@ -171,18 +150,15 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Retrieving unique data
 
-It is often a requirement not to use the same data more than once in a test. With the help of [k6/execution](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution), which includes a property `scenario.iterationInTest`, you can retrieve unique rows from your data set.
+It is often a requirement not to use the same data more than once in a test. With the help of [k6/execution](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution), which includes a property `scenario.iterationInTest`, you can retrieve unique rows from your dataset.
 
-> ### ⚠️ Multiple scenarios
->
-> `scenario.iterationInTest` property is unique **per scenario**, not the overall test.
-> That means if you have multiple scenarios in your test you might need to split your data per scenario.
+{{< admonition type="note" >}}
 
-{{< code >}}
+`scenario.iterationInTest` property is unique _per scenario_, not the overall test. That means if you have multiple scenarios in your test you might need to split your data per scenario.
+
+{{< /admonition >}}
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -210,14 +186,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
-Alternatively, if your use case requires using a unique data set per VU, you could leverage a property called `vu.idInTest`.
+Alternatively, if your use case requires using a unique dataset per VU, you could leverage a property called `vu.idInTest`.
 
 In the following example we're going to be using `per-vu-iterations` executor to ensure that every VU completes
 a fixed amount of iterations.
-
-{{< code >}}
 
 ```javascript
 import { sleep } from 'k6';
@@ -246,13 +218,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
-Or if you have a big data set and just want no VU to use any data any other VU. But you want to have a set number of VUs. In that case you can use modulo operator to get a user out of the data set for each VU so no other ones does.
-
-This also allows us to loop over the data set while still making certain no two VUs will use the same data at the same time. Or during the test for that matter.
-
-{{< code >}}
+If you have a large dataset and want to make sure no two VUs use the same value in the dataset at the same time, while keeping a fixed number of VUs, use the modulo operator (`%`) with the global iteration index. This gives you a round-robin assignment over the dataset and avoids collisions during a run.
 
 ```javascript
 import { sleep } from 'k6';
@@ -280,7 +246,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
 ## Generating data using faker.js
 
 The following articles show how to use faker.js in k6 to generate realistic data during the test execution:
