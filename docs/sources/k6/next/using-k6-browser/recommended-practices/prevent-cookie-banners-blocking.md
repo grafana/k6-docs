@@ -43,8 +43,15 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com/');
 
-    // Click an element or scroll the page
+    // Click an element to trigger a cookie banner.
+    // Clicking an element also scrolls the page if the
+    // element is outside the frame.
     const button = page.locator('button[name="pizza-please"]')
+    await expect(button).toBeEnabled();
+    await button.click();
+
+    // Dismiss the cookie banner
+    const cookieBannerButton = page.locator('button[name="dismiss-cookie"]')
     await expect(button).toBeEnabled();
     await button.click();
   } finally {
