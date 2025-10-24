@@ -40,7 +40,9 @@ In the browser modules there are various asynchronous APIs that can be used to w
 | [page.waitForFunction](#pagewaitforfunction)               | Waits for the given function to return a truthy value.                      |
 | [page.waitForLoadState](#pagewaitforloadstate)             | Waits for the specified page life cycle event.                              |
 | [page.waitForNavigation](#pagewaitfornavigation)           | Waits for the navigation to complete after one starts.                      |
+| [page.waitForResponse](#pagewaitforresponse)               | Wait for an HTTP response that matches the specified URL pattern.           |
 | [page.waitForTimeout](#pagewaitfortimeout)                 | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
+| [page.waitForURL](#pagewaitforurl)                         | Wait for the page to navigate to the specified URL.                         |
 | [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
 
 ### browserContext.waitForEvent
@@ -241,124 +243,8 @@ export default async function () {
 
 {{< /code >}}
 
-### locator.waitFor
-
-[locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state. For example, if elements load after some delay due to async calls, or because of slow JavaScript execution.
-
-{{< code >}}
-
-```js
-import { browser } from 'k6/browser';
-
-export const options = {
-  scenarios: {
-    browser: {
-      executor: 'shared-iterations',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-};
-
-export default async function () {
-  const page = await browser.newPage();
-
-  await page.goto('https://test.k6.io/browser.php');
-  const text = page.locator('#input-text-hidden');
-  await text.waitFor({
-    state: 'hidden',
-  });
-}
-```
-
-{{< /code >}}
-
-### page.waitForTimeout
-
-[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#whatissleep), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
-
-{{< code >}}
-
-```js
-import { browser } from 'k6/browser';
-
-export const options = {
-  scenarios: {
-    browser: {
-      executor: 'shared-iterations',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-};
-
-export default async function () {
-  const page = await browser.newPage();
-
-  try {
-    await page.goto('https://test.k6.io');
-
-    // Slow the test down to mimic a user looking for the element on the page.
-    await page.waitForTimeout(1000);
-
-    // ... perform the next action
-  } finally {
-    await page.close();
-  }
-}
-```
-{{< /code >}}
-
-
-### page.waitForURL
-[page.waitForURL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl) waits for the page to navigate to the specified URL. This method is useful for ensuring that navigation to a particular URL has completed before proceeding with the test. This is especially useful if there are multiple redirects before hitting the end destination.
-
-```js
-import { browser } from 'k6/browser';
-
-export const options = {
-  scenarios: {
-    browser: {
-      executor: 'shared-iterations',
-      options: {
-        browser: {
-          type: 'chromium',
-        },
-      },
-    },
-  },
-};
-
-export default async function () {
-  const page = await browser.newPage();
-
-  try {
-    await page.goto('https://quickpizza.grafana.com/test.k6.io/');
-
-    // Wait for navigation to a specific URL
-    await Promise.all([
-      page.click('a[href="/my_messages.php"]'),
-      page.waitForURL('https://quickpizza.grafana.com/my_messages.php'),
-    ]);
-
-    await page.goto('https://quickpizza.grafana.com/test.k6.io/');
-
-    // Wait for navigation using URL pattern with RegExp
-    await Promise.all([page.click('a[href="/browser.php"]'), page.waitForURL(/\/browser\.php$/)]);
-  } finally {
-    await page.close();
-  }
-}
-```
-
-
 ### page.waitForResponse
+
 [page.waitForResponse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitForResponse) waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resources to be loaded before proceeding with the test.
 
 ```js
@@ -401,3 +287,120 @@ export default async function () {
   }
 }
 ```
+
+### page.waitForTimeout
+
+[page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#whatissleep), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
+
+{{< code >}}
+
+```js
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    await page.goto('https://test.k6.io');
+
+    // Slow the test down to mimic a user looking for the element on the page.
+    await page.waitForTimeout(1000);
+
+    // ... perform the next action
+  } finally {
+    await page.close();
+  }
+}
+```
+
+{{< /code >}}
+
+### page.waitForURL
+
+[page.waitForURL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl) waits for the page to navigate to the specified URL. This method is useful for ensuring that navigation to a particular URL has completed before proceeding with the test. This is especially useful if there are multiple redirects before hitting the end destination.
+
+```js
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    await page.goto('https://quickpizza.grafana.com/test.k6.io/');
+
+    // Wait for navigation to a specific URL
+    await Promise.all([
+      page.click('a[href="/my_messages.php"]'),
+      page.waitForURL('https://quickpizza.grafana.com/my_messages.php'),
+    ]);
+
+    await page.goto('https://quickpizza.grafana.com/test.k6.io/');
+
+    // Wait for navigation using URL pattern with RegExp
+    await Promise.all([page.click('a[href="/browser.php"]'), page.waitForURL(/\/browser\.php$/)]);
+  } finally {
+    await page.close();
+  }
+}
+```
+
+### locator.waitFor
+
+[locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state. For example, if elements load after some delay due to async calls, or because of slow JavaScript execution.
+
+{{< code >}}
+
+```js
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  await page.goto('https://test.k6.io/browser.php');
+  const text = page.locator('#input-text-hidden');
+  await text.waitFor({
+    state: 'hidden',
+  });
+}
+```
+
+{{< /code >}}
