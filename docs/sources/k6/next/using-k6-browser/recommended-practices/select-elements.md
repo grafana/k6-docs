@@ -3,7 +3,7 @@ aliases:
   - ./selecting-elements # docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/selecting-elements
 title: 'Select elements'
 description: 'A guide on how to select elements with the browser module.'
-weight: 03
+weight: 500
 ---
 
 # Select elements

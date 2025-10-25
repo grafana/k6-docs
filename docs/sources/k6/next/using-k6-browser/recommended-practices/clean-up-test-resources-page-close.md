@@ -1,14 +1,17 @@
 ---
-title: 'Importance of Page.close in k6 browser'
-description: 'The importance of calling page.close in k6 browser test'
+title: 'Use Page.close to clean up test resources'
+description: 'Use Page.close in your browser tests to ensure k6 properly flushes metrics and cleans up resources'
 weight: 01
 ---
-# Page.close in k6 browser
 
-When running k6 browser tests with event-based APIs, such as `page.on`, tests may not always properly flush metrics or clean up resources automatically, which can lead to incomplete metric reporting or leftover event handlers. 
-To prevent this, always call `page.close()` at the end of your browser tests. Doing so ensures accurate and complete metric collection, cleans up event listeners to prevent resource leaks, and simplifies test teardown for improved reliability.
+# Use Page.close to clean up test resources
+
+When running k6 browser tests with event-based APIs, such as `page.on`, tests may not always properly flush metrics or clean up resources automatically, which can lead to incomplete metric reporting or leftover event handlers.
+
+To prevent this, always call [`page.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/close/) at the end of your browser tests. Doing so ensures accurate and complete metric collection, cleans up event listeners to prevent resource leaks, and simplifies test teardown for improved reliability.
 
 ## Example
+
 ```javascript
 import { browser } from "k6/browser";
 import { check } from "k6";
