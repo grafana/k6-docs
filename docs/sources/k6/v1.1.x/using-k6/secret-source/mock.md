@@ -11,7 +11,7 @@ You can use this secret source to test your tests quick and easy.
 {{< code >}}
 
 ```bash
-$ k6 run --secret-source=cli=mysecret=value script.js
+$ k6 run --secret-source=mock=mysecret=value script.js
 ```
 
 ```docker
