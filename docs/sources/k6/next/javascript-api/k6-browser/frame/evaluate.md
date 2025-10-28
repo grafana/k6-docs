@@ -5,7 +5,7 @@ description: 'Browser module: frame.evaluate(pageFunction[, arg]) method'
 
 # evaluate(pageFunction[, arg])
 
-Returns the value of the `pageFunction` invocation.
+Executes JavaScript code in the page and returns the value of the `pageFunction` invocation.
 
 <TableWithNestedRows>
 

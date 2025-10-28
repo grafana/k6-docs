@@ -5,13 +5,13 @@ description: 'Browser module: locator.evaluate(pageFunction[, arg]) method'
 
 # evaluate(pageFunction[, arg])
 
-Returns the value of the `pageFunction` invocation. It passes the matching element of the locator as the first argument to the `pageFunction` and arg as a second argument.
+Executes JavaScript code in the page, passing the matching element of the locator as the first argument to the `pageFunction` and arg as following argument(s). It returns the value of the `pageFunction` invocation.
 
 <TableWithNestedRows>
 
 | Parameter    | Type               | Defaults | Description                                  |
 | ------------ | ------------------ | -------- | -------------------------------------------- |
-| pageFunction | function or string |          | Function to be evaluated.                    |
+| pageFunction | function or string |          | Function to be evaluated in the page context.                    |
 | arg          | string             | `''`     | Optional argument to pass to `pageFunction`. |
 
 </TableWithNestedRows>
