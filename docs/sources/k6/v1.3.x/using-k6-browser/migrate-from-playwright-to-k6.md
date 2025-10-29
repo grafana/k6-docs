@@ -397,13 +397,13 @@ k6 collects and reports on several built-in metrics, such as request and respons
 
 Refer to [Built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference/) for more details.
 
-### k6 Concepts
+### k6 concepts
 
 k6 was originally designed as a load testing tool, so there are concepts that are important to understand in order to use the tool:
 
 - **Virtual User**: A Virtual User (VU) is an independent thread of execution that runs concurrently with other VU threads. Often, scripts are designed so that one VU activity represents that of one real user.
 - **Iteration**: The number of times a single VU will run the test script.
-- **Thresholds and checks**: In testing, we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, for example 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
+- **Thresholds and checks**: [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/) are pass/fail criteria that you can configure for your test metrics. For example, you can configure a threshold for your test to fail if more than 1% of requests return an error. [Checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks/) validate a boolean condition in your test. For example, you can check if the status code for a response is equal to 200. The main difference between the two is that thresholds that are not met make a test finish with a failed status, while checks do not. k6 also provides a k6-testing library that behaves similarly to how assertions work in Playwright. Refer to the [k6-testing](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/) docs for more details.
 
 ### Browser context restrictions
 
