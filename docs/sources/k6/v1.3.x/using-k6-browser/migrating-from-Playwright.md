@@ -1,59 +1,29 @@
 ---
-title: 'Migrating from Playwright'
+title: 'Migrate a Playwright script to k6'
 description: 'A migration guide to ease the process of transitioning from Playwright to k6'
 weight: 325
 ---
 
-# Migrating from Playwright
+# Migrate a Playwright script to k6
 
-## Introduction
+Playwright is an end-to-end test framework for modern web apps. It can be used for web testing across browsers, mobile web testing, API testing, and general-purpose browser automation.
 
-- Playwright has many use cases:
-  - End-to-end web testing across browsers, platforms, and languages
-  - Mobile web testing
-  - API testing
-  - Component testing
-  - general purpose browser automation
+You can convert your Playwright scripts to k6 browser scripts, and then use them in:
 
-- k6 browser use cases are to complement protocol load tests to measure how backend under load impacts frontend performance, and for synthetic monitoring using Grafana SM product. Over the last year k6 has evolved to bring more functional paradigms such as the asserts library. We are evaluating work to align with other JS test frameworks.
+- k6 OSS or Grafana Cloud k6, to run performance tests and frontend testing at the same time, and see how your application behaves in a real-world scenario.
+- Synthetic Monitoring, and make sure your application is being monitored and working correctly on a consistent schedule.
 
-- When to migrate and why:
-  - want to perform load testing and FE testing at the same time -- non-functional testing.
-  - same script can be easily transferred over to Grafana SM -- functional testing.
+In this guide, you'll learn the key differences between Playwright and k6, and how to migrate your scripts.
 
-## Key Differences & Limitations
+## Before you begin
 
-### Main differences
+To run a k6 test, you'll need:
 
-TODO: Code snippets, if there are any
+- A machine with [k6 installed](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/).
 
-- Test isolation patterns -- in k6 there is [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) whereas in Playwright there is a dedicated test framework. The difference stems from k6 being a load testing tool. We are [evaluating](https://github.com/grafana/k6-jslib-testing/issues/30) a test framework, but it's still early days.
+## Example migration
 
-- web vitals will be reported on; we are evaluating further work to bring about more measurements such as JS heap size, long task and more.
-- k6 reports on many metrics which we think are useful out of the box, such as request/response times, request/response data size etc.
-
-- Important terminology in k6. Because it was originally designed as a load testing tool:
-  - VU: virtual user;
-  - Iteration: number of times a single VU will run the iteration;
-  - thresholds and check: in load testing we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, e.g. 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
-
-### Browser context restrictions;
-
-  Unlike in Playwright, k6 can only work with a single `browserContext` at a time. So in k6 you won't be able to do:
-
-  ```js
-    const bc1 = await browser.newContext();
-    // This next call will result in an error "existing browser context must be closed before creating a new one"
-    const bc2 = await browser.newContext();
-  ```
-
-  You'll have to close the existing `browserContext` first, before creating a new one.
-
-## Migration steps
-
-TODO: Add multiple tests in the example
-
-Let's work with this Playwright test script:
+Here's an example Playwright script, and common steps you can take to migrate it to a k6 script:
 
 ```js
 import { test, expect } from '@playwright/test';
@@ -66,9 +36,7 @@ test('has title', async ({ page }) => {
 });
 ```
 
-At the moment, k6 doesn't implement a `test` framework. So we work with the export default function.
-
-Copy paste from your Playwright `test` into a new file, let's call it `pw-migrated.js`:
+Create a new file named `pw-migrated.js`. Copy this initial k6 script setup:
 
 ```js
 import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
@@ -92,7 +60,11 @@ export default async function () {
 }
 ```
 
-You should now have:
+k6 browser is a library that's part of k6. Any Playwright script that you migrate needs to include the `import { browser } from 'k6/browser';` line at the top.
+
+k6 browser doesn't implement a `test` framework. Instead, the logic of test is handled inside the `export default async function ()`.
+
+Next, copy the contents from the `test()` function from the Playwright script into the k6 `default async function ()`.
 
 ```js
 import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
@@ -119,7 +91,7 @@ export default async function () {
 }
 ```
 
-k6 doesn't implement `fixtures`, so we need to work with the `browser` to retrieve a `page` within it's own context:
+k6 doesn't implement `fixtures` like Playwright does. Instead, you'll need to use the `browser` class to retrieve a `page` within its own context. After that, you can use the usual `page` methods such as `goto` or `click`:
 
 ```js
 import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
@@ -147,10 +119,16 @@ export default async function () {
 }
 ```
 
-Run the test with `k6 run pw-migrated.js`. Which will result in:
+Save your script, and then run it in your terminal:
 
-```shell
- > k6 run pw-migrated.js
+```sh
+k6 run pw-migrated.js
+```
+
+You should see an output similar to the following:
+
+```sh
+> k6 run pw-migrated.js
 
          /\      Grafana   /‾‾/  
     /\  /  \     |\  __   /  /   
@@ -196,50 +174,51 @@ running (00m02.2s), 0/1 VUs, 1 complete and 0 interrupted iterations
 ui   ✓ [======================================] 1 VUs  00m02.2s/10m0s  1/1 shared iters
 ```
 
-You can find the docs for assertions here: https://github.com/grafana/k6-jslib-testing.
+## Migrate multiple tests
 
-To understand the CLI output results, go here: https://grafana.com/docs/k6/latest/results-output/end-of-test/.
-
-- Test lifecycle: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
-- Recommended practices: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/
-
-- we don't yet provide a list of APIs between k6 browser and playwright, including future work. Check the docs to see what is available. We have feeling that we have covered a lot of the most used APIs for browser frontend testing.
-
-## Configuration Migration
-
-- Playwright config → k6 options mapping
-  - k6 browser doesn't work with a work directory, so you need to supply the exact script to run relative to the current directory.
-  - Scenarios are independent of each other -- they are parallel by default. Add `startTime` to make them [sequential](https://grafana.com/docs/k6/latest/using-k6/scenarios/#scenarios).
-  - test.only -- no equivalent
-  - retries: No auto retry mechanism
-  - workers -- depends on the number of scenarios, which is like a single playwright worker, but also very different.
-  - reporter -- to change the output of the result take a look [here](https://grafana.com/docs/k6/latest/results-output/end-of-test/) for end of test summary, [here](https://grafana.com/docs/k6/latest/results-output/real-time/) for real time, [web dashboard](https://grafana.com/docs/k6/latest/results-output/web-dashboard/) and [grafana dashboard](https://grafana.com/docs/k6/latest/results-output/grafana-dashboards/).
-  - baseURL -- no such equivalent
-  - trace -- work with grafana k6 to see a timeline view of the test run
-  - projects -- no such equivalent
-  - webServer -- no such equivalent
-  - outputDir -- depends on the output you use
-  - globalSetup -- no such equivalent
-  - globalTeardown -- no such equivalent
-  - timeout -- use K6_BROWSER_TIMEOUT env var
-  - expect.timeout -- no way to set this as a config, needs to be done in the main test block
-  - expect.toHaveScreenshot -- no such equivalent
-  - expect.toMatchSnapshot -- no such equivalent
-  - sharding -- work with grafana k6 for easy multi region, multi load generator setup, with results automatically merged into a single report.
-  - typescript is supported
-- Browser launch options
-  - https://grafana.com/docs/k6/latest/using-k6-browser/options/
-  - K6_BROWSER_WS_URL to work with an existing CDP ws url presented by chromium.
-
-## Sequential vs Parallel Tests
-
-TODO: This might be dropped as it's not really something I think most users will face problems with.
-
-- Scenarios run in parallel. They're designed that way as in most cases when working with load tests we want to run things in parallel -- i.e. load test the backend with protocol based tests, and in parallel run a browser test to assert that the frontend is behaving as you'd expect.
-- Curerntly there is no way for a scenario to start after another, one way to do this is to work with the `startTime` (as detailed [here](https://grafana.com/docs/k6/latest/using-k6/scenarios/)). See an example below:
+Here we have a Playwright test file containing two tests. We’re going to show you how to work with scenarios to create the equivalent test file in k6:
 
 ```js
-import { browser } from 'k6/browser'
+import { test, expect } from '@playwright/test';
+
+test('admin', async ({ page }) => {
+  await page.goto('https://quickpizza.grafana.com/admin', {
+    waitUntil: 'networkidle',
+  });
+
+  await page.getByLabel('username').fill('admin');
+  await page.getByLabel('password').fill('admin');
+  await page.getByRole('button', { name: 'Sign in' }).click()
+
+  await page.getByRole('button', { name: 'Logout' }).waitFor()
+
+  const label = page.locator('h2')
+  const textContent = await label.textContent()
+  expect(textContent).toEqual('Latest pizza recommendations');
+});
+
+test('user', async ({ page }) => {
+  await page.goto('https://quickpizza.grafana.com/login', {
+    waitUntil: 'networkidle',
+  });
+
+  await page.getByLabel('username').fill('default');
+  await page.getByLabel('password').fill('12345678');
+  await page.getByText('Sign in').click();
+
+  await page.getByRole('button', { name: 'Logout' }).waitFor()
+
+  const label = page.locator('h2')
+  const textContent = await label.textContent()
+  expect(textContent).toEqual('Your Pizza Ratings:');
+});
+```
+
+In the k6 test file (which we will name pw-migrated.js), we first need to create two `scenarios` and point them to two exported functions using the `exec` field in the `scenario`:
+
+```js
+import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { browser } from 'k6/browser';
 
 export const options = {
   scenarios: {
@@ -255,7 +234,6 @@ export const options = {
     admin: {
       exec: 'adminLogin',
       executor: 'shared-iterations',
-      startTime: '5s',  // duration + gracefulStop of the above
       options: {
         browser: {
           type: 'chromium',
@@ -263,52 +241,173 @@ export const options = {
       },
     },
   },
+};
+
+export async function adminLogin() {
+    // paste here
+}
+
+export async function userLogin() {
+    // paste here
+}
+```
+
+And now we can copy and paste the main block of test code into their respective exported function. Remember, since k6 doesn’t have fixtures, we need to use the imported `browser` class to create a `newPage`:
+
+```js
+import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    user: {
+      exec: 'userLogin',
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+    admin: {
+      exec: 'adminLogin',
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export async function adminLogin() {
+  const page = await browser.newPage();
+
+  await page.goto('https://quickpizza.grafana.com/admin', {
+    waitUntil: 'networkidle',
+  });
+
+  await page.getByLabel('username').fill('admin');
+  await page.getByLabel('password').fill('admin');
+  await page.getByRole('button', { name: 'Sign in' }).click()
+
+  await page.getByRole('button', { name: 'Logout' }).waitFor()
+
+  const label = page.locator('h2')
+  const textContent = await label.textContent()
+  expect(textContent).toEqual('Latest pizza recommendations');
 }
 
 export async function userLogin() {
   const page = await browser.newPage();
 
   await page.goto('https://quickpizza.grafana.com/login', {
-    waitFor: 'networkidle',
+    waitUntil: 'networkidle',
   });
 
-  await page.waitForTimeout(1000);
-
-  // replace with these when quickpizza labels are fixed
-  // await page.getByLabel('username').fill('default');
-  // await page.getByLabel('password').fill('12345678');
-  await page.locator('#username').fill('default');
-  await page.locator('#password').fill('12345678');
+  await page.getByLabel('username').fill('default');
+  await page.getByLabel('password').fill('12345678');
   await page.getByText('Sign in').click();
 
-  await page.getByText('Your Pizza Ratings:').waitFor();
+  await page.getByRole('button', { name: 'Logout' }).waitFor()
 
-  await page.close();
-}
-
-export async function adminLogin() {
-  const page = await browser.newPage();
-
-  await page.goto('https://quickpizza.grafana.com/admin', {
-    waitFor: 'networkidle',
-  });
-
-  await page.waitForTimeout(1000);
-
-  // replace with these when quickpizza labels are fixed
-  // await page.getByLabel('username').fill('admin');
-  // await page.getByLabel('password').fill('admin');
-  await page.locator('#username').fill('admin');
-  await page.locator('#password').fill('admin');
-  await page.getByText('Sign in').click();
-
-  await page.getByText('Latest pizza recommendations').waitFor();
-
-  await page.close();
+  const label = page.locator('h2')
+  const textContent = await label.textContent()
+  expect(textContent).toEqual('Your Pizza Ratings:');
 }
 ```
 
-- You could also used the experimental `xk6-redis` extension as a way to store locks and help synchronise scenarios.
+Now run the test script with:
+
+```sh
+k6 run pw-multiple-migrated.js
+```
+
+This will run the two `scenarios` concurrently. You should end up with the following result:
+
+```sh
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: pw-multiple-migrated.js
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 2 max VUs, 10m30s max duration (incl. graceful stop):
+              * admin: 1 iterations shared among 1 VUs (maxDuration: 10m0s, exec: adminLogin, gracefulStop: 30s)
+              * user: 1 iterations shared among 1 VUs (maxDuration: 10m0s, exec: userLogin, gracefulStop: 30s)
+
+
+
+  █ TOTAL RESULTS 
+
+    EXECUTION
+    iteration_duration..........: avg=5.01s    min=4.7s     med=5.01s    max=5.33s    p(90)=5.26s    p(95)=5.3s    
+    iterations..................: 2      0.333461/s
+    vus.........................: 2      min=2       max=2
+    vus_max.....................: 2      min=2       max=2
+
+    NETWORK
+    data_received...............: 0 B    0 B/s
+    data_sent...................: 0 B    0 B/s
+
+    BROWSER
+    browser_data_received.......: 601 kB 100 kB/s
+    browser_data_sent...........: 14 kB  2.3 kB/s
+    browser_http_req_duration...: avg=489.58ms min=114.61ms med=514.78ms max=3.25s    p(90)=524.5ms  p(95)=534.85ms
+    browser_http_req_failed.....: 0.00%  0 out of 46
+
+    WEB_VITALS
+    browser_web_vital_cls.......: avg=0.009527 min=0        med=0.009527 max=0.019055 p(90)=0.017149 p(95)=0.018102
+    browser_web_vital_fcp.......: avg=3.09s    min=2.76s    med=3.09s    max=3.43s    p(90)=3.36s    p(95)=3.39s   
+    browser_web_vital_fid.......: avg=200µs    min=199.99µs med=200µs    max=200µs    p(90)=200µs    p(95)=200µs   
+    browser_web_vital_inp.......: avg=16ms     min=16ms     med=16ms     max=16ms     p(90)=16ms     p(95)=16ms    
+    browser_web_vital_lcp.......: avg=3.09s    min=2.76s    med=3.09s    max=3.43s    p(90)=3.36s    p(95)=3.39s   
+    browser_web_vital_ttfb......: avg=2.84s    min=2.43s    med=2.84s    max=3.25s    p(90)=3.17s    p(95)=3.21s   
+
+
+
+
+running (00m06.0s), 0/2 VUs, 2 complete and 0 interrupted iterations
+admin ✓ [======================================] 1 VUs  00m05.3s/10m0s  1/1 shared iters
+user  ✓ [======================================] 1 VUs  00m06.0s/10m0s  1/1 shared iters
+```
+
+## Key differences
+
+### Test isolation patterns
+
+In k6, there is [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) whereas in Playwright there is a dedicated test framework. The difference stems from k6 being a load testing tool. We are [evaluating](https://github.com/grafana/k6-jslib-testing/issues/30) a test framework, but it's still early days.
+
+### Metrics
+
+- web vitals will be reported on; we are evaluating further work to bring about more measurements such as JS heap size, long task and more.
+- k6 reports on many metrics which we think are useful out of the box, such as request/response times, request/response data size etc.
+
+### k6 Concepts
+
+- Important terminology in k6. Because it was originally designed as a load testing tool:
+  - VU: virtual user;
+  - Iteration: number of times a single VU will run the iteration;
+  - thresholds and check: in load testing we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, e.g. 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
+
+### Browser context restrictions
+
+Unlike in Playwright, k6 can only work with a single `browserContext` at a time. So in k6 you won't be able to do:
+
+<!-- md-k6:skip -->
+
+```js
+const bc1 = await browser.newContext();
+// This next call will result in an error "existing browser context must be closed before creating a new one"
+const bc2 = await browser.newContext();
+```
+
+You'll have to close the existing `browserContext` first, before creating a new one.
 
 ## Hybrid tests
 
@@ -319,27 +418,10 @@ export async function adminLogin() {
 - Running in the cloud through CLI: https://grafana.com/docs/k6/latest/using-k6/run-k6-test-script/#run-a-test-using-grafana-cloud-k6
 - Running in the cloud through the web GUI: ?
 
-## Debugging & Development Experience
+## References
 
-- IDE setup and TypeScript support: https://grafana.com/docs/k6/latest/set-up/configure-your-code-editor/#configure-your-code-editor
-- type defs for k6 browser: https://grafana.com/docs/k6/latest/set-up/configure-your-code-editor/#install-k6-type-definitions
-- k6 Studio: https://grafana.com/docs/k6-studio/
-- k6 Studio: record a browser events: https://grafana.com/docs/k6-studio/record-browser-events/
-
-## Limitations
-
-- Fixtures isn't supported in k6 browser as well as no test framework. Abstractions will need to be hand coded.
-- File uploads/downloads
-  - It's not supported in k6 browser. We are evaluating the possibility and have issues for this:
-    - https://github.com/grafana/k6/issues/4233
-    - https://github.com/grafana/k6/issues/4485
-    - https://github.com/grafana/k6/issues/4197
-    - https://github.com/grafana/k6/issues/4170
-    - https://github.com/grafana/k6/issues/4129 
-- Screenshots and recordings
-  - We have screenshot support in local runs as well in Grafana cloud. We are evaluating a session recording feature for SM, load testing and Faro.
-- not being able to share data between VUs and iterations:
-  - Work with a single executed immutable [sharedarray](https://grafana.com/docs/k6/latest/javascript-api/k6-data/sharedarray/)
-  - Work with the [xk6-redis extension](https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/redis/) which is currently experimental but will be non-experimental very soon.
-  - All browserContexts are incognito. An evaluation and more feedback is needed to understand its use case [issue](https://github.com/grafana/k6/issues/4378).
-- Files can only be read during the init phase and not during the test runtime with the [experimental fs module](https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/fs/).
+- You can find the docs for assertions here: https://github.com/grafana/k6-jslib-testing.
+- To understand the CLI output results, go here: https://grafana.com/docs/k6/latest/results-output/end-of-test/.
+- Test lifecycle: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
+- Recommended practices: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/
+- We don't yet provide a list of APIs between k6 browser and playwright, including future work. Check the docs to see what is available. We have feeling that we have covered a lot of the most used APIs for browser frontend testing.
