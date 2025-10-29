@@ -176,7 +176,7 @@ ui   ✓ [======================================] 1 VUs  00m02.2s/10m0s  1/1 sha
 
 ## Migrate multiple tests
 
-Here we have a Playwright test file containing two tests. We’re going to show you how to work with scenarios to create the equivalent test file in k6:
+This example shows a Playwright test file containing two tests. To migrate multiple tests, use k6 scenarios to create equivalent test logic:
 
 ```js
 import { test, expect } from '@playwright/test';
@@ -214,7 +214,9 @@ test('user', async ({ page }) => {
 });
 ```
 
-In the k6 test file (which we will name pw-migrated.js), we first need to create two `scenarios` and point them to two exported functions using the `exec` field in the `scenario`:
+To convert this Playwright script to k6, create a new file named `pw-migrated.js`.
+
+First, create two `scenarios` and point them to two exported functions using the `exec` field in each scenario:
 
 ```js
 import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
@@ -252,7 +254,7 @@ export async function userLogin() {
 }
 ```
 
-And now we can copy and paste the main block of test code into their respective exported function. Remember, since k6 doesn’t have fixtures, we need to use the imported `browser` class to create a `newPage`:
+Next, copy the test code into the respective exported functions. Since k6 doesn't have fixtures, use the imported `browser` class to create a `newPage`:
 
 ```js
 import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
@@ -318,13 +320,13 @@ export async function userLogin() {
 }
 ```
 
-Now run the test script with:
+Run the test script:
 
 ```sh
 k6 run pw-multiple-migrated.js
 ```
 
-This will run the two `scenarios` concurrently. You should end up with the following result:
+The command runs the two scenarios concurrently and produces output similar to the following:
 
 ```sh
          /\      Grafana   /‾‾/  
