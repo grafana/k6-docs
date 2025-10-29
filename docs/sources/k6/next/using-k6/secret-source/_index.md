@@ -1,33 +1,31 @@
 ---
 title: Secret source
-description: 'Secret source are used so k6 can get and use secrets in a secure way'
+description: 'Secret sources let k6 retrieve and use secrets securely'
 weight: 1600
 ---
 
 # Secret source
 
-Secret sources are a way for k6 to acquire secrets to be used with k6. Unlike just using values from the environment, read from files, etc - the values retrieved from secret sources will be redacted from the logs emitted by k6, before they are propagated through the system.
+Secret sources provide a secure way for k6 to retrieve and use secrets. Unlike values from environment variables or files, values from secret sources are automatically redacted from k6 logs before propagation through the system.
 
-The secrets are made available through the [`k6/secrets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-secrets) JS API and will be redacted from any logs.
+Access secrets through the [`k6/secrets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-secrets) JavaScript API. All secrets are redacted from logs.
 
 ## Configure secret sources
 
-Currently the only way to configured secret sources is through the `--secret-source` cli flag. Multiple secret sources are configurable at the same time.
+Configure secret sources using the `--secret-source` CLI flag. You can configure multiple secret sources simultaneously.
 
-## Secret sources
+## Built-in secret sources
 
-Current built-in secret sources are limited and are mostly meant for local testing:
+The following built-in secret sources are available for local testing:
 
-- [`file`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/file) reads secrets from a key=value file.
-- [`mock`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/mock) reads secrets from the cli flag.
+- [`file`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/file): Reads secrets from a `key=value` file.
+- [`mock`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/mock): Reads secrets from CLI arguments.
 
 ## Secret source extensions
 
 You can implement a secret source as an [extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/) for k6.
 
 ## Example script
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -36,7 +34,7 @@ import http from 'k6/http';
 import secrets from 'k6/secrets';
 
 export default async () => {
-  const my_secret = await secrets.get('cool'); // get secret from a source with the provided identifier
+  const my_secret = await secrets.get('cool'); // Retrieves secret by identifier
   console.log(my_secret);
   const response = await http.asyncRequest('GET', 'https://httpbin.org/get', null, {
     headers: {
@@ -47,17 +45,14 @@ export default async () => {
 };
 ```
 
-{{< /code >}}
-if ran with the following file:
+Run the script with the following secrets file:
 
-```
+```text
 cool=some
 else=source
 ```
 
-You will notice how the secrets are redacted while the script still can use them, for example in protocol requests.
-
-{{< code >}}
+The following output shows how secrets are redacted in logs, shown as `***SECRET_REDACTED***`, while remaining accessible to the script.
 
 ```bash
 $ k6 run --secret-source=file=file.secret secrets.test.js
@@ -75,5 +70,3 @@ INFO[0001] {
   "url": "https://httpbin.org/get"
 }  ***SECRET_REDACTED***=console
 ```
-
-{{</ code >}}
