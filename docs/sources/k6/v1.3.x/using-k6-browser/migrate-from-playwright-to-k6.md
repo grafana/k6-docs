@@ -383,23 +383,31 @@ user  ✓ [======================================] 1 VUs  00m06.0s/10m0s  1/1 sh
 
 ### Test isolation patterns
 
-In k6, there is [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) whereas in Playwright there is a dedicated test framework. The difference stems from k6 being a load testing tool. We are [evaluating](https://github.com/grafana/k6-jslib-testing/issues/30) a test framework, but it's still early days.
+In k6, [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) let you configure and model diverse workloads and organize your tests. Playwright has a dedicated test framework. The difference stems from k6 being a performance testing tool.
+
+{{< admonition type="note" >}}
+
+There are plans to create a test framework in k6. You can refer to this [GitHub issue](https://github.com/grafana/k6-jslib-testing/issues/30) for more details, or if you'd like to contribute.
+
+{{< /admonition >}}
 
 ### Metrics
 
-- web vitals will be reported on; we are evaluating further work to bring about more measurements such as JS heap size, long task and more.
-- k6 reports on many metrics which we think are useful out of the box, such as request/response times, request/response data size etc.
+k6 collects and reports on several built-in metrics, such as request and response times, data size, and more. It also includes support for Web Vital metrics, such as FCP, INP, and TTFB.
+
+Refer to [Built-in metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference/) for more details.
 
 ### k6 Concepts
 
-- Important terminology in k6. Because it was originally designed as a load testing tool:
-  - VU: virtual user;
-  - Iteration: number of times a single VU will run the iteration;
-  - thresholds and check: in load testing we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, e.g. 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
+k6 was originally designed as a load testing tool, so there are concepts that are important to understand in order to use the tool:
+
+- **Virtual User**: A Virtual User (VU) is an independent thread of execution that runs concurrently with other VU threads. Often, scripts are designed so that one VU activity represents that of one real user.
+- **Iteration**: The number of times a single VU will run the test script.
+- **Thresholds and checks**: In testing, we're generally more interested in a more holistic view of the test run, which will have many VUs, many iterations and running for many minutes/hours. We want to ensure that the backend system behaves correctly within thresholds that we define, for example 99th percentile for all requests to get a response under 1 second. There is an assertions library though if you're more interested in the functional side of testing and want to assert on specific things in your test work flow.
 
 ### Browser context restrictions
 
-Unlike in Playwright, k6 can only work with a single `browserContext` at a time. So in k6 you won't be able to do:
+Unlike in Playwright, k6 can only work with a single `browserContext` at a time. The following script fails when running it with k6:
 
 <!-- md-k6:skip -->
 
@@ -409,16 +417,19 @@ const bc1 = await browser.newContext();
 const bc2 = await browser.newContext();
 ```
 
-You'll have to close the existing `browserContext` first, before creating a new one.
+To fix it, you'll have to close the existing `browserContext` first, before creating a new one.
 
 ## Hybrid tests
 
-- https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/hybrid-approach-to-performance/
+Hybrid tests are performance tests that run browser-level and protocol-level requests at the same time. Hybrid tests are a great alternative to running resource-intensive browser-based load testing, while still measuring how an application performs under load by making requests to the frontend and backend.
 
-## Cloud runs
+Refer to [Hybrid performance with k6 browser](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/hybrid-approach-to-performance/) for more details.
 
-- Running in the cloud through CLI: https://grafana.com/docs/k6/latest/using-k6/run-k6-test-script/#run-a-test-using-grafana-cloud-k6
-- Running in the cloud through the web GUI: ?
+## Run k6 tests in Grafana Cloud
+
+In addition to running k6 scripts locally by installing k6 in your machine, you can also use Grafana Cloud for a seamless experience. Using Grafana Cloud means you don't have to worry about if your machine has the right resources to run a performance test, while also having pre-made Grafana dashboards to analyze test results, and being able to collaborate with other team members in debugging performance issues.
+
+Refer to [Run a test using Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/run-k6-test-script/#run-a-test-using-grafana-cloud-k6) for more details.
 
 ## References
 
