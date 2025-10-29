@@ -1,7 +1,7 @@
 ---
 title: 'Migrating from Playwright'
 description: 'A migration guide to ease the process of transitioning from Playwright to k6'
-weight: 600
+weight: 325
 ---
 
 # Migrating from Playwright
