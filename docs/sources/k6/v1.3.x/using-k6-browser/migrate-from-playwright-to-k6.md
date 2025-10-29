@@ -433,8 +433,8 @@ Refer to [Run a test using Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VER
 
 ## References
 
-- You can find the docs for assertions here: https://github.com/grafana/k6-jslib-testing.
-- To understand the CLI output results, go here: https://grafana.com/docs/k6/latest/results-output/end-of-test/.
-- Test lifecycle: https://grafana.com/docs/k6/latest/using-k6/test-lifecycle/
-- Recommended practices: https://grafana.com/docs/k6/latest/using-k6-browser/recommended-practices/
-- We don't yet provide a list of APIs between k6 browser and playwright, including future work. Check the docs to see what is available. We have feeling that we have covered a lot of the most used APIs for browser frontend testing.
+- k6 browser APIs: https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/
+- k6-testing library for Playwright-inspired assertions: https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/
+- Understand k6 CLI output results: https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/
+- Test lifecycle: https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/
+- k6 browser recommended practices: https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/
