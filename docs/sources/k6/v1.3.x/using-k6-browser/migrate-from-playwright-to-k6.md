@@ -39,7 +39,7 @@ test('has title', async ({ page }) => {
 Create a new file named `pw-migrated.js` and copy the following initial k6 script setup:
 
 ```js
-import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
@@ -67,7 +67,7 @@ k6 browser doesn't implement a `test` framework. Instead, the logic of test is h
 Next, copy the contents from the `test()` function from the Playwright script into the k6 `default async function ()`.
 
 ```js
-import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
@@ -94,7 +94,7 @@ export default async function () {
 k6 doesn't implement fixtures like Playwright does. Instead, use the `browser` class to retrieve a `page` within its own context. After that, you can use the usual `page` methods such as `goto` or `click`:
 
 ```js
-import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
@@ -219,7 +219,7 @@ To convert this Playwright script to k6, create a new file named `pw-migrated.js
 First, create two `scenarios` and point them to two exported functions using the `exec` field in each scenario:
 
 ```js
-import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
@@ -257,7 +257,7 @@ export async function userLogin() {
 Next, copy the test code into the respective exported functions. Since k6 doesn't have fixtures, use the imported `browser` class to create a `newPage`:
 
 ```js
-import { expect } from "https://jslib.k6.io/k6-testing/0.6.0/index.js";
+import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
 
 export const options = {
