@@ -214,7 +214,7 @@ test('user', async ({ page }) => {
 });
 ```
 
-To convert this Playwright script to k6, create a new file named `pw-migrated.js`.
+To convert this Playwright script to k6, create a new file named `pw-multiple-migrated.js`.
 
 First, create two `scenarios` and point them to two exported functions using the `exec` field in each scenario:
 
