@@ -30,7 +30,7 @@ Executes JavaScript code in the page and returns the value of the `pageFunction`
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6/http';
+import { check } from 'k6';
 
 export const options = {
   scenarios: {
