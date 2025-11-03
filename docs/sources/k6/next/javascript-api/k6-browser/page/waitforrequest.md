@@ -1,15 +1,15 @@
 ---
-title: 'waitForResponse(urlPattern[, options])'
-description: 'Browser module: page.waitForResponse(urlPattern[, options]) method'
+title: 'waitForRequest(urlPattern[, options])'
+description: 'Browser module: page.waitForRequest(urlPattern[, options]) method'
 ---
 
-# waitForResponse(urlPattern[, options])
+# waitForRequest(urlPattern[, options])
 
-Waits for an HTTP response that matches the specified URL pattern. This method is particularly useful for waiting for responses from AJAX/fetch requests, API calls, or specific resources to be loaded before proceeding with the test.
+Waits for an HTTP request that matches the specified URL pattern. This method is particularly useful for waiting for requests to be initiated before proceeding with the test, such as verifying that form submissions or API calls are triggered.
 
 | Parameter        | Type           | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ---------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| urlPattern       | string \| RegExp | -       | Required. URL or URL pattern to match against responses. Can be an exact URL string, a regular expression, or an empty string to match any response.                                                                                                                                                                |
+| urlPattern       | string \| RegExp | -       | Required. URL or URL pattern to match against requests. Can be an exact URL string, a regular expression, or an empty string to match any request.                                                                                                                                                                |
 | options          | object         | `null`  |                                                                                                                                                                                                                                                                                                                     |
 | options.timeout  | number         | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
@@ -17,11 +17,11 @@ Waits for an HTTP response that matches the specified URL pattern. This method i
 
 | Type                                                                                                       | Description                                                                                        |
 | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Promise<[Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/)> | A Promise that fulfills with the [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/) object when a URL matches and the response is received. |
+| Promise<[Request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/)> | A Promise that fulfills with the [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/) object when a URL matches and the request is initiated. |
 
 ### Examples
 
-#### Wait for API response
+#### Wait for API request
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -46,17 +46,17 @@ export default async function () {
   try {
     await page.goto('https://quickpizza.grafana.com/');
 
-    // Test waitForResponse with user interaction
-    const pizzaResponsePromise = page.waitForResponse('https://quickpizza.grafana.com/api/pizza');
+    // Test waitForRequest with user interaction
+    const pizzaRequestPromise = page.waitForRequest('https://quickpizza.grafana.com/api/pizza');
 
     await page.getByRole('button', { name: /pizza/i }).click();
 
-    const pizzaResponse = await pizzaResponsePromise;
+    const pizzaRequest = await pizzaRequestPromise;
 
-    // Check that the pizza API call was successful
-    check(pizzaResponse, {
-      'pizza API status is 200': (r) => r.status() === 200,
+    // Check that the pizza API request was initiated
+    check(pizzaRequest, {
       'pizza API URL is correct': (r) => r.url() === 'https://quickpizza.grafana.com/api/pizza',
+      'pizza API method is POST': (r) => r.method() === 'POST',
     });
   } finally {
     await page.close();
@@ -70,27 +70,27 @@ export default async function () {
    - Exact strings for known, static API endpoints
    - RegExp for pattern-based matching and dynamic URLs
 
-1. **Set up promise before trigger**: Always set up the `waitForResponse` promise before triggering the action that causes the request:
+1. **Set up promise before trigger**: Always set up the `waitForRequest` promise before triggering the action that causes the request:
 
   <!-- md-k6:skip -->
 
    ```javascript
    // Correct
-   const responsePromise = page.waitForResponse('/api/data');
+   const requestPromise = page.waitForRequest('/api/data');
    await page.click('#submit');
-   const response = await responsePromise;
+   const request = await requestPromise;
 
-   // Incorrect - may miss the response
+   // Incorrect - may miss the request
    await page.click('#submit');
-   const response = await page.waitForResponse('/api/data');
+   const request = await page.waitForRequest('/api/data');
    ```
 
-1. **Verify response content**: After waiting for the response, verify that the response status and content match your expectations.
+1. **Verify request content**: After waiting for the request, verify that the request URL, method, and headers match your expectations.
 
 ### Related
 
-- [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests
+- [page.waitForResponse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforresponse/) - Wait for HTTP responses
 - [page.waitForNavigation()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation/) - Wait for navigation events
 - [page.waitForURL()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl/) - Wait for URL changes
 - [page.waitForLoadState()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate/) - Wait for load states
-- [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/) - Response object methods and properties
+- [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request/) - Request object methods and properties
