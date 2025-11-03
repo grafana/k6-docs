@@ -12,7 +12,7 @@ Use locator-based [`frame.locator(selector)`](https://grafana.com/docs/k6/<K6_VE
 
 {{< /admonition >}}
 
-The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`.
+The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`. The results are returned in DOM order.
 
 ### Returns
 

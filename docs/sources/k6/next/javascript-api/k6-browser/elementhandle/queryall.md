@@ -5,7 +5,7 @@ description: 'Browser module: elementHandle.$$ method'
 
 # $$(selector)
 
-Queries the elements for the given selector in the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle)'s subtree.
+Queries the elements for the given selector in the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle)'s subtree. The results are returned in DOM order.
 
 <TableWithNestedRows>
 
