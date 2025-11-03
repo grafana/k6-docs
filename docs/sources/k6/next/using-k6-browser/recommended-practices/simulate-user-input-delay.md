@@ -41,6 +41,7 @@ In the browser modules there are various asynchronous APIs that can be used to w
 | [page.waitForLoadState](#pagewaitforloadstate)             | Waits for the specified page life cycle event.                              |
 | [page.waitForNavigation](#pagewaitfornavigation)           | Waits for the navigation to complete after one starts.                      |
 | [page.waitForResponse](#pagewaitforresponse)               | Wait for an HTTP response that matches the specified URL pattern.           |
+| [page.waitForRequest](#pagewaitforrequest)                 | Wait for an HTTP request that matches the specified URL pattern.            |
 | [page.waitForTimeout](#pagewaitfortimeout)                 | Waits the given time. _Use this instead of `sleep` in your frontend tests_. |
 | [page.waitForURL](#pagewaitforurl)                         | Wait for the page to navigate to the specified URL.                         |
 | [locator.waitFor](#locatorwaitfor)                         | Wait for the element to be in a particular state.                           |
@@ -270,6 +271,51 @@ export default async function () {
     check(pizzaResponse, {
       'pizza API status is 200': (r) => r.status() === 200,
       'pizza API URL is correct': (r) => r.url() === 'https://quickpizza.grafana.com/api/pizza',
+    });
+  } finally {
+    await page.close();
+  }
+}
+```
+
+### page.waitForRequest
+
+[page.waitForRequest](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest) waits for an HTTP request that matches the specified URL pattern. This method is particularly useful for waiting for requests to be initiated before proceeding with the test, such as verifying that form submissions or API calls are triggered.
+
+```js
+import { browser } from 'k6/browser';
+import { check } from 'k6';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  try {
+    await page.goto('https://quickpizza.grafana.com/');
+
+    // Test waitForRequest with user interaction
+    const pizzaRequestPromise = page.waitForRequest('https://quickpizza.grafana.com/api/pizza');
+
+    await page.getByRole('button', { name: /pizza/i }).click();
+
+    const pizzaRequest = await pizzaRequestPromise;
+
+    // Check that the pizza API request was initiated
+    check(pizzaRequest, {
+      'pizza API URL is correct': (r) => r.url() === 'https://quickpizza.grafana.com/api/pizza',
+      'pizza API method is POST': (r) => r.method() === 'POST',
     });
   } finally {
     await page.close();
