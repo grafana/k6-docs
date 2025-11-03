@@ -14,7 +14,7 @@ However, using `locator`s may not always work when selecting an element from a l
 
 {{< /admonition >}}
 
-The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`. This is particularly useful when you want to retrieve a list of elements, and iterate through them to find the one that you need for your test case.
+The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`. The results are returned in DOM order. This is particularly useful when you want to retrieve a list of elements, and iterate through them to find the one that you need for your test case.
 
 ### Returns
 
