@@ -176,7 +176,7 @@ ui   ✓ [======================================] 1 VUs  00m02.2s/10m0s  1/1 sha
 
 ## Migrate multiple tests
 
-The following example shows a Playwright test file that contains two tests. To migrate multiple tests, use k6 scenarios to create equivalent test logic:
+The following example shows a Playwright test file that contains two tests. To migrate multiple tests, use the [k6 scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/) feature to create equivalent test logic:
 
 ```js
 import { test, expect } from '@playwright/test';
