@@ -417,7 +417,7 @@ const bc1 = await browser.newContext();
 const bc2 = await browser.newContext();
 ```
 
-To fix this, close the existing `browserContext` before creating a new one.
+To fix this, close the existing browser context before creating a new one.
 
 ## Hybrid tests
 
