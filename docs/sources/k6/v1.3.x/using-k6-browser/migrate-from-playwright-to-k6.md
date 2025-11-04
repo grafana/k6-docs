@@ -254,7 +254,7 @@ export async function userLogin() {
 }
 ```
 
-Next, copy the test code into the respective exported functions. Since k6 doesn't have fixtures, use the imported `browser` class to create a `newPage`:
+Next, copy the test code into the respective exported functions. Since k6 doesn't have fixtures, use the imported `browser` object to create a `newPage`:
 
 ```js
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
