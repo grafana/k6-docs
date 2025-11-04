@@ -13,7 +13,6 @@ Use [`locator.setChecked(checked [, options])`](https://grafana.com/docs/k6/<K6_
 
 Use this method to select or unselect an `input` or `radio` checkbox.
 
-<TableWithNestedRows>
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,7 +26,6 @@ Use this method to select or unselect an `input` or `radio` checkbox.
 | options.trial       | boolean | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                                                                                                         |
 | options.strict      | boolean | `false` | When `true`, the call requires selector to resolve to a single element. If given selector resolves to more than one element, the call throws an exception.                                                                                                                                                          |
 
-</TableWithNestedRows>
 
 ### Returns
 

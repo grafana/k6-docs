@@ -14,7 +14,6 @@ This feature has **known issues**. For details, refer to
 
 Sets the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext)'s geolocation.
 
-<TableWithNestedRows>
 
 | Parameter             | Type   | Default | Description                           |
 | --------------------- | ------ | ------- | ------------------------------------- |
@@ -23,7 +22,6 @@ Sets the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-a
 | geolocation.longitude | number | `0`     | Latitude between -180 and 180.        |
 | geolocation.accuracy  | number | `0`     | Optional non-negative accuracy value. |
 
-</TableWithNestedRows>
 
 ### Returns
 

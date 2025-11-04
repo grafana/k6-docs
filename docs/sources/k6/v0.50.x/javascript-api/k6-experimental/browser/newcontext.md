@@ -13,7 +13,6 @@ A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/java
 
 {{< /admonition >}}
 
-<TableWithNestedRows>
 
 | Parameter                                   | Type    | Default                          | Description                                                                                                                                                                                                                                                                              |
 | ------------------------------------------- | ------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +45,6 @@ A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/java
 | options.viewport.width                      | number  | `1280`                           | Page width in pixels.                                                                                                                                                                                                                                                                    |
 | options.viewport.height                     | number  | `720`                            | Page height in pixels.                                                                                                                                                                                                                                                                   |
 
-</TableWithNestedRows>
 
 ### Returns
 

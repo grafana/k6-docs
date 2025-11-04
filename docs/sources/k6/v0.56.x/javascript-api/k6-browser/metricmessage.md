@@ -16,7 +16,6 @@ The `tag` method matches the given `matches` with the current metric's url and n
 
 Doing this helps group metrics with different URL and name tags that, in fact, reference the same resource, allowing for correlation over time and reducing the cardinality of the metrics.
 
-<TableWithNestedRows>
 
 | Parameter               | Type     | Description                                                                                                                                                                                                                                               |
 | ----------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,7 +25,6 @@ Doing this helps group metrics with different URL and name tags that, in fact, r
 | tagMatch.matches.url    | RegExp   | The regular expression used to find matches in the current metric's URL and name tags. Required.                                                                                                                                                          |
 | tagMatch.matches.method | string?  | Used to match the metric's method tag. Valid values are `'GET'`, `'POST'`, `'PUT'`, `'DELETE'`, `'PATCH'`, `'OPTIONS'`, `'HEAD'`, `'TRACE'` and `'CONNECT'`. It's optional, and when it's not set it will group all metrics regardless of the method tag. |
 
-</TableWithNestedRows>
 
 ### Example Usage
 

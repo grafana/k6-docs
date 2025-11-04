@@ -7,14 +7,12 @@ description: 'Browser module: elementHandle.waitForElementState method'
 
 Waits for the element to reach the specified state.
 
-<TableWithNestedRows>
 
 | Parameter | Type   | Default | Description                                                                                                                                                                                                                                                                                                         |
 | --------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | state     | string |         | The state to wait for. This can be one of `visible`, `hidden`, `stable`, `enabled`, `disabled`, or `editable`.                                                                                                                                                                                                      |
 | timeout   | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

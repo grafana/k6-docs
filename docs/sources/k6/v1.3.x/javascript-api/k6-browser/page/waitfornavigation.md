@@ -7,7 +7,6 @@ description: 'Browser module: page.waitForNavigation([options]) method'
 
 Waits for the given navigation lifecycle event to occur and returns the main resource response.
 
-<TableWithNestedRows>
 
 | Parameter         | Type           | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ----------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,7 +15,6 @@ Waits for the given navigation lifecycle event to occur and returns the main res
 | options.url       | string\|RegExp | `null`  | URL or URL pattern to match the navigation URL against. When provided, the method will wait for navigation to a URL that matches this parameter.                                                                                                                                                                    |
 | options.waitUntil | string         | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                                                                               |
 
-</TableWithNestedRows>
 
 ## When to use the url option
 

@@ -7,7 +7,6 @@ description: 'Browser module: frame.name() method'
 
 This method returns the name of the frame.
 
-<TableWithNestedRows>
 
 ### Returns
 

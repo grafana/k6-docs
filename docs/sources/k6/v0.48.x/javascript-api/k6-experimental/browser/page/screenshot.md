@@ -7,7 +7,6 @@ description: 'Browser module: page.screenshot([options]) method'
 
 Returns the buffer with the captured screenshot from the browser.
 
-<TableWithNestedRows>
 
 | Parameter              | Type    | Default | Description                                                                                                                                                                                                                                              |
 | ---------------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +22,6 @@ Returns the buffer with the captured screenshot from the browser.
 | options.quality        | number  | `0`     | The quality of the image, between 0-100; Only applicable to `jpeg` only.                                                                                                                                                                                 |
 | options.type           | string  | `png`   | Specify screenshot type. Acceptable values are `jpeg` and `png`.                                                                                                                                                                                         |
 
-</TableWithNestedRows>
 
 ### Returns
 

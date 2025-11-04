@@ -7,7 +7,6 @@ description: 'Browser module: elementHandle.screenshot method'
 
 Takes a screenshot of the element.
 
-<TableWithNestedRows>
 
 | Parameter              | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ---------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18,7 +17,6 @@ Takes a screenshot of the element.
 | options.quality        | number  | `100`   | The quality of the image, between 0-100; Only applicable to `jpeg` only.                                                                                                                                                                                                                                            |
 | options.timeout        | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

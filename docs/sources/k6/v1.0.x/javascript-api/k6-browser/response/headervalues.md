@@ -7,13 +7,11 @@ description: 'Browser module: Response.headerValues method'
 
 Returns all values of the headers matching the name, for example `set-cookie`. The name is case insensitive.
 
-<TableWithNestedRows>
 
 | Parameter | Type   | Description                         |
 | --------- | ------ | ----------------------------------- |
 | name      | string | Header name to retrieve values for. |
 
-</TableWithNestedRows>
 
 ### Returns
 

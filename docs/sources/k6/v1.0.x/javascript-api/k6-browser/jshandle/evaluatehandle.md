@@ -9,14 +9,12 @@ Returns the value of the `pageFunction` invocation as a `JSHandle`. It passes th
 
 The only difference between [evaluate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/evaluate/) and `evaluateHandle` is that `evaluateHandle` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
 
-<TableWithNestedRows>
 
 | Parameter    | Type               | Defaults | Description                                  |
 | ------------ | ------------------ | -------- | -------------------------------------------- |
 | pageFunction | function or string |          | Function to be evaluated.                    |
 | arg          | string             | `''`     | Optional argument to pass to `pageFunction`. |
 
-</TableWithNestedRows>
 
 ### Returns
 

@@ -13,7 +13,6 @@ Use [`locator.type([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javascr
 
 Type in the text into the input field.
 
-<TableWithNestedRows>
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +22,6 @@ Type in the text into the input field.
 | options.noWaitAfter | boolean | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                                                                                                          |
 | options.timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

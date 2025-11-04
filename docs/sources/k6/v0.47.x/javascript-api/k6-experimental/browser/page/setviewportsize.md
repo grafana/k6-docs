@@ -7,7 +7,6 @@ description: 'Browser module: page.setViewportSize(viewportSize) method'
 
 This will update the page's width and height.
 
-<TableWithNestedRows>
 
 | Parameter           | Type   | Default | Description                                                                          |
 | ------------------- | ------ | ------- | ------------------------------------------------------------------------------------ |
@@ -15,7 +14,6 @@ This will update the page's width and height.
 | viewportSize.width  | number |         | Page width in pixels.                                                                |
 | viewportSize.height | number |         | Page height in pixels.                                                               |
 
-</TableWithNestedRows>
 
 ### Example
 

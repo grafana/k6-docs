@@ -19,7 +19,6 @@ Pages that have been opened ought to be closed using [`Page.close`](https://graf
 
 {{< /admonition >}}
 
-<TableWithNestedRows>
 
 | Parameter                                             | Type    | Default                          | Description                                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------- | ------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,7 +51,6 @@ Pages that have been opened ought to be closed using [`Page.close`](https://graf
 | options.viewport.width                                | number  | `1280`                           | Page width in pixels.                                                                                                                                                                                                                                                       |
 | options.viewport.height                               | number  | `720`                            | Page height in pixels.                                                                                                                                                                                                                                                      |
 
-</TableWithNestedRows>
 
 ### Returns
 

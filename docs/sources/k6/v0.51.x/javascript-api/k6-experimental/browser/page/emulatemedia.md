@@ -7,7 +7,6 @@ description: 'Browser module: page.emulateMedia([options]) method'
 
 This method changes the CSS `@media type` through the `media` argument, and/or the `'prefers-colors-scheme'` media feature, using the `colorScheme` argument.
 
-<TableWithNestedRows>
 
 | Parameter             | Type   | Default | Description                                                                                                        |
 | --------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -16,7 +15,6 @@ This method changes the CSS `@media type` through the `media` argument, and/or t
 | options.media         | string | `''`    | Changes the CSS media type of the page. The only allowed values are `'screen'`, and `'print'`.                     |
 | options.reducedMotion | string | `''`    | Emulates `'prefers-reduced-motion'` media feature, supported values are `'reduce'`, `'no-preference'`.             |
 
-</TableWithNestedRows>
 
 ### Example
 

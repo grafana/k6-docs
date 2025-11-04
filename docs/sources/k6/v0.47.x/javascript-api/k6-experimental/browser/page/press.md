@@ -22,7 +22,6 @@ Holding down `Shift` will type the text that corresponds to the `key` in the upp
 If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
 
 Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
-<TableWithNestedRows>
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,7 +33,6 @@ Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported a
 | options.strict      | boolean | `false` | When `true`, the call requires selector to resolve to a single element. If given selector resolves to more than one element, the call throws an exception.                                                                                                                                                                                    |
 | options.timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/). |
 
-</TableWithNestedRows>
 
 ### Example
 

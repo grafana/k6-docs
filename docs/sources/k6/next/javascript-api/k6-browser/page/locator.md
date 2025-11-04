@@ -7,7 +7,6 @@ description: 'Browser module: page.locator(selector[, options]) method'
 
 The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/). Locators resolve to the element when the action takes place, which means locators can span over navigations where the underlying dom changes.
 
-<TableWithNestedRows>
 
 | Parameter           | Type             | Default | Description                                                                                                                                                                                                                           |
 | ------------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,7 +15,6 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 | options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
 | options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
 
-</TableWithNestedRows>
 
 ### Returns
 

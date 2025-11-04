@@ -7,7 +7,6 @@ description: 'Browser module: frame.waitForURL(url[, options]) method'
 
 Waits for the frame to navigate to the specified URL. This method is useful for ensuring that navigation within a specific frame (such as an iframe) to a particular URL has completed before proceeding with the test. This is especially useful if there are multiple redirects before hitting the end destination.
 
-<TableWithNestedRows>
 
 | Parameter         | Type           | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ----------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,7 +15,6 @@ Waits for the frame to navigate to the specified URL. This method is useful for 
 | options.timeout   | number         | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 | options.waitUntil | string         | `load`  | When to consider operation to have succeeded. See [Events](#events) for more details.                                                                                                                                                                                                                               |
 
-</TableWithNestedRows>
 
 ### Events
 

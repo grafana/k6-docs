@@ -5,7 +5,6 @@ description: 'Waits for event to fire and returns its value.'
 
 Waits for the event to fire and returns its value. If a predicate function has been set it will pass the value to the predicate function, which must return `true` for the promise to resolve.
 
-<TableWithNestedRows>
 
 | Parameter                    | Type             | Default | Description                                                                                                                                           |
 | ---------------------------- | ---------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14,7 +13,6 @@ Waits for the event to fire and returns its value. If a predicate function has b
 | optionsOrPredicate.predicate | function         | `null`  | Optional. Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue. |
 | optionsOrPredicate.timeout   | number           | `30000` | Optional. Maximum time to wait in milliseconds.                                                                                                       |
 
-</TableWithNestedRows>
 
 ### Returns
 

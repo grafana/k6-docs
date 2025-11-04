@@ -7,7 +7,6 @@ description: 'Browser module: frame.childFrames() method'
 
 This method returns an array of child frames.
 
-<TableWithNestedRows>
 
 ### Returns
 

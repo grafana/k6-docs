@@ -13,7 +13,6 @@ This method has **known issues**. For details, refer to [#880](https://github.co
 
 This waits for the given load state to be reached. It will immediately unblock if that lifecycle event has already been received.
 
-<TableWithNestedRows>
 
 | Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +20,6 @@ This waits for the given load state to be reached. It will immediately unblock i
 | options         | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Events
 

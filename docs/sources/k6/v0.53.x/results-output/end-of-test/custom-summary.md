@@ -303,7 +303,6 @@ the function can access the object about the `http_req_duration` metric at `data
 The following table describes the schema for the metrics object.
 The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics):
 
-<TableWithNestedRows>
 
 | Property             | Description                                                                    |
 | -------------------- | ------------------------------------------------------------------------------ |
@@ -314,7 +313,6 @@ The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_
 | thresholds.{name}    | Name of threshold (object)                                                     |
 | thresholds.{name}.ok | Whether threshold was crossed (boolean)                                        |
 
-</TableWithNestedRows>
 
 {{< admonition type="note" >}}
 

@@ -7,7 +7,6 @@ description: 'Browser module: frame.isDetached() method'
 
 Reports whether the frame is detached from the DOM.
 
-<TableWithNestedRows>
 
 ### Returns
 

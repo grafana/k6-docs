@@ -7,7 +7,6 @@ description: 'Browser module: locator.fill method'
 
 Fill an `input`, `textarea` or `contenteditable` element with the provided value.
 
-<TableWithNestedRows>
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,7 +16,6 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 | options.noWaitAfter | boolean | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                                                                                                          |
 | options.timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 
