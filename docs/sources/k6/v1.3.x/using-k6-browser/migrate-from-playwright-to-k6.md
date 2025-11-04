@@ -383,7 +383,7 @@ user  ✓ [======================================] 1 VUs  00m06.0s/10m0s  1/1 sh
 
 ### Test isolation patterns
 
-In k6, [scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/) let you configure and model diverse workloads and organize your tests. Playwright has a dedicated testing framework. This difference stems from k6 being a performance testing tool.
+In k6, [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/) let you configure and model diverse workloads and organize your tests. Playwright has a dedicated testing framework. This difference stems from k6 being a performance testing tool.
 
 {{< admonition type="note" >}}
 
