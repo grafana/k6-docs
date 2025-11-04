@@ -60,7 +60,7 @@ export default async function () {
 }
 ```
 
-k6 browser is a library that's part of k6. Any Playwright script that you migrate must include the `import { browser } from 'k6/browser';` line at the top.
+k6 browser is an official module to run browser tests with k6. Any Playwright script that you migrate must include the `import { browser } from 'k6/browser';` line at the top.
 
 k6 browser doesn't implement a `test` framework. Instead, the logic of test is handled inside the `export default async function ()`.
 
