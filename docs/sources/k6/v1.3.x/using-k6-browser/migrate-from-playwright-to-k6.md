@@ -433,8 +433,8 @@ Refer to [Run a test using Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VER
 
 ## References
 
-- k6 browser APIs: https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/
-- k6-testing library for Playwright-inspired assertions: https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/
-- Understand k6 CLI output results: https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/
-- Test lifecycle: https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/
-- k6 browser recommended practices: https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/
+- [k6 browser APIs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/)
+- [k6-testing library](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/) for Playwright-inspired assertions
+- [Understand k6 CLI output results](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/)
+- [Test lifecycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/)
+- [k6 browser recommended practices](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/recommended-practices/)
