@@ -5,13 +5,6 @@ description: 'Browser module: locator.waitFor method'
 
 # waitFor([options])
 
-{{< admonition type="caution" >}}
-
-This feature has **known issues**. For details,
-refer to [#472](https://github.com/grafana/xk6-browser/issues/472).
-
-{{< /admonition >}}
-
 Wait for the element to be in a particular state e.g. `visible`.
 
 <TableWithNestedRows>
