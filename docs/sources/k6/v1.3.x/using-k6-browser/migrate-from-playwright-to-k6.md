@@ -10,8 +10,8 @@ Playwright is an end-to-end testing framework for modern web apps. You can use i
 
 You can convert your Playwright scripts to k6 browser scripts and use them in the following ways:
 
-- Run performance tests and frontend testing simultaneously in k6 OSS or Grafana Cloud k6 to see how your application behaves in real-world scenarios.
-- Use Synthetic Monitoring to ensure your application is monitored and working correctly on a consistent schedule.
+- Run performance tests and frontend testing simultaneously in k6 OSS or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/) to see how your application behaves in real-world scenarios.
+- Use [Synthetic Monitoring](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/) to ensure your application is monitored and working correctly on a consistent schedule.
 
 In this guide, you'll learn the key differences between Playwright and k6, and how to migrate your scripts.
 
