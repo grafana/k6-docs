@@ -407,7 +407,7 @@ To effectively use k6 for browser testing, it's important to understand a few co
 
 ### Browser context restrictions
 
-Unlike Playwright, k6 can only work with a single `browserContext` at a time. The following script fails when you run it with k6:
+Unlike Playwright, k6 can only work with a single [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) at a time. The following script fails when you run it with k6:
 
 <!-- md-k6:skip -->
 
