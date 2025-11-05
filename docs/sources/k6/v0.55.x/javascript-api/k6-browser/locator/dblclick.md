@@ -13,7 +13,6 @@ This feature has known issues. For details, refer to [#471](https://github.com/g
 
 Mouse double click on the chosen element.
 
-<TableWithNestedRows>
 
 | Parameter           | Type     | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,7 +28,6 @@ Mouse double click on the chosen element.
 | options.timeout     | number   | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 | options.trial       | boolean  | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                                                                                                                                   |
 
-</TableWithNestedRows>
 
 ### Returns
 

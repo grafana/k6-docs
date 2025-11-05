@@ -7,7 +7,6 @@ description: 'Browser module: elementHandle.selectText method'
 
 Selects the text of the element.
 
-<TableWithNestedRows>
 
 | Parameter           | Type                         | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | ---------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,7 +14,6 @@ Selects the text of the element.
 | options.force       | boolean                      | `false` | Setting this to `true` will bypass the actionability checks (`visible`, `stable`, `enabled`).                                                                                                                                                                                                                                                 |
 | options.timeout     | number                       | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

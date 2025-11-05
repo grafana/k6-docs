@@ -13,13 +13,11 @@ Use [`page.locator(selector[, options])`](https://grafana.com/docs/k6/<K6_VERSIO
 
 Queries the element for the given selector in the [ElementHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/elementhandle)'s subtree.
 
-<TableWithNestedRows>
 
 | Parameter | Type     | Default | Description                           |
 | --------- | -------- | ------- | ------------------------------------- |
 | selector  | `string` |         | A selector to query the elements for. |
 
-</TableWithNestedRows>
 
 ### Returns
 

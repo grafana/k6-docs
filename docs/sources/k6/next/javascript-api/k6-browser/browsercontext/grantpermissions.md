@@ -7,7 +7,6 @@ description: 'Grants specified permissions to the BrowserContext.'
 
 Grants specified permissions to the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext). Only grants corresponding permissions to the given origin if specified.
 
-<TableWithNestedRows>
 
 | Parameter      | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                           |
 | -------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,7 +14,6 @@ Grants specified permissions to the [browser context](https://grafana.com/docs/k
 | options        | object | Optional.                                                                                                                                                                                                                                                                                                                                                                                             |
 | options.origin | string | The [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) to grant permissions to, e.g. `'https://example.com'`.                                                                                                                                                                                                                                                                         |
 
-</TableWithNestedRows>
 
 ### Returns
 

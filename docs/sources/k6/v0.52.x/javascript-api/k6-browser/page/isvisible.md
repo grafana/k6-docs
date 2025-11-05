@@ -13,7 +13,6 @@ Use locator-based [`locator.isVisible([options])`](https://grafana.com/docs/k6/<
 
 Checks if the element is `visible`.
 
-<TableWithNestedRows>
 
 | Parameter      | Type    | Default | Description                                                                                                                                                        |
 | -------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -21,7 +20,6 @@ Checks if the element is `visible`.
 | options        | object  | `null`  |                                                                                                                                                                    |
 | options.strict | boolean | `false` | When `true`, the call requires the selector to resolve to a single element. If the given selector resolves to more than one element, the call throws an exception. |
 
-</TableWithNestedRows>
 
 ### Returns
 

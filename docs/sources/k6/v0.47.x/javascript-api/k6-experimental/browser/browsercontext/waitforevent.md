@@ -17,7 +17,6 @@ Consider using the sync methods `Page.waitForNavigation()` and `Page.waitForSele
 
 Waits for the event to fire and passes its value into the predicate function. Returns the event data value when the predicate returns `true`.
 
-<TableWithNestedRows>
 
 | Parameter                    | Type             | Default | Description                                                                                                                                        |
 | ---------------------------- | ---------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,7 +25,6 @@ Waits for the event to fire and passes its value into the predicate function. Re
 | optionsOrPredicate.predicate | function         | `null`  | Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue.        |
 | optionsOrPredicate.timeout   | number           | `30000` | Maximum time to wait in milliseconds. Pass `0` to disable timeout.                                                                                 |
 
-</TableWithNestedRows>
 
 ### Returns
 

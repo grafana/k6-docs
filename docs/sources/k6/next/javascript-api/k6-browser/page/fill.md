@@ -13,7 +13,6 @@ Use locator-based [`locator.fill(value[, options])`](https://grafana.com/docs/k6
 
 Fill an `input`, `textarea` or `contenteditable` element with the provided value.
 
-<TableWithNestedRows>
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,7 +24,6 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 | options.strict      | boolean | `false` | When `true`, the call requires selector to resolve to a single element. If given selector resolves to more than one element, the call throws an exception.                                                                                                                                                                                    |
 | options.timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

@@ -7,7 +7,6 @@ description: 'Browser module: elementHandle.dblclick([, options]) method'
 
 Mouse double clicks on the element.
 
-<TableWithNestedRows>
 
 | Parameter           | Type     | Default | Description                                                                                                                                                                                                                                                                                                                                            |
 | ------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -23,7 +22,6 @@ Mouse double clicks on the element.
 | options.timeout     | number   | `30000` | Maximum time in milliseconds. Passing `0` disables the timeout. The `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/) can override the default timeout. |
 | options.trial       | boolean  | `false` | Performs the actionability checks without performing the double click action if set to `true`.                                                                                                                                                                                                                                                         |
 
-</TableWithNestedRows>
 
 ### Example
 

@@ -13,7 +13,6 @@ Use [`locator.dispatchEvent(type, eventInit[, options])`](https://grafana.com/do
 
 Dispatches HTML DOM event types e.g. `'click'`.
 
-<TableWithNestedRows>
 
 | Parameter       | Type   | Defaults | Description                                                                                                                                                                                                                                                                                                                                   |
 | --------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,7 +21,6 @@ Dispatches HTML DOM event types e.g. `'click'`.
 | options         | object | `null`   |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### eventInit
 

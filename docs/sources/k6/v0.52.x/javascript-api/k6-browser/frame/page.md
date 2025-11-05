@@ -7,7 +7,6 @@ description: 'Browser module: frame.page() method'
 
 This method returns the parent [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/) object of the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/).
 
-<TableWithNestedRows>
 
 ### Returns
 

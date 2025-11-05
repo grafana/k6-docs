@@ -7,13 +7,11 @@ description: 'Browser module: Response.headerValue method'
 
 Returns the value of the header matching the name. The name is case insensitive.
 
-<TableWithNestedRows>
 
 | Parameter | Type   | Description                         |
 | --------- | ------ | ----------------------------------- |
 | name      | string | Header name to retrieve values for. |
 
-</TableWithNestedRows>
 
 ### Returns
 

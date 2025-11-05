@@ -7,14 +7,12 @@ description: 'Browser module: Touchscreen.tap method'
 
 Simulates a tap (dispatches a `touchstart` and `touchend` events) at the specified coordinates. The `x` and `y` arguments are the coordinates of the tap relative to the top-left corner of the main frame.
 
-<TableWithNestedRows>
 
 | Parameter | Type   | Default | Description       |
 | --------- | ------ | ------- | ----------------- |
 | x         | number | `0`     | The x coordinate. |
 | y         | number | `0`     | The y coordinate. |
 
-</TableWithNestedRows>
 
 ### Example
 

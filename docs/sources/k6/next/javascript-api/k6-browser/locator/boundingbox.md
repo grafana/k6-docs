@@ -7,14 +7,12 @@ description: 'Browser module: locator.boundingBox method'
 
 Returns the bounding box of the element. The bounding box is calculated with respect to the position of the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame) of the current element, which is usually the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page)'s main frame.
 
-<TableWithNestedRows>
 
 | Parameter       | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | --------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | options         | object | `null`  |                                                                                                                                                                                                                                                                                                                                               |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 
-</TableWithNestedRows>
 
 ### Returns
 

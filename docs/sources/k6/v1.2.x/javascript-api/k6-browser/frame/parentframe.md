@@ -7,7 +7,6 @@ description: 'Browser module: frame.parentFrame() method'
 
 This method returns the parent [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/) object of the current frame.
 
-<TableWithNestedRows>
 
 ### Returns
 

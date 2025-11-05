@@ -9,7 +9,6 @@ The method finds all elements matching the selector and creates a new [Locator](
 
 This allows you to define locators relative to a parent locator, enabling more precise element targeting by creating nested locators.
 
-<TableWithNestedRows>
 
 | Parameter           | Type             | Default | Description                                                                                                                                                                                                                           |
 | ------------------- | ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18,7 +17,6 @@ This allows you to define locators relative to a parent locator, enabling more p
 | options.hasText     | string or RegExp | `null`  | Matches only elements that contain the specified text. String or regular expression. Optional.                                                                                                                                       |
 | options.hasNotText  | string or RegExp | `null`  | Matches only elements that do not contain the specified text. String or regular expression. Optional.                                                                                                                                |
 
-</TableWithNestedRows>
 
 ### Returns
 

@@ -13,7 +13,6 @@ Use [`locator.click([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javasc
 
 Mouse click on the chosen element.
 
-<TableWithNestedRows>
 
 | Parameter           | Type     | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +30,6 @@ Mouse click on the chosen element.
 | options.trial       | boolean  | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                                                                                                                                   |
 
 
-</TableWithNestedRows>
 
 ### Returns
 

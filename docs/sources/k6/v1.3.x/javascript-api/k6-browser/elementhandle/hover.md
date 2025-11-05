@@ -13,7 +13,6 @@ Use [`locator.hover([options])`](https://grafana.com/docs/k6/<K6_VERSION>/javasc
 
 Hovers over the element.
 
-<TableWithNestedRows>
 
 | Parameter           | Type     | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,7 +26,6 @@ Hovers over the element.
 | options.timeout     | number   | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
 | options.trial       | boolean  | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                                                                                                                                   |
 
-</TableWithNestedRows>
 
 ### Returns
 
