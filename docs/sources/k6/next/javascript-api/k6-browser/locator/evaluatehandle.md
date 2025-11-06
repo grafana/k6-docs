@@ -1,13 +1,13 @@
 ---
 title: 'evaluateHandle(pageFunction[, arg])'
-description: 'Browser module: JSHandle.evaluateHandle(pageFunction[, arg]) method'
+description: 'Browser module: locator.evaluateHandle(pageFunction[, arg]) method'
 ---
 
 # evaluateHandle(pageFunction[, arg])
 
-Executes JavaScript code in the page, passing this handle as the first argument to the `pageFunction` and `arg` as the following arguments. It returns the value of the `pageFunction` invocation as a `JSHandle`.
+Executes JavaScript code in the page, passing the matching element of the locator as the first argument to the `pageFunction` and `arg` as the following arguments. It returns the value of the `pageFunction` invocation as a [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
 
-The only difference between [`evaluate`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/evaluate/) and `evaluateHandle` is that `evaluateHandle` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
+The only difference between [`evaluate`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/evaluate/) and `evaluateHandle` is that `evaluateHandle` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
 
 
 | Parameter    | Type               | Defaults | Description                                  |
@@ -20,7 +20,7 @@ The only difference between [`evaluate`](https://grafana.com/docs/k6/<K6_VERSION
 
 | Type              | Description                                         |
 | ----------------- | --------------------------------------------------- |
-| Promise<JSHandle> | A `JSHandle` of the return value of `pageFunction`. |
+| Promise<JSHandle> | A [JSHandle]((https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/)) of the return value of `pageFunction`. |
 
 ### Example
 
@@ -48,13 +48,16 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/browser.php');
-    const jsHandle = await page.evaluateHandle(() => document.body);
+    await page.goto("https://quickpizza.grafana.com", { waitUntil: "load" });
+
+    await page.getByText('Pizza, Please!').click();
+
+    const jsHandle = await page.locator('#pizza-name').evaluateHandle((pizzaName) => pizzaName);
 
     const obj = await jsHandle.evaluateHandle((handle) => {
       return { innerText: handle.innerText };
     });
-    console.log(await obj.jsonValue()); // {"innerText":"< Back...
+    console.log(await obj.jsonValue()); // {"innerText":"Our recommendation:"}
   } finally {
     await page.close();
   }

@@ -5,7 +5,7 @@ description: 'Browser module: page.evaluateHandle(pageFunction[, arg]) method'
 
 # evaluateHandle(pageFunction[, arg])
 
-Returns the value of the `pageFunction` invocation as a [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
+Executes JavaScript code in the page and returns the value of the `pageFunction` invocation as a [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
 
 The only difference between `page.evaluate()` and `page.evaluateHandle()` is that `page.evaluateHandle()` returns [JSHandle](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/jshandle/).
 

@@ -1,11 +1,11 @@
 ---
 title: 'evaluate(pageFunction[, arg])'
-description: 'Browser module: JSHandle.evaluate(pageFunction[, arg]) method'
+description: 'Browser module: locator.evaluate(pageFunction[, arg]) method'
 ---
 
 # evaluate(pageFunction[, arg])
 
-Executes JavaScript code in the page, passing this handle as the first argument to the `pageFunction` and `arg` as the following arguments. It returns the value of the `pageFunction` invocation.
+Executes JavaScript code in the page, passing the matching element of the locator as the first argument to the `pageFunction` and `arg` as the following arguments. It returns the value of the `pageFunction` invocation.
 
 
 | Parameter    | Type               | Defaults | Description                                  |
@@ -28,6 +28,7 @@ Executes JavaScript code in the page, passing this handle as the first argument 
 
 ```javascript
 import { browser } from 'k6/browser';
+import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
 
 export const options = {
   scenarios: {
@@ -46,11 +47,16 @@ export default async function () {
   const page = await browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/browser.php');
-    const jsHandle = await page.evaluateHandle(() => document.body);
+    await page.goto("https://quickpizza.grafana.com", { waitUntil: "load" });
 
-    const innerHTML = await jsHandle.evaluate((node) => node.innerHTML);
-    console.log(innerHTML); // <p><a href="/">&lt; Back</a></p>...
+    await page.getByText('Pizza, Please!').click();
+
+    await check(page, {
+      'pizza name': async p => {
+        const n = await p.locator('#pizza-name').evaluate((pizzaName, extra) => pizzaName.textContent + extra, ' Super pizza!');
+        return n == 'Our recommendation: Super pizza!';
+      }
+    });
   } finally {
     await page.close();
   }

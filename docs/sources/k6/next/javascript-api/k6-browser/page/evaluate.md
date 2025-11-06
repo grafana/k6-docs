@@ -5,7 +5,7 @@ description: 'Browser module: page.evaluate(pageFunction[, arg]) method'
 
 # evaluate(pageFunction[, arg])
 
-Returns the value of the `pageFunction` invocation.
+Executes JavaScript code in the page and returns the value of the `pageFunction` invocation.
 
 
 | Parameter    | Type               | Defaults | Description                                                              |
@@ -28,7 +28,7 @@ Returns the value of the `pageFunction` invocation.
 
 ```javascript
 import { browser } from 'k6/browser';
-import { check } from 'k6/http';
+import { check } from 'k6';
 
 export const options = {
   scenarios: {
