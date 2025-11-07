@@ -18,7 +18,7 @@ The status column has three different options:
 
 {{< admonition type="note" >}}
 
-If k6 is missing an API from Playwright that you need for your test, please let us know by opening a [github issue](https://github.com/grafana/k6/issues).
+If k6 is missing an API from Playwright that you need for your test, you can [open an issue in the k6 GitHub repository](https://github.com/grafana/k6/issues).
 
 {{< /admonition >}}
 
