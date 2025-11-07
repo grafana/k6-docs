@@ -6,15 +6,15 @@ weight: 350
 
 # Playwright APIs in k6
 
-The following is the key for what the statuses mean.
+The following table shows which Playwright APIs are implemented in k6. k6 tries to match Playwright's API behavior and signature exactly, but some differences may exist. For more details, refer to the individual API documentation page.
+
+The status column has three different options:
 
 | Status | Description |
 | ------ | ----------- |
-| 🟥 | Not implemented in k6 Browser |
 | 🟩 | Implemented in k6 Browser |
+| 🟥 | Not implemented in k6 Browser |
 | 🟧 | k6 Browser only |
-
-The following table shows which Playwright APIs are implemented in k6. We aim to match Playwright's API behavior and signature exactly, but some differences may exist. For more details, refer to the individual API documentation page.
 
 {{< admonition type="note" >}}
 
