@@ -114,34 +114,6 @@ export default async function () {
 }
 ```
 
-## Label association patterns
-
-The `getByLabel()` method works with several HTML patterns for associating labels with form controls:
-
-1. Explicit association with `for` attribute:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <label for="username">Username</label> <input type="text" id="username" name="username" />
-   ```
-
-1. ARIA labeling:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <span id="username-label">Username</span> <input type="text" aria-labelledby="username-label" />
-   ```
-
-1. ARIA label attribute:
-
-   <!-- eslint-skip -->
-
-   ```html
-   <input type="text" aria-label="Username" />
-   ```
-
 {{< docs/shared source="k6" lookup="browser/getby-apis/getbylabel-tips.md" version="<K6_VERSION>" >}}
 
 ## Related
