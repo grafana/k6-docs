@@ -145,7 +145,6 @@ The `resolve` function may throw errors in the following cases:
 - DNS server unreachable or timeout
 - DNS server returns an error response
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
