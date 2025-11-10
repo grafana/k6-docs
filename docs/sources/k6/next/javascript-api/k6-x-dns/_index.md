@@ -57,7 +57,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
 
 ### DNS lookup using system defaults
 
