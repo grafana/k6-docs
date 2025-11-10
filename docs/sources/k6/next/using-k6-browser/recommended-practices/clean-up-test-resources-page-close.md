@@ -1,7 +1,7 @@
 ---
 title: 'Use Page.close to clean up test resources'
 description: 'Use Page.close in your browser tests to ensure k6 properly flushes metrics and cleans up resources'
-weight: 01
+weight: 650
 ---
 
 # Use Page.close to clean up test resources
