@@ -44,7 +44,6 @@ The extension automatically generates the following metrics:
 
 ### Basic DNS resolution with custom server
 
-{{< code >}}
 
 <!-- md-k6:skip -->
 
