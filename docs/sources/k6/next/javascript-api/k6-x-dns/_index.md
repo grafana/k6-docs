@@ -44,7 +44,6 @@ The extension automatically generates the following metrics:
 
 ### Basic DNS resolution with custom server
 
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -57,10 +56,7 @@ export default async function () {
 }
 ```
 
-
 ### DNS lookup using system defaults
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -74,11 +70,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Comprehensive DNS testing
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -105,5 +97,3 @@ export default async function () {
   expect(systemResults.length).toBeGreaterThan(0);
 }
 ```
-
-{{< /code >}}

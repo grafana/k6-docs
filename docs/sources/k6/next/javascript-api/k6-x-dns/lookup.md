@@ -31,8 +31,6 @@ These metrics help you monitor DNS performance using your system's DNS configura
 
 ### Basic lookup
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -46,11 +44,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Comparing system vs custom DNS
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -80,11 +74,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Testing DNS consistency
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -115,11 +105,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Load testing with system DNS
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -171,11 +157,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Validating DNS configuration
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -208,8 +190,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## Error handling
 
 The `lookup` function may throw errors in the following cases:
@@ -218,8 +198,6 @@ The `lookup` function may throw errors in the following cases:
 - DNS resolution timeout
 - No DNS servers configured on the system
 - Network connectivity issues
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -243,5 +221,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

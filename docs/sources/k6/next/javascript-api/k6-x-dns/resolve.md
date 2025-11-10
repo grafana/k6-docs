@@ -24,8 +24,6 @@ A promise resolving to an array of strings, where each string is an IP address t
 
 ### Basic A record resolution
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -39,11 +37,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### AAAA record resolution
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -58,11 +52,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Testing multiple DNS servers
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -99,11 +89,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Performance comparison
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -134,8 +120,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## Error handling
 
 The `resolve` function may throw errors in the following cases:
@@ -160,8 +144,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ## Metrics
 
