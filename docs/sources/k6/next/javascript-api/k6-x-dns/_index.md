@@ -42,9 +42,9 @@ The extension automatically generates the following metrics:
 
 ## Examples
 
-### Basic DNS resolution with custom server
+<!-- md-k6:skipall -->
 
-<!-- md-k6:skip -->
+### Basic DNS resolution with custom server
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -58,8 +58,6 @@ export default async function () {
 
 ### DNS lookup using system defaults
 
-<!-- md-k6:skip -->
-
 ```javascript
 import dns from 'k6/x/dns';
 
@@ -72,7 +70,6 @@ export default async function () {
 
 ### Comprehensive DNS testing
 
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';

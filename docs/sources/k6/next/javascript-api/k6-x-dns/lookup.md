@@ -29,9 +29,9 @@ These metrics help you monitor DNS performance using your system's DNS configura
 
 ## Examples
 
-### Basic lookup
+<!-- md-k6:skipall -->
 
-<!-- md-k6:skip -->
+### Basic lookup
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -45,8 +45,6 @@ export default async function () {
 ```
 
 ### Comparing system vs custom DNS
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -76,8 +74,6 @@ export default async function () {
 
 ### Testing DNS consistency
 
-<!-- md-k6:skip -->
-
 ```javascript
 import dns from 'k6/x/dns';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -106,8 +102,6 @@ export default async function () {
 ```
 
 ### Load testing with system DNS
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -159,8 +153,6 @@ export default async function () {
 
 ### Validating DNS configuration
 
-<!-- md-k6:skip -->
-
 ```javascript
 import dns from 'k6/x/dns';
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
@@ -198,8 +190,6 @@ The `lookup` function may throw errors in the following cases:
 - DNS resolution timeout
 - No DNS servers configured on the system
 - Network connectivity issues
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';

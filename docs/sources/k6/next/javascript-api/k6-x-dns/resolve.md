@@ -22,9 +22,9 @@ A promise resolving to an array of strings, where each string is an IP address t
 
 ## Examples
 
-### Basic A record resolution
+<!-- md-k6:skipall -->
 
-<!-- md-k6:skip -->
+### Basic A record resolution
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -39,8 +39,6 @@ export default async function () {
 
 ### AAAA record resolution
 
-<!-- md-k6:skip -->
-
 ```javascript
 import dns from 'k6/x/dns';
 
@@ -53,8 +51,6 @@ export default async function () {
 ```
 
 ### Testing multiple DNS servers
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -90,8 +86,6 @@ export default async function () {
 ```
 
 ### Performance comparison
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';
@@ -129,8 +123,6 @@ The `resolve` function may throw errors in the following cases:
 - DNS server unreachable or timeout
 - DNS server returns an error response
 
-
-<!-- md-k6:skip -->
 
 ```javascript
 import dns from 'k6/x/dns';
