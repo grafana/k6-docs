@@ -110,38 +110,3 @@ This behavior can be deactivated by adding the `--no-archive-upload` option to y
 command: `k6 cloud run --local-execution --no-archive-upload script.js`.
 
 {{< /admonition >}}
-
-## Advanced settings
-
-A few [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `k6 cloud run script.js --local-execution`.
-
-When streaming, k6 will collect all data and send it to the cloud in batches.
-
-| Name                            | Description                                           |
-| ------------------------------- | ----------------------------------------------------- |
-| `K6_CLOUD_METRIC_PUSH_INTERVAL` | How often to send data to the cloud (default `'1s'`). |
-
-k6 can also _aggregate_ the data it sends to the cloud each batch. This
-reduces the amount of data sent to the cloud. Aggregation is disabled by
-default.
-
-When using aggregation, k6 will collect incoming test data into time-buckets.
-For each data-type collected in such a bucket, it will figure out the dispersion
-(by default the [interquartile range][iqr]) around the median value.
-Outlier data&mdash;far outside the lower and upper quartiles&mdash; is not aggregated, preventing the loss of potentially important testing information.
-
-| Name                                          | Description                                                                                                |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_AGGREGATION_PERIOD`                 | >0s to activate aggregation (default disabled, `'3s'` is a good example to try)                            |
-| `K6_CLOUD_AGGREGATION_CALC_INTERVAL`          | How often new data will be aggregated (default `'3s'`).                                                    |
-| `K6_CLOUD_AGGREGATION_WAIT_PERIOD`            | How long to wait for period samples to accumulate before aggregating them (default `'5s'`).                |
-| `K6_CLOUD_AGGREGATION_MIN_SAMPLES`            | If fewer samples than this arrived in interval, skip aggregation (default `100`).                          |
-| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_RADIUS`     | Outlier sampling from median to use for Q1 and Q3 quartiles (fraction) (default `0.25` (i.e. [IQR][iqr])). |
-| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_LOWER` | How many quartiles below the lower quartile are treated as non-aggregatable outliers (default `1.5`)       |
-| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_UPPER` | How many quartiles above the upper quartile are treated as non-aggregatable outliers (default `1.3`)       |
-
-> When running a test entirely in the cloud with `k6 cloud run`, `k6` will always
-> aggregate. For that case the aggregation settings are however set by the
-> cloud infrastructure and are not controllable from the CLI.
-
-[iqr]: https://en.wikipedia.org/wiki/Interquartile_range
