@@ -110,26 +110,3 @@ This behavior can be deactivated by adding the `--no-archive-upload` option to y
 command: `k6 cloud run --local-execution --no-archive-upload script.js`.
 
 {{< /admonition >}}
-
-## Advanced settings
-
-A few [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) can control how k6 streams results with `k6 cloud run script.js --local-execution`.
-
-When streaming, k6 will collect all data and send it to the cloud in batches.
-
-| Name                            | Description                                           |
-| ------------------------------- | ----------------------------------------------------- |
-| `K6_CLOUD_METRIC_PUSH_INTERVAL` | How often to send data to the cloud (default `'1s'`). |
-
-k6 can also _aggregate_ the data it sends to the cloud each batch. This
-reduces the amount of data sent to the cloud. When using aggregation,
-k6 will collect test data into time-buckets.
-
-| Name                                          | Description                                                                                                |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_AGGREGATION_PERIOD`                 | >0s to activate aggregation (default: `'3s'`)                                                              |
-| `K6_CLOUD_AGGREGATION_WAIT_PERIOD`            | How long to wait for period samples to accumulate before aggregating them (default `'8s'`).                |
-
-> When running a test entirely in the cloud with `k6 cloud run`, `k6` will always
-> aggregate. For that case the aggregation settings are however set by the
-> k6 Cloud infrastructure and are not controllable from the CLI.
