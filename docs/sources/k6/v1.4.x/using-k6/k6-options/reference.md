@@ -1615,9 +1615,9 @@ requests.
 If you pass an empty string, no `User-Agent` header is sent.
 Available in `k6 run` and `k6 cloud` commands
 
-| Env             | CLI            | Code / Config file | Default                                                               |
-| --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
-| `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `k6/0.27.0 (https://k6.io/)` (depending on the version you're using)` |
+| Env             | CLI            | Code / Config file | Default                   |
+| --------------- | -------------- | ------------------ | ------------------------- |
+| `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `Grafana k6/<K6_VERSION>` |
 
 {{< code >}}
 
