@@ -155,8 +155,8 @@ The secret source extracts `"my-secret-value"`.
 
 The URL secret source includes built-in rate limiting to prevent overwhelming the secret service:
 
-- **requestsPerMinuteLimit**: Maximum requests per minute (default: 300)
-- **requestsBurst**: Allows a burst of requests above the limit (default: 10)
+- `requestsPerMinuteLimit`: Maximum requests per minute (default: 300)
+- `requestsBurst`: Allows a burst of requests above the limit (default: 10)
 
 Requests exceeding the rate limit are automatically queued.
 
