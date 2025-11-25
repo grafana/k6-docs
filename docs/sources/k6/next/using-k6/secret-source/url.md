@@ -1,0 +1,224 @@
+---
+title: 'URL secret source'
+menuTitle: 'URL'
+description: 'The URL secret source fetches secrets from HTTP endpoints'
+weight: 03
+---
+
+# URL secret source
+
+The URL secret source fetches secrets from generic HTTP endpoints.
+
+This source makes HTTP requests to retrieve secrets, supporting features like custom headers, response path extraction, rate limiting, and automatic retries.
+
+## Basic usage
+
+To use the URL secret source, specify a URL template with the `--secret-source` flag:
+
+{{< code >}}
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key} script.js
+```
+
+```docker
+docker run -it --rm \
+  -v <SCRIPT_DIR>:/scripts \
+  grafana/k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key} /scripts/script.js
+```
+
+{{< /code >}}
+
+The `{key}` placeholder in the URL template is replaced with the secret identifier when fetching secrets.
+
+## Configuration options
+
+The URL secret source supports three configuration methods:
+
+1. **Inline CLI arguments**: Key-value pairs in the `--secret-source` flag
+2. **JSON configuration file**: Referenced via `config=path/to/file.json`
+3. **Environment variables**: Prefixed with `K6_SECRET_SOURCE_URL_`
+
+### Configuration parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `urlTemplate` | string | (required) | URL template with `{key}` placeholder |
+| `method` | string | `GET` | HTTP method to use |
+| `headers.*` | string | - | Custom headers (e.g., `headers.Authorization=Bearer token`) |
+| `responsePath` | string | - | JSON path to extract secret from response (empty = use entire response) |
+| `timeout` | duration | `30s` | Request timeout (e.g., `30s`, `1m`, `500ms`) |
+| `requestsPerMinuteLimit` | int | `300` | Maximum requests per minute |
+| `requestsBurst` | int | `10` | Burst of requests above rate limit |
+| `maxRetries` | int | `3` | Maximum retry attempts for failed requests |
+| `retryBackoff` | duration | `1s` | Base backoff duration for retries |
+
+### Inline configuration
+
+Provide configuration as comma-separated key-value pairs:
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},headers.Authorization=Bearer mytoken,timeout=10s script.js
+```
+
+### File-based configuration
+
+Create a JSON configuration file:
+
+```json
+{
+  "urlTemplate": "https://api.example.com/secrets/{key}",
+  "method": "GET",
+  "headers": {
+    "Authorization": "Bearer mytoken",
+    "X-Custom-Header": "value"
+  },
+  "responsePath": "data.value",
+  "timeout": "30s",
+  "requestsPerMinuteLimit": 300,
+  "requestsBurst": 10,
+  "maxRetries": 3,
+  "retryBackoff": "1s"
+}
+```
+
+Reference the file with the `config` parameter:
+
+```bash
+k6 run --secret-source=url=config=secrets-config.json script.js
+```
+
+You can override file settings with inline parameters:
+
+```bash
+k6 run --secret-source=url=config=secrets-config.json,timeout=5s script.js
+```
+
+### Environment variables
+
+Configure using environment variables with the prefix `K6_SECRET_SOURCE_URL_`:
+
+```bash
+export K6_SECRET_SOURCE_URL_URL_TEMPLATE="https://api.example.com/secrets/{key}"
+export K6_SECRET_SOURCE_URL_HEADER_AUTHORIZATION="Bearer mytoken"
+export K6_SECRET_SOURCE_URL_METHOD="GET"
+export K6_SECRET_SOURCE_URL_RESPONSE_PATH="data.value"
+export K6_SECRET_SOURCE_URL_TIMEOUT="30s"
+export K6_SECRET_SOURCE_URL_MAX_RETRIES="3"
+export K6_SECRET_SOURCE_URL_RETRY_BACKOFF="1s"
+export K6_SECRET_SOURCE_URL_REQUESTS_PER_MINUTE_LIMIT="300"
+export K6_SECRET_SOURCE_URL_REQUESTS_BURST="10"
+
+k6 run script.js
+```
+
+### Configuration precedence
+
+When multiple configuration methods are used, they are applied in this order (later overrides earlier):
+
+1. Default values
+2. Environment variables
+3. Configuration file (if specified)
+4. Inline CLI arguments
+
+## Response handling
+
+### Plain text responses
+
+If no `responsePath` is specified, the entire response body is treated as the secret:
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key} script.js
+```
+
+### JSON responses
+
+Extract specific values from JSON responses using dot notation:
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},responsePath=data.value script.js
+```
+
+For this JSON response:
+
+```json
+{
+  "data": {
+    "value": "my-secret-value"
+  }
+}
+```
+
+The secret source extracts `"my-secret-value"`.
+
+## Rate limiting
+
+The URL secret source includes built-in rate limiting to prevent overwhelming the secret service:
+
+- **requestsPerMinuteLimit**: Maximum requests per minute (default: 300)
+- **requestsBurst**: Allows a burst of requests above the limit (default: 10)
+
+Requests exceeding the rate limit are automatically queued.
+
+## Retry behavior
+
+Failed requests are automatically retried with exponential backoff:
+
+- Retries occur for server errors (5xx), rate limiting (429), network errors, and timeouts
+- Client errors (4xx except 429) are not retried
+- Backoff calculation: `wait = (base ^ attempt) + random jitter up to 1 second`
+- Default: 3 retries with 1 second base backoff
+
+## Examples
+
+### Basic API with authentication
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://vault.example.com/api/v1/secrets/{key},headers.Authorization=Bearer mytoken script.js
+```
+
+### JSON API with nested response
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/v2/secrets/{key},responsePath=secret.data.value,headers.X-API-Key=apikey123 script.js
+```
+
+### Custom timeout and retry settings
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},timeout=5s,maxRetries=5,retryBackoff=2s script.js
+```
+
+### POST request with custom headers
+
+```bash
+k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},method=POST,headers.Content-Type=application/json,headers.X-Custom-Header=value script.js
+```
+
+### Multiple URL sources
+
+Configure multiple URL secret sources with different names:
+
+```bash
+k6 run \
+  --secret-source=url=default,urlTemplate=https://api1.example.com/secrets/{key},headers.Authorization=Bearer token1 \
+  --secret-source=url=name=backup,urlTemplate=https://api2.example.com/secrets/{key},headers.Authorization=Bearer token2 \
+  script.js
+```
+
+Access different sources in your script:
+
+<!-- md-k6:skip -->
+
+```javascript
+import secrets from 'k6/secrets';
+
+export default async () => {
+  // Default source
+  const secret1 = await secrets.get('my-key');
+
+  // Named source
+  const backupSource = await secrets.source('backup');
+  const secret2 = await backupSource.get('my-key');
+};
+```
