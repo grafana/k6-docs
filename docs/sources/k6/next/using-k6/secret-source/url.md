@@ -109,7 +109,7 @@ export K6_SECRET_SOURCE_URL_RETRY_BACKOFF="1s"
 export K6_SECRET_SOURCE_URL_REQUESTS_PER_MINUTE_LIMIT="300"
 export K6_SECRET_SOURCE_URL_REQUESTS_BURST="10"
 
-k6 run script.js
+k6 run script.js --secret-source=url
 ```
 
 ### Configuration precedence
