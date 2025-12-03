@@ -29,7 +29,7 @@ docker run -it --rm \
 
 {{< /code >}}
 
-The `{key}` placeholder in the URL template is replaced with the secret identifier when fetching secrets.
+k6 replaces the `{key}` placeholder with the secret identifier when it fetches secrets.
 
 ## Configuration options
 
