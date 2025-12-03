@@ -47,11 +47,11 @@ The URL secret source supports three configuration methods:
 | `method` | string | `GET` | HTTP method to use |
 | `headers.*` | string | - | Custom headers. For example, `headers.Authorization=Bearer token` |
 | `responsePath` | string | - | JSON path to extract the secret from the response. If empty, k6 uses the entire response |
-| `timeout` | duration | `30s` | Request timeout (e.g., `30s`, `1m`, `500ms`) |
+| `timeout` | string | `30s` | Request timeout (e.g., `30s`, `1m`, `500ms`) |
 | `requestsPerMinuteLimit` | int | `300` | Maximum requests per minute |
 | `requestsBurst` | int | `10` | Burst of requests above rate limit |
 | `maxRetries` | int | `3` | Maximum retry attempts for failed requests |
-| `retryBackoff` | duration | `1s` | Base backoff duration for retries |
+| `retryBackoff` | string | `1s` | Base backoff duration for retries |
 
 ### Inline configuration
 
