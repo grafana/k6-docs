@@ -114,7 +114,7 @@ k6 run script.js --secret-source=url
 
 ### Configuration precedence
 
-When multiple configuration methods are used, they are applied in this order (later overrides earlier):
+When you use multiple configuration methods, k6 applies them in this order:
 
 1. Default values
 2. Environment variables
