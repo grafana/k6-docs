@@ -45,7 +45,7 @@ The URL secret source supports three configuration methods:
 |-----------|------|---------|-------------|
 | `urlTemplate` | string | (required) | URL template with `{key}` placeholder |
 | `method` | string | `GET` | HTTP method to use |
-| `headers.*` | string | - | Custom headers (e.g., `headers.Authorization=Bearer token`) |
+| `headers.*` | string | - | Custom headers. For example, `headers.Authorization=Bearer token` |
 | `responsePath` | string | - | JSON path to extract secret from response (empty = use entire response) |
 | `timeout` | duration | `30s` | Request timeout (e.g., `30s`, `1m`, `500ms`) |
 | `requestsPerMinuteLimit` | int | `300` | Maximum requests per minute |
