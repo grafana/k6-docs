@@ -162,7 +162,7 @@ k6 automatically queues requests that exceed the rate limit.
 
 ## Retry behavior
 
-Failed requests are automatically retried with exponential backoff:
+k6 automatically retries failed requests with exponential backoff:
 
 - k6 retries server errors (5xx), rate limiting (429), network errors, and timeouts
 - k6 doesn't retry client errors (4xx except 429)
