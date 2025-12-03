@@ -173,6 +173,8 @@ Failed requests are automatically retried with exponential backoff:
 
 ### Basic API with authentication
 
+Fetch secrets from an API that requires a bearer token:
+
 ```bash
 k6 run --secret-source=url=urlTemplate=https://vault.example.com/api/v1/secrets/{key},headers.Authorization=Bearer mytoken script.js
 ```
