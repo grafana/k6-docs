@@ -117,9 +117,9 @@ k6 run script.js --secret-source=url
 When you use multiple configuration methods, k6 applies them in this order:
 
 1. Default values
-2. Environment variables
-3. Configuration file (if specified)
-4. Inline CLI arguments
+1. Environment variables
+1. Configuration file
+1. Inline CLI arguments
 
 ## Response handling
 
