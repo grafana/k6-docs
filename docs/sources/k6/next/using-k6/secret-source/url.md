@@ -181,6 +181,8 @@ k6 run --secret-source=url=urlTemplate=https://vault.example.com/api/v1/secrets/
 
 ### JSON API with nested response
 
+Extract a specific value from a nested JSON response:
+
 ```bash
 k6 run --secret-source=url=urlTemplate=https://api.example.com/v2/secrets/{key},responsePath=secret.data.value,headers.X-API-Key=apikey123 script.js
 ```
