@@ -191,6 +191,8 @@ k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},tim
 
 ### POST request with custom headers
 
+Use POST method with multiple custom headers:
+
 ```bash
 k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},method=POST,headers.Content-Type=application/json,headers.X-Custom-Header=value script.js
 ```
