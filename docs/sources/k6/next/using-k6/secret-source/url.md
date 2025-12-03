@@ -189,6 +189,8 @@ k6 run --secret-source=url=urlTemplate=https://api.example.com/v2/secrets/{key},
 
 ### Custom timeout and retry settings
 
+Configure shorter timeouts and more aggressive retries:
+
 ```bash
 k6 run --secret-source=url=urlTemplate=https://api.example.com/secrets/{key},timeout=5s,maxRetries=5,retryBackoff=2s script.js
 ```
