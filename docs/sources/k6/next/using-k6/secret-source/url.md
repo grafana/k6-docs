@@ -9,7 +9,7 @@ weight: 03
 
 The URL secret source fetches secrets from generic HTTP endpoints.
 
-This source makes HTTP requests to retrieve secrets, supporting features like custom headers, response path extraction, rate limiting, and automatic retries.
+This source fetches secrets via HTTP requests and supports custom headers, JSON path extraction, rate limiting, and automatic retries.
 
 ## Basic usage
 
