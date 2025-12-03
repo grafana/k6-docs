@@ -164,10 +164,10 @@ Requests exceeding the rate limit are automatically queued.
 
 Failed requests are automatically retried with exponential backoff:
 
-- Retries occur for server errors (5xx), rate limiting (429), network errors, and timeouts
-- Client errors (4xx except 429) are not retried
+- k6 retries server errors (5xx), rate limiting (429), network errors, and timeouts
+- k6 doesn't retry client errors (4xx except 429)
 - Backoff calculation: `wait = (base ^ attempt) + random jitter up to 1 second`
-- Default: 3 retries with 1 second base backoff
+- Default settings: 3 retries with 1 second base backoff
 
 ## Examples
 
