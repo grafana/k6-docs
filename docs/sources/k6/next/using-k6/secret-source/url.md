@@ -158,7 +158,7 @@ The URL secret source includes built-in rate limiting to prevent overwhelming th
 - `requestsPerMinuteLimit`: Maximum requests per minute (default: 300)
 - `requestsBurst`: Allows a burst of requests above the limit (default: 10)
 
-Requests exceeding the rate limit are automatically queued.
+k6 automatically queues requests that exceed the rate limit.
 
 ## Retry behavior
 
