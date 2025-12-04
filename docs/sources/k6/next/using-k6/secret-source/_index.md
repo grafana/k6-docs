@@ -20,6 +20,7 @@ The following built-in secret sources are available for local testing:
 
 - [`file`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/file): Reads secrets from a `key=value` file.
 - [`mock`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/mock): Reads secrets from CLI arguments.
+- [`url`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/url): Fetches secrets from HTTP endpoints.
 
 ## Secret source extensions
 
