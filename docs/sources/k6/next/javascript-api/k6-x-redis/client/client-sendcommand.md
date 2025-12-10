@@ -25,7 +25,7 @@ In the event a Redis command you wish to use is not implemented yet, the `sendCo
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

@@ -24,7 +24,7 @@ Returns the specified element of the list stored at `key`. The index is zero-bas
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

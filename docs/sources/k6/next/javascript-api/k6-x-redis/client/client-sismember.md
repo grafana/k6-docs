@@ -25,7 +25,7 @@ Returns if member is a member of the set stored at `key`.
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

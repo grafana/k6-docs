@@ -26,7 +26,7 @@ Removes the first `count` occurrences of `value` from the list stored at `key`. 
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

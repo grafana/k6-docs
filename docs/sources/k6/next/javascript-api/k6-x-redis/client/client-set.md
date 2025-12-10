@@ -26,7 +26,7 @@ Set the value of a key, with a time to live equal to the expiration time paramet
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

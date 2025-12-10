@@ -27,7 +27,7 @@ Here's an example of a URL string that connects to a Redis server running on loc
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client('redis://localhost:6379');
 ```
@@ -39,7 +39,7 @@ A client can also be instantiated using an [options](https://grafana.com/docs/k6
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   socket: {
@@ -62,7 +62,7 @@ If the server has a certificate signed by a public Certificate Authority, you ca
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client('rediss://example.com');
 ```
@@ -74,7 +74,7 @@ Otherwise, you can supply your own self-signed certificate in PEM format using t
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   socket: {
@@ -98,7 +98,7 @@ You can also enable mTLS by setting two additional properties in the [socket.tls
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   socket: {
@@ -122,7 +122,7 @@ You can connect to a cluster of Redis servers by using the [cluster](https://gra
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   cluster: {
@@ -143,7 +143,7 @@ Or the same as above, but passing [socket](https://grafana.com/docs/k6/<K6_VERSI
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   cluster: {
@@ -176,7 +176,7 @@ You can connect to a sentinel instance by setting additional [options](https://g
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 const client = new redis.Client({
   username: 'someusername',
@@ -201,7 +201,7 @@ const client = new redis.Client({
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 import exec from 'k6/execution';
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
 

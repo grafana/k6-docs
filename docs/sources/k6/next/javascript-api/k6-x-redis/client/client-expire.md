@@ -25,7 +25,7 @@ Sets a timeout on key, after which the key will automatically be deleted. Note t
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');

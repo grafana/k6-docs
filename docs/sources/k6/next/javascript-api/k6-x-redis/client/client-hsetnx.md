@@ -26,7 +26,7 @@ Sets the specified field in the hash stored at `key` to `value`, only if `field`
 {{< code >}}
 
 ```javascript
-import redis from 'k6/experimental/redis';
+import redis from 'k6/x/redis';
 
 // Instantiate a new redis client
 const redisClient = new redis.Client('redis://localhost:6379');
