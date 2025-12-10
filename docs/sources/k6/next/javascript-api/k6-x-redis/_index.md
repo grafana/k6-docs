@@ -2,6 +2,8 @@
 title: "k6/x/redis"
 description: "k6 client for Redis Database API"
 weight: 12
+aliases:
+  - ./k6-experimental/redis/
 ---
 
 # k6/x/redis
