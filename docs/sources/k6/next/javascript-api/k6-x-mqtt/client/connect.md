@@ -10,6 +10,8 @@ Establishes a connection to an MQTT broker. When the connection is successfully 
 
 ## Signature
 
+<!-- md-k6:skipall -->
+
 ```javascript
 client.connect(url, options)
 ```
