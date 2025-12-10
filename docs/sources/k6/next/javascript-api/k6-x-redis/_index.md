@@ -19,8 +19,8 @@ Instead, the intent is to expose Redis for use cases most appropriate to k6.
 
 | Class                                                                                                  | Description                                                                                                                                         |
 | :----------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client)         | Client that exposes allowed interactions with Redis.                                                                                                |
-| [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) | Options used to configure the behavior of the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client). |
+| [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client)         | Client that exposes allowed interactions with Redis.                                                                                                |
+| [Options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) | Options used to configure the behavior of the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client). |
 
 ### Notes on usage
 

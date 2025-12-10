@@ -6,7 +6,7 @@ weight: 20
 
 # Redis options
 
-You can configure the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client) by using a Redis connection URL as demonstrated in the [client documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client#usage), or by using an [Options](#options) object to access more advanced configuration.
+You can configure the [Redis Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client) by using a Redis connection URL as demonstrated in the [client documentation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client#usage), or by using an [Options](#options) object to access more advanced configuration.
 
 ## Options
 

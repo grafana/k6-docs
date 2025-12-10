@@ -33,7 +33,7 @@ const client = new redis.Client('redis://localhost:6379');
 
 {{< /code >}}
 
-A client can also be instantiated using an [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) object to support more complex use cases, and for more flexibility:
+A client can also be instantiated using an [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options) object to support more complex use cases, and for more flexibility:
 
 {{< code >}}
 
@@ -68,7 +68,7 @@ const client = new redis.Client('rediss://example.com');
 
 {{< /code >}}
 
-Otherwise, you can supply your own self-signed certificate in PEM format using the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#tls-configuration-options-tlsoptions) object:
+Otherwise, you can supply your own self-signed certificate in PEM format using the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options#tls-configuration-options-tlsoptions) object:
 
 {{< code >}}
 
@@ -92,7 +92,7 @@ Note that for self-signed certificates, k6's [insecureSkipTLSVerify](https://gra
 
 #### TLS client authentication (mTLS)
 
-You can also enable mTLS by setting two additional properties in the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#tls-configuration-options-tlsoptions) object:
+You can also enable mTLS by setting two additional properties in the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options#tls-configuration-options-tlsoptions) object:
 
 {{< code >}}
 
@@ -116,7 +116,7 @@ const client = new redis.Client({
 
 ### Cluster client
 
-You can connect to a cluster of Redis servers by using the [cluster](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#redis-cluster-options-clusteroptions) configuration property, and passing 2 or more node URLs:
+You can connect to a cluster of Redis servers by using the [cluster](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options#redis-cluster-options-clusteroptions) configuration property, and passing 2 or more node URLs:
 
 {{< code >}}
 
@@ -137,7 +137,7 @@ const client = new redis.Client({
 
 {{< /code >}}
 
-Or the same as above, but passing [socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#socket-connection-options-socketoptions) objects to the nodes array instead of URLs:
+Or the same as above, but passing [socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options#socket-connection-options-socketoptions) objects to the nodes array instead of URLs:
 
 {{< code >}}
 
@@ -170,7 +170,7 @@ const client = new redis.Client({
 
 A [Redis Sentinel](https://redis.io/docs/management/sentinel/) provides high availability features, as an alternative to a Redis cluster.
 
-You can connect to a sentinel instance by setting additional [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) in the object passed to the `Client` constructor:
+You can connect to a sentinel instance by setting additional [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/redis-options) in the object passed to the `Client` constructor:
 
 {{< code >}}
 
@@ -291,65 +291,65 @@ export function handleSummary(data) {
 
 | Method                                                                                                                                  | Redis command                                        | Description                                                                 |
 | :-------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :-------------------------------------------------------------------------- |
-| [`Client.set(key, value, expiration)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-set) | **[SET](https://redis.io/commands/set)**             | Set `key` to hold `value`, with a time to live equal to `expiration`.       |
-| [`Client.get(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-get)                    | **[GET](https://redis.io/commands/get)**             | Get the value of `key`.                                                     |
-| [`Client.getSet(key, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-getset)       | **[GETSET](https://redis.io/commands/getset)**       | Atomically sets `key` to `value` and returns the old value stored at `key`. |
-| [`Client.del(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-del)                   | **[DEL](https://redis.io/commands/del)**             | Removes the specified keys.                                                 |
-| [`Client.getDel(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-getdel)              | **[GETDEL](https://redis.io/commands/getdel)**       | Get the value of `key` and delete the key.                                  |
-| [`Client.exists(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-exists)             | **[EXISTS](https://redis.io/commands/exists)**       | Returns the number of `key` arguments that exist.                           |
-| [`Client.incr(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-incr)                  | **[INCR](https://redis.io/commands/incr)**           | Increments the number stored at `key` by one.                               |
-| [`Client.incrBy(key, increment)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-incrby)   | **[INCRBY](https://redis.io/commands/incrby)**       | Increments the number stored at `key` by `increment`.                       |
-| [`Client.decr(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-decr)                  | **[DECR](https://redis.io/commands/decr)**           | Decrements the number stored at `key` by one.                               |
-| [`Client.decrBy(key, decrement)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-decrby)   | **[DECRBY](https://redis.io/commands/decrby)**       | Decrements the number stored at `key` by `decrement`.                       |
-| [`Client.randomKey()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-randomkey)           | **[RANDOMKEY](https://redis.io/commands/randomkey)** | Returns a random key's value.                                               |
-| [`Client.mget(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-mget)                 | **[MGET](https://redis.io/commands/mget)**           | Returns the values of all specified keys.                                   |
-| [`Client.expire(key, seconds)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-expire)     | **[EXPIRE](https://redis.io/commands/expire)**       | Sets a timeout on key, after which the key will automatically be deleted.   |
-| [`Client.ttl(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-ttl)                    | **[TTL](https://redis.io/commands/ttl)**             | Returns the remaining time to live of a key that has a timeout.             |
-| [`Client.persist(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-persist)            | **[PERSIST](https://redis.io/commands/persist)**     | Removes the existing timeout on key.                                        |
+| [`Client.set(key, value, expiration)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-set) | **[SET](https://redis.io/commands/set)**             | Set `key` to hold `value`, with a time to live equal to `expiration`.       |
+| [`Client.get(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-get)                    | **[GET](https://redis.io/commands/get)**             | Get the value of `key`.                                                     |
+| [`Client.getSet(key, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-getset)       | **[GETSET](https://redis.io/commands/getset)**       | Atomically sets `key` to `value` and returns the old value stored at `key`. |
+| [`Client.del(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-del)                   | **[DEL](https://redis.io/commands/del)**             | Removes the specified keys.                                                 |
+| [`Client.getDel(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-getdel)              | **[GETDEL](https://redis.io/commands/getdel)**       | Get the value of `key` and delete the key.                                  |
+| [`Client.exists(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-exists)             | **[EXISTS](https://redis.io/commands/exists)**       | Returns the number of `key` arguments that exist.                           |
+| [`Client.incr(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-incr)                  | **[INCR](https://redis.io/commands/incr)**           | Increments the number stored at `key` by one.                               |
+| [`Client.incrBy(key, increment)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-incrby)   | **[INCRBY](https://redis.io/commands/incrby)**       | Increments the number stored at `key` by `increment`.                       |
+| [`Client.decr(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-decr)                  | **[DECR](https://redis.io/commands/decr)**           | Decrements the number stored at `key` by one.                               |
+| [`Client.decrBy(key, decrement)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-decrby)   | **[DECRBY](https://redis.io/commands/decrby)**       | Decrements the number stored at `key` by `decrement`.                       |
+| [`Client.randomKey()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-randomkey)           | **[RANDOMKEY](https://redis.io/commands/randomkey)** | Returns a random key's value.                                               |
+| [`Client.mget(keys)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-mget)                 | **[MGET](https://redis.io/commands/mget)**           | Returns the values of all specified keys.                                   |
+| [`Client.expire(key, seconds)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-expire)     | **[EXPIRE](https://redis.io/commands/expire)**       | Sets a timeout on key, after which the key will automatically be deleted.   |
+| [`Client.ttl(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-ttl)                    | **[TTL](https://redis.io/commands/ttl)**             | Returns the remaining time to live of a key that has a timeout.             |
+| [`Client.persist(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-persist)            | **[PERSIST](https://redis.io/commands/persist)**     | Removes the existing timeout on key.                                        |
 
 ### List methods
 
 | Method                                                                                                                                  | Redis command                                  | Description                                                                     |
 | :-------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | :------------------------------------------------------------------------------ |
-| [`Client.lpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lpush)        | **[LPSUH](https://redis.io/commands/lpush)**   | Inserts all the specified values at the head of the list stored at `key`.       |
-| [`Client.rpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-rpush)        | **[RPUSH](https://redis.io/commands/rpush)**   | Inserts all the specified values at the tail of the list stored at `key`.       |
-| [`Client.lpop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lpop)                  | **[LPOP](https://redis.io/commands/lpop)**     | Removes and returns the first element of the list stored at `key`.              |
-| [`Client.rpop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-rpop)                  | **[RPOP](https://redis.io/commands/rpop)**     | Removes and returns the last element of the list stored at `key`.               |
-| [`Client.lrange(key, start, stop)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lrange) | **[LRANGE](https://redis.io/commands/lrange)** | Returns the specified elements of the list stored at `key`.                     |
-| [`Client.lindex(key, start, stop)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lindex) | **[LINDEX](https://redis.io/commands/lindex)** | Returns the specified element of the list stored at `key`.                      |
-| [`Client.lset(key, index, element)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lset)  | **[LSET](https://redis.io/commands/lset)**     | Sets the list element at `index` to `element`.                                  |
-| [`Client.lrem(key, count, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-lrem)    | **[LREM](https://redis.io/commands/lrem)**     | Removes the first `count` occurrences of `value` from the list stored at `key`. |
-| [`Client.llen(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-llen)                  | **[LLEN](https://redis.io/commands/llen)**     | Returns the length of the list stored at `key`.                                 |
+| [`Client.lpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lpush)        | **[LPSUH](https://redis.io/commands/lpush)**   | Inserts all the specified values at the head of the list stored at `key`.       |
+| [`Client.rpush(key, values)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-rpush)        | **[RPUSH](https://redis.io/commands/rpush)**   | Inserts all the specified values at the tail of the list stored at `key`.       |
+| [`Client.lpop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lpop)                  | **[LPOP](https://redis.io/commands/lpop)**     | Removes and returns the first element of the list stored at `key`.              |
+| [`Client.rpop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-rpop)                  | **[RPOP](https://redis.io/commands/rpop)**     | Removes and returns the last element of the list stored at `key`.               |
+| [`Client.lrange(key, start, stop)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lrange) | **[LRANGE](https://redis.io/commands/lrange)** | Returns the specified elements of the list stored at `key`.                     |
+| [`Client.lindex(key, start, stop)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lindex) | **[LINDEX](https://redis.io/commands/lindex)** | Returns the specified element of the list stored at `key`.                      |
+| [`Client.lset(key, index, element)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lset)  | **[LSET](https://redis.io/commands/lset)**     | Sets the list element at `index` to `element`.                                  |
+| [`Client.lrem(key, count, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-lrem)    | **[LREM](https://redis.io/commands/lrem)**     | Removes the first `count` occurrences of `value` from the list stored at `key`. |
+| [`Client.llen(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-llen)                  | **[LLEN](https://redis.io/commands/llen)**     | Returns the length of the list stored at `key`.                                 |
 
 ### Hash methods
 
 | Method                                                                                                                                         | Redis command                                    | Description                                                                                          |
 | :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
-| [`Client.hset(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hset)           | **[HSET](https://redis.io/commands/hset)**       | Sets the specified field in the hash stored at `key` to `value`.                                     |
-| [`Client.hsetnx(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hsetnx)       | **[HSETNX](https://redis.io/commands/hsetnx)**   | Sets the specified field in the hash stored at `key` to `value`, only if `field` does not yet exist. |
-| [`Client.hget(key, field)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hget)                  | **[HGET](https://redis.io/commands/hget)**       | Returns the value associated with `field` in the hash stored at `key`.                               |
-| [`Client.hdel(key, fields)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hdel)                 | **[HDEL](https://redis.io/commands/hdel)**       | Deletes the specified fields from the hash stored at `key`.                                          |
-| [`Client.hgetall(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hgetall)                   | **[HGETALL](https://redis.io/commands/hgetall)** | Returns all fields and values of the hash stored at `key`.                                           |
-| [`Client.hkeys(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hkeys)                       | **[HKEYS](https://redis.io/commands/hkeys)**     | Returns all fields of the hash stored at `key`.                                                      |
-| [`Client.hvals(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hvals)                       | **[HVALS](https://redis.io/commands/hvals)**     | Returns all values of the hash stored at `key`.                                                      |
-| [`Client.hlen(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hlen)                         | **[HLEN](https://redis.io/commands/hlen)**       | Returns the number of fields in the hash stored at `key`.                                            |
-| [`Client.hincrby(key, field, increment)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-hincrby) | **[HINCRBY](https://redis.io/commands/hincrby)** | Increments the integer value of `field` in the hash stored at `key` by `increment`.                  |
+| [`Client.hset(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hset)           | **[HSET](https://redis.io/commands/hset)**       | Sets the specified field in the hash stored at `key` to `value`.                                     |
+| [`Client.hsetnx(key, field, value)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hsetnx)       | **[HSETNX](https://redis.io/commands/hsetnx)**   | Sets the specified field in the hash stored at `key` to `value`, only if `field` does not yet exist. |
+| [`Client.hget(key, field)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hget)                  | **[HGET](https://redis.io/commands/hget)**       | Returns the value associated with `field` in the hash stored at `key`.                               |
+| [`Client.hdel(key, fields)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hdel)                 | **[HDEL](https://redis.io/commands/hdel)**       | Deletes the specified fields from the hash stored at `key`.                                          |
+| [`Client.hgetall(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hgetall)                   | **[HGETALL](https://redis.io/commands/hgetall)** | Returns all fields and values of the hash stored at `key`.                                           |
+| [`Client.hkeys(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hkeys)                       | **[HKEYS](https://redis.io/commands/hkeys)**     | Returns all fields of the hash stored at `key`.                                                      |
+| [`Client.hvals(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hvals)                       | **[HVALS](https://redis.io/commands/hvals)**     | Returns all values of the hash stored at `key`.                                                      |
+| [`Client.hlen(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hlen)                         | **[HLEN](https://redis.io/commands/hlen)**       | Returns the number of fields in the hash stored at `key`.                                            |
+| [`Client.hincrby(key, field, increment)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-hincrby) | **[HINCRBY](https://redis.io/commands/hincrby)** | Increments the integer value of `field` in the hash stored at `key` by `increment`.                  |
 
 ### Set methods
 
 | Method                                                                                                                                   | Redis command                                            | Description                                                              |
 | :--------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | :----------------------------------------------------------------------- |
-| [`Client.sadd(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sadd)          | **[SADD](https://redis.io/commands/sadd)**               | Adds the specified members to the set stored at `key`.                   |
-| [`Client.srem(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-srem)          | **[SREM](https://redis.io/commands/srem)**               | Removes the specified members from the set stored at `key`.              |
-| [`Client.sismember(key, member)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sismember) | **[SISMEMBER](https://redis.io/commands/sismember)**     | Returns if member is a member of the set stored at `key`.                |
-| [`Client.smembers(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-smembers)           | **[SMEMBERS](https://redis.io/commands/smembers)**       | Returns all the members of the set values stored at `keys`.              |
-| [`Client.srandmember(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-srandmember)     | **[SRANDMEMBER](https://redis.io/commands/srandmember)** | Returns a random element from the set value stored at `key`.             |
-| [`Client.spop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-spop)                   | **[SPOP](https://redis.io/commands/spop)**               | Removes and returns a random element from the set value stored at `key`. |
+| [`Client.sadd(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-sadd)          | **[SADD](https://redis.io/commands/sadd)**               | Adds the specified members to the set stored at `key`.                   |
+| [`Client.srem(key, members)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-srem)          | **[SREM](https://redis.io/commands/srem)**               | Removes the specified members from the set stored at `key`.              |
+| [`Client.sismember(key, member)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-sismember) | **[SISMEMBER](https://redis.io/commands/sismember)**     | Returns if member is a member of the set stored at `key`.                |
+| [`Client.smembers(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-smembers)           | **[SMEMBERS](https://redis.io/commands/smembers)**       | Returns all the members of the set values stored at `keys`.              |
+| [`Client.srandmember(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-srandmember)     | **[SRANDMEMBER](https://redis.io/commands/srandmember)** | Returns a random element from the set value stored at `key`.             |
+| [`Client.spop(key)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-spop)                   | **[SPOP](https://redis.io/commands/spop)**               | Removes and returns a random element from the set value stored at `key`. |
 
 ### Miscellaneous
 
 | Method                                                                                                                                         | Description                         |
 | :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
-| [`Client.sendCommand(command, args)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/client/client-sendcommand) | Send a command to the Redis server. |
+| [`Client.sendCommand(command, args)`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-redis/client/client-sendcommand) | Send a command to the Redis server. |
 
 <!-- md-k6:skipall -->
