@@ -3,7 +3,7 @@ aliases:
   - ./k6-experimental/browser # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser
 title: 'k6/browser'
 description: 'An overview of the browser-level APIs from browser module.'
-weight: 02
+weight: 07
 ---
 
 # browser

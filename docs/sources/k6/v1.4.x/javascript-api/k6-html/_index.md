@@ -1,7 +1,7 @@
 ---
 title: 'k6/html'
 description: 'The k6/html module contains functionality for HTML parsing.'
-weight: 08
+weight: 13
 ---
 
 # k6/html

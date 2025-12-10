@@ -1,7 +1,7 @@
 ---
 title: 'k6/http'
 description: 'The k6/http module contains functionality for performing HTTP transactions.'
-weight: 09
+weight: 14
 ---
 
 # k6/http

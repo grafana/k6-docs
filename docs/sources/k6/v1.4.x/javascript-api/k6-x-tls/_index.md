@@ -1,7 +1,7 @@
 ---
 title: 'k6/x/tls'
 description: 'A k6 extension for TLS certificates validation and inspection'
-weight: 13
+weight: 21
 ---
 
 # k6/x/tls

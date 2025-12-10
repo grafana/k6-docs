@@ -1,7 +1,7 @@
 ---
 title: 'crypto'
 description: 'k6 WebCrypto API implementation'
-weight: 14
+weight: 01
 ---
 
 # crypto

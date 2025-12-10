@@ -1,7 +1,7 @@
 ---
 title: 'k6'
 description: 'The k6 module contains k6-specific functionality.'
-weight: 02
+weight: 06
 ---
 
 # k6

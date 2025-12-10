@@ -1,7 +1,7 @@
 ---
 title: 'jslib'
 description: 'External JavaScript libraries for k6'
-weight: 15
+weight: 05
 ---
 
 # jslib

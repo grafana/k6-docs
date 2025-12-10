@@ -1,7 +1,7 @@
 ---
 title: 'Error Codes'
 description: 'Error codes are unique numbers that can be used to identify and handle different application and network errors more easily.'
-weight: 13
+weight: 02
 ---
 
 # Error Codes

@@ -1,7 +1,7 @@
 ---
 title: 'k6/secrets'
 description: 'k6 secrest API'
-weight: 11
+weight: 17
 ---
 
 # k6/secrets

@@ -1,7 +1,7 @@
 ---
 title: 'k6/net/grpc'
 description: 'k6 gRPC API'
-weight: 11
+weight: 16
 aliases:
   - ./k6-experimental/grpc/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/
 ---

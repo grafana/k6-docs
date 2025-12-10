@@ -1,7 +1,7 @@
 ---
 title: 'Init context'
 description: 'The init context (aka "init code") is code in the global context that has access to a few functions not accessible during main script execution.'
-weight: 01
+weight: 04
 ---
 
 # Init context

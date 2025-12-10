@@ -1,7 +1,7 @@
 ---
 title: 'import.meta'
 description: 'Details about the ECMAScript import meta property.'
-weight: 20
+weight: 03
 ---
 
 ## import.meta

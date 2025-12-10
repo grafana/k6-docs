@@ -3,7 +3,7 @@ aliases:
   - ./k6-experimental/timers # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/timers
 title: 'k6/timers'
 description: 'k6 timers API'
-weight: 11
+weight: 18
 ---
 
 # k6/timers

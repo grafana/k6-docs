@@ -1,7 +1,7 @@
 ---
 title: 'k6/execution'
 description: "Get information about the current test's execution state."
-weight: 06
+weight: 11
 ---
 
 # k6/execution

@@ -1,7 +1,7 @@
 ---
 title: 'k6/x/dns'
 description: 'k6 DNS extension API'
-weight: 11
+weight: 20
 ---
 
 # k6/x/dns

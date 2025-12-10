@@ -1,7 +1,7 @@
 ---
 title: 'k6/metrics'
 description: 'k6 Custom Metrics API'
-weight: 10
+weight: 15
 ---
 
 # k6/metrics
