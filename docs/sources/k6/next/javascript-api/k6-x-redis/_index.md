@@ -1,13 +1,10 @@
 ---
-title: "redis"
-description: "k6 Redis experimental API"
-weight: 02
-weight: 02
+title: "k6/x/redis"
+description: "k6 client for Redis Database API"
+weight: 12
 ---
 
-# redis
-
-{{< docs/shared source="k6" lookup="experimental-module.md" version="<K6_VERSION>" >}}
+# k6/x/redis
 
 The [Redis](https://redis.io/) module provides a client library that makes it possible to interact with Redis directly from a k6 script.
 With this module, you can:
