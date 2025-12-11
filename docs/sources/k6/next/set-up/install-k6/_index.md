@@ -79,6 +79,57 @@ Our [GitHub Releases page](https://github.com/grafana/k6/releases) has a standal
 If you use one or more [k6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions), you need a k6 binary built with your desired extensions.
 Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) to get started.
 
+## Upgrade k6
+
+To upgrade k6, use the same installation method you used to install it.
+
+### Linux (Debian/Ubuntu)
+
+```bash
+sudo apt-get update
+sudo apt-get install k6
+```
+
+### Linux (Fedora/CentOS)
+
+```bash
+sudo dnf upgrade k6
+```
+
+### MacOS
+
+```bash
+brew upgrade k6
+```
+
+### Windows (Chocolatey)
+
+```
+choco upgrade k6
+```
+
+### Windows (Windows Package Manager)
+
+```
+winget upgrade k6
+```
+
+### Windows (MSI installer)
+
+Download and run [the latest official installer](https://dl.k6.io/msi/k6-latest-amd64.msi).
+
+### Docker
+
+Pull the latest image:
+
+```bash
+docker pull grafana/k6
+```
+
+### Binary
+
+Download the latest binary from the [GitHub Releases page](https://github.com/grafana/k6/releases) and replace your existing installation.
+
 ## Troubleshooting
 
 If installation fails, check the [list of common installation issues](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6/troubleshooting).
