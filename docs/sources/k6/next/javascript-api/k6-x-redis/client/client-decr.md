@@ -1,6 +1,8 @@
 ---
 title: 'Client.decr(key)'
 description: 'Decrements the number stored at `key` by one.'
+aliases:
+  - ../../k6-experimental/redis/client/client-decr/
 ---
 
 # Client.decr(key)

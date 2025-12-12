@@ -1,6 +1,8 @@
 ---
 title: 'Client.incrBy(key, increment)'
 description: 'Increments the number stored at `key` by `increment`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-incrby/
 ---
 
 # Client.incrBy(key, increment)

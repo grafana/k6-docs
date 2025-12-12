@@ -1,6 +1,8 @@
 ---
 title: 'Client.lpop(key)'
 description: 'Removes and returns the first element of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lpop/
 ---
 
 # Client.lpop(key)

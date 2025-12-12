@@ -1,6 +1,8 @@
 ---
 title: 'Client.exists(keys)'
 description: 'Returns the number of `key` arguments that exist.'
+aliases:
+  - ../../k6-experimental/redis/client/client-exists/
 ---
 
 # Client.exists(keys)

@@ -1,6 +1,8 @@
 ---
 title: 'Client.lset(key, index, element)'
 description: 'Sets the list element at index `index` of the list stored at `key` to `value`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lset/
 ---
 
 # Client.lset(key, index, element)

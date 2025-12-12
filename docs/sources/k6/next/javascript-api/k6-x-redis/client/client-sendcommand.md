@@ -1,6 +1,8 @@
 ---
 title: 'Client.sendCommand(command, args)'
 description: 'Issue a command to the Redis server.'
+aliases:
+  - ../../k6-experimental/redis/client/client-sendcommand/
 ---
 
 # Client.sendCommand(command, args)

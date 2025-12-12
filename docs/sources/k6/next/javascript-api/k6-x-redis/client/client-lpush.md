@@ -1,6 +1,8 @@
 ---
 title: 'Client.lpush(key, values)'
 description: 'Adds the string `value` to the left of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lpush/
 ---
 
 # Client.lpush(key, values)

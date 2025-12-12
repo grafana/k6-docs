@@ -1,6 +1,8 @@
 ---
 title: 'Client.sadd(key, members)'
 description: 'Adds the specified members to the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-sadd/
 ---
 
 # Client.sadd(key, members)

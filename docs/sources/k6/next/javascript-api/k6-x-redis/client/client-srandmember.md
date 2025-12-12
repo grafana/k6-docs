@@ -1,6 +1,8 @@
 ---
 title: 'Client.srandmember(key)'
 description: 'Returns a random member of the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-srandmember/
 ---
 
 # Client.srandmember(key)

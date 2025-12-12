@@ -1,6 +1,8 @@
 ---
 title: 'Client.set(key, value, expiration)'
 description: 'Set `key` to hold `value`, with a time to live equal to `expiration`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-set/
 ---
 
 # Client.set(key, value, expiration)

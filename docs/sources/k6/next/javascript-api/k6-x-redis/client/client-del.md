@@ -1,6 +1,8 @@
 ---
 title: 'Client.del(keys)'
 description: ''
+aliases:
+  - ../../k6-experimental/redis/client/client-del/
 ---
 
 # Client.del(keys)

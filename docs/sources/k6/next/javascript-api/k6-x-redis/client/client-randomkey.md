@@ -1,6 +1,8 @@
 ---
 title: 'Client.randomKey()'
 description: 'Returns a random key from the keyspace.'
+aliases:
+  - ../../k6-experimental/redis/client/client-randomkey/
 ---
 
 # Client.randomKey()

@@ -1,6 +1,8 @@
 ---
 title: 'Client.hincrby(key, field, increment)'
 description: 'Increments the value of a hash field by the given number.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hincrby/
 ---
 
 # Client.hincrby(key, field, increment)

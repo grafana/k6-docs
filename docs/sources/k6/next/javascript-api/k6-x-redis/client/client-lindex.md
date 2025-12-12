@@ -1,6 +1,8 @@
 ---
 title: 'Client.lindex(key)'
 description: 'Returns the element at index `index` of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lindex/
 ---
 
 # Client.lindex(key)

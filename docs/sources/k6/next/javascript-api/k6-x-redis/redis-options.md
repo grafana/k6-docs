@@ -2,6 +2,8 @@
 title: 'Options'
 description: 'Options allow you to fine-tune how a Redis client behaves and interacts with a Redis server or cluster.'
 weight: 20
+aliases:
+  - ../k6-experimental/redis/redis-options/
 ---
 
 # Redis options

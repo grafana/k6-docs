@@ -1,6 +1,8 @@
 ---
 title: 'Client.hgetall(key)'
 description: 'Returns all fields and values of the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hgetall/
 ---
 
 # Client.hgetall(key)

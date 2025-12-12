@@ -1,6 +1,8 @@
 ---
 title: 'Client.hget(key, field)'
 description: 'Returns the value of field in the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hget/
 ---
 
 # Client.hget(key, field)

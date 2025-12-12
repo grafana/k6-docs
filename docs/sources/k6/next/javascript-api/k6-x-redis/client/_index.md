@@ -2,6 +2,8 @@
 title: 'Client'
 description: 'Client is a Redis client to interact with a Redis server, cluster, or sentinel.'
 weight: 10
+aliases:
+  - ../k6-experimental/redis/client/
 ---
 
 # Client

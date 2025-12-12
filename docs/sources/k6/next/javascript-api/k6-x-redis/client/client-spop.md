@@ -1,6 +1,8 @@
 ---
 title: 'Client.spop(key)'
 description: 'Removes and returns a random member of the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-spop/
 ---
 
 # Client.spop(key)

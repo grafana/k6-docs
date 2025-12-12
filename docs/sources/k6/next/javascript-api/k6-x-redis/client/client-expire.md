@@ -1,6 +1,8 @@
 ---
 title: 'Client.expire(key, seconds)'
 description: 'Sets an expiration date (a timeout) on the key `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-expire/
 ---
 
 # Client.expire(key, seconds)

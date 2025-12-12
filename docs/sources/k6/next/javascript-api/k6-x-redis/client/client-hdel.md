@@ -1,6 +1,8 @@
 ---
 title: 'Client.hdel(key, fields)'
 description: 'Deletes fields from the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hdel/
 ---
 
 # Client.hdel(key, fields)

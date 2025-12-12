@@ -1,6 +1,8 @@
 ---
 title: 'Client.incr(key)'
 description: 'Increments the number stored at `key` by one.'
+aliases:
+  - ../../k6-experimental/redis/client/client-incr/
 ---
 
 # Client.incr(key)

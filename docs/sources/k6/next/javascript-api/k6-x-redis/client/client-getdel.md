@@ -1,6 +1,8 @@
 ---
 title: 'Client.getDel(key)'
 description: 'Get the value of `key` and delete the key.'
+aliases:
+  - ../../k6-experimental/redis/client/client-getdel/
 ---
 
 # Client.getDel(key)

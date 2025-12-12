@@ -1,6 +1,8 @@
 ---
 title: 'Client.srem(key, members)'
 description: 'Removes the specified members from the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-srem/
 ---
 
 # Client.srem(key, members)

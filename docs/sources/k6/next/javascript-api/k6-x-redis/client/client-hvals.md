@@ -1,6 +1,8 @@
 ---
 title: 'Client.hvals(key)'
 description: 'Returns all values of the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hvals/
 ---
 
 # Client.hvals(key)

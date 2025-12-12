@@ -1,6 +1,8 @@
 ---
 title: 'Client.lrem(key, count, value)'
 description: 'Removes the first count occurrences of elements equal to value from the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lrem/
 ---
 
 # Client.lrem(key, count, value)

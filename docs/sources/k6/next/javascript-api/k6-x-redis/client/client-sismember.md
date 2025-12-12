@@ -1,6 +1,8 @@
 ---
 title: 'Client.sismember(key, member)'
 description: 'Determines if a given value is a member of the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-sismember/
 ---
 
 # Client.sismember(key, member)

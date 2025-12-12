@@ -1,6 +1,8 @@
 ---
 title: 'Client.hkeys(key)'
 description: 'Returns all fields of the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hkeys/
 ---
 
 # Client.hkeys(key)

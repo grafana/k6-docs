@@ -1,6 +1,8 @@
 ---
 title: 'Client.ttl(key)'
 description: 'Returns the remaining time to live of a key.'
+aliases:
+  - ../../k6-experimental/redis/client/client-ttl/
 ---
 
 # Client.ttl(key)

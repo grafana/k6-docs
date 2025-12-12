@@ -1,6 +1,8 @@
 ---
 title: 'Client.get(key)'
 description: 'Get the value of `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-get/
 ---
 
 # Client.get(key)

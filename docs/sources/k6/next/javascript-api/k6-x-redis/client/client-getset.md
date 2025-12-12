@@ -1,6 +1,8 @@
 ---
 title: 'Client.getSet(key, value)'
 description: 'Atomically sets `key` to `value` and returns the old value stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-getset/
 ---
 
 # Client.getSet(key, value)

@@ -1,6 +1,8 @@
 ---
 title: 'Client.decrBy(key, decrement)'
 description: 'Decrements the number stored at `key` by `decrement`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-decrby/
 ---
 
 # Client.decrBy(key, decrement)

@@ -1,6 +1,8 @@
 ---
 title: 'Client.hlen(key)'
 description: 'Returns the number of fields in the hash stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hlen/
 ---
 
 # Client.hlen(key)

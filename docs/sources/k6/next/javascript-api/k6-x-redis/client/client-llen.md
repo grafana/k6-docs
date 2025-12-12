@@ -1,6 +1,8 @@
 ---
 title: 'Client.llen(key)'
 description: 'Returns the length of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-llen/
 ---
 
 # Client.llen(key)

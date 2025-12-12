@@ -1,6 +1,8 @@
 ---
 title: 'Client.persist(key)'
 description: 'Remove the expiration from a key.'
+aliases:
+  - ../../k6-experimental/redis/client/client-persist/
 ---
 
 # Client.persist(key)

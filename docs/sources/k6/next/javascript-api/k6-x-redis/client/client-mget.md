@@ -1,6 +1,8 @@
 ---
 title: 'Client.mget(keys)'
 description: 'Returns the values of all specified keys.'
+aliases:
+  - ../../k6-experimental/redis/client/client-mget/
 ---
 
 # Client.mget(keys)

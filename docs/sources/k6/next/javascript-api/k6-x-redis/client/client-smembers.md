@@ -1,6 +1,8 @@
 ---
 title: 'Client.smembers(key)'
 description: 'Returns all the members of the set stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-smembers/
 ---
 
 # Client.smembers(key)

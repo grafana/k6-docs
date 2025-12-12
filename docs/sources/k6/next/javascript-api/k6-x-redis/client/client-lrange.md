@@ -1,6 +1,8 @@
 ---
 title: 'Client.lrange(key, start, stop)'
 description: 'Returns the specified elements of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-lrange/
 ---
 
 # Client.lrange(key, start, stop)

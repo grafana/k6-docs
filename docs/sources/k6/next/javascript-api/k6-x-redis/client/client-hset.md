@@ -1,6 +1,8 @@
 ---
 title: 'Client.hset(key, field, value)'
 description: 'Sets the value of field in the hash stored at `key` to `value`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hset/
 ---
 
 # Client.hset(key, field, value)

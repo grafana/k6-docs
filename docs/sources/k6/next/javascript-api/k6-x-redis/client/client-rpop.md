@@ -1,6 +1,8 @@
 ---
 title: 'Client.rpop(key)'
 description: 'Removes and returns the last element of the list stored at `key`.'
+aliases:
+  - ../../k6-experimental/redis/client/client-rpop/
 ---
 
 # Client.rpop(key)

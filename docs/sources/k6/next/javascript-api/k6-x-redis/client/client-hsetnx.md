@@ -1,6 +1,8 @@
 ---
 title: 'Client.hsetnx(key, field, value)'
 description: 'Sets the value of field in the hash stored at `key` to `value` only if field does not exist in the hash.'
+aliases:
+  - ../../k6-experimental/redis/client/client-hsetnx/
 ---
 
 # Client.hsetnx(key, field, value)
