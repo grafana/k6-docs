@@ -46,3 +46,5 @@ export default function () {
 ```
 
 {{< /code >}}
+
+<!-- md-k6:skipall -->

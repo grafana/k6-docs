@@ -50,3 +50,5 @@ export default async function () {
 ```
 
 {{< /code >}}
+
+<!-- md-k6:skipall -->
