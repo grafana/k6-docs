@@ -80,9 +80,7 @@ If you use one or more [k6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/
 Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) to get started.
 
 ## Upgrade k6
-
-To upgrade k6, use the same installation method you used to install it. Because k6 currently does not include an in-place upgrade command (`k6 upgrade`), the most reliable way to update k6 is to install the newest version using the same method you used before—whether that’s a package manager, Docker image, or a downloaded binary.
-
+Upgrade to the latest version of `k6` using one of the following commands.
 
 ### Linux (Debian/Ubuntu)
 
@@ -129,7 +127,7 @@ docker pull grafana/k6:latest
 
 ### Binary
 
-Download the latest binary from the [GitHub Releases page](https://github.com/grafana/k6/releases) and replace your existing installation.
+Download the latest binary from the [GitHub Releases page](https://github.com/grafana/k6/releases), and replace your existing installation.
 
 ## Troubleshooting
 
