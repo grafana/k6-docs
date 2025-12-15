@@ -7,7 +7,7 @@ description: 'Browser module: locator.pressSequentially(text[, options]) method'
 
 Focuses the element and then sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text.
 
-This method is useful for simulating real user typing behavior when the page has special keyboard event handling, such as input validation, autocomplete, or character counters that trigger on individual key presses. For simple text input without special keyboard handling, use [fill()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) instead as it's faster and more reliable.
+This method is useful for simulating real user typing behavior when the page has special keyboard event handling, such as input validation, autocomplete, or character counters that trigger on individual key presses. For simple text input without special keyboard handling, use [fill()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) instead, as it's faster and more reliable.
 
 | Parameter           | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                   |
 | ------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,16 +99,13 @@ export default async function () {
 ### Best practices
 
 1. **Use `fill()` for simple text input**: For form fields without special keyboard handling, use [fill()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) instead as it's significantly faster and more reliable.
-
-2. **Use `pressSequentially()` for interactive input**: Only use `pressSequentially()` when testing features that require gradual typing, such as:
+1. **Use `pressSequentially()` for interactive input**: Only use `pressSequentially()` when testing features that require gradual typing, such as:
    - Autocomplete suggestions
    - Input validation that triggers per character
    - Character counters
    - Search-as-you-type functionality
-
-3. **Consider performance**: Typing character-by-character is slower than filling text directly. Use this method only when necessary for accurate testing.
-
-4. **Handling special keys**: For special keys like `Enter`, `Tab`, or `Escape`, use [press()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press/) instead.
+1. **Consider performance**: Typing character-by-character is slower than filling text directly. Use this method only when necessary for accurate testing.
+1. **Handling special keys**: For special keys like `Enter`, `Tab`, or `Escape`, use [press()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press/) instead.
 
 ### Related
 
