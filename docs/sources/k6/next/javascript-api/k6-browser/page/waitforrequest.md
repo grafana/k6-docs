@@ -89,7 +89,9 @@ export default async function () {
 
 ### Related
 
+- [page.waitForEvent()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforevent/) - Wait for page events with predicate functions
 - [page.waitForResponse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforresponse/) - Wait for HTTP responses
+- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on/) - Subscribe to page events
 - [page.waitForNavigation()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation/) - Wait for navigation events
 - [page.waitForURL()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl/) - Wait for URL changes
 - [page.waitForLoadState()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate/) - Wait for load states
