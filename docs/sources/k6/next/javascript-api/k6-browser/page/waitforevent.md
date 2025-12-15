@@ -122,6 +122,6 @@ export default async function () {
 
 ### Related
 
+- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on/) - Subscribe to page events
 - [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests with URL pattern matching
 - [page.waitForResponse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforresponse/) - Wait for HTTP responses with URL pattern matching
-- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on/) - Subscribe to page events
