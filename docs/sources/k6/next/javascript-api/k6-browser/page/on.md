@@ -174,3 +174,9 @@ INFO[0001] https://quickpizza.grafana.com/images/pizza.png  source=console
 ```
 
 {{< /code >}}
+
+### Related
+
+- [page.waitForEvent()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforevent/) - Wait for page events with predicate functions
+- [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests with URL pattern matching
+- [page.waitForResponse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforresponse/) - Wait for HTTP responses with URL pattern matching
