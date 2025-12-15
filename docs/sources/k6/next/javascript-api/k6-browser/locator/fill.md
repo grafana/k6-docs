@@ -52,3 +52,8 @@ export default async function () {
 ```
 
 {{< /code >}}
+
+### Related
+
+- [pressSequentially()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/presssequentially/) - Type text character by character with keyboard events
+- [type()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/type/) - Type text into an input field
