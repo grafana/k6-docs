@@ -1,7 +1,7 @@
 ---
 title: 'k6/ws'
 description: 'k6 WebSocket API'
-weight: 12
+weight: 13
 ---
 
 # k6/ws
