@@ -80,6 +80,7 @@ If you use one or more [k6 extensions](https://grafana.com/docs/k6/<K6_VERSION>/
 Head to [Explore extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore) to get started.
 
 ## Upgrade k6
+
 Upgrade to the latest version of `k6` using one of the following commands.
 
 ### Linux (Debian/Ubuntu)
