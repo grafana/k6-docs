@@ -15,7 +15,7 @@ jobs:
   run-code-blocks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           persist-credentials: false
       - name: Get Changed files
@@ -24,10 +24,10 @@ jobs:
         with:
           files: |
             docs/sources/k6/next/**/*.md
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
       - name: Install k6 from github master
         run: go install go.k6.io/k6@master
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.13'
       - name: Install chromium
