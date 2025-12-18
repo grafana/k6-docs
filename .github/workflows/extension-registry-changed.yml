@@ -40,7 +40,7 @@ jobs:
         run: ${{ github.workspace }}/scripts/extension-registry-changed
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8.0.0
         with:
           branch: extension-registry-changed
           commit-message: |
