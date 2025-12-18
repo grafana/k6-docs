@@ -13,6 +13,7 @@ consider building your own extension. Use the tutorials below to get started.
 - [Create a JavaScript extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/javascript-extensions) to extend the JavaScript functionality of your script or add support for a new network protocol to test.
 - [Create an Output extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/output-extensions) to process the metrics emitted by k6 or publish them to unsupported backend stores.
 - [Create a Secret Source extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/secret-source_extensions) to provide secrets to your k6 script at runtime.
+- [Create a Subcommand extension](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/subcommand-extensions) to add custom CLI commands under the `k6 x` namespace.
 
 ## Necessary knowledge
 
