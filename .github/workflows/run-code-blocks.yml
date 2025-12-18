@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-go@v5
       - name: Install k6 from github master
         run: go install go.k6.io/k6@master
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6
         with:
           python-version: '3.13'
       - name: Install chromium
