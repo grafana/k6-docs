@@ -34,41 +34,41 @@ go install go.k6.io/xk6/cmd/xk6@latest
 
 1. Set up a directory to work in.
 
-```bash
-mkdir xk6-subcommand-mytool; cd xk6-subcommand-mytool; go mod init xk6-subcommand-mytool
-```
+   ```bash
+   mkdir xk6-subcommand-mytool; cd xk6-subcommand-mytool; go mod init xk6-subcommand-mytool
+   ```
 
-2. The core of a subcommand extension is a constructor function that creates a Cobra command. The constructor receives k6's `GlobalState` for read-only access to runtime configuration.
+1. The core of a subcommand extension is a constructor function that creates a Cobra command. The constructor receives k6's `GlobalState` for read-only access to runtime configuration.
 
-Create an example command named `mytool`:
+   Create an example command named `mytool`:
 
-```go
-package mytool
+   ```go
+   package mytool
 
-import (
-    "github.com/spf13/cobra"
-    "go.k6.io/k6/cmd/state"
-    "go.k6.io/k6/subcommand"
-)
+   import (
+       "github.com/spf13/cobra"
+       "go.k6.io/k6/cmd/state"
+       "go.k6.io/k6/subcommand"
+   )
 
-func init() {
-    subcommand.RegisterExtension("mytool", newCommand)
-}
+   func init() {
+       subcommand.RegisterExtension("mytool", newCommand)
+   }
 
-func newCommand(gs *state.GlobalState) *cobra.Command {
-    return &cobra.Command{
-        Use:   "mytool",
-        Short: "My custom tool",
-        Long:  "A custom tool that integrates with k6",
-        Run: func(cmd *cobra.Command, args []string) {
-            gs.Logger.Info("Running mytool")
-            // Custom logic here
-        },
-    }
-}
-```
+   func newCommand(gs *state.GlobalState) *cobra.Command {
+       return &cobra.Command{
+           Use:   "mytool",
+           Short: "My custom tool",
+           Long:  "A custom tool that integrates with k6",
+           Run: func(cmd *cobra.Command, args []string) {
+               gs.Logger.Info("Running mytool")
+               // Custom logic here
+           },
+       }
+   }
+   ```
 
-3. The extension uses the `subcommand.RegisterExtension` function to register itself during initialization. The first argument is the command name (which must match the command's `Use` field), and the second is the constructor function.
+1. The extension uses the `subcommand.RegisterExtension` function to register itself during initialization. The first argument is the command name (which must match the command's `Use` field), and the second is the constructor function.
 
 {{< admonition type="caution" >}}
 
