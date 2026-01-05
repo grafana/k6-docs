@@ -52,3 +52,9 @@ export default async function () {
 ```
 
 {{< /code >}}
+
+### Related
+
+- [pressSequentially()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/presssequentially/) - Type text character by character with keyboard events
+- [press()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/press/) - Press special keys or key combinations
+- [fill()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/fill/) - Fill text instantly without keyboard events

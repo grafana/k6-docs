@@ -89,8 +89,10 @@ export default async function () {
 
 ### Related
 
-- [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests
-- [page.waitForNavigation()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation/) - Wait for navigation events
-- [page.waitForURL()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl/) - Wait for URL changes
+- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on/) - Subscribe to page events
+- [page.waitForEvent()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforevent/) - Wait for page events with predicate functions
 - [page.waitForLoadState()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate/) - Wait for load states
+- [page.waitForNavigation()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation/) - Wait for navigation events
+- [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests
+- [page.waitForURL()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforurl/) - Wait for URL changes
 - [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response/) - Response object methods and properties

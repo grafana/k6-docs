@@ -37,7 +37,7 @@ To run a simple local script:
    ```
 
    ```windows
-   PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 init
+   PS C:\> docker run --rm -i -v ${PWD}:/app -w /app grafana/k6 new
    ```
 
    {{< /code >}}
