@@ -1167,9 +1167,7 @@ $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 {{< admonition type="note" >}}
 
-There is a new opt-in format available for summary exports, designed for easier integration with external systems and analytics pipelines.
-
-Find out the details of the new format in the
+k6 v1.5.0 introduced a new opt-in format available for summary exports, designed for easier integration with external systems and analytics pipelines. You can learn more details about it in the
 [`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary/#summary-data-reference) page.
 
 {{< /admonition >}}

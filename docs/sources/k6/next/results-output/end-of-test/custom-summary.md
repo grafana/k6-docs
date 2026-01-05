@@ -303,27 +303,20 @@ Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib
 
 ## Summary data reference
 
-{{< admonition type="note" >}}
+{{< admonition type="caution" >}}
 
-There is a new format available for the end of the test aggregated statistics object, designed for easier integration 
+k6 v1.5.0 introduced a new format available for the end-of-test aggregated statistics object, designed for easier integration 
 with external systems and analytics pipelines.
 
-The new format is currently opt-in via the `--new-machine-readable-summary` flag or `K6_NEW_MACHINE_READABLE_SUMMARY`
+You can use the new format via the `--new-machine-readable-summary` flag or the `K6_NEW_MACHINE_READABLE_SUMMARY`
 environment variable.
 
 The JSON Schema definition for this object can be found in the [grafana/k6-summary](https://github.com/grafana/k6-summary)
-GitHub repository. You can also use these definitions to generate types for the programming language of your preference,
-as we do in k6 (see [this example](https://github.com/grafana/k6/blob/master/internal/lib/summary/machinereadable/generate.sh))
-for Go with [cog](https://github.com/grafana/cog).
-
-{{< /admonition >}}
-
-{{< admonition type="caution" >}}
+GitHub repository. You can also use these definitions to generate types for the programming language of your preference. For example, [k6 uses it](https://github.com/grafana/k6/blob/master/internal/lib/summary/machinereadable/generate.sh) for Go with [cog](https://github.com/grafana/cog).
 
 This new format will become the default in k6 v2.
 
 {{< /admonition >}}
-
 Summary data includes information about your test run time and all built-in and custom metrics (including checks).
 
 All metrics are in a top-level `metrics` object.
