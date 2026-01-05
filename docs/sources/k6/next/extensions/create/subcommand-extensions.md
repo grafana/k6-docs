@@ -15,7 +15,7 @@ Subcommand extensions are useful for:
 - Integration tools that interact with k6's runtime state
 - Helper commands specific to your testing infrastructure
 
-Like other k6 extensions, subcommand extensions are built as Go modules that implement specific APIs and are compiled into custom k6 binaries using xk6.
+Like other k6 extensions, subcommand extensions are built as Go modules that implement specific APIs and are compiled into custom k6 binaries using [xk6](https://github.com/grafana/xk6).
 
 ## Before you start
 
