@@ -1165,6 +1165,15 @@ $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 ## Summary export
 
+{{< admonition type="note" >}}
+
+There is a new opt-in format available for summary exports, designed for easier integration with external systems and analytics pipelines.
+
+Find out the details of the new format in the
+[`handleSummary()` function](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary/#summary-data-reference) page.
+
+{{< /admonition >}}
+
 Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
