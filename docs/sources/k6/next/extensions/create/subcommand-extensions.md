@@ -17,7 +17,7 @@ Subcommand extensions are useful for:
 
 Like other k6 extensions, subcommand extensions are built as Go modules that implement specific APIs and are compiled into custom k6 binaries using [xk6](https://github.com/grafana/xk6).
 
-## Before you start
+## Before you begin
 
 To run this tutorial, you'll need the following applications installed:
 
