@@ -10,7 +10,7 @@ weight: 11
 
 The `k6/x/tls` module provides functionality for TLS certificate validation and inspection, allowing you to fetch certificate details and validate their properties directly from your k6 tests.
 
-### Use cases
+## Use cases
 
 - Fetch TLS certificate information from any host
 - Validate certificate expiration and properties
@@ -18,7 +18,7 @@ The `k6/x/tls` module provides functionality for TLS certificate validation and 
 
 ## API
 
-#### getCertificate( hostname )
+### getCertificate( hostname )
 
 Fetches TLS certificate information from a specified host.
 
@@ -30,7 +30,7 @@ The `tls.getCertificate` function retrieves TLS certificate details from a given
 | --- | :--- | --- |
 | hostname | string | The hostname to fetch the TLS certificate from. For example, "example.com" or "k6.io". |
 
-##### Returns
+#### Returns
 
 A promise resolving to a certificate object containing the following properties:
 
