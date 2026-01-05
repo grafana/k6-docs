@@ -78,7 +78,7 @@ The `GlobalState` provided to your command is read-only. Do not modify it, as th
 
 ## Build k6 with the extension
 
-Once you've written your extension, build a custom k6 binary with it:
+Once you've written your extension, build a custom k6 binary with it by using `xk6`:
 
 ```bash
 xk6 build --with xk6-subcommand-mytool=.
