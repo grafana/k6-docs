@@ -21,8 +21,8 @@ Like other k6 extensions, subcommand extensions are built as Go modules that imp
 
 To run this tutorial, you'll need the following applications installed:
 
-- Go
-- Git
+- [Go](https://go.dev/doc/install)
+- [Git](https://git-scm.com/install/)
 
 You also need to install xk6:
 
