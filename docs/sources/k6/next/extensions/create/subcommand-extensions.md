@@ -40,7 +40,7 @@ mkdir xk6-subcommand-mytool; cd xk6-subcommand-mytool; go mod init xk6-subcomman
 
 2. The core of a subcommand extension is a constructor function that creates a Cobra command. The constructor receives k6's `GlobalState` for read-only access to runtime configuration.
 
-Create a simple example command:
+Create an example command named `mytool`:
 
 ```go
 package mytool
