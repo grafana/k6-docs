@@ -312,7 +312,7 @@ You can use the new format via the `--new-machine-readable-summary` flag or the 
 environment variable.
 
 The JSON Schema definition for this object can be found in the [grafana/k6-summary](https://github.com/grafana/k6-summary)
-GitHub repository. You can also use these definitions to generate types for the programming language of your preference. For example, [k6 uses it](https://github.com/grafana/k6/blob/master/internal/lib/summary/machinereadable/generate.sh) for Go with [cog](https://github.com/grafana/cog).
+GitHub repository. You can also use these definitions to generate types for the programming language of your preference. For example, [k6 uses it](https://github.com/grafana/k6/blob/f0805f0d90c3f4d3d9d8403edb09bdc32d7314b6/internal/lib/summary/machinereadable/generate.sh) for Go with [cog](https://github.com/grafana/cog).
 
 This new format will become the default in k6 v2.
 
