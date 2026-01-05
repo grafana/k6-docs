@@ -1,7 +1,7 @@
 ---
 title: 'Subcommand extensions'
 description: 'Follow these steps to build a subcommand extension for k6.'
-weight: 600
+weight: 550
 ---
 
 # Subcommand extensions
