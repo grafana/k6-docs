@@ -12,7 +12,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "eslint": "^8.28.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-mdx": "^3.1.5",
