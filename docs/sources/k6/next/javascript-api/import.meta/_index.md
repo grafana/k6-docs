@@ -1,9 +1,9 @@
 ---
 title: 'import.meta'
-description: 'Details about the ECMAScript import meta property.'
+description: 'The import.meta object provides context-specific metadata for ECMAScript modules.'
 weight: 20
 ---
 
-## import.meta
+# import.meta
 
 {{< docs/shared source="k6" lookup="javascript-api/import.meta.md" version="<K6_VERSION>" >}}
