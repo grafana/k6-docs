@@ -21,6 +21,8 @@ Use this function to provide a path relative to the current module to functions 
 
 ## Example
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 
