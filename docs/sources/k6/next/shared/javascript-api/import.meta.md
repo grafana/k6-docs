@@ -2,8 +2,10 @@
 title: 'javascript-api/import.meta'
 ---
 
-`import.meta` is only available in ECMAScript modules, but not CommonJS ones.
+The `import.meta` object provides the `resolve` function, which resolves a path to a URL string in the same way an import statement does.
 
-| Function                                                                                           | Description                                               |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| [import.meta.resolve](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/import.meta/resolve) | resolve path to URL the same way that an ESM import would |
+The `import.meta` object is only available in ECMAScript modules, not in CommonJS modules.
+
+| Function                                                                                           | Description                                                            |
+| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [import.meta.resolve](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/import.meta/resolve) | Resolves a path to a URL string the same way an import statement does. |
