@@ -81,6 +81,10 @@ The [`k6/browser` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 {{< docs/shared source="k6" lookup="javascript-api/crypto.md" version="<K6_VERSION>" >}}
 
+## console
+
+{{< docs/shared source="k6" lookup="javascript-api/console.md" version="<K6_VERSION>" >}}
+
 ## Error codes
 
 The following specific error codes are currently defined:
