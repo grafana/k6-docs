@@ -41,7 +41,7 @@ You can also find k6 code editor extensions for Visual Studio Code and IntelliJ 
 
 ## AI assistants (MCP)
 
-If you use an MCP-compatible editor or assistant, you can connect k6 authoring and execution tools through `mcp-k6`:
+Connect k6 authoring and execution tools to MCP-compatible editors or assistants through `mcp-k6`.
 
 - [Configure your AI assistant](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/)
 

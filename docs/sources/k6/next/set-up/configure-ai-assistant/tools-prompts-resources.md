@@ -8,9 +8,9 @@ weight: 200
 
 `mcp-k6` exposes three kinds of MCP primitives:
 
-- **Tools** are callable by your AI assistant to perform actions on your behalf, such as validating or running a script.
-- **Prompts** are guided workflows that _you_ invoke explicitly to generate scripts or convert tests.
-- **Resources** are reference data (docs, type definitions) that your assistant can consult for accurate answers.
+- **Tools**: Allow your AI assistant to perform actions, such as validating or running a script.
+- **Prompts**: Guided workflows that help you generate scripts or convert existing tests.
+- **Resources**: Reference data, which includes docs and type definitions, that your assistant can consult for accurate answers.
 
 ## Tools
 
@@ -22,7 +22,7 @@ Returns runtime information about the server and local environment:
 
 - `mcp-k6` version
 - Detected `k6` version
-- Whether you are logged in to Grafana Cloud k6 (via the `k6` CLI)
+- Login status for Grafana Cloud k6 (via the k6 CLI)
 
 ### validate_script
 
@@ -32,7 +32,7 @@ Validates a k6 script by running it with minimal load:
 - 1 iteration
 - 30s timeout
 
-This catches syntax errors, missing imports, missing `export default function`, and common runtime issues early, before you scale up.
+This validation catches syntax errors, missing imports, missing export default function declarations, and common runtime issues early, before you scale up.
 
 ### run_script
 
@@ -50,10 +50,10 @@ Lists k6 documentation sections as a depth-limited tree, so your assistant can e
 
 Parameters include:
 
-- `version` (optional; use `all` to list available versions)
-- `category` (optional; for example, `using-k6` or `javascript-api`)
-- `root_slug` (optional; to drill into a branch)
-- `depth` (default: 1, max: 5)
+- `version` (optional): The k6 version to query. Use `all` to list all available versions.
+- `category` (optional): The documentation category, such as `using-k6` or `javascript-api`.
+- `root_slug` (optional):  The specific branch to explore.
+- `depth` (default: 1, max: 5): The number of levels to include in the tree.
 
 ### get_documentation
 

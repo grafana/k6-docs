@@ -6,7 +6,7 @@ weight: 100
 
 # Configure MCP clients
 
-`mcp-k6` communicates over **stdio** (stdin/stdout). Your MCP client launches `mcp-k6` (or `docker run ...`) and connects to it as a subprocess.
+`mcp-k6` communicates over **stdio** (stdin/stdout). Your MCP client registers mcp-k6 (or docker run ...) as a subprocess to establish a connection.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ weight: 100
 
 ## VS Code
 
-VS Code supports MCP servers through the GitHub Copilot extension (agent mode). To enable `mcp-k6`:
+VS Code supports MCP servers through the GitHub Copilot extension. To use `mcp-k6` tools, you must use **Copilot Edits** (agent mode), which allows the assistant to call k6 commands and read test results.
 
 1. Open your user or workspace settings JSON (`settings.json`).
 1. Add the MCP server configuration.
@@ -53,9 +53,9 @@ Reload VS Code after updating the configuration.
 
 ## Cursor
 
-Cursor reads MCP server definitions from your MCP configuration. Add an entry that launches `mcp-k6` over stdio.
+Cursor reads MCP server definitions from your configuration. Add an entry to register mcp-k6 as a local MCP server using the stdio transport.
 
-Create or update `~/.cursor/mcp.json` (or the project-specific `.cursor/mcp.json`):
+Create or update your global configuration file (**~/.cursor/mcp.json**) or your project-specific file (**.cursor/mcp.json**):
 
 ### Docker
 
@@ -82,7 +82,7 @@ Create or update `~/.cursor/mcp.json` (or the project-specific `.cursor/mcp.json
 }
 ```
 
-Restart Cursor (or reload MCP servers), then verify the connection by invoking the `info` tool from chat.
+Restart Cursor or reload MCP servers, then verify the connection by invoking the `info` tool from chat.
 
 ## Claude Code (CLI)
 
@@ -108,7 +108,8 @@ Reload the workspace after adding the server.
 
 Codex CLI supports MCP servers over stdio.
 
-1. Locate your Codex configuration file. Run `codex help config` if you're unsure of the path.
+1. Locate your Codex configuration file. 
+If you are unsure of the location, run codex help config to find the file path.
 1. Add the MCP server configuration under the `mcpServers` key.
 
 ### Docker
@@ -140,7 +141,7 @@ Restart Codex or reload its configuration to activate the server.
 
 ## Other MCP clients
 
-If your MCP client isn't listed above, you can still use `mcp-k6` as long as it supports stdio-based MCP servers.
+If your MCP client is not in the previous list, you can use mcp-k6 with any client that supports stdio-based MCP servers.
 
 ### How MCP works
 
@@ -150,7 +151,7 @@ The Model Context Protocol (MCP) is a standard way for AI assistants to communic
 1. Writes JSON-RPC responses to **stdout**.
 1. Advertises available tools, resources, and prompts that the AI can use.
 
-When you configure an MCP client, you're telling it to launch a specific command (the MCP server binary) and communicate with it over stdio. The client sends requests like "list available tools" or "call this tool with these arguments", and the server responds with results.
+When you configure an MCP client, you define a specific command, the MCP server binary, for the client to launch and communicate with over stdio. The client then sends requests to list tools or execute functions, and the server returns the results.
 
 ### What you need to configure
 

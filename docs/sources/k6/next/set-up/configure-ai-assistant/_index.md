@@ -13,12 +13,12 @@ Once connected to your AI assistant or MCP-compatible editor, it helps you write
 
 With `mcp-k6`, your AI assistant can:
 
-- **Write accurate, up-to-date scripts** by consulting embedded k6 documentation and TypeScript type definitions, reducing guesswork and hallucinated APIs.
-- **Verify your scripts are correct** before you run them, catching syntax errors, missing imports, and runtime issues early.
-- **Run tests locally** and report results, so you can iterate on scripts without leaving your editor.
-- **Generate scripts from requirements** using guided prompts that follow k6 best practices.
-- **Convert Playwright tests to k6 browser scripts** while preserving test logic and applying browser-testing patterns.
-- **Automate Grafana Cloud k6 provisioning** by discovering Terraform resources in your project.
+- **Write accurate scripts:** Create up-to-date scripts by **referring to** embedded k6 documentation and TypeScript definitions to reduce API hallucinations.
+- **Validate scripts:** Catch syntax errors, missing imports, and `export default function` declarations before execution.
+- **Run tests locally:** Execute scripts and review results without leaving your editor.
+- **Generate scripts:** Create tests from requirements using guided prompts that follow k6 best practices.
+- **Convert browser tests:** Transform Playwright tests into k6 browser scripts while preserving test logic.
+- **Automate provisioning:** Discover Terraform resources in your project to automate Grafana Cloud k6 setup.
 
 ## Install mcp-k6
 
@@ -60,7 +60,7 @@ make install
 
 ## Connect to your assistant
 
-After installing, configure your AI assistant or editor to launch `mcp-k6`:
+After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-clients.md) to register the server with your editor and establish a connection.
 
 - [Configure MCP clients](./configure-mcp-clients/)
 
