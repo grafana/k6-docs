@@ -47,7 +47,68 @@ mcp-k6 --version
 
 ### Linux packages (deb/rpm)
 
-Download the package from the [mcp-k6 GitHub releases](https://github.com/grafana/mcp-k6/releases) and install it with your system package manager.
+Install `mcp-k6` from the `.deb` or `.rpm` packages published on the [mcp-k6 GitHub releases](https://github.com/grafana/mcp-k6/releases).
+
+1. Open the releases page and select a version.
+1. Download the package that matches your Linux distribution and CPU architecture.
+
+You can check your CPU architecture with:
+
+```sh
+uname -m
+```
+
+Use the following mapping to pick the right asset:
+
+| `uname -m` | Debian/Ubuntu asset | Fedora/RHEL asset |
+| --- | --- | --- |
+| `x86_64` | `amd64` (`.deb`) | `x86_64` (`.rpm`) |
+| `aarch64` | `arm64` (`.deb`) | `aarch64` (`.rpm`) |
+
+#### Debian/Ubuntu (`.deb`)
+
+If you have the GitHub CLI (`gh`) installed, you can download a specific release asset from the terminal:
+
+```sh
+MCP_K6_VERSION="vX.Y.Z"
+
+# For amd64/x86_64:
+gh release download "$MCP_K6_VERSION" --repo grafana/mcp-k6 --pattern "*linux*amd64*.deb"
+
+# For arm64/aarch64:
+# gh release download "$MCP_K6_VERSION" --repo grafana/mcp-k6 --pattern "*linux*arm64*.deb"
+
+sudo apt install ./mcp-k6_*.deb
+mcp-k6 --version
+```
+
+If you downloaded the `.deb` in your browser, run `apt` from the directory where you saved it:
+
+```sh
+sudo apt install ./mcp-k6_*.deb
+mcp-k6 --version
+```
+
+#### Fedora/RHEL (`.rpm`)
+
+```sh
+MCP_K6_VERSION="vX.Y.Z"
+
+# For x86_64:
+gh release download "$MCP_K6_VERSION" --repo grafana/mcp-k6 --pattern "*linux*x86_64*.rpm"
+
+# For aarch64:
+# gh release download "$MCP_K6_VERSION" --repo grafana/mcp-k6 --pattern "*linux*aarch64*.rpm"
+
+sudo dnf install ./mcp-k6-*.rpm
+mcp-k6 --version
+```
+
+If your distro uses `yum` instead of `dnf`, run:
+
+```sh
+sudo yum install ./mcp-k6-*.rpm
+```
 
 ### Build from source
 
