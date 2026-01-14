@@ -34,6 +34,7 @@ Pull the image:
 
 ```sh
 docker pull grafana/mcp-k6:latest
+docker run --rm grafana/mcp-k6 --version
 ```
 
 ### Homebrew (macOS)
@@ -58,7 +59,16 @@ cd mcp-k6
 make install
 ```
 
-## Connect to your assistant
+## Troubleshooting
+
+If your AI assistant cannot connect to the server:
+
+- **Check the logs:** Most editors (like Cursor or VS Code) have an "MCP Output" or "Logs" tab. Check there for "command not found" errors.
+- **Verify PATH:** If running natively, run `which k6` in your terminal to ensure k6 is globally accessible.
+- **Docker Permissions:** Ensure the Docker daemon is running and that your user has permission to execute `docker run`.
+- **Use MCP Inspector:** Use the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) to debug the connection independently of your editor.
+
+### Configure your editor
 
 After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-clients.md) to register the server with your editor and establish a connection.
 
@@ -67,4 +77,3 @@ After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-cli
 ## Next steps
 
 - Learn about available tools, prompts, and resources: [Tools, prompts, and resources](./tools-prompts-resources/)
-- Understand safety limits and common issues: [Security, limits, and troubleshooting](./security-limits-and-troubleshooting/)

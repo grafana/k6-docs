@@ -18,7 +18,7 @@ weight: 100
 VS Code supports MCP servers through the GitHub Copilot extension. To use `mcp-k6` tools, you must use **Copilot Edits** (agent mode), which allows the assistant to call k6 commands and read test results.
 
 1. Open your user or workspace settings JSON (`settings.json`).
-1. Add the MCP server configuration.
+2. Add the MCP server configuration.
 
 ### Docker
 
@@ -48,8 +48,6 @@ VS Code supports MCP servers through the GitHub Copilot extension. To use `mcp-k
   }
 }
 ```
-
-Reload VS Code after updating the configuration.
 
 ## Cursor
 
