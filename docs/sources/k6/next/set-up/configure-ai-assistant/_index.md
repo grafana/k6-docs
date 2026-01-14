@@ -24,10 +24,6 @@ With `mcp-k6`, your AI assistant can:
 
 Choose one of the following installation methods.
 
-{{< admonition type="note" >}}
-If you run `mcp-k6` natively, you must also have `k6` available on your `PATH`. If you run `mcp-k6` in Docker, the image already includes k6.
-{{< /admonition >}}
-
 ### Docker (recommended)
 
 Pull the image:
@@ -38,6 +34,10 @@ docker run --rm grafana/mcp-k6 --version
 ```
 
 ### Homebrew (macOS)
+
+{{< admonition type="note" >}}
+If you run `mcp-k6` natively, you must also have k6 installed and available in your PATH.
+{{< /admonition >}}
 
 ```sh
 brew tap grafana/grafana
