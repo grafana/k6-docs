@@ -14,12 +14,13 @@ Registers a handler to be called whenever the specified event occurs. This metho
 
 ### Events
 
-| Event      | Description                                                                                                                                                                                                                                                                                                     |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `console`  | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. See the [example](#console-event-example). |
-| `metric`   | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object. See the [example](#metric-event-example).                                |
-| `request`  | Emitted every time a request made by the page. The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the request. See the [example](#request-and-response-events-example).                                          |
-| `response` | Emitted every time a response is received by the page. The handler gets a [`Response`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response) object that contains information about the response. See the [example](#request-and-response-events-example).                               |
+| Event         | Description                                                                                                                                                                                                                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `console`     | Emitted every time the console API methods are called from within the page JavaScript context. The arguments passed into the handler are defined by the [`ConsoleMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage) class. See the [example](#console-event-example). |
+| `metric`      | Emitted every time a metric is measured and emitted for the page. The arguments passed into the handler are defined by the [`MetricMessage`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/metricmessage) object. See the [example](#metric-event-example).                                |
+| `request`     | Emitted every time a request made by the page. The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the request. See the [example](#request-and-response-events-example).                                          |
+| `requestfailed` | Emitted when a network request fails to reach the server (DNS errors, connection refused, timeouts, etc.). The handler gets a [`Request`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/request) object that contains information about the failed request. See the [example](#requestfailed-event-example).              |
+| `response`    | Emitted every time a response is received by the page. The handler gets a [`Response`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/response) object that contains information about the response. See the [example](#request-and-response-events-example).                               |
 
 ### Console event example
 
@@ -171,6 +172,61 @@ INFO[0000] https://quickpizza.grafana.com/                  source=console
 INFO[0001] https://quickpizza.grafana.com/api/tools         source=console
 INFO[0001] https://quickpizza.grafana.com/images/pizza.png  source=console
 ...
+```
+
+{{< /code >}}
+
+### RequestFailed event example
+
+{{< code >}}
+
+```javascript
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const page = await browser.newPage();
+
+  // Track all failed requests
+  const failedRequests = [];
+
+  page.on('requestfailed', (request) => {
+    const failure = request.failure();
+    failedRequests.push({
+      url: request.url(),
+      method: request.method(),
+      error: failure ? failure.errorText : 'unknown error',
+    });
+
+    console.log(`✗ Request failed: ${request.method()} ${request.url()}`);
+    if (failure) {
+      console.log(`  Error: ${failure.errorText}`);
+    }
+  });
+
+  try {
+    // This will trigger a requestfailed event due to DNS failure
+    await page.goto('https://does-not-exist.invalid/');
+  } catch (e) {
+    // Navigation error expected
+  }
+
+  console.log(`Total failed requests: ${failedRequests.length}`);
+
+  await page.close();
+}
 ```
 
 {{< /code >}}
