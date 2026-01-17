@@ -5,7 +5,7 @@ description: 'Browser module: page.goBack([options]) method'
 
 # goBack([options])
 
-Navigate back in the browser's session history. This method is safer than using `page.evaluate(() => window.history.back())` which can cause race conditions.
+Navigates back in the browser's session history. This method is safer than using `page.evaluate(() => window.history.back())` which can cause race conditions.
 
 Returns the main resource response for the navigation, or `null` if the navigation is impossible (e.g., when already at the beginning of the session history).
 
