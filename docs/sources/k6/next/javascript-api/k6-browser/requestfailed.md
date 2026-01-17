@@ -124,7 +124,7 @@ export default async function () {
         error: failure.errorText,
         timestamp: new Date().toISOString(),
       });
-      
+
       console.log(`Timeout: ${failure.errorText} for ${request.url()}`);
     }
   });
@@ -143,16 +143,66 @@ export default async function () {
 1. **Setup before navigation**: Always set up the event listener before performing actions that trigger network requests:
 
    ```javascript
-   // Correct
-   page.on('requestfailed', handler);
-   await page.goto('https://example.com');
-   
-   // Incorrect - may miss early failures
-   await page.goto('https://example.com');
-   page.on('requestfailed', handler);
+   import { browser } from 'k6/browser';
+
+   export const options = {
+     scenarios: {
+       ui: {
+         executor: 'shared-iterations',
+         options: {
+           browser: {
+             type: 'chromium',
+           },
+         },
+       },
+     },
+   };
+
+   export default async function () {
+     const page = await browser.newPage();
+
+     // CORRECT: Setup event listener before navigation
+     page.on('requestfailed', (request) => {
+       console.log(`Request failed: ${request.method()} ${request.url()}`);
+     });
+     await page.goto('https://example.com');
+
+     await page.close();
+   }
    ```
 
-2. **Distinguish from other events**: 
+   If you set up the event listener after navigation, you may miss early failures:
+
+   ```javascript
+   import { browser } from 'k6/browser';
+
+   export const options = {
+     scenarios: {
+       ui: {
+         executor: 'shared-iterations',
+         options: {
+           browser: {
+             type: 'chromium',
+           },
+         },
+       },
+     },
+   };
+
+   export default async function () {
+     const page = await browser.newPage();
+
+     // INCORRECT: May miss early failures since navigation happens first
+     await page.goto('https://example.com');
+     page.on('requestfailed', (request) => {
+       console.log(`Request failed: ${request.method()} ${request.url()}`);
+     });
+
+     await page.close();
+   }
+   ```
+
+2. **Distinguish from other events**:
    - Use `page.on('request')` to track when requests are initiated
    - Use `page.on('response')` to track when responses start arriving
    - Use `page.on('requestfinished')` to track when requests successfully complete
@@ -164,6 +214,7 @@ export default async function () {
 
 ### Related
 
+- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Register handlers for page events
 - [page.on("request")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to request initiation events
 - [page.on("response")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to response start events
 - [page.on("requestfinished")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to request completion events
