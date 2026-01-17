@@ -5,7 +5,7 @@ description: 'Browser module: page.goForward([options]) method'
 
 # goForward([options])
 
-Navigate forward in the browser's session history. This method is safer than using `page.evaluate(() => window.history.forward())` which can cause race conditions.
+Navigates forward in the browser session history. This method is safer than `page.evaluate(() => window.history.forward())`, which can cause race conditions if the page is mid-navigation.
 
 Returns the main resource response for the navigation, or `null` if the navigation is impossible (e.g., when already at the end of the session history).
 
