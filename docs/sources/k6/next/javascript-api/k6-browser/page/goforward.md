@@ -25,11 +25,11 @@ Avoid using `networkidle` for testing. This event might never fire on websites w
 
 {{< /admonition >}}
 
-Events can be either:
+You can set the event to one of the following:
 
-- `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-- `'load'` - consider operation to be finished when the `load` event is fired.
-- `'networkidle'` - Consider operation to be finished when there are no network connections for at least `500` ms.
+- `'domcontentloaded'`: The `DOMContentLoaded` event fires.
+- `'load'`: The `load` event fires.
+- `'networkidle'`: There are no network connections for at least 500 ms.
 
 ### Returns
 
