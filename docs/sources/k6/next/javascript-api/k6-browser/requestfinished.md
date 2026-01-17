@@ -77,6 +77,7 @@ export default async function () {
 
 #### Tracking API requests
 
+<!-- md-k6:skip -->
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -109,9 +110,11 @@ export default async function () {
     }
   });
 
-  // Perform actions that trigger API calls
-  await page.goto('https://quickpizza.grafana.com/');
-  await page.click('button[name="order-pizza"]');
+  // Navigate to a page that might trigger API calls
+  await page.goto('https://test.k6.io/');
+
+  // Wait for a bit to allow any API requests to complete
+  await page.waitForTimeout(2000);
 
   console.log(`API requests completed: ${apiRequests.length}`);
 
@@ -142,8 +145,10 @@ export default async function () {
 
 ### Related
 
+- [page.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Register handlers for page events
 - [page.on("request")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to request initiation events
 - [page.on("response")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to response start events
+- [page.on("requestfailed")](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/on) - Subscribe to request failure events
 - [page.waitForEvent()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforevent/) - Wait for page events with predicate functions
 - [page.waitForRequest()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforrequest/) - Wait for HTTP requests with URL pattern matching
 - [page.waitForResponse()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforresponse/) - Wait for HTTP responses with URL pattern matching
