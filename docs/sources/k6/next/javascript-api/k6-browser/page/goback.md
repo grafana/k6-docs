@@ -21,7 +21,7 @@ Returns the main resource response for the navigation, or `null` if the navigati
 
 {{< admonition type="caution" >}}
 
-`networkidle` is DISCOURAGED. Don't use this method for testing especially with chatty websites where the event may never fire, rely on web assertions to assess readiness instead.
+Avoid using `networkidle` for testing. This event might never fire on websites with high network activity. Instead, use web assertions to assess when the page is ready
 
 {{< /admonition >}}
 
