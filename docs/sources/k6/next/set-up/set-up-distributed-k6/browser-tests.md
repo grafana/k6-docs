@@ -99,6 +99,8 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
   `Missing X server or $DISPLAY\n[13:13:1211/091921.199737:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.`
 - `capabilities.drop: all` is generally good security posture but can break Chromium. It requires more capabilities than most CLI workloads.
 - Reduce the CPU allocation if you see something like: `0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.`.
+- `error building browser on IterStart: making browser data directory "/tmp/k6browser-data-...": read-only file system`  
+  Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
 
 ## References
 
