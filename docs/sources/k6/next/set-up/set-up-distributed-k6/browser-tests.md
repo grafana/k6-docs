@@ -3,18 +3,6 @@ weight: 300
 title: Browser Tests in k8s
 ---
 
-## Overview
-
-### Browser Runner Model (current vs proposed)
-
-Today, `grafana/k6:latest-with-browser` bundles the k6 binary and Chromium in the same pod. Each k6 runner starts its own browser process, which is simple but heavy on CPU and memory.
-
-There is an open proposal to split browser and k6 runners, enabling an M:N model (M k6 runners to N browser instances) and potentially improving resource efficiency. This is not implemented yet, but it is relevant for capacity planning and for teams running larger browser workloads. Source: https://github.com/grafana/k6-operator/issues/631
-
-### Current image behavior (CPU rendering)
-
-`grafana/k6:latest-with-browser` includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. Source: https://github.com/grafana/k6/blob/master/Dockerfile#L19
-
 ## Quick start (simplest Pod)
 
 Start with the simplest Pod flow to verify that Chromium can launch in your cluster.
@@ -82,9 +70,15 @@ This list will expand as new constraints show up in real clusters:
         drop: ["all"]
     ```
 
-## Security and policy considerations
+## Browser Runner Model (current vs proposed)
 
-Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
+Today, `grafana/k6:latest-with-browser` bundles the k6 binary and Chromium in the same pod. Each k6 runner starts its own browser process, which is simple but heavy on CPU and memory.
+
+There is an open proposal to split browser and k6 runners, enabling an M:N model (M k6 runners to N browser instances) and potentially improving resource efficiency. This is not implemented yet, but it is relevant for capacity planning and for teams running larger browser workloads. Source: https://github.com/grafana/k6-operator/issues/631
+
+## Current image behavior (CPU rendering)
+
+`grafana/k6:latest-with-browser` includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. Source: https://github.com/grafana/k6/blob/master/Dockerfile#L19
 
 ## Performance and sizing recommendations
 
@@ -93,6 +87,10 @@ Browser tests are CPU- and memory-heavy. Start with higher limits to confirm sta
 - Set CPU and memory to match (or exceed) a modern desktop machine for initial runs.
 - Try to keep CPU/memory utilization under ~80% during steady-state.
 - General guidance on running larger tests: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
+
+## Security and policy considerations
+
+Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
 
 ## Troubleshooting
 
