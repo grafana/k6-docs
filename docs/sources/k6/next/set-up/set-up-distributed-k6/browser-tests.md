@@ -101,6 +101,8 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 - Reduce the CPU allocation if you see something like: `0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.`.
 - `error building browser on IterStart: making browser data directory "/tmp/k6browser-data-...": read-only file system`  
   Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
+- `Error from server (BadRequest): error when creating "plz.yaml": PrivateLoadZone in version "v1alpha1" cannot be handled as a PrivateLoadZone: strict decoding error: unknown field "spec.*.securityContext"`
+  Fix: This is a know issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD [TODO: Link to issue].
 
 ## References
 
