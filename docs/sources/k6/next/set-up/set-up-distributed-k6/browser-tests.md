@@ -55,7 +55,7 @@ spec:
 
 ## Requirements and prerequisites
 
-This list will expand as new constraints show up in real clusters:
+This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
 
 - If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
 - `runAsUser` specifics: https://github.com/grafana/k6/pull/4831
@@ -90,11 +90,11 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 - `Headless: true` is not supported in this environment. A common error looks like:
   `Missing X server or $DISPLAY\n[13:13:1211/091921.199737:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.`
 - `capabilities.drop: all` is generally good security posture but can break Chromium. It requires more capabilities than most CLI workloads.
-- Reduce the CPU allocation if you see something like: `0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.`.
+- Either add larger instances or reduce the CPU allocation if you see something like: `0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.`. Keep in mind that reducing CPU might worsen the browser test result.
 - `error building browser on IterStart: making browser data directory "/tmp/k6browser-data-...": read-only file system`  
   Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
 - `Error from server (BadRequest): error when creating "plz.yaml": PrivateLoadZone in version "v1alpha1" cannot be handled as a PrivateLoadZone: strict decoding error: unknown field "spec.*.securityContext"`
-  Fix: This is a know issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD: [#696](https://github.com/grafana/k6-operator/issues/696).
+  Fix: This is a known issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD: [#696](https://github.com/grafana/k6-operator/issues/696).
 
 If you can't find the answer you are looking for, please open an [new issue](https://github.com/grafana/k6-operator/issues) with the relevant details so that we can try to reproduce the issue and help resolve it.
 
