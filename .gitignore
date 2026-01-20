@@ -75,7 +75,7 @@ yarn-error.log
 .yarn-integrity
 
 .idea/
+.vscode/
 
-.vscode/snipsnap.code-snippets
 output 
 .obsidian
