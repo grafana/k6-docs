@@ -88,7 +88,7 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 - `error building browser on IterStart: making browser data directory "/tmp/k6browser-data-...": read-only file system`  
   Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
 - `Error from server (BadRequest): error when creating "plz.yaml": PrivateLoadZone in version "v1alpha1" cannot be handled as a PrivateLoadZone: strict decoding error: unknown field "spec.*.securityContext"`
-  Fix: This is a know issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD [TODO: Link to issue].
+  Fix: This is a know issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD: [#696](https://github.com/grafana/k6-operator/issues/696).
 
 ## References
 
