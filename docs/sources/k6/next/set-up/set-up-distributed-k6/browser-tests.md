@@ -94,7 +94,21 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 - `capabilities.drop: all` is generally good security posture but can break Chromium. It requires more capabilities than most CLI workloads.
 - Either add larger instances or reduce the CPU allocation if you see something like: `0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.`. Keep in mind that reducing CPU might worsen the browser test result.
 - `error building browser on IterStart: making browser data directory "/tmp/k6browser-data-...": read-only file system`  
-  Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
+  Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`). Example:
+
+  ```yaml
+  securityContext:
+    readOnlyRootFilesystem: true
+  env:
+    - name: TMPDIR
+      value: /var/tmp
+  volumeMounts:
+    - name: tmp
+      mountPath: /var/tmp
+  volumes:
+    - name: tmp
+      emptyDir: {}
+  ```
 - `Error from server (BadRequest): error when creating "plz.yaml": PrivateLoadZone in version "v1alpha1" cannot be handled as a PrivateLoadZone: strict decoding error: unknown field "spec.*.securityContext"`
   Fix: This is a known issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD: [#696](https://github.com/grafana/k6-operator/issues/696).
 
