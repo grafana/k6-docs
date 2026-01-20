@@ -63,8 +63,8 @@ During a debug session, and once it's completed, you can inspect the test result
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-browser-test-panels.png" alt="k6 Studio Validator window, showing the results of a browser test that has been executed, with the script and a list of browser interactions on the right, as well as console output and http requests in the bottom" >}}
 
 1. **Script** From here you can inspect the executed script.
-2. **Browser actions**: This panels shows the interactions made by the script and their outcomes. If an interaction failed, the reason for the failure is shown.
-3. **Console**: Any logs emitted either by the browser or from the [test script](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/).
+2. **Browser actions**: This panel shows the interactions made by the script and their outcomes. If an interaction failed, the reason for the failure is shown.
+3. **Console**: Any logs emitted either by the browser or the [test script](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/).
 4. **Requests**: A list of requests made _by the browser_. This is simlar to the request list in an [HTTP test](#http-test).
 
 ## Validate external script
