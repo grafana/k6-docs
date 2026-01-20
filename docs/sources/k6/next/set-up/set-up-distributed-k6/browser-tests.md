@@ -64,7 +64,7 @@ There is an open proposal to split browser and k6 runners, enabling an M:N model
 
 ## Current image behavior (CPU rendering)
 
-`grafana/k6:latest-with-browser` includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. Source: https://github.com/grafana/k6/blob/master/Dockerfile#L19
+[`grafana/k6:latest-with-browser`](https://github.com/grafana/k6/blob/master/Dockerfile#L19) includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. We have an open issue for this which you can follow along with: [#5571](https://github.com/grafana/k6/issues/5571).
 
 ## Performance and sizing recommendations
 
