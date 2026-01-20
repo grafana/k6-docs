@@ -47,6 +47,8 @@ spec:
        name: script
 ```
 
+4. Now wait and view the logs to see if it ran successfuly or not. We have some [troubleshooting](#troubleshooting) steps below that might help.
+
 ## Requirements and prerequisites
 
 This list will expand as new constraints show up in real clusters:
@@ -60,11 +62,11 @@ This list will expand as new constraints show up in real clusters:
 
 Today, `grafana/k6:latest-with-browser` bundles the k6 binary and Chromium in the same pod. Each k6 runner starts its own browser process, which is simple but heavy on CPU and memory.
 
-There is an open proposal to split browser and k6 runners, enabling an M:N model (M k6 runners to N browser instances) and potentially improving resource efficiency. This is not implemented yet, but it is relevant for capacity planning and for teams running larger browser workloads. Source: https://github.com/grafana/k6-operator/issues/631
+There is an open proposal to split browser and k6 runners, enabling an M:N model (M k6 runners to N browser instances) and potentially improving resource efficiency. This is not implemented yet, but it is relevant for capacity planning and for teams running larger browser workloads: [#631](https://github.com/grafana/k6-operator/issues/631).
 
 ## Current image behavior (CPU rendering)
 
-[`grafana/k6:latest-with-browser`](https://github.com/grafana/k6/blob/master/Dockerfile#L19) includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. We have an open issue for this which you can follow along with: [#5571](https://github.com/grafana/k6/issues/5571).
+[`grafana/k6:latest-with-browser`](https://github.com/grafana/k6/blob/master/Dockerfile#L19) includes both the k6 binary and a Chromium build that uses SwiftShader (CPU rendering). This keeps setup simple but can be heavy on CPU and may not work well for apps that require GPU-backed rendering. We have an open issue for this which you can follow along for any updates: [#5571](https://github.com/grafana/k6/issues/5571).
 
 ## Performance and sizing recommendations
 
@@ -89,6 +91,8 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
   Fix: mount a writable `emptyDir` and set `TMPDIR` to that path (or mount `emptyDir` at `/tmp`).
 - `Error from server (BadRequest): error when creating "plz.yaml": PrivateLoadZone in version "v1alpha1" cannot be handled as a PrivateLoadZone: strict decoding error: unknown field "spec.*.securityContext"`
   Fix: This is a know issue with the PLZ CRD. We are working on a solution to the `securityContext` object to the PLZ CRD: [#696](https://github.com/grafana/k6-operator/issues/696).
+
+If you can't find the answer you are looking for, please open an [new issue](https://github.com/grafana/k6-operator/issues) with the relevant details so that we can try to reproduce the issue and help resolve it.
 
 ## References
 
