@@ -80,7 +80,7 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 
 ## Troubleshooting
 
-- If Chrome crashes immediately, it is often due to security policies preventing Chromium from starting.
+- If Chrome crashes immediately, it is often due to security policies preventing Chromium from starting. In rare cases we have seen it occur due to trying to run the incorrect arch image on an incompatible arch e.g. running an image built for amd64 on an arm based machine.
 - `Headless: true` is not supported in this environment. A common error looks like:
   `Missing X server or $DISPLAY\n[13:13:1211/091921.199737:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.`
 - `capabilities.drop: all` is generally good security posture but can break Chromium. It requires more capabilities than most CLI workloads.
