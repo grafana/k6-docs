@@ -55,20 +55,6 @@ This list will expand as new constraints show up in real clusters:
 - `runAsUser` specifics: https://github.com/grafana/k6/pull/4831
   - Context: running the `-with-browser` image under strict non-root policies could fail because Chromium needs certain permissions; see issue [#4597](https://github.com/grafana/k6/issues/4597).
   - PR [#4831](https://github.com/grafana/k6/pull/4831) adjusts the image user configuration to better support non-root execution in restricted clusters.
-- Linux capabilities: https://github.com/grafana/crocochrome/blob/main/doc/capabilities.md
-  - crocochrome launches Chromium as a different (nobody) user using `syscall.Credential`, which requires `cap_setuid`, `cap_setgid`, and `cap_kill`.
-  - Those capabilities must be present both in the binary and in the container `securityContext` (bounding set), otherwise Chromium launch will fail or the container won’t start.
-  - Setting `allowPrivilegeEscalation: false` effectively disables file capabilities (`no_new_privs`), so capabilities in the binary won’t take effect.
-  - Recommended `securityContext` (from crocochrome docs):
-    ```yaml
-    securityContext:
-      runAsNonRoot: true
-      readOnlyRootFilesystem: true
-      allowPrivilegeEscalation: false
-      capabilities:
-        add: ["setuid", "setgid", "kill"] # For dropping privileges and killing children.
-        drop: ["all"]
-    ```
 
 ## Browser Runner Model (current vs proposed)
 
