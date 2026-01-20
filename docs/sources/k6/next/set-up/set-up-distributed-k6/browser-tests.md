@@ -80,7 +80,7 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 
 ## Troubleshooting
 
-- If Chrome crashes immediately, it is often due to security policies preventing Chromium from starting. In rare cases we have seen it occur due to trying to run the incorrect arch image on an incompatible arch e.g. running an image built for amd64 on an arm based machine.
+- If Chrome crashes immediately, it is often due to security policies preventing Chromium from starting. In rare cases we have seen it occur due to trying to run the incorrect arch image on an incompatible arch, for example, running an image built for amd64 on an arm based machine.
 - `Headless: true` is not supported in this environment. A common error looks like:
   `Missing X server or $DISPLAY\n[13:13:1211/091921.199737:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.`
 - `capabilities.drop: all` is generally good security posture but can break Chromium. It requires more capabilities than most CLI workloads.
@@ -96,3 +96,4 @@ Chromium is sensitive to restrictive security policies. In particular, avoid ove
 - Chromium capabilities reference: https://github.com/grafana/crocochrome/blob/main/doc/capabilities.md
 - k6 browser test example: https://grafana.com/docs/k6/latest/using-k6-browser/write-your-first-browser-test/
 - Large test sizing guidance: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
+- Chrome crashing in with-browser image, in podman and kubernetes: https://github.com/grafana/k6/issues/4338
