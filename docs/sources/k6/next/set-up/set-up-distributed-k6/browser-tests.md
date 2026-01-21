@@ -58,9 +58,6 @@ spec:
 This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
 
 - If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
-- `runAsUser` specifics: https://github.com/grafana/k6/pull/4831
-  - Context: running the `-with-browser` image under strict non-root policies could fail because Chromium needs certain permissions; see issue [#4597](https://github.com/grafana/k6/issues/4597).
-  - PR [#4831](https://github.com/grafana/k6/pull/4831) adjusts the image user configuration to better support non-root execution in restricted clusters.
 
 ## Browser Runner Model (current vs proposed)
 
