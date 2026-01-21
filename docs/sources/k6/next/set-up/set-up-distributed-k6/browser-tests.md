@@ -53,12 +53,6 @@ spec:
 
 4. Now wait and view the logs to see if it ran successfuly or not. We have some [troubleshooting](#troubleshooting) steps below that might help.
 
-## Requirements and prerequisites
-
-This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
-
-- If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
-
 ## Browser Runner Model (current vs proposed)
 
 Today, `grafana/k6:latest-with-browser` bundles the k6 binary and Chromium in the same pod. Each k6 runner starts its own browser process, which is simple but heavy on CPU and memory.
@@ -77,9 +71,12 @@ Browser tests are CPU- and memory-heavy. Start with higher limits to confirm sta
 - Try to keep CPU/memory utilization under ~80% during steady-state.
 - General guidance on running larger tests: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
 
-## Security and policy considerations
+## Other requirements and prerequisites
 
-Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
+This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
+
+- If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
+- Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
 
 ## Troubleshooting
 
