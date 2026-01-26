@@ -5,7 +5,7 @@ title: Browser Tests in Kubernetes
 
 # Browser Tests in Kubernetes
 
-This guide will help you get setup with k6 browser testing using the official `grafana/k6:latest-with-browser` image. The idea is to start simple and build up from there (if possible) with security requirements and working with k6-operator.
+This guide will help you get setup with k6 browser testing using the official `grafana/k6:latest-with-browser` image. We first explain how to make a simple setup for browser test, and then introduce requirements and how to integrate it with k6 Operator.
 
 ## Quick start (simplest Pod)
 
