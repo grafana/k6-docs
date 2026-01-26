@@ -157,7 +157,7 @@ Before using Autocorrelation, make sure you have:
 
 {{< admonition type="note" >}}
 
-Your API key is encrypted using your operating system's secure storage and is not transmitted to Grafana Labs. Data from your recording is sent to OpenAI for processing. Usage is subject to your OpenAI agreement and associated billing.
+Your API key is encrypted and stored locally using your operating system's secure storage. Data from your recording is sent to OpenAI for processing. Usage is subject to your OpenAI agreement and associated billing.
 
 {{< /admonition >}}
 
@@ -217,7 +217,7 @@ For unexpected errors, click **Retry** to attempt the analysis again. If the pro
 
 ### Considerations
 
-- **Feature preview.** Autocorrelation is in public preview. Functionality may change in future releases.
+- **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality may change in future releases.
 - **Data processing.** Your recording data is sent to OpenAI for analysis. Review the disclaimer in **Settings > AI** for full terms.
 - **Manual rules.** You can still create [correlation rules](#correlation-rule) manually using the **Add rule** menu. Autocorrelation complements manual rule creation; it doesn't replace it.
 - **Cost.** Using Autocorrelation consumes OpenAI API tokens, which may incur costs based on your OpenAI pricing plan.
