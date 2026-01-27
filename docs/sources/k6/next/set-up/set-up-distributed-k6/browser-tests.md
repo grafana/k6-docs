@@ -7,7 +7,14 @@ title: Run browser tests in Kubernetes
 
 This guide will help you get setup with k6 browser testing using the official `grafana/k6:latest-with-browser` image. We first explain how to make a simple setup for browser test, and then introduce requirements and how to integrate it with k6 Operator.
 
-## Quick start (simplest Pod)
+## Before you begin
+
+This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
+
+- If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
+- Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
+
+## Create and run a browser test
 
 Start with the simplest Pod flow to verify that Chromium can launch in your cluster.
 
@@ -70,13 +77,6 @@ Browser tests are CPU- and memory-heavy. Start with higher limits to confirm sta
 - Set CPU and memory to match (or exceed) a modern desktop machine for initial runs.
 - Try to keep CPU/memory utilization under ~80% during steady-state.
 - General guidance on running larger tests: https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/
-
-## Other requirements and prerequisites
-
-This list may expand in the future, as we learn about new use cases of browser testing. Pay attention to the following:
-
-- If you use `securityContext` or OpenShift SCCs/PSPs, verify the policy allows Chromium to start. Capture the exact error string in Troubleshooting so it is searchable.
-- Chromium is sensitive to restrictive security policies. In particular, avoid overly aggressive capability drops without testing browser startup.
 
 ## Troubleshooting
 
