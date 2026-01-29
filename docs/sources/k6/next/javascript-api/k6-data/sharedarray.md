@@ -47,6 +47,192 @@ This limitation will eventually be removed, but for now, the implication is that
 
 {{< /admonition >}}
 
+## Common pitfalls
+
+`SharedArray` has a special underlying implementation that provides memory efficiency benefits.
+However, certain operations can negate these benefits by converting the `SharedArray` into a regular array or causing unnecessary marshalling.
+
+### Avoid array methods that create new arrays
+
+Methods like `.filter()` and `.map()` create new regular arrays when called on an already-created `SharedArray`, which removes the memory efficiency benefits.
+Instead, iterate over the `SharedArray` and process elements individually.
+
+However, you can use `.filter()` or `.map()` inside the `SharedArray` constructor function, since that operation only happens once during initialization.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // This creates a new regular array, losing SharedArray benefits
+  const filtered = data.filter(user => user.active);
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Iterate and process elements individually
+  for (const user of data) {
+    if (user.active) {
+      // process user
+    }
+  }
+}
+```
+
+**Also acceptable:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Using filter/map inside the constructor is fine since it only runs once
+const activeUsers = new SharedArray('active users', function () {
+  const allUsers = JSON.parse(open('./users.json'));
+  return allUsers.filter(user => user.active);
+});
+
+export default function () {
+  const user = activeUsers[Math.floor(Math.random() * activeUsers.length)];
+  // ...
+}
+```
+
+### Avoid marshalling the entire SharedArray
+
+Marshalling or serializing a `SharedArray` (for example, with `JSON.stringify()`) converts it to a regular array representation, eliminating memory efficiency benefits.
+Only marshal individual elements when needed.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Marshalling the entire SharedArray defeats its purpose
+  const serialized = JSON.stringify(data);
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Marshal only the element you need
+  const user = data[Math.floor(Math.random() * data.length)];
+  const serialized = JSON.stringify(user);
+  // ...
+}
+```
+
+### Avoid storing a single large object
+
+`SharedArray` is designed for arrays of elements, not for storing a single large object.
+If you need to share a single object between VUs, consider other approaches.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Wrapping a single object in an array just to use SharedArray
+const data = new SharedArray('config', function () {
+  return [JSON.parse(open('./large-config.json'))];
+});
+
+export default function () {
+  const config = data[0];
+  // ...
+}
+```
+
+### Avoid returning SharedArray from setup()
+
+Returning a `SharedArray` from the `setup()` function causes it to be marshalled, which removes its memory efficiency benefits.
+Keep `SharedArray` instances in the init context instead.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+export function setup() {
+  // Returning SharedArray from setup causes marshalling
+  const data = new SharedArray('users', function () {
+    return JSON.parse(open('./users.json'));
+  });
+  return { users: data };
+}
+
+export default function (data) {
+  // data.users is now a regular array, not a SharedArray
+  const user = data.users[0];
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Keep SharedArray in init context
+const users = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export function setup() {
+  // Return only metadata or other non-SharedArray data
+  return { count: users.length };
+}
+
+export default function (data) {
+  // Access SharedArray directly
+  const user = users[Math.floor(Math.random() * users.length)];
+  // ...
+}
+```
+
 ## Example
 
 {{< code >}}
