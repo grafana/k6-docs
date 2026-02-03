@@ -7,7 +7,7 @@ weight: 30
 # WebSocket.onping
 
 A handler for a WebSocket connection `ping` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/websocket/websocket-addeventlistener).
 
 ### Example
 
@@ -18,7 +18,7 @@ _A k6 script that initiates a WebSocket connection and sets up a handler for the
 <!-- md-k6:skip -->
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const ws = new WebSocket('wss://quickpizza.grafana.com/ws');

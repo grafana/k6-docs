@@ -73,6 +73,12 @@ The [`k6/browser` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-timers.md" version="<K6_VERSION>" >}}
 
+## k6/websockets
+
+The [`k6/websockets` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets) provides an implementation of the WebSocket API for k6 with k6-specific features like cookies, tags, and headers.
+
+{{< docs/shared source="k6" lookup="javascript-api/k6-websockets.md" version="<K6_VERSION>" >}}
+
 ## k6/ws
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-ws.md" version="<K6_VERSION>" >}}

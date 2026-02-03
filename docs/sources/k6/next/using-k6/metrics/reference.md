@@ -63,7 +63,7 @@ Apart from the Core Web Vitals, the browser module also reports [Other Web Vital
 
 ## Built-in WebSocket metrics {#websockets}
 
-`k6` emits the following metrics when interacting with a WebSocket service through the [`experimental`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets) or legacy websockets API.
+`k6` emits the following metrics when interacting with a WebSocket service through the [`k6/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets) or legacy `k6/ws` API.
 
 | Metric name         | Type    | Description                                                                                                  |
 | ------------------- | ------- | ------------------------------------------------------------------------------------------------------------ |

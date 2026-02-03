@@ -8,7 +8,7 @@ weight: 10
 
 `Blob` is an interface that represents a blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a [ReadableStream](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/streams/readablestream).
 
-It's the type of the data received on [WebSocket.onmessage](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) when `WebSocket.binaryType` is set to `"blob"`. 
+It's the type of the data received on [WebSocket.onmessage](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/websocket/websocket-onmessage) when `WebSocket.binaryType` is set to `"blob"`. 
 
 A `Blob` instance has the following methods/properties:
 
