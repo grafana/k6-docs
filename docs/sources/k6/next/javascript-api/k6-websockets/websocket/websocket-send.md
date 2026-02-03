@@ -20,7 +20,7 @@ _A k6 script that demonstrates how to add an event listener for the `open` WebSo
 {{< code >}}
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');

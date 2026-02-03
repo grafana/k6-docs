@@ -22,7 +22,7 @@ _A k6 script that makes a WebSocket request with a custom header and tags result
 {{< code >}}
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const url = 'ws://localhost:10000';
