@@ -19,9 +19,11 @@ k6 converts all [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using
 | Counter   | `Float64CounterOption`                                                                                                                                                                                                                                                                                                                                                        |
 | Gauge     | `Float64ObservableGauge`                                                                                                                                                                                                                                                                                                                                                      |
 | Rate      | Exported as a single `Int64Counter` counter named `metric_name` with an attribute `condition` that can have two values: `zero` and `nonzero`. |
-
-> **Note:** Prior to k6 v1.4, Rate metrics were exported as two separate counters: `metric_name.occurred` and `metric_name.total`. You can revert to this legacy behavior by setting the environment variable `K6_OTEL_SINGLE_COUNTER_FOR_RATE=false`. However, this legacy approach is deprecated and will be removed in a future release.
 | Trend     | `Float64Histogram`                                                                                                                                                                                                                                                                                                                                                            |
+
+{{< admonition type="warning" >}}
+Prior to k6 v1.4.0, Rate metrics were exported as two separate counters: `metric_name.occurred` and `metric_name.total`. You can revert to this legacy behavior by setting the environment variable `K6_OTEL_SINGLE_COUNTER_FOR_RATE=false`. However, this legacy approach is deprecated and will be removed in a future release.
+{{< /admonition >}}
 
 ## Run the k6 test
 
