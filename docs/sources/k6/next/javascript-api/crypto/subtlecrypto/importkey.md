@@ -22,7 +22,7 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 | `keyData`     | `ArrayBuffer`, `TypedArray`, `DataView` or [JsonWebKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/jsonwebkey) | the data to import the key from.                                                                                                                                                      |
 | `algorithm`   | a `string` or object with a single `name` string property                                                                          | The algorithm to use to import the key.                                                                                                                                               |
 | `extractable` | `boolean`                                                                                                                          | Indicates whether it will be possible to export the key using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/exportkey).                     |
-| `keyUsages`   | `Array<string>`                                                                                                                    | An array of strings describing what operations can be performed with the key. Currently supported usages include `encrypt`, `decrypt`, `sign`, and `verify`.                          |
+| `keyUsages`   | `Array<string>`                                                                                                                    | An array of strings describing what operations can be performed with the key. Supported usages include `encrypt`, `decrypt`, `sign`, `verify`, `deriveBits`, and `deriveKey`.         |
 
 ### Supported algorithms
 
@@ -31,6 +31,14 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 ### Supported formats
 
 {{< docs/shared source="k6" lookup="crypto/supported-key-methods-formats.md" version="<K6_VERSION>" >}}
+
+### PBKDF2 constraints
+
+When importing a key for the PBKDF2 algorithm, the following constraints apply:
+
+- `extractable` must be `false`. Attempting to set it to `true` throws a `SyntaxError`.
+- Only the `raw` format is supported. Other formats throw a `NotSupportedError`.
+- Only `deriveBits` and `deriveKey` usages are allowed. Other usages throw a `SyntaxError`.
 
 ## Return Value
 
@@ -221,6 +229,57 @@ const arrayBufferToString = (buffer) => {
 const base64Decode = (base64String) => {
   return new Uint8Array(b64decode(base64String));
 };
+```
+
+{{< /code >}}
+
+### Import a password for PBKDF2 key derivation
+
+This example demonstrates how to import a password as key material for PBKDF2 key derivation.
+
+{{< code >}}
+
+```javascript
+export default async function () {
+  const password = stringToArrayBuffer('my secret password');
+
+  // Import the password as a key for PBKDF2
+  // Note: extractable must be false for PBKDF2
+  const baseKey = await crypto.subtle.importKey('raw', password, 'PBKDF2', false, [
+    'deriveBits',
+    'deriveKey',
+  ]);
+
+  console.log('imported PBKDF2 key: ' + JSON.stringify(baseKey));
+
+  // Now you can use this key with deriveBits or deriveKey
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const derivedBits = await crypto.subtle.deriveBits(
+    {
+      name: 'PBKDF2',
+      hash: 'SHA-256',
+      salt: salt,
+      iterations: 310000,
+    },
+    baseKey,
+    256
+  );
+
+  console.log('derived bits: ' + arrayBufferToHex(derivedBits));
+}
+
+function stringToArrayBuffer(str) {
+  const buf = new ArrayBuffer(str.length * 2);
+  const bufView = new Uint16Array(buf);
+  for (let i = 0, strLen = str.length; i < strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
+}
+
+function arrayBufferToHex(buffer) {
+  return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
+}
 ```
 
 {{< /code >}}
