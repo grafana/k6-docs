@@ -9,7 +9,7 @@ title: Troubleshoot
 
 This topic includes instructions to help you troubleshoot common issues with the k6 Operator.
 
-If you’re using Private Load Zones in Grafana Cloud k6, refer to [Troubleshoot Private Load Zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/troubleshoot/).
+If you’re using Private Load Zones in Grafana Cloud k6, refer to [Troubleshoot Private Load Zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/troubleshoot/). **Note:** The PrivateLoadZone CRD does not support tolerations for runner pods; tolerations in Helm values apply only to the controller manager. See [Tolerations not supported for PrivateLoadZone](#tolerations-not-supported-for-privateloadzone) in Common errors if runner pods fail to schedule.
 
 ## How to troubleshoot
 
