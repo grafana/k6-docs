@@ -13,6 +13,12 @@ Codeless tools to speed up the test creation.
 
 - [Test Builder](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-authoring/test-builder) - Inspired by the Postman API Builder. Codeless UI tool to generate a k6 test quickly.
 
+## AI assistants (MCP)
+
+MCP (Model Context Protocol) integrations help you author and run k6 scripts from MCP-compatible editors and assistants.
+
+- To validate and run scripts, browse documentation, and generate tests using an AI assistant, refer to [Configure your AI assistant](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/).
+
 ## IDE extensions
 
 Code k6 scripts in your IDE of choice. Empower your development workflow with IDE extensions.
