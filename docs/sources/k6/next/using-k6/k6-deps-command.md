@@ -64,7 +64,7 @@ The default human-readable output shows:
 
 - **Build Dependencies:** Lists k6 extensions and k6 itself with version constraints (or `(none)` if there are no build dependencies)
 - **Imports:** Lists all imports including file paths and module names
-- **Custom Build Required:** Indicates `yes` or `no` whether a custom build is needed
+- **Custom Build Required:** Indicates `yes` or `no` whether a custom build is required
 
 Example:
 
