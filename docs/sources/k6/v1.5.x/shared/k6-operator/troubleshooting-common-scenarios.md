@@ -51,14 +51,6 @@ Events:
 
 To fix this issue, the incorrect `nodeSelector` must be corrected and the `TestRun` or `PrivateLoadZone` resource must be re-deployed.
 
-### Tolerations not supported for PrivateLoadZone
-
-When you run tests via a PrivateLoadZone (PLZ), the runner pods must schedule on your cluster. If nodes are tainted (for example, for dedicated load or spot capacity), those pods need tolerations to be placed there. Tolerations in Helm `values.yaml` apply only to the k6-operator controller manager pod, not to the test runner pods it creates.
-
-#### Current limitation
-
-The PrivateLoadZone CRD does not support tolerations for runner pods, so there is no automated way to add them when using PLZ.
-
 ### Insufficient resources
 
 A related problem can happen when the cluster does not have sufficient resources to deploy the runners. There's a higher probability of hitting this issue when setting small CPU and memory limits for runners or using options like `nodeSelector`, `runner.affinity` or `runner.topologySpreadConstraints`, and not having a set of nodes matching the spec. Alternatively, it can happen if there is a high number of runners required for the test (via `parallelism` in TestRun or during PLZ test run) and autoscaling of the cluster has limits on the maximum number of nodes, and can't provide the required resources on time or at all.
