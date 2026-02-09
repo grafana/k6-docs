@@ -29,6 +29,7 @@ Each option has its own detailed reference in a separate section.
 | [Console output](#console-output)                            | Redirects logs logged by `console` methods to the provided output file                                                                                                                                                                                                                                                                             |
 | [Discard response bodies](#discard-response-bodies)          | Specify whether response bodies should be discarded                                                                                                                                                                                                                                                                                                |
 | [DNS](#dns)                                                  | Configure DNS resolution behavior                                                                                                                                                                                                                                                                                                                  |
+| [Dependency manifest](#dependency-manifest)                  | Specify a dependency manifest file to validate dependencies against before running the test                                                                                                                                                                                                                                                          |
 | [Duration](#duration)                                        | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus)                              |
 | [Execution segment](#execution-segment)                      | Limit execution to a segment of the total test                                                                                                                                                                                                                                                                                                     |
 | [Exit on running](#exit-on-running)                          | Exits when test reaches the running status                                                                                                                                                                                                                                                                                                         |
@@ -334,6 +335,28 @@ export const options = {
 ```
 
 {{< /code >}}
+
+## Dependency manifest
+
+Specify a dependency manifest as JSON to set default constraints for k6 extensions and k6 itself used in your test script. When you provide a dependency manifest, k6 uses it to set default constraints for k6 extensions that are used in the script but don't have concrete constraints specified.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| `K6_DEPENDENCY_MANIFEST` | N/A | N/A | `null` |
+
+The `K6_DEPENDENCY_MANIFEST` environment variable contains the JSON manifest content itself as a simple key-value object, not a path to a file.
+
+{{< code >}}
+
+```bash
+K6_DEPENDENCY_MANIFEST='{"k6":"v1.6.0","k6/x/faker":"v0.4.4"}' k6 run script.js
+```
+
+{{< /code >}}
+
+The dependency manifest is a JSON object with key-value pairs mapping k6 extension names (or `k6` itself) to version constraints. For example, `{"k6":"v1.6.0","k6/x/faker":"v0.4.4"}`. For k6 extensions that don't have explicit version constraints in your script, the manifest provides default constraints to ensure consistent resolution.
+
+For more information about generating and using dependency manifests, refer to the [`k6 deps` command documentation](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-deps-command).
 
 ## Duration
 
