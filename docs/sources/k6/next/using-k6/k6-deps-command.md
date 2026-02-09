@@ -1,5 +1,5 @@
 ---
-title: 'k6 deps command'
+title: 'Analyze script dependencies'
 description: 'Use the k6 deps command to analyze dependencies for your k6 test scripts.'
 weight: 95
 ---
@@ -22,11 +22,11 @@ The command outputs dependency information in human-readable format by default, 
 
 - Understand what k6 extensions your script uses
 - Share dependency information with your team
-- Use it to know if you will need custom binary or the currently used one can run the script
+- Use it to know if you need a custom binary or if the current one can run the script
 
-The command, like [automatic extension resolution](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#use-automatic-extension-resolution), is only able to find dependancies using import/export syntax and "use" directives in already found files. It will not follow potential `require` calls.
+The command, like [automatic extension resolution](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#use-automatic-extension-resolution), is only able to find dependencies using import/export syntax and "use" directives in already found files. It doesn't follow potential `require` calls.
 
-The commands also takes into account any provided [dependency manifest](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#dependency-manifest) and applies it as it will during `k6 run`.
+The command also takes into account any provided [dependency manifest](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#dependency-manifest) and applies it during `k6 run`.
 
 ## Options
 
