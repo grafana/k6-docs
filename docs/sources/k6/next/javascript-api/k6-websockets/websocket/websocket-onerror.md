@@ -7,7 +7,7 @@ weight: 30
 # WebSocket.onerror
 
 A handler for a WebSocket connection `error` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/websocket/websocket-addeventlistener).
 
 ### Example
 
@@ -16,7 +16,7 @@ _A k6 script that initiates a WebSocket connection and sets up a handler for the
 {{< code >}}
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');

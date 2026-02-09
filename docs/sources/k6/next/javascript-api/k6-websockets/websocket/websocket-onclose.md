@@ -7,7 +7,7 @@ weight: 30
 # WebSocket.onclose
 
 A handler for a WebSocket connection `close` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/websocket/websocket-addeventlistener).
 
 ### Example
 
@@ -17,7 +17,7 @@ The console should also log `WebSocket connection closed` from the `onclose` han
 {{< code >}}
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');

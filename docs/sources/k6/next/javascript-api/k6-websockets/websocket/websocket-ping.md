@@ -15,7 +15,7 @@ _A k6 script that initiates a WebSocket connection, sends a ping, and closes it 
 {{< code >}}
 
 ```javascript
-import { WebSocket } from 'k6/experimental/websockets';
+import { WebSocket } from 'k6/websockets';
 
 export default function () {
   const ws = new WebSocket('ws://localhost:10000');

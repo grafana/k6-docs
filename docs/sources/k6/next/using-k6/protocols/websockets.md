@@ -15,9 +15,9 @@ It is commonly used by single-page apps (SPAs) and mobile apps, to add server-pu
 
 {{< admonition type="note" >}}
 
-[xk6-websockets](https://github.com/grafana/xk6-websockets) is an experimental module with a more standard API than `k6/ws`. It implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/). While the implementation isn't complete, it uses a global event loop instead of local one.
+The [`k6/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets) module provides a more standard API than `k6/ws`. It implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/) and uses a global event loop instead of a local one for better performance.
 
-Currently, it's available as an experimental module [`k6/experimental/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/websockets). It's also likely that it will become part of the core of k6 in the future.
+We recommend using `k6/websockets` for new tests. The `k6/experimental/websockets` module has been deprecated.
 
 {{< /admonition >}}
 

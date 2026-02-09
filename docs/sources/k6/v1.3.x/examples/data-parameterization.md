@@ -241,7 +241,7 @@ export const options = {
 };
 
 export default function () {
-  console.log(`Users name: ${users[scenario.iterationsInTest % vus].username}`);
+  console.log(`Users name: ${users[scenario.iterationInTest % vus].username}`);
   sleep(1);
 }
 ```

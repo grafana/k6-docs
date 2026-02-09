@@ -31,12 +31,12 @@ Grafana Cloud k6 is a performance testing application that's part of Grafana Clo
 
 Grafana Cloud k6 makes it easier to visualize and compare test results by providing you with built-in dashboards, while also making it easier to share and collaborate on test data with other teams in your organization.
 
-To run a cloud test from the CLI, you'll need an [API token](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/) for authenticating the k6 CLI with the Grafana Cloud k6 application.
+To run a cloud test from the CLI, you'll need an [API token](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/) for authenticating the k6 CLI with the Grafana Cloud k6 application. You'll also need to provide your stack info, either as a full URL (e.g. https://my-team.grafana.net) or just a slug (e.g. my-team).
 
 After you retrieve an API token, you can authenticate with the CLI by running the following command:
 
 ```bash
-k6 cloud login --token <API_TOKEN>
+k6 cloud login --token <API_TOKEN> --stack <STACK_SLUG>
 ```
 
 With the CLI authentication configured, you can run cloud tests by using the `k6 cloud` command:
