@@ -5,9 +5,9 @@ title: Run browser tests in Kubernetes
 
 # Run browser tests in Kubernetes
 
-This guide will help you get setup with k6 browser testing using the official `grafana/k6:latest-with-browser` image. We first explain how to make a simple setup for browser test, and then introduce requirements and how to integrate it with k6 Operator.
+Running browser tests in Kubernetes provides several benefits especially in locked down environments. Some reasons you might want to run browser tests in Kubernetes include staying consistent with other testing tools and infrastructure components in your Kubernetes environment, and the ability to run tests within your private network for security and privacy reasons.
 
-If your applications already run on Kubernetes, running browser tests in the same cluster as your application provides a consistent infrastructure approach, and run tests within your private network for security and privacy.
+This guide will help you get setup with k6 browser testing using the official `grafana/k6:latest-with-browser` image. We first explain how to make a simple setup for browser test, and then introduce requirements and how to integrate it with k6 Operator.
 
 ## Before you begin
 
