@@ -165,7 +165,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | Frame | [fill](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/fill/) | 🟩 | - |
 | Frame | [focus](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/focus/) | 🟩 | - |
 | Frame | [frameElement](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/frameelement/) | 🟩 | - |
-| Frame | frameLocator | 🟥 | [locator.contentFrame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/contentframe/) |
+| Frame | [frameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/framelocator) | 🟩 | - |
 | Frame | [getAttribute](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getattribute/) | 🟩 | - |
 | Frame | [getByAltText](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbyalttext/) | 🟩 | - |
 | Frame | [getByLabel](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/getbylabel/) | 🟩 | - |
@@ -208,7 +208,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | Frame | [waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/waitfortimeout/) | 🟩 | - |
 | Frame | [waitForURL](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/frame/waitforurl/) | 🟩 | - |
 | FrameLocator | first | 🟥 | None |
-| FrameLocator | frameLocator | 🟥 | [locator.contentFrame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/contentframe/) |
+| FrameLocator | [frameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/framelocator) | 🟩 | - |
 | FrameLocator | [getByAltText](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyalttext/) | 🟩 | - |
 | FrameLocator | [getByLabel](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbylabel/) | 🟩 | - |
 | FrameLocator | [getByPlaceholder](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/framelocator/getbyplaceholder/) | 🟩 | - |
@@ -256,7 +256,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | Locator | [filter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/filter/) | 🟩 | - |
 | Locator | [first](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/first/) | 🟩 | - |
 | Locator | [focus](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/focus/) | 🟩 | - |
-| Locator | frameLocator | 🟥 | [locator.contentFrame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/contentframe/) |
+| Locator | [frameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/framelocator) | 🟩 | - |
 | Locator | [getAttribute](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getattribute/) | 🟩 | - |
 | Locator | [getByAltText](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getbyalttext/) | 🟩 | - |
 | Locator | [getByLabel](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/getbylabel/) | 🟩 | - |
@@ -327,7 +327,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | Page | [fill](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/fill/) | 🟩 | - |
 | Page | [focus](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/focus/) | 🟩 | - |
 | Page | frame | 🟥 | None |
-| Page | frameLocator | 🟥 | [locator.contentFrame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/contentframe/) |
+| Page | [frameLocator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/framelocator) | 🟩 | - |
 | Page | [frames](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/frames/) | 🟩 | - |
 | Page | [getAttribute](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getattribute/) | 🟩 | - |
 | Page | [getByAltText](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/getbyalttext/) | 🟩 | - |
