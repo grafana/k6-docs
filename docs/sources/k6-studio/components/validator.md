@@ -8,7 +8,7 @@ weight: 300
 
 # Validator
 
-The Validator can help you debug test scripts. You can use it to run one iteration of your test, and visualize e.g. requests, logs and browser interactions. It supports both HTTP tests and browser tests, and can run any k6 test scripts, including scripts created outside of k6 Studio.
+The Validator can help you debug test scripts. You can use it to run one iteration of your test and visualize, for example, requests, logs, and browser interactions. It supports both HTTP tests and browser tests, and can run any k6 test scripts, including scripts created outside of k6 Studio.
 
 > _TODO: Update image to a more recent version_
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-panels-3.png" alt="k6 Studio Validator window, showing a test script that has been executed, with a list of requests and their status code, as well as the request and response panels on the right, and the script preview" >}}
@@ -22,15 +22,15 @@ The content of the Validator window depends on the type of test script. The basi
    - Click the menu icon to:
      - **Open external script**: Open a k6 test script from your computer. After opening it, click **Validate script** to run one iteration of the test.
      - **Delete**: Deletes the selected test script.
-3. **Main view**: Below the test script name is the main view of the Validator. From here you can inspect the opened script and any data generated during a debug session.
-4. **Bottom view**: This panel contains additional information about the test results, such as the logs emitted during its execution.
+3. **Main view**: Below the test script name is the main view of the Validator. From here, you can inspect the opened script and any data generated during a debug session.
+4. **Debug panel**: This panel contains additional information about the test results, such as the logs emitted during its execution, or console messages for browser tests.
 
 ## Debug a test
 
-To debug a script
+To debug a script:
 
   1. Open a script.
-  2. Click **Debug script** on the top-right.
+  1. Click **Debug script** on the top-right.
 
 After you click **Debug script**, k6 Studio runs one iteration of the test script and shows you the results of the test as the script is executed.
 
@@ -49,7 +49,7 @@ During a debug session, and once it's completed, you can inspect the test result
 > _TODO: Insert numbered image of HTTP debugger._
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-http-test-panels.png" alt="k6 Studio Validator window, showing the results of an HTTP test that has been executed, with a list of requests and their status code, as well as the request and response panels on the right" >}}
 
-1. **Tabs**: From here you can switch between viewing the executed script and the list of requests made during execution.
+1. **Tabs**: From here, you can switch between viewing the executed script and the list of requests made during execution.
 2. **Validator options**: Below the tabs, you can see:
     - **Requests**: The total number of requests executed from the test script run.
     - **Search**: A search box that lets you search the list of requests by URL, method (such as GET or POST), and status code. You can also use the toggle to search across all request data.
@@ -62,7 +62,7 @@ During a debug session, and once it's completed, you can inspect the test result
 > _TODO: Insert numbered image of browser debugger._
 {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-validator-browser-test-panels.png" alt="k6 Studio Validator window, showing the results of a browser test that has been executed, with the script and a list of browser interactions on the right, as well as console output and http requests in the bottom" >}}
 
-1. **Script** From here you can inspect the executed script.
+1. **Script** From here, you can inspect the executed script.
 2. **Browser actions**: This panel shows the interactions made by the script and their outcomes. If an interaction failed, the reason for the failure is shown.
 3. **Console**: Any logs emitted either by the browser or the [test script](https://grafana.com/docs/grafana-cloud/testing/k6/analyze-results/inspect-test-results/inspect-logs/).
 4. **Requests**: A list of requests made _by the browser_. This is simlar to the request list in an [HTTP test](#http-test).
@@ -72,7 +72,7 @@ During a debug session, and once it's completed, you can inspect the test result
 You can use the Validator to debug scripts that are created outside k6 Studio as well:
 
 1. From the k6 Studio homepage, click **Validate script**.
-2. Click **Open script**.
+1. Click **Open script**.
 
 Alternatively, from the Validator screen you can:
 
