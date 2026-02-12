@@ -1,12 +1,12 @@
 ---
 title: 'OpenTelemetry'
-description: 'Use the OpenTelemetry experimental output to send test results in OTEL metrics format.'
+description: 'Use the OpenTelemetry output to send test results in OTEL metrics format.'
 weight: 00
 ---
 
 # OpenTelemetry
 
-Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format](https://opentelemetry.io/docs/specs/otel/metrics/) to an OTEL metrics collector or a metrics backend that supports the OTEL metrics format by using the experimental OpenTelemetry output `--out experimental-opentelemetry`.
+Grafana k6 can push test run metrics in the [OpenTelemetry (OTEL) metrics format](https://opentelemetry.io/docs/specs/otel/metrics/) to an OTEL metrics collector or a metrics backend that supports the OTEL metrics format by using the OpenTelemetry output `--out opentelemetry`.
 
 For any feedback, bugs or suggestions feel free to [open an issue](https://github.com/grafana/k6/issues) directly in the k6 repository. Contributions are also welcome!
 
@@ -27,12 +27,12 @@ Prior to k6 v1.4.0, Rate metrics were exported as two separate counters: `metric
 
 ## Run the k6 test
 
-You can use the `--out experimental-opentelemetry` option when running your tests to use this extension:
+You can use the `--out opentelemetry` option when running your tests to use this extension:
 
 {{< code >}}
 
 ```bash
-K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o experimental-opentelemetry examples/script.js
+K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o opentelemetry examples/script.js
 ```
 
 {{< /code >}}
