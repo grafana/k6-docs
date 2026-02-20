@@ -48,6 +48,8 @@ Refer to the [k6 Operator samples folder](https://github.com/grafana/k6-operator
 
 You can find a complete list of Helm options in the [k6 Operator charts folder](https://github.com/grafana/k6-operator/blob/main/charts/k6-operator/README.md).
 
+The Helm chart configures only the k6-operator application (the controller-manager and related deployment). It does not configure PrivateLoadZone (PLZ) or TestRun resources—those are configured via their CRD definitions. For details, see [Configure TestRun CRD](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/configure-testrun-crd/) and [PLZ configuration options](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone/#plz-configuration-options).
+
 ### Deploy with Makefile
 
 This method installs the k6 Operator from the GitHub repository, using the latest files in a branch. By default, it uses the `main` branch, which is not guaranteed to be stable at all times. This method is helpful for:
