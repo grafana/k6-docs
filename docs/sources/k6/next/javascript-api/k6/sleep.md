@@ -14,13 +14,13 @@ Suspend VU execution for the specified duration.
 
 {{< admonition type="warning" >}}
 
-Do not use `sleep` with async code such as functions that return promises or event handlers. `sleep` blocks VU execution and will prevent promises from resolving and event handlers from running. This is due to the ECMAScript specification, which requires the execution stack to be empty before the event loop can process events and run callbacks.
+Don't use `sleep` with `async` code, such as functions that return promises or event handlers. `sleep` blocks VU execution and prevents promises from resolving and event handlers from running. This is due to the ECMAScript specification, which requires the execution stack to be empty before the event loop can process events and run callbacks.
 
 For async code, use [`setTimeout`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-timers) and related timer functions instead. They schedule callbacks without blocking the event loop.
 
 {{< /admonition >}}
 
-### Examples
+## Examples
 
 Fetching two different pages with a 0-30 second random sleep in between:
 
