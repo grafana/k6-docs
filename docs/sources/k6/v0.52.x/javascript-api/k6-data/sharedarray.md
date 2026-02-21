@@ -13,6 +13,8 @@ When a script requests an element, k6 gives a _copy_ of that element.
 You must construct a `SharedArray` in the [`init` context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 Its constructor takes a name for the `SharedArray` and a function that needs to return an array object itself:
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { SharedArray } from 'k6/data';
 
@@ -45,9 +47,211 @@ This limitation will eventually be removed, but for now, the implication is that
 
 {{< /admonition >}}
 
+## Common pitfalls
+
+`SharedArray` has a special underlying implementation that provides memory efficiency benefits.
+However, certain operations can negate these benefits by converting the `SharedArray` into a regular array or causing unnecessary marshalling.
+
+### Avoid array methods that create new arrays
+
+Methods like `.filter()` and `.map()` create regular arrays when called on a `SharedArray`, which removes the memory efficiency benefits.
+Instead, iterate over the `SharedArray` and process elements individually.
+
+However, you can use `.filter()` or `.map()` inside the `SharedArray` constructor function, since that operation only happens once during initialization.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // This creates a new regular array, losing SharedArray benefits
+  const filtered = data.filter(user => user.active);
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Using filter/map inside the constructor is fine since it only runs once
+const activeUsers = new SharedArray('active users', function () {
+  const allUsers = JSON.parse(open('./users.json'));
+  return allUsers.filter(user => user.active);
+});
+
+export default function () {
+  const user = activeUsers[Math.floor(Math.random() * activeUsers.length)];
+  // ...
+}
+```
+
+### Avoid marshalling the entire SharedArray
+
+When you marshal or serialize a `SharedArray` (for example, with `JSON.stringify()`), it converts to a regular array representation, which eliminates memory efficiency benefits.
+Only marshal individual elements when needed.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Marshalling the entire SharedArray defeats its purpose
+  const serialized = JSON.stringify(data);
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Marshal only the element you need
+  const user = data[Math.floor(Math.random() * data.length)];
+  const serialized = JSON.stringify(user);
+  // ...
+}
+```
+
+### Avoid storing a single large object
+
+`SharedArray` is designed for arrays of elements, not for storing a single large object.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Wrapping a single object in an array just to use SharedArray
+const data = new SharedArray('config', function () {
+  return [JSON.parse(open('./large-config.json'))];
+});
+
+export default function () {
+  const config = data[0];
+  // ...
+}
+```
+
+### Avoid returning SharedArray from setup()
+
+When you return a `SharedArray` from the `setup()` function, k6 marshals it, which removes its memory efficiency benefits.
+Keep `SharedArray` instances in the init context instead.
+
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+export function setup() {
+  // Returning SharedArray from setup causes marshalling
+  const data = new SharedArray('users', function () {
+    return JSON.parse(open('./users.json'));
+  });
+  return { users: data };
+}
+
+export default function (data) {
+  // data.users is now a regular array, not a SharedArray
+  const user = data.users[0];
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+// Keep SharedArray in init context
+const users = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  // Access SharedArray directly
+  const user = users[Math.floor(Math.random() * users.length)];
+  // ...
+}
+```
+
+### Opening files outside SharedArray just to return them as one
+
+SharedArray works as it only opens and process the data ones and keeps in shared memory and then returns elements to separate VUs as requested. If you open the file in init context outside of the SharedArray callback, each VU will do that and have a copy of the original data.
+**Don't:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const usersRaw = open('./users.json');
+const usersJSON = JSON.parse(usersRaw);
+
+// This doesn't just magically remove the work that was done before or reduces the memory used
+const usersShared = new SharedArray('users', function () { return usersJSON })
+
+export default function () {
+  // data.users is now a regular array, not a SharedArray
+  const user = usersShared[0];
+  // ...
+}
+```
+
+**Do:**
+
+<!-- md-k6:skip -->
+
+```javascript
+import { SharedArray } from 'k6/data';
+
+const users = new SharedArray('users', function () {
+  // Here you can do additional work including only getting certain elements or filtering.
+  return JSON.parse(open('./users.json'));
+});
+
+export default function () {
+  const user = users[Math.floor(Math.random() * users.length)];
+  // ...
+}
+```
+
 ## Example
 
 {{< code >}}
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -79,6 +283,8 @@ To test this, we ran the following script on version v0.31.0 with 100 VUs.
 
 {{< code >}}
 
+<!-- md-k6:env.N=3 -->
+
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -102,7 +308,7 @@ if (__ENV.SHARED === 'true') {
 
 export default function () {
   const iterationData = data[Math.floor(Math.random() * data.length)];
-  const res = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(iterationData), {
+  const res = http.post('https://quickpizza.grafana.com/api/post', JSON.stringify(iterationData), {
     headers: { 'Content-type': 'application/json' },
   });
   check(res, { 'status 200': (r) => r.status === 200 });
