@@ -54,10 +54,8 @@ However, certain operations can negate these benefits by converting the `SharedA
 
 ### Avoid array methods that create new arrays
 
-Methods like `.filter()` and `.map()` create regular arrays when called on a `SharedArray`, which removes the memory efficiency benefits.
-Instead, iterate over the `SharedArray` and process elements individually.
-
-However, you can use `.filter()` or `.map()` inside the `SharedArray` constructor function, since that operation only happens once during initialization.
+Methods like `.filter()` and `.map()` create regular arrays when called on a `SharedArray`, which removes the memory-efficiency benefits.
+Instead, use `.filter()` or `.map()` inside the `SharedArray` constructor function, since that operation only happens once during initialization, or iterate over elements individually.
 
 **Don't:**
 
@@ -172,17 +170,18 @@ Keep `SharedArray` instances in the init context instead.
 ```javascript
 import { SharedArray } from 'k6/data';
 
+const data = new SharedArray('users', function () {
+  return JSON.parse(open('./users.json'));
+});
+
 export function setup() {
-  // Returning SharedArray from setup causes marshalling
-  const data = new SharedArray('users', function () {
-    return JSON.parse(open('./users.json'));
-  });
+  // Returning SharedArray from setup causes it to be marshalled
   return { users: data };
 }
 
-export default function (data) {
-  // data.users is now a regular array, not a SharedArray
-  const user = data.users[0];
+export default function (setupData) {
+  // setupData.users is now a regular array, not a SharedArray
+  const user = setupData.users[0];
   // ...
 }
 ```
@@ -206,9 +205,10 @@ export default function () {
 }
 ```
 
-### Opening files outside SharedArray just to return them as one
+### Avoid opening files outside SharedArray just to return them as one
 
-SharedArray works as it only opens and process the data ones and keeps in shared memory and then returns elements to separate VUs as requested. If you open the file in init context outside of the SharedArray callback, each VU will do that and have a copy of the original data.
+`SharedArray` processes and stores data once in shared memory, then returns elements to VUs as requested. If you open the file in the `init` context outside the SharedArray callback, each VU opens the file independently and holds its own copy of the data.
+
 **Don't:**
 
 <!-- md-k6:skip -->
@@ -219,11 +219,11 @@ import { SharedArray } from 'k6/data';
 const usersRaw = open('./users.json');
 const usersJSON = JSON.parse(usersRaw);
 
-// This doesn't just magically remove the work that was done before or reduces the memory used
-const usersShared = new SharedArray('users', function () { return usersJSON })
+// This doesn't remove the work that was done before or reduce the memory used
+const usersShared = new SharedArray('users', function () { return usersJSON; });
 
 export default function () {
-  // data.users is now a regular array, not a SharedArray
+  // usersShared is now a regular array, not a SharedArray
   const user = usersShared[0];
   // ...
 }
