@@ -40,7 +40,7 @@ Without automation, the lack of a shared framework often leads to isolated and s
 
 Automation often refers to running tests with pass/fail conditions as part of the release process within CI/CD pipelines. However, not all performance tests are suited for CI/CD workflows, nor are they solely about providing a Pass/Fail (green/red) status and acting as a release gatekeeper.
 
-[Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests in a frequent basis:
+[Automation into CI/CD pipelines](/docs/k6/latest/misc/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests in a frequent basis:
 
 - Cron and cron job runners.
 - Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/schedule-a-test/).
