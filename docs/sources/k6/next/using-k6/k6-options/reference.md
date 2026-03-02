@@ -1113,6 +1113,14 @@ export const options = {
 
 {{< /code >}}
 
+{{< admonition type="note" >}}
+
+In Grafana Cloud k6, the maximum allowed value for `setupTimeout` is **10 minutes** (`"600s"` or `"10m"`).
+This limit is enforced by the platform and can't be increased, regardless of subscription tier or organization settings.
+If `setup()` doesn't complete within this time, the test fails before any VUs start.
+
+{{< /admonition >}}
+
 ## Show logs
 
 A boolean specifying whether the cloud logs are printed out to the terminal. Available in `k6 cloud run` command.
