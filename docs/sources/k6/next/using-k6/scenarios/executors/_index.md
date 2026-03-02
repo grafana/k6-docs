@@ -12,6 +12,8 @@ The executor that you choose depends on the goals of your test and the type of t
 Define the executor in `executor` key of the scenario object.
 The value is the executor name separated by hyphens.
 
+<!-- md-k6:skip -->
+
 ```javascript
 export const options = {
   scenarios: {
