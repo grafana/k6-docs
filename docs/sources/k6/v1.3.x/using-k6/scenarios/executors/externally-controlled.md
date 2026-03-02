@@ -6,7 +6,7 @@ weight: 07
 
 # Externally controlled
 
-Control and scale execution at runtime via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) or
+Control and scale execution at runtime via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
 Previously, the `pause`, `resume`, and `scale` CLI commands were used to globally control
