@@ -13,10 +13,10 @@ Maximizing the load a machine generates is a multi-faceted process, which includ
 - Changing operating system settings to increase the default network and user limits.
 - Monitoring the load-generator machine to ensure adequate resource usage.
 - Designing efficient tests, with attention to scripting, k6 options, and file uploads.
-- Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT).
+- Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#system-under-test) (SUT).
 
 A single k6 process efficiently uses all CPU cores on a load generator machine. Depending on the available resources, and with the guidelines described in this document, a single instance of k6 can run 30,000-40,000 simultaneous users (VUs).
-In some cases, this number of VUs can generate up to 300,000 HTTP [requests per second](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#requests-per-second) (RPS).
+In some cases, this number of VUs can generate up to 300,000 HTTP [requests per second](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#requests-per-second) (RPS).
 
 Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 is likely sufficient for your needs.
 Read on to learn about how to get the most load from a single machine.
@@ -109,7 +109,7 @@ As the test runs, these are good indicators to monitor:
 ## Error handling should be resilient
 
 When running [large stress tests](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/test-types/stress-testing), your script shouldn't assume anything about the HTTP response.
-An oversight of some scripts is to test with only the [happy path](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#happy-path 'The default behavior that happens when the system returns no errors') in mind.
+An oversight of some scripts is to test with only the [happy path](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#happy-path 'The default behavior that happens when the system returns no errors') in mind.
 
 For example, in k6 scripts, we often see something like this _happy path_ check:
 
@@ -351,7 +351,7 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 However, at this moment, the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
-- k6 does not provide the functionality of a "primary" instance to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) and [`--paused`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
+- k6 does not provide the functionality of a "primary" instance to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api) and [`--paused`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
 - Each k6 instance evaluates [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [`--no-thresholds`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 

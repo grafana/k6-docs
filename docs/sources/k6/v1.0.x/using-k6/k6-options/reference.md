@@ -90,7 +90,7 @@ and `k6 cloud run ...`, which you can use to override options specified in the c
 
 Address of the API server. When executing scripts with `k6 run` an HTTP server with a REST API is spun up,
 which can be used to control some of the parameters of the test execution.
-By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api).
+By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api).
 
 | Env | CLI               | Code / Config file | Default          |
 | --- | ----------------- | ------------------ | ---------------- |

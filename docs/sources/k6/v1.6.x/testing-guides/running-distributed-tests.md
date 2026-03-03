@@ -10,7 +10,7 @@ It has already been established that k6 can [run large load tests](https://grafa
 
 Several reasons why you may wish to run a distributed test include:
 
-- Your [system under test](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#system-under-test) (SUT) should be accessed from multiple IP addresses.
+- Your [system under test](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#system-under-test) (SUT) should be accessed from multiple IP addresses.
 - A fully optimized node cannot produce the load required by your extremely large test.
 - Kubernetes is already your preferred operations environment.
 
@@ -18,7 +18,7 @@ For scenarios such as these, we've created the [k6-operator](https://github.com/
 
 ## Introducing k6-operator
 
-[k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#operator-pattern) in Kubernetes, defining [custom resources](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#custom-resource) in Kubernetes.
+[k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#operator-pattern) in Kubernetes, defining [custom resources](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#custom-resource) in Kubernetes.
 The intent is to automate tasks that a _human operator_ would normally do; tasks like provisioning new application components, changing configurations, or resolving run-time issues.
 
 The k6-operator defines the custom `TestRun` resource type and listens for changes to, or creation of, `TestRun` objects.
@@ -193,7 +193,7 @@ To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` reso
 During [installation](#1-install-the-operator), the `TestRun` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
 The data we provide in the custom resource `TestRun` object should contain all the information necessary for the k6-operator to start a distributed load test.
 
-Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#parallelism) to utilize.
+Specifically, the main elements defined within the `TestRun` object relate to the name and location of the test script to run, and the amount of [parallelism](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#parallelism) to utilize.
 
 {{< admonition type="note" >}}
 
@@ -206,7 +206,7 @@ The following examples will show some common variations for the custom resource:
 
 ### Script in a ConfigMap
 
-When the test script to be executed is contained within a `ConfigMap` resource, we specify the script details within the `configMap` block of [YAML](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#yaml).
+When the test script to be executed is contained within a `ConfigMap` resource, we specify the script details within the `configMap` block of [YAML](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#yaml).
 The `name` is the name of the ConfigMap and the `file` is the key-value for the entry.
 
 Let's create the file `run-k6-from-configmap.yaml` with the following content:
@@ -233,7 +233,7 @@ We created the ConfigMap named `my-test`.
 The test script content was added to the map using the filename as the key-value, therefore the `file` value is `test.js`.
 
 The amount of `parallelism` is up to you; how many pods do you want to split the test amongst?
-The operator will split the workload between the pods using [execution segments](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#execution-segment).
+The operator will split the workload between the pods using [execution segments](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#execution-segment).
 
 {{< admonition type="caution" >}}
 
@@ -278,7 +278,7 @@ Not everything should be included directly in your scripts.
 Well written scripts will allow for variability to support multiple scenarios and to avoid hard-coding values that tend to change.
 These could be anything from passwords to target urls, in addition to system options.
 
-We can pass this data as [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#environment-variables) for use with each pod executing your script.
+We can pass this data as [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#environment-variables) for use with each pod executing your script.
 This can be defined explicitly within the `TestRun` resource, or by referencing a `ConfigMap` or `Secret`.
 
 {{< code >}}
@@ -346,7 +346,7 @@ spec:
 
 {{< /code >}}
 
-With the above arguments, we're adding a [test-wide custom tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#json).
+With the above arguments, we're adding a [test-wide custom tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#json).
 
 {{< admonition type="note" >}}
 

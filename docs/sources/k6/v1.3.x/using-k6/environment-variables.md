@@ -7,7 +7,7 @@ weight: 1300
 # Environment variables
 
 Often, scripts need only minor tweaks to be reusable in different contexts.
-Rather than creating several separate scripts for these different contexts or environments, you can use [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#environment-variables) to make parts of your script tweakable.
+Rather than creating several separate scripts for these different contexts or environments, you can use [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#environment-variables) to make parts of your script tweakable.
 
 You can use environment variables for two main purposes:
 
