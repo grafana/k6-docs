@@ -1115,7 +1115,7 @@ export const options = {
 
 {{< admonition type="note" >}}
 
-In Grafana Cloud k6, the maximum allowed value for `setupTimeout` is **10 minutes** (`"600s"` or `"10m"`). If `setup()` doesn't complete within this time, the test fails before any VUs start.
+In Grafana Cloud k6, the maximum allowed value for `setupTimeout` is _10 minutes_ (`"600s"` or `"10m"`). If `setup()` doesn't complete within this time, the test fails before any VUs start.
 
 {{< /admonition >}}
 
