@@ -1,6 +1,5 @@
 ---
 title: 'cookieJar()'
-slug: 'cookiejar-method'
 description: 'Get active HTTP Cookie jar.'
 weight: 10
 ---
