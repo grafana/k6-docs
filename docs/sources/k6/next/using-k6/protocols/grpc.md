@@ -85,79 +85,90 @@ export default () => {
 
 {{< /code >}}
 
+### Streaming requires async functions
+
+gRPC streaming relies on event handlers (`stream.on`) to process messages.
+In JavaScript, event handlers can only run when the call stack is empty.
+If your default function is synchronous, event handlers can only fire after it returns.
+
+To let event handlers run during test execution, declare the default function as `async` and use a `Promise` to wait for the stream to complete.
+All of the streaming examples on this page follow this pattern.
+
 ### Server gRPC streaming
 
 In server streaming mode, the client sends a single request to the server, and the server replies with multiple responses.
 
-The example below demonstrates server streaming.
+The following example demonstrates server streaming:
 
 {{< code >}}
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
-import { sleep } from 'k6';
 
 const COORD_FACTOR = 1e7;
 
 const client = new Client();
 
-export default () => {
+export default async function () {
   if (__ITER == 0) {
     client.connect('127.0.0.1:10000', { plaintext: true, reflect: true });
   }
 
   const stream = new Stream(client, 'main.FeatureExplorer/ListFeatures', null);
 
-  stream.on('data', function (feature) {
-    console.log(
-      `Found feature called "${feature.name}" at ${feature.location.latitude / COORD_FACTOR}, ${
-        feature.location.longitude / COORD_FACTOR
-      }`
-    );
-  });
+  await new Promise((resolve, reject) => {
+    stream.on('data', function (feature) {
+      console.log(
+        `Found feature called "${feature.name}" at ${feature.location.latitude / COORD_FACTOR}, ${
+          feature.location.longitude / COORD_FACTOR
+        }`
+      );
+    });
 
-  stream.on('end', function () {
-    // The server has finished sending
-    client.close();
-    console.log('All done');
-  });
+    stream.on('error', function (e) {
+      reject(e);
+    });
 
-  // send a message to the server
-  stream.write({
-    lo: {
-      latitude: 400000000,
-      longitude: -750000000,
-    },
-    hi: {
-      latitude: 420000000,
-      longitude: -730000000,
-    },
-  });
+    stream.on('end', function () {
+      client.close();
+      console.log('All done');
+      resolve();
+    });
 
-  sleep(0.5);
-};
+    stream.write({
+      lo: {
+        latitude: 400000000,
+        longitude: -750000000,
+      },
+      hi: {
+        latitude: 420000000,
+        longitude: -730000000,
+      },
+    });
+  });
+}
 ```
 
 {{< /code >}}
 
-In the example script, k6 connects to a gRPC server, creates a stream, and sends a message to the server with latitude and longitude coordinates. When the server sends data back, it logs the feature name and its location. When the server finishes sending data, it closes the client connection and logs a completion message.
+In this example, k6 connects to a gRPC server, creates a stream, and sends a message with latitude and longitude coordinates.
+The `async` default function wraps the stream logic in a `Promise`, which lets event handlers fire while the function awaits.
+When the server finishes sending data, the `end` handler closes the client and resolves the promise.
 
 ### Client gRPC streaming
 
 The client streaming mode is the opposite of the server streaming mode. The client sends multiple requests to the server, and the server replies with a single response.
 
-The example below demonstrates client streaming.
+The following example demonstrates client streaming:
 
 {{< code >}}
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
-import { sleep } from 'k6';
 
 const COORD_FACTOR = 1e7;
 const client = new Client();
 
-// a sample points collection
 const points = [
   {
     location: { latitude: 407838351, longitude: -746143763 },
@@ -181,52 +192,51 @@ const points = [
   },
 ];
 
-export default () => {
+export default async function () {
   if (__ITER == 0) {
     client.connect('127.0.0.1:10000', { plaintext: true, reflect: true });
   }
 
   const stream = new Stream(client, 'main.RouteGuide/RecordRoute');
 
-  stream.on('data', (stats) => {
-    console.log(`Finished trip with ${stats.pointCount} points`);
-    console.log(`Passed ${stats.featureCount} features`);
-    console.log(`Travelled ${stats.distance} meters`);
-    console.log(`It took ${stats.elapsedTime} seconds`);
+  await new Promise((resolve, reject) => {
+    stream.on('data', (stats) => {
+      console.log(`Finished trip with ${stats.pointCount} points`);
+      console.log(`Passed ${stats.featureCount} features`);
+      console.log(`Travelled ${stats.distance} meters`);
+      console.log(`It took ${stats.elapsedTime} seconds`);
+    });
+
+    stream.on('error', (e) => {
+      reject(e);
+    });
+
+    stream.on('end', () => {
+      client.close();
+      console.log('All done');
+      resolve();
+    });
+
+    for (let i = 0; i < 3; i++) {
+      const point = points[Math.floor(Math.random() * points.length)];
+      console.log(
+        `Visiting point ${point.name} ${point.location.latitude / COORD_FACTOR}, ${
+          point.location.longitude / COORD_FACTOR
+        }`
+      );
+      stream.write(point.location);
+    }
+
+    stream.end();
   });
-
-  stream.on('end', () => {
-    client.close();
-    console.log('All done');
-  });
-
-  // send 3 random points
-  for (let i = 0; i < 3; i++) {
-    const point = points[Math.floor(Math.random() * points.length)];
-    pointSender(stream, point);
-  }
-
-  // close the client stream
-  stream.end();
-};
-
-const pointSender = (stream, point) => {
-  console.log(
-    `Visiting point ${point.name} ${point.location.latitude / COORD_FACTOR}, ${
-      point.location.longitude / COORD_FACTOR
-    }`
-  );
-
-  // send the location to the server
-  stream.write(point.location);
-
-  sleep(0.5);
-};
+}
 ```
 
 {{< /code >}}
 
-In the example script, k6 establishes a connection to a gRPC server, creates a stream, and sends three random points. The server responds with statistics about the trip, which are logged to the console. The code also handles the end of the stream, closing the client and logging a completion message.
+In this example, k6 connects to a gRPC server, creates a stream, and sends three random points.
+The code wraps the stream logic in a `Promise`, the same pattern as the server streaming example.
+The server responds with trip statistics, and the `end` handler closes the client and resolves the promise.
 
 ### Bidirectional gRPC streaming
 
