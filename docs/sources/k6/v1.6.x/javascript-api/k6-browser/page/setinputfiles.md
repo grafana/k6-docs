@@ -129,7 +129,7 @@ export default async function () {
     const buffer = await readAll(file);
 
     // The file is set to the input element with the id "upload".
-    await page.setInputFiles({
+    await page.setInputFiles('input[id="upload"]', {
       name: 'file.txt',
       mimeType: 'text/plain',
       buffer: encoding.b64encode(buffer),
