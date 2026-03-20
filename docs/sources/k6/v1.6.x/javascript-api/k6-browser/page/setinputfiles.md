@@ -68,7 +68,7 @@ export default async function () {
     // The file is set to the input element with the id "upload".
     await page.setInputFiles('input[id="upload"]', {
       name: 'file.txt',
-      mimetype: 'text/plain',
+      mimeType: 'text/plain',
       buffer: encoding.b64encode('hello world'),
     });
   } finally {
@@ -131,7 +131,7 @@ export default async function () {
     // The file is set to the input element with the id "upload".
     await page.setInputFiles({
       name: 'file.txt',
-      mimetype: 'text/plain',
+      mimeType: 'text/plain',
       buffer: encoding.b64encode(buffer),
     });
   } finally {
