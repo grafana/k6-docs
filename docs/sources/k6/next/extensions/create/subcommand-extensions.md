@@ -15,7 +15,7 @@ Subcommand extensions are useful for:
 - Integration tools that interact with k6's runtime state
 - Helper commands specific to your testing infrastructure
 
-Like other k6 extensions, subcommand extensions are built as Go modules that implement specific APIs and are compiled into custom k6 binaries using [xk6](https://github.com/grafana/xk6).
+You can use registered subcommand extensions directly without building a custom binary, or build a custom k6 binary for extensions you're developing or that aren't available in the registry.
 
 ## Before you begin
 
@@ -76,17 +76,43 @@ The `GlobalState` provided to your command is read-only. Do not modify it, as th
 
 {{< /admonition >}}
 
-## Build k6 with the extension
+## Use automatic extension resolution
 
-Once you've written your extension, build a custom k6 binary with it by using `xk6`:
+If your subcommand extension is registered in the [k6 extension catalog](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore/), you can use it directly without building a custom binary. k6 automatically detects, builds, and loads the extension when you invoke it:
+
+```bash
+k6 x mytool
+```
+
+This works for any registered subcommand extension. k6 provisions the required extension transparently and executes your command.
+
+{{< admonition type="note" >}}
+
+To use community extensions you must have `K6_ENABLE_COMMUNITY_EXTENSIONS` set to `true`.
+
+```sh
+K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 x mytool
+```
+
+{{< /admonition >}}
+
+### Disable automatic extension resolution
+
+You can disable this feature by setting the environment variable `K6_AUTO_EXTENSION_RESOLUTION` to `false`:
+
+```bash
+K6_AUTO_EXTENSION_RESOLUTION=false k6 x mytool
+```
+
+## Build a custom k6 binary
+
+To use subcommand extensions you're developing or that aren't available in the registry, build a custom k6 binary with [xk6](https://github.com/grafana/xk6):
 
 ```bash
 xk6 build --with xk6-subcommand-mytool=.
 ```
 
 This creates a `k6` binary in your current directory that includes your extension.
-
-## Use the extension
 
 After building, your subcommand is available under the `k6 x` namespace:
 
