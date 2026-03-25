@@ -90,7 +90,7 @@ This works for any registered subcommand extension. k6 provisions the required e
 
 To use community extensions you must have `K6_ENABLE_COMMUNITY_EXTENSIONS` set to `true`.
 
-```sh
+```bash
 K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 x mytool
 ```
 
