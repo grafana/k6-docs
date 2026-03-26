@@ -33,7 +33,7 @@ There are two ways to use extensions when running a k6 test script.
 
 ### Automatic extension resolution
 
-These extensions can be used without any additional configuration. They are automatically resolved and loaded by k6 when you use them:
+You can use these extensions without any additional configuration. k6 automatically resolves and loads them when you use them:
 
 - **JavaScript extensions** are loaded when you [import them in your test script](https://grafana.com/docs/k6/<K6_VERSION>/extensions/run/#use-automatic-extension-resolution).
 - **Subcommand extensions** are loaded when you invoke them using `k6 x <subcommand>`. Refer to [subcommand extensions](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/subcommand-extensions/#use-automatic-extension-resolution) for details.
