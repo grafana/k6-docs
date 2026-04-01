@@ -12,7 +12,7 @@ on:
 jobs:
   deploy-pr-preview:
     if: "!github.event.pull_request.head.repo.fork"
-    uses: grafana/writers-toolkit/.github/workflows/deploy-preview.yml@main
+    uses: grafana/writers-toolkit/.github/workflows/deploy-preview.yml@a302c6391eddf9db21c9a1a15f8b2681e30b6b1d # main
     with:
       branch: ${{ github.head_ref }}
       event_number: ${{ github.event.number }}
