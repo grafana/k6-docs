@@ -101,7 +101,7 @@ The Request and Response panels have tabs where you can view the headers, payloa
 
 To generate a script from a test recording:
 
-- If you still have the test recording open from the last step, click **Create test** on the top-right.
+- If you still have the test recording open from the last step, click **Create test** > **HTTP test** on the top-right.
 - You can also click **+** next to Generator on the left side, and then select your recording on the top-right.
 
 A dialog box shows up that lets you select the hosts to use from the recording for generating the script. Select `quickpizza.grafana.com` and press **Continue**.

@@ -21,7 +21,9 @@ The Recorder window is composed of:
    - **New recording**: Starts a new recording.
    - **Stop recording**: Stops the existing recording.
    - **Discard**: Discard the existing recording and starts a new one.
-   - **Create test**: Creates a test generator from the selected test recording.
+   - **Create test**: Opens a menu with two options:
+     - **HTTP test**: Creates a test generator from the selected test recording.
+     - **Browser test**: Creates a browser test script from the recorded browser events.
 3. **Recorder options**: Below the test recording name, you can see:
    - **Requests**: The total number of requests in the recording
    - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.

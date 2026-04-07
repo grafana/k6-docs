@@ -52,18 +52,14 @@ To create a text assertion:
 
 After you create the assertion, an event is added to the browser events list.
 
-## Export a browser event test script
+## Create a browser test script
 
 Browser events generate a separate test script from the default protocol-level test created by Grafana k6 Studio, as they test different aspects of an application.
 
-To export a browser event test script:
+You can create a browser test script in two ways:
 
-- Open a test recording.
-- Click the **Browser events** tab at the top.
-- Click **Export script** on the top right.
-- In the **Export script** dialog box:
-  - Type in a name for your script.
-  - Click **Export**.
+- From the Recorder, click **Create test** > **Browser test** on the top-right.
+- From the **Browser events** tab, click **Export script** on the top-right, type a name for your script, and click **Export**.
 
 After you save your script, you can view it under the **Scripts** section. Refer to [Using k6 browser](https://grafana.com/docs/k6/latest/using-k6-browser/) for more details on how to customize your browser test script.
 
