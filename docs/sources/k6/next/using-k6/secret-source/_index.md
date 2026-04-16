@@ -16,7 +16,7 @@ Configure secret sources using the `--secret-source` CLI flag. You can configure
 
 ## Built-in secret sources
 
-The following built-in secret sources are available:
+The following built-in secret sources are available for local testing:
 
 - [`cloud`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/cloud): Fetches secrets from Grafana Cloud k6.
 - [`file`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/file): Reads secrets from a `key=value` file.
