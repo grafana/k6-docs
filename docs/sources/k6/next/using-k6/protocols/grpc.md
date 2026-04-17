@@ -4,6 +4,8 @@ description: 'gRPC is a lightweight open-source RPC framework. Starting with k6 
 weight: 03
 ---
 
+<!-- md-k6:skipall -->
+
 # gRPC
 
 ## Overview
