@@ -24,7 +24,7 @@ The following built-in secret sources are available for local testing:
 
 The following built-in secret source is available for `k6 cloud run --local-execution`:
 
-- [`cloud`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/cloud): Fetches secrets from Grafana Cloud k6.
+- [`cloud`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source/cloud): Fetches secrets from [Grafana Cloud k6](https://grafana.com/docs/k6/<K6_VERSION>/grafana-cloud-k6/).
 
 ## Secret source extensions
 
