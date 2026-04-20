@@ -18,7 +18,7 @@ The cloud secret source only works with `k6 cloud run --local-execution --secret
 ## Before you begin
 
 - Authenticate with Grafana Cloud k6 using `k6 cloud login`.
-- Configure the secrets you want to use in [k6 Cloud secrets management](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/manage-secrets/).
+- Configure the secrets you want to use in [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/manage-secrets/).
 
 ## Use the cloud secret source
 
