@@ -1,7 +1,7 @@
 ---
 title: 'Cloud secret source'
 menuTitle: 'Cloud'
-description: 'The cloud secret source lets you access k6 Cloud secrets when running tests locally with k6 cloud run --local-execution'
+description: 'The cloud secret source lets you access Grafana Cloud k6 secrets when running tests locally with k6 cloud run --local-execution'
 weight: 04
 ---
 
