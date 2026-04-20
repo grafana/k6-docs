@@ -7,7 +7,7 @@ weight: 04
 
 # Cloud secret source
 
-When you run tests in Grafana Cloud using `k6 cloud run`, [k6 Cloud secrets management](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/manage-secrets/) is available automatically. The cloud secret source brings that same access to local execution runs with `k6 cloud run --local-execution`, so you can use the same secrets without managing credentials locally.
+When you run tests in Grafana Cloud using `k6 cloud run`, [secrets management](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/manage-secrets/) is available automatically. The cloud secret source brings that same access to local execution runs with `k6 cloud run --local-execution`, so you can use the same secrets without managing credentials locally.
 
 {{< admonition type="note" >}}
 
