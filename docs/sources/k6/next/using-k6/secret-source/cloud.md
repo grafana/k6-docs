@@ -34,4 +34,4 @@ k6 cloud run --local-execution --secret-source=cloud script.js
 
 k6 automatically configures the credentials needed to fetch secrets from Grafana Cloud. No tokens, endpoints, or passwords are required on the command line.
 
-All secrets are automatically redacted from k6 logs.
+k6 automatically redacts all secrets from logs.
