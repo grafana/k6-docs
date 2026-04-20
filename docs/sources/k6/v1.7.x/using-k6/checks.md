@@ -13,7 +13,7 @@ For example, a check could validate that a POST request has a `response.status =
 Checks are similar to what many testing frameworks call an _assert_, but **failed checks do not cause the test to abort or finish with a failed status**.
 Instead, k6 keeps track of the rate of failed checks as the test continues to run
 
-Each check creates a [rate metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics).
+Checks contribute to three built-in metrics: `checks_total`, `checks_succeeded`, and `checks_failed`.
 To make a check abort or fail a test, you can combine it with a [Threshold](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds).
 
 ## Check for HTTP response code
@@ -92,8 +92,10 @@ $ k6 run script.js
     ✓ is status 200
 
   ...
-  checks.........................: 100.00% ✓ 1        ✗ 0
-  data_received..................: 11 kB   12 kB/s
+  checks_total.......................: 1       1.23/s
+  checks_succeeded...................: 100.00% 1 out of 1
+  checks_failed......................: 0.00%   0 out of 1
+  ...
 ```
 
 {{< /code >}}
@@ -133,8 +135,10 @@ $ k6 run checks.js
     ✓ body size is 11,105 bytes
 
   ...
-  checks.........................: 100.00% ✓ 2        ✗ 0
-  data_received..................: 11 kB   20 kB/s
+  checks_total.......................: 2       2.34/s
+  checks_succeeded...................: 100.00% 2 out of 2
+  checks_failed......................: 0.00%   0 out of 2
+  ...
 ```
 
 {{< /code >}}
