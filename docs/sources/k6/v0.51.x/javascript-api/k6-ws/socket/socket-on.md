@@ -25,8 +25,6 @@ Set up callback functions for various events on the WebSocket connection. Multip
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
@@ -82,5 +80,3 @@ export default function () {
   check(response, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
-
-{{< /code >}}

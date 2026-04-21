@@ -41,8 +41,6 @@ performance and memory optimization.
 
 ### Parsing a full CSV File into a SharedArray
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -71,11 +69,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Streaming a CSV file line-by-line
-
-{{< code >}}
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -108,5 +102,3 @@ export default async function () {
   console.log(done, value);
 }
 ```
-
-{{< /code >}}

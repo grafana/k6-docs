@@ -38,47 +38,31 @@ so `k6 run --out cloud` will consume VUh or test runs from your subscription.
 
    Copy your token from [k6 Cloud](https://app.k6.io/account/api-token) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/tokens-and-cli-authentication/) and pass it as:
 
-   {{< code >}}
-
    ```bash
    $ k6 login cloud --token <YOUR_API_TOKEN>
    ```
-
-   {{< /code >}}
 
 1. Run the tests and upload the results
 
    Now, k6 will authenticate you against the cloud service, and you can use the `--out` option to send the k6 results to the cloud as:
 
-   {{< code >}}
-
    ```bash
    $ k6 run --out cloud script.js
    ```
 
-   {{< /code >}}
-
    Alternatively, you could skip the `k6 login cloud` command when passing your API token to the `k6 run` command as:
-
-   {{< code >}}
 
    ```bash
    $ K6_CLOUD_TOKEN=<YOUR_API_TOKEN> k6 run --out cloud script.js
    ```
 
-   {{< /code >}}
-
    After running the command, the console shows an URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
-
-   {{< code >}}
 
    ```bash
    execution: local
        output: cloud (https://acmecorp.grafana.net/a/k6-app/runs/123456)
        script: script.js
    ```
-
-   {{< /code >}}
 
 ![Grafana Cloud k6 Test Results](/media/docs/k6-oss/screenshot-stream-k6-results-to-grafana-cloud-k6.png)
 

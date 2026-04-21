@@ -16,8 +16,6 @@ Set seed to get a reproducible pseudo-random number using `Math.random`.
 
 Use `randomSeed` to get the same random number in all the iterations.
 
-{{< code >}}
-
 ```javascript
 import { randomSeed } from 'k6';
 
@@ -32,5 +30,3 @@ export default function () {
   console.log(rnd);
 }
 ```
-
-{{< /code >}}

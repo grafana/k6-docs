@@ -43,8 +43,6 @@ When you prepare a smoke test, consider the following:
 
 ## Smoke testing in k6
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
@@ -64,8 +62,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 The following script is an example smoke test. You can copy it, change the endpoints, and start testing. For more comprehensive test logic, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 The VU chart of a smoke test should look similar to this.

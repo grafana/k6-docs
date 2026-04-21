@@ -39,8 +39,6 @@ To reduce the memory consumption, you can:
 
 ### Examples
 
-{{< code >}}
-
 ```json
 [
   {
@@ -57,10 +55,6 @@ To reduce the memory consumption, you can:
   }
 ]
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -79,10 +73,6 @@ export default () => {
 };
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 
@@ -94,10 +84,6 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -114,5 +100,3 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}

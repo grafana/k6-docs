@@ -21,8 +21,6 @@ Parse an HTML string and populate a [Selection](https://grafana.com/docs/k6/<K6_
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
@@ -34,5 +32,3 @@ export default function () {
   const langAttr = doc.find('html').attr('lang');
 }
 ```
-
-{{< /code >}}

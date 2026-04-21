@@ -35,8 +35,6 @@ A `Promise` that resolves to a `boolean` value indicating if the signature is va
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -75,5 +73,3 @@ function string2ArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

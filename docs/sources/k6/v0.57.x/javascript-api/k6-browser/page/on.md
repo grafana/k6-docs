@@ -21,8 +21,6 @@ Registers a handler to be called whenever the specified event occurs. This metho
 
 ### Console event Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'k6';
@@ -66,11 +64,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Metric event Example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -125,5 +119,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

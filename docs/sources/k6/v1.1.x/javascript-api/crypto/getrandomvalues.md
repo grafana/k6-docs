@@ -32,8 +32,6 @@ The same array is passed as the `typedArray` parameter with its contents replace
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default function () {
   const array = new Uint32Array(10);
@@ -44,5 +42,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}

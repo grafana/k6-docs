@@ -40,8 +40,6 @@ A `Promise` that resolves with the signature as an `ArrayBuffer`.
 
 ### Signing data with HMAC key
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const generatedKey = await crypto.subtle.generateKey(
@@ -79,11 +77,7 @@ function string2ArrayBuffer(str) {
 }
 ```
 
-{{< /code >}}
-
 ### Signing and verifying data with ECDSA
-
-{{< code >}}
 
 ```javascript
 export default async function () {
@@ -125,5 +119,3 @@ const printArrayBuffer = (buffer) => {
   return Array.from(view);
 };
 ```
-
-{{< /code >}}

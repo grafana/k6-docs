@@ -32,8 +32,6 @@ The same array is passed as the `typedArray` parameter with its contents replace
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -46,5 +44,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}

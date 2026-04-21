@@ -15,8 +15,6 @@ You can load the certificate and key from local files or embed them as strings i
 
 To load a certificate and a key from local files, use the builtin `open(...)` function:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -35,8 +33,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Loading certificate and key from embedded strings
 
 To load the certificate and key from embedded strings, use this snippet.
@@ -48,8 +44,6 @@ Note the use of
 These are just example keys.
 
 {{< /admonition >}}
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -86,5 +80,3 @@ export default function () {
   http.get('https://example.com/');
 }
 ```
-
-{{< /code >}}

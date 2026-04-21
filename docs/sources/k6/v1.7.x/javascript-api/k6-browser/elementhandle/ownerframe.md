@@ -15,8 +15,6 @@ Returns the [Frame](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-b
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -44,5 +42,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

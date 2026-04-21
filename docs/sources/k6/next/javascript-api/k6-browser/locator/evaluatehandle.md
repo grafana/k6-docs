@@ -24,8 +24,6 @@ The only difference between [`evaluate`](https://grafana.com/docs/k6/<K6_VERSION
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -63,5 +61,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

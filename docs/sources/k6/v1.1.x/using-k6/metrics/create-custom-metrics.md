@@ -51,8 +51,6 @@ The generic procedure to create a custom metric is as follows:
 
 This VU code makes a request then adds the timing value of the request to the `myTrend` object.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
@@ -66,8 +64,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## View custom metric results
 
 Custom metrics appear in [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-output) in both the end-of-test summary and in the granular data points.
@@ -77,8 +73,6 @@ You can use these tags to filter test results.
 
 Here's how the output of the preceding script might look in the end-of-test summary.
 Since the metric is a trend, k6 calculates various trends based on the number of values and their summation.
-
-{{< code >}}
 
 ```bash
 $ k6 run script.js
@@ -91,8 +85,6 @@ $ k6 run script.js
   iterations.....................: 1     0.864973/s
   waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
 ```
-
-{{< /code >}}
 
 {{< admonition type="note" >}}
 

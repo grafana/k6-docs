@@ -76,8 +76,6 @@ Although you can define your own custom queueing strategy, the default behavior 
 
 The simplest illustrative example of using a `ReadableStream` is to create a stream of numbers.
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -115,11 +113,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 A much more useful illustration of defining a `ReadableStream` is to read lines from a file.
-
-{{< code >}}
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -222,5 +216,3 @@ async function getNextLine(file, state) {
   }
 }
 ```
-
-{{< /code >}}

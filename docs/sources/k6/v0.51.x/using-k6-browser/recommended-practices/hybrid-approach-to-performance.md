@@ -16,8 +16,6 @@ You can achieve hybrid performance in multiple ways, often by using different to
 
 The code below shows an example of combining a browser and HTTP test in a single script. While the script exposes the backend to the typical load, it also checks the frontend for any unexpected issues. It also defines thresholds to check both HTTP and browser metrics against pre-defined SLOs.
 
-{{< code >}}
-
 <!-- eslint-disable no-undef  -->
 
 ```javascript
@@ -105,8 +103,6 @@ export async function checkFrontend() {
 
 <!-- eslint-enable no-undef  -->
 
-{{< /code >}}
-
 ## Browser and failure injection test
 
 You can also run a browser test together with a failure injection test by using the [xk6-disruptor](https://github.com/grafana/xk6-disruptor) extension. This approach lets you find issues in your front end if any services it depends on are suddenly injected with failures, such as delays or server errors.
@@ -114,8 +110,6 @@ You can also run a browser test together with a failure injection test by using 
 The following code shows an example of how to introduce faults to a Kubernetes service. At the same time, the `browser` scenario runs to ensure the frontend application is free of any unexpected errors that may not have been handled properly.
 
 To find out more information about injecting faults to your service, check out the [Get started with xk6-disruptor guide](https://grafana.com/docs/k6/<K6_VERSION>/testing-guides/injecting-faults-with-xk6-disruptor/xk6-disruptor/).
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -190,8 +184,6 @@ export async function checkFrontend() {
   }
 }
 ```
-
-{{< /code >}}
 
 ## Recommended practices
 

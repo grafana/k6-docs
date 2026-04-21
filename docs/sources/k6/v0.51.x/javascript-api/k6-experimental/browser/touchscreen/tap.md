@@ -16,8 +16,6 @@ Simulates a tap (dispatches a `touchstart` and `touchend` events) at the specifi
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -43,5 +41,3 @@ export default async function () {
   await touchscreen.tap(50, 50);
 }
 ```
-
-{{< /code >}}

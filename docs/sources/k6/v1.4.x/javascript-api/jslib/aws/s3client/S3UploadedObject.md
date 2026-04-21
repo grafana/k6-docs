@@ -23,8 +23,6 @@ weight: 20
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -69,13 +67,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## Usage in Multipart Uploads
 
 For multipart uploads, the `S3UploadedObject` is returned by the `completeMultipartUpload` method:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -138,5 +132,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -15,8 +15,6 @@ Bucket is returned by the S3Client.\* methods that query S3 buckets. Namely, `li
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -42,5 +40,3 @@ export default async function () {
 ```
 
 _A k6 script that will query the user's S3 buckets and print all of their metadata_
-
-{{< /code >}}

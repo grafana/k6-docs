@@ -17,8 +17,6 @@ Wait for the element to be in a particular state e.g. `visible`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}

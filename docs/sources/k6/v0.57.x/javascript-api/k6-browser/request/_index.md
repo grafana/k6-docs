@@ -31,8 +31,6 @@ The request that the browser performs can be retrieved from the [Response](https
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -60,5 +58,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

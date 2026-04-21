@@ -15,8 +15,6 @@ Uses the `BrowserContext` to create a new [Page](https://grafana.com/docs/k6/<K6
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -31,5 +29,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

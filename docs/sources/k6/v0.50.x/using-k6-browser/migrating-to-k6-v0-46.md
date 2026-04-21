@@ -28,8 +28,6 @@ You no longer need to use the `K6_BROWSER_ENABLED` flag when running browser tes
 
 Let's start with an overview of the main differences between the previous and new versions of the k6 browser API.
 
-{{< code >}}
-
 ```javascript
 import { chromium } from 'k6/experimental/browser';
 
@@ -49,10 +47,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -82,27 +76,17 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## Import path
 
 With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), you should directly import the [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-api) object from the [browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser).
-
-{{< code >}}
 
 ```javascript
 import { chromium } from 'k6/experimental/browser';
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 ```
-
-{{< /code >}}
 
 ## Simplified resource management
 
@@ -118,8 +102,6 @@ With the removal of the `chromium.launch()` and `chromium.connect()` methods, se
 
 Before:
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -130,8 +112,6 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}
 
 After:
 
@@ -169,8 +149,6 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 
 
 Before:
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -180,8 +158,6 @@ export default async function () {
   const page = browser.newPage();
 }
 ```
-
-{{< /code >}}
 
 After:
 
@@ -225,8 +201,6 @@ The following browser options are no longer supported: `devtools`, `env`, and `p
 
 You must now set the [executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors) and browser type as options in a [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -244,13 +218,9 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 ## Opening and closing a page
 
 You can open a new page by using the imported [browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-api) object's [browser.newPage()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/newpage) method. You can still use the [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page) object as before.
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -264,10 +234,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -277,8 +243,6 @@ export default async function () {
   page.close();
 }
 ```
-
-{{< /code >}}
 
 The `browser.close()` method has been removed, so you can remove that from your scripts and use [`page.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/page/close) once you're done using the page object.
 
@@ -298,8 +262,6 @@ The new browser implementation limits the usage to a single active [BrowserConte
 
 For instance, the code below will not function as intended, as it attempts to execute two simultaneous [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext)s within the same iteration.
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -310,11 +272,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 On the other hand, the next example will function correctly by closing the initial [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser/browsercontext) prior to establishing a new one.
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -328,8 +286,6 @@ export default async function () {
   context2.close();
 }
 ```
-
-{{< /code >}}
 
 These updates make the usage of the API more straightforward for users, aiding in more consistent and automatic resource management.
 

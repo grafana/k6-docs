@@ -33,8 +33,6 @@ Double clicks on an element matching the provided selector.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -60,5 +58,3 @@ export default async function () {
   frames[0].dblclick('#counter-button');
 }
 ```
-
-{{< /code >}}

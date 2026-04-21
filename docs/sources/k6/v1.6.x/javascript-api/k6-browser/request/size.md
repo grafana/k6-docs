@@ -22,8 +22,6 @@ This method returns the size (in bytes) of body and header sections of the [Requ
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -54,5 +52,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

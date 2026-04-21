@@ -37,8 +37,6 @@ A `Promise` that resolves with the imported key as a [CryptoKey](https://grafana
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -71,5 +69,3 @@ export default async function () {
   console.log(JSON.stringify(importedKey));
 }
 ```
-
-{{< /code >}}

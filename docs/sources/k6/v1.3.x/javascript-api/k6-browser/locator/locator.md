@@ -26,8 +26,6 @@ This allows you to define locators relative to a parent locator, enabling more p
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
@@ -89,5 +87,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

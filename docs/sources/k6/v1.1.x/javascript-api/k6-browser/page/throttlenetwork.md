@@ -30,8 +30,6 @@ To work with the most commonly tested network profiles, import `networkProfiles`
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser, networkProfiles } from 'k6/browser';
 
@@ -61,5 +59,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

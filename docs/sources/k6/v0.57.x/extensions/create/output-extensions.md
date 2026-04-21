@@ -96,8 +96,6 @@ You must use the registered with the `-o`, or `--out` flag when running k6!
 
 The final extension code looks like this:
 
-{{< code >}}
-
 ```go
 package log
 
@@ -160,8 +158,6 @@ func (*Logger) Stop() error {
 }
 ```
 
-{{< /code >}}
-
 Notice a couple of things:
 
 - The module initializer `New()` receives an instance of
@@ -195,8 +191,6 @@ Now we can use the extension with a test script.
 
 1. In new JavaScript file, make some simple test logic.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -206,8 +200,6 @@ export default function () {
   sleep(0.5);
 }
 ```
-
-{{< /code >}}
 
 1. Now, run the test.
 

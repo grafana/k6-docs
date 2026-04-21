@@ -23,8 +23,6 @@ Return an ArrayBuffer object with a number of cryptographically random bytes. It
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -34,5 +32,3 @@ export default function () {
   console.log(view); // 156,71,245,191,56,...
 }
 ```
-
-{{< /code >}}

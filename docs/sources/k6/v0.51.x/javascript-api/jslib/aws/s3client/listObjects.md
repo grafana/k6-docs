@@ -23,8 +23,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -58,5 +56,3 @@ export default async function () {
   console.log(JSON.stringify(objects));
 }
 ```
-
-{{< /code >}}

@@ -19,8 +19,6 @@ weight: 20
 
 _A k6 script that makes a WebSocket request with a custom header and tags results data with a specific tag_
 
-{{< code >}}
-
 ```javascript
 import { WebSocket } from 'k6/experimental/websockets';
 
@@ -40,14 +38,8 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-{{< code >}}
 
 ```bash
 $ docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
-
-{{< /code >}}

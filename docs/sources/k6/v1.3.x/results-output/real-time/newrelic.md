@@ -27,8 +27,6 @@ To get k6 metrics into New Relic, k6 sends metrics to the New Relic StatsD integ
 
 Run the New Relic integration as a Docker container with this command:
 
-{{< code >}}
-
 ```bash
 docker run --rm \
   -d \
@@ -39,8 +37,6 @@ docker run --rm \
   -p 8125:8125/udp \
   newrelic/nri-statsd:latest
 ```
-
-{{< /code >}}
 
 Replace `<NR-ACCOUNT-ID>` with your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.) and `<NR-INSERT-API-KEY>` with your [New Relic Insert API Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register).
 
@@ -71,13 +67,9 @@ Everything provided in the command above is enough to send k6 performance metric
 
 Once the integration is running, run the k6 test and send the metrics to the integration with:
 
-{{< code >}}
-
 ```bash
 K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
-
-{{< /code >}}
 
 Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 
@@ -107,70 +99,42 @@ Here are some example NRQL queries you can easily copy and paste into widgets in
 
 **Number of Virtual Users**
 
-{{< code >}}
-
 ```plain
 SELECT latest(k6.vus) FROM Metric TIMESERIES
 ```
 
-{{< /code >}}
-
 **Max, Median, and Average Request Duration**
-
-{{< code >}}
 
 ```plain
 SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
 ```
 
-{{< /code >}}
-
 **Rate of Requests**
-
-{{< code >}}
 
 ```plain
 SELECT rate(max(k6.http_reqs), 1 seconds) FROM Metric TIMESERIES
 ```
 
-{{< /code >}}
-
 **Data Sent and Data Received**
-
-{{< code >}}
 
 ```plain
 SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent' FROM Metric TIMESERIES
 ```
 
-{{< /code >}}
-
 **Histogram bucketing Requests**
-
-{{< code >}}
 
 ```plain
 SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
 ```
 
-{{< /code >}}
-
 **Change in the number of Requests**
-
-{{< code >}}
 
 ```plain
 SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERIES
 ```
 
-{{< /code >}}
-
 **Scrolling List of all k6 Performance Metrics**
-
-{{< code >}}
 
 ```plain
 SELECT uniques(metricName) FROM Metric WHERE metricName LIKE 'k6%' LIMIT MAX
 ```
-
-{{< /code >}}

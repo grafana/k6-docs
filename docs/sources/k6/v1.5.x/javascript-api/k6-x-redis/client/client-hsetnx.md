@@ -25,8 +25,6 @@ Sets the specified field in the hash stored at `key` to `value`, only if `field`
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -43,7 +41,5 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

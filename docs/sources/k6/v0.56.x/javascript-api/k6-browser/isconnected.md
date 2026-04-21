@@ -22,8 +22,6 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -45,5 +43,3 @@ export default function () {
   console.log(isConnected); // true
 }
 ```
-
-{{< /code >}}

@@ -51,8 +51,6 @@ Note that in the case of redirects, all the information in the Response object w
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -70,7 +68,5 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 _A k6 script that will make an HTTP request and print all HTTP response headers_

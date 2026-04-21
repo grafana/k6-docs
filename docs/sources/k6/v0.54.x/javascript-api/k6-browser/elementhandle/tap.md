@@ -36,8 +36,6 @@ Taps the element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -64,5 +62,3 @@ export default async function () {
   await el.tap();
 }
 ```
-
-{{< /code >}}

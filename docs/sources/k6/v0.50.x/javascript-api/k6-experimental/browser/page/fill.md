@@ -27,8 +27,6 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -52,5 +50,3 @@ export default async function () {
   page.fill('#text1', 'hello world!');
 }
 ```
-
-{{< /code >}}

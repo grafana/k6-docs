@@ -21,8 +21,6 @@ Get the value of `key` and delete the key. This functionality is similar to `get
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -39,5 +37,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -22,8 +22,6 @@ Adds the specified members to the set stored at `key`. Specified members that ar
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -40,5 +38,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

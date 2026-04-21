@@ -22,8 +22,6 @@ Secret is returned by the SecretsManagerClient.\* methods that query secrets. Na
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -60,5 +58,3 @@ export default async function () {
 ```
 
 _A k6 script that will query the user's secrets and print a test secret's value_
-
-{{< /code >}}

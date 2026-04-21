@@ -20,8 +20,6 @@ Mimics [jquery.attr](https://api.jquery.com/attr/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
@@ -32,5 +30,3 @@ export default function () {
   const langAttr = doc.find('html').attr('lang');
 }
 ```
-
-{{< /code >}}

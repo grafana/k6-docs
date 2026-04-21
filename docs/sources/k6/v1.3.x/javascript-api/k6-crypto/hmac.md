@@ -26,8 +26,6 @@ Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -40,15 +38,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The above script should result in the following being printed during execution:
-
-{{< code >}}
 
 ```bash
 INFO[0000] 893a72d8cab129e5ba85aea4599fd53f59bfe652cff4098a3780313228d8c20f
 INFO[0000] 893a72d8cab129e5ba85aea4599fd53f59bfe652cff4098a3780313228d8c20f
 ```
-
-{{< /code >}}

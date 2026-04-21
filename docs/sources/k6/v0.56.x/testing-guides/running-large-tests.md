@@ -138,8 +138,6 @@ To fix this issue, make your checks resilient to any response type.
 
 The following change will handle the exception.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -149,8 +147,6 @@ const checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body && r.body.length === 11026,
 });
 ```
-
-{{< /code >}}
 
 Refer to subsequent sections for a list of [common errors](#common-errors).
 

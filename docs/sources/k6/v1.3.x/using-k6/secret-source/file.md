@@ -11,14 +11,10 @@ The file secret source loads secrets from a plain text file.
 
 Each line in the file contains one secret in `key=value` format:
 
-{{< code >}}
-
 ```text
 secret=very secret
 someotherkey=another secret
 ```
-
-{{< /code >}}
 
 To use the file secret source, specify the file path with the `--secret-source` flag:
 

@@ -72,8 +72,6 @@ That makes it recommendable to use [ramping-arrival-rate](https://grafana.com/do
 
 The test keeps increasing load or VUs until it reaches the defined breaking point or system limits, at which point the test stops or is aborted.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -96,8 +94,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 ![The shape of the breakpoint test as configured in the preceding script](/media/docs/k6-oss/chart-breakpoint-test-k6-script-example.png)
 

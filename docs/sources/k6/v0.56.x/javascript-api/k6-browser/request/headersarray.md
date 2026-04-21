@@ -15,8 +15,6 @@ An array with all the request HTTP headers. Unlike [request.allHeaders()](https:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

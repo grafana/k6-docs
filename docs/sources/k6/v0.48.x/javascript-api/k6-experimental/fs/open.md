@@ -12,16 +12,12 @@ The `open` function opens a file and returns a promise that resolves to a [File]
 
 It's important to note that `open` is asynchronous and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). Due to k6's current limitation with the Init context (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper like this:
 
-{{< code >}}
-
 ```javascript
 let file;
 (async function () {
   file = await open('bonjour.txt');
 })();
 ```
-
-{{< /code >}}
 
 ## Parameters
 
@@ -34,8 +30,6 @@ let file;
 A promise resolving to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/fs/file) instance.
 
 ## Example
-
-{{< code >}}
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -59,5 +53,3 @@ export default async function () {
   console.log(JSON.stringify(fileinfo));
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ URLs that contain dynamic parts can introduce a large number of unique URLs in t
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -33,5 +31,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}

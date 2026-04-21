@@ -9,8 +9,6 @@ weight: 19
 
 ### Most basic integration test
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -34,13 +32,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Sample integration test
 
 This test goes through several steps. It creates a new user account, authenticates, and interacts with protected resources.
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -166,13 +160,9 @@ export default function testSuite() {
 }
 ```
 
-{{< /code >}}
-
 ### Full example showcasing all functionality
 
 Here's an auto-generated k6 test script showcasing all examples from the [Chaijs API documentation](https://www.chaijs.com/api/bdd/).
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -1646,5 +1636,3 @@ export default function testSuite() {
   // });
 }
 ```
-
-{{< /code >}}

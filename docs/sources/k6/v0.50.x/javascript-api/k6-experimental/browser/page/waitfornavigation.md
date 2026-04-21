@@ -37,8 +37,6 @@ Events can be either:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
@@ -77,5 +75,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

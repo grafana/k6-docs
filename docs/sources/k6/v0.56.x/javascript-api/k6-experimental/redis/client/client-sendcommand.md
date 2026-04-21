@@ -22,8 +22,6 @@ In the event a Redis command you wish to use is not implemented yet, the `sendCo
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -37,5 +35,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -11,8 +11,6 @@ weight: 33
 - [Catch exceptions](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/k6chaijs/error-handling) to allow continuing the execution outside of the `describe` function.
 - Returns a boolean to indicate the success of all its `k6chaijs` assertions.
 
-{{< code >}}
-
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
@@ -34,10 +32,6 @@ export default function testSuite() {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
 
@@ -52,8 +46,6 @@ default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 
        ✗ expected my vaule to be true
         ↳  0% — ✓ 0 / ✗ 1
 ```
-
-{{< /code >}}
 
 ## API
 

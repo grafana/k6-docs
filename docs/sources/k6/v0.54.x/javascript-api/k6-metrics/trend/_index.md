@@ -43,8 +43,6 @@ The unit of these variables and functions are all in milliseconds.
 
 ### Examples
 
-{{< code >}}
-
 ```javascript
 import { Trend } from 'k6/metrics';
 
@@ -55,10 +53,6 @@ export default function () {
   myTrend.add(2, { tag1: 'value', tag2: 'value2' });
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { Trend } from 'k6/metrics';
@@ -85,5 +79,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

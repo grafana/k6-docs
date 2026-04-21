@@ -19,8 +19,6 @@ Waits for the given `timeout` in milliseconds.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -44,5 +42,3 @@ export default async function () {
   page.waitForTimeout(5000);
 }
 ```
-
-{{< /code >}}

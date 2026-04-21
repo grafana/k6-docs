@@ -27,8 +27,6 @@ Consider using specific methods for making common requests [get](https://grafana
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
@@ -45,5 +43,3 @@ export default function testSuite() {
   const resp_delete = session.request('DELETE', `/status/200`);
 }
 ```
-
-{{< /code >}}

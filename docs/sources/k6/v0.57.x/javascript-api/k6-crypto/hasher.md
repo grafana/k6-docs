@@ -19,8 +19,6 @@ and allows the user to successively add more string data to be hashed, and to ex
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -38,8 +36,6 @@ export default function () {
   console.log('binary:', new Uint8Array(hasher.digest('binary')));
 }
 ```
-
-{{< /code >}}
 
 The above code sample should produce this in its output:
 

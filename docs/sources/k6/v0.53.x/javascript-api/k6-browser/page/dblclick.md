@@ -39,8 +39,6 @@ Mouse double clicks an element matching provided selector.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -64,5 +62,3 @@ export default async function () {
   await page.dblclick('#counter-button');
 }
 ```
-
-{{< /code >}}

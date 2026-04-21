@@ -23,8 +23,6 @@ Increments the integer value of `field` in the hash stored at `key` by `incremen
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -36,5 +34,3 @@ export default async function () {
   await redisClient.hincrby('myhash', 'myfield', 20);
 }
 ```
-
-{{< /code >}}

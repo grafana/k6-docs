@@ -35,8 +35,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import exec from 'k6/execution';
 
@@ -81,5 +79,3 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}

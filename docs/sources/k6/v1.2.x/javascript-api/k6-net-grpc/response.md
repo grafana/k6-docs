@@ -19,8 +19,6 @@ aliases:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import grpc from 'k6/net/grpc';
 import { check, sleep } from 'k6';
@@ -44,5 +42,3 @@ export default () => {
   sleep(1);
 };
 ```
-
-{{< /code >}}

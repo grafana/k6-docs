@@ -33,8 +33,6 @@ S3 Client methods will throw errors in case of failure.
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -90,5 +88,3 @@ export async function teardown() {
   await secretsManager.deleteSecret(testSecretName, { noRecovery: true });
 }
 ```
-
-{{< /code >}}

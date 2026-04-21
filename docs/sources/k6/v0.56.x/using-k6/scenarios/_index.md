@@ -26,8 +26,6 @@ You can give the scenario any name, as long as each scenario name in the script 
 
 The scenario name appears in the result summary, tags, and so on.
 
-{{< code >}}
-
 ```javascript
 export const options = {
   scenarios: {
@@ -52,8 +50,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 ## Scenario executors
 
@@ -134,8 +130,6 @@ If you run a script with scenarios, k6 output includes high-level information ab
 For example, if you run the preceding script, `k6 run scenario-example.js`,
 then k6 reports the scenarios as follows:
 
-{{< code >}}
-
 ```bash
   execution: local
      script: scenario-example.js
@@ -148,8 +142,6 @@ on: 10m0s, gracefulStop: 30s)
            * per_vu_scenario: 10 iterations for each of 10 VUs (maxDuration: 10m
 0s, startTime: 10s, gracefulStop: 30s)
 ```
-
-{{< /code >}}
 
 The full output includes the summary metrics, like any default end-of-test summary:
 

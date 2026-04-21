@@ -35,8 +35,6 @@ To ensure your scripts work with the latest release of the k6 browser module, yo
 
 For example, before:
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -50,11 +48,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 And now:
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -68,8 +62,6 @@ export default async function () {
     ...
 }
 ```
-
-{{< /code >}}
 
 You might have already encountered async APIs when working with the browser module, such as [page.click](http://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/click/), so the use of `async` and `await` keywords might be familiar to you.
 
@@ -279,8 +271,6 @@ The k6 `check` API will not `await` promises, so calling a function that returns
 
 For example, before:
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -289,11 +279,7 @@ check(page.locator('h2'), {
 });
 ```
 
-{{< /code >}}
-
 And now:
-
-{{< code >}}
 
 <!-- eslint-skip -->
 
@@ -306,8 +292,6 @@ await check(page.locator('h2'), {
   header: async (lo) => (await lo.textContent()) === 'Welcome, admin!',
 });
 ```
-
-{{< /code >}}
 
 ## Groups
 

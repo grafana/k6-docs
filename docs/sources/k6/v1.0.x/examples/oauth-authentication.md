@@ -14,8 +14,6 @@ The following examples take a set of arguments, shown in the function documentat
 
 ### Azure Active Directory
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -59,8 +57,6 @@ export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, 
 }
 ```
 
-{{< /code >}}
-
 ### Azure B2C
 
 The following example shows how you can authenticate with Azure B2C using the [Client Credentials Flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code#client-credentials-flow).
@@ -78,8 +74,6 @@ To use this script, you need to:
    - Create a new user, and copy the username and password. They'll be used in the test script.
 
 You can find the settings in the B2C settings in the Azure portal if you need to refer to them later on. Make sure to fill out all the variables for the `B2CGraphSettings` object, as well as replace `USERNAME` and `PASSWORD` in `export default function`.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -260,11 +254,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Okta
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -326,7 +316,5 @@ export function authenticateUsingOkta(
   return response.json();
 }
 ```
-
-{{< /code >}}
 
 For a detailed example, please visit this article: [How to Load Test OAuth secured APIs with k6?](https://k6.io/blog/how-to-load-test-oauth-secured-apis-with-k6)

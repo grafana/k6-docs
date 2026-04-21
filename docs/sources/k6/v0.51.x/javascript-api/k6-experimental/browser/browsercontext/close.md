@@ -9,8 +9,6 @@ Close the `BrowserContext` and all its [page](https://grafana.com/docs/k6/<K6_VE
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -34,5 +32,3 @@ export default function () {
   context.close();
 }
 ```
-
-{{< /code >}}

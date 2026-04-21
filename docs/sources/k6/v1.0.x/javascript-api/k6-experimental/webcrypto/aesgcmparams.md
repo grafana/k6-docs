@@ -23,8 +23,6 @@ For more details, head to the [MDN Web Crypto API documentation on AES-GCM](http
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -66,5 +64,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

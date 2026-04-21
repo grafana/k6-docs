@@ -27,8 +27,6 @@ A trace context generally consists of, at least, a `trace_id`, a `span_id`, and 
 
 This example demonstrates how to use the tracing API to instrument every HTTP request made in a script with tracing information.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import tracing from 'k6/experimental/tracing';
@@ -59,5 +57,3 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}

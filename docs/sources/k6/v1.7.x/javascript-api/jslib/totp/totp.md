@@ -21,8 +21,6 @@ Creates a new TOTP (Time-based One-Time Password) instance with the given secret
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { TOTP } from 'https://jslib.k6.io/totp/1.0.0/index.js';
 
@@ -37,5 +35,3 @@ export default async function () {
   console.log(`6-digit TOTP: ${code}`);
 }
 ```
-
-{{< /code >}}

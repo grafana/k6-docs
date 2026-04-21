@@ -26,8 +26,6 @@ When using the `page.on` method, the page has to be explicitly [closed](https://
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
@@ -70,5 +68,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -15,8 +15,6 @@ If a [cookie](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experim
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -85,5 +83,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

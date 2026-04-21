@@ -33,8 +33,6 @@ The following events can close the connection:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 
@@ -48,5 +46,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
