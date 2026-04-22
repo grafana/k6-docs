@@ -46,7 +46,7 @@ $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_ARGS='show-property-changed-r
 
 ### Browser arguments
 
-The following table highlights commonly useful arguments you can pass via the `K6_BROWSER_ARGS` environment variable. For the full list of arguments, refer to [Chromium command line switches](https://peter.sh/experiments/chromium-command-line-switches/).
+The following table highlights commonly useful arguments you can pass via the `K6_BROWSER_ARGS` environment variable. Most tests run without extra arguments, because the browser module already uses sensible [defaults](#default-arguments). Set these extra arguments only when you need to debug or adapt to your environment. For a complete list, refer to [Chromium command line switches](https://peter.sh/experiments/chromium-command-line-switches/).
 
 {{< admonition type="note" >}}
 
