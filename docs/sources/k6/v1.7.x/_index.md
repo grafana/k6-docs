@@ -4,7 +4,7 @@ aliases:
 description: 'The k6 documentation covers everything you need to know about k6 OSS, load testing, and performance testing.'
 menuTitle: Grafana k6
 title: Grafana k6
-weight: -10
+weight: -11
 hero:
   title: Grafana k6
   level: 1
