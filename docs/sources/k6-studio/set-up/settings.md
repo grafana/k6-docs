@@ -50,3 +50,24 @@ Customize the overall theme of the application. The options are: **Light**, **Da
 ## Logs
 
 Shows logs from the application in real time. This can help users view if there are any errors affecting k6 Studio, and share that information if necessary when [reporting issues](https://github.com/grafana/k6-studio/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen).
+
+## AI
+
+The AI settings let you configure the OpenAI integration used by the [Autocorrelation](https://grafana.com/docs/k6-studio/components/generator/#autocorrelation) feature.
+
+### OpenAI API key
+
+Enter your OpenAI API key to enable AI-powered Autocorrelation. You can create an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
+{{< admonition type="note" >}}
+
+Your API key is encrypted using your operating system's secure storage (such as Keychain on macOS or Credential Manager on Windows) and is not transmitted to Grafana Labs.
+
+{{< /admonition >}}
+
+### Data processing disclaimer
+
+When you use AI features, data from your recording is sent to OpenAI for processing. This includes request and response data that the AI analyzes to create correlation rules. Usage is subject to your OpenAI agreement and associated billing.
+
+Review the disclaimer in the settings panel for full terms before enabling AI features.
+

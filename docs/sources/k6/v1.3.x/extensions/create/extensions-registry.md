@@ -1,4 +1,6 @@
 ---
+aliases:
+  - ../explanations/extensions-registry # docs/k6/<K6_VERSION>/extensions/explanations/extensions-registry
 title: About the Extensions Registry
 description: Reasons for the registry and what is required to be included.
 weight: 600

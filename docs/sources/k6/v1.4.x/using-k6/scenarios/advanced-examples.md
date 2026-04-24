@@ -22,8 +22,8 @@ To sequence your scenarios, you can combine `startTime` with the duration option
 
 This script has two scenarios, `contacts` and `news`, which run in sequence:
 
-1. At the beginning of the test, k6 starts the `contacts` scenario. 50 VUs try to run as many iterations as possible for 30 seconds.
-1. After 30 seconds, k6 starts the `news` scenario. 50 VUs each try to run 100 iterations in one minute.
+1. At the beginning of the test, k6 starts the `contacts` scenario. 5 VUs try to run as many iterations as possible for 5 seconds.
+1. After 10 seconds, k6 starts the `news` scenario. 5 VUs each try to run 10 iterations in 20 seconds.
 
 Along with `startTime`, `duration`, and `maxDuration`, note the different test logic for each scenario.
 

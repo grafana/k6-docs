@@ -18,8 +18,12 @@ k6 converts all [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Counter   | `Float64CounterOption`                                                                                                                                                                                                                                                                                                                                                        |
 | Gauge     | `Float64ObservableGauge`                                                                                                                                                                                                                                                                                                                                                      |
-| Rate      | Split into two `Int64Counter` counters named `metric_name.occurred` and `metric_name.total`. `metric_name.occurred` counts only the number of non-zero occurrences, and `metric_name.total` registers the total number of positive and negative occurrences. This might change in the future, refer to [k6#4573](https://github.com/grafana/k6/issues/4573) for more details. |
+| Rate      | Exported as a single `Int64Counter` counter named `metric_name` with an attribute `condition` that can have two values: `zero` and `nonzero`. |
 | Trend     | `Float64Histogram`                                                                                                                                                                                                                                                                                                                                                            |
+
+{{< admonition type="caution" >}}
+Prior to k6 v1.4.0, Rate metrics were exported as two separate counters: `metric_name.occurred` and `metric_name.total`. You can revert to this legacy behavior by setting the environment variable `K6_OTEL_SINGLE_COUNTER_FOR_RATE=false`. However, this legacy approach is deprecated and will be removed in a future release.
+{{< /admonition >}}
 
 ## Run the k6 test
 
@@ -55,5 +59,6 @@ The following options can be configured:
 | `K6_OTEL_HTTP_EXPORTER_INSECURE`   | Disables client transport security for the HTTP exporter.                                                                                                           |
 | `K6_OTEL_HTTP_EXPORTER_ENDPOINT`   | Configures the HTTP exporter endpoint. Must be host and port only, without scheme. Default is `localhost:4318`.                                                     |
 | `K6_OTEL_HTTP_EXPORTER_URL_PATH`   | Configures the HTTP exporter path. Default is `/v1/metrics`.                                                                                                        |
+| `K6_OTEL_SINGLE_COUNTER_FOR_RATE`  | Controls how Rate metrics are exported. When set to `true` (default), metrics are exported as a single counter with an attribute. When set to `false`, the legacy method is used, creating two separate counters. The legacy method is deprecated and will be removed in a future release. |
 
 You can also use the OpenTelemetry SDK configuration environment variables to configure the OpenTelemetry output, like the [gRPC exporter configuration](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc@v1.26.0). The `K6_OTEL_*` environment variables take precedence over the OpenTelemetry SDK configuration environment variables.

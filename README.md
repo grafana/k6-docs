@@ -1,8 +1,5 @@
 # k6 Documentation
 
-![Staging](https://github.com/grafana/k6-docs/workflows/Staging/badge.svg)
-![Production](https://github.com/grafana/k6-docs/workflows/Production/badge.svg)
-
 Welcome to the k6 docs!
 This repo contains the source code of the [k6 documentation](https://grafana.com/docs/k6/).
 

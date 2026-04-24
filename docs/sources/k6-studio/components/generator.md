@@ -129,6 +129,100 @@ The **Allowed hosts** option lets you configure which hosts you want to include 
 
 For performance testing, it's common to not include static assets, or remove hosts from 3rd-party services from your tests, but you can include them depending on your use case.
 
+## Autocorrelation
+
+{{< admonition type="note" >}}
+
+This feature is in public preview and subject to change.
+
+{{< /admonition >}}
+
+Autocorrelation is an AI-powered feature that automatically creates correlation rules for your test scripts. It detects dynamic values, such as session tokens, CSRF tokens, and resource IDs, that change between recording and playback, and creates rules to extract and reuse these values so your scripts work correctly.
+
+When you record a user session, many applications include dynamic values in their requests and responses. These values, like authentication tokens or session IDs, are generated at runtime and differ each time the session is replayed. Without correlation, your test script fails because it uses the original recorded values instead of the new ones.
+
+Autocorrelation uses AI to:
+
+- Run validation to identify mismatches between your recording and a live test run
+- Detect values that change between runs
+- Create correlation rules to extract and reuse these values automatically
+
+### Before you begin
+
+Before using Autocorrelation, make sure you have:
+
+- **An OpenAI API key configured.** Go to **Settings > AI** and add your API key. You can create one at [platform.openai.com/api-keys](https://platform.openai.com/api-keys). Refer to [AI settings](https://grafana.com/docs/k6-studio/set-up/settings/#ai) for more details.
+- **A recording with requests.** Open an existing recording in the Generator, or create a new recording first.
+- **Proxy online.** The proxy must be running to validate your script.
+
+{{< admonition type="note" >}}
+
+Your API key is encrypted and stored locally using your operating system's secure storage. Data from your recording is sent to OpenAI for processing. Usage is subject to your OpenAI agreement and associated billing.
+
+{{< /admonition >}}
+
+### Use Autocorrelation
+
+To automatically create correlation rules for your recording:
+
+1. **Open the Generator** with your recording loaded.
+
+2. In the **Test rules** section, click **Autocorrelate**.
+
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-autocorrelate-button.png" alt="k6 Studio Generator window, highlighting autocorrelation button" >}}
+
+3. In the Autocorrelation dialog, click **Analyze recording** to start the process.
+
+4. **Wait for analysis to complete.** The AI:
+   - Validates your script to identify mismatches
+   - Analyzes the recording to find dynamic values
+   - Creates correlation rules to handle those values
+
+5. **Review validation results.** The right panel shows the validation requests, so you can see how the script performed.
+
+6. **Review the suggested rules.** The left panel shows the rules that were created. Each rule is selected by default. You can:
+   - Clear the checkbox next to a rule to exclude it
+   - Use **Select all** to toggle all rules at once
+
+7. **Accept or discard the rules:**
+   - Click **Accept** to add the selected rules to your generator
+   - Click **Discard** to close the dialog without adding any rules
+   - Click **Stop** to cancel the analysis while it's running
+
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-2.png" alt="k6 Studio autocorrelation dialog with suggested rules" >}}
+
+### Understand the results
+
+After analysis completes, you'll see one of these outcomes:
+
+| Status                      | Description                                                                                              |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Correlation not needed      | The script validation passed without any rules. Your current configuration handles all requests correctly. |
+| Autocorrelation completed   | The AI successfully created rules that resolve all mismatches.                                           |
+| Partially correlated        | Some requests are still failing, but significant progress was made. You may need to add manual rules for edge cases. |
+| Autocorrelation failed      | The AI couldn't create rules to fix the mismatches. Consider adding rules manually.                      |
+
+The dialog footer displays token usage during analysis. Tokens are counted separately for input (data sent to the AI) and output (responses from the AI). This helps you monitor API usage costs.
+
+### Troubleshoot Autocorrelation
+
+| Issue                       | Error message                                           | Solution                                                                                                   |
+| --------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Incorrect API key           | The OpenAI API key is incorrect or has been revoked.    | Go to **Settings > AI** and verify your API key. Generate a new key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) if needed. |
+| Token limit exceeded        | The recording exceeds the token limit.                  | Your recording is too large for the AI to process. Try reducing the number of allowed hosts, working with a smaller recording, or splitting your recording into multiple smaller sessions. |
+| Rate limit                  | You have exceeded the API rate limit.                   | Wait a moment and click **Retry**. If the problem persists, check your OpenAI account for rate limit settings. |
+| Proxy offline               | The Autocorrelate button is disabled.                   | Make sure the proxy is running. Check the proxy status indicator in the application.                       |
+
+For unexpected errors, click **Retry** to attempt the analysis again. If the problem persists, click **Report issue** to submit a bug report.
+
+### Considerations
+
+- **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality may change in future releases.
+- **Data processing.** Your recording data is sent to OpenAI for analysis. Review the disclaimer in **Settings > AI** for full terms.
+- **Manual rules.** You can still create [correlation rules](#correlation-rule) manually using the **Add rule** menu. Autocorrelation complements manual rule creation; it doesn't replace it.
+- **Cost.** Using Autocorrelation consumes OpenAI API tokens, which may incur costs based on your OpenAI pricing plan.
+- **Large recordings.** Very large recordings may exceed token limits. Consider recording focused user flows rather than extended sessions.
+
 ## Rules
 
 Test rules are rules you can add and configure to your test generator, that allow you to customize the generated test script. These rules can use the information from a test recording, to then generate code changes to help make your test scripts more reliable, and reusable.
@@ -141,6 +235,8 @@ The available rules are:
 - Custom code rule
 
 You can add multiple correlation and custom code rules to your test generator.
+
+You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI.
 
 ### Verification rule
 
