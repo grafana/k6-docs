@@ -37,8 +37,6 @@ A `Promise` that resolves to a `boolean` value indicating if the signature is va
 
 ### Verifying an HMAC signature
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -78,11 +76,7 @@ function string2ArrayBuffer(str) {
 }
 ```
 
-{{< /code >}}
-
 ### Verifying an ECDSA signature
-
-{{< code >}}
 
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
@@ -138,5 +132,3 @@ const signature = new Uint8Array([
   12,
 ]);
 ```
-
-{{< /code >}}

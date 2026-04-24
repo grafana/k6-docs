@@ -15,8 +15,6 @@ Returns either `null` or the object handle itself, provided the object handle is
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -49,5 +47,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -16,8 +16,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -65,5 +63,3 @@ export default async function () {
 ```
 
 _A k6 script querying a user's Systems Manager Service parameter_
-
-{{< /code >}}

@@ -23,8 +23,6 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import { md5 } from 'k6/crypto';
@@ -39,5 +37,3 @@ export default function () {
   console.log(f.content_type);
 }
 ```
-
-{{< /code >}}

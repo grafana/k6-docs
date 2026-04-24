@@ -27,8 +27,6 @@ Returns the element attribute value for the given attribute name.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -56,5 +54,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

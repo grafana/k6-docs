@@ -40,13 +40,9 @@ To learn more about how to build custom k6 versions, check out [xk6](https://git
 
 Using the k6 binary you built in the previous step, you can use the `--out output-statsd` option when running your tests to use this extension:
 
-{{< code >}}
-
 ```bash
 ./k6 run --out output-statsd script.js
 ```
-
-{{< /code >}}
 
 The following options can be configured:
 

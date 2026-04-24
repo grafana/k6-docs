@@ -8,8 +8,6 @@ weight: 15
 
 # Transport Layer Security (TLS)
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -30,5 +28,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

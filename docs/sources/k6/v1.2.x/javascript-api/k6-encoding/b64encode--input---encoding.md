@@ -20,8 +20,6 @@ slug: 'b64encode'
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import encoding from 'k6/encoding';
@@ -36,5 +34,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

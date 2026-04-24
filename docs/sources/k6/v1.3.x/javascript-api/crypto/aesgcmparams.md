@@ -21,8 +21,6 @@ For more details, head to the [MDN Web Crypto API documentation on AES-GCM](http
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const plaintext = stringToArrayBuffer('Hello, World!');
@@ -62,5 +60,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

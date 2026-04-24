@@ -24,19 +24,13 @@ redis[s]://[[username][:password]@][host][:port][/db-number]
 
 Here's an example of a URL string that connects to a Redis server running on localhost, on the default port (6379), and using the default database (0):
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
 const client = new redis.Client('redis://localhost:6379');
 ```
 
-{{< /code >}}
-
 A client can also be instantiated using an [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) object to support more complex use cases, and for more flexibility:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -51,15 +45,11 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 ### TLS
 
 You can configure a TLS connection in a couple of ways.
 
 If the server has a certificate signed by a public Certificate Authority, you can use the `rediss` URL scheme:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -67,11 +57,7 @@ import redis from 'k6/experimental/redis';
 const client = new redis.Client('rediss://example.com');
 ```
 
-{{< /code >}}
-
 Otherwise, you can supply your own self-signed certificate in PEM format using the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#tls-configuration-options-tlsoptions) object:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -87,15 +73,11 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 Note that for self-signed certificates, k6's [insecureSkipTLSVerify](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#insecure-skip-tls-verify) option must be enabled (set to `true`).
 
 #### TLS client authentication (mTLS)
 
 You can also enable mTLS by setting two additional properties in the [socket.tls](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#tls-configuration-options-tlsoptions) object:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -113,13 +95,9 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 ### Cluster client
 
 You can connect to a cluster of Redis servers by using the [cluster](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#redis-cluster-options-clusteroptions) configuration property, and passing 2 or more node URLs:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -136,11 +114,7 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 Or the same as above, but passing [socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options#socket-connection-options-socketoptions) objects to the nodes array instead of URLs:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -165,15 +139,11 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 ### Sentinel client
 
 A [Redis Sentinel](https://redis.io/docs/management/sentinel/) provides high availability features, as an alternative to a Redis cluster.
 
 You can connect to a sentinel instance by setting additional [options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/redis/redis-options) in the object passed to the `Client` constructor:
-
-{{< code >}}
 
 ```javascript
 import redis from 'k6/experimental/redis';
@@ -192,11 +162,7 @@ const client = new redis.Client({
 });
 ```
 
-{{< /code >}}
-
 ## Real world example
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -281,8 +247,6 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}
 
 ## API
 

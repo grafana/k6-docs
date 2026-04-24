@@ -29,8 +29,6 @@ You can use `handleSummary()` to create a custom summary or return the default s
 To get an idea of what the data looks like,
 run this script and open the output file, `summary.json`.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -44,8 +42,6 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}
 
 Fundamentally, `handleSummary()` is just a function that can access a data object.
 As such, you can transform the summary data into any text format: JSON, HTML, console, XML, and so on.
@@ -75,8 +71,6 @@ The value of a key can have a type of either `string` or [`ArrayBuffer`](https:/
 You can return multiple summary outputs in a script.
 As an example, this `return` statement sends a report to standard output and writes the `data` object to a JSON file.
 
-{{< code >}}
-
 ```
   return {
     'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout...
@@ -84,13 +78,9 @@ As an example, this `return` statement sends a report to standard output and wri
   };
 ```
 
-{{< /code >}}
-
 ### Example: Extract data properties
 
 This minimal `handleSummary()` extracts the `median` value for the `iteration_duration` metric and prints it to standard output:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -108,8 +98,6 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}
 
 ### Example: Modify default output
 
@@ -136,8 +124,6 @@ For example, this `handleSummary()` modifies the default summary in the followin
 - It deletes all metrics whose key starts with `iteration`.
 - It begins each line with the `→` character.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
@@ -158,8 +144,6 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}
 
 In the collapsible section, you can compare the default and modified reports.
 
@@ -223,8 +207,6 @@ The modified report would be:
 This script imports a helper function to turn the summary into a JUnit XML.
 The output is a short XML file that reports whether the test thresholds failed.
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -252,8 +234,6 @@ export function handleSummary(data) {
 }
 ```
 
-{{< /code >}}
-
 Output for a test that crosses a threshold looks something like this:
 
 ```xml
@@ -267,8 +247,6 @@ Output for a test that crosses a threshold looks something like this:
 ### Example: Send data to remote server
 
 You can also send the generated reports to a remote server (over any protocol that k6 supports).
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -289,8 +267,6 @@ export function handleSummary(data) {
   }
 }
 ```
-
-{{< /code >}}
 
 {{< admonition type="note" >}}
 
@@ -346,8 +322,6 @@ To see what the summary `data` looks like in your specific test run:
 1. Inspect the resulting `raw-data.json` file.
 
    The following is an abridged example of how it might look:
-
-{{< code >}}
 
 ```json
 {
@@ -441,8 +415,6 @@ To see what the summary `data` looks like in your specific test run:
   }
 }
 ```
-
-{{< /code >}}
 
 ## Custom output examples
 

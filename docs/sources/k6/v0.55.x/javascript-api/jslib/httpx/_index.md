@@ -49,8 +49,6 @@ This library is in active development. It's stable enough to be useful, but you 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { fail } from 'k6';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
@@ -110,5 +108,3 @@ export default function testSuite() {
   }
 }
 ```
-
-{{< /code >}}

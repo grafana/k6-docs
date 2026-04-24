@@ -13,8 +13,6 @@ weight: 20
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
@@ -26,5 +24,3 @@ export default function () {
   session.get('/api/names'); // baseUrl doesn't need to be repeated on every request
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ Queries the elements for the given selector in the [ElementHandle](https://grafa
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -51,5 +49,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

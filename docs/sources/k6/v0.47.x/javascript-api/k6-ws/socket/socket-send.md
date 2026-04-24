@@ -16,8 +16,6 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 
@@ -31,7 +29,5 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 - See also [Socket.sendBinary(data)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-sendbinary)

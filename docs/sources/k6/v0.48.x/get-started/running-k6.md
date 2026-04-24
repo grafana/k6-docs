@@ -161,8 +161,6 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 You can ramp the number of VUs up and down during the test.
 To configure ramping, use the `options.stages` property.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
@@ -181,8 +179,6 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}
 
 For more granular ramp configuration, you can use [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) and the `ramping-vus` executor.
 

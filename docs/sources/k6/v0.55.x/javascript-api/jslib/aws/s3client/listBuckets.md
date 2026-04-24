@@ -16,8 +16,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -50,5 +48,3 @@ export default async function () {
   // ... work with the bucket's content
 }
 ```
-
-{{< /code >}}

@@ -27,8 +27,6 @@ A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
@@ -48,5 +46,3 @@ export default async function () {
   await file.seek(-2, SeekMode.End);
 }
 ```
-
-{{< /code >}}

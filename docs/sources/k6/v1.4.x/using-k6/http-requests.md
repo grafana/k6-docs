@@ -12,8 +12,6 @@ When you create a new load test, one of the first steps is to define the HTTP re
 
 A GET request looks like this:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -22,11 +20,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 For something slightly more complex, this example shows a POST request with an email/password authentication payload:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -47,8 +41,6 @@ export default function () {
   http.post(url, payload, params);
 }
 ```
-
-{{< /code >}}
 
 ## Available methods
 
@@ -93,8 +85,6 @@ In this example, the metric is the duration of an HTTP request.
 
 Note how the `tags` object groups data.
 
-{{< code >}}
-
 ```json
 {
   "type": "Point",
@@ -115,15 +105,11 @@ Note how the `tags` object groups data.
 }
 ```
 
-{{< /code >}}
-
 ## Group URLs under one tag {#url-grouping}
 
 By default, tags have a `name` field that holds the value of the request URL.
 If your test has dynamic URL paths, you might not want this behavior, which could bring a large number of unique URLs into the metrics stream.
 For example, the following code accesses 100 different URLs:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -137,12 +123,8 @@ export default function () {
 // tags.name=\"http://example.com/posts/2\",
 ```
 
-{{< /code >}}
-
 You might prefer to report this data in a single metric:
 To aggregate data from dynamic URLs, explicitly set a `name` tag:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -158,11 +140,7 @@ export default function () {
 // tags.name=\"PostsItemURL\",
 ```
 
-{{< /code >}}
-
 That code would produce JSON output like this:
-
-{{< code >}}
 
 ```json
 // For http://example.com/1, note that the url is not present in the JSON.
@@ -200,14 +178,10 @@ That code would produce JSON output like this:
 }
 ```
 
-{{< /code >}}
-
 Note how these two objects have the same `name`, despite having different URLs.
 If you filter the results for the tag `name: PostsItemURL`, the results include all data points from all 100 URLs.
 
 As an alternative, you can also use the `http.url` wrapper to set the `name` tag with a string template value:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -220,5 +194,3 @@ export default function () {
 // tags.name="http://example.com/posts/${}",
 // tags.name="http://example.com/posts/${}",
 ```
-
-{{< /code >}}

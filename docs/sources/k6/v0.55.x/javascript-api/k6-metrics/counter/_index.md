@@ -26,8 +26,6 @@ For example:
 
 ### Examples
 
-{{< code >}}
-
 ```javascript
 import { Counter } from 'k6/metrics';
 
@@ -38,10 +36,6 @@ export default function () {
   myCounter.add(2, { tag1: 'myValue', tag2: 'myValue2' });
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -57,10 +51,6 @@ export default function () {
   CounterErrors.add(!contentOK);
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { Counter } from 'k6/metrics';
@@ -101,5 +91,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

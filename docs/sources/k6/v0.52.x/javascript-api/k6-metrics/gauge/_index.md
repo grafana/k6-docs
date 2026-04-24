@@ -27,8 +27,6 @@ For example:
 
 ### Examples
 
-{{< code >}}
-
 ```javascript
 import { Gauge } from 'k6/metrics';
 
@@ -40,10 +38,6 @@ export default function () {
   myGauge.add(2, { tag1: 'value', tag2: 'value2' });
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -64,5 +58,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

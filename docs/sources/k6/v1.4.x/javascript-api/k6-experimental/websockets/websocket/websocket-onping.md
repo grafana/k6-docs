@@ -13,8 +13,6 @@ For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](
 
 _A k6 script that initiates a WebSocket connection and sets up a handler for the `ping` event._
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -40,5 +38,3 @@ export default function () {
   };
 }
 ```
-
-{{< /code >}}

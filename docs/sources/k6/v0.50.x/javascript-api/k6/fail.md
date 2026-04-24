@@ -22,8 +22,6 @@ because the latter cannot be used as `[expr] || throw`, which is a convenient wa
 
 Aborting the current script iteration if a check fails:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, fail } from 'k6';
@@ -39,5 +37,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}

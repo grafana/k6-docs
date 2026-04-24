@@ -21,8 +21,6 @@ Returns the element's text content.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -49,5 +47,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

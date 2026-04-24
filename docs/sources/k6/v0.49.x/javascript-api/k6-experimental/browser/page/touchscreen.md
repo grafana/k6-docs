@@ -15,8 +15,6 @@ Returns the [Touchscreen](https://grafana.com/docs/k6/<K6_VERSION>/javascript-ap
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   page.touchScreen.tap(50, 50);
 }
 ```
-
-{{< /code >}}

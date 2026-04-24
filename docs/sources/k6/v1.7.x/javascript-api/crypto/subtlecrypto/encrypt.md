@@ -39,8 +39,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the encrypted data.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const plaintext = stringToArrayBuffer('Hello, World!');
@@ -103,5 +101,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

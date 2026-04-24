@@ -49,8 +49,6 @@ This library is in active development. It's stable enough to be useful, but you 
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:fixedscenarios -->
 
 ```javascript
@@ -119,5 +117,3 @@ export default function testSuite() {
   }
 }
 ```
-
-{{< /code >}}

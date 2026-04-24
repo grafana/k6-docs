@@ -22,8 +22,6 @@ Returns the `element.textContent`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   console.log(await options.textContent());
 }
 ```
-
-{{< /code >}}

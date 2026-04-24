@@ -15,8 +15,6 @@ Chai exposes a few options to change the library configuration.
 | aggregateChecks           | true    | The actual values are not interpolated into the check message. Disable for tests with 1 iteration.                                                                            |
 | logFailures               | false   | When the check fails, debug messages are printed.                                                                                                                             |
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import chai, { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
@@ -41,8 +39,6 @@ export default function testSuite() {
   });
 }
 ```
-
-{{< /code >}}
 
 The resulting
 

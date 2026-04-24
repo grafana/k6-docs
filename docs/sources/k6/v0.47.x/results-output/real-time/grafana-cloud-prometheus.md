@@ -68,16 +68,12 @@ On the Dashboards UI:
 
 Optionally, when running the test, you can set the `testid` tag as a [wide test tag](https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/#test-wide-tags) to filter results of a particular test run on this dashboard (or in PromQL queries). `testid` can be any unique string that allows you to identify the test run.
 
-{{< code >}}
-
 ```bash
 K6_PROMETHEUS_RW_USERNAME=USERNAME \
 K6_PROMETHEUS_RW_PASSWORD=API_KEY \
 K6_PROMETHEUS_RW_SERVER_URL=REMOTE_WRITE_ENDPOINT \
 k6 run -o experimental-prometheus-rw --tag testid=TEST_ID script.js
 ```
-
-{{< /code >}}
 
 Additionally, you can also use the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) to query k6 time series, design your visualization panels, and add them to any of your existing dashboards.
 

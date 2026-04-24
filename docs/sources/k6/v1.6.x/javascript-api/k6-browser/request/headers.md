@@ -15,8 +15,6 @@ An object of key value pairs made up of HTTP headers associated with the request
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

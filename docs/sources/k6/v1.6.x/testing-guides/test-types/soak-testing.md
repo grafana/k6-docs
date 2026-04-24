@@ -56,8 +56,6 @@ The soak test is almost the same as the average-load test. The only difference i
 
 Configure the load duration in the `options` object:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -81,8 +79,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 For more complex behavior, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 

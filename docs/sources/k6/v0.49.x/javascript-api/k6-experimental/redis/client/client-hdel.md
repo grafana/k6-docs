@@ -22,8 +22,6 @@ Deletes the specified fields from the hash stored at `key`. The number of fields
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -36,5 +34,3 @@ export default async function () {
   await redisClient.hdel('myhash', 'myfield');
 }
 ```
-
-{{< /code >}}

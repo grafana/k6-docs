@@ -24,8 +24,6 @@ The `File` class represents a file with methods for reading, seeking, and obtain
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
@@ -67,5 +65,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

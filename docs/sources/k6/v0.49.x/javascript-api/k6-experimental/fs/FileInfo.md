@@ -17,8 +17,6 @@ The `FileInfo` class represents information about a [file](https://grafana.com/d
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
@@ -35,5 +33,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

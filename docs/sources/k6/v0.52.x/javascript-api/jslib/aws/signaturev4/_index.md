@@ -45,8 +45,6 @@ SignatureV4 methods throw errors on failure.
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -168,5 +166,3 @@ export default function () {
   http.get(signedRequest.url, { headers: signedRequest.headers });
 }
 ```
-
-{{< /code >}}

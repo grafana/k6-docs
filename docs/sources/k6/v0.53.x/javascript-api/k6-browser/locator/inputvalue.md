@@ -22,8 +22,6 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -48,5 +46,3 @@ export default async function () {
   console.log(await textInput.inputValue());
 }
 ```
-
-{{< /code >}}

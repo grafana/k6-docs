@@ -29,13 +29,9 @@ Prior to k6 v1.4.0, Rate metrics were exported as two separate counters: `metric
 
 You can use the `--out experimental-opentelemetry` option when running your tests to use this extension:
 
-{{< code >}}
-
 ```bash
 K6_OTEL_GRPC_EXPORTER_INSECURE=true K6_OTEL_METRIC_PREFIX=k6_ k6 run --tag test-id=123 -o experimental-opentelemetry examples/script.js
 ```
-
-{{< /code >}}
 
 ## Configuration
 

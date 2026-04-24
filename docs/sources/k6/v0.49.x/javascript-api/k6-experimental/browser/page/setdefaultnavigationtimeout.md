@@ -18,8 +18,6 @@ This setting will change the navigation timeout for the following methods:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -43,5 +41,3 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
 }
 ```
-
-{{< /code >}}

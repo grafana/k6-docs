@@ -28,8 +28,6 @@ The `homepage.js` class also contains different methods for:
 
 When locators need to be updated or other specific changes related to the homepage are made, you only need to update the `homepage.js` class.
 
-{{< code >}}
-
 ```javascript
 import { bookingData } from '../data/booking-data.js';
 
@@ -66,11 +64,7 @@ export class Homepage {
 }
 ```
 
-{{< /code >}}
-
 You can import the `Homepage` class within your test class and invoke the methods you need. This makes the code easier to understand and enforces the separation between your test and business logic.
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -93,5 +87,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

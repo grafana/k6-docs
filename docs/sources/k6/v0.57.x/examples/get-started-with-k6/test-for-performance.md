@@ -46,8 +46,6 @@ export const options = {
 
 Add this `options` object with thresholds to your script `api-test.js`.
 
-{{< code >}}
-
 ```javascript
 // import necessary modules
 import { check } from 'k6';
@@ -84,8 +82,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 Run the test.
 
@@ -233,8 +229,6 @@ export const options = {
 
 Here is the full script.
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -290,8 +284,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 Run the test.
 

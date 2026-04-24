@@ -21,8 +21,6 @@ Returns the page that opened the current page. The first page that is navigated 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -46,5 +44,3 @@ export default async function () {
   console.log(await page.opener());
 }
 ```
-
-{{< /code >}}

@@ -42,8 +42,6 @@ performance and memory optimization.
 
 ### Parsing a full CSV File into a SharedArray
 
-{{< code >}}
-
 <!--md-k6:skip-->
 
 ```javascript
@@ -70,11 +68,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Streaming a CSV file line-by-line
-
-{{< code >}}
 
 <!--md-k6:skip-->
 
@@ -108,5 +102,3 @@ export default async function () {
   console.log(done, value);
 }
 ```
-
-{{< /code >}}

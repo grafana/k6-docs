@@ -33,8 +33,6 @@ With it, the user can send messages to specified queues, receive messages from q
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -80,5 +78,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

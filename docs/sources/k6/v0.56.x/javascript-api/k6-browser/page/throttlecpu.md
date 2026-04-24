@@ -20,8 +20,6 @@ Throttles the CPU in Chrome/Chromium to slow it down by the specified `rate` in 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -51,5 +49,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -42,8 +42,6 @@ A `Promise` that resolves to a new [CryptoKey](https://grafana.com/docs/k6/<K6_V
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const password = stringToArrayBuffer('my secret password');
@@ -86,5 +84,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

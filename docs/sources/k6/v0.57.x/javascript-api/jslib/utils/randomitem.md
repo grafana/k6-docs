@@ -20,8 +20,6 @@ Function returns a random item from an array.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
@@ -32,5 +30,3 @@ export default function () {
   console.log(`Hello, my name is ${randomName}`);
 }
 ```
-
-{{< /code >}}

@@ -22,8 +22,6 @@ Returns the IP address and port of the server for this response.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -53,5 +51,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

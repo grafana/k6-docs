@@ -15,8 +15,6 @@ Returns the matching [Request](https://grafana.com/docs/k6/<K6_VERSION>/javascri
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -57,5 +55,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

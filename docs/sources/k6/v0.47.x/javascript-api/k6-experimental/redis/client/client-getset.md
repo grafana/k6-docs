@@ -22,8 +22,6 @@ Atomically sets `key` to `value` and returns the value previously stored at `key
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -43,5 +41,3 @@ export default async function () {
   await redisClient.getDel('mykey');
 }
 ```
-
-{{< /code >}}

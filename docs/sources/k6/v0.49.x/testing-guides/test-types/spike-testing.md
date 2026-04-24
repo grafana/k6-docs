@@ -52,8 +52,6 @@ The key differentiators of the spike test are the simulation of sudden and very 
 
 Sometimes, the test may require a load plateau for some time. If a plateau is needed, it's generally short. A ramp-down can also be quick or unnecessary as the goal is to suddenly increase the system's load.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -77,8 +75,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 In a spike test, load quickly increases to an extreme level.
 The ramp-down period follows when the test reaches the maximum, returning to 0 quickly.

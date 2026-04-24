@@ -16,8 +16,6 @@ Set a cookie in the jar by specifying url, name, value and some other optional s
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -38,5 +36,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

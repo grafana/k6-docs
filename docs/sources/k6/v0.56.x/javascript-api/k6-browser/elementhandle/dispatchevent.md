@@ -42,8 +42,6 @@ Since `eventInit` is event-specific, please refer to the events documentation fo
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -70,5 +68,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

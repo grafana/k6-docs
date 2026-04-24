@@ -29,8 +29,6 @@ The `utils` module contains number of small utility functions useful in every da
 
 ## Simple example
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
@@ -56,5 +54,3 @@ export default function () {
   sleep(randomIntBetween(1, 5)); // sleep between 1 and 5 seconds.
 }
 ```
-
-{{< /code >}}

@@ -34,8 +34,6 @@ Response represents a response received by the page.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -63,5 +61,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

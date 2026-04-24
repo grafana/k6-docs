@@ -31,8 +31,6 @@ The main use case for the browser module is to test performance on the browser l
 
 ## A simple browser test
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
@@ -77,13 +75,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding code launches a Chromium-based browser, visits the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
 
 After running the test, the following [browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics) will be reported.
-
-{{< code >}}
 
 ```bash
           /\      |‾‾| /‾‾/   /‾‾/
@@ -123,7 +117,5 @@ ui   ✓ [======================================] 1 VUs  00m01.3s/10m0s  1/1 sha
      vus.........................: 1       min=1      max=1
      vus_max.....................: 1       min=1      max=1
 ```
-
-{{< /code >}}
 
 This gives you a representation of browser performance, via the web vitals, as well as the HTTP requests that came from the browser.

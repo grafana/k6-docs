@@ -25,8 +25,6 @@ From that point forward, all requests made by the HTTP module from that point fo
 
 This example demonstrates how calling the `instrumentHTTP` function in the init context of a script once ensures that all requests made by the HTTP module from that point forward will have a trace context header attached.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import tracing from 'k6/experimental/tracing';
@@ -53,5 +51,3 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}

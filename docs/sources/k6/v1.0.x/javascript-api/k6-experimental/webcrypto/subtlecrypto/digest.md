@@ -35,8 +35,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the digest.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -54,5 +52,3 @@ function stringToArrayBuffer(s) {
   return Uint8Array.from(new String(s), (x) => x.charCodeAt(0));
 }
 ```
-
-{{< /code >}}

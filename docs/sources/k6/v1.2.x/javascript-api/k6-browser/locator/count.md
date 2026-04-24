@@ -15,8 +15,6 @@ Returns the number of elements matching the selector. This does not wait for act
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
@@ -52,5 +50,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

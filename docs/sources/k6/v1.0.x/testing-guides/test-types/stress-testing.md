@@ -56,8 +56,6 @@ The difference is that it reaches a higher level of load.
 1. Maintain that load for a while.
 1. Depending on the test case, stop or ramp down gradually.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -81,8 +79,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 For more complex behavior, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 

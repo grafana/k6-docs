@@ -23,8 +23,6 @@ weight: 20
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import {
   AWSConfig,
@@ -67,13 +65,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## Usage in Multipart Uploads
 
 For multipart uploads, the `S3UploadedObject` is returned by the `completeMultipartUpload` method:
-
-{{< code >}}
 
 ```javascript
 import crypto from 'k6/crypto';
@@ -134,5 +128,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

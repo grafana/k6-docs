@@ -15,8 +15,6 @@ Contains the request's post body, if any.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

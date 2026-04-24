@@ -19,8 +19,6 @@ For details about propagation, refer to [About baggage header](https://grafana.c
 
 This example demonstrates how to instantiate a client and use it to instrument HTTP calls. The example also illustrates how you can use the client alongside the standard `http` module to perform non-instrumented HTTP calls.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/{{< param "JSLIB_PYROSCOPE_VERSION" >}}/index.js';
@@ -55,8 +53,6 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}
 
 ## HTTP module functions equivalents
 

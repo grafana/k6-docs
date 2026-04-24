@@ -22,8 +22,6 @@ The returned object has one method get with the same functionality as the global
 
 A simple example where we get a secret by its name from the default source (if defined).
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -35,11 +33,7 @@ export default async () => {
 };
 ```
 
-{{< /code >}}
-
 We can also get a secret source by its name then get a secret specifically from it.
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -52,13 +46,9 @@ export default async () => {
 };
 ```
 
-{{< /code >}}
-
 In both of those cases the end logs will have `***SECRET_REDACTED***` in place of any secret that has been outputed.
 
 ### A full example with multiple secret sources and names
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -74,11 +64,7 @@ export default async () => {
 };
 ```
 
-{{< /code >}}
-
 And if we ran we will see that when we get from the default secret source we get one secret and we get a different one from the not default one. This also shows that the internal parts of the scripts can use the actual value of the script even if it is redacted in the logs.
-
-{{< code >}}
 
 ```bash
 $ k6 run --secret-source=mock=default,cool="cool secret" --secret-source=mock=name=another,cool="not cool secret" multi-source.test.js
@@ -87,5 +73,3 @@ INFO[0000] true                                          source=console
 INFO[0000] false                                         source=console
 INFO[0000] true                                          source=console
 ```
-
-{{< /code >}}

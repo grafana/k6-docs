@@ -31,8 +31,6 @@ This method hovers over an element matching `selector`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -55,5 +53,3 @@ export default async function () {
   page.hover('#off-screen');
 }
 ```
-
-{{< /code >}}

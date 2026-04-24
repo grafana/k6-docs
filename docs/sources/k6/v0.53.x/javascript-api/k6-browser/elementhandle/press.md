@@ -31,8 +31,6 @@ Press a single key on the keyboard or a combination of keys.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -61,5 +59,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

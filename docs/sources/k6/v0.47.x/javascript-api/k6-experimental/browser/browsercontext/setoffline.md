@@ -13,8 +13,6 @@ Toggles the `BrowserContext`'s connectivity on/off.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -46,5 +44,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

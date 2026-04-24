@@ -20,8 +20,6 @@ Mimics [jquery.nextAll](https://api.jquery.com/nextAll/).
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -45,5 +43,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

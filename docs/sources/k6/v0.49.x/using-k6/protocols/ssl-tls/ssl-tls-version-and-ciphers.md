@@ -18,8 +18,6 @@ You can as also specify which cipher suites are allowed for that connection.
 To limit the k6 to a specific SSL/TLS version, use a global
 [configuration option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options):
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -32,11 +30,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 You can also accept a range of SSL/TLS versions:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -52,8 +46,6 @@ export default function () {
   http.get('https://badssl.com');
 }
 ```
-
-{{< /code >}}
 
 ## Versions available to choose from
 
@@ -71,8 +63,6 @@ To limit the cipher suites that k6 is allowed to use, there's a global
 [configuration option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 You choose a list of allowed ciphers:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -85,14 +75,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Checking SSL/TLS version and cipher suite used in requests
 
 You can also check which SSL/TLS version and ciphers were used.
 To do so, look at the `tls_version` and `tls_cipher_suite` response object properties.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -106,8 +92,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 ## Cipher suites available to choose from
 

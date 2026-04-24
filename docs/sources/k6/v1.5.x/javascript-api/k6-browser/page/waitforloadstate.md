@@ -43,8 +43,6 @@ Events can be either:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
@@ -84,5 +82,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

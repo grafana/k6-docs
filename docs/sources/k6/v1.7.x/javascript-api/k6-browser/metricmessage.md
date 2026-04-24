@@ -28,8 +28,6 @@ Doing this helps group metrics with different URL and name tags that, in fact, r
 
 ### Example Usage
 
-{{< code >}}
-
 <!-- eslint-skip-->
 
 ```javascript
@@ -53,5 +51,3 @@ page.on('metric', (metric) => {
   });
 });
 ```
-
-{{< /code >}}

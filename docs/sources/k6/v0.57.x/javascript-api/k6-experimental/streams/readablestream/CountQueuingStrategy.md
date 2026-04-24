@@ -16,8 +16,6 @@ The `CountQueuingStrategy` interface of the Streams API represents a built-in qu
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { CountQueuingStrategy, ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -61,5 +59,3 @@ function numbersStream() {
   );
 }
 ```
-
-{{< /code >}}

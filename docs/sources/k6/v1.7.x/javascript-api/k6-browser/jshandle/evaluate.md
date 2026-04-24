@@ -22,8 +22,6 @@ Executes JavaScript code in the page, passing this handle as the first argument 
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -56,5 +54,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

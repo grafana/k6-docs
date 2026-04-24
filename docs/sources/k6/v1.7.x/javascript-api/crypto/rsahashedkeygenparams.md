@@ -19,8 +19,6 @@ The `RSAHashedKeyGenParams` object represents the object that should be passed a
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const keyPair = await crypto.subtle.generateKey(
@@ -35,5 +33,3 @@ export default async function () {
   );
 }
 ```
-
-{{< /code >}}

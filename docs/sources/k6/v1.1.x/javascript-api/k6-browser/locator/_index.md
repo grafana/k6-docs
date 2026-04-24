@@ -51,8 +51,6 @@ Locator can be created with the [page.locator(selector[, options])](https://graf
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -114,5 +112,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

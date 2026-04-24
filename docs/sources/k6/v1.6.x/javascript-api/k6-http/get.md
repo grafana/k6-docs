@@ -22,8 +22,6 @@ Make a GET request.
 
 ### Example fetching a URL
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -32,5 +30,3 @@ export default function () {
   console.log(JSON.stringify(res.headers));
 }
 ```
-
-{{< /code >}}

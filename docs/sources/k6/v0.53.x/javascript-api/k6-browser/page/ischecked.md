@@ -30,8 +30,6 @@ Checks to see if the `checkbox` `input` type is selected or not.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -58,5 +56,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

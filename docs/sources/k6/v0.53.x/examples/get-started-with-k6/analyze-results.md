@@ -19,8 +19,6 @@ In this tutorial, learn how to:
 k6 provides many [result outputs](https://grafana.com/docs/k6/<K6_VERSION>/results-output/).
 By default, the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) provides the aggregated results of the test metrics.
 
-{{< code >}}
-
 ```bash
 checks.........................: 50.00% ✓ 45       ✗ 45
 data_received..................: 1.3 MB 31 kB/s
@@ -41,8 +39,6 @@ iterations.....................: 45     1.092345/s
 vus............................: 1      min=1      max=19
 vus_max........................: 20     min=20     max=20
 ```
-
-{{< /code >}}
 
 For simplicity to learn about [k6 metric results](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference), this tutorial uses the [JSON output](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/json) and [jq](https://jqlang.github.io/jq/) to filter results.
 
@@ -107,8 +103,6 @@ const params = {
 
 Create a new script named "tagged-login.js", and add a custom tag to it.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -133,8 +127,6 @@ export default function () {
   http.post(`${url}/auth/basic/login`, payload, params);
 }
 ```
-
-{{< /code >}}
 
 Run the test:
 
@@ -171,8 +163,6 @@ To learn more about how to compare results and other k6 APIs, write a test for t
 Can you figure out how to [script the requests](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-requests)?
 If not, use the following script. Since this example simulates a human user rather than an API call, it has a sleep between each request. Run with `k6 run multiple-flows.js`.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { group, sleep } from 'k6';
@@ -196,14 +186,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Add Group functions
 
 Wrap the two endpoints in different groups.
 Name one group `Contacts flow` and another `Coinflip game`.
-
-{{< code >}}
 
 ```javascript
 //import necessary modules
@@ -232,8 +218,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 ### Run and filter
 
@@ -264,8 +248,6 @@ As an example, create a metric that collects latency results for each group:
 1. Import [`Trend`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend) from the k6 metrics module.
 1. Create two duration trend metric functions.
 1. In each group, add the `duration` time to the trend for requests to `contacts` and the `coin_flip` endpoints.
-
-{{< code >}}
 
 ```javascript
 //import necessary modules
@@ -312,8 +294,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 Run the test with small number of iterations and output the results to `results.json`.
 

@@ -15,8 +15,6 @@ Parses response as HTML and populate a [Selection](https://grafana.com/docs/k6/<
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -32,5 +30,3 @@ export default function () {
     });
 }
 ```
-
-{{< /code >}}

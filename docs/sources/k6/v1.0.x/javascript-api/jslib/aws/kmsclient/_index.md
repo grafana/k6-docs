@@ -32,8 +32,6 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -71,5 +69,3 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}

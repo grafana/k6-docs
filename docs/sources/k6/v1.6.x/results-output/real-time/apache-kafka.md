@@ -38,43 +38,27 @@ To learn more about how to build custom k6 versions, check out [xk6](https://git
 
 You can configure the broker (or multiple ones), topic and message format directly from the command line parameter like this:
 
-{{< code >}}
-
 ```bash
 k6 run --out xk6-kafka=brokers=broker_host:8000,topic=k6
 ```
 
-{{< /code >}}
-
 or if you want multiple brokers:
-
-{{< code >}}
 
 ```bash
 --out xk6-kafka=brokers={broker1,broker2},topic=k6,format=json
 ```
 
-{{< /code >}}
-
 You can also specify the message `format` k6 will use. By default, it will be the same as the JSON output, but you can also use the InfluxDB line protocol for direct "consumption" by InfluxDB:
-
-{{< code >}}
 
 ```bash
 --out xk6-kafka=brokers=someBroker,topic=someTopic,format=influxdb
 ```
 
-{{< /code >}}
-
 You can even modify some of the `format` settings such as `tagsAsFields`:
-
-{{< code >}}
 
 ```bash
 --out xk6-kafka=brokers=someBroker,topic=someTopic,format=influxdb,influxdb.tagsAsFields={url,myCustomTag}
 ```
-
-{{< /code >}}
 
 ### Options
 

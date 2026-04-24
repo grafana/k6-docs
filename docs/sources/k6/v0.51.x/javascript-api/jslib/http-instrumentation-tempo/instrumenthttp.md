@@ -23,8 +23,6 @@ From that point forward, all requests made by the HTTP module from that point fo
 
 This example demonstrates how to call the `instrumentHTTP` function in the script's init context. From that point forward, all the requests made by the HTTP module have a trace context header attached.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import tempo from 'https://jslib.k6.io/http-instrumentation-tempo/{{< param "JSLIB_TEMPO_VERSION" >}}/index.js';
@@ -51,5 +49,3 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}

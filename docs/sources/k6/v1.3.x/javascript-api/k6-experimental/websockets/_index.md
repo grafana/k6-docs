@@ -56,8 +56,6 @@ This example shows:
 - How a single VU can run multiple WebSockets connections asynchronously.
 - How to use the timeout and interval functions to stop the connections after some period.
 
-{{< code >}}
-
 ```javascript
 import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 import { WebSocket } from 'k6/experimental/websockets';
@@ -118,5 +116,3 @@ function startWSWorker(id) {
   });
 }
 ```
-
-{{< /code >}}

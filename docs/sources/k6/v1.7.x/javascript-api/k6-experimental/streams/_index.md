@@ -24,8 +24,6 @@ With the Streams API support in k6, you can start processing raw data with Javas
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 import { ReadableStream } from 'k6/experimental/streams';
@@ -124,5 +122,3 @@ async function getNextLine(file, state) {
   }
 }
 ```
-
-{{< /code >}}

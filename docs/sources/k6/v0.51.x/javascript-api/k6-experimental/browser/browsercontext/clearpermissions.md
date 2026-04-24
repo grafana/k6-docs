@@ -9,8 +9,6 @@ Clears all permission overrides for the `BrowserContext`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -34,5 +32,3 @@ export default function () {
   context.clearPermissions();
 }
 ```
-
-{{< /code >}}

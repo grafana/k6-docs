@@ -23,8 +23,6 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
@@ -58,5 +56,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

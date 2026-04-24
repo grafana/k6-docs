@@ -29,8 +29,6 @@ Both the dedicated `lambda.js` jslib bundle and the all-encompassing `aws.js` bu
 
 ### Examples
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -58,5 +56,3 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}

@@ -45,8 +45,6 @@ A `Promise` that resolves to a new `ArrayBuffer` or an [JsonWebKey](https://graf
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   /**
@@ -77,5 +75,3 @@ export default async function () {
   console.log(JSON.stringify(importedKey));
 }
 ```
-
-{{< /code >}}
