@@ -81,7 +81,7 @@ export default function () {
 
 ## See percentage of checks that passed
 
-When a script includes checks, the summary report shows how many of the tests' checks passed:
+When a script includes checks, the summary report shows how many of the tests' checks passed. The check built-in metric is split into three separate metrics: `checks_total`, `checks_succeeded`, and `checks_failed`.:
 
 {{< code >}}
 
@@ -92,8 +92,10 @@ $ k6 run script.js
     ✓ is status 200
 
   ...
-  checks.........................: 100.00% ✓ 1        ✗ 0
-  data_received..................: 11 kB   12 kB/s
+  checks_total.......................: 1       1.23/s
+  checks_succeeded...................: 100.00% 1 out of 1
+  checks_failed......................: 0.00%   0 out of 1
+  ...
 ```
 
 {{< /code >}}
@@ -133,8 +135,10 @@ $ k6 run checks.js
     ✓ body size is 11,105 bytes
 
   ...
-  checks.........................: 100.00% ✓ 2        ✗ 0
-  data_received..................: 11 kB   20 kB/s
+  checks_total.......................: 2       2.34/s
+  checks_succeeded...................: 100.00% 2 out of 2
+  checks_failed......................: 0.00%   0 out of 2
+  ...
 ```
 
 {{< /code >}}
