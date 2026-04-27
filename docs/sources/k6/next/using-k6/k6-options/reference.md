@@ -48,7 +48,6 @@ Each option has its own detailed reference in a separate section.
 | [No color](#no-color)                                        | A boolean specifying whether colored output is disabled                                                                                                                                                                                                                                                                                            |
 | [No connection reuse](#no-connection-reuse)                  | A boolean specifying whether k6 should disable keep-alive connections                                                                                                                                                                                                                                                                              |
 | [No cookies reset](#no-cookies-reset)                        | This disables resetting the cookie jar after each VU iteration                                                                                                                                                                                                                                                                                     |
-| [No summary](#no-summary)                                    | disables the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test)                                                                                                                                                                                                                                            |
 | [No setup](#no-setup)                                        | A boolean specifying whether `setup()` function should be run                                                                                                                                                                                                                                                                                      |
 | [No teardown](#no-teardown)                                  | A boolean specifying whether `teardown()` function should be run                                                                                                                                                                                                                                                                                   |
 | [No thresholds](#no-thresholds)                              | Disables threshold execution                                                                                                                                                                                                                                                                                                                       |
@@ -682,30 +681,6 @@ it's enabled, saved cookies will be persisted across VU iterations.
 export const options = {
   noCookiesReset: true,
 };
-```
-
-## No summary
-
-{{< admonition type="caution" >}}
-
-This option has been deprecated since v1.3.0 and will be removed by v2.0.
-
-Use the `disabled` [summary mode](#summary-mode) instead.
-
-{{< /admonition >}}
-
-
-Disables [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test) generation,
-including calls to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) and `--summary-export`.
-
-Available in the `k6 run` command.
-
-| Env             | CLI            | Code / Config file | Default |
-| --------------- | -------------- | ------------------ | ------- |
-| `K6_NO_SUMMARY` | `--no-summary` | N/A                | `false` |
-
-```bash
-k6 run --no-summary ~/script.js
 ```
 
 ## No setup
