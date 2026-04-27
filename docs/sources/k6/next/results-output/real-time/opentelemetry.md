@@ -18,12 +18,8 @@ k6 converts all [k6 metric types](https://grafana.com/docs/k6/<K6_VERSION>/using
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Counter   | `Float64CounterOption`                                                                                                                                                                                                                                                                                                                                                        |
 | Gauge     | `Float64ObservableGauge`                                                                                                                                                                                                                                                                                                                                                      |
-| Rate      | Exported as a single `Int64Counter` counter named `metric_name` with an attribute `condition` that can have two values: `zero` and `nonzero`. |
+| Rate      | Exported as a single `Int64Counter` counter named `metric_name` with an attribute `condition` that can have two values: `zero` and `nonzero`. If you previously used the legacy pair-of-counters format (`metric_name.occurred` / `metric_name.total`), update your dashboards and queries to filter on the `condition` attribute instead. |
 | Trend     | `Float64Histogram`                                                                                                                                                                                                                                                                                                                                                            |
-
-{{< admonition type="caution" >}}
-Prior to k6 v1.4.0, Rate metrics were exported as two separate counters: `metric_name.occurred` and `metric_name.total`. You can revert to this legacy behavior by setting the environment variable `K6_OTEL_SINGLE_COUNTER_FOR_RATE=false`. However, this legacy approach is deprecated and will be removed in a future release.
-{{< /admonition >}}
 
 ## Run the k6 test
 
@@ -49,12 +45,11 @@ The following options can be configured:
 | `K6_OTEL_TLS_CERTIFICATE`          | Configures the path to the root CA certificate file for TLS credentials. If it is not provided but TLS is enabled then the host's root CAs set is used.             |
 | `K6_OTEL_TLS_CLIENT_CERTIFICATE`   | Configures the path to the client certificate file.                                                                                                                 |
 | `K6_OTEL_TLS_CLIENT_KEY`           | Configures the path to the client key file.                                                                                                                         |
-| `K6_OTEL_EXPORTER_TYPE`            | Configures the type of exporter to use. Valid options are `http` and `grpc`. Default is `grpc`.                                                                     |
+| `K6_OTEL_EXPORTER_PROTOCOL`        | Configures the protocol of exporter to use. Valid options are `grpc` and `http/protobuf`. Default is `grpc`.                                                        |
 | `K6_OTEL_GRPC_EXPORTER_INSECURE`   | Disables client transport security for the gRPC exporter.                                                                                                           |
 | `K6_OTEL_GRPC_EXPORTER_ENDPOINT`   | Configures the gRPC exporter endpoint. Default is `localhost:4317`.                                                                                                 |
 | `K6_OTEL_HTTP_EXPORTER_INSECURE`   | Disables client transport security for the HTTP exporter.                                                                                                           |
 | `K6_OTEL_HTTP_EXPORTER_ENDPOINT`   | Configures the HTTP exporter endpoint. Must be host and port only, without scheme. Default is `localhost:4318`.                                                     |
 | `K6_OTEL_HTTP_EXPORTER_URL_PATH`   | Configures the HTTP exporter path. Default is `/v1/metrics`.                                                                                                        |
-| `K6_OTEL_SINGLE_COUNTER_FOR_RATE`  | Controls how Rate metrics are exported. When set to `true` (default), metrics are exported as a single counter with an attribute. When set to `false`, the legacy method is used, creating two separate counters. The legacy method is deprecated and will be removed in a future release. |
 
 You can also use the OpenTelemetry SDK configuration environment variables to configure the OpenTelemetry output, like the [gRPC exporter configuration](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc@v1.26.0). The `K6_OTEL_*` environment variables take precedence over the OpenTelemetry SDK configuration environment variables.
