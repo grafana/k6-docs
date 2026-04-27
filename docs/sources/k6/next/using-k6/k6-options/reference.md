@@ -351,8 +351,6 @@ export const options = {
 };
 ```
 
-Previously, the `cloud` object was known as `ext.loadimpact`.
-
 ## Execution segment
 
 These options specify how to partition the test run and which segment to run.
