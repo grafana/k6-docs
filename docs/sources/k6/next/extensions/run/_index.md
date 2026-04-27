@@ -31,6 +31,8 @@ Then, you can run your script as usual, and k6 automatically detects the extensi
 k6 run script.js
 ```
 
+Shell tab-completion also triggers automatic extension resolution. When you press Tab after typing an extension import path, k6 provisions the extension if it isn't already available.
+
 ### Limitations
 
 - Only works with Official and Community extensions.
