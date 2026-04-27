@@ -751,8 +751,7 @@ export const options = {
 
 ## Paused
 
-A boolean, true or false, specifying whether the test should start in a paused state. To resume
-a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud run` commands.
+A boolean, true or false, specifying whether the test should start in a paused state. Available in `k6 run` and `k6 cloud run` commands.
 
 | Env         | CLI              | Code / Config file | Default |
 | ----------- | ---------------- | ------------------ | ------- |
