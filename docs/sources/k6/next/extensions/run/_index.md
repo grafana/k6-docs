@@ -31,16 +31,6 @@ Then, you can run your script as usual, and k6 automatically detects the extensi
 k6 run script.js
 ```
 
-{{< admonition type="note" >}}
-
-To use community extensions you must have `K6_ENABLE_COMMUNITY_EXTENSIONS` set to `true`.
-
-```sh
-K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 run test.js
-```
-
-{{< /admonition >}}
-
 ### Limitations
 
 - Only works with Official and Community extensions.
