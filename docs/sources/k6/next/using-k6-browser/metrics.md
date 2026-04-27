@@ -61,7 +61,6 @@ As Google also recommends measuring the 75th percentile for each web vital metri
   browser_http_req_failed.....: 0.00%   ✓ 0        ✗ 3
   browser_web_vital_cls.......: avg=0        min=0       med=0        max=0        p(90)=0        p(95)=0
   browser_web_vital_fcp.......: avg=344.15ms min=269.2ms med=344.15ms max=419.1ms  p(90)=404.11ms p(95)=411.6ms
-  browser_web_vital_fid.......: avg=200µs    min=200µs   med=200µs    max=200µs    p(90)=200µs    p(95)=200µs
   browser_web_vital_inp.......: avg=8ms      min=8ms     med=8ms      max=8ms      p(90)=8ms      p(95)=8ms
   browser_web_vital_lcp.......: avg=419.1ms  min=419.1ms med=419.1ms  max=419.1ms  p(90)=419.1ms  p(95)=419.1ms
   browser_web_vital_ttfb......: avg=322.4ms  min=251ms   med=322.4ms  max=393.8ms  p(90)=379.52ms p(95)=386.66ms
