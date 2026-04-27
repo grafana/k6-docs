@@ -1,10 +1,10 @@
 ---
-title: 'Migrating to k6 v2'
+title: 'Migrate to k6 v2'
 description: 'A guide covering all breaking changes in k6 v2 and how to update your scripts, extensions, and configuration.'
 weight: 06
 ---
 
-# Migrating to k6 v2
+# Migrate to k6 v2
 
 This page covers all breaking changes introduced in k6 v2 and the steps to update your scripts, extensions, and configuration.
 
@@ -50,7 +50,7 @@ The top-level `k6 login` command and its subcommands have been removed:
 
 ## Stack is now required for all `k6 cloud` commands
 
-A stack must be provided for all `k6 cloud` commands. Run `k6 cloud login` once — it prompts interactively for your token and stack:
+A Grafana Cloud stack must be provided for all `k6 cloud` commands. Run `k6 cloud login` once — it prompts interactively for your token and stack:
 
 ```bash
 k6 cloud login
@@ -64,7 +64,7 @@ K6_CLOUD_TOKEN=<YOUR_API_TOKEN> K6_CLOUD_STACK_ID=<YOUR_STACK_ID> k6 cloud run s
 
 ## Cloud run non-threshold aborts now exit with code 97
 
-Previously, cloud runs aborted for reasons other than threshold violations (user abort, system error, timeout, script error) returned exit code `0`. They now return exit code `97`.
+Previously, Grafana Cloud k6 runs aborted for reasons other than threshold violations (user abort, system error, timeout, script error) returned exit code `0`. They now return exit code `97`.
 
 | Scenario | Before | After |
 | -------- | ------ | ----- |
@@ -184,7 +184,7 @@ Alternatively, run `k6 cloud login` to regenerate the config at the correct path
 
 ## Browser: `browser_web_vital_fid` metric removed
 
-The `browser_web_vital_fid` metric has been removed. Use `browser_web_vital_inp` instead, which measures [Interaction to Next Paint](https://web.dev/inp/).
+The `browser_web_vital_fid` metric has been removed as it's [no longer a Core Web Vital](https://web.dev/articles/fid). Use `browser_web_vital_inp` instead, which measures [Interaction to Next Paint](https://web.dev/inp/).
 
 Update any thresholds that reference `browser_web_vital_fid`:
 
