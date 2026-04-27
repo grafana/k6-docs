@@ -20,8 +20,6 @@ Mimics [jquery.closest](https://api.jquery.com/closest/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -53,5 +51,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

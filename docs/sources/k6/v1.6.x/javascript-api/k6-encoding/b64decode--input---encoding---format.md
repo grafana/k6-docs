@@ -23,8 +23,6 @@ Decode the passed base64 encoded `input` string into the unencoded original inpu
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import encoding from 'k6/encoding';
@@ -46,5 +44,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

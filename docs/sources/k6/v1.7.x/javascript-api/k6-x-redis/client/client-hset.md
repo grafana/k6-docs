@@ -25,8 +25,6 @@ Sets the specified field in the hash stored at `key` to `value`. If the `key` do
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -39,7 +37,5 @@ export default async function () {
   await redisClient.hdel('myhash', 'myfield');
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

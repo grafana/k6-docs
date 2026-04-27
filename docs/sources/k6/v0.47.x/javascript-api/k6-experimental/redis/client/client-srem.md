@@ -22,8 +22,6 @@ Removes the specified members from the set stored at `key`. Specified members th
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -48,5 +46,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

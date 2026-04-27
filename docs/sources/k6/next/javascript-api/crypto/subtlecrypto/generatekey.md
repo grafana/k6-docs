@@ -45,8 +45,6 @@ A `Promise` that resolves with the generated key as a [CryptoKey](https://grafan
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const key = await crypto.subtle.generateKey(
@@ -61,5 +59,3 @@ export default async function () {
   console.log(JSON.stringify(key));
 }
 ```
-
-{{< /code >}}

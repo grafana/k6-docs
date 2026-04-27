@@ -26,8 +26,6 @@ The properties of the `JsonWebKey` could vary depending on the algorithm and key
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const jwk = {
@@ -53,5 +51,3 @@ export default async function () {
   // INFO[0000] exported again: {"k":"H6gLp3lw7w27NrPUn00WpcKU-IJojJdNzhL_8F6se2k","kty":"oct","ext":true,"key_ops":["sign","verify"],"alg":"HS256"}  source=console
 }
 ```
-
-{{< /code >}}

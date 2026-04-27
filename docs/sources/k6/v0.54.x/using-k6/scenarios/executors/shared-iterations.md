@@ -45,8 +45,6 @@ Thus the executor works well with a _shift-left_ policy, where emphasizes testin
 
 The following example schedules 200 total iterations shared by 10 VUs with a maximum test duration of 30 seconds.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -70,8 +68,6 @@ export default function () {
   sleep(0.5);
 }
 ```
-
-{{< /code >}}
 
 ## Observations
 

@@ -16,8 +16,6 @@ Mimics [jquery.serialize](https://api.jquery.com/serialize/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -36,5 +34,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

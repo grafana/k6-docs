@@ -10,8 +10,6 @@ Scripting examples on how to use different authentication or authorization metho
 
 ## Basic authentication
 
-{{< code >}}
-
 ```javascript
 import encoding from 'k6/encoding';
 import http from 'k6/http';
@@ -57,11 +55,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## NTLM authentication
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -77,15 +71,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## AWS Signature v4 authentication with the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws)
 
 To authenticate requests to AWS APIs using [AWS Signature Version 4](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html), k6 offers the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws) JavaScript library, which provides a dedicated `SignatureV4` class. This class can produce authenticated requests to send to AWS APIs using the `http` k6 module.
 
 Here's an example script to demonstrate how to sign a request to fetch an object from an S3 bucket:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -150,5 +140,3 @@ export default function () {
   http.get(signedRequest.url, { headers: signedRequest.headers });
 }
 ```
-
-{{< /code >}}

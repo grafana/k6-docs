@@ -29,8 +29,6 @@ Before interacting with a gRPC service, k6 needs to learn the definitions of the
 
 One way to do that is to explicitly use the `Client.load()` method and load the client definitions from the local file system. The method accepts a list of import paths and a list of `.proto` files. k6 then loads all the definitions from the files and their dependencies.
 
-{{< code >}}
-
 ```javascript
 import { Client } from 'k6/net/grpc';
 
@@ -38,13 +36,9 @@ const client = new Client();
 client.load(['definitions'], 'hello.proto');
 ```
 
-{{< /code >}}
-
 Alternatively, you can dynamically load the definitions by using the gRPC reflection protocol. To enable reflection, you can pass the `reflect: true` option to `Client.connect()`. k6 then loads all the definitions from the server and their dependencies.
 
 This option is only possible if the server has been instrumented with reflection support.
-
-{{< code >}}
 
 ```javascript
 import { Client } from 'k6/net/grpc';
@@ -53,13 +47,9 @@ const client = new Client();
 client.connect('127.0.0.1:10000', { reflect: true });
 ```
 
-{{< /code >}}
-
 ### Unary gRPC requests
 
 Unary calls work the same way as regular HTTP requests. A single request is sent to a server, and the server replies with a single response.
-
-{{< code >}}
 
 ```javascript
 import { Client, StatusOK } from 'k6/net/grpc';
@@ -85,8 +75,6 @@ export default () => {
 };
 ```
 
-{{< /code >}}
-
 ### Streaming requires async functions
 
 gRPC streaming relies on event handlers (`stream.on`) to process messages.
@@ -101,8 +89,6 @@ All of the streaming examples on this page follow this pattern.
 In server streaming mode, the client sends a single request to the server, and the server replies with multiple responses.
 
 The following example demonstrates server streaming:
-
-{{< code >}}
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
@@ -151,8 +137,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 In this example, k6 connects to a gRPC server, creates a stream, and sends a message with latitude and longitude coordinates.
 The `async` default function wraps the stream logic in a `Promise`, which lets event handlers fire while the function awaits.
 When the server finishes sending data, the `end` handler closes the client and resolves the promise.
@@ -162,8 +146,6 @@ When the server finishes sending data, the `end` handler closes the client and r
 The client streaming mode is the opposite of the server streaming mode. The client sends multiple requests to the server, and the server replies with a single response.
 
 The following example demonstrates client streaming:
-
-{{< code >}}
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
@@ -234,8 +216,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 In this example, k6 connects to a gRPC server, creates a stream, and sends three random points.
 The code wraps the stream logic in a `Promise`, the same pattern as the server streaming example.
 The server responds with trip statistics, and the `end` handler closes the client and resolves the promise.
@@ -252,8 +232,6 @@ To catch errors that occur during streaming, you can use the `error` event handl
 
 The handler receives [an error object](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-error/).
 
-{{< code >}}
-
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
 
@@ -265,8 +243,6 @@ stream.on('error', function (e) {
   console.log('Error: ' + JSON.stringify(e));
 });
 ```
-
-{{< /code >}}
 
 ### Protocol Buffers JSON Mapping
 
@@ -297,8 +273,6 @@ service Service {
 
 When passing a message, you should use a string or an integer, not an object. As a result, you will receive a type that has already been marshaled.
 
-{{< code >}}
-
 ```javascript
 import { Client } from 'k6/net/grpc';
 const client = new Client();
@@ -315,8 +289,6 @@ if (respInt.message !== '6') {
   throw new Error("expected to get '6', but got a " + respInt.message);
 }
 ```
-
-{{< /code >}}
 
 Another example could be usage of `oneof`. Let's say you have a proto-definition like this:
 
@@ -339,8 +311,6 @@ message Foo {
 
 In this case, you should pass an object either with `code` or `id` fields.
 
-{{< code >}}
-
 ```javascript
 import { Client } from 'k6/net/grpc';
 const client = new Client();
@@ -351,8 +321,6 @@ const respWithCode = client.invoke('testing.Service/Test', { code: 'abc-123' });
 // calling RPC with filled id field
 const respWithID = client.invoke('testing.Service/Test', { id: 123 });
 ```
-
-{{< /code >}}
 
 ## Health Checking protocol
 

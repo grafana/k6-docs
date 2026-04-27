@@ -24,8 +24,6 @@ For async code, use [`setTimeout`](https://grafana.com/docs/k6/<K6_VERSION>/java
 
 Fetching two different pages with a 0-30 second random sleep in between:
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
@@ -37,11 +35,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Using the [k6-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) library to specify a range between a minimum and maximum:
-
-{{< code >}}
 
 ```javascript
 import { sleep } from 'k6';
@@ -55,11 +49,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 **Avoid:** Using `sleep` in a loop to poll for changes. This blocks the event loop, so the condition never updates:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -97,11 +87,7 @@ export default () => {
 };
 ```
 
-{{< /code >}}
-
 **Prefer:** Using `setInterval` to poll. The event loop stays free, so handlers run and the condition updates:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -149,5 +135,3 @@ export default () => {
   const timeoutId = setTimeout(cleanup, 5000);
 };
 ```
-
-{{< /code >}}

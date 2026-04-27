@@ -20,8 +20,6 @@ A promise resolving to a [File](https://grafana.com/docs/k6/<K6_VERSION>/javascr
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 
@@ -41,5 +39,3 @@ export default async function () {
   console.log(JSON.stringify(fileinfo));
 }
 ```
-
-{{< /code >}}

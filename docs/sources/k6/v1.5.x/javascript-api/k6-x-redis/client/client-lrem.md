@@ -25,8 +25,6 @@ Removes the first `count` occurrences of `value` from the list stored at `key`. 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -48,7 +46,5 @@ export default async function () {
   await redisClient.lpop('mylist');
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

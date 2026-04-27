@@ -23,8 +23,6 @@ This will update the page's width and height.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -51,5 +49,3 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
 }
 ```
-
-{{< /code >}}

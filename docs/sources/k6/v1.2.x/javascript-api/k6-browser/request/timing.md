@@ -29,8 +29,6 @@ Returns resource timing information for the given request. Most of the timing va
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -61,5 +59,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

@@ -13,8 +13,6 @@ Multiple VUs connect using a VU-indexed user name, and send random messages.
 
 Each VU receives messages sent by all other VUs.
 
-{{< code >}}
-
 <!-- md-k6:fixedscenarios -->
 
 ```javascript
@@ -83,5 +81,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

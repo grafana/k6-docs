@@ -34,13 +34,9 @@ When running tests, you can change the mode by using the `--compatibility-mode` 
 
 By default, k6 uses the `--compatibility-mode=extended` mode:
 
-{{< code >}}
-
 ```bash
 $ k6 run script.js
 ```
-
-{{< /code >}}
 
 After v0.53.0 the only difference with base is that `global` (node's global variable) is aliased to the value of `globalThis`.
 
@@ -80,8 +76,6 @@ After v0.53.0 there isn't a big reason to use this. Before that it was dropping 
 
 ### CommonJS Example
 
-{{< code >}}
-
 ```javascript
 const http = require('k6/http');
 const k6 = require('k6');
@@ -96,8 +90,6 @@ module.exports.default = function () {
   k6.sleep(1);
 };
 ```
-
-{{< /code >}}
 
 > ### ⚠️ About require()
 >

@@ -15,8 +15,6 @@ Returns a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-b
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { expect } from 'https://jslib.k6.io/k6-testing/{{< param "JSLIB_TESTING_VERSION" >}}/index.js';
 import { browser } from 'k6/browser';
@@ -43,5 +41,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

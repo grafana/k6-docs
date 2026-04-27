@@ -21,8 +21,6 @@ Returns all the members of the set values stored at `keys`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

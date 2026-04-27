@@ -94,8 +94,6 @@ For example, the following script distributes logic according to different user 
 - 60 percent play a coinflip game.
   - Half bet `heads`, and half bet `tails`.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import exec from 'k6/execution';
@@ -132,15 +130,11 @@ export default function () {
 
 To view results for a specific request or group, you can define [tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
-{{< /code >}}
-
 ## Randomize behavior
 
 To add a degree of random behavior, consider one of the randomizing functions from the [k6 utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils).
 
 For example, this script randomly assigns one behavior to happen one-third of the time, and another to happen all other times.
-
-{{< code >}}
 
 ```javascript
 import { sleep } from 'k6';
@@ -154,7 +148,5 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}
 
 For a more sophisticated example of randomizing, read this [forum post](https://community.grafana.com/t/how-to-distribute-vus-across-different-scenarios-with-k6/97698/17).

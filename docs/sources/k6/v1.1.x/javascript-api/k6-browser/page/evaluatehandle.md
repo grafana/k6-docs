@@ -24,8 +24,6 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -52,5 +50,3 @@ export default async function () {
   console.log(resultHandle.jsonValue());
 }
 ```
-
-{{< /code >}}

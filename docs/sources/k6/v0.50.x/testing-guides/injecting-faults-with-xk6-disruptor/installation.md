@@ -25,8 +25,6 @@ To build the k6 binary with the xk6-disruptor extension:
 1. Ensure you have [Go 1.19](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
 2. Run the following commands in a terminal:
 
-{{< code >}}
-
 ```bash
 # Install xk6
 go install go.k6.io/xk6/cmd/xk6@latest
@@ -38,7 +36,5 @@ cd xk6-disruptor
 # Build the custom binary
 xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=.
 ```
-
-{{< /code >}}
 
 xk6 will create the `xk6-disruptor` binary in the current working directory.

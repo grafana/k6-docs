@@ -14,8 +14,6 @@ It's well-suited for scenarios where memory efficiency is crucial or when you ne
 The `csv.Parser` class methods are asynchronous and return Promises.
 Due to k6's current limitation with the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/#the-init-stage) (which doesn't support asynchronous functions directly), you need to use an asynchronous wrapper such as:
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -27,8 +25,6 @@ let parser;
   parser = new csv.Parser(file);
 })();
 ```
-
-{{< /code >}}
 
 ## Constructor
 
@@ -53,8 +49,6 @@ A promise resolving to an object with the following properties:
 | value    | string[] | Contains the fields of the CSV record as an array of strings. If done is true, value is undefined.    |
 
 ## Example
-
-{{< code >}}
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -87,8 +81,6 @@ export default async function () {
   console.log(done, value);
 }
 ```
-
-{{< /code >}}
 
 ## Notes on usage
 

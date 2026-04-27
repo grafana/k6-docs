@@ -30,8 +30,6 @@ This method fetches an element with `selector` and focuses it.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -55,5 +53,3 @@ export default async function () {
   await page.focus('#text1');
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ Checks if the page has been closed.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -48,5 +46,3 @@ export default async function () {
   console.log(page.isClosed());
 }
 ```
-
-{{< /code >}}

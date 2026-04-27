@@ -25,8 +25,6 @@ Sets the context's geolocation.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -48,5 +46,3 @@ export default function () {
   context.setGeolocation({ latitude: 59.95, longitude: 30.31667 });
 }
 ```
-
-{{< /code >}}

@@ -23,8 +23,6 @@ Returns the number of fields in the hash stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -37,7 +35,5 @@ export default async function () {
   await redisClient.hlen('myhash');
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

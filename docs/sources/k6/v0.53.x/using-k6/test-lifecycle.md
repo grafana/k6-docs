@@ -23,8 +23,6 @@ a function called in a specific sequence in the k6 runtime.
 
 {{< /admonition >}}
 
-{{< code >}}
-
 ```javascript
 // 1. init code
 
@@ -40,8 +38,6 @@ export function teardown(data) {
   // 4. teardown code
 }
 ```
-
-{{< /code >}}
 
 ## Overview of the lifecycle stages
 
@@ -74,8 +70,6 @@ Some operations that might happen in `init` include the following:
 **All code that is outside of a lifecycle function is code in the `init` context**.
 Code in the `init` context _always executes first_.
 
-{{< code >}}
-
 ```javascript
 // init context: importing modules
 import http from 'k6/http';
@@ -96,8 +90,6 @@ function myCustomFunction() {
 }
 ```
 
-{{< /code >}}
-
 Separating the `init` stage from the VU stage removes irrelevant computation from VU code, which improves k6 performance and makes test results more reliable.
 One limitation of `init` code is that it **cannot** make HTTP requests.
 This limitation ensures that the `init` stage is reproducible across tests (the response from protocol requests is dynamic and unpredictable)
@@ -108,15 +100,11 @@ Scripts must contain, at least, a _scenario function_ that defines the logic of 
 The code inside this function is _VU code_.
 Typically, VU code is inside the `default` function, but it can also be inside the function defined by a scenario (see subsequent section for an example).
 
-{{< code >}}
-
 ```javascript
 export default function () {
   // do things here...
 }
 ```
-
-{{< /code >}}
 
 **VU code runs over and over through the test duration.**
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test to do.
@@ -146,8 +134,6 @@ But unlike the `default` function, k6 calls `setup` and `teardown` only once per
 You can call the full k6 API in the setup and teardown stages, unlike the init stage.
 For example, you can make HTTP requests:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -165,26 +151,18 @@ export default function (data) {
 }
 ```
 
-{{< /code >}}
-
 ### Skip setup and teardown execution
 
 You can skip the execution of setup and teardown stages using the options `--no-setup` and
 `--no-teardown`.
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-setup --no-teardown ...
 ```
 
-{{< /code >}}
-
 ### Use data from setup in default and teardown
 
 Again, let's have a look at the basic structure of a k6 test:
-
-{{< code >}}
 
 ```javascript
 // 1. init code
@@ -202,13 +180,9 @@ export function teardown(data) {
 }
 ```
 
-{{< /code >}}
-
 You might have noticed the function signatures of the `default()` and `teardown()` functions take an argument, referred to here as `data`.
 
 Here's an example of passing some data from the setup code to the VU and teardown stages:
-
-{{< code >}}
 
 ```javascript
 export function setup() {
@@ -225,8 +199,6 @@ export function teardown(data) {
   }
 }
 ```
-
-{{< /code >}}
 
 For example, with the data returned by the `setup()` function, you can:
 
@@ -257,8 +229,6 @@ k6 has a few additional ways to use lifecycle functions:
 
 - **Scenario functions**. Instead of the `default` function, you can also run VU code in scenario functions.
 
-  {{< code >}}
-
   ```javascript
   import http from 'k6/http';
   import { sleep } from 'k6';
@@ -280,5 +250,3 @@ k6 has a few additional ways to use lifecycle functions:
     sleep(Math.random() * 2);
   }
   ```
-
-  {{< /code >}}

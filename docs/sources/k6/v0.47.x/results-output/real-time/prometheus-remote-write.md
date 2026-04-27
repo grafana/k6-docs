@@ -109,15 +109,11 @@ To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-rem
 
    - Optionally, pass the `K6_PROMETHEUS_RW_TREND_STATS` to gain the ability to query additional stats for trend metrics. The default is `p(99)`.
 
-   {{< code >}}
-
    ```bash
    K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
    K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),min,max \
    k6 run -o experimental-prometheus-rw script.js
    ```
-
-   {{< /code >}}
 
 1. To send k6 metrics to a **remote write endpoint with native histograms**:
 
@@ -198,23 +194,15 @@ Clone the repository to get started and follow these steps for using the [docker
 
 1. Start the docker compose environment.
 
-   {{< code >}}
-
    ```shell
    docker compose up -d prometheus grafana
    ```
-
-   {{< /code >}}
-
-   {{< code >}}
 
    ```shell
    # Output
    Creating xk6-output-prometheus-remote_grafana_1     ... done
    Creating xk6-output-prometheus-remote_prometheus_1  ... done
    ```
-
-   {{< /code >}}
 
    Prometheus is started with Native Histogram enabled. You can use the same Prometheus instance to receive k6 trend metrics as native histograms or multiple metric stats.
 

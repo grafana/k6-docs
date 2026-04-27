@@ -24,8 +24,6 @@ Inserts all the specified values at the tail of the list stored at `key`. If `ke
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -41,7 +39,5 @@ export default async function () {
   await redisClient.rpop('mylist');
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

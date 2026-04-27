@@ -16,8 +16,6 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
 {{< /admonition >}}
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -53,8 +51,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 The preceding code creates and returns a Locator object with the selectors for both login and password passed as arguments.
 

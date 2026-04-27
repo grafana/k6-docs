@@ -22,8 +22,6 @@ Increments the number stored at `key` by `increment`. If the key does not exist,
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -42,5 +40,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

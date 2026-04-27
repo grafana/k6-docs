@@ -22,8 +22,6 @@ Executes JavaScript code in the page, passing the matching element of the locato
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -62,5 +60,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

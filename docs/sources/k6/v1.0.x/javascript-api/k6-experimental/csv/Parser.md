@@ -35,8 +35,6 @@ A promise resolving to an object with the following properties:
 
 ### Basic Usage
 
-{{< code >}}
-
 <!--md-k6:skip-->
 
 ```javascript
@@ -67,14 +65,10 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Using `asObjects`
 
 The `asObjects` option parses the CSV file into an array of objects. The object keys are the column names from the CSV file, and the values are the field values from the CSV record.
 Note that the first line of the CSV file is skipped, as it is assumed to contain the column names (header row).
-
-{{< code >}}
 
 <!--md-k6:skip-->
 
@@ -113,8 +107,6 @@ export default async function () {
   console.log(value);
 }
 ```
-
-{{< /code >}}
 
 ## Notes on usage
 

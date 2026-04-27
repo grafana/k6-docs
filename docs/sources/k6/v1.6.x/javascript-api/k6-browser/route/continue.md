@@ -29,8 +29,6 @@ Sends the request to the network with optional overrides.
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -79,5 +77,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

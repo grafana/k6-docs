@@ -30,8 +30,6 @@ Check out the [Results output article](https://grafana.com/docs/k6/<K6_VERSION>/
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
@@ -88,5 +86,3 @@ export default function () {
 }
 //VU execution won't be completely finished until the connection is closed.
 ```
-
-{{< /code >}}

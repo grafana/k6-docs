@@ -24,8 +24,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -56,5 +54,3 @@ export default async function () {
 ```
 
 _A k6 script that will create a multipart upload and abort the multipart_
-
-{{< /code >}}

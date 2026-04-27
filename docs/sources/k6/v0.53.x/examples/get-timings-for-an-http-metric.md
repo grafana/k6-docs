@@ -21,8 +21,6 @@ The timings are as follows:
 
 This script gets the request duration timing for a specific GET request and logs it to the console.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -32,16 +30,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The expected (partial) output looks like this:
-
-{{< code >}}
 
 ```bash
 $ k6 run script.js
 
   INFO[0001] Response time was 337.962473 ms               source=console
 ```
-
-{{< /code >}}

@@ -22,8 +22,6 @@ Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -48,5 +46,3 @@ export default function () {
   context.close();
 }
 ```
-
-{{< /code >}}

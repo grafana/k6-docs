@@ -24,8 +24,6 @@ A promise which fullfils or rejects with a value depending on the state of the s
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -64,5 +62,3 @@ function numbersStream() {
   });
 }
 ```
-
-{{< /code >}}

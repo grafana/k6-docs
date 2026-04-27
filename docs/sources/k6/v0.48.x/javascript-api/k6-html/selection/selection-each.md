@@ -14,8 +14,6 @@ Mimics [jquery.each](https://api.jquery.com/each/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -48,5 +46,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

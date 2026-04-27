@@ -41,8 +41,6 @@ A `Promise` that resolves to a `boolean` value indicating if the signature is va
 
 ### Verifying an HMAC signature
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const generatedKey = await crypto.subtle.generateKey(
@@ -80,11 +78,7 @@ function string2ArrayBuffer(str) {
 }
 ```
 
-{{< /code >}}
-
 ### Verifying an ECDSA signature
-
-{{< code >}}
 
 ```javascript
 export default async function () {
@@ -138,5 +132,3 @@ const signature = new Uint8Array([
   12,
 ]);
 ```
-
-{{< /code >}}

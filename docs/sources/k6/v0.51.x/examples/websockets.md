@@ -13,8 +13,6 @@ Multiple VUs join a chat room and discuss various things for up to 1 minute, aft
 
 Each VU receives messages sent by all chat participants.
 
-{{< code >}}
-
 ```javascript
 import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import ws from 'k6/ws';
@@ -80,5 +78,3 @@ export default function () {
   check(res, { 'Connected successfully': (r) => r && r.status === 101 });
 }
 ```
-
-{{< /code >}}

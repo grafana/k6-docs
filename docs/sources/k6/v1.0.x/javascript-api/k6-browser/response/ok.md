@@ -15,8 +15,6 @@ Returns a `boolean` stating whether the response was successful (status in the r
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

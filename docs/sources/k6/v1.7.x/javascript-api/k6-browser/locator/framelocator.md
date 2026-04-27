@@ -19,8 +19,6 @@ Shorthand for `locator(selector).contentFrame()`. Returns a [FrameLocator](https
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -53,5 +51,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

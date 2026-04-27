@@ -21,8 +21,6 @@ PBKDF2 (Password-Based Key Derivation Function 2) is designed to derive cryptogr
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const password = stringToArrayBuffer('my secret password');
@@ -64,5 +62,3 @@ function arrayBufferToHex(buffer) {
   return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 ```
-
-{{< /code >}}

@@ -33,22 +33,14 @@ For this to work, we first need to go through a few required steps:
    [Node.js](https://nodejs.org/en/download/) and [Browserify](http://browserify.org/)
 
 2. Install the `uuid` library:
-   {{< code >}}
-
    ```bash
    npm install uuid@3.4.0
    ```
 
-   {{< /code >}}
-
 3. Run it through browserify:
-   {{< code >}}
-
    ```bash
    browserify node_modules/uuid/index.js -s uuid > uuid.js
    ```
-
-   {{< /code >}}
 
 4. Move the `uuid.js` file to the same folder as your script file. Now you can import
    it into your test script:

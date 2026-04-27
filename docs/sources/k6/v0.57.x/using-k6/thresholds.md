@@ -33,8 +33,6 @@ This sample script specifies two thresholds.
 One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
 The other evaluates whether 95 percent of responses happen within a certain duration (the `http_req_duration` metric).
 
-{{< code >}}
-
 <!-- md-k6:nothresholds -->
 
 ```javascript
@@ -52,22 +50,16 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 In other words, when you define your threshold, specify an expression for a `pass` criteria.
 If that expression evaluates to `false` at the end of the test, k6 considers the whole test a `fail`.
 
 After executing that script, k6 outputs something similar to this:
-
-{{< code >}}
 
 ```bash
    ✓ http_req_duration..............: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
        { expected_response:true }...: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
    ✓ http_req_failed................: 0.00%  ✓ 0 ✗ 1
 ```
-
-{{< /code >}}
 
 In this case, the test met the criteria for both thresholds.
 k6 considers this test a `pass` and exits with an exit code `0`.
@@ -150,8 +142,6 @@ These aggregation methods form part of the threshold expressions.
 This (slightly contrived) sample script uses all different types of metrics,
 setting different types of thresholds for each:
 
-{{< code >}}
-
 <!-- md-k6:nothresholds -->
 
 ```javascript
@@ -190,8 +180,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="caution" >}}
 
 Do not specify multiple thresholds for the same metric by repeating the same object key.
@@ -199,8 +187,6 @@ Do not specify multiple thresholds for the same metric by repeating the same obj
 {{< /admonition >}}
 
 Since thresholds are defined as the properties of a JavaScript object, you can't specify multiple ones with the same property name.
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -214,8 +200,6 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 The rest will be **silently** ignored.
 If you want to set multiple thresholds for a metric, specify them with an [array for the same key](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds#multiple-thresholds-on-a-single-metric).
 
@@ -227,8 +211,6 @@ Here are a few copy-paste examples that you can start using right away.
 For more specific threshold examples, refer to the [Counter](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 ### A percentile of requests finishes in a specified duration
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -249,11 +231,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Error rate is lower than 1 percent
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -274,14 +252,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Multiple thresholds on a single metric
 
 You can also apply multiple thresholds for one metric.
 This threshold has different duration requirements for different request percentiles.
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -302,15 +276,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Threshold on group duration
 
 You can set thresholds per [Group](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups).
 This code has groups for individual requests and batch requests.
 For each group, there are different thresholds.
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -346,8 +316,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Set thresholds for specific tags
 
 It's often useful to specify thresholds on a single URL or specific tag.
@@ -364,8 +332,6 @@ export const options = {
 ```
 
 And here's a full example.
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -403,8 +369,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Abort a test when a threshold is crossed
 
 If you want to abort a test as soon as a threshold is crossed,
@@ -415,8 +379,6 @@ Sometimes, though, a test might fail a threshold early and abort before the test
 To prevent these cases, you can delay `abortOnFail` with `delayAbortEval`.
 In this script, `abortOnFail` is delayed ten seconds.
 After ten seconds, the test aborts if it fails the `p(99) < 10` threshold.
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -435,8 +397,6 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 The fields are as follows:
 
 | Name           | Type    | Description                                                                                                                                                                                          |
@@ -446,8 +406,6 @@ The fields are as follows:
 | delayAbortEval | string  | If you want to delay the evaluation of the threshold to let some metric samples to be collected, you can specify the amount of time to delay using relative time strings like `10s`, `1m` and so on. |
 
 Here is an example:
-
-{{< code >}}
 
 <!-- md-k6:nothresholds -->
 
@@ -467,8 +425,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="caution" >}}
 
 When k6 runs in the cloud, thresholds are evaluated every 60 seconds.
@@ -483,8 +439,6 @@ Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
 If you use only `checks` to verify that things work as expected, you can't fail the whole test run based on the `check` results.
 
 It's often useful to combine `checks` and `thresholds`, to get the best of both:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -510,13 +464,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 In this example, the `threshold` is configured on the [checks metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference), establishing that the rate of successful checks is higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -550,5 +500,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

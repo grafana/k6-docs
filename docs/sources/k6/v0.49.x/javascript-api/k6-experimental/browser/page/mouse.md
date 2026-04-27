@@ -15,8 +15,6 @@ Returns the [Mouse](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-e
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -39,6 +37,4 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
   page.mouse.down();
 }
-```
-
-{{< /code >}}ß
+```ß

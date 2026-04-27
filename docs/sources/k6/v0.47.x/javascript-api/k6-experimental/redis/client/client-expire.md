@@ -22,8 +22,6 @@ Sets a timeout on key, after which the key will automatically be deleted. Note t
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

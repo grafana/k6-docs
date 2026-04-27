@@ -106,8 +106,6 @@ This is a common use case for data parameterization, you can read the [examples]
 
 The `startTime` property from the `scenario` object can be used to time operations.
 
-{{< code >}}
-
 ```javascript
 import exec from 'k6/execution';
 
@@ -122,16 +120,12 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Script naming
 
 The `name` property can be used for executing the logic based on which script is currently running.
 
 > **Tip**:
 > If you need to run [multiple scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/advanced-examples#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
-
-{{< code >}}
 
 ```javascript
 import exec from 'k6/execution';
@@ -156,24 +150,16 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Test Abort
 
 Aborting is possible during initialization:
-
-{{< code >}}
 
 ```javascript
 import exec from 'k6/execution';
 exec.test.abort();
 ```
 
-{{< /code >}}
-
 As well as inside the `default` function:
-
-{{< code >}}
 
 ```javascript
 import exec from 'k6/execution';
@@ -188,13 +174,9 @@ export function teardown() {
 }
 ```
 
-{{< /code >}}
-
 ### Get test options
 
 Get the consolidated and derived options' values
-
-{{< code >}}
 
 ```javascript
 import exec from 'k6/execution';
@@ -212,13 +194,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Tags
 
 The `vu.metrics.tags` property can be used for getting or setting [VU's tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -233,15 +211,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 `vu.tags` (without `metrics`) can also be used, but is deprecated for the more context-specific variant.
 
 ### Metadata
 
 The `vu.metrics.metadata` property can be used for getting or setting VU's metadata. It is similar to `tags`, but can be used for high cardinality data. It also can not be used in thresholds and will likely be handled differently by each output.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -258,5 +232,3 @@ export default function () {
   http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
 }
 ```
-
-{{< /code >}}

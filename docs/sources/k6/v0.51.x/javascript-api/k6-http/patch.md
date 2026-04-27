@@ -21,8 +21,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -37,5 +35,3 @@ export default function () {
   console.log(JSON.parse(res.body).json.name);
 }
 ```
-
-{{< /code >}}

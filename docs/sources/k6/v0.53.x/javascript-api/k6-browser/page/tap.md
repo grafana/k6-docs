@@ -37,8 +37,6 @@ Tap the first element that matches the selector.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -62,5 +60,3 @@ export default async function () {
   await page.tap('#numbers-options');
 }
 ```
-
-{{< /code >}}

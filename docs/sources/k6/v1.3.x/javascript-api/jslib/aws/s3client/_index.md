@@ -40,8 +40,6 @@ S3 Client methods will throw errors in case of failure.
 
 ### Examples
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -104,11 +102,7 @@ export async function handleSummary(data) {
 }
 ```
 
-{{< /code >}}
-
 #### Multipart uploads
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -182,5 +176,3 @@ export default async function () {
   await s3.deleteObject(testBucketName, testFileKey);
 }
 ```
-
-{{< /code >}}

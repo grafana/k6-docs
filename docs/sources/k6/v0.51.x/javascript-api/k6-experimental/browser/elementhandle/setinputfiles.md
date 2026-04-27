@@ -21,8 +21,6 @@ To work with local files on the file system, use the [experimental fs module](ht
 
 ### Inline File Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import encoding from 'k6/encoding';
@@ -72,11 +70,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Local File Example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -150,5 +144,3 @@ async function readAll(file) {
   return buffer;
 }
 ```
-
-{{< /code >}}

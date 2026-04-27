@@ -30,8 +30,6 @@ Since eventInit is event-specific, please refer to the events documentation for 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   page.close();
 }
 ```
-
-{{< /code >}}

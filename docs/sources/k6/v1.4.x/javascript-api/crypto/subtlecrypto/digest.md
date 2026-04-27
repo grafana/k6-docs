@@ -33,8 +33,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the digest.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const digest = await crypto.subtle.digest('SHA-256', stringToArrayBuffer('Hello, world!'));
@@ -50,5 +48,3 @@ function stringToArrayBuffer(s) {
   return Uint8Array.from(new String(s), (x) => x.charCodeAt(0));
 }
 ```
-
-{{< /code >}}

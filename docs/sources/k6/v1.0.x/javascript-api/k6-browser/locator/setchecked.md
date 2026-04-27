@@ -28,8 +28,6 @@ Use this method to select or unselect an `input` or `radio` checkbox.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -57,5 +55,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

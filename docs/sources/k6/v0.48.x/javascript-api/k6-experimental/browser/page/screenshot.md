@@ -31,8 +31,6 @@ Returns the buffer with the captured screenshot from the browser.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -56,5 +54,3 @@ export default async function () {
   page.screenshot({ path: 'screenshots/browser.png' });
 }
 ```
-
-{{< /code >}}

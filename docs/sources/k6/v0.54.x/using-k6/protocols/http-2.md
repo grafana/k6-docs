@@ -30,8 +30,6 @@ When you make HTTP requests in k6, k6 automatically upgrades the connection to H
 
 To check what protocol was used for a particular request, refer to the `proto` property of the response object.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
@@ -44,7 +42,5 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}
 
 To see the values that the `r.proto` field can have, refer to the documentation for [k6 HTTP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response).

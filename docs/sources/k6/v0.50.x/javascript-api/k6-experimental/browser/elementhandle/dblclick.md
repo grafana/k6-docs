@@ -25,8 +25,6 @@ Mouse double clicks on the element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -52,5 +50,3 @@ export default async function () {
   elementHandle.dblclick();
 }
 ```
-
-{{< /code >}}

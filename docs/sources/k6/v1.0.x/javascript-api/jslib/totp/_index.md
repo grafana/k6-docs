@@ -22,8 +22,6 @@ The `totp` module provides TOTP (Time-based One-Time Password) generation and ve
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { TOTP } from 'https://jslib.k6.io/totp/1.0.0/index.js';
 
@@ -37,11 +35,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## With k6 Secrets
-
-{{< code >}}
 
 ```javascript
 import secrets from 'k6/secrets';
@@ -54,5 +48,3 @@ export default async function () {
   console.log(`TOTP code: ${code}`);
 }
 ```
-
-{{< /code >}}

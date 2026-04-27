@@ -15,8 +15,6 @@ It's ideal for scenarios where performance is a priority, and the entire CSV fil
 `csv.parse` is an asynchronous function that returns a Promise. Due to k6's current limitation with the [init context](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle/) (which
 doesn't support asynchronous functions directly), you need to use an asynchronous wrapper like this:
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -28,8 +26,6 @@ let csvRecords;
   csvRecords = await csv.parse(file, { delimiter: ',' });
 })();
 ```
-
-{{< /code >}}
 
 ## Parameters
 
@@ -43,8 +39,6 @@ let csvRecords;
 A promise resolving to a [SharedArray](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) instance, where each element is an array representing a CSV record, and each sub-element is a field from that record.
 
 ## Example
-
-{{< code >}}
 
 ```javascript
 import { open } from 'k6/experimental/fs';
@@ -73,8 +67,6 @@ export default async function () {
   console.log(csvRecords[scenario.iterationInTest]);
 }
 ```
-
-{{< /code >}}
 
 ## Notes on Usage
 

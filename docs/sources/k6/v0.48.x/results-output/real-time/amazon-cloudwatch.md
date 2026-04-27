@@ -77,13 +77,9 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 Once the agent is running, you can run your test with:
 
-{{< code >}}
-
 ```bash
 $ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
-
-{{< /code >}}
 
 Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 

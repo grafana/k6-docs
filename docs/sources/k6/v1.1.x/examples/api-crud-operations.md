@@ -30,8 +30,6 @@ The steps implemented in the [VU stage](https://grafana.com/docs/k6/<K6_VERSION>
 
 ## Core k6 APIs example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, group, fail } from 'k6';
@@ -148,11 +146,7 @@ export default function (authToken) {
 }
 ```
 
-{{< /code >}}
-
 ## httpx and k6chaijs example
-
-{{< code >}}
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
@@ -263,5 +257,3 @@ export default function (authToken) {
   });
 }
 ```
-
-{{< /code >}}

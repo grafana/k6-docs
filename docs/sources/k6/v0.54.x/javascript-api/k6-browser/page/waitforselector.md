@@ -40,8 +40,6 @@ Element states can be either:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -64,5 +62,3 @@ export default async function () {
   await page.waitForSelector('#text1');
 }
 ```
-
-{{< /code >}}

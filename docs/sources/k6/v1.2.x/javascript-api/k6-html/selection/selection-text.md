@@ -16,8 +16,6 @@ Mimics [jquery.text](https://api.jquery.com/text/).
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
@@ -28,5 +26,3 @@ export default function () {
   const pageTitle = doc.find('head title').text();
 }
 ```
-
-{{< /code >}}

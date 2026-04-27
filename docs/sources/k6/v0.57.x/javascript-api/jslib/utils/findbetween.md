@@ -23,8 +23,6 @@ Function that returns a string from between two other strings.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { findBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
@@ -39,5 +37,3 @@ export default function () {
   console.log(allMessages.length); // 2
 }
 ```
-
-{{< /code >}}

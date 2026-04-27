@@ -23,8 +23,6 @@ This method takes an object argument where the following properties can be set:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -36,5 +34,3 @@ export default function () {
   res = res.clickLink({ selector: 'a:nth-child(1)' });
 }
 ```
-
-{{< /code >}}

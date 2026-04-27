@@ -39,8 +39,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the decrypted data.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -105,5 +103,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

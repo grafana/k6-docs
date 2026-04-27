@@ -17,8 +17,6 @@ Things don't always work as expected. For those cases, enabling the [--http-debu
 
 Given the following script:
 
-{{< code >}}
-
 ```javascript
 import http from "k6/http";
 
@@ -27,11 +25,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 If we run it using `k6 run --http-debug script.js` we get output that looks like this:
-
-{{< code >}}
 
 ```bash
           /\      |‾‾|  /‾‾/  /‾/
@@ -94,8 +88,6 @@ X-Xss-Protection: 1; mode=block
 ...
 
 ```
-
-{{< /code >}}
 
 ## Read more
 

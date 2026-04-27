@@ -17,8 +17,6 @@ Grants specified permissions to the `BrowserContext`. Only grants corresponding 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -42,5 +40,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

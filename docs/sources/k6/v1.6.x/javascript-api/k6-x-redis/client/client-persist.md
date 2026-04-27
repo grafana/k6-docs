@@ -23,8 +23,6 @@ Removes the existing timeout on `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -43,7 +41,5 @@ export default async function () {
   await redisClient.persist('mykey', 100);
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

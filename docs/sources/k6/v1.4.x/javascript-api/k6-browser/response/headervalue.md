@@ -21,8 +21,6 @@ Returns the value of the header matching the name. The name is case insensitive.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -52,5 +50,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

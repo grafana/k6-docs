@@ -15,8 +15,6 @@ Returns the JSON representation of response body. Throws if response body is not
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -46,5 +44,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

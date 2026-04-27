@@ -249,8 +249,6 @@ export default function () {
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -269,8 +267,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Performance characteristics
 
 Internally, the current implementation of `SharedArray` keeps the data marshaled as JSON and unmarshals elements only when they are requested.
@@ -280,8 +276,6 @@ But, for small data sets, `SharedArray` might perform worse.
 However, this is highly dependent on use case.
 
 To test this, we ran the following script on version v0.31.0 with 100 VUs.
-
-{{< code >}}
 
 <!-- md-k6:env.N=3 -->
 
@@ -314,8 +308,6 @@ export default function () {
   check(res, { 'status 200': (r) => r.status === 200 });
 }
 ```
-
-{{< /code >}}
 
 As the table shows, performance didn't differ much at lower numbers of data lines:
 up until around 1000 data lines, `SharedArray` shows little benefit in memory usage

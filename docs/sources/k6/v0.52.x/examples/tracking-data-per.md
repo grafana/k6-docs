@@ -16,8 +16,6 @@ However, the reported values of these metrics don't tag the particular request o
 
 This example shows how to track data sent and received for an individual URL.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -68,5 +66,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

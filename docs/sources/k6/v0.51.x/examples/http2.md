@@ -10,8 +10,6 @@ If the target system indicates that a connection can be upgraded from HTTP/1.1 t
 
 ## Making HTTP/2 requests
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -24,5 +22,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

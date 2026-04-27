@@ -43,8 +43,6 @@ The `presign` operation returns an Object with the following properties.
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -205,5 +203,3 @@ export default function () {
   check(res, { 'status is 200': (r) => r.status === 200 });
 }
 ```
-
-{{< /code >}}

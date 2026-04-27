@@ -36,8 +36,6 @@ The following section shows how to use the Cookie API.
 To simulate that a cookie has previously been set by a browser and is now supposed to be included
 in subsequent requests to the server, include the cookie in the `cookies` request parameter:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -50,14 +48,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 This applies only to the cookie for the request in question.
 It isn't sent for any subsequent requests.
 To send the cookie for subsequent requests, add it to a cookie jar.
 By default, k6 has a cookie jar for each VU, which you can interact with to set and inspect cookies:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -69,14 +63,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The per-VU cookie jar stores all cookies received from the server in a `Set-Cookie` header.
 You can also create "local cookie jars" that override the per-VU cookie jar (shown in a subsequent section).
 
 You can also override a cookie that is already part of the per-VU cookie jar:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -103,13 +93,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Accessing cookies
 
 To see which cookies were set for a particular response, look in the `cookies` property of the response object:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -125,8 +111,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 The response object's `cookies` property is a map where the key is the cookie name and the value
 is an array of response cookie objects.
@@ -152,8 +136,6 @@ A response cookie object contains the following properties:
 To see which cookies are set and stored in the cookie jar for a particular URL,
 use the `cookieForURL()` method of the cookie jar object:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -171,8 +153,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The `cookies` object returned by the jar's `cookiesForURL()` method is a map where the key is the
 cookie name and the value is an array of cookie values (strings). It is an array to support
 multiple cookies having the same name (but different `domain` and/or `path` attributes), which
@@ -182,8 +162,6 @@ is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 
 To set cookies that more tightly controls the behavior of the cookie we must add the cookie to a
 cookie jar. An example:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -206,14 +184,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Local cookie jars
 
 Besides the per-VU cookie jar, you can also create local cookie jars to override the per-VU
 cookie jar on a per-request basis:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -240,11 +214,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Examples
-
-{{< code >}}
 
 ```javascript
 // Example showing two methods how to log all cookies (with attributes) from a HTTP response.
@@ -279,5 +249,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

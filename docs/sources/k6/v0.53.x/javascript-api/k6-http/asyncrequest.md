@@ -24,8 +24,6 @@ weight: 10
 
 Using http.asyncRequest() to issue a POST request:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -47,11 +45,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 Using `http.asyncRequest()` to issue multiple requests, then [Promise.race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race) to determine which requests finish first:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -87,5 +81,3 @@ In the preceding script, after `res` gets the value from the fastest request, th
 This might block the end of the iteration, because the iteration only stops once all async jobs finish.
 
 {{< /admonition >}}
-
-{{< /code >}}

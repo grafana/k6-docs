@@ -92,13 +92,9 @@ By default, the server listens on `localhost:6565`. Read more on [k6 REST API](h
 | --- | ----------------- | ------------------ | ---------------- |
 | N/A | `--address`, `-a` | N/A                | `localhost:6565` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --address "localhost:3000" script.js
 ```
-
-{{< /code >}}
 
 If you don't want to enable the HTTP server then sets the value to an empty string `k6 run -a '' script.js`.
 
@@ -114,15 +110,11 @@ done and a slot opens. Available in both the `k6 run` and the `k6 cloud` command
 | ---------- | --------- | ------------------ | ------- |
 | `K6_BATCH` | `--batch` | `batch`            | `20`    |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   batch: 15,
 };
 ```
-
-{{< /code >}}
 
 ## Batch per host
 
@@ -136,15 +128,11 @@ done and a slot opens. This will not run more request in parallel then the value
 | ------------------- | ------------------ | ------------------ | ------- |
 | `K6_BATCH_PER_HOST` | `--batch-per-host` | `batchPerHost`     | `6`     |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   batchPerHost: 5,
 };
 ```
-
-{{< /code >}}
 
 ## Blacklist IP
 
@@ -154,15 +142,11 @@ Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` comm
 | ------------------ | ---------------- | ------------------ | ------- |
 | `K6_BLACKLIST_IPS` | `--blacklist-ip` | `blacklistIPs`     | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   blacklistIPs: ['10.0.0.0/8'],
 };
 ```
-
-{{< /code >}}
 
 ## Block hostnames
 
@@ -175,23 +159,15 @@ Available in `k6 run` and `k6 cloud` commands.
 | -------------------- | ------------------- | ------------------ | ------- |
 | `K6_BLOCK_HOSTNAMES` | `--block-hostnames` | `blockHostnames`   | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   blockHostnames: ['test.k6.io', '*.example.com'],
 };
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 ```
-
-{{< /code >}}
 
 ## Compatibility mode
 
@@ -203,13 +179,9 @@ Read about the different modes on the [JavaScript Compatibility Mode documentati
 | ----------------------- | ---------------------- | ------------------ | ------------ |
 | `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --compatibility-mode=base script.js
 ```
-
-{{< /code >}}
 
 ## Config
 
@@ -244,13 +216,9 @@ Redirects logs logged by `console` methods to the provided output file. Availabl
 | ------------------- | ------------------ | ------------------ | ------- |
 | `K6_CONSOLE_OUTPUT` | `--console-output` | N/A                | `null`  |
 
-{{< code >}}
-
 ```bash
 $ k6 run --console-output "loadtest.log" script.js
 ```
-
-{{< /code >}}
 
 ## Discard response bodies
 
@@ -265,15 +233,11 @@ more reliable test results.
 | ---------------------------- | --------------------------- | ----------------------- | ------- |
 | `K6_DISCARD_RESPONSE_BODIES` | `--discard-response-bodies` | `discardResponseBodies` | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   discardResponseBodies: true,
 };
 ```
-
-{{< /code >}}
 
 ## DNS
 
@@ -318,8 +282,6 @@ Here are some configuration examples:
 K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js
 ```
 
-{{< code >}}
-
 ```javascript
 export const options = {
   dns: {
@@ -329,8 +291,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 ## Duration
 
@@ -343,16 +303,12 @@ Together with the [`vus` option](#vus), `duration` is a shortcut for a single [s
 | ------------- | ------------------ | ------------------ | ------- |
 | `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   vus: 100,
   duration: '3m',
 };
 ```
-
-{{< /code >}}
 
 ## Extension options
 
@@ -366,8 +322,6 @@ This is an example of how to specify the test name (test runs/executions with th
 logically grouped for trending and comparison) when streaming results to
 [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/).
 
-{{< code >}}
-
 ```javascript
 export const options = {
   ext: {
@@ -377,8 +331,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 ## Execution segment
 
@@ -415,13 +367,9 @@ With this option, you can exit early and let the script run in the background. A
 | -------------------- | ------------------- | ------------------ | ------- |
 | `K6_EXIT_ON_RUNNING` | `--exit-on-running` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 cloud --exit-on-running script.js
 ```
-
-{{< /code >}}
 
 ## Hosts
 
@@ -444,8 +392,6 @@ This does not modify the actual HTTP `Host` header, but rather where it will be 
 | --- | --- | ------------------ | ------- |
 | N/A | N/A | `hosts`            | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   hosts: {
@@ -455,8 +401,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, keeping the same port. If the request is done to port `443`, it will redirect it to port `8443` instead. It will also redirect requests to any subdomain of `grafana.com` to `1.2.3.4`.
 
@@ -471,15 +415,11 @@ Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debuggin
 | --------------- | --------------------------------------- | ------------------ | ------- |
 | `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   httpDebug: 'full',
 };
 ```
-
-{{< /code >}}
 
 ## Include system env vars
 
@@ -489,13 +429,9 @@ Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VER
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
 | N/A | `--include-system-env-vars` | N/A                | `true` for `k6 run`, but `false` for all other commands to prevent inadvertent sensitive data leaks. |
 
-{{< code >}}
-
 ```bash
 $ k6 run --include-system-env-vars ~/script.js
 ```
-
-{{< /code >}}
 
 ## Insecure skip TLS verify
 
@@ -508,15 +444,11 @@ Available in `k6 run` and `k6 cloud` commands
 | ----------------------------- | ---------------------------- | ----------------------- | ------- |
 | `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   insecureSkipTLSVerify: true,
 };
 ```
-
-{{< /code >}}
 
 ## Iterations
 
@@ -532,8 +464,6 @@ By default, the maximum duration of a `shared-iterations` scenario is 10 minutes
 | --------------- | -------------------- | ------------------ | ------- |
 | `K6_ITERATIONS` | `--iterations`, `-i` | `iterations`       | `1`     |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   vus: 5,
@@ -541,11 +471,7 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 Or, to run 10 VUs 10 times each:
-
-{{< code >}}
 
 ```javascript
 export const options = {
@@ -553,8 +479,6 @@ export const options = {
   iterations: 100,
 };
 ```
-
-{{< /code >}}
 
 ## Linger
 
@@ -565,15 +489,11 @@ run completion. Available in the `k6 run` command.
 | ----------- | ---------------- | ------------------ | ------- |
 | `K6_LINGER` | `--linger`, `-l` | `linger`           | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   linger: true,
 };
 ```
-
-{{< /code >}}
 
 ## Local IPs
 
@@ -591,13 +511,9 @@ Available in the `k6 run` command.
 | -------------- | ------------- | ------------------ | ------- |
 | `K6_LOCAL_IPS` | `--local-ips` | N/A                | N/A     |
 
-{{< code >}}
-
 ```bash
 $ k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
 ```
-
-{{< /code >}}
 
 ## Log output
 
@@ -607,13 +523,9 @@ This option specifies where to send logs to and another configuration connected 
 | --------------- | -------------- | ------------------ | -------- |
 | `K6_LOG_OUTPUT` | `--log-output` | N/A                | `stderr` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --log-output=stdout script.js
 ```
-
-{{< /code >}}
 
 Possible values are:
 
@@ -628,13 +540,9 @@ Possible values are:
 Use the `log-output` option to configure [Loki](https://grafana.com/oss/loki/) as follows.
 For additional instructions and a step-by-step guide, check out the [Loki tutorial](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/).
 
-{{< code >}}
-
 ```bash
 $ k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
 ```
-
-{{< /code >}}
 
 Where all but the url in the beginning are not required.
 The possible keys with their meanings and default values:
@@ -655,13 +563,9 @@ The possible keys with their meanings and default values:
 
 The file can be configured as below, where an explicit file path is required:
 
-{{< code >}}
-
 ```bash
 $ k6 run --log-output=file=./k6.log script.js
 ```
-
-{{< /code >}}
 
 A valid file path is the unique mandatory field, the other optional fields listed below:
 
@@ -681,13 +585,9 @@ A value specifying the log format. By default, k6 includes extra debug informati
 | --------------- | -------------------- | ------------------ | ------- |
 | `K6_LOG_FORMAT` | `--log-format`, `-f` | N/A                |         |
 
-{{< code >}}
-
 ```bash
 $ k6 run --log-format raw test.js
 ```
-
-{{< /code >}}
 
 ## Max redirects
 
@@ -698,15 +598,11 @@ erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_MAX_REDIRECTS` | `--max-redirects` | `maxRedirects`     | `10`    |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   maxRedirects: 10,
 };
 ```
-
-{{< /code >}}
 
 ## Minimum iteration duration
 
@@ -718,15 +614,11 @@ the remainder of the time until the specified minimum duration is reached.
 | --------------------------- | -------------------------- | ---------------------- | -------------- |
 | `K6_MIN_ITERATION_DURATION` | `--min-iteration-duration` | `minIterationDuration` | `0` (disabled) |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   minIterationDuration: '10s',
 };
 ```
-
-{{< /code >}}
 
 ## No color
 
@@ -736,13 +628,9 @@ A boolean specifying whether colored output is disabled. Available in `k6 run` a
 | --- | ------------ | ------------------ | ------- |
 | N/A | `--no-color` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-color script.js
 ```
-
-{{< /code >}}
 
 ## No connection reuse
 
@@ -753,15 +641,11 @@ Available in `k6 run` and `k6 cloud` commands.
 | ------------------------ | ----------------------- | ------------------- | ------- |
 | `K6_NO_CONNECTION_REUSE` | `--no-connection-reuse` | `noConnectionReuse` | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   noConnectionReuse: true,
 };
 ```
-
-{{< /code >}}
 
 ## No cookies reset
 
@@ -772,15 +656,11 @@ it's enabled, saved cookies will be persisted across VU iterations.
 | --------------------- | --- | ------------------ | ------- |
 | `K6_NO_COOKIES_RESET` | N/A | `noCookiesReset`   | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   noCookiesReset: true,
 };
 ```
-
-{{< /code >}}
 
 ## No summary
 
@@ -793,13 +673,9 @@ Available in the `k6 run` command.
 | --------------- | -------------- | ------------------ | ------- |
 | `K6_NO_SUMMARY` | `--no-summary` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-summary ~/script.js
 ```
-
-{{< /code >}}
 
 ## No setup
 
@@ -809,13 +685,9 @@ A boolean specifying whether `setup()` function should be run. Available in `k6 
 | ------------- | ------------ | ------------------ | ------- |
 | `K6_NO_SETUP` | `--no-setup` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-setup script.js
 ```
-
-{{< /code >}}
 
 ## No teardown
 
@@ -825,13 +697,9 @@ A boolean specifying whether `teardown()` function should be run. Available in `
 | ---------------- | --------------- | ------------------ | ------- |
 | `K6_NO_TEARDOWN` | `--no-teardown` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-teardown script.js
 ```
-
-{{< /code >}}
 
 ## No thresholds
 
@@ -841,13 +709,9 @@ Disables threshold execution. Available in the `k6 run` command.
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_NO_THRESHOLDS` | `--no-thresholds` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-thresholds ~/script.js
 ```
-
-{{< /code >}}
 
 ## No usage report
 
@@ -860,13 +724,9 @@ learn more, have a look at the [Usage reports](https://grafana.com/docs/k6/<K6_V
 | -------------------- | ------------------- | ----------------- | ------- |
 | `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`\* | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --no-usage-report ~/script.js
 ```
-
-{{< /code >}}
 
 \* Note that this option is not supported in the exported script options, but can be specified in a configuration file.
 
@@ -879,15 +739,11 @@ of a VU. Available in `k6 run` and `k6 cloud` commands.
 | --------------------------- | -------------------------- | --------------------- | ------- |
 | `K6_NO_VU_CONNECTION_REUSE` | `--no-vu-connection-reuse` | `noVUConnectionReuse` | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   noVUConnectionReuse: true,
 };
 ```
-
-{{< /code >}}
 
 ## Paused
 
@@ -898,15 +754,11 @@ a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 
 | ----------- | ---------------- | ------------------ | ------- |
 | `K6_PAUSED` | `--paused`, `-p` | `paused`           | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   paused: true,
 };
 ```
-
-{{< /code >}}
 
 ## Profiling Enabled
 
@@ -916,13 +768,9 @@ Enables [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints under the
 | --- | --------------------- | ------------------ | ------------------------------------ |
 | N/A | `--profiling-enabled` | N/A                | `http://localhost:6565/debug/pprof/` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --profiling-enabled script.js
 ```
-
-{{< /code >}}
 
 ## Quiet
 
@@ -932,13 +780,9 @@ A boolean, true or false, that disables the progress update bar on the console o
 | --- | --------------- | ------------------ | ------- |
 | N/A | `--quiet`, `-q` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run script.js -d 20s --quiet
 ```
-
-{{< /code >}}
 
 ## Results output
 
@@ -950,13 +794,9 @@ refer to [Results output](https://grafana.com/docs/k6/<K6_VERSION>/results-outpu
 | -------- | ------------- | ------------------ | ------- |
 | `K6_OUT` | `--out`, `-o` | N/A                | `null`  |
 
-{{< code >}}
-
 ```bash
 $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 ```
-
-{{< /code >}}
 
 ## RPS
 
@@ -982,15 +822,11 @@ We strongly recommend the [arrival-rate executors](https://grafana.com/docs/k6/<
 | -------- | ------- | ------------------ | --------------- |
 | `K6_RPS` | `--rps` | `rps`              | `0` (unlimited) |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   rps: 500,
 };
 ```
-
-{{< /code >}}
 
 > ### Considerations when running in the cloud
 >
@@ -1009,8 +845,6 @@ Available in `k6 run` and `k6 cloud` commands.
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
 | N/A | N/A | `scenarios`        | `null`  |
-
-{{< code >}}
 
 ```javascript
 export const options = {
@@ -1031,8 +865,6 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 ## Setup timeout
 
 Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
@@ -1041,15 +873,11 @@ Specify how long the `setup()` function is allow to run before it's terminated a
 | ------------------ | --- | ------------------ | ------- |
 | `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"60s"` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   setupTimeout: '30s',
 };
 ```
-
-{{< /code >}}
 
 ## Show logs
 
@@ -1059,13 +887,9 @@ A boolean specifying whether the cloud logs are printed out to the terminal. Ava
 | --- | ------------- | ------------------ | ------- |
 | N/A | `--show-logs` | N/A                | `true`  |
 
-{{< code >}}
-
 ```bash
 $ k6 cloud --show-logs=false script.js
 ```
-
-{{< /code >}}
 
 ## Stages
 
@@ -1191,13 +1015,9 @@ Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ se
 | --- | ------------- | ------------------ | ------- |
 | N/A | `--env`, `-e` | N/A                | `null`  |
 
-{{< code >}}
-
 ```bash
 $ k6 run -e FOO=bar ~/script.js
 ```
-
-{{< /code >}}
 
 ## System tags
 
@@ -1210,15 +1030,11 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 | ---------------- | --------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`,`check`,`error`,`error_code`,`tls_version`,`scenario`,`service`,`expected_response` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   systemTags: ['status', 'method', 'url'],
 };
 ```
-
-{{< /code >}}
 
 ## Summary time unit
 
@@ -1228,15 +1044,11 @@ Define which time unit will be used for _all_ time values in the [end-of-test su
 | ---------------------- | --------------------- | ------------------ | ------- |
 | `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`  | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   summaryTimeUnit: 'ms',
 };
 ```
-
-{{< /code >}}
 
 ## Summary trend stats
 
@@ -1248,23 +1060,15 @@ For further summary customization and exporting the summary in various formats (
 | ------------------------ | ----------------------- | ------------------- | ----------------------------- |
 | `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `avg,min,med,max,p(90),p(95)` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'p(99.99)', 'count'],
 };
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 $ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
-
-{{< /code >}}
 
 ## Tags
 
@@ -1276,8 +1080,6 @@ tag. Available in `k6 run` and `k6 cloud` commands.
 | --- | ------------------ | ------------------ | ------- |
 | N/A | `--tag NAME=VALUE` | `tags`             | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   tags: {
@@ -1285,8 +1087,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 ## Teardown timeout
 
@@ -1297,15 +1097,11 @@ fails.
 | --------------------- | --- | ------------------ | ------- |
 | `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"60s"` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   teardownTimeout: '30s',
 };
 ```
-
-{{< /code >}}
 
 ## Thresholds
 
@@ -1317,8 +1113,6 @@ at the [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds
 | --- | --- | ------------------ | ------- |
 | N/A | N/A | `thresholds`       | `null`  |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   thresholds: {
@@ -1327,8 +1121,6 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}
 
 ## Throw
 
@@ -1344,15 +1136,11 @@ Available in `k6 run` and `k6 cloud` commands.
 | ---------- | --------------- | ------------------ | ------- |
 | `K6_THROW` | `--throw`, `-w` | `throw`            | `false` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   throw: true,
 };
 ```
-
-{{< /code >}}
 
 ## TLS auth
 
@@ -1361,8 +1149,6 @@ A list of TLS client certificate configuration objects. `domains` and `password`
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
 | N/A | N/A | `tlsAuth`          | `null`  |
-
-{{< code >}}
 
 ```javascript
 export const options = {
@@ -1376,8 +1162,6 @@ export const options = {
   ],
 };
 ```
-
-{{< /code >}}
 
 ## TLS cipher suites
 
@@ -1394,15 +1178,11 @@ Due to limitations in the underlying [go implementation](https://github.com/gola
 | --- | --- | ------------------ | ------------------------- |
 | N/A | N/A | `tlsCipherSuites`  | `null` (Allow all suites) |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   tlsCipherSuites: ['TLS_RSA_WITH_RC4_128_SHA', 'TLS_RSA_WITH_AES_128_GCM_SHA256'],
 };
 ```
-
-{{< /code >}}
 
 ## TLS version
 
@@ -1413,17 +1193,11 @@ server, or an object specifying the "min" and "max" versions allowed to be used.
 | --- | --- | ------------------ | --------------------------- |
 | N/A | N/A | `tlsVersion`       | `null` (Allow all versions) |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   tlsVersion: 'tls1.2',
 };
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 export const options = {
@@ -1434,8 +1208,6 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 ## Traces output
 
 This option specifies where to send traces to. Available in the `k6 run` command.
@@ -1444,13 +1216,9 @@ This option specifies where to send traces to. Available in the `k6 run` command
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_TRACES_OUTPUT` | `--traces-output` | N/A                | `none`  |
 
-{{< code >}}
-
 ```bash
 $ k6 run --traces-output=otel script.js
 ```
-
-{{< /code >}}
 
 Possible values are:
 
@@ -1461,13 +1229,9 @@ Possible values are:
 
 Use the `traces-output` option to configure [Open Telemetry](https://opentelemetry.io/) compatible output as follows.
 
-{{< code >}}
-
 ```bash
 $ k6 run --traces-output=otel=http://127.0.0.1:4318,proto=http,header.AdditionalHeader=example script.js
 ```
-
-{{< /code >}}
 
 Where none of the options are required.
 The possible keys with their meanings and default values:
@@ -1488,13 +1252,9 @@ This would be useful if you would like to update a given test and run it later. 
 | ---------------------- | --------------- | ------------------ | ------- |
 | `K6_CLOUD_UPLOAD_ONLY` | `--upload-only` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 cloud --upload-only script.js
 ```
-
-{{< /code >}}
 
 ## User agent
 
@@ -1507,15 +1267,11 @@ Available in `k6 run` and `k6 cloud` commands
 | --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
 | `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `k6/0.27.0 (https://k6.io/)` (depending on the version you're using)` |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
 ```
-
-{{< /code >}}
 
 ## Verbose
 
@@ -1525,13 +1281,9 @@ A boolean specifying whether verbose logging is enabled. Available in `k6 run` a
 | --- | ----------------- | ------------------ | ------- |
 | N/A | `--verbose`, `-v` | N/A                | `false` |
 
-{{< code >}}
-
 ```bash
 $ k6 run --verbose script.js
 ```
-
-{{< /code >}}
 
 ## VUs
 
@@ -1543,13 +1295,9 @@ Available in `k6 run` and `k6 cloud` commands.
 | -------- | ------------- | ------------------ | ------- |
 | `K6_VUS` | `--vus`, `-u` | `vus`              | `1`     |
 
-{{< code >}}
-
 ```javascript
 export const options = {
   vus: 10,
   duration: '1h',
 };
 ```
-
-{{< /code >}}

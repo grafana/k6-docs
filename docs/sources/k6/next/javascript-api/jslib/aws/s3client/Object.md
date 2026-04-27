@@ -20,8 +20,6 @@ and [`deleteObject`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jsl
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -58,5 +56,3 @@ export default async function () {
 ```
 
 _A k6 script that will query a S3 bucket's objects and print its content and metadata_
-
-{{< /code >}}
