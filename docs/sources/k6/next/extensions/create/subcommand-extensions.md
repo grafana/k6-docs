@@ -47,8 +47,8 @@ go install go.k6.io/xk6/cmd/xk6@latest
 
    import (
        "github.com/spf13/cobra"
-       "go.k6.io/k6/cmd/state"
-       "go.k6.io/k6/subcommand"
+       "go.k6.io/k6/v2/cmd/state"
+       "go.k6.io/k6/v2/subcommand"
    )
 
    func init() {
@@ -149,8 +149,8 @@ import (
     "runtime"
 
     "github.com/spf13/cobra"
-    "go.k6.io/k6/cmd/state"
-    "go.k6.io/k6/subcommand"
+    "go.k6.io/k6/v2/cmd/state"
+    "go.k6.io/k6/v2/subcommand"
 )
 
 func init() {

@@ -74,7 +74,7 @@ and the short name must be unique among all extensions built in the same k6 bina
 {{< /admonition >}}
 
 ```go
-import "go.k6.io/k6/js/modules"
+import "go.k6.io/k6/v2/js/modules"
 
 // init is called by the Go runtime at application startup.
 func init() {
@@ -89,7 +89,7 @@ package compare
 
 import (
     "fmt"
-    "go.k6.io/k6/js/modules"
+    "go.k6.io/k6/v2/js/modules"
 )
 
 // init is called by the Go runtime at application startup.
@@ -168,14 +168,14 @@ shown above is sufficient.
 Suppose your extension needs access to internal k6 objects to, for example, inspect the state of the test during execution.
 We will need to make slightly more complicated changes to the above example.
 
-Our main `Compare` struct should implement the [`modules.Instance`](https://pkg.go.dev/go.k6.io/k6/js/modules#Instance) interface
-to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) to inspect internal k6 objects such as:
+Our main `Compare` struct should implement the [`modules.Instance`](https://pkg.go.dev/go.k6.io/k6/v2/js/modules#Instance) interface
+to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/v2/js/modules#VU) to inspect internal k6 objects such as:
 
-- [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State), the VU state with values like the VU ID and iteration number
+- [`lib.State`](https://pkg.go.dev/go.k6.io/k6/v2/lib#State), the VU state with values like the VU ID and iteration number
 - [`sobek.Runtime`](https://pkg.go.dev/github.com/grafana/sobek#Runtime), the JavaScript runtime used by the VU
-- a global `context.Context` containing objects like the [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState)
+- a global `context.Context` containing objects like the [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/v2/lib#ExecutionState)
 
-Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
+Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/v2/js/modules#Module)
 interface to serve as a factory of `Compare` instances for each VU.
 
 Here's what that would look like:
@@ -185,7 +185,7 @@ package compare
 
 import (
     "fmt"
-    "go.k6.io/k6/js/modules"
+    "go.k6.io/k6/v2/js/modules"
 )
 
 // init is called by the Go runtime at application startup.
@@ -259,7 +259,7 @@ Notice that we implemented the Module API and now `modules.Register` the _root m
 
 ## Accessing runtime state
 
-At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) from the `Compare`
+At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/v2/js/modules#VU) from the `Compare`
 type; however, we aren't taking advantage of the methods provided. Here is a contrived example of how we can utilize the
 runtime state:
 
@@ -322,8 +322,8 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
   and [thread-safe](https://en.wikipedia.org/wiki/Thread_safety).
 - Any _heavy_ initialization should be done in the [init context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context),
   if possible, and not as part of the `default` function execution.
-- Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create
-  custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
+- Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/v2/metrics#Registry.NewMetric) method to create
+  custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/v2/metrics#PushIfNotDone).
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
