@@ -32,7 +32,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 $ mkdir xk6-secret-source-cli; cd xk6-secret-source-cli; go mod init xk6-secret-source-cli
 ```
 
-1. The core of an Output extension is a struct that implements the [`secrets.Source`](https://pkg.go.dev/go.k6.io/k6/secretsource#Source)
+1. The core of an Output extension is a struct that implements the [`secrets.Source`](https://pkg.go.dev/go.k6.io/k6/v2/secretsource#Source)
    interface.
 
 Create a simple example secret source that just reads the secrets from the cli flag - similar to the in built `mock` one.
@@ -45,7 +45,7 @@ import (
 	"fmt"
 	"strings"
 
-	"go.k6.io/k6/secretsource"
+	"go.k6.io/k6/v2/secretsource"
 )
 
 func newCLISecretSourceFromParams(params secretsource.Params) (secretsource.Source, error) {
@@ -84,7 +84,7 @@ func (css *cliSecretSource) Get(key string) (string, error) {
 ```go
 package cli
 
-import "go.k6.io/k6/secretsource"
+import "go.k6.io/k6/v2/secretsource"
 
 // init is called by the Go runtime at application startup.
 func init() {
@@ -108,7 +108,7 @@ import (
 	"fmt"
 	"strings"
 
-	"go.k6.io/k6/secretsource"
+	"go.k6.io/k6/v2/secretsource"
 )
 
 // init is called by the Go runtime at application startup.
@@ -150,7 +150,7 @@ func (css *cliSecretSource) Get(key string) (string, error) {
 Notice a couple of things:
 
 - The module initializer `newCLISecretSourceFromParams()` receives an instance of
-  [`secretsource.Params`](https://pkg.go.dev/go.k6.io/k6/secretsource#Params).
+  [`secretsource.Params`](https://pkg.go.dev/go.k6.io/k6/v2/secretsource#Params).
   With this object, the extension can access the secret source specific configuration,
   interfaces to the filesystem, it cli args, logger, etc.
 

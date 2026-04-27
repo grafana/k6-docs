@@ -41,7 +41,7 @@ go install go.k6.io/xk6/cmd/xk6@latest
 mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
 ```
 
-1. The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
+1. The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/v2/output#Output)
    interface.
 
 Create a simple example that outputs each set of metrics to the console as received by the `AddMetricSamples(samples []metrics.SampleContainer)`
@@ -55,8 +55,8 @@ import (
     "strings"
     "time"
 
-    "go.k6.io/k6/metrics"
-    "go.k6.io/k6/output"
+    "go.k6.io/k6/v2/metrics"
+    "go.k6.io/k6/v2/output"
 )
 
 // AddMetricSamples receives metric samples from the k6 Engine as they're emitted.
@@ -80,7 +80,7 @@ func metricKeyValues(samples []metrics.Sample) string {
 1. Register the module to use these from k6 test scripts.
 
 ```go
-import "go.k6.io/k6/output"
+import "go.k6.io/k6/v2/output"
 
 // init is called by the Go runtime at application startup.
 func init() {
@@ -105,8 +105,8 @@ import (
     "strings"
     "time"
 
-    "go.k6.io/k6/metrics"
-    "go.k6.io/k6/output"
+    "go.k6.io/k6/v2/metrics"
+    "go.k6.io/k6/v2/output"
 )
 
 // init is called by the Go runtime at application startup.
@@ -161,7 +161,7 @@ func (*Logger) Stop() error {
 Notice a couple of things:
 
 - The module initializer `New()` receives an instance of
-  [`output.Params`](https://pkg.go.dev/go.k6.io/k6/output#Params).
+  [`output.Params`](https://pkg.go.dev/go.k6.io/k6/v2/output#Params).
   With this object, the extension can access the output-specific configuration,
   interfaces to the filesystem, synchronized stdout and stderr, and more.
 
@@ -227,11 +227,11 @@ Your output should look something like this:
 ## Things to keep in mind
 
 - Output structs can optionally implement additional interfaces that allow them to
-  receive [thresholds](https://pkg.go.dev/go.k6.io/k6/output#WithThresholds) or
-  [run-status updates](https://pkg.go.dev/go.k6.io/k6/output#WithRunStatusUpdates)
-  and even [interrupt a test](https://pkg.go.dev/go.k6.io/k6/output#WithTestRunStop).
-- Consider using [`output.SampleBuffer`](https://pkg.go.dev/go.k6.io/k6/output#SampleBuffer)
-  and [`output.PeriodicFlusher`](https://pkg.go.dev/go.k6.io/k6/output#PeriodicFlusher)
+  receive [thresholds](https://pkg.go.dev/go.k6.io/k6/v2/output#WithThresholds) or
+  [run-status updates](https://pkg.go.dev/go.k6.io/k6/v2/output#WithRunStatusUpdates)
+  and even [interrupt a test](https://pkg.go.dev/go.k6.io/k6/v2/output#WithTestRunStop).
+- Consider using [`output.SampleBuffer`](https://pkg.go.dev/go.k6.io/k6/v2/output#SampleBuffer)
+  and [`output.PeriodicFlusher`](https://pkg.go.dev/go.k6.io/k6/v2/output#PeriodicFlusher)
   to improve performance given the large amounts of data produced by k6. Refer to
   [`statsd` output](https://github.com/grafana/k6/blob/master/output/statsd/output.go) for an example.
 - Use the [project template](https://github.com/grafana/xk6-output-template) as a starting point

@@ -207,7 +207,7 @@ import (
     "testing"
 
     "github.com/stretchr/testify/require"
-    "go.k6.io/k6/js/modulestest"
+    "go.k6.io/k6/v2/js/modulestest"
 )
 
 func Test_module(t *testing.T) { //nolint:tparallel
@@ -288,7 +288,7 @@ import (
     "encoding/ascii85"
 
     "github.com/grafana/sobek"
-    "go.k6.io/k6/js/modules"
+    "go.k6.io/k6/v2/js/modules"
 )
 
 type rootModule struct{}
@@ -336,7 +336,7 @@ In addition, `register.go` contains the registration of the extension with the k
 ```go
 package example_ascii85
 
-import "go.k6.io/k6/js/modules"
+import "go.k6.io/k6/v2/js/modules"
 
 const importPath = "k6/x/example_ascii85"
 
@@ -355,6 +355,6 @@ m.vu.Runtime()
 
 ## Additional resources
 
-- [k6 go API documentation](https://pkg.go.dev/go.k6.io/k6)
+- [k6 go API documentation](https://pkg.go.dev/go.k6.io/k6/v2)
 - [k6 JavaScript engine documentation](https://pkg.go.dev/github.com/grafana/sobek)
 - [xk6 - k6 extension development toolbox](https://github.com/grafana/xk6)
