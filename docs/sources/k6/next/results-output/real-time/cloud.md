@@ -30,13 +30,21 @@ so `k6 cloud run --local-execution` will consume VUH or test runs from your subs
 
 ## Instructions
 
-1. (Optional) - Log in to the cloud
+1. Log in to the cloud
 
    Assuming you have installed k6, the first step is to log in to the cloud service.
 
-   With the `k6 cloud login` command, you can set up your API token on the k6 machine to authenticate against the cloud service and a default stack to use.
+   Run `k6 cloud login` — it will prompt you interactively for your API token and stack:
 
-   Copy your token from [k6 Cloud](https://app.k6.io/account/api-token) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/tokens-and-cli-authentication/). For Grafana Cloud k6, you should also set up a default stack by passing it either as a full URL (e.g. https://my-team.grafana.net) or just a slug (e.g. my-team):
+   {{< code >}}
+
+   ```bash
+   k6 cloud login
+   ```
+
+   {{< /code >}}
+
+   For non-interactive environments such as CI/CD, pass the values directly:
 
    ```bash
    k6 cloud login --token <YOUR_API_TOKEN> --stack <YOUR_STACK_SLUG>
