@@ -187,16 +187,26 @@ running (00m30.0s), 000/011 VUs, 3001 complete and 0 interrupted iterations
 disrupt ✓ [======================================] 1 VUs        00m00.0s/10m0s  1/1 shared iters
 load    ✓ [======================================] 000/010 VUs  30s             100.00 iters/s
 
-     ✓ status is OK
+  █ TOTAL RESULTS
 
-     checks...............: 100.00% ✓ 3000       ✗ 0
-     data_received........: 416 kB  14 kB/s
-     data_sent............: 630 kB  21 kB/s
-     grpc_req_duration....: avg=1.36ms min=512.43µs med=1.25ms max=26.62ms p(90)=1.75ms p(95)=2.09ms
-     iteration_duration...: avg=4.4ms  min=52.86µs  med=4.01ms max=66.26ms p(90)=5.32ms p(95)=6.35ms
-     iterations...........: 3001    100.028406/s
-     vus..................: 10      min=10       max=10
-     vus_max..............: 11      min=11       max=11
+    checks_total.......................: 3000    100.03/s
+    checks_succeeded...................: 100.00% 3000 out of 3000
+    checks_failed......................: 0.00%   0 out of 3000
+
+    ✓ status is OK
+
+    GRPC
+    grpc_req_duration..................: avg=1.36ms min=512.43µs med=1.25ms max=26.62ms p(90)=1.75ms p(95)=2.09ms
+
+    EXECUTION
+    iteration_duration.................: avg=4.4ms  min=52.86µs  med=4.01ms max=66.26ms p(90)=5.32ms p(95)=6.35ms
+    iterations.........................: 3001    100.03/s
+    vus................................: 10      min=10       max=10
+    vus_max............................: 11      min=11       max=11
+
+    NETWORK
+    data_received......................: 416 kB  14 kB/s
+    data_sent..........................: 630 kB  21 kB/s
 ```
 
 {{< /code >}}
@@ -239,18 +249,28 @@ running (00m50.6s), 000/033 VUs, 2975 complete and 0 interrupted iterations
 disrupt ✓ [======================================] 1 VUs        00m50.6s/10m0s  1/1 shared iters
 load    ✓ [======================================] 000/032 VUs  30s             100.00 iters/s
 
-     ✗ status is OK
-      ↳  89% — ✓ 2668 / ✗ 306
+  █ TOTAL RESULTS
 
-     checks...............: 89.71% ✓ 2668      ✗ 306
-     data_received........: 405 kB 8.0 kB/s
-     data_sent............: 615 kB 12 kB/s
-     dropped_iterations...: 26     0.513628/s
-     grpc_req_duration....: avg=270.51ms min=502.12µs med=302.34ms max=310.48ms p(90)=303.25ms p(95)=303.57ms
-     iteration_duration...: avg=290.05ms min=1.96ms   med=304.86ms max=50.61s   p(90)=306.36ms p(95)=306.89ms
-     iterations...........: 2975   58.770842/s
-     vus..................: 1      min=1       max=33
-     vus_max..............: 33     min=25      max=33
+    checks_total.......................: 2974    58.77/s
+    checks_succeeded...................: 89.71%  2668 out of 2974
+    checks_failed......................: 10.29%  306 out of 2974
+
+    ✗ status is OK
+     ↳  89% — ✓ 2668 / ✗ 306
+
+    GRPC
+    grpc_req_duration..................: avg=270.51ms min=502.12µs med=302.34ms max=310.48ms p(90)=303.25ms p(95)=303.57ms
+
+    EXECUTION
+    dropped_iterations.................: 26     0.51/s
+    iteration_duration.................: avg=290.05ms min=1.96ms   med=304.86ms max=50.61s   p(90)=306.36ms p(95)=306.89ms
+    iterations.........................: 2975   58.77/s
+    vus................................: 1      min=1        max=33
+    vus_max............................: 33     min=25       max=33
+
+    NETWORK
+    data_received......................: 405 kB 8.0 kB/s
+    data_sent..........................: 615 kB 12 kB/s
 ```
 
 {{< /code >}}
