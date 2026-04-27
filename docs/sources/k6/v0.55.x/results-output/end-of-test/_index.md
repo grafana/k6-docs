@@ -48,8 +48,6 @@ The end-of-test summary reports details and aggregated statistics for the primar
 - A list of the test's [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios)
 - The pass/fail results of the test's [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds) and [checks](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks).
 
-{{< code >}}
-
 ```bash
 Ramp_Up ✓ [======================================] 00/20 VUs  30s
      █ GET home - https://example.com/
@@ -82,8 +80,6 @@ Ramp_Up ✓ [======================================] 00/20 VUs  30s
 
 ERRO[0044] some thresholds have failed
 ```
-
-{{< /code >}}
 
 Above's an example of a report that k6 generated after a test run.
 

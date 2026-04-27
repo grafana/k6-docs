@@ -30,8 +30,6 @@ Returns the `element.innerText`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -56,5 +54,3 @@ export default async function () {
   console.log(innerText);
 }
 ```
-
-{{< /code >}}

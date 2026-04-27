@@ -36,8 +36,6 @@ This module, by default, adds three key-value pairs:
 
 This example demonstrates how to use the this library to instrument every HTTP request made in a script with the `baggage` header.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import pyroscope from 'https://jslib.k6.io/http-instrumentation-pyroscope/{{< param "JSLIB_PYROSCOPE_VERSION" >}}/index.js';
@@ -58,5 +56,3 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}

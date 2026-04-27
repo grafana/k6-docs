@@ -23,8 +23,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -57,5 +55,3 @@ export default async function () {
 ```
 
 _A k6 script that will delete a secret in AWS secrets manager_
-
-{{< /code >}}

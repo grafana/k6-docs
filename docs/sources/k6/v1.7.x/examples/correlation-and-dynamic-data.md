@@ -32,8 +32,6 @@ and can be handled with a little bit of scripting.
 
 ### Extracting values/tokens from a JSON response
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -60,8 +58,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 **Relevant k6 APIs**:
 
 - [Response.json()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response)
@@ -77,8 +73,6 @@ or you extract necessary hidden fields etc. and build a request yourself and the
 appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post).
 
 #### Extracting .NET ViewStates, CSRF tokens and other hidden input fields
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -104,8 +98,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 > ### ⚠️ Did you know?
 >
 > Take note if `discardResponseBodies` is set to true in the options
@@ -126,8 +118,6 @@ The [jslib utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/
 
 #### Extracting a value/token using findBetween
 
-{{< code >}}
-
 ```javascript
 import { findBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import { check } from 'k6';
@@ -145,8 +135,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 **Relevant k6 APIs**:
 

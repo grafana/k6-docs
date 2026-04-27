@@ -48,8 +48,6 @@ You can set the event to one of the following:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'k6';
@@ -106,8 +104,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 ### Related
 

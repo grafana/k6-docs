@@ -172,8 +172,6 @@ For example, say you have the following structure on your host machine:
 - `/home/k6/example/src/index.js`
 - `/home/k6/example/src/modules/module.js`
 
-{{< code >}}
-
 ```javascript
 import { hello_world } from './modules/module.js';
 
@@ -182,27 +180,17 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```javascript
 export function hello_world() {
   console.log('Hello world');
 }
 ```
 
-{{< /code >}}
-
 To run index.js and make the modules available for import we execute the following Docker command with the `/home/k6/example/src` host folder mounted at `/src` in the container:
-
-{{< code >}}
 
 ```bash
 $ docker run --rm -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
 ```
-
-{{< /code >}}
 
 Note that on Windows, you also need to make sure that your drive in question, say `C:\`,
 has been marked for sharing in the Docker Desktop settings.

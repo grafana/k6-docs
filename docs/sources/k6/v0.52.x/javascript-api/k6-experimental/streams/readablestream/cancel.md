@@ -28,8 +28,6 @@ A promise that resolves with the value `undefined` when the stream is canceled.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -70,5 +68,3 @@ function numbersStream() {
   });
 }
 ```
-
-{{< /code >}}

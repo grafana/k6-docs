@@ -40,8 +40,6 @@ Service (SQS) queue.
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -79,5 +77,3 @@ export default async function () {
   await sqs.sendMessageBatch(testQueue, messageBatch);
 }
 ```
-
-{{< /code >}}

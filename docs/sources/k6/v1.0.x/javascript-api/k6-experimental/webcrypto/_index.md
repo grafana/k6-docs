@@ -24,8 +24,6 @@ The module exports a top-level `crypto` object with the following properties and
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -90,5 +88,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

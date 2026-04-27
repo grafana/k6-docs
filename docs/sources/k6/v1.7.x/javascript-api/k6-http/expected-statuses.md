@@ -17,8 +17,6 @@ You can have as many arguments as wanted in any order.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -33,5 +31,3 @@ export default () => {
   http.get('https://quickpizza.grafana.com/api/status/205');
 };
 ```
-
-{{< /code >}}

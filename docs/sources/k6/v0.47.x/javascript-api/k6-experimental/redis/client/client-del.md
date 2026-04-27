@@ -21,8 +21,6 @@ Removes the specified keys. A key is ignored if it does not exist.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -50,5 +48,3 @@ export default async function () {
   await redisClient.del('mykey');
 }
 ```
-
-{{< /code >}}

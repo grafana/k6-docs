@@ -16,8 +16,6 @@ The `Client` constructor accepts an [`Options`](https://grafana.com/docs/k6/<K6_
 
 This example demonstrates how to instantiate a tracing client and use it to instrument HTTP calls with trace context headers. It also illustrates how you can use it alongside the standard `http` module to perform non-instrumented HTTP calls.
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import tracing from 'k6/experimental/tracing';
@@ -57,8 +55,6 @@ export default () => {
   });
 };
 ```
-
-{{< /code >}}
 
 ## HTTP module functions equivalents
 

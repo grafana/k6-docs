@@ -60,8 +60,6 @@ Pages that have been opened ought to be closed using [`Page.close`](https://graf
 
 ### deviceScaleFactor example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -94,5 +92,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

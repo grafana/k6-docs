@@ -16,8 +16,6 @@ To address this, the browser module has a [page.on('metric')](https://grafana.co
 
 ## Example usage
 
-{{< code >}}
-
 <!-- eslint-skip-->
 
 ```javascript
@@ -73,5 +71,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

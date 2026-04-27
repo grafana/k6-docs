@@ -22,8 +22,6 @@ _Params_ is an object used by the WebSocket methods that generate WebSocket requ
 
 _A k6 script that will make a WebSocket request with a custom header and tag results data with a specific tag_
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 
@@ -41,5 +39,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

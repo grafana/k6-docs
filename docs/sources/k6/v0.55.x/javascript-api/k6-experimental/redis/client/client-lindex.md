@@ -21,8 +21,6 @@ Returns the specified element of the list stored at `key`. The index is zero-bas
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -42,5 +40,3 @@ export default async function () {
   await redisClient.lrange('mylist', 1, 2);
 }
 ```
-
-{{< /code >}}

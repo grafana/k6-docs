@@ -25,8 +25,6 @@ Registers a handler to be called whenever the specified event occurs. This metho
 
 ### Console event example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'k6';
@@ -67,11 +65,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Metric event example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -127,11 +121,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Request and response events example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -162,11 +152,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 Output:
-
-{{< code >}}
 
 ```bash
 INFO[0000] https://quickpizza.grafana.com/                  source=console
@@ -175,11 +161,7 @@ INFO[0001] https://quickpizza.grafana.com/images/pizza.png  source=console
 ...
 ```
 
-{{< /code >}}
-
 ### RequestFinished event example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -225,11 +207,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### RequestFailed event example
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -279,8 +257,6 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}
 
 ### Related
 

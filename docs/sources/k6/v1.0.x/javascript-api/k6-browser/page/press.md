@@ -42,8 +42,6 @@ Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported a
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -67,5 +65,3 @@ export default async function () {
   await page.press('#text1', 'Tab');
 }
 ```
-
-{{< /code >}}

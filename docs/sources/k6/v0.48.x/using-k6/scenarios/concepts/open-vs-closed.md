@@ -23,8 +23,6 @@ Thus, in a closed model, the start or arrival rate of
 new VU iterations is tightly coupled with the iteration duration (that is, time from start
 to finish of the VU's `exec` function, by default the `export default function`):
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -49,8 +47,6 @@ export default function () {
   http.get('https://httpbin.test.k6.io/delay/6');
 }
 ```
-
-{{< /code >}}
 
 Running this script would result in something like:
 
@@ -91,8 +87,6 @@ This reduces the influence of the target system's response time.
 k6 implements the open model with two _arrival rate_ executors:
 [constant-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate):
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -116,8 +110,6 @@ export default function () {
   http.get('https://httpbin.test.k6.io/delay/6');
 }
 ```
-
-{{< /code >}}
 
 Running this script would result in something like:
 

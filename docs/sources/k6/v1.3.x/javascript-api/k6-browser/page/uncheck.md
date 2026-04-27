@@ -36,8 +36,6 @@ This method is used to unselect an input checkbox.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -62,5 +60,3 @@ export default async function () {
   await page.uncheck('#checkbox1');
 }
 ```
-
-{{< /code >}}

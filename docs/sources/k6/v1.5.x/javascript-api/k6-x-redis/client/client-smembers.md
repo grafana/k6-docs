@@ -23,8 +23,6 @@ Returns all the members of the set values stored at `keys`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -42,7 +40,5 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

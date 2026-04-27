@@ -23,8 +23,6 @@ Grants specified permissions to the [browser context](https://grafana.com/docs/k
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -48,5 +46,3 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}

@@ -13,8 +13,6 @@ When you execute a load test, your System Under Test (SUT) may often become over
 
 It's not uncommon for performance testers to forget about these cases. We often write fragile test code that assumes our system's response will always succeed and contain the expected data.
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -36,8 +34,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 This code will work fine when the SUT returns correct responses. But, when the SUT starts to fail, `r.json().length` will throw an exception:
 
@@ -62,8 +58,6 @@ Sometimes it's hard to predict how a SUT might fail. For those cases, [describe]
 1. records them as failed assertions
 2. continues the execution (outside of its `describe()` function)
 
-{{< code >}}
-
 <!-- md-k6:nofail -->
 
 ```javascript
@@ -82,10 +76,6 @@ export default function testSuite() {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 █ Test case against a Shaky SUT
 
@@ -96,5 +86,3 @@ export default function testSuite() {
 
   ✓ expected ${this} to equal 2
 ```
-
-{{< /code >}}

@@ -24,8 +24,6 @@ Represents a reference to a JavaScript object within the context of a webpage. T
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -56,5 +54,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

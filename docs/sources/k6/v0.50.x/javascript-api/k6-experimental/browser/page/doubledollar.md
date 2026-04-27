@@ -22,8 +22,6 @@ The method finds all elements matching the specified selector within the page. I
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   page.$$('#text1')[0].type('hello world');
 }
 ```
-
-{{< /code >}}

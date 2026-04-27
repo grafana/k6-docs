@@ -21,8 +21,6 @@ Returns a random element from the set value stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -47,5 +45,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

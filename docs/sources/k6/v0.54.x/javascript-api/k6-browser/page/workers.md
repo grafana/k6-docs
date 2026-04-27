@@ -15,8 +15,6 @@ This method returns an array of the dedicated [WebWorkers](https://grafana.com/d
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   console.log(page.workers());
 }
 ```
-
-{{< /code >}}

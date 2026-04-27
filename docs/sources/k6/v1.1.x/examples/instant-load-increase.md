@@ -13,8 +13,6 @@ In k6, you can do that by using the `options` object, and configuring the number
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -41,11 +39,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Here's an example on how to instantly increase the number of VUs and hold them for a period of time.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -70,5 +64,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

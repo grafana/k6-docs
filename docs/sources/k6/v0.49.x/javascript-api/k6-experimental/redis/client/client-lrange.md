@@ -23,8 +23,6 @@ Returns the specified elements of the list stored at `key`. The offsets start an
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -44,5 +42,3 @@ export default async function () {
   await redisClient.lrange('mylist', 1, 2);
 }
 ```
-
-{{< /code >}}

@@ -55,8 +55,6 @@ A `Promise` that resolves with the imported key as a [CryptoKey](https://grafana
 
 ### Round-trip key export/import
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   /**
@@ -88,13 +86,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### Import a static raw key and decrypt transmitted data
 
 This example demonstrates how to import a static `raw` key and decrypt some transmitted data in `base64`. The transmitted data in this example represents an initialization vector and encoded data, and in a real-world scenario, it can be a response body or other data received from a request.
-
-{{< code >}}
 
 ```javascript
 import { b64decode } from 'k6/encoding';
@@ -157,13 +151,9 @@ const base64Decode = (base64String) => {
 };
 ```
 
-{{< /code >}}
-
 ### Import a static JWK key and decrypt transmitted data
 
 This example is similar to the previous one. It demonstrates how to import a static `jwk` key and decrypt some transmitted data (which contains the initialization vector and encoded data) in `base64`.
-
-{{< code >}}
 
 ```javascript
 import { b64decode } from 'k6/encoding';
@@ -231,13 +221,9 @@ const base64Decode = (base64String) => {
 };
 ```
 
-{{< /code >}}
-
 ### Import a password for PBKDF2 key derivation
 
 This example demonstrates how to import a password as key material for PBKDF2 key derivation.
-
-{{< code >}}
 
 ```javascript
 export default async function () {
@@ -281,5 +267,3 @@ function arrayBufferToHex(buffer) {
   return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 ```
-
-{{< /code >}}

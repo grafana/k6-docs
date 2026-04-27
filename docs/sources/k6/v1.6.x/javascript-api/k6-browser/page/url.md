@@ -15,8 +15,6 @@ Returns the page's URL.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   console.log(page.url());
 }
 ```
-
-{{< /code >}}

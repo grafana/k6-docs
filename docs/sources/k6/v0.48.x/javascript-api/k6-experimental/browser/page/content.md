@@ -15,8 +15,6 @@ Gets the HTML contents of the page.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   console.log(page.content()); // HTML content printed in the console
 }
 ```
-
-{{< /code >}}

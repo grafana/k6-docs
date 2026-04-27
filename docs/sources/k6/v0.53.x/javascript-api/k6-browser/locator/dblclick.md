@@ -37,8 +37,6 @@ Mouse double click on the chosen element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -62,5 +60,3 @@ export default async function () {
   await button.dblclick();
 }
 ```
-
-{{< /code >}}

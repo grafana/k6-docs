@@ -21,8 +21,6 @@ Returns all fields and values of the hash stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -36,5 +34,3 @@ export default async function () {
   console.log(`myhash has key:value pairs ${JSON.stringify(object)}`);
 }
 ```
-
-{{< /code >}}

@@ -30,8 +30,6 @@ To run a browser-level and protocol-level test concurrently in k6, you can use [
 
 The code below shows an example of combining a browser and HTTP test in a single script. While the script exposes the backend to the typical load, it also checks the frontend for any unexpected issues. It also defines thresholds to check both HTTP and browser metrics against pre-defined SLOs.
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
@@ -119,8 +117,6 @@ export async function checkFrontend() {
   }
 }
 ```
-
-{{< /code >}}
 
 If you save that script to a local file named `test.js`, you can run it with:
 

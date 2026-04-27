@@ -17,8 +17,6 @@ Mimics `$(element)`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from "k6/http";
 
@@ -31,4 +29,3 @@ export default () => {
 }
 
 ```
-{{< /code >}}

@@ -26,8 +26,6 @@ Set up handler functions for various events on the WebSocket connection. You can
 
 _A k6 script that demonstrates how to add multiple event listeners for the WebSocket `message` connection event._
 
-{{< code >}}
-
 ```javascript
 import { WebSocket } from 'k6/websockets';
 
@@ -53,14 +51,8 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-{{< code >}}
 
 ```bash
 docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
-
-{{< /code >}}

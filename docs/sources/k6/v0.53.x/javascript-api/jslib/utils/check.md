@@ -23,8 +23,6 @@ The `check` function is a drop-in replacement for the built-in [check](https://g
 
 Using `check()` with async values.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { fail } from 'k6';
@@ -55,7 +53,5 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 For general usage of checks, refer to [check(val, set, [tags])](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check/#examples).

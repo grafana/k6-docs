@@ -41,8 +41,6 @@ For more information, refer to [k6 #2728](https://github.com/grafana/k6/issues/2
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { group } from 'k6';
 
@@ -64,8 +62,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 The above code will present the results separately depending on the group execution.
 

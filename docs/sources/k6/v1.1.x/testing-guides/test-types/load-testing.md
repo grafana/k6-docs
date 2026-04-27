@@ -66,8 +66,6 @@ The goal of an average-load test is to simulate the average amount of activity o
 
 Configure load in the `options` object:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -91,8 +89,6 @@ export default () => {
   // etc.
 };
 ```
-
-{{< /code >}}
 
 This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to [Examples](https://grafana.com/docs/k6/<K6_VERSION>/examples).
 

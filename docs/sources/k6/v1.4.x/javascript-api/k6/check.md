@@ -30,8 +30,6 @@ Failure conditions can then instead be controlled by thresholds, for more power 
 
 Using `check()` to verify that an HTTP response code was 200:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -44,11 +42,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Using `check()` with a custom tag to verify that an HTTP response code was 200 and that body was 1234 bytes. The `checkOutput` can be used for any condition in your script logic:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -70,5 +64,3 @@ export default function () {
   }
 }
 ```
-
-{{< /code >}}

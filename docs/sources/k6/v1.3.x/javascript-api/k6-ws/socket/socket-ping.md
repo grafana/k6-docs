@@ -11,8 +11,6 @@ Send a ping. Ping messages can be used to verify that the remote endpoint is res
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 
@@ -30,5 +28,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

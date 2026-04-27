@@ -17,8 +17,6 @@ The `EcKeyGenParams` object represents the object that should be passed as the a
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const keyPair = await crypto.subtle.generateKey(
@@ -33,5 +31,3 @@ export default async function () {
   console.log(JSON.stringify(keyPair));
 }
 ```
-
-{{< /code >}}

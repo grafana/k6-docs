@@ -17,8 +17,6 @@ description: 'Get object with all cookies for the given URL, where the key is th
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -35,5 +33,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

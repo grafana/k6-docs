@@ -387,8 +387,6 @@ A common case for parameterization happens when you want to use different `userI
 
 For example, consider a JSON file with a list of user info such as:
 
-{{< code >}}
-
 ```json
 {
   "users": [
@@ -397,8 +395,6 @@ For example, consider a JSON file with a list of user info such as:
   ]
 }
 ```
-
-{{< /code >}}
 
 You can parameterize the users with the [`SharedArray`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-data/sharedarray) object as follows:
 

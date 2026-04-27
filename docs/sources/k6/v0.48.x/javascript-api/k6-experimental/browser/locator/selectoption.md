@@ -32,8 +32,6 @@ Select one or more options which match the values.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -57,5 +55,3 @@ export default async function () {
   options.selectOption('three');
 }
 ```
-
-{{< /code >}}

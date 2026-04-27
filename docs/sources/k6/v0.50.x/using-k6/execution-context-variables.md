@@ -36,8 +36,6 @@ you can copy this template literal into one of your test scripts.
 
 Note that this omits the `abort` variable, since that function would abort the test.
 
-{{< code >}}
-
 ```javascript
 import exec from 'k6/execution';
 
@@ -76,8 +74,6 @@ VU ID in test: ${exec.vu.idInTest}
 VU tags: ${exec.vu.tags}`);
 }
 ```
-
-{{< /code >}}
 
 For detailed reference, refer to the [k6/execution module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-execution).
 

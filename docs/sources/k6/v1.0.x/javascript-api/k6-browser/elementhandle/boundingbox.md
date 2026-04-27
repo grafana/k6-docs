@@ -27,8 +27,6 @@ The `Rect` object represents the bounding box of an element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -56,5 +54,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

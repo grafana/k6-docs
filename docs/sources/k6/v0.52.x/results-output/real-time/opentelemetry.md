@@ -55,13 +55,9 @@ To learn more about how to build custom k6 versions, refer to [xk6](https://gith
 
 Using the k6 binary you built in the previous step, you can use the `--out xk6-opentelemetry` option when running your tests to use this extension:
 
-{{< code >}}
-
 ```bash
 $ ./k6 run --out xk6-opentelemetry script.js
 ```
-
-{{< /code >}}
 
 ## Configuration
 

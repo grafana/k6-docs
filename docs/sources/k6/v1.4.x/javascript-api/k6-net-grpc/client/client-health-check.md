@@ -17,8 +17,6 @@ The health check response includes a `status` field that can be one of the follo
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import grpc from 'k6/net/grpc';
 import { check } from 'k6';
@@ -44,5 +42,3 @@ export default () => {
   client.close();
 };
 ```
-
-{{< /code >}}

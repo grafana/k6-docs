@@ -31,8 +31,6 @@ Returns the element attribute value for the given attribute name.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -57,5 +55,3 @@ export default async function () {
   console.log(attribute); // prints inputTextOnFocus();
 }
 ```
-
-{{< /code >}}

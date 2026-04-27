@@ -16,8 +16,6 @@ Call a function at a later time, if the WebSocket connection is still open then.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 import { sleep } from 'k6';
@@ -43,5 +41,3 @@ export default function () {
   console.log('T0+4: Script finished');
 }
 ```
-
-{{< /code >}}

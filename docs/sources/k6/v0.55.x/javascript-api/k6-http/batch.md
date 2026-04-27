@@ -58,8 +58,6 @@ If you pass an array of string values, k6 automatically parses them into a batch
 
 This example batches three URLs in arrays for parallel fetching:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -76,13 +74,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Example with request objects
 
 This example uses objects to define a batch of POST requests (along with custom HTTP headers in a [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object to the request):
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -114,8 +108,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 In the preceding example, `req1` can happen before `req2` or `req3`.
@@ -125,8 +117,6 @@ In the preceding example, `req1` can happen before `req2` or `req3`.
 ### Example with array of strings
 
 This example uses an array of URL strings to send a batch of GET requests.
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -146,14 +136,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Example object with named properties
 
 Finally, you can also send in named requests by using an object instead of an array as the parameter to `http.batch()`.
 This example mixes string URLs and request objects.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -176,5 +162,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

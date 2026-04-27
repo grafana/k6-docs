@@ -15,8 +15,6 @@ Returns a random key.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -32,5 +30,3 @@ export default async function () {
   console.log(`picked random key is: ${key}`);
 }
 ```
-
-{{< /code >}}

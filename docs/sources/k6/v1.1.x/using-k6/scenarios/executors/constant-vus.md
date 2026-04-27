@@ -28,8 +28,6 @@ Use this executor if you need a specific number of VUs to run for a certain amou
 
 This examples schedules 10 VUs to run constantly for a duration 30 seconds.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -52,8 +50,6 @@ export default function () {
   sleep(0.5);
 }
 ```
-
-{{< /code >}}
 
 ## Observations
 

@@ -22,8 +22,6 @@ The method finds an element matching the specified selector within the page. If 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -47,5 +45,3 @@ export default async function () {
   page.$('#text1').type('hello world');
 }
 ```
-
-{{< /code >}}

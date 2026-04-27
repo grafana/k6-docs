@@ -24,8 +24,6 @@ Returns the value associated with `field` in the hash stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -38,7 +36,5 @@ export default async function () {
   await redisClient.hdel('myhash', 'myfield');
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

@@ -41,8 +41,6 @@ Will be parsed into the following array of objects:
 
 ## Example
 
-{{< code >}}
-
 <!--md-k6:skip-->
 
 ```javascript
@@ -73,5 +71,3 @@ export default async function () {
   console.log(done, value);
 }
 ```
-
-{{< /code >}}

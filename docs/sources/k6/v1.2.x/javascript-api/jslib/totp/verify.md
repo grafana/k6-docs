@@ -21,8 +21,6 @@ Verifies a TOTP code against the current time.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { TOTP } from 'https://jslib.k6.io/totp/1.0.0/index.js';
 
@@ -40,5 +38,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

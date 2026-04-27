@@ -24,8 +24,6 @@ Use [md4](https://pkg.go.dev/golang.org/x/crypto/md4) to hash input data.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -37,8 +35,6 @@ export default function () {
   console.log(hash);
 }
 ```
-
-{{< /code >}}
 
 The above script should result in the following being printed during execution:
 

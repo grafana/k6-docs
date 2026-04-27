@@ -12,8 +12,6 @@ description: 'Delete a cookie of a specified `name` for the given URL.'
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
@@ -43,5 +41,3 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}

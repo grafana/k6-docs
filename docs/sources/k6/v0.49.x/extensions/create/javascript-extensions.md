@@ -84,8 +84,6 @@ func init() {
 
 1. Save the file as something like `compare.go`. The final code looks like this:
 
-{{< code >}}
-
 ```go
 package compare
 
@@ -116,8 +114,6 @@ func (c *Compare) IsGreater(a, b int) bool {
 }
 ```
 
-{{< /code >}}
-
 ## Compile your extended k6
 
 To build a k6 binary with this extension, run this command:
@@ -139,8 +135,6 @@ Now, use the extension in a test script!
 
 1. Make a file with a name like `test.js` then add this code:
 
-{{< code >}}
-
 ```javascript
 import compare from 'k6/x/compare';
 
@@ -149,8 +143,6 @@ export default function () {
   console.log(`${compare.isGreater(1, 3)}, ${compare.comparison_result}`);
 }
 ```
-
-{{< /code >}}
 
 1. Run the test with `./k6 run test.js`.
 
@@ -183,8 +175,6 @@ The significance depends on the size of your module.
 {{< /admonition >}}
 
 Here's what that would look like:
-
-{{< code >}}
 
 ```go
 package compare
@@ -257,8 +247,6 @@ func (mi *ModuleInstance) Exports() modules.Exports {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 Notice that we implemented the Module API and now `modules.Register` the _root module_ rather than our _Compare_ object!
@@ -270,8 +258,6 @@ Notice that we implemented the Module API and now `modules.Register` the _root m
 At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) from the `Compare`
 type; however, we aren't taking advantage of the methods provided. Here is a contrived example of how we can utilize the
 runtime state:
-
-{{< code >}}
 
 ```go
 // InternalState holds basic metadata from the runtime state.
@@ -298,11 +284,7 @@ func (c *Compare) GetInternalState() *InternalState {
 }
 ```
 
-{{< /code >}}
-
 Create a test script to utilize the new `getInternalState()` function as in the following:
-
-{{< code >}}
 
 ```javascript
 import compare from 'k6/x/compare';
@@ -314,8 +296,6 @@ export default function () {
   );
 }
 ```
-
-{{< /code >}}
 
 Executing the script as `./k6 run test-state.js --vus 2 --iterations 5` will produce output similar to the following:
 
