@@ -1,6 +1,6 @@
 ---
 title: 'Graceful stop'
-description: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
+description: 'This option is available for all executors and allows the user to specify a duration to wait before forcefully interrupting them.'
 weight: 10
 ---
 
@@ -15,7 +15,7 @@ For the `ramping-vus` executor, a related option, `gracefulRampDown`, exists to 
 
 ## Graceful stop
 
-The `gracefulStop` option is available for all executors except `externally-controlled`.
+The `gracefulStop` option is available for all executors.
 It specifies a duration that k6 will wait before forcefully interrupting an iteration.
 The default value is `30s`.
 

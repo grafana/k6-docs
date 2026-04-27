@@ -38,7 +38,7 @@ The following table lists all k6 executors and links to their documentation.
 | [Ramping VUs](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus)                     | `ramping-vus`           | A variable number of VUs execute as many<br/> iterations as possible for a specified amount of time.                                                                                       |
 | [Constant Arrival Rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | A fixed number of iterations are executed<br/> in a specified period of time.                                                                                                              |
 | [Ramping Arrival Rate](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | A variable number of iterations are <br/> executed in a specified period of time.                                                                                                          |
-| [Externally Controlled](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Control and scale execution at runtime<br/> via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api) or the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
+
 
 {{< admonition type="note" >}}
 
