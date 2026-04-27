@@ -1030,12 +1030,6 @@ See an example file on the [Results Output](https://grafana.com/docs/k6/<K6_VERS
 
 ## Summary mode
 
-{{< admonition type="caution" >}}
-
-The `legacy` mode has been deprecated since v1.3.0, and its support will be removed by v2.0.
-
-{{< /admonition >}}
-
 Define how detailed the [end-of-test summary](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/) should be. Available in the `k6 run` command.
 
 | Env               | CLI              | Code / Config file | Default     |
@@ -1056,7 +1050,6 @@ The following modes are available:
 - **disabled**: Completely disables the summary generation, including:
   - Calls to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary)
   - The use of `--summary-export`
-- **legacy** (*deprecated*): Uses the pre-v1.0.0 summary format for backward compatibility
 
 {{< code >}}
 
