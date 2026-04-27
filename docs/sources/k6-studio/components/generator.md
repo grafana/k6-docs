@@ -176,7 +176,7 @@ To automatically create correlation rules for your recording:
 
     {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
 
-4. **Connect to Grafana Assistant** if prompted. Click **Connect to Grafana Assistant** to open your browser. Approve the sign-in, check that the verification code in the browser matches the one shown in k6 Studio, then return to the app. If this is your first time using Grafana Assistant, you're also prompted to review and accept the terms and conditions in the browser before the connection completes.
+4. Connect to Grafana Assistant if prompted. Click **Connect to Grafana Assistant** to open your browser. Approve the sign-in, check that the verification code in the browser matches the one shown in k6 Studio, then return to the app. If this is your first time using Grafana Assistant, you're also prompted to review and accept the terms and conditions in the browser before the connection completes.
 
 
     {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
