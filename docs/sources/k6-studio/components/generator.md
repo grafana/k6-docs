@@ -169,7 +169,7 @@ To automatically create correlation rules for your recording:
 
 2. In the **Test rules** section, click **Autocorrelate**.
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-autocorrelate-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
 
 3. Sign in if prompted. In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, complete the sign-in in your browser, and select the Grafana Cloud stack you want to use.
 
