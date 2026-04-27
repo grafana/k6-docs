@@ -141,7 +141,7 @@ Autocorrelation is an AI-powered feature that automatically creates correlation 
 
 When you record a user session, many applications include dynamic values in their requests and responses. These values, like authentication tokens or session IDs, are generated at runtime and differ each time the session is replayed. Without correlation, your test script fails because it uses the original recorded values instead of the new ones.
 
-Autocorrelation is powered by Grafana Assistant and runs against your Grafana Cloud account. Autocorrelation:
+Autocorrelation is powered by [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/) and runs against your Grafana Cloud account. Autocorrelation:
 
 - Runs validation to identify mismatches between your recording and a live test run
 - Detects values that change between runs
