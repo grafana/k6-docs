@@ -7,8 +7,6 @@ weight: 01
 
 # Single request
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -20,5 +18,3 @@ export default function () {
   const response = http.get('https://quickpizza.grafana.com');
 }
 ```
-
-{{< /code >}}

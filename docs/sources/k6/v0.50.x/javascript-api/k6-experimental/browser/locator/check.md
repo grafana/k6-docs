@@ -29,8 +29,6 @@ Use this method to select an `input` checkbox.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -54,5 +52,3 @@ export default async function () {
   checkbox.check();
 }
 ```
-
-{{< /code >}}

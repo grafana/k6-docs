@@ -15,8 +15,6 @@ This will close the tab that this page is associated with.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

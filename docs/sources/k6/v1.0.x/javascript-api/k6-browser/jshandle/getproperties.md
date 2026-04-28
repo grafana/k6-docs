@@ -15,8 +15,6 @@ This allows you to inspect and interact with the properties of the object within
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -51,5 +49,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

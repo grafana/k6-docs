@@ -16,8 +16,6 @@ Note that the `Client` is configured through the [`Options`](https://grafana.com
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -108,8 +106,6 @@ export function handleSummary(data) {
   };
 }
 ```
-
-{{< /code >}}
 
 ## key/value methods
 

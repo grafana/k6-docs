@@ -10,8 +10,6 @@ Scripting example on how to handle HTML forms.
 
 In many cases using the [Selection](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/selection) API (jQuery API clone) to interact with HTML data is enough, but for some use cases, like with forms, we can make things easier providing a higher-level API like the [Response.submitForm( [params] )](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response/response-submitform) API.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -28,8 +26,6 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}
 
 **Relevant k6 APIs**:
 

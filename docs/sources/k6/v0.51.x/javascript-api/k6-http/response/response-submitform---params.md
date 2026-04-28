@@ -25,8 +25,6 @@ This method takes an object argument where the following properties can be set:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -43,5 +41,3 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}

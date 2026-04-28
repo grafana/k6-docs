@@ -72,8 +72,6 @@ You can tag the following entities:
 - thresholds
 - custom metrics
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
@@ -97,8 +95,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Test-wide tags
 
 Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
@@ -108,7 +104,6 @@ You can set these tags in two ways:
 
 - In the script itself:
 
-  {{< code >}}
   <!-- md-k6:skip -->
 
   ```javascript
@@ -118,8 +113,6 @@ You can set these tags in two ways:
     },
   };
   ```
-
-  {{< /code >}}
 
 ## Code-defined tags
 
@@ -279,8 +272,6 @@ If you have a single group named `cool requests`, the actual value of the `group
 
 For example, you could use groups to organize multiple requests by page loads or user actions.
 
-{{< code >}}
-
 ```javascript
 import { group } from 'k6';
 
@@ -303,8 +294,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Groups do the following tasks internally:
 
 - For each `group()` function, k6 emits a [group_duration metric](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics), which contains the total time to execute the group function.
@@ -312,13 +301,11 @@ Groups do the following tasks internally:
 - When a taggable resource&mdash;a check, request, or custom metric&mdash;runs within a group, k6 sets the tag `group` with the current group name.
   For more info, refer to the [Tags section](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags).
 
-Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize complex test results. Check out how they work in your [k6 result output](https://grafana.com/docs/k6/<K6_VERSION>/misc/integrations#result-store-and-visualization).
+Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize complex test results. Check out how they work in your [k6 result output](https://grafana.com/docs/k6/<K6_VERSION>/reference/integrations#result-store-and-visualization).
 
 ### Discouraged: one group per request
 
 Wrapping each request within a group might add unnecessary boilerplate.
-
-{{< code >}}
 
 ```javascript
 import { group, check } from 'k6';
@@ -339,8 +326,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 If your code looks like the preceding snippet, consider the following strategies to write cleaner code:
 

@@ -21,8 +21,6 @@ To run a simple local script:
 
    Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) documentation for more information.
 
-   {{< code >}}
-
    ```javascript
    import { browser } from 'k6/browser';
 
@@ -53,8 +51,6 @@ To run a simple local script:
      }
    }
    ```
-
-   {{< /code >}}
 
    The preceding code imports the `browser` [the browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser)), and uses its `newPage` method to open a new page.
 

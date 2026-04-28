@@ -26,8 +26,6 @@ The primary difference is that instead of continuously looping the main function
 
 The basic structure of a WebSocket test looks like this:
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
@@ -46,8 +44,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 In this example, the [connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter.
 That function should accept a [Socket](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket) object as its only parameter.
 The run function forms the basis of the asynchronous event loop.
@@ -57,8 +53,6 @@ When the WebSocket connection is created, the run function will be immediately c
 ## Error handling
 
 To catch errors happen during the life of a WebSocket connection, attach a handler to the "error" event:
-
-{{< code >}}
 
 ```javascript
 import ws from 'k6/ws';
@@ -84,13 +78,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Timers
 
 To schedule a recurring action, use the [socket.setInterval](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket#section-socketsetinterval) to specify a function to call at a particular interval.
-
-{{< code >}}
 
 ```javascript
 import ws from 'k6/ws';
@@ -119,13 +109,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Timeouts
 
 To add a timeout to the WebSocket connection, pass both a handler function and a timeout value (in milliseconds) to the [socket.setTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws/socket/socket-settimeout) function.
-
-{{< code >}}
 
 ```javascript
 import ws from 'k6/ws';
@@ -149,15 +135,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 In the preceding example, the timeout will close the WebSocket connection after 2 seconds.
 
 ## Multiple event handlers
 
 You can attach multiple handler functions to an event:
-
-{{< code >}}
 
 ```javascript
 import ws from 'k6/ws';
@@ -202,5 +184,3 @@ export default function () {
   check(response, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
-
-{{< /code >}}

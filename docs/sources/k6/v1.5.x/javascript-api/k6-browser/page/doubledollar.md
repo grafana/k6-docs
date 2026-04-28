@@ -24,8 +24,6 @@ The method finds all elements matching the specified selector within the page. I
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -62,5 +60,3 @@ export default async function () {
   await page.locator('//pre[text()="3.141"]').waitFor();
 }
 ```
-
-{{< /code >}}

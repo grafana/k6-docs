@@ -38,8 +38,6 @@ Mouse click on the chosen element.
 
 ### Examples
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -65,11 +63,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 When a click action results in a page navigation, remember to work with `Promise.all()` and `page.waitForNavigation()` to properly handle the asynchronous operation.
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -96,5 +90,3 @@ export default async function () {
   await Promise.all([page.waitForNavigation(), messagesLink.click()]);
 }
 ```
-
-{{< /code >}}

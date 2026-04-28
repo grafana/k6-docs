@@ -184,16 +184,26 @@ $ k6 run grpc-example.js
 
 INFO[0000] {"starsRating":3}                             source=console
 
-     ✓ status is OK
+  █ TOTAL RESULTS
 
-     checks...............: 100.00% 1 out of 1
-     data_received........: 4.1 kB  3.6 kB/s
-     data_sent............: 762 B   656 B/s
-     grpc_req_duration....: avg=33.75ms min=33.75ms med=33.75ms max=33.75ms p(90)=33.75ms p(95)=33.75ms
-     iteration_duration...: avg=1.16s   min=1.16s   med=1.16s   max=1.16s   p(90)=1.16s   p(95)=1.16s
-     iterations...........: 1       0.860427/s
-     vus..................: 1       min=1      max=1
-     vus_max..............: 1       min=1      max=1
+    checks_total.......................: 1       0.86/s
+    checks_succeeded...................: 100.00% 1 out of 1
+    checks_failed......................: 0.00%   0 out of 1
+
+    ✓ status is OK
+
+    GRPC
+    grpc_req_duration..................: avg=33.75ms min=33.75ms med=33.75ms max=33.75ms p(90)=33.75ms p(95)=33.75ms
+
+    EXECUTION
+    iteration_duration.................: avg=1.16s   min=1.16s   med=1.16s   max=1.16s   p(90)=1.16s   p(95)=1.16s
+    iterations.........................: 1       0.86/s
+    vus................................: 1       min=1      max=1
+    vus_max............................: 1       min=1      max=1
+
+    NETWORK
+    data_received......................: 4.1 kB  3.6 kB/s
+    data_sent..........................: 762 B   656 B/s
 
 
 running (00m01.2s), 0/1 VUs, 1 complete and 0 interrupted iterations

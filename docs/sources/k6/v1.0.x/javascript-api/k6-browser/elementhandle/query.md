@@ -27,8 +27,6 @@ Queries the element for the given selector in the [ElementHandle](https://grafan
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -54,5 +52,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

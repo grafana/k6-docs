@@ -19,8 +19,6 @@ The `Options` object describes the configuration available for the operation of 
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { open } from 'k6/experimental/fs';
 import csv from 'k6/experimental/csv';
@@ -49,5 +47,3 @@ export default async function () {
   console.log(done, value);
 }
 ```
-
-{{< /code >}}

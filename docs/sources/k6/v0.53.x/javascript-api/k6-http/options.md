@@ -21,8 +21,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -34,5 +32,3 @@ export default function () {
   console.log(res.headers['Allow']);
 }
 ```
-
-{{< /code >}}

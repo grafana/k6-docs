@@ -26,8 +26,6 @@ Returns SSL and other security information.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -57,5 +55,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

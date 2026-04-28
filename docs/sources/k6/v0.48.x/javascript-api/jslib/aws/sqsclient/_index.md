@@ -34,8 +34,6 @@ With it, the user can send messages to specified queues, receive messages from q
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import exec from 'k6/execution';
 
@@ -79,5 +77,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

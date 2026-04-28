@@ -23,8 +23,6 @@ Make a DELETE request.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -35,5 +33,3 @@ export default function () {
   http.del(url, null, params);
 }
 ```
-
-{{< /code >}}

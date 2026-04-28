@@ -27,8 +27,6 @@ This script has two scenarios, `contacts` and `news`, which run in sequence:
 
 Along with `startTime`, `duration`, and `maxDuration`, note the different test logic for each scenario.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -63,15 +61,11 @@ export function news() {
 }
 ```
 
-{{< /code >}}
-
 ## Use different environment variables and tags per scenario.
 
 The previous example sets tags on individual HTTP request metrics.
 But, you can also set tags per scenario, which applies them to other
 [taggable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) objects as well.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -112,8 +106,6 @@ export function news() {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 By default, k6 applies a `scenario` tag to all metrics in each scenario, whose value is the scenario name.
@@ -132,8 +124,6 @@ To do this:
 1. Set thresholds for these tags.
 
 This test has 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -200,15 +190,11 @@ export function apitest() {
 }
 ```
 
-{{< /code >}}
-
 ## Run specific scenario via environment variable
 
 k6 runs all [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#scenarios) listed in a test script by default. But, with some small code changes and using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/#environment-variables), you can tell k6 to only run a specific scenario via the command-line.
 
 The following example shows a test script that uses a `SCENARIO` environment variable, if it exists, to choose which scenario to execute:
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -242,8 +228,6 @@ export default function () {
   const response = http.get('https://test-api.k6.io/public/crocodiles/');
 }
 ```
-
-{{< /code >}}
 
 Then from the command line, you could run the test script and only execute the `my_web_test` scenario by running:
 

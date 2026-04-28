@@ -21,21 +21,15 @@ With this library, you get the following:
 
 There's nothing to install. This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in the k6 script directly.
 
-{{< code >}}
-
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 ```
-
-{{< /code >}}
 
 Alternatively, you can use a copy of this file stored locally. The source code is available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs).
 
 ## Example
 
 The following example tests a hypothetical HTTP API that returns a JSON array of objects. Copy the following code, and save it as `script.js`:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -51,8 +45,6 @@ export default function testSuite() {
   });
 }
 ```
-
-{{< /code >}}
 
 When you run this test with `k6 run script.js`, the output at the end of the test shows:
 

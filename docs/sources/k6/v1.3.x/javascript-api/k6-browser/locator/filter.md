@@ -23,8 +23,6 @@ Returns a new [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 import { check } from 'https://jslib.k6.io/k6-utils/1.5.0/index.js';
@@ -79,5 +77,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

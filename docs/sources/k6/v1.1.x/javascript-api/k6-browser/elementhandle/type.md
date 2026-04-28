@@ -31,8 +31,6 @@ Type in the text into the input field.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -59,5 +57,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

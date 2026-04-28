@@ -23,8 +23,6 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -36,8 +34,6 @@ export default function () {
   console.log(hasher.digest('hex'));
 }
 ```
-
-{{< /code >}}
 
 The above script should result in the following being printed during execution:
 

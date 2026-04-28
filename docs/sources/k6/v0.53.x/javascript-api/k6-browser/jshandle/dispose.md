@@ -15,8 +15,6 @@ Releases the remote object this references.
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -50,5 +48,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

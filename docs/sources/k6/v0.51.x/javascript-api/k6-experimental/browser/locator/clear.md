@@ -18,8 +18,6 @@ Clears text boxes and input fields (`input`, `textarea` or `contenteditable` ele
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
@@ -62,5 +60,3 @@ export default async function () {
   page.close();
 }
 ```
-
-{{< /code >}}

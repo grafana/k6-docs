@@ -47,8 +47,6 @@ InvocationResponse is an object that represents the response of an invocation. I
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -76,5 +74,3 @@ export default async function () {
   });
 }
 ```
-
-{{< /code >}}

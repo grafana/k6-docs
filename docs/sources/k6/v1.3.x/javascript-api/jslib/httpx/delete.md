@@ -23,8 +23,6 @@ weight: 14
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
@@ -37,5 +35,3 @@ export default function testSuite() {
   const resp = session.delete(`/delete`);
 }
 ```
-
-{{< /code >}}

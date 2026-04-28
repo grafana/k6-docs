@@ -16,8 +16,6 @@ Call a function repeatedly, while the WebSocket connection is open.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
@@ -44,5 +42,3 @@ export default function () {
   check(res, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ Returns the number of `key` arguments that exist. Note that if the same existing
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -45,5 +43,3 @@ export default async function () {
   await redisClient.del('mykey');
 }
 ```
-
-{{< /code >}}

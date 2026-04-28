@@ -22,8 +22,6 @@ Scrolls the element into view if needed.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -50,5 +48,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

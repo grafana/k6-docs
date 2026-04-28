@@ -21,8 +21,6 @@ Get the key's value.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -50,5 +48,3 @@ export default async function () {
   await redisClient.del('mykey');
 }
 ```
-
-{{< /code >}}

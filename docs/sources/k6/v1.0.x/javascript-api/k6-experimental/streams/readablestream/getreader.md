@@ -22,8 +22,6 @@ A [ReadableStreamDefaultReader](https://grafana.com/docs/k6/<K6_VERSION>/javascr
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -61,5 +59,3 @@ function numbersStream() {
   });
 }
 ```
-
-{{< /code >}}

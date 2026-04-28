@@ -14,8 +14,6 @@ Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
 | [Element](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/element)          | Class    | An HTML DOM element as returned by the Selection API. |
 | [parseHTML(src)](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-html/parsehtml) | function | Parse an HTML string and populate a Selection object. |
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
@@ -27,10 +25,6 @@ export default function () {
   const langAttr = doc.find('html').attr('lang');
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { parseHTML } from 'k6/html';
@@ -59,5 +53,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

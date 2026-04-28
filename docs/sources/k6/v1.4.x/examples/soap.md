@@ -11,8 +11,6 @@ can still easily load test a SOAP-based API by crafting SOAP messages and using 
 
 ## Making SOAP requests
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
@@ -45,5 +43,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

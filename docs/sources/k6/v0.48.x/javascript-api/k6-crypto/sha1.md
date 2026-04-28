@@ -24,8 +24,6 @@ Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash input data.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -37,8 +35,6 @@ export default function () {
   console.log(hash);
 }
 ```
-
-{{< /code >}}
 
 The above script should result in the following being printed during execution:
 

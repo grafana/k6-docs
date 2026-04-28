@@ -10,23 +10,15 @@ You can output granular data points in CSV format.
 To do so, use `k6 run` with the `--out` flag.
 Pass the path for your CSV file as the flag argument:
 
-{{< code >}}
-
 ```bash
 $ k6 run --out csv=test_results.csv script.js
 ```
 
-{{< /code >}}
-
 You can also get the results gzipped, like this:
-
-{{< code >}}
 
 ```bash
 $ k6 run --out csv=test_results.gz script.js
 ```
-
-{{< /code >}}
 
 To inspect the output in real time, you can use a command like `tail -f` on the file you save:
 
@@ -37,8 +29,6 @@ $ tail -f test_results.csv
 ## CSV format
 
 The CSV result file will look something like this:
-
-{{< code >}}
 
 ```plain
 metric_name,timestamp,metric_value,check,error,error_code,group,method,name,proto,scenario,status,subproto,tls_version,url,extra_tags
@@ -59,8 +49,6 @@ data_received,1595325561,11045.000000,,,,,,,,default,,,,,
 iteration_duration,1595325561,1449.049580,,,,,,,,default,,,,,
 iterations,1595325561,1.000000,,,,,,,,default,,,,,
 ```
-
-{{< /code >}}
 
 Each entry in the report represents a metric, `metric_name`, along with its value, `metric_value`, at time, `timestamp`.
 If an error happens, then the `error` along with the `error_code` fields will be populated.

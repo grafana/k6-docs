@@ -37,8 +37,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the key.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -71,5 +69,3 @@ export default async function () {
   console.log(JSON.stringify(importedKey));
 }
 ```
-
-{{< /code >}}

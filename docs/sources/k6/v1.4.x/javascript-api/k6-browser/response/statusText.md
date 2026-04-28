@@ -15,8 +15,6 @@ Contains the status text of the response (e.g. usually an "OK" for a success).
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

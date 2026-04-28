@@ -33,8 +33,6 @@ Selects one or more options which match the values from a `<select>` element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -58,5 +56,3 @@ export default async function () {
   page.selectOption('#numbers-options', 'three');
 }
 ```
-
-{{< /code >}}

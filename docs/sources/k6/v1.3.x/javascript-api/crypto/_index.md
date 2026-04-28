@@ -22,8 +22,6 @@ The module is a top-level `crypto` object with the following properties and meth
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const plaintext = stringToArrayBuffer('Hello, World!');
@@ -86,5 +84,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

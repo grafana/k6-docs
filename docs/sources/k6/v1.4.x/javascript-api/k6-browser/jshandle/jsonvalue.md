@@ -15,8 +15,6 @@ Retrieves the JSON representation of the JavaScript object that the JSHandle ref
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -51,5 +49,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

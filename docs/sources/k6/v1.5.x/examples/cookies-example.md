@@ -17,8 +17,6 @@ cases where access to read and manipulate cookies are required.
 
 ## From the response headers
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { check, group } from 'k6';
@@ -40,16 +38,12 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Log all the cookies in a response
 
 > ### ⚠️ Note that this only works when using k6 locally
 >
 > The `console.log()` family of APIs are currently only usable when running k6 locally.
 > When running k6 tests with LoadImpact Cloud Execution the logs will be discarded.
-
-{{< code >}}
 
 ```javascript
 // Example showing two methods how to log all cookies (with attributes) from a HTTP response.
@@ -79,14 +73,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Setting a cookie in the VU cookie jar
 
 To set a cookie that should be sent with every request matching a particular domain, path, etc.
 you'd do something like this:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -116,13 +106,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Delete a cookie in the VU cookie jar
 
 To delete a cookie in the jar for a specific URL and name, use the `delete` method.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -154,13 +140,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Clear all cookies in the VU cookie jar
 
 To clear all cookies in the jar by specifying url, use the `clear` method.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -185,8 +167,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 **Relevant k6 APIs**:
 

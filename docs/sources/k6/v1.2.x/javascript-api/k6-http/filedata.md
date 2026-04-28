@@ -19,8 +19,6 @@ You create it by calling [http.file( data, [filename], [contentType] )](https://
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import { md5 } from 'k6/crypto';
@@ -35,5 +33,3 @@ export default function () {
   console.log(f.content_type);
 }
 ```
-
-{{< /code >}}

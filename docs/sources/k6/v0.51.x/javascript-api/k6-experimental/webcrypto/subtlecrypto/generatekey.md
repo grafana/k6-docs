@@ -43,8 +43,6 @@ A `Promise` that resolves with the generated key as a [CryptoKey](https://grafan
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -61,5 +59,3 @@ export default async function () {
   console.log(JSON.stringify(key));
 }
 ```
-
-{{< /code >}}

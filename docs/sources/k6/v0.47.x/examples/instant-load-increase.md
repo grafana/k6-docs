@@ -13,8 +13,6 @@ In k6 we can achieve it with the following configuration.
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
 
-{{< code >}}
-
 ```javascript
 export const options = {
   scenarios: {
@@ -33,11 +31,7 @@ export const options = {
 };
 ```
 
-{{< /code >}}
-
 Here's an example on how to instantly increase the number of VUs and hold them for a period of time.
-
-{{< code >}}
 
 ```javascript
 export const options = {
@@ -55,5 +49,3 @@ export const options = {
   },
 };
 ```
-
-{{< /code >}}

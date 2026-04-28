@@ -7,7 +7,7 @@ weight: 11
 # Environment variables
 
 Often, scripts need only minor tweaks to be reusable in different contexts.
-Rather than creating several separate scripts for these different contexts or environments, you can use [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/misc/glossary#environment-variables) to make parts of your script tweakable.
+Rather than creating several separate scripts for these different contexts or environments, you can use [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#environment-variables) to make parts of your script tweakable.
 
 You can use environment variables for two main purposes:
 
@@ -34,13 +34,9 @@ export default function () {
 The recommended option to pass environment variables to your testing script is to use one or more [`-e` / `--env` CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#supply-environment-variables)
 (this command works the same for all platforms):
 
-{{< code >}}
-
 ```bash
 k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
-
-{{< /code >}}
 
 > #### ⚠ The `-e` flag does not configure options
 >
@@ -115,13 +111,9 @@ You can confirm whether one is by checking the [documentation for each option](h
 Note that when you define options in multiple places, there's an [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) that determines the option to use.
 To ensure you're always working with the highest precedence, use command-line flags instead of environment variables:
 
-{{< code >}}
-
 ```bash
 k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
 ```
-
-{{< /code >}}
 
 ## Read more
 

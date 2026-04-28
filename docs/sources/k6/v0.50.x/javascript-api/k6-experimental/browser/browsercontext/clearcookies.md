@@ -9,8 +9,6 @@ Clears the `BrowserContext`'s cookies.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -38,5 +36,3 @@ export default async function () {
   console.log(context.cookies().length); // prints: 0
 }
 ```
-
-{{< /code >}}

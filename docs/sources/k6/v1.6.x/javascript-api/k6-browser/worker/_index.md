@@ -16,8 +16,6 @@ Represents a Web Worker or a Service Worker within the browser context.
 | -------------------------------------------------------------------------------------- | ---------------------------------- |
 | [url()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/worker/url) | Returns the URL of the web worker. |
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

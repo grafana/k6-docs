@@ -183,8 +183,6 @@ However, k6 now has a module called [k6 browser](https://grafana.com/docs/k6/<K6
 
 The following is an example of a browser-based load testing script in k6 using the browser module on a dummy website. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -216,8 +214,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 #### Tips for writing browser-level scripts
 

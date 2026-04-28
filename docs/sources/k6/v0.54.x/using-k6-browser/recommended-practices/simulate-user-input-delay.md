@@ -46,8 +46,6 @@ In the browser modules there are various asynchronous APIs that can be used to w
 
 [page.waitForFunction](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforfunction) is useful when you want more control over when a test progresses with a javascript function that returns true when a condition (or many conditions) is met. It can be used to poll for changes in the DOM or non-DOM elements and variables.
 
-{{< code >}}
-
 <!-- eslint-skip-->
 
 ```javascript
@@ -96,13 +94,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## page.waitForLoadState
 
 [page.waitForLoadState](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitforloadstate) is useful when there’s no explicit navigation, but you need to wait for the page or network to settle. This is mainly used when working with single-page applications or when no full page reloads happen.
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -137,15 +131,11 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## page.waitForNavigation
 
 [page.waitForNavigation](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfornavigation) is a very useful API when performing other actions that could start a page navigation, and they don't automatically wait for the navigation to end. Usually, you'll find it in our examples with a `click` API call. Note that [goto](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/goto) is an example of an API that _doesn't_ require `waitForNavigation` since it will automatically wait for the navigation to complete before returning.
 
 It's important to call this in a [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) along with the API that will cause the navigation to start.
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -183,13 +173,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## locator.waitFor
 
 [locator.waitFor](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/locator/waitfor/) will wait until the element meets the waiting criteria. It's useful when dealing with dynamic websites where elements may take time to appear or change state. For example, if elements load after some delay due to async calls, or because of slow JavaScript execution.
-
-{{< code >}}
 
 ```js
 import { browser } from 'k6/browser';
@@ -218,13 +204,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ## page.waitForTimeout
 
 [page.waitForTimeout](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/waitfortimeout) will wait the given amount of time. It's functionally the same as k6's [sleep](#What-is-`sleep`), but it's asynchronous, which means it will not block the event loop and allows the background tasks to continue to be worked on.
-
-{{< code >}}
 
 ```js
 import { browser } from 'k6/browser';
@@ -257,5 +239,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

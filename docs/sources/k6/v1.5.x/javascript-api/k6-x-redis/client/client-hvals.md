@@ -23,8 +23,6 @@ Returns all values of the hash stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -43,7 +41,5 @@ export default async function () {
   console.log(`myhash has values ${values}`);
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

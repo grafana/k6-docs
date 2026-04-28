@@ -29,8 +29,6 @@ Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundl
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -78,5 +76,3 @@ export default async function () {
 ```
 
 _A k6 script querying a user's Systems Manager Service parameter_
-
-{{< /code >}}

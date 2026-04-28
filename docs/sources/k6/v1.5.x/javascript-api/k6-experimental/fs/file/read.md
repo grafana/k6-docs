@@ -26,8 +26,6 @@ A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 
 In the following example, we open a file and read it in chunks of 128 bytes until we reach the end of the file.
 
-{{< code >}}
-
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
 
@@ -59,13 +57,9 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 ### `readAll` helper function
 
 The following helper function can be used to read the entire contents of a file into a [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) buffer.
-
-{{< code >}}
 
 ```javascript
 import { open, SeekMode } from 'k6/experimental/fs';
@@ -102,5 +96,3 @@ export default async function () {
   console.log(JSON.stringify(fileContent));
 }
 ```
-
-{{< /code >}}

@@ -29,8 +29,6 @@ Unselect the `input` checkbox.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -55,5 +53,3 @@ export default async function () {
   checkbox.uncheck();
 }
 ```
-
-{{< /code >}}

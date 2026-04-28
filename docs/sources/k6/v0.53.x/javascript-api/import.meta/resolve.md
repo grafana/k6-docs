@@ -19,8 +19,6 @@ For more details, refer to this [issue](https://github.com/grafana/k6/issues/385
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 const pdfFile = open(import.meta.resolve('./path/to/file.pdf'), 'b');
 
@@ -28,5 +26,3 @@ export default function () {
   // this is here to avoid an exception if run using k6
 }
 ```
-
-{{< /code >}}

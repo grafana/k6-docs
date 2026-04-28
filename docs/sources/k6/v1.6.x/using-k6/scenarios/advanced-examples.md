@@ -22,12 +22,10 @@ To sequence your scenarios, you can combine `startTime` with the duration option
 
 This script has two scenarios, `contacts` and `news`, which run in sequence:
 
-1. At the beginning of the test, k6 starts the `contacts` scenario. 50 VUs try to run as many iterations as possible for 30 seconds.
-1. After 30 seconds, k6 starts the `news` scenario. 50 VUs each try to run 100 iterations in one minute.
+1. At the beginning of the test, k6 starts the `contacts` scenario. 5 VUs try to run as many iterations as possible for 5 seconds.
+1. After 10 seconds, k6 starts the `news` scenario. 5 VUs each try to run 10 iterations in 20 seconds.
 
 Along with `startTime`, `duration`, and `maxDuration`, note the different test logic for each scenario.
-
-{{< code >}}
 
 <!-- md-k6:fixedscenarios -->
 
@@ -65,15 +63,11 @@ export function news() {
 }
 ```
 
-{{< /code >}}
-
 ## Use different environment variables and tags per scenario.
 
 The previous example sets tags on individual HTTP request metrics.
 But, you can also set tags per scenario, which applies them to other
 [taggable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#tags) objects as well.
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -116,8 +110,6 @@ export function news() {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 By default, k6 applies a `scenario` tag to all metrics in each scenario, whose value is the scenario name.
@@ -136,8 +128,6 @@ To do this:
 1. Set thresholds for these tags.
 
 This test has 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -206,15 +196,11 @@ export function apitest() {
 }
 ```
 
-{{< /code >}}
-
 ## Run specific scenario via environment variable
 
 k6 runs all [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#scenarios) listed in a test script by default. But, with some small code changes and using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/#environment-variables), you can tell k6 to only run a specific scenario via the command-line.
 
 The following example shows a test script that uses a `SCENARIO` environment variable, if it exists, to choose which scenario to execute:
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -248,8 +234,6 @@ export default function () {
   const response = http.get('https://quickpizza.grafana.com');
 }
 ```
-
-{{< /code >}}
 
 Then from the command line, you could run the test script and only execute the `my_web_test` scenario by running:
 

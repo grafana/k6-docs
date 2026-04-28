@@ -36,8 +36,6 @@ Tap on the chosen element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -51,5 +49,3 @@ export default async function () {
   await options.tap();
 }
 ```
-
-{{< /code >}}

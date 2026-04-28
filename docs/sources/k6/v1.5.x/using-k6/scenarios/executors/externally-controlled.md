@@ -6,7 +6,7 @@ weight: 07
 
 # Externally controlled
 
-Control and scale execution at runtime via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/misc/k6-rest-api) or
+Control and scale execution at runtime via [k6's REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
 Previously, the `pause`, `resume`, and `scale` CLI commands were used to globally control
@@ -41,8 +41,6 @@ locally with `k6 run`.
 In this example, we'll execute a test controllable at runtime, starting with 10 VUs up to
 a maximum of 50, and a total duration of 10 minutes.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -64,5 +62,3 @@ export default function () {
 ```
 
 Once the test has started, it can be externally controlled with the `pause`, `resume`, and `scale` CLI commands.
-
-{{< /code >}}

@@ -60,8 +60,6 @@ weight: 34
 
 </Glossary>
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -118,8 +116,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 When you run this test with `k6 run script.js`, the output at the end of the test shows:
 

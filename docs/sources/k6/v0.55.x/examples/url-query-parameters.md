@@ -10,8 +10,6 @@ How to use **URL** and **URLSearchParams** imported from [jslib.k6.io](https://j
 
 ## URL
 
-{{< code >}}
-
 ```javascript
 import { URL } from 'https://jslib.k6.io/url/1.0.0/index.js';
 import http from 'k6/http';
@@ -27,8 +25,6 @@ export default function () {
   // https://k6.io?utm_medium=organic&utm_source=test&multiple=foo%2Cbar
 }
 ```
-
-{{< /code >}}
 
 <!-- vale off -->
 
@@ -53,8 +49,6 @@ export default function () {
 
 ## URLSearchParams
 
-{{< code >}}
-
 ```javascript
 import { URLSearchParams } from 'https://jslib.k6.io/url/1.0.0/index.js';
 import http from 'k6/http';
@@ -71,8 +65,6 @@ export default function () {
   // https://k6.io?utm_medium=organic&utm_source=test&multiple=foo&multiple=bar
 }
 ```
-
-{{< /code >}}
 
 | Name                  | Type        | Description                                                                                                                                                                                                       |
 | --------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

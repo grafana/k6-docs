@@ -57,8 +57,6 @@ It starts at the defined `startRate`, 300 iterations per minute over a one minut
 After one minute, the iteration rate ramps to 600 iterations started per minute over the next two minutes, and stays at this rate for four more minutes.
 In the last two minutes, it ramps down to a target of 60 iterations per minute.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -99,8 +97,6 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
-
-{{< /code >}}
 
 ## Observations
 

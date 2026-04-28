@@ -47,8 +47,6 @@ The browser module is the entry point for all your tests, and it is what interac
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -78,8 +76,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 Then, you can run the test with this command. Also, see the [browser module options](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser#browser-module-options) for customizing the browser module's behavior using environment variables.
 
@@ -226,8 +222,6 @@ Additionally if headless mode is set to `true` in [browser options](https://graf
 
 To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/experimental/browser`.
 
-{{< code >}}
-
 ```javascript
 import { browser, devices } from 'k6/experimental/browser';
 
@@ -259,5 +253,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

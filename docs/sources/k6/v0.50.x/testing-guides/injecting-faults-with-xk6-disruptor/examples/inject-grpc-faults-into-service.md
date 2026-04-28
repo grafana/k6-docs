@@ -163,8 +163,6 @@ Notice the argument `--env SKIP_FAULT=1`, which makes the `disrupt` function ret
 
 You should get an output similar to the following (use the `Expand` button to see all output).
 
-{{< code >}}
-
 ```
           /\      |‾‾| /‾‾/   /‾‾/
      /\  /  \     |  |/  /   /  /
@@ -197,8 +195,6 @@ load    ✓ [======================================] 000/010 VUs  30s           
      vus_max..............: 11      min=11       max=11
 ```
 
-{{< /code >}}
-
 ### Fault injection
 
 We repeat the execution injecting the faults. Notice we have removed the `--env SKIP_FAULTS=1` argument.
@@ -214,8 +210,6 @@ xk6-disruptor --env "GRPC_HOST=$Env:GRPC_HOST" run grpc-faults.js
 ```
 
 {{< /code >}}
-
-{{< code >}}
 
 ```
            /\      |‾‾| /‾‾/   /‾‾/
@@ -250,8 +244,6 @@ load    ✓ [======================================] 000/032 VUs  30s           
      vus..................: 1      min=1       max=33
      vus_max..............: 33     min=25      max=33
 ```
-
-{{< /code >}}
 
 ### Comparison
 

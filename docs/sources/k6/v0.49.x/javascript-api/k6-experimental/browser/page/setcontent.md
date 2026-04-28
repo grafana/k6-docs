@@ -20,8 +20,6 @@ Sets the supplied HTML string to the current page.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -52,5 +50,3 @@ export default async function () {
   page.setContent(htmlContent);
 }
 ```
-
-{{< /code >}}

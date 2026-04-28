@@ -15,8 +15,6 @@ Clears all permission overrides for the [browser context](https://grafana.com/do
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   await context.clearPermissions();
 }
 ```
-
-{{< /code >}}

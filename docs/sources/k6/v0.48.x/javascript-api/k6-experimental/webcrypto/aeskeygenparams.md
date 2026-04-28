@@ -17,8 +17,6 @@ The `AesKeyGenParams` object represents the object that should be passed as the 
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -33,5 +31,3 @@ export default async function () {
   );
 }
 ```
-
-{{< /code >}}

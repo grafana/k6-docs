@@ -22,8 +22,6 @@ When several routes match the given pattern, only the last registered route hand
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -87,5 +85,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

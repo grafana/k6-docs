@@ -15,8 +15,6 @@ The method removes all routes created with [`page.route`](https://grafana.com/do
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -63,5 +61,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

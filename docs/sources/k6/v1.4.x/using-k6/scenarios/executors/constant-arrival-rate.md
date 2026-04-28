@@ -55,8 +55,6 @@ So it's unnecessary to use a `sleep()` function at the end of the VU code.
 This example schedules a constant rate of 30 iterations per second for 30 seconds.
 It pre-allocates 2 VUs, and allows k6 to dynamically schedule up to 50 VUs as needed.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -89,8 +87,6 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
-
-{{< /code >}}
 
 ## Observations
 

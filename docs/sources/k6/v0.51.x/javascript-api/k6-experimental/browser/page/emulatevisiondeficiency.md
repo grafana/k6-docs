@@ -18,8 +18,6 @@ The supported types are:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -43,5 +41,3 @@ export default async function () {
   page.emulateVisionDeficiency('blurredVision');
 }
 ```
-
-{{< /code >}}

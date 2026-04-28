@@ -40,8 +40,6 @@ This method clicks on an element matching a `selector`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -66,11 +64,7 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 When a click action results in a page navigation, remember to work with `page.waitForNavigation()` to properly handle the asynchronous operation.
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/browser';
@@ -96,5 +90,3 @@ export default async function () {
   await Promise.all([page.waitForNavigation(), page.click('a[href="/my_messages.php"]')]);
 }
 ```
-
-{{< /code >}}

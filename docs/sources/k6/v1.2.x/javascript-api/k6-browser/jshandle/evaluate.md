@@ -22,8 +22,6 @@ Returns the value of the `pageFunction` invocation. It passes this handle as the
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -56,5 +54,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

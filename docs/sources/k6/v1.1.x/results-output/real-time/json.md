@@ -56,16 +56,12 @@ tail -f test_results.json
 
 The JSON output has lines as follows:
 
-{{< code >}}
-
 ```json
 {"type":"Metric","data":{"type":"gauge","contains":"default","tainted":null,"thresholds":[],"submetrics":null},"metric":"vus"}
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.625742514+02:00","value":5,"tags":null},"metric":"vus"}
 {"type":"Metric","data":{"type":"trend","contains":"time","tainted":null,"thresholds":["avg<1000"],"submetrics":null},"metric":"http_req_duration"}
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.239531499+02:00","value":459.865729,"tags":{"group":"::my group::json","method":"GET","status":"200","url":"https://quickpizza.grafana.com/api/tools"}},"metric":"http_req_duration"}
 ```
-
-{{< /code >}}
 
 Each line either has information about a metric, or logs a data point (sample) for a metric.
 Lines consist of three items:
@@ -98,39 +94,23 @@ You can use [jq][jq_url] to process the k6 JSON output.
 
 You can quickly create [filters][jq_filters_url] to return a particular metric of the JSON file:
 
-{{< code >}}
-
 ```bash
 jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200")' myscript-output.json
 ```
 
-{{< /code >}}
-
 And calculate an aggregated value of any metric:
-
-{{< code >}}
 
 ```bash
 jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s 'add/length'
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s min
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```bash
 jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s max
 ```
-
-{{< /code >}}
 
 For more advanced cases, check out the [jq Manual][jq_manual_url]
 

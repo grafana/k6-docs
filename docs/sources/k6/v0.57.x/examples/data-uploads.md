@@ -15,17 +15,11 @@ we can read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
 
-{{< code >}}
-
 ```json
 {
   "my_key": "has a value"
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 const data = JSON.parse(open('./data.json'));
@@ -35,11 +29,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 If you want to open a binary file you need to pass in `"b"` as the second argument.
-
-{{< code >}}
 
 ```javascript
 const binFile = open('./image.png', 'b');
@@ -49,15 +39,11 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Multipart request (uploading a file)
 
 Now that you know how to load a local file, let's look at a script that creates a POST request
 to upload this data to an API endpoint along with a regular text field (`field` in the example
 below):
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -75,8 +61,6 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}
 
 In the example above we use the [http.file()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/file)
 API to wrap the file contents in a [FileData](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/filedata) object.
@@ -103,8 +87,6 @@ The previous multipart request example has some limitations:
 To address this we suggest using the [`FormData` polyfill for k6](https://jslib.k6.io/formdata/0.0.2/index.js).
 
 Here's an example of uploading several binary files and a text file using the polyfill:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -136,8 +118,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 Note that:
 

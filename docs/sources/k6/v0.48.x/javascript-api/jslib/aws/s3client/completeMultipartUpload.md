@@ -25,8 +25,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';
@@ -113,5 +111,3 @@ export default async function () {
 ```
 
 _A k6 script that will upload a multipart upload to an S3 bucket_
-
-{{< /code >}}

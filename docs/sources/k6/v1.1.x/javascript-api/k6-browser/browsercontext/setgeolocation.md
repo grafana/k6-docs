@@ -31,8 +31,6 @@ Sets the [browser context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-a
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -54,5 +52,3 @@ export default async function () {
   await context.setGeolocation({ latitude: 59.95, longitude: 30.31667 });
 }
 ```
-
-{{< /code >}}

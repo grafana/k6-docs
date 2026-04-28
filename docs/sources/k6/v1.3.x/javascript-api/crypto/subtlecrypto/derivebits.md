@@ -34,8 +34,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the derived bits.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   // Generate a key pair for Alice
@@ -84,5 +82,3 @@ const printArrayBuffer = (buffer) => {
   return Array.from(view);
 };
 ```
-
-{{< /code >}}

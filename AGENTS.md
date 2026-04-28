@@ -50,6 +50,7 @@ Always preserve shortcodes when editing:
 
 - **Admonitions:** `{{< admonition type="note|caution|warning" >}}...{{< /admonition >}}` (use sparingly)
 - **Shared content:** `{{< docs/shared lookup="path/to/file.md" source="k6" version="next" >}}`
+- **Tabbed code examples:** `{{< code >}}...{{< /code >}}` - only use when presenting the same example in multiple languages as tabs. For a single code block, use a plain fenced code block without this shortcode.
 - **Others:** Refer to [Writers' Toolkit](https://grafana.com/docs/writers-toolkit/write/shortcodes/) for tabs, collapsible sections, etc.
 
 ## k6 terminology

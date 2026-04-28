@@ -30,8 +30,6 @@ EventBridgeClient methods will throw errors in case of failure.
 
 ### Examples
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -68,5 +66,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

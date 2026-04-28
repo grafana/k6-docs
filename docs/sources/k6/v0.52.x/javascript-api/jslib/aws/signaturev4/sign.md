@@ -41,8 +41,6 @@ You can override SignatureV4 options in the context of this specific request. To
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -164,5 +162,3 @@ export default function () {
   http.get(signedRequest.url, { headers: signedRequest.headers });
 }
 ```
-
-{{< /code >}}

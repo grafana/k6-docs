@@ -31,8 +31,6 @@ of time.
 This example schedules a two-stage test, ramping up from 0 to 10 VUs over 20 seconds, then down
 to 0 VUs over 10 seconds.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -59,8 +57,6 @@ export default function () {
   sleep(0.5);
 }
 ```
-
-{{< /code >}}
 
 {{< admonition type="note" >}}
 

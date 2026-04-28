@@ -13,8 +13,6 @@ This setting will change the timeout for all the methods accepting a `timeout` o
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -38,5 +36,3 @@ export default async function () {
   await page.goto('https://test.k6.io/browser.php');
 }
 ```
-
-{{< /code >}}

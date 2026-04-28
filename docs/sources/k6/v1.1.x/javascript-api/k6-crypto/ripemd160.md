@@ -24,8 +24,6 @@ Use [ripemd160](https://pkg.go.dev/golang.org/x/crypto/ripemd160) to hash input 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import crypto from 'k6/crypto';
 
@@ -37,8 +35,6 @@ export default function () {
   console.log(hash);
 }
 ```
-
-{{< /code >}}
 
 The above script should result in the following being printed during execution:
 

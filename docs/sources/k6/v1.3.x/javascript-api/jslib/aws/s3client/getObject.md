@@ -30,8 +30,6 @@ receive the data as an `ArrayBuffer`, you can pass [`additionalHeaders`](#parame
 
 #### Downloading a text file from AWS S3
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -68,11 +66,7 @@ export default async function () {
 
 _A k6 script that will download an object from a bucket_
 
-{{< /code >}}
-
 #### Downloading a binary file from AWS S3
-
-{{< code >}}
 
 <!-- md-k6:skip -->
 
@@ -107,5 +101,3 @@ export default async function () {
 ```
 
 _A k6 script that will download a binary object from a bucket_
-
-{{< /code >}}

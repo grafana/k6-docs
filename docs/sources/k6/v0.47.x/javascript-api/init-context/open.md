@@ -38,8 +38,6 @@ See the example further down on this page. For a more in-depth description, see 
 | -------------------- | ----------------------------------------------------------------------------------------------- |
 | string / ArrayBuffer | The contents of the file, returned as string or ArrayBuffer (if `b` was specified as the mode). |
 
-{{< code >}}
-
 ```json
 [
   {
@@ -56,10 +54,6 @@ See the example further down on this page. For a more in-depth description, see 
   }
 ]
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -78,10 +72,6 @@ export default () => {
 };
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 
@@ -93,10 +83,6 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -113,5 +99,3 @@ export default function () {
   sleep(3);
 }
 ```
-
-{{< /code >}}
