@@ -8,7 +8,7 @@ weight: 11
 
 {{< docs/shared source="k6" lookup="official-extension.md" version="<K6_VERSION>" >}}
 
-The `k6/x/tcp` module adds first-class support for raw TCP socket communication to your load testing and performance scripts. With this extension, you can establish TCP connections, send and receive data, and test network protocols directly from your k6 tests.
+The `k6/x/tcp` module adds first-class support for raw TCP socket communication to your performance testing scripts. With this extension, you can establish TCP connections, send and receive data, and test network protocols directly from your k6 tests.
 
 The API is designed to feel familiar to users of Node.js's [`net.Socket`](https://nodejs.org/api/net.html#class-netsocket), with event-driven programming, Promise-based operations, and comprehensive lifecycle management.
 
