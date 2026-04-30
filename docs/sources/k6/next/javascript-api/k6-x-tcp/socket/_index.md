@@ -29,14 +29,14 @@ Creates a new TCP socket in the `disconnected` state. Use `connect()` to establi
 
 | Property | Type | Description |
 | :------- | :--- | :---------- |
-| ready_state | SocketState | Current connection state: `'disconnected'`, `'opening'`, `'open'`, or `'destroyed'` |
-| connected | boolean | Read-only. `true` when `ready_state` is `'open'` |
-| local_ip | string \| undefined | Local IP address. Only available after the socket connects |
-| local_port | number \| undefined | Local port number. Only available after the socket connects |
-| remote_ip | string \| undefined | Remote IP address. Only available after the socket connects |
-| remote_port | number \| undefined | Remote port number. Only available after the socket connects |
-| bytes_written | number | Total bytes sent through this socket |
-| bytes_read | number | Total bytes received through this socket |
+| `ready_state` | `SocketState` | Current connection state: `'disconnected'`, `'opening'`, `'open'`, or `'destroyed'` |
+| `connected` | boolean | Read-only. `true` when `ready_state` is `'open'` |
+| `local_ip` | string | undefined | Local IP address. Only available after the socket connects |
+| `local_port` | number | undefined | Local port number. Only available after the socket connects |
+| `remote_ip` | string | undefined | Remote IP address. Only available after the socket connects |
+| `remote_port` | number | undefined | Remote port number. Only available after the socket connects |
+| `bytes_written` | number | Total bytes sent through this socket |
+| `bytes_read` | number | Total bytes received through this socket |
 
 ## Events
 
