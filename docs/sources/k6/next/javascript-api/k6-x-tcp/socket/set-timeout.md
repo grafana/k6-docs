@@ -65,7 +65,7 @@ export default async function () {
   const port = __ENV.TCP_PORT || "8080"
 
   await socket.connect(port, host)
-  console.log("Connected — waiting for data (5 s timeout)")
+  console.log("Connected — waiting for data (5s timeout)")
 
   // Set timeout after connecting; no immediate write so the idle timer can fire
   socket.setTimeout(5000)
