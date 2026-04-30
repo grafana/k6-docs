@@ -16,6 +16,12 @@ Several reasons why you may wish to run a distributed test include:
 
 For scenarios such as these, we've created the [k6-operator](https://github.com/grafana/k6-operator).
 
+{{< admonition type="note" >}}
+
+See [Use the k6 Operator with Grafana Cloud k6](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/) on how to integrate k6-operator with Grafana Cloud, including creation of a [Private Load Zone](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/).
+
+{{< /admonition >}}
+
 ## Introducing k6-operator
 
 [k6-operator](https://github.com/grafana/k6-operator) is an implementation of the [operator pattern](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#operator-pattern) in Kubernetes, defining [custom resources](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#custom-resource) in Kubernetes.
