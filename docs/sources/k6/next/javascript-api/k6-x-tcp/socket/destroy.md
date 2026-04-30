@@ -6,7 +6,7 @@ weight: 41
 
 # Socket.destroy()
 
-Closes the connection and destroys the socket. Once destroyed, the socket transitions to the `'destroyed'` state and cannot be reused. A `close` event is emitted after the socket is destroyed.
+Closes the connection and destroys the socket. After you call `destroy()`, the socket transitions to the `'destroyed'` state, and you can't reuse it. A `close` event is emitted after the socket is destroyed.
 
 ## Signature
 
