@@ -40,7 +40,7 @@ Creates a new TCP socket in the `disconnected` state. Use `connect()` to establi
 
 ## Events
 
-Register handlers for these events using `socket.on()`. Only one listener per event is supported; registering a second listener for the same event replaces the first.
+Register handlers for these events using `socket.on()`. The socket supports only one listener per event. Registering a second listener replaces the first.
 
 | Event | Listener signature | Description |
 | :---- | :----------------- | :---------- |
