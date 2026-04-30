@@ -26,7 +26,7 @@ socket.connect(options)
 
 | Parameter | Type | Description |
 | :-------- | :--- | :---------- |
-| port | number \| string | Destination port (1–65535) |
+| port | number \| string | Destination port (1-65535) |
 | host | string | Destination hostname or IP address. Defaults to `'localhost'` |
 
 **Overload 2**
