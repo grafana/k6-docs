@@ -89,7 +89,7 @@ socket.on("error", (error) => {
 
 ### timeout
 
-Emitted when the socket times out due to inactivity as configured by `setTimeout()`. The connection is not automatically closed — call `destroy()` if you want to close it.
+Emitted when the socket times out due to inactivity as configured by `setTimeout()`. The socket doesn't automatically close the connection—call destroy() to close it.
 
 #### Signature
 
