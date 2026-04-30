@@ -7,7 +7,7 @@ weight: 22
 
 # Instant load increase
 
-One of the common usages of load testing tools it's the so-called stepped arrival rate.
+One of the common usages of performance testing tools it's the so-called stepped arrival rate.
 
 In k6, you can do that by using the `options` object, and configuring the number of iterations or VUs in different scenarios.
 
