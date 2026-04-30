@@ -8,7 +8,7 @@ weight: 51
 
 Sets the inactivity timeout for the socket. When the socket has been idle for `timeout` milliseconds without receiving data, a `timeout` event is emitted.
 
-The socket is **not** automatically closed after a timeout — the connection remains open until `destroy()` is explicitly called. To disable a previously set timeout, pass `0`.
+The socket _doesn't automatically close_ after a timeout. The connection remains open until you explicitly call `destroy()`. To disable a previously set timeout, pass `0`.
 
 ## Signature
 
