@@ -18,12 +18,18 @@ You can also use the k6 Studio desktop application to help you generate k6 scrip
 ### Debian/Ubuntu
 
 ```bash
-sudo gpg -k
-sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+curl -fsSL https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
 sudo apt-get update
 sudo apt-get install k6
 ```
+
+> ℹ️ Note:
+> Previous versions of the installation instructions used a keyserver-based method:
+> 
+> `gpg --recv-keys ...`
+> 
+> This approach is deprecated due to reliability issues and incompatibility with newer APT versions (e.g., Debian trixie using `sqv`). The current method uses a direct key download and `--dearmor` to ensure a valid binary keyring.
 
 ### Fedora/CentOS
 
