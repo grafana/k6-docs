@@ -27,8 +27,6 @@ To run a simple local script:
 
    Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) documentation for more information.
 
-   {{< code >}}
-
    ```javascript
    import { browser } from 'k6/experimental/browser';
 
@@ -59,8 +57,6 @@ To run a simple local script:
      }
    }
    ```
-
-   {{< /code >}}
 
    The preceding code imports the `browser` [the browser module](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
 
@@ -179,8 +175,6 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
 {{< /admonition >}}
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -217,8 +211,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding code creates and returns a Locator object with the selectors for both login and password passed as arguments.
 
 Within the Locator API, various methods such as `type()` can be used to interact with the elements. The `type()` method types a text to an input field.
@@ -230,8 +222,6 @@ Since many browser operations happen asynchronously, and to follow the Playwrigh
 At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and scripts must be written to handle this properly.
 
 To avoid timing errors or other race conditions in your script, if you have actions that load up a different page, you need to make sure that you wait for that action to finish before continuing.
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -275,8 +265,6 @@ export default async function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Since clicking the submit button causes page navigation, `page.waitForNavigation()` is needed because the page won't be ready until the navigation completes. This is required because there can be a race condition if these two actions don't happen simultaneously.
 
 Then, you can use [`check`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
@@ -296,8 +284,6 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
 
 {{< /admonition >}}
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -351,8 +337,6 @@ export function news() {
   });
 }
 ```
-
-{{< /code >}}
 
 The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time.
 

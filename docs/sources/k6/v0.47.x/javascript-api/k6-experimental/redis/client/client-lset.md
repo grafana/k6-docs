@@ -23,8 +23,6 @@ Sets the list element at `index` to `element`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -46,5 +44,3 @@ export default async function () {
   await redisClient.lset('mylist', 1, 2);
 }
 ```
-
-{{< /code >}}

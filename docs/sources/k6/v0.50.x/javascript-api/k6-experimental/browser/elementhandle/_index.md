@@ -51,8 +51,6 @@ weight: 04
 
 ## Examples
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
@@ -94,10 +92,6 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
@@ -144,5 +138,3 @@ export default function () {
   page.close();
 }
 ```
-
-{{< /code >}}

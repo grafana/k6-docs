@@ -13,8 +13,6 @@ Sets the default maximum navigation timeout for [Page.goto()](https://grafana.co
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -43,5 +41,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

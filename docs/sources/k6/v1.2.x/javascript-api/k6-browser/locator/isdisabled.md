@@ -22,8 +22,6 @@ Checks if the element is disabled.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -50,5 +48,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

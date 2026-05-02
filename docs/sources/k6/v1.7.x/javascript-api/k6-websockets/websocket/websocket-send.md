@@ -17,8 +17,6 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 
 _A k6 script that demonstrates how to add an event listener for the `open` WebSocket connection event sends a message and closes the connection._
 
-{{< code >}}
-
 ```javascript
 import { WebSocket } from 'k6/websockets';
 
@@ -32,14 +30,8 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-{{< code >}}
 
 ```bash
 docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
-
-{{< /code >}}

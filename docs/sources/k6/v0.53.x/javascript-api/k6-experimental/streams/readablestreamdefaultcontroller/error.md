@@ -22,8 +22,6 @@ The `error()` method of the [ReadableStreamDefaultController](https://grafana.co
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -61,5 +59,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

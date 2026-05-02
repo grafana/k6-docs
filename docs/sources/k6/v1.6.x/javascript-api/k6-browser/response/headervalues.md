@@ -21,8 +21,6 @@ Returns all values of the headers matching the name, for example `set-cookie`. T
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -52,5 +50,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

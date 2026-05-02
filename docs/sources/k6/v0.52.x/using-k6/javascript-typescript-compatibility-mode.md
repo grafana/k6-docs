@@ -38,13 +38,9 @@ When running tests, you can change the mode by using the `--compatibility-mode` 
 
 By default, k6 uses the `--compatibility-mode=extended` mode:
 
-{{< code >}}
-
 ```bash
 $ k6 run script.js
 ```
-
-{{< /code >}}
 
 As illustrated in the previous diagram, if k6 detects unsupported ES+ features while parsing the test script, it then transforms the script with Babel to polyfill the unsupported features.
 
@@ -88,8 +84,6 @@ Generally, this mode is not recommended as it offers minor benefits in reducing 
 
 ### CommonJS Example
 
-{{< code >}}
-
 ```javascript
 const http = require('k6/http');
 const k6 = require('k6');
@@ -104,8 +98,6 @@ module.exports.default = function () {
   k6.sleep(1);
 };
 ```
-
-{{< /code >}}
 
 > ### ⚠️ About require()
 >

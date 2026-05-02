@@ -20,8 +20,6 @@ A string containing a 36-character cryptographically random UUID v4.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -31,5 +29,3 @@ export default function () {
   console.log(myUUID);
 }
 ```
-
-{{< /code >}}

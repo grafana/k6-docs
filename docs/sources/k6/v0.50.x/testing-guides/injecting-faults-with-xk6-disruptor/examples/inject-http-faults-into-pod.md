@@ -154,8 +154,6 @@ Notice the argument `--env SKIP_FAULT=1`, which makes the `disrupt` function ret
 
 You should get an output similar to the one shown below (click `Expand` button to see all output).
 
-{{< code >}}
-
 ```
           /\      |‾‾| /‾‾/   /‾‾/
      /\  /  \     |  |/  /   /  /
@@ -195,8 +193,6 @@ load    ✓ [======================================] 000/013 VUs  30s           
      vus_max........................: 14     min=12      max=14
 ```
 
-{{< /code >}}
-
 ### Fault injection
 
 We repeat the execution injecting the faults. Notice we have removed the `--env SKIP_FAULTS=1` argument.
@@ -212,8 +208,6 @@ xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
 ```
 
 {{< /code >}}
-
-{{< code >}}
 
 ```
 
@@ -255,8 +249,6 @@ load    ✓ [======================================] 000/017 VUs  30s           
      vus_max........................: 18     min=12      max=18
 
 ```
-
-{{< /code >}}
 
 ### Comparison
 

@@ -23,8 +23,6 @@ Returns the remaining time to live of a key that has a timeout.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -43,7 +41,5 @@ export default async function () {
   await redisClient.persist('mykey', 100);
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

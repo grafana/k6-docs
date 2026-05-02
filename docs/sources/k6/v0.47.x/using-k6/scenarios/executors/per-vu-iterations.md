@@ -31,8 +31,6 @@ partition between VUs.
 The following example schedules 10 VUs to execute 20 iterations _each_.
 The test runs 200 total iterations and has a maximum duration of 30 seconds.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
@@ -56,8 +54,6 @@ export default function () {
   sleep(0.5);
 }
 ```
-
-{{< /code >}}
 
 ## Observations
 

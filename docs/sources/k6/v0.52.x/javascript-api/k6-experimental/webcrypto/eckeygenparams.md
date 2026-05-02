@@ -17,8 +17,6 @@ The `EcKeyGenParams` object represents the object that should be passed as the a
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -35,5 +33,3 @@ export default async function () {
   console.log(JSON.stringify(keyPair));
 }
 ```
-
-{{< /code >}}

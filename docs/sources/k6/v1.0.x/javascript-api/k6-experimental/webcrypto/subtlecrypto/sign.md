@@ -42,8 +42,6 @@ A `Promise` that resolves with the signature as an `ArrayBuffer`.
 
 ### Signing data with HMAC key
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -83,11 +81,7 @@ function string2ArrayBuffer(str) {
 }
 ```
 
-{{< /code >}}
-
 ### Signing and verifying data with ECDSA
-
-{{< code >}}
 
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
@@ -131,5 +125,3 @@ const printArrayBuffer = (buffer) => {
   return Array.from(view);
 };
 ```
-
-{{< /code >}}

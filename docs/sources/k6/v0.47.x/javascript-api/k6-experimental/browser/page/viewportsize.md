@@ -15,8 +15,6 @@ Returns the page's size (width and height).
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   console.log(page.viewportSize());
 }
 ```
-
-{{< /code >}}

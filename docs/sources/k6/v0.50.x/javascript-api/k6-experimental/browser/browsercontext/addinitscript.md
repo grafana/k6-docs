@@ -14,8 +14,6 @@ The script is evaluated after the document is created but before any of its scri
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
@@ -64,5 +62,3 @@ export default async function () {
   page.close();
 }
 ```
-
-{{< /code >}}

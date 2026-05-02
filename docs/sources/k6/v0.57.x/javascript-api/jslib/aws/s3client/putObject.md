@@ -35,8 +35,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import {
   AWSConfig,
@@ -80,5 +78,3 @@ export default async function () {
 ```
 
 _A k6 script that will upload an object to a S3 bucket_
-
-{{< /code >}}

@@ -9,8 +9,6 @@ Activates the browser tab which brings the page in focus to allow actions to be 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -36,5 +34,3 @@ export default async function () {
   page.bringToFront();
 }
 ```
-
-{{< /code >}}

@@ -32,8 +32,6 @@ To get k6 metrics into Datadog, k6 sends metrics through the Datadog Agent, whic
 
 Run the Datadog Agent service as a Docker container with this command:
 
-{{< code >}}
-
 ```bash
 DOCKER_CONTENT_TRUST=1 \
 docker run --rm -d \
@@ -47,8 +45,6 @@ docker run --rm -d \
     -p 8125:8125/udp \
     datadog/agent:latest
 ```
-
-{{< /code >}}
 
 Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
 
@@ -70,13 +66,9 @@ The instruction above runs the `DogStatsD` service in a [Docker container](https
 
 Once the Datadog Agent service is running, run the k6 test and send the metrics to the Agent with:
 
-{{< code >}}
-
 ```bash
 $ K6_STATSD_ENABLE_TAGS=true k6 run --out output-statsd script.js
 ```
-
-{{< /code >}}
 
 Make sure you're using the k6 binary you built with the xk6-output-statsd extension.
 

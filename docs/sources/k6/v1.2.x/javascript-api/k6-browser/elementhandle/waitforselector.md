@@ -31,8 +31,6 @@ Waits for the element to be present in the DOM and to be visible.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -60,5 +58,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

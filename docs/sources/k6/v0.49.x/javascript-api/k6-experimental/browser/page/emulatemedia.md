@@ -18,8 +18,6 @@ This method changes the CSS `@media type` through the `media` argument, and/or t
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip -->
 
 ```javascript
@@ -45,5 +43,3 @@ export default async function () {
   console.log(page.evaluate(() => matchMedia('screen').matches)); // true
 }
 ```
-
-{{< /code >}}

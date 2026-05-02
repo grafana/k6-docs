@@ -18,8 +18,6 @@ Readers can still read any previously enqueued chunks from the stream. Once thos
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { ReadableStream } from 'k6/experimental/streams';
 import { setTimeout } from 'k6/timers';
@@ -57,5 +55,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

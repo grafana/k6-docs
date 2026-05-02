@@ -18,8 +18,6 @@ The `HmacKeyGenParams` object represents the object that should be passed as the
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   const key = await crypto.subtle.generateKey(
@@ -33,5 +31,3 @@ export default async function () {
   );
 }
 ```
-
-{{< /code >}}

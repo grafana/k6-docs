@@ -19,26 +19,18 @@ files needed to execute a k6 test.
 
 Let's say that you normally execute a test using:
 
-{{< code >}}
-
 ```bash
 $ k6 run script.js
 ```
-
-{{< /code >}}
 
 Now if you replace `run` with `archive` k6 will run the [init stage](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle) of
 the code to determine which JS files are being imported and what data files are being
 [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed and bundles all of the files up
 into a tar file:
 
-{{< code >}}
-
 ```bash
 $ k6 archive script.js
 ```
-
-{{< /code >}}
 
 This would produce a tar file on disk called `archive.tar` (you can change that by setting
 `-O filename.tar`). It's also easy to run an archive, as `k6 run` is compatible with archive
@@ -49,13 +41,9 @@ files you can execute:
 > As always you can override options using CLI flags or environment variables when
 > running an archive.
 
-{{< code >}}
-
 ```bash
 $ k6 run archive.tar
 ```
-
-{{< /code >}}
 
 ## Use cases
 
@@ -91,13 +79,9 @@ a test execution in the process.
 To cater to this use case, the `k6 cloud upload` command was introduced. This command allows users to upload an archive to k6 Cloud
 without triggering a test execution. The command syntax is as follows:
 
-{{< code >}}
-
 ```bash
 k6 cloud upload archive.tar
 ```
-
-{{< /code >}}
 
 ### Distributed Execution
 
@@ -116,8 +100,6 @@ via [Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6
 Let's create an archive from the following sample test. Here is the layout in the filesystem
 of the files:
 
-{{< code >}}
-
 ```bash
 /home/johndoe/tests/api-test $ tree
 .
@@ -134,14 +116,10 @@ of the files:
 └-- script.js
 ```
 
-{{< /code >}}
-
 Now, if the current working directory is `/home/johndoe/tests/api-test/` and we run
 `k6 archive script.js` we'd get a tar file called `archive.tar` (you can change the name of the
 file using `-O filename.tar`). The contents of the archive file would look like something like
 this:
-
-{{< code >}}
 
 ```bash
 ├-- data
@@ -169,8 +147,6 @@ this:
                             └-- lib.js
 ```
 
-{{< /code >}}
-
 Breaking down the file structure we get:
 
 **data** contains the source code of the main JS file (`script.js` in this example).
@@ -181,8 +157,6 @@ Breaking down the file structure we get:
 [Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
-
-{{< code >}}
 
 ```json
 {
@@ -234,8 +208,6 @@ Breaking down the file structure we get:
   "env": {}
 }
 ```
-
-{{< /code >}}
 
 ## What an archive file does not contain
 

@@ -15,8 +15,6 @@ S3MultipartUpload is returned by the [`createMultipartUpload(bucketName, objectK
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -48,5 +46,3 @@ export default async function () {
 ```
 
 _A k6 script that will create a multipart upload and log the multipart `uploadId` and abort the multipart upload_
-
-{{< /code >}}

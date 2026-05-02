@@ -100,8 +100,6 @@ You must use the registered with the `--secret-source` flag when running k6!
 
 The final extension code looks like this:
 
-{{< code >}}
-
 ```go
 package cli
 
@@ -149,8 +147,6 @@ func (css *cliSecretSource) Get(key string) (string, error) {
 }
 ```
 
-{{< /code >}}
-
 Notice a couple of things:
 
 - The module initializer `newCLISecretSourceFromParams()` receives an instance of
@@ -183,8 +179,6 @@ Now we can use the extension with a test script.
 
 1. In new JavaScript file, make some simple test logic.
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -198,8 +192,6 @@ export default async () => {
   console.log('some'); // log the original secret but using its constant value
 };
 ```
-
-{{< /code >}}
 
 1. Now, run the test.
 

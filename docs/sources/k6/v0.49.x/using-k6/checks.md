@@ -21,8 +21,6 @@ To make a check abort or fail a test, you can combine it with a [Threshold](http
 Checks are great for codifying assertions relating to HTTP requests and responses.
 For example, this snippet makes sure the HTTP response code is a 200:
 
-{{< code >}}
-
 ```javascript
 import { check } from 'k6';
 import http from 'k6/http';
@@ -35,14 +33,10 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Check for text in response body
 
 Sometimes, even an HTTP 200 response contains an error message.
 In these situations, consider adding a check to verify the response body, like this:
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -57,13 +51,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Check for response body size
 
 To verify the size of the response body, you can use a check like this:
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -77,13 +67,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## See percentage of checks that passed
 
 When a script includes checks, the summary report shows how many of the tests' checks passed:
-
-{{< code >}}
 
 ```bash
 $ k6 run script.js
@@ -96,15 +82,11 @@ $ k6 run script.js
   data_received..................: 11 kB   12 kB/s
 ```
 
-{{< /code >}}
-
 In this example, note that the check "is status 200" succeeded 100% of the times it was called.
 
 ## Add multiple checks
 
 You can also add multiple checks within a single [check()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/check) statement:
-
-{{< code >}}
 
 ```javascript
 import { check } from 'k6';
@@ -119,11 +101,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 When this test executes, the output will look something like this:
-
-{{< code >}}
 
 ```bash
 $ k6 run checks.js
@@ -136,8 +114,6 @@ $ k6 run checks.js
   checks.........................: 100.00% ✓ 2        ✗ 0
   data_received..................: 11 kB   20 kB/s
 ```
-
-{{< /code >}}
 
 {{< admonition type="note" >}}
 

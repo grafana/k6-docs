@@ -7,13 +7,11 @@ weight: 22
 
 # Instant load increase
 
-One of the common usages of load testing tools it's the so-called stepped arrival rate.
+One of the common usages of performance testing tools it's the so-called stepped arrival rate.
 
 In k6, you can do that by using the `options` object, and configuring the number of iterations or VUs in different scenarios.
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -41,11 +39,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 Here's an example on how to instantly increase the number of VUs and hold them for a period of time.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -70,5 +64,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

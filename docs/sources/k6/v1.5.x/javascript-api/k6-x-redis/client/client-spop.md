@@ -23,8 +23,6 @@ Removes and returns a random element from the set value stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -42,7 +40,5 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

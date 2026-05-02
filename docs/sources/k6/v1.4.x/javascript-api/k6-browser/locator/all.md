@@ -15,8 +15,6 @@ When multiple elements match the selector, returns an array of [Locator](https:/
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -48,5 +46,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

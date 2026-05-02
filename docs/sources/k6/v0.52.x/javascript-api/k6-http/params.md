@@ -26,8 +26,6 @@ _Params_ is an object used by the http.\* methods that generate HTTP requests. _
 
 _A k6 script that will make an HTTP request with a custom HTTP header and tag results data with a specific tag_
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -42,13 +40,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Example using http.batch() with Params
 
 Here is another example using [http.batch()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/batch) with a `Params` argument:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -69,13 +63,9 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Example of Digest Authentication
 
 Here is one example of how to use the `Params` to Digest Authentication.
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -96,11 +86,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ### Example of overriding discardResponseBodies
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -120,5 +106,3 @@ export function setup() {
   console.log(bodyView);
 }
 ```
-
-{{< /code >}}

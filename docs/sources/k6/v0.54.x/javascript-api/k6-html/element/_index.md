@@ -107,8 +107,6 @@ Additionally, Element can provide more methods depending on the Element type.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -137,10 +135,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -160,5 +154,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

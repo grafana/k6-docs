@@ -23,8 +23,6 @@ Returns the length of the list stored at `key`. If `key` does not exist, it is i
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -44,7 +42,5 @@ export default function () {
     });
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

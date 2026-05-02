@@ -21,8 +21,6 @@ The default value is `30s`.
 
 ### Graceful stop example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -43,8 +41,6 @@ export default function () {
   http.get(`https://quickpizza.grafana.com/api/delay/${delay}`);
 }
 ```
-
-{{< /code >}}
 
 Running this script would result in something like:
 

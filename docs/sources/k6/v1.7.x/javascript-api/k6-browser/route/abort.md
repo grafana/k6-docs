@@ -19,8 +19,6 @@ Aborts the request with the given error code.
 
 ## Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -52,5 +50,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

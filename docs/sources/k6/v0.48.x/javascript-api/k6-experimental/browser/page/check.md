@@ -30,8 +30,6 @@ This method is used to select an input checkbox.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -54,5 +52,3 @@ export default async function () {
   page.check('#checkbox1');
 }
 ```
-
-{{< /code >}}

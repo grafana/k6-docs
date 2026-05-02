@@ -84,14 +84,10 @@ kubectl get pod -n k6-operator-system
 
 After a few moments, your resulting status should become `Running` as shown below:
 
-{{< code >}}
-
 ```bash
 NAME                                              READY   STATUS    RESTARTS   AGE
 k6-operator-controller-manager-7664957cf7-llw54   2/2     Running   0          160m
 ```
-
-{{< /code >}}
 
 You are now ready to start create and execute test scripts!
 
@@ -105,8 +101,6 @@ If you haven’t already created test cases for your system, then we suggest hav
 
 In general, it is advised to start small and expand on your scripts over iterations.
 So let's start simple and create a `test.js` with the following content:
-
-{{< code >}}
 
 ```javascript
 import http from 'k6/http';
@@ -122,8 +116,6 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}
 
 {{< admonition type="note" >}}
 
@@ -211,8 +203,6 @@ The `name` is the name of the ConfigMap and the `file` is the key-value for the 
 
 Let's create the file `run-k6-from-configmap.yaml` with the following content:
 
-{{< code >}}
-
 ```yaml
 apiVersion: k6.io/v1alpha1
 kind: TestRun
@@ -225,8 +215,6 @@ spec:
       name: my-test
       file: test.js
 ```
-
-{{< /code >}}
 
 Recall when the script was [added as a ConfigMap](#add-as-a-configmap) for our configuration values.
 We created the ConfigMap named `my-test`.
@@ -248,8 +236,6 @@ We won't go into the details of PersistentVolumes and PersistentVolumeClaims, bu
 
 Assume we've created a `PersistentVolumeClaim` named `my-volume-claim` against a `PersistentVolume` containing the test script `/test/test.js`, we can create the file `run-k6-from-volume.yaml` with the following content:
 
-{{< code >}}
-
 ```yaml
 apiVersion: k6.io/v1alpha1
 kind: TestRun
@@ -263,8 +249,6 @@ spec:
       # File is relative to /test/ directory within volume
       file: test.js
 ```
-
-{{< /code >}}
 
 {{< admonition type="caution" >}}
 
@@ -280,8 +264,6 @@ These could be anything from passwords to target urls, in addition to system opt
 
 We can pass this data as [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#environment-variables) for use with each pod executing your script.
 This can be defined explicitly within the `TestRun` resource, or by referencing a `ConfigMap` or `Secret`.
-
-{{< code >}}
 
 ```yaml
 apiVersion: k6.io/v1alpha1
@@ -305,8 +287,6 @@ spec:
           name: my-secrets-vars
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 The above YAML introduces the `runner` section. This section applies to each pod that will be running a portion of your test, based upon the desired `parallelism`.
@@ -328,8 +308,6 @@ export function setup() {
 [k6 options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/) can be specified in many ways, one being the command-line.
 Specifying options via command-line can still be accomplished when using the operator as shown with the following example:
 
-{{< code >}}
-
 ```yaml
 apiVersion: k6.io/v1alpha1
 kind: TestRun
@@ -343,8 +321,6 @@ spec:
       file: test.js
   arguments: --tag testid=run-k6-with-args --log-format json
 ```
-
-{{< /code >}}
 
 With the above arguments, we're adding a [test-wide custom tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#test-wide-tags) to metrics and changing the output format of logs to [JSON](https://grafana.com/docs/k6/<K6_VERSION>/reference/glossary#json).
 

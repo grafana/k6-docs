@@ -24,8 +24,6 @@ Take note of the features of this script:
 
 In the following sections, learn how to split these components into separate files, and combine them dynamically at run time.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 import { group, sleep } from 'k6';
@@ -97,8 +95,6 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 ## Modularize logic
 
 With [modules](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/modules), you can use logic and variables from other files.
@@ -108,8 +104,6 @@ To do so, follow these steps:
 
 1. Copy the previous script (`whole-tutorial.js`) and save it as `main.js`.
 1. Extract the `Contacts flow` group function from `main.js` script file and paste it into a new file called `contacts.js`
-
-   {{< code >}}
 
    ```javascript
    export function contacts() {
@@ -128,15 +122,11 @@ To do so, follow these steps:
    }
    ```
 
-   {{< /code >}}
-
    As is, this script won't work, since it has undeclared functions and variables.
 
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
 1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
-
-   {{< code >}}
 
    ```javascript
    import http from 'k6/http';
@@ -160,8 +150,6 @@ To do so, follow these steps:
      });
    }
    ```
-
-   {{< /code >}}
 
 1. Repeat the process with the `coinflip` group in a file called `coinflip.js`.
    Use the tabs to see the final three files should (`options` moved to the bottom of `main.js` for better readability).
@@ -334,8 +322,6 @@ To do this, follow these steps:
 
 1. Add the workload settings for configuring the smoke test to `config.js`:
 
-   {{< code >}}
-
    ```javascript
    export const smokeWorkload = {
      executor: 'shared-iterations',
@@ -364,11 +350,7 @@ To do this, follow these steps:
    };
    ```
 
-   {{< /code >}}
-
 1. Edit `main.js` to choose the workload settings depending on the `WORKLOAD` environment variable. For example:
-
-   {{< code >}}
 
    ```javascript
    import { coinflip } from './coinflip.js';
@@ -389,8 +371,6 @@ To do this, follow these steps:
      coinflip(baseUrl);
    }
    ```
-
-   {{< /code >}}
 
 1. Run the script with and without the `-e` flag.
 

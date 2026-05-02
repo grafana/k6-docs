@@ -17,8 +17,6 @@ It's based on the concept of creating thresholds for sub-metrics created by tags
 - `iteration_duration{group:::setup}` or `iteration_duration{group:::teardown}` create sub-metrics collecting the duration only for `setup` and `teardown`. `k6` implicitly creates [groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups#groups) for `setup` and `teardown`, and `::` is the group separator.
 - `http_req_duration{scenario:default}` can be useful as well for isolating executed long-running requests.
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
@@ -49,11 +47,7 @@ export function teardown() {
 }
 ```
 
-{{< /code >}}
-
 Dedicated sub-metrics have been generated collecting samples only for the scope defined by thresholds:
-
-{{< code >}}
 
 ```bash
   █ THRESHOLDS
@@ -71,5 +65,3 @@ Dedicated sub-metrics have been generated collecting samples only for the scope 
     ✓ 'max>=0' max=1.13s
 
 ```
-
-{{< /code >}}

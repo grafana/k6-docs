@@ -51,8 +51,6 @@ This documentation is for the only last version only. If you discover that some 
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { fail } from 'k6';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
@@ -112,5 +110,3 @@ export default function testSuite() {
   }
 }
 ```
-
-{{< /code >}}

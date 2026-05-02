@@ -16,8 +16,6 @@ S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumb
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -83,5 +81,3 @@ export default async function () {
 ```
 
 _A k6 script that will upload a part in a multipart upload to an S3 bucket_
-
-{{< /code >}}

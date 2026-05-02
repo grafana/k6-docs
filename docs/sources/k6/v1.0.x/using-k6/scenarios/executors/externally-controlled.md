@@ -41,8 +41,6 @@ locally with `k6 run`.
 In this example, we'll execute a test controllable at runtime, starting with 10 VUs up to
 a maximum of 50, and a total duration of 10 minutes.
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -64,5 +62,3 @@ export default function () {
 ```
 
 Once the test has started, it can be externally controlled with the `pause`, `resume`, and `scale` CLI commands.
-
-{{< /code >}}

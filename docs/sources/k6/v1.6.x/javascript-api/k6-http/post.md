@@ -21,8 +21,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -55,5 +53,3 @@ export default function () {
   http.post(url, data.buffer, { headers: { 'Content-Type': 'image/png' } });
 }
 ```
-
-{{< /code >}}

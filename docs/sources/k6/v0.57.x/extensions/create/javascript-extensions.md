@@ -84,8 +84,6 @@ func init() {
 
 1. Save the file as something like `compare.go`. The final code looks like this:
 
-{{< code >}}
-
 ```go
 package compare
 
@@ -115,8 +113,6 @@ func (c *Compare) IsGreater(a, b int) bool {
     }
 }
 ```
-
-{{< /code >}}
 
 ## Compile your extended k6
 
@@ -181,8 +177,6 @@ The significance depends on the size of your module.
 {{< /admonition >}}
 
 Here's what that would look like:
-
-{{< code >}}
 
 ```go
 package compare
@@ -255,8 +249,6 @@ func (mi *ModuleInstance) Exports() modules.Exports {
 }
 ```
 
-{{< /code >}}
-
 {{< admonition type="note" >}}
 
 Notice that we implemented the Module API and now `modules.Register` the _root module_ rather than our _Compare_ object!
@@ -268,8 +260,6 @@ Notice that we implemented the Module API and now `modules.Register` the _root m
 At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) from the `Compare`
 type; however, we aren't taking advantage of the methods provided. Here is a contrived example of how we can utilize the
 runtime state:
-
-{{< code >}}
 
 ```go
 // InternalState holds basic metadata from the runtime state.
@@ -295,8 +285,6 @@ func (c *Compare) GetInternalState() *InternalState {
 	}
 }
 ```
-
-{{< /code >}}
 
 Create a test script to utilize the new `getInternalState()` function as in the following:
 

@@ -30,8 +30,6 @@ Returns the `element.textContent`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -55,5 +53,3 @@ export default async function () {
   console.log(page.textContent('#checkbox1'));
 }
 ```
-
-{{< /code >}}

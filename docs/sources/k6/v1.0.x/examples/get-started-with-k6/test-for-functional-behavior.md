@@ -22,8 +22,6 @@ To do that, you need to make an [HTTP request](https://grafana.com/docs/k6/<K6_V
 
 To test, copy this file and save it as `api-test.js`.
 
-{{< code >}}
-
 ```javascript
 // import necessary module
 import http from 'k6/http';
@@ -46,8 +44,6 @@ export default function () {
   const res = http.post(url, payload, params);
 }
 ```
-
-{{< /code >}}
 
 Run the script using the `k6 run` command:
 
@@ -72,8 +68,6 @@ After the test finishes, k6 reports the [default result summary](https://grafana
 
 As an optional step, you can log the response body to the console to make sure you're getting the right response.
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 <!-- eslint-disable no-undef  -->
 
@@ -90,15 +84,11 @@ export default function () {
 
 <!-- eslint-enable no-undef  -->
 
-{{< /code >}}
-
 ## Add response checks
 
 Once you're sure the request is well-formed, add a [check](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/checks) that validates whether the system responds with the expected status code.
 
 1. Update your script so it has the following check function.
-
-{{< code >}}
 
 ```javascript
 // Import necessary modules
@@ -127,8 +117,6 @@ export default function () {
   });
 }
 ```
-
-{{< /code >}}
 
 1. Run the script again.
 

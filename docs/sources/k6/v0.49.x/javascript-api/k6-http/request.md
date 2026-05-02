@@ -24,8 +24,6 @@ weight: 10
 
 Using http.request() to issue a POST request:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -46,5 +44,3 @@ export default function () {
   console.log(res.json().form.name); // Bert
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ Mimics [jquery.parentsUntil](https://api.jquery.com/parentsUntil/)
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
@@ -57,5 +55,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

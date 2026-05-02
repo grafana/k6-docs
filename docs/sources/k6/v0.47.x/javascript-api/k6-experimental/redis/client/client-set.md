@@ -23,8 +23,6 @@ Set the value of a key, with a time to live equal to the expiration time paramet
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -52,5 +50,3 @@ export default async function () {
   await redisClient.del('mykey');
 }
 ```
-
-{{< /code >}}

@@ -21,8 +21,6 @@ Decrements the number stored at `key` by one. If the key does not exist, it is s
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -43,5 +41,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

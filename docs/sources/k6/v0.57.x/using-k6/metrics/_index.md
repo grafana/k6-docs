@@ -48,8 +48,6 @@ SREs might recognize these metrics as three of the [four Golden Signals](https:/
 
 An aggregated summary of all _built-in_ and custom metrics outputs to `stdout` when you run a test:
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -58,11 +56,7 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding script outputs something like this:
-
-{{< code >}}
 
 ```bash
 $ k6 run script.js
@@ -102,8 +96,6 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
      vus............................: 1     min=1      max=1
      vus_max........................: 1     min=1      max=1
 ```
-
-{{< /code >}}
 
 In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
 For details of all metrics, refer to the [Metrics reference](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics/reference).

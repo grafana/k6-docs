@@ -21,8 +21,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -53,5 +51,3 @@ export default function () {
   http.post(url, data.buffer, { headers: { 'Content-Type': 'image/png' } });
 }
 ```
-
-{{< /code >}}

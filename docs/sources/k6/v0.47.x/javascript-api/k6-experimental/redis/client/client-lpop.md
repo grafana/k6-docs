@@ -21,8 +21,6 @@ Removes and returns the first element of the list stored at `key`.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/experimental/redis';
 
@@ -45,5 +43,3 @@ export default async function () {
   await redisClient.rpop('mylist');
 }
 ```
-
-{{< /code >}}

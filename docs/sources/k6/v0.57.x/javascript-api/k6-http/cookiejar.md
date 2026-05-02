@@ -15,8 +15,6 @@ Get the active cookie jar.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -24,5 +22,3 @@ export default function () {
   const jar = http.cookieJar();
 }
 ```
-
-{{< /code >}}

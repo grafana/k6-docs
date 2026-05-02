@@ -42,8 +42,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the derived bits.
 
 ### Deriving bits using ECDH
 
-{{< code >}}
-
 ```javascript
 export default async function () {
   // Generate a key pair for Alice
@@ -93,11 +91,7 @@ const printArrayBuffer = (buffer) => {
 };
 ```
 
-{{< /code >}}
-
 ### Deriving bits using PBKDF2
-
-{{< code >}}
 
 ```javascript
 export default async function () {
@@ -141,5 +135,3 @@ const printArrayBuffer = (buffer) => {
   return Array.from(view);
 };
 ```
-
-{{< /code >}}

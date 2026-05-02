@@ -21,8 +21,6 @@ Generates a TOTP code for the current time.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { TOTP } from 'https://jslib.k6.io/totp/1.0.0/index.js';
 
@@ -38,5 +36,3 @@ export default async function () {
   console.log(`TOTP code (60s step): ${code60}`);
 }
 ```
-
-{{< /code >}}

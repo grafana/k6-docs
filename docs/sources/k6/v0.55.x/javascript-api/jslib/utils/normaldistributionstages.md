@@ -22,8 +22,6 @@ Function to create [stages](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { sleep } from 'k6';
 import exec from 'k6/execution';
@@ -40,5 +38,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

@@ -15,8 +15,6 @@ Returns the browser application's version.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -38,5 +36,3 @@ export default function () {
   console.log(version); // 105.0.5195.52
 }
 ```
-
-{{< /code >}}

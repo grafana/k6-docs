@@ -26,8 +26,6 @@ Takes a screenshot of the element.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -56,5 +54,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}

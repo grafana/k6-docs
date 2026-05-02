@@ -34,8 +34,6 @@ A `Promise` that resolves with the signature as an `ArrayBuffer`.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -74,5 +72,3 @@ function string2ArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

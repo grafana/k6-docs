@@ -24,8 +24,6 @@ Adds the specified members to the set stored at `key`. Specified members that ar
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import redis from 'k6/x/redis';
 
@@ -42,7 +40,5 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}
 
 <!-- md-k6:skipall -->

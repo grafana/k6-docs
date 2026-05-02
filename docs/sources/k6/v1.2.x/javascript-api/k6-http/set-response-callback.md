@@ -30,8 +30,6 @@ It is recommended that if a per request responseCallback is used with [Params](h
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import http from 'k6/http';
 
@@ -53,5 +51,3 @@ export default () => {
   // the VU the first request will be marked as failure
 };
 ```
-
-{{< /code >}}

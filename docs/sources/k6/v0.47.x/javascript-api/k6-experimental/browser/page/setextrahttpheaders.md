@@ -13,8 +13,6 @@ This sets extra HTTP headers which will be sent with subsequent HTTP requests.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/experimental/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   console.log(url.request().headers().foo); // prints bar
 }
 ```
-
-{{< /code >}}

@@ -14,8 +14,6 @@ For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](
 _A k6 script that initiates a WebSocket connection, sends a ping, and closes it using `onopen` handler.
 The console should also log `WebSocket connection closed` from the `onclose` handler._
 
-{{< code >}}
-
 ```javascript
 import { WebSocket } from 'k6/experimental/websockets';
 
@@ -33,14 +31,8 @@ export default function () {
 }
 ```
 
-{{< /code >}}
-
 The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-{{< code >}}
 
 ```bash
 $ docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```
-
-{{< /code >}}

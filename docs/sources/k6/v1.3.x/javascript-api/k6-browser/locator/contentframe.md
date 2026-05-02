@@ -17,8 +17,6 @@ Useful when you have a [Locator](https://grafana.com/docs/k6/<K6_VERSION>/javasc
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -53,5 +51,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

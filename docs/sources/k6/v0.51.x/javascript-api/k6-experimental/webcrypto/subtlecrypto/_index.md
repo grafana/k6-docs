@@ -25,8 +25,6 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -91,5 +89,3 @@ function stringToArrayBuffer(str) {
   return buf;
 }
 ```
-
-{{< /code >}}

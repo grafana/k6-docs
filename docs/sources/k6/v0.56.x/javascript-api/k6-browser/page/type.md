@@ -33,8 +33,6 @@ Type the `text` in the first element found that matches the selector.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -58,5 +56,3 @@ export default async function () {
   await page.type('#text1', 'hello world!');
 }
 ```
-
-{{< /code >}}

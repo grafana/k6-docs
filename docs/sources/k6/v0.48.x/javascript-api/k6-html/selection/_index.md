@@ -56,8 +56,6 @@ Selections have a jQuery-compatible API, but with two caveats:
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
@@ -69,5 +67,3 @@ export default function () {
   const langAttr = doc.find('html').attr('lang');
 }
 ```
-
-{{< /code >}}

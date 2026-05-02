@@ -24,8 +24,6 @@ weight: 10
 
 ### Example
 
-{{< code >}}
-
 <!-- md-k6:skip -->
 
 ```javascript
@@ -59,5 +57,3 @@ export default async function () {
   await sqs.sendMessage(testQueue, JSON.stringify({ value: '123' }));
 }
 ```
-
-{{< /code >}}

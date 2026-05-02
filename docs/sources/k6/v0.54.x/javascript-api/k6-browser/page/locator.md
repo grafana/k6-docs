@@ -19,8 +19,6 @@ The method returns an element [Locator](https://grafana.com/docs/k6/<K6_VERSION>
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -45,5 +43,3 @@ export default async function () {
   await textbox.focus();
 }
 ```
-
-{{< /code >}}

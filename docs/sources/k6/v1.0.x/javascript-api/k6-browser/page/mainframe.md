@@ -15,8 +15,6 @@ The page's main frame. Page is made up of frames in a hierarchical. At the top i
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -40,5 +38,3 @@ export default async function () {
   console.log(page.mainFrame());
 }
 ```
-
-{{< /code >}}

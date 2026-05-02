@@ -30,8 +30,6 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the derived bits.
 
 ## Example
 
-{{< code >}}
-
 ```javascript
 import { crypto } from 'k6/experimental/webcrypto';
 
@@ -82,5 +80,3 @@ const printArrayBuffer = (buffer) => {
   return Array.from(view);
 };
 ```
-
-{{< /code >}}

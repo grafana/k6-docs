@@ -25,8 +25,6 @@ Returns when the `pageFunction` returns a truthy value.
 
 ### Example
 
-{{< code >}}
-
 <!-- eslint-skip-->
 
 ```javascript
@@ -71,5 +69,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

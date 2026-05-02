@@ -15,8 +15,6 @@ Returns the response body as a string.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -46,5 +44,3 @@ export default async function () {
   }
 }
 ```
-
-{{< /code >}}

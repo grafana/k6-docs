@@ -28,8 +28,6 @@ The value of the `rate` variable ranges between `0.00` and `1.00`.
 
 ### Examples
 
-{{< code >}}
-
 ```javascript
 import { Rate } from 'k6/metrics';
 
@@ -42,10 +40,6 @@ export default function () {
   myRate.add(0, { tag1: 'value', tag2: 'value2' });
 }
 ```
-
-{{< /code >}}
-
-{{< code >}}
 
 ```javascript
 import { Rate } from 'k6/metrics';
@@ -73,5 +67,3 @@ export default function () {
   sleep(1);
 }
 ```
-
-{{< /code >}}

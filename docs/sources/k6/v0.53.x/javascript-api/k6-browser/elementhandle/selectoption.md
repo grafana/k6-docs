@@ -31,8 +31,6 @@ Select one or more options which match the values.
 
 ### Example
 
-{{< code >}}
-
 ```javascript
 import { browser } from 'k6/browser';
 
@@ -59,5 +57,3 @@ export default async function () {
   await page.close();
 }
 ```
-
-{{< /code >}}
