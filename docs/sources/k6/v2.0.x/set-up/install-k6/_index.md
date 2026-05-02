@@ -24,13 +24,6 @@ sudo apt-get update
 sudo apt-get install k6
 ```
 
-> ℹ️ Note:
-> Previous versions of the installation instructions used a keyserver-based method:
-> 
-> `gpg --recv-keys ...`
-> 
-> This approach is deprecated due to reliability issues and incompatibility with newer APT versions (e.g., Debian trixie using `sqv`). The current method uses a direct key download and `--dearmor` to ensure a valid binary keyring.
-
 ### Fedora/CentOS
 
 Using `dnf` (or `yum` on older versions):
