@@ -18,7 +18,7 @@ For scenarios such as these, we've created the [k6-operator](https://github.com/
 
 {{< admonition type="note" >}}
 
-See [Use the k6 Operator with Grafana Cloud k6](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/) on how to integrate k6-operator with Grafana Cloud, including creation of a [Private Load Zone](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/).
+Refer to [Use the k6 Operator with Grafana Cloud k6](https://grafana.com/docs/k6/latest/set-up/set-up-distributed-k6/usage/k6-operator-to-gck6/) on how to integrate the k6 Operator with Grafana Cloud, including creating [Private Load Zones](https://grafana.com/docs/grafana-cloud/testing/k6/author-run/private-load-zone-v2/).
 
 {{< /admonition >}}
 
