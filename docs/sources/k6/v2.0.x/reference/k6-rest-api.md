@@ -12,9 +12,21 @@ weight: 04
 
 # k6 REST API
 
-When k6 starts, it spins up an HTTP server with a REST API that can be used to control some
-parameters of the test execution. By default, that server listens on `localhost:6565`, but
-that can be modified by the `--address` CLI flag.
+k6 can expose an HTTP server with a REST API that can be used to control some parameters of
+the test execution.
+
+Starting in k6 v2.0.0, this server is **off by default**. To enable it, opt in by passing the
+`--address` CLI flag (or setting the `K6_ADDRESS` environment variable) when starting k6:
+
+```bash
+k6 run --address=localhost:6565 script.js
+```
+
+The address you pass is where the REST API listens. The examples below assume you started k6
+with `--address=localhost:6565`; if you use a different address, substitute it in the URLs.
+
+In earlier versions of k6, this server was on by default and listened on `localhost:6565` unless
+you opted out. The flag itself (`--address`) is unchanged.
 
 With this API you can see and control different execution aspects like number of VUs, Max
 VUs, pause or resume the test, list groups, set and get the setup data and so on.
