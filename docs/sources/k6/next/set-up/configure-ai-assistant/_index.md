@@ -6,12 +6,18 @@ weight: 110
 
 # Configure your AI assistant
 
-The k6 MCP server is an experimental [Model Context Protocol](https://modelcontextprotocol.io/) server for k6.
-Once connected to your AI assistant or MCP-compatible editor, it helps you write better k6 scripts faster and run them with confidence.
+k6 is AI-native. It ships a dedicated toolset that plugs straight into any modern AI editor or agentic workflow, so your assistant can plan, write, validate, and run k6 tests without leaving your codebase.
+
+Two k6 subcommands form the integration:
+
+- [`k6 x agent`](./bootstrap-with-k6-x-agent/) bootstraps your editor in one command. It installs portable k6 skills (planning, smoke / load / browser tests, Playwright→k6 conversion) and registers the MCP server with Claude Code, Cursor, GitHub Copilot, Codex CLI, OpenCode, or Cline.
+- `k6 x mcp` runs the k6 [Model Context Protocol](https://modelcontextprotocol.io/) server (currently in preview), exposing the tools, prompts, and resources your assistant calls to validate scripts, look up documentation, and execute tests.
+
+If you want the fastest path, jump straight to [Bootstrap your editor with `k6 x agent`](./bootstrap-with-k6-x-agent/). The rest of this page covers running and configuring the MCP server itself.
 
 ## What your assistant can do for you
 
-With the k6 MCP server, your AI assistant can:
+Through the k6 MCP server, your AI assistant can:
 
 - **Write accurate scripts:** Create up-to-date scripts by **referring to** embedded k6 documentation and TypeScript definitions to reduce API hallucinations.
 - **Validate scripts:** Catch syntax errors, missing imports, and `export default function` declarations before execution.
@@ -19,6 +25,18 @@ With the k6 MCP server, your AI assistant can:
 - **Generate scripts:** Create tests from requirements using guided prompts that follow k6 best practices.
 - **Convert browser tests:** Transform Playwright tests into k6 browser scripts while preserving test logic.
 - **Automate provisioning:** Discover Terraform resources in your project to automate Grafana Cloud k6 setup.
+
+## Quick start with `k6 x agent`
+
+The fastest way to wire everything up is the [`k6 x agent`](./bootstrap-with-k6-x-agent/) command, shipped with k6. From your project root:
+
+```sh
+k6 x agent init claude-code   # or: cursor, vscode-copilot, codex-cli, opencode, cline, --all
+```
+
+`k6 x agent init` registers the k6 MCP server in your editor's MCP config and installs portable k6 skills that auto-activate when you ask your assistant to plan, write, or convert tests. See [Bootstrap your editor with `k6 x agent`](./bootstrap-with-k6-x-agent/) for the full set of supported editors, bundled skills, and flags.
+
+If your editor isn't supported by `k6 x agent`, or you want to author the configuration yourself, see [Editors not supported by `k6 x agent`](./bootstrap-with-k6-x-agent/#editors-not-supported-by-k6-x-agent).
 
 ## Run the k6 MCP server
 
@@ -33,6 +51,8 @@ k6 x mcp
 ```
 
 The server is registered as an [official subcommand extension](../../extensions/create/subcommand-extensions/#use-automatic-extension-resolution). The first time you run `k6 x mcp`, k6 transparently fetches and runs the extension; subsequent invocations start immediately. By default the server speaks the **stdio** transport that every MCP client expects.
+
+To also drop in editor skills and auto-register the server in your editor, use [`k6 x agent init`](./bootstrap-with-k6-x-agent/) instead of wiring up the server manually.
 
 Verify the command works:
 
@@ -178,9 +198,9 @@ If your AI assistant cannot connect to the server:
 
 ### Configure your editor
 
-Once `k6 x mcp` runs (or you've installed `mcp-k6` standalone), refer to [Configure MCP clients](./configure-mcp-clients/) to register the server with your editor and establish a connection.
+Once `k6 x mcp` runs (or you've installed `mcp-k6` standalone), wire it up to your editor:
 
-- [Configure MCP clients](./configure-mcp-clients/)
+- [Bootstrap your editor with `k6 x agent`](./bootstrap-with-k6-x-agent/) — one-command setup for Claude Code, Cursor, GitHub Copilot, Codex CLI, OpenCode, and Cline. Manual setup for other MCP clients is documented at the bottom of the same page.
 
 ## Next steps
 

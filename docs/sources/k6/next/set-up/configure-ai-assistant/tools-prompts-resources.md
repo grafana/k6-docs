@@ -96,6 +96,8 @@ The prompt guides your assistant through:
 - Applying browser-testing best practices
 - Validating the converted script
 
+If you set up your editor with [`k6 x agent`](./bootstrap-with-k6-x-agent/), the same workflow is also available as the bundled `k6-playwright-converter` skill, which activates automatically when you ask your assistant to convert a Playwright test.
+
 ### How to invoke prompts
 
 The way you invoke a prompt depends on your MCP client:
