@@ -1,17 +1,17 @@
 ---
 title: Configure your AI assistant
-description: Connect mcp-k6 to your AI assistant or editor to get help writing, validating, and running k6 scripts.
+description: Connect the k6 MCP server to your AI assistant or editor to get help writing, validating, and running k6 scripts.
 weight: 110
 ---
 
 # Configure your AI assistant
 
-`mcp-k6` is an experimental [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server for k6.
+The k6 MCP server is an experimental [Model Context Protocol](https://modelcontextprotocol.io/) server for k6.
 Once connected to your AI assistant or MCP-compatible editor, it helps you write better k6 scripts faster and run them with confidence.
 
 ## What your assistant can do for you
 
-With `mcp-k6`, your AI assistant can:
+With the k6 MCP server, your AI assistant can:
 
 - **Write accurate scripts:** Create up-to-date scripts by **referring to** embedded k6 documentation and TypeScript definitions to reduce API hallucinations.
 - **Validate scripts:** Catch syntax errors, missing imports, and `export default function` declarations before execution.
@@ -20,11 +20,31 @@ With `mcp-k6`, your AI assistant can:
 - **Convert browser tests:** Transform Playwright tests into k6 browser scripts while preserving test logic.
 - **Automate provisioning:** Discover Terraform resources in your project to automate Grafana Cloud k6 setup.
 
-## Install mcp-k6
+## Run the k6 MCP server
 
-Choose one of the following installation methods.
+The simplest path is to invoke the server through k6 itself. To pin a specific version or run without a k6 install on the host, use the standalone `mcp-k6` distribution instead.
 
-### Docker (recommended)
+### k6 subcommand (recommended)
+
+If you already have [k6 installed](../install-k6/), you also have the k6 MCP server — invoke it as a subcommand:
+
+```sh
+k6 x mcp
+```
+
+The server is registered as an [official subcommand extension](../../extensions/create/subcommand-extensions/#use-automatic-extension-resolution). The first time you run `k6 x mcp`, k6 transparently fetches and runs the extension; subsequent invocations start immediately. By default the server speaks the **stdio** transport that every MCP client expects.
+
+Verify the command works:
+
+```sh
+k6 x mcp --help
+```
+
+{{< admonition type="note" >}}
+Auto-extension resolution runs the latest released version. To pin a specific version, use the standalone `mcp-k6` distribution below.
+{{< /admonition >}}
+
+### Docker
 
 Pull the image:
 
@@ -120,18 +140,45 @@ cd mcp-k6
 make install
 ```
 
+## Server flags
+
+The k6 MCP server accepts the following flags, whether you launch it via `k6 x mcp` or the standalone `mcp-k6` binary:
+
+| Flag | Default | Description |
+| --- | --- | --- |
+| `--transport` | `stdio` | Transport to use: `stdio` or `http`. |
+| `--addr` | `:8080` | Listen address (HTTP transport only). |
+| `--endpoint` | `/mcp` | HTTP endpoint path (HTTP transport only). |
+| `--stateless` | `false` | Disable session tracking (HTTP transport only). |
+| `--preload` | `false` | Download all embedded documentation bundles at startup. |
+
+### Run over HTTP
+
+For shared development hosts where multiple clients connect to one server, start the k6 MCP server with the streamable HTTP transport:
+
+```sh
+k6 x mcp --transport=http --addr=:8080
+```
+
+Clients then connect to `http://<host>:8080/mcp`.
+
+{{< admonition type="caution" >}}
+The HTTP transport has no built-in authentication. Don't expose it on a public network — bind it to localhost or a trusted internal interface, and put it behind your own auth proxy if multiple users need access.
+{{< /admonition >}}
+
 ## Troubleshooting
 
 If your AI assistant cannot connect to the server:
 
 - **Check the logs:** Most editors (like Cursor or VS Code) have an "MCP Output" or "Logs" tab. Check there for "command not found" errors.
-- **Verify PATH:** If running natively, run `which k6` in your terminal to ensure k6 is globally accessible.
-- **Docker Permissions:** Ensure the Docker daemon is running and that your user has permission to execute `docker run`.
+- **Verify k6 is on PATH:** If running via `k6 x mcp`, run `which k6` to confirm k6 is globally accessible. If running natively, also run `which mcp-k6`.
+- **Check k6 version:** Auto-extension resolution requires a recent k6 release. Run `k6 version` and confirm you're on a version that supports `k6 x` subcommands.
+- **Docker permissions:** Ensure the Docker daemon is running and that your user has permission to execute `docker run`.
 - **Use MCP Inspector:** Use the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) to debug the connection independently of your editor.
 
 ### Configure your editor
 
-After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-clients.md) to register the server with your editor and establish a connection.
+Once `k6 x mcp` runs (or you've installed `mcp-k6` standalone), refer to [Configure MCP clients](./configure-mcp-clients/) to register the server with your editor and establish a connection.
 
 - [Configure MCP clients](./configure-mcp-clients/)
 

@@ -1,24 +1,40 @@
 ---
 title: Configure MCP clients
-description: Configure VS Code, Cursor, Claude Code, Codex, and other MCP clients to launch mcp-k6 over stdio.
+description: Configure VS Code, Cursor, Claude Code, Codex, and other MCP clients to launch the k6 MCP server via `k6 x mcp`, natively, or with Docker.
 weight: 100
 ---
 
 # Configure MCP clients
 
-`mcp-k6` communicates over **stdio** (stdin/stdout). Your MCP client registers mcp-k6 (or docker run ...) as a subprocess to establish a connection.
+The k6 MCP server communicates over **stdio** (stdin/stdout). Your MCP client registers it as a subprocess (`k6 x mcp`, the standalone `mcp-k6` binary, or `docker run ...`) to establish a connection.
 
 ## Prerequisites
 
-- If you run `mcp-k6` **natively**, ensure `mcp-k6` and `k6` are available on your `PATH`.
-- If you run `mcp-k6` **in Docker**, ensure Docker is installed and running.
+- If you launch the server via the **k6 subcommand** (`k6 x mcp`), ensure `k6` is available on your `PATH`.
+- If you launch the **standalone** `mcp-k6` binary, ensure `mcp-k6` and `k6` are available on your `PATH`.
+- If you launch the server **in Docker**, ensure Docker is installed and running.
 
 ## VS Code
 
-VS Code supports MCP servers through the GitHub Copilot extension. To use `mcp-k6` tools, you must use **Copilot Edits** (agent mode), which allows the assistant to call k6 commands and read test results.
+VS Code supports MCP servers through the GitHub Copilot extension. To use the k6 MCP server, you must use **Copilot Edits** (agent mode), which allows the assistant to call k6 commands and read test results.
 
 1. Open your user or workspace settings JSON (`settings.json`).
 2. Add the MCP server configuration.
+
+### k6 subcommand
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "k6": {
+        "command": "k6",
+        "args": ["x", "mcp"]
+      }
+    }
+  }
+}
+```
 
 ### Docker
 
@@ -51,9 +67,22 @@ VS Code supports MCP servers through the GitHub Copilot extension. To use `mcp-k
 
 ## Cursor
 
-Cursor reads MCP server definitions from your configuration. Add an entry to register mcp-k6 as a local MCP server using the stdio transport.
+Cursor reads MCP server definitions from your configuration. Add an entry to register the k6 MCP server as a local server using the stdio transport.
 
 Create or update your global configuration file (**~/.cursor/mcp.json**) or your project-specific file (**.cursor/mcp.json**):
+
+### k6 subcommand
+
+```json
+{
+  "mcpServers": {
+    "k6": {
+      "command": "k6",
+      "args": ["x", "mcp"]
+    }
+  }
+}
+```
 
 ### Docker
 
@@ -84,7 +113,15 @@ Restart Cursor or reload MCP servers, then verify the connection by invoking the
 
 ## Claude Code (CLI)
 
-Add `mcp-k6` to Claude Code using the `claude mcp add` command.
+Add the k6 MCP server to Claude Code using the `claude mcp add` command.
+
+### k6 subcommand
+
+```sh
+claude mcp add --scope=user --transport=stdio k6 -- k6 x mcp
+```
+
+The trailing `--` separates Claude Code's flags from the command it should launch, so `x` is passed to k6 instead of being parsed by `claude`.
 
 ### Docker
 
@@ -109,6 +146,19 @@ Codex CLI supports MCP servers over stdio.
 1. Locate your Codex configuration file. 
 If you are unsure of the location, run codex help config to find the file path.
 1. Add the MCP server configuration under the `mcpServers` key.
+
+### k6 subcommand
+
+```json
+{
+  "mcpServers": {
+    "k6": {
+      "command": "k6",
+      "args": ["x", "mcp"]
+    }
+  }
+}
+```
 
 ### Docker
 
@@ -139,7 +189,7 @@ Restart Codex or reload its configuration to activate the server.
 
 ## Other MCP clients
 
-If your MCP client is not in the previous list, you can use mcp-k6 with any client that supports stdio-based MCP servers.
+If your MCP client is not in the previous list, you can use the k6 MCP server with any client that supports stdio-based MCP servers.
 
 ### How MCP works
 
@@ -158,8 +208,8 @@ Most MCP clients require the following information:
 | Field | Description |
 |-------|-------------|
 | **name** | An identifier for the server (for example, `k6`). |
-| **command** | The program to run. For native installs, this is `mcp-k6`. For Docker, this is `docker`. |
-| **args** | Command-line arguments. For Docker, include `run`, `--rm`, `-i`, and the image name. |
+| **command** | The program to run. For `k6 x mcp`, this is `k6`. For native installs, `mcp-k6`. For Docker, `docker`. |
+| **args** | Command-line arguments. For `k6 x mcp`, this is `["x", "mcp"]`. For Docker, include `run`, `--rm`, `-i`, and the image name. |
 | **env** | Optional environment variables to pass to the server. |
 | **transport** | Usually `stdio` (some clients assume this by default). |
 
