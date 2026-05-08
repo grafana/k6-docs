@@ -11,7 +11,7 @@ When you run tests in Grafana Cloud using `k6 cloud run`, [secrets management](h
 
 {{< admonition type="note" >}}
 
-The cloud secret source only works with `k6 cloud run --local-execution --secret-source=cloud`. Using it with `k6 run` returns an error.
+The cloud secret source only works with `k6 cloud run --local-execution`. Using it with `k6 run` returns an error.
 
 {{< /admonition >}}
 
@@ -22,12 +22,22 @@ The cloud secret source only works with `k6 cloud run --local-execution --secret
 
 ## Use the cloud secret source
 
-Pass `--secret-source=cloud` when running your test with `k6 cloud run --local-execution`:
+Starting in k6 v2.0.0, the cloud secret source is enabled automatically when you run `k6 cloud run --local-execution`. You don't need to pass any flag, and `secrets.get()` works out of the box:
 
 ```bash
-k6 cloud run --local-execution --secret-source=cloud script.js
+k6 cloud run --local-execution script.js
 ```
 
 k6 automatically configures the credentials needed to fetch secrets from Grafana Cloud. No tokens, endpoints, or passwords are required on the command line.
 
 k6 automatically redacts all secrets from logs.
+
+## Opt out with `--no-cloud-secrets`
+
+If you don't want the cloud secret source enabled, pass `--no-cloud-secrets`:
+
+```bash
+k6 cloud run --local-execution --no-cloud-secrets script.js
+```
+
+With this flag, calls to `secrets.get()` for the cloud source will fail unless you explicitly configure another source.
