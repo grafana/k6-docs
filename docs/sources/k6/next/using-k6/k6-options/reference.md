@@ -88,17 +88,19 @@ and `k6 cloud run ...`, which you can use to override options specified in the c
 
 ## Address
 
-Address of the API server. When executing scripts with `k6 run`, an HTTP server with a REST API is spun up,
-which can be used to control some of the parameters of the test execution.
+Address of the API server. When set, k6 starts an HTTP server with a REST API that can be used to
+control some of the parameters of the test execution.
 
-By default, the server listens on `localhost:6565`. Read more on [k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api). You can disable the HTTP server by setting the address value to an empty string, for example: `k6 run -a '' script.js`.
+Starting in k6 v2.0.0, the REST API server is **off by default**. To enable it, pass `--address`
+(or set `K6_ADDRESS`) with the address you want it to listen on. Read more on
+[k6 REST API](https://grafana.com/docs/k6/<K6_VERSION>/reference/k6-rest-api).
 
-| Env | CLI               | Code / Config file | Default          |
-| --- | ----------------- | ------------------ | ---------------- |
-| N/A | `--address`, `-a` | N/A                | `localhost:6565` |
+| Env          | CLI               | Code / Config file | Default                    |
+| ------------ | ----------------- | ------------------ | -------------------------- |
+| `K6_ADDRESS` | `--address`, `-a` | N/A                | _(unset; server disabled)_ |
 
 ```bash
-k6 run --address "localhost:3000" script.js
+k6 run --address "localhost:6565" script.js
 ```
 
 ## Batch
@@ -770,7 +772,8 @@ Enables profiling endpoints under the [k6 REST API [address](#address) to help d
 * [pprof](https://pkg.go.dev/net/http/pprof) profiling endpoints for CPU and memory profiling
 * Prometheus [/metrics](https://prometheus.io/docs/guides/go-application/#how-go-exposition-works) endpoint for exporting Go runtime metrics
 
-The k6 REST API must be enabled for these endpoints to be available (this is the default behavior).
+The k6 REST API must be enabled for these endpoints to be available. Starting in k6 v2.0.0, the
+REST API is off by default — pass [`--address`](#address) (or set `K6_ADDRESS`) when starting k6.
 
 | Env                    | CLI                   | Code / Config file | Default                              |
 | ---------------------- | --------------------- | ------------------ | ------------------------------------ |
