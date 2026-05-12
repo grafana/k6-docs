@@ -1,26 +1,28 @@
 ---
 title: Tools, prompts, and resources
-description: Learn what MCP tools, prompts, and resources mcp-k6 provides, and how to use them.
+description: Learn what MCP tools, prompts, and resources the k6 MCP server provides, and how to use them.
 weight: 200
 ---
 
 # Tools, prompts, and resources
 
-`mcp-k6` exposes three kinds of MCP primitives:
+The k6 MCP server exposes three kinds of MCP primitives:
 
 - **Tools**: Allow your AI assistant to perform actions, such as validating or running a script.
 - **Prompts**: Guided workflows that help you generate scripts or convert existing tests.
 - **Resources**: Reference data, which includes docs and type definitions, that your assistant can consult for accurate answers.
 
+These primitives behave identically regardless of how you launch the server — via `k6 x mcp`, the standalone `mcp-k6` binary, or Docker.
+
 ## Tools
 
-Tools are the core capability of `mcp-k6`. Your AI assistant calls them automatically when it needs to validate code, run a test, or look up documentation.
+Tools are the core capability of the k6 MCP server. Your AI assistant calls them automatically when it needs to validate code, run a test, or look up documentation.
 
 ### info
 
 Returns runtime information about the server and local environment:
 
-- `mcp-k6` version
+- Server version
 - Detected `k6` version
 - Login status for Grafana Cloud k6 (via the k6 CLI)
 
@@ -93,6 +95,8 @@ The prompt guides your assistant through:
 - Mapping Playwright APIs to k6 equivalents
 - Applying browser-testing best practices
 - Validating the converted script
+
+If you set up your editor with [`k6 x agent`](./bootstrap-with-k6-x-agent/), the same workflow is also available as the bundled `k6-playwright-converter` skill, which activates automatically when you ask your assistant to convert a Playwright test.
 
 ### How to invoke prompts
 
