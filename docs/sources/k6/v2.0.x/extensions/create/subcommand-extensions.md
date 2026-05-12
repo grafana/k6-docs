@@ -96,6 +96,8 @@ K6_ENABLE_COMMUNITY_EXTENSIONS=true k6 x mytool
 
 {{< /admonition >}}
 
+For real-world examples of official subcommand extensions that ship through this exact path, see [the k6 MCP server](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/) (exposed as `k6 x mcp`) and [`k6 x agent`](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/bootstrap-with-k6-x-agent/), which scaffolds AI editor integrations on top of it.
+
 ### Disable automatic extension resolution
 
 You can disable this feature by setting the environment variable `K6_AUTO_EXTENSION_RESOLUTION` to `false`:

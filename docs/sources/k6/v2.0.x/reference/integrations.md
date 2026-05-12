@@ -18,6 +18,7 @@ Codeless tools to speed up the test creation.
 MCP (Model Context Protocol) integrations help you author and run k6 scripts from MCP-compatible editors and assistants.
 
 - To validate and run scripts, browse documentation, and generate tests using an AI assistant, refer to [Configure your AI assistant](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/).
+- To scaffold k6 skills and auto-register the k6 MCP server in supported editors with one command, refer to [Bootstrap your editor with `k6 x agent`](https://grafana.com/docs/k6/<K6_VERSION>/set-up/configure-ai-assistant/bootstrap-with-k6-x-agent/).
 
 ## IDE extensions
 
