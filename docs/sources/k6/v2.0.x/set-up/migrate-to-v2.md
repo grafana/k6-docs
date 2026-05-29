@@ -16,6 +16,8 @@ The k6 Go module path has changed from `go.k6.io/k6` to `go.k6.io/k6/v2`.
 
 If you maintain a k6 extension, update all import paths in your Go code:
 
+Test commit
+
 ```go
 // Before
 import "go.k6.io/k6/js/modules"
