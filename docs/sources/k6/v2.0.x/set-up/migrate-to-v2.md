@@ -18,6 +18,8 @@ If you maintain a k6 extension, update all import paths in your Go code:
 
 Test commit
 
+Test again
+
 ```go
 // Before
 import "go.k6.io/k6/js/modules"
