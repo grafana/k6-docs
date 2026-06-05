@@ -156,7 +156,7 @@ Breaking down the file structure we get:
 **files** contains the full original directory tree of all [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
 
 **metadata.json** The resolved "default" options for this test based on [CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
-[Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
+[Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options). For tests using [auto-extension-resolution](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/auto-extension-resolution/), a `"dependencies"` field contains the extension constraints from the script before any manifest overrides are applied.
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 
@@ -207,7 +207,11 @@ Breaking down the file structure we get:
   },
   "filename": "/home/johndoe/tests/api-test/script.js",
   "pwd": "/home/johndoe/tests/api-test/",
-  "env": {}
+  "env": {},
+  "dependencies": {
+    "k6/x/redis": "^2.0.0",
+    "k6/x/kafka": "^0.3.0"
+  }
 }
 ```
 
