@@ -70,7 +70,7 @@ k6 uses [esbuild](https://esbuild.github.io/) to transpile TypeScript (TS) code 
 
 TypeScript support is partial as it strips the type information but doesn't provide type safety.
 
-### CommonJS Example
+## CommonJS Example
 
 ```javascript
 const http = require('k6/http');
