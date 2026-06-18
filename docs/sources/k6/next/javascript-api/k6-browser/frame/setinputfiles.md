@@ -15,7 +15,7 @@ To work with local files on the file system, use the [experimental fs module](ht
 | file                | object      | `null`  | This is a required parameter.                                                                                                                                                                                                                                                                                                                 |
 | file.name           | string      | `''`    | The name of the file. For example, `file.txt`.                                                                                                                                                                                                                                                                                                |
 | file.mimeType       | string      | `''`    | The type of the file content. For example, `text/plain`.                                                                                                                                                                                                                                                                                      |
-| file.buffer         | ArrayBuffer | `[]`    | Base64 encoded content of the file.                                                                                                                                                                                                                                                                                                           |
+| file.buffer         | string      | `''`    | Base64 encoded content of the file.                                                                                                                                                                                                                                                                                                           |
 | options             | object      | `null`  | This is an optional parameter.                                                                                                                                                                                                                                                                                                                |
 | options.noWaitAfter | boolean     | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                                                                                                                                    |
 | options.timeout     | number      | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/) or [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/). |
@@ -62,7 +62,7 @@ export default async function () {
     // The file is set to the input element with the id "upload".
     frame.setInputFiles('input[id="upload"]', {
       name: 'file.txt',
-      mimetype: 'text/plain',
+      mimeType: 'text/plain',
       buffer: encoding.b64encode('hello world'),
     });
   } finally {
@@ -121,9 +121,9 @@ export default async function () {
     const buffer = await readAll(file);
 
     // The file is set to the input element with the id "upload".
-    frame.setInputFiles({
+    frame.setInputFiles('input[id="upload"]', {
       name: 'file.txt',
-      mimetype: 'text/plain',
+      mimeType: 'text/plain',
       buffer: encoding.b64encode(buffer),
     });
   } finally {
