@@ -157,6 +157,10 @@ export default function (data) {
 }
 ```
 
+The `setup()` function must complete within the configured [`setupTimeout`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#setup-timeout) (default: 60 seconds). If it exceeds this timeout, the test fails before any VUs start.
+
+In Grafana Cloud k6, `setupTimeout` has a maximum limit of 10 minutes. If your `setup()` function requires long-running operations, consider moving heavy work to an external process and passing the results to your test.
+
 ### Skip setup and teardown execution
 
 You can skip the execution of setup and teardown stages using the options `--no-setup` and

@@ -141,23 +141,23 @@ Autocorrelation is an AI-powered feature that automatically creates correlation 
 
 When you record a user session, many applications include dynamic values in their requests and responses. These values, like authentication tokens or session IDs, are generated at runtime and differ each time the session is replayed. Without correlation, your test script fails because it uses the original recorded values instead of the new ones.
 
-Autocorrelation uses AI to:
+Autocorrelation is powered by [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/) and runs against your Grafana Cloud account. Autocorrelation:
 
-- Run validation to identify mismatches between your recording and a live test run
-- Detect values that change between runs
-- Create correlation rules to extract and reuse these values automatically
+- Runs validation to identify mismatches between your recording and a live test run
+- Detects values that change between runs
+- Creates correlation rules to extract and reuse these values automatically
 
 ### Before you begin
 
 Before using Autocorrelation, make sure you have:
 
-- **An OpenAI API key configured.** Go to **Settings > AI** and add your API key. You can create one at [platform.openai.com/api-keys](https://platform.openai.com/api-keys). Refer to [AI settings](https://grafana.com/docs/k6-studio/set-up/settings/#ai) for more details.
+- **A Grafana Cloud account.** You can sign in or create a free account from the Autocorrelation dialog.
 - **A recording with requests.** Open an existing recording in the Generator, or create a new recording first.
 - **Proxy online.** The proxy must be running to validate your script.
 
 {{< admonition type="note" >}}
 
-Your API key is encrypted and stored locally using your operating system's secure storage. Data from your recording is sent to OpenAI for processing. Usage is subject to your OpenAI agreement and associated billing.
+Data from your recording is sent to Grafana Assistant for analysis, and the generated correlation rules are applied locally in k6 Studio. Authentication tokens are stored using your operating system's secure storage (such as Keychain on macOS or Credential Manager on Windows).
 
 {{< /admonition >}}
 
@@ -169,59 +169,64 @@ To automatically create correlation rules for your recording:
 
 2. In the **Test rules** section, click **Autocorrelate**.
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-autocorrelate-button.png" alt="k6 Studio Generator window, highlighting autocorrelation button" >}}
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
 
-3. In the Autocorrelation dialog, click **Analyze recording** to start the process.
+3. Sign in if prompted. In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, complete the sign-in in your browser, and select the Grafana Cloud stack you want to use.
 
-4. **Wait for analysis to complete.** The AI:
-   - Validates your script to identify mismatches
-   - Analyzes the recording to find dynamic values
-   - Creates correlation rules to handle those values
 
-5. **Review validation results.** The right panel shows the validation requests, so you can see how the script performed.
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
 
-6. **Review the suggested rules.** The left panel shows the rules that were created. Each rule is selected by default. You can:
-   - Clear the checkbox next to a rule to exclude it
-   - Use **Select all** to toggle all rules at once
+4. Connect to Grafana Assistant if prompted. Click **Connect to Grafana Assistant** to open your browser. Approve the sign-in, check that the verification code in the browser matches the one shown in k6 Studio, then return to the app. If this is your first time using Grafana Assistant, you're also prompted to review and accept the terms and conditions in the browser before the connection completes.
 
-7. **Accept or discard the rules:**
-   - Click **Accept** to add the selected rules to your generator
-   - Click **Discard** to close the dialog without adding any rules
-   - Click **Stop** to cancel the analysis while it's running
+
+    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
+
+5. Click **Analyze recording** to start the process.
+
+6. **Wait for analysis to complete.** Autocorrelation:
+    - Validates your script to identify mismatches
+    - Analyzes the recording to find dynamic values
+    - Creates correlation rules to handle those values
+
+7. **Review validation results.** The right panel shows the validation requests, so you can see how the script performed.
+
+8. **Review the suggested rules.** The left panel shows the rules that were created. Each rule is selected by default. You can:
+    - Clear the checkbox next to a rule to exclude it
+    - Use **Select all** to toggle all rules at once
+
+9. **Accept or discard the rules:**
+    - Click **Accept** to add the selected rules to your generator
+    - Click **Discard** to close the dialog without adding any rules
+    - Click **Stop** to cancel the analysis while it's running
 
     {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-2.png" alt="k6 Studio autocorrelation dialog with suggested rules" >}}
 
 ### Understand the results
 
-After analysis completes, you'll see one of these outcomes:
+After analysis completes, you see one of these outcomes:
 
-| Status                      | Description                                                                                              |
-| --------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Correlation not needed      | The script validation passed without any rules. Your current configuration handles all requests correctly. |
-| Autocorrelation completed   | The AI successfully created rules that resolve all mismatches.                                           |
-| Partially correlated        | Some requests are still failing, but significant progress was made. You may need to add manual rules for edge cases. |
-| Autocorrelation failed      | The AI couldn't create rules to fix the mismatches. Consider adding rules manually.                      |
-
-The dialog footer displays token usage during analysis. Tokens are counted separately for input (data sent to the AI) and output (responses from the AI). This helps you monitor API usage costs.
+| Status                    | Description                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Correlation not needed    | The script validation passed without any rules. Your current configuration handles all requests correctly.            |
+| Autocorrelation completed | Grafana Assistant successfully created rules that resolve all mismatches.                                             |
+| Partially correlated      | Some requests are still failing, but significant progress was made. You might need to add manual rules for edge cases. |
+| Autocorrelation failed    | Grafana Assistant couldn't create rules to fix the mismatches. Consider adding rules manually.                        |
 
 ### Troubleshoot Autocorrelation
 
-| Issue                       | Error message                                           | Solution                                                                                                   |
-| --------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Incorrect API key           | The OpenAI API key is incorrect or has been revoked.    | Go to **Settings > AI** and verify your API key. Generate a new key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) if needed. |
-| Token limit exceeded        | The recording exceeds the token limit.                  | Your recording is too large for the AI to process. Try reducing the number of allowed hosts, working with a smaller recording, or splitting your recording into multiple smaller sessions. |
-| Rate limit                  | You have exceeded the API rate limit.                   | Wait a moment and click **Retry**. If the problem persists, check your OpenAI account for rate limit settings. |
-| Proxy offline               | The Autocorrelate button is disabled.                   | Make sure the proxy is running. Check the proxy status indicator in the application.                       |
-
-For unexpected errors, click **Retry** to attempt the analysis again. If the problem persists, click **Report issue** to submit a bug report.
+| Issue            | Message                                                                   | Solution                                                                                                         |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Not signed in    | Sign in to Grafana Cloud to use the Grafana Assistant.                    | In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, or sign in from the Profile menu in k6 Studio. |
+| Session expired  | Your Grafana Assistant session has expired. Please reconnect to continue. | Click **Reconnect** and approve the sign-in in your browser.                                                      |
+| Proxy offline    | The **Analyze recording** button is disabled.                             | Make sure the proxy is running. Check the proxy status indicator in the application.                             |
+| Unexpected error | An unexpected error occurred during autocorrelation.                      | Click **Retry** to try again. If the problem persists, click **Report issue** to submit a bug report.             |
 
 ### Considerations
 
-- **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality may change in future releases.
-- **Data processing.** Your recording data is sent to OpenAI for analysis. Review the disclaimer in **Settings > AI** for full terms.
+- **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality might change in future releases.
+- **Data processing.** Your recording data is sent to Grafana Assistant for analysis. The generated rules are applied locally in k6 Studio.
 - **Manual rules.** You can still create [correlation rules](#correlation-rule) manually using the **Add rule** menu. Autocorrelation complements manual rule creation; it doesn't replace it.
-- **Cost.** Using Autocorrelation consumes OpenAI API tokens, which may incur costs based on your OpenAI pricing plan.
-- **Large recordings.** Very large recordings may exceed token limits. Consider recording focused user flows rather than extended sessions.
+- **Large recordings.** Very large recordings might exceed the context available for analysis. Try reducing the number of allowed hosts, working with a smaller recording, or splitting your recording into multiple smaller sessions.
 
 ## Rules
 

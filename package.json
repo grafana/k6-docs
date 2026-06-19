@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "eslint": "8.28.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-markdown": "2.2.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-markdown": "5.1.0",
     "eslint-plugin-mdx": "3.7.0",
     "eslint-plugin-prettier": "4.2.1",
-    "husky": "8.0.2",
+    "husky": "8.0.3",
     "lint-staged": "13.3.0",
-    "prettier": "2.8.0"
+    "prettier": "2.8.8"
   }
 }
