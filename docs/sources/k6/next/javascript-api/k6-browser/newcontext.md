@@ -35,6 +35,9 @@ A 1-to-1 mapping between [Browser](https://grafana.com/docs/k6/<K6_VERSION>/java
 | options.locale                                        | string  | system                           | Specifies the user's locale, such as `'en-US'`, `'tr-TR'`, etc.                                                                                                                                                                                                                          |
 | options.offline                                       | boolean | `false`                          | Whether to emulate an offline network.                                                                                                                                                                                                                                                   |
 | options.permissions                                   | Array   | `null`                           | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/grantpermissions) for the options.                                                                  |
+| options.proxy                                         | object  | `null`                           | Network proxy settings to use for all pages in the context. See an [example](#proxy-example) below.                                                                                                                                                                                       |
+| options.proxy.server                                  | string  | -                                | Proxy server URL, including scheme and port, for example `http://proxy.test:8080`. Required when `proxy` is set.                                                                                                                                                                          |
+| options.proxy.bypass                                  | string  | -                                | Comma-separated list of hosts to connect to directly, bypassing the proxy, for example `localhost,127.0.0.1`.                                                                                                                                                                             |
 | options.reducedMotion                                 | string  | `'no-preference'`                | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/emulatemedia) for the options. |
 | options.screen                                        | object  | `{'width': 1280, 'height': 720}` | Sets a window screen size for all pages in the context. It can only be used when the viewport is set.                                                                                                                                                                                    |
 | options.screen.width                                  | number  | `1280`                           | Page width in pixels.                                                                                                                                                                                                                                                                    |
@@ -77,6 +80,43 @@ export default async function () {
       height: 812,
     },
     deviceScaleFactor: 3,
+  });
+  const page = await context.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/');
+  } finally {
+    await page.close();
+  }
+}
+```
+
+### proxy example
+
+Route the context's traffic through a proxy server:
+
+```javascript
+import { browser } from 'k6/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+};
+
+export default async function () {
+  const context = await browser.newContext({
+    proxy: {
+      server: 'http://proxy.test:8080',
+      bypass: 'localhost,127.0.0.1',
+    },
   });
   const page = await context.newPage();
 
