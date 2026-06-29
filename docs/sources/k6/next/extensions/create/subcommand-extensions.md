@@ -106,6 +106,22 @@ You can disable this feature by setting the environment variable `K6_AUTO_EXTENS
 K6_AUTO_EXTENSION_RESOLUTION=false k6 x mytool
 ```
 
+## Discover available subcommands
+
+Running `k6 x` without arguments lists the available subcommands, both the ones built into the binary and those advertised by the [extension catalog](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore/) (official and community):
+
+```text
+$ k6 x
+...
+Available Commands:
+  agent       Bootstrap an AI-assisted k6 testing workflow in any editor
+  docs        CLI k6 docs for AI agents and users
+  explore     Explore k6 extensions for Automatic Resolution
+  mcp         An MCP server for k6 for AI agents
+```
+
+Shell tab-completion surfaces the same set once the catalog has been cached locally by a prior `k6 x` run, so completion never blocks on the network. This makes a k6 binary self-describing, which is particularly useful for AI agents driving k6.
+
 ## Build a custom k6 binary
 
 To use subcommand extensions you're developing or that aren't available in the registry, build a custom k6 binary with [xk6](https://github.com/grafana/xk6):
