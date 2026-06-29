@@ -34,6 +34,7 @@ Each option has its own detailed reference in a separate section.
 | [Execution segment](#execution-segment)                      | Limit execution to a segment of the total test                                                                                                                                                                                                                                                                                                     |
 | [Exit on running](#exit-on-running)                          | Exits when test reaches the running status                                                                                                                                                                                                                                                                                                         |
 | [Cloud options](#cloud-options)                              | An object used to set configuration options for cloud parameters.                                                                                                                                                                                                                                                                                  |
+| [Features](#features)                                        | Enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags) to opt in to new, not-yet-stable behavior                                                                                                                                                                                                                  |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                         |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                                |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                          |
@@ -390,6 +391,18 @@ With this option, you can exit early and let the script run in the background. A
 
 ```bash
 k6 cloud run --exit-on-running script.js
+```
+
+## Features
+
+Enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags) to opt in to new, not-yet-stable behavior. Available in the `k6 run` and `k6 cloud run` commands. Unlike most options on this page, feature flags can't be set in the script's `options` object: use the command-line flag, the environment variable, or the `features` key in the [JSON configuration file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#set-options-with-the---config-flag).
+
+| Env           | CLI          | Code / Config file | Default |
+| ------------- | ------------ | ------------------ | ------- |
+| `K6_FEATURES` | `--features` | `features`         | `null`  |
+
+```bash
+k6 run --features native-histograms script.js
 ```
 
 ## Hosts
