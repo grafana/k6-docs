@@ -1398,3 +1398,5 @@ export const options = {
   duration: '1h',
 };
 ```
+
+When you pass `--vus N` on its own (without `--duration`, `--iterations`, or `--stages`), k6 creates a single [shared-iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) scenario with `N` VUs and `N` iterations. This overrides any scenarios defined in the script and prints a warning, consistent with how `--duration`, `--iterations`, and `--stages` behave.
