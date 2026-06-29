@@ -108,6 +108,8 @@ As the preceding example shows, you need to prefix `K6_` in the environment vari
 However, be aware that not all options are supported as environment variables.
 You can confirm whether one is by checking the [documentation for each option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference).
 
+You can also use the `K6_FEATURES` environment variable to enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), which opt in to new, not-yet-stable k6 behavior.
+
 Note that when you define options in multiple places, there's an [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to) that determines the option to use.
 To ensure you're always working with the highest precedence, use command-line flags instead of environment variables:
 
