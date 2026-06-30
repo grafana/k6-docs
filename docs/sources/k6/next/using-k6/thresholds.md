@@ -150,6 +150,8 @@ These aggregation methods form part of the threshold expressions.
 | Rate        | `rate`                                                                                                                                                                                                             |
 | Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` specifies the threshold percentile value, expressed as a number between 0.0 and 100. E.g. `p(99.99)` means the 99.99th percentile. The values are in milliseconds. |
 
+A percentile value outside the `0` to `100` range (or `NaN`) fails parsing with an error, so the test stops before running.
+
 This (slightly contrived) sample script uses all different types of metrics,
 setting different types of thresholds for each:
 
