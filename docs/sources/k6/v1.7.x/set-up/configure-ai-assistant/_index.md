@@ -131,7 +131,7 @@ If your AI assistant cannot connect to the server:
 
 ### Configure your editor
 
-After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-clients.md) to register the server with your editor and establish a connection.
+After you install `mcp-k6`, refer to [Configure MCP clients](./configure-mcp-clients/) to register the server with your editor and establish a connection.
 
 - [Configure MCP clients](./configure-mcp-clients/)
 
