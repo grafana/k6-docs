@@ -182,6 +182,8 @@ This correlates the generated pizza ID in both the `Generate pizza` and `Generat
 
 You can validate the test script again, and all the requests should be returning the correct status code, and the k6 checks should be passing.
 
+You can also use [Autocorrelation](https://grafana.com/docs/k6-studio/components/generator/#autocorrelation) to create correlation rules automatically using AI.
+
 ## Parameterize a value
 
 You can make use of the [parameterization rule](https://grafana.com/docs/k6-studio/components/test-generator/#parameterization-rule) to modify a value from some text, and replace it with a variable or even data from a CSV or JSON file.

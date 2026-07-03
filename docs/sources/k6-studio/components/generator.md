@@ -169,64 +169,69 @@ To automatically create correlation rules for your recording:
 
 2. In the **Test rules** section, click **Autocorrelate**.
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
 
 3. Sign in if prompted. In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, complete the sign-in in your browser, and select the Grafana Cloud stack you want to use.
 
-
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
 
 4. Connect to Grafana Assistant if prompted. Click **Connect to Grafana Assistant** to open your browser. Approve the sign-in, check that the verification code in the browser matches the one shown in k6 Studio, then return to the app. If this is your first time using Grafana Assistant, you're also prompted to review and accept the terms and conditions in the browser before the connection completes.
 
-
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
 
 5. Click **Analyze recording** to start the process.
 
-6. **Wait for analysis to complete.** Autocorrelation:
-    - Validates your script to identify mismatches
-    - Analyzes the recording to find dynamic values
-    - Creates correlation rules to handle those values
+6. **Wait for the analysis to complete.** The dialog shows progress in two panels:
 
-7. **Review validation results.** The right panel shows the validation requests, so you can see how the script performed.
+   - The left panel shows an actions log with a timestamped entry for each step: validation progress, the requests Grafana Assistant searches and inspects, and its reasoning.
+   - The right panel shows the **Rules created** list. Rules appear in the list as Grafana Assistant creates them.
 
-8. **Review the suggested rules.** The left panel shows the rules that were created. Each rule is selected by default. You can:
-    - Clear the checkbox next to a rule to exclude it
-    - Use **Select all** to toggle all rules at once
+   While the analysis runs, the footer shows a **Correlating…** indicator. Click **Stop** to cancel the analysis. Any rules created before you stop stay in the list.
 
-9. **Accept or discard the rules:**
-    - Click **Accept** to add the selected rules to your generator
-    - Click **Discard** to close the dialog without adding any rules
-    - Click **Stop** to cancel the analysis while it's running
+7. **Review the created rules.** Click a rule to expand or collapse its details. Each rule shows:
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-2.png" alt="k6 Studio autocorrelation dialog with suggested rules" >}}
+   - **Value**: the dynamic value the rule extracts.
+   - **Source**: the request the value is extracted from.
+   - **Reused in**: the requests where the extracted value is reused.
+
+   To exclude a rule, click the remove (**×**) icon on the rule. You can only remove rules after the analysis finishes.
+
+8. **Add or discard the rules:**
+
+   - Click **Add [number] rules** to add the rules to your test generator. The button label shows how many rules will be added.
+   - Click **Discard** to close the dialog without adding any rules.
+
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-3.png" alt="k6 Studio autocorrelation dialog showing the actions log and created rules" >}}
 
 ### Understand the results
 
-After analysis completes, you see one of these outcomes:
+The last entry in the actions log summarizes the outcome of the analysis. Grafana Assistant generates the summary text, so the exact wording varies between runs.
 
-| Status                    | Description                                                                                                           |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Correlation not needed    | The script validation passed without any rules. Your current configuration handles all requests correctly.            |
-| Autocorrelation completed | Grafana Assistant successfully created rules that resolve all mismatches.                                             |
-| Partially correlated      | Some requests are still failing, but significant progress was made. You might need to add manual rules for edge cases. |
-| Autocorrelation failed    | Grafana Assistant couldn't create rules to fix the mismatches. Consider adding rules manually.                        |
+| Outcome                | How it appears                                                                 | What to do next                                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Correlation not needed | The log shows "Validation passed. No additional correlation rules are needed." | Your current configuration already handles all requests. No rules are created.                                   |
+| Completed              | The final log entry is highlighted green. All mismatches are resolved.         | Review the rules and click **Add [number] rules**.                                                               |
+| Partially correlated   | The final log entry is highlighted yellow. Some requests still fail.           | Add the created rules, then create [correlation rules](#correlation-rule) manually for the remaining mismatches. |
+| Failed                 | The final log entry is highlighted red.                                        | Create [correlation rules](#correlation-rule) manually.                                                          |
 
 ### Troubleshoot Autocorrelation
 
-| Issue            | Message                                                                   | Solution                                                                                                         |
-| ---------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Not signed in    | Sign in to Grafana Cloud to use the Grafana Assistant.                    | In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, or sign in from the Profile menu in k6 Studio. |
-| Session expired  | Your Grafana Assistant session has expired. Please reconnect to continue. | Click **Reconnect** and approve the sign-in in your browser.                                                      |
-| Proxy offline    | The **Analyze recording** button is disabled.                             | Make sure the proxy is running. Check the proxy status indicator in the application.                             |
-| Unexpected error | An unexpected error occurred during autocorrelation.                      | Click **Retry** to try again. If the problem persists, click **Report issue** to submit a bug report.             |
+| Issue                | Message                                                                                                                                         | Solution                                                                                                                                  |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Not signed in        | Sign in to Grafana Cloud to use the Grafana Assistant.                                                                                          | In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, or sign in from the Profile menu in k6 Studio.                         |
+| Session expired      | Your Grafana Assistant session has expired. Please reconnect to continue.                                                                       | Click **Reconnect** and approve the sign-in in your browser.                                                                              |
+| Proxy offline        | The **Analyze recording** button is disabled.                                                                                                   | Make sure the proxy is running. Check the proxy status indicator in the application.                                                      |
+| Recording too large  | This recording has too many requests for AI analysis. Try filtering out unnecessary requests or splitting your recording into smaller sessions. | Click **Close**, then reduce the number of allowed hosts, work with a smaller recording, or split your recording into smaller sessions.   |
+| Usage limit reached  | You've reached your monthly prompt limit.                                                                                                       | Wait for your monthly limit to reset, or click **Upgrade plan** to review Grafana Cloud plans. Click **Go back** to return to the dialog. |
+| Connection error     | Could not connect to Grafana Assistant. Check your internet connection and try again.                                                           | Check your internet connection and click **Retry**.                                                                                       |
+| Something went wrong | An unexpected error occurred. Click retry to try again or report an issue if the problem persists.                                              | Click **Retry** to try again. If the problem persists, click **Report issue** to submit a bug report.                                     |
 
 ### Considerations
 
 - **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality might change in future releases.
 - **Data processing.** Your recording data is sent to Grafana Assistant for analysis. The generated rules are applied locally in k6 Studio.
 - **Manual rules.** You can still create [correlation rules](#correlation-rule) manually using the **Add rule** menu. Autocorrelation complements manual rule creation; it doesn't replace it.
-- **Large recordings.** Very large recordings might exceed the context available for analysis. Try reducing the number of allowed hosts, working with a smaller recording, or splitting your recording into multiple smaller sessions.
+- **Large recordings.** Very large recordings might exceed the context available for analysis. Try filtering out unnecessary requests, reducing the number of allowed hosts, or splitting your recording into multiple smaller sessions.
 
 ## Rules
 
