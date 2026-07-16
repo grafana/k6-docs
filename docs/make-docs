@@ -906,6 +906,13 @@ if [[ -n "${WEBSITE_MOUNTS}" ]]; then
   unset WEBSITE_SKIP_MOUNTS
 fi
 
+# k6-docs local patch: the docs-base image remounts k6-studio into
+# /docs/k6/latest/k6-studio/, which 404s the absolute
+# https://grafana.com/docs/k6-studio/ links used throughout the k6 Studio
+# docs when previewing locally. Point the mount at its own path so k6-studio
+# serves at /docs/k6-studio/, matching its production URL.
+sed -i '/# Begin k6 mounts/,/# End k6 mounts/ s|target: content/docs/k6/latest/k6-studio|target: content/docs/k6-studio|' /hugo/config/_default/params.yaml 2>/dev/null || true
+
 ${WEBSITE_EXEC}
 EOF
     chmod +x "${tempfile}"

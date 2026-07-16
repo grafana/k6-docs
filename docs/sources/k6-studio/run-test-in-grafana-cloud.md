@@ -59,7 +59,7 @@ To sign out from Grafana Cloud:
 
 ## Run a test in Grafana Cloud
 
-After you successfully sign in to Grafana Cloud and select a stack, you can run your tests scripts in Grafana Cloud k6 directly from k6 Studio.
+After you successfully sign in to Grafana Cloud and select a stack, you can run your tests scripts in Grafana Cloud k6 directly from k6 Studio. You can also configure and launch a test in one guided flow with Grafana Assistant. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/configure-test-with-assistant/).
 
 To run a test script in Grafana Cloud k6:
 
