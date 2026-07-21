@@ -20,8 +20,8 @@ Guided setup works with HTTP tests. To create a browser test from a recording, r
 
 To use guided setup, make sure you have:
 
-- **A Grafana Cloud account.** Guided setup uses Grafana Assistant, which requires a Grafana Cloud account. You can sign in, or create a free account, when the wizard prompts you.
-- **A recording with requests.** Create a recording in k6 Studio, or open a HAR file.
+- **A [Grafana Cloud](https://grafana.com/products/cloud/) account.** Guided setup uses Grafana Assistant, which requires a Grafana Cloud account. You can sign in, or create a free account, when the wizard prompts you.
+- **A recording with requests.** [Create a recording](https://grafana.com/docs/k6-studio/record-your-first-script/) in k6 Studio, or open a HAR file.
 - **Proxy online.** The Autocorrelation step uses the proxy to validate your script. If the proxy is offline, you can skip that step.
 
 {{< admonition type="note" >}}
@@ -87,14 +87,14 @@ The last step summarizes what your test will do before you launch it:
 
 - The number of requests and the hosts they run against.
 - The thresholds that decide whether the test passes or fails.
-- The estimated cost of the run in virtual user hours (VUh), calculated by Grafana Cloud from your test options. If the configured load exceeds your project limits, a warning appears instead of the estimate.
+- The estimated cost of the run in virtual user hours (VUH), calculated by Grafana Cloud from your test options. If the configured load exceeds your project limits, a warning appears instead of the estimate.
 - The load profile, with a timeline of the ramp-up, steady, and ramp-down stages.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-guided-setup-run-test-2.png" alt="Run test step in guided setup, summarizing requests, thresholds, estimated VU-hours, and the load stage timeline" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-guided-setup-run-test-2.png" alt="Run test step in guided setup, summarizing requests, thresholds, estimated virtual user hours (VUH), and the load stage timeline" >}}
 
 You can also expand **Edit load options** to adjust the load profile, review the **Configured by Assistant** summary of the earlier steps, and expand **View generated script** to inspect the k6 script.
 
-To launch the test, click **Save and run**. k6 Studio saves the test generator and opens the **Run in Grafana Cloud** dialog. When the run starts, the test results open in your browser. Refer to [Run a test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/) for more details.
+To launch the test, click **Save and run**. k6 Studio saves the test generator and opens the **Run in Grafana Cloud** dialog box. When the run starts, the test results open in your browser. Refer to [Run a test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/) for more details.
 
 To finish without running the test, click **Open generator**.
 
