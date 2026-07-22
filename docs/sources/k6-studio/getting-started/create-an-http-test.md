@@ -1,108 +1,32 @@
 ---
-title: 'Record your first script'
-description: 'Learn the basics of k6 Studio. Create a test recording, configure a test generator, and run a test script'
-weight: 300
+title: 'Create an HTTP test'
+description: 'Learn how to generate an HTTP test script from a recording, configure rules, and validate it'
+weight: 200
+aliases:
+  - ./create-an-http-test-generator # docs/k6-studio/getting-started/create-an-http-test-generator
 ---
 
-# Record your first script
+# Create an HTTP test
 
-This tutorial shows how to create a recording, set up custom rules, and generate a test script using k6 Studio.
+This guide shows how to generate a k6 test script from a test recording, set up rules to handle dynamic data, and validate the resulting script.
 
-In this tutorial, you will:
+In this guide, you will:
 
-- Create a test recording using the https://quickpizza.grafana.com/ service.
-- Learn how to create groups to organize your test recordings.
-- View the request and response data from a test recording.
+- Use the Generator to create a test script from a recording.
 - Use the Generator to create a correlation, parameterization, and a custom code rule.
 - Validate your test script from the Generator.
 - Export your test script.
 
 ## Before you begin
 
-To complete this tutorial, you'll need to:
-
-- Have a Windows, macOS, or Linux machine.
-- [Install k6 Studio](https://grafana.com/docs/k6-studio/set-up/install/).
-- [Install Google Chrome](https://www.google.com/chrome/).
-
-{{< admonition type="note" >}}
-
-This tutorial uses the `quickpizza.grafana.com` service, which is a public shared environment. You can use it and follow along this tutorial, or you can use a service that you own. The `quickpizza.grafana.com` service is also [open source](https://github.com/grafana/quickpizza) if you'd like to deploy a private instance.
-
-{{< /admonition >}}
-
-## Create a test recording
-
-To create a test recording:
-
-1. Open the k6 Studio desktop application.
-1. Click **Record Flow**.
-1. Type "quickpizza.grafana.com" under **Starting URL**.
-1. Click **Start recording**. You should see a Google Chrome window open after a few seconds, and the **Requests** header in the k6 Studio application.
-
-   {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-1-test-recorder-3.png" >}}
-
-1. In k6 Studio, click the edit button next to **Default group**, rename it to "Homepage", and press **Enter**.
-1. Next click **Create group**, name it "Generate pizza", and press **Enter**. Groups can help organize your test scripts so they're easier to edit and maintain in the future, and give you timing metrics for each group in your test script.
-1. In the browser window, press the **Pizza, Please!** button. You should see a generated recommendation.
-1. Under the recommendation, press the **Love it!** button. A message saying, "Please log in first." will appear.
-
-This will complete the requests for the "Generate pizza" group.
-
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-2-test-api-service-3.png" >}}
-
-### Log in to the service
-
-In this next step, you'll log in to the service to be able to rate a pizza:
-
-1. In the k6 Studio application, click **Create group**, name it "Log in", and press **Enter**.
-1. In the browser, in the top-right of the screen press the **Login/Profile** link. You should see an authentication dialog box.
-1. For username, enter "studio-user". For password, enter "k6studiorocks".
-
-You'll be logged in to the test service, and this will complete the requests for the "Log in" group.
-
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-3-test-api-service-login.png" >}}
-
-### Generate and rate a named pizza
-
-In this next step, you'll generate and rate a pizza again, this time with a custom name.
-
-1. In k6 Studio, click **Create group**, name it "Generate and rate custom pizza", and press **Enter**.
-1. In the browser, press the **Back to main page** link. You should see the homepage again.
-1. In the top-right of the page, toggle the `Advanced` input, a form will appear on the page to customize the generated pizza.
-1. In the form, insert "testedpizza" as a name in the **Custom Pizza Name** input, and press the **Pizza, Please!** button. You should see a generated recommendation with the same name.
-
-   {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-4-test-api-service-generate-pizza.png" >}}
-
-1. Under the recommendation, press the **Love it!** button, a message with "Rated!" will appear.
-1. In k6 Studio, click **Stop recording**.
-
-After you click **Stop recording**, k6 Studio saves the recording as a HAR file.
-
-### Rename the recording
-
-In the sidebar, you can change the name of the recording after it's created. To do that:
-
-1. In k6 Studio, right click on the recording you just created in the left sidebar.
-1. Rename the recording to `generate pizza`.
-1. Press **Enter** to confirm the changes.
-
-### Inspect response and request data
-
-After you finish a recording, you can visualize the request and response data for each request included in your test recording.
-
-To view the request and response data for a request, click on the request you would like to inspect from the **Requests** list.
-
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-5-test-recording-inspector-3.png" >}}
-
-The Request and Response panels have tabs where you can view the headers, payload, or cookies for a request, and the headers, content, and cookies for a response. For the response content tab, you can also view it in different formats, such as the raw data, or a preview.
+- Complete [Record a browser session](../record-a-browser-session/) to create a test recording. This guide continues from the "generate pizza" recording created in that step.
 
 ## Generate a script from a test recording
 
 To generate a script from a test recording:
 
 - If you still have the test recording open from the last step, click **Create test** > **HTTP test** on the top-right.
-- You can also click **+** next to Generator on the left side, and then select your recording on the top-right.
+- You can also click **New test** next to **Tests** in the sidebar, select **HTTP test**, and then select your recording on the top-right.
 
 A dialog box shows up that lets you select the hosts to use from the recording for generating the script. Select `quickpizza.grafana.com` and press **Continue**.
 
@@ -127,9 +51,9 @@ In this next step, you can validate the test script that was created from the re
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-8-test-generator-validate.png" >}}
 
-The Validator runs your script in a single iteration and lets you inspect the requests and responses sent, and see any logs and checks from k6.
+The Debugger runs your script in a single iteration and lets you inspect the requests and responses sent, and see any logs and checks from k6.
 
-For this tutorial, running the script that was created by the previous steps will result in a couple of requests that should be returning a 200 status code, returning a 401 status code instead.
+For this guide, running the script that was created by the previous steps will result in a couple of requests that should be returning a 200 status code, returning a 401 status code instead.
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-9-test-validator-failed-request.png" >}}
 
@@ -174,7 +98,7 @@ There's still one failing request related to the generated ID for the pizza not 
 
 1. In k6 Studio, click **+ Add rule** and select **Correlation** from the entries.
 1. Under **Extractor**, set the **Target** field to **Body**, set the **Type** field to **JSON**.
-1. In the **JSON path** field, type `pizza.id`.
+1. In the **JSON property path** field, type `pizza.id`.
 
 {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-12-correlation-rule-pizza-id.png" >}}
 
@@ -186,7 +110,7 @@ You can also use [Autocorrelation](https://grafana.com/docs/k6-studio/components
 
 ## Parameterize a value
 
-You can make use of the [parameterization rule](https://grafana.com/docs/k6-studio/components/test-generator/#parameterization-rule) to modify a value from some text, and replace it with a variable or even data from a CSV or JSON file.
+You can make use of the [parameterization rule](https://grafana.com/docs/k6-studio/components/generator/#parameterization-rule) to modify a value from some text, and replace it with a variable or even data from a CSV or JSON file.
 
 To add a parameterization rule:
 
@@ -215,9 +139,8 @@ If you open the **Script** tab, you can see the script getting updated in real-t
 To export a test script:
 
 1. In k6 Studio, click on the `Script` tab next to `Requests`.
-1. Click **Export** on the top-right.
-1. Enter a name for the script.
-1. Click **Export**.
+1. Click **Export script** on the top-right.
+1. In the save dialog, choose a name and location for your script.
 
 After you save the script, it'll show up under **Scripts** on the left side. You can right click on the script and click **Open containing folder** to find it in your system, and then use `k6` to run it.
 
@@ -225,18 +148,14 @@ After you save the script, it'll show up under **Scripts** on the left side. You
 
 To summarize:
 
-- You created a test recording using the https://quickpizza.grafana.com/ service.
-- You created groups to organize a test recording into logical steps.
-- You learned how to view request and response data from a test recording.
 - You created a Generator from a test recording, and learned how to use the correlation, parameterization, and custom code rules.
 - You learned how to validate a test script after setting up rules in the Generator.
 - You exported a test script from your test recording and rules setup.
 
-Now you can use the same steps to create a test recording for an application or service that you own and generate test scripts. You can then use those scripts to run performance tests by using the k6 CLI, or Grafana Cloud k6.
+Now you can use the same steps to generate a test script for an application or service that you own. You can then use those scripts to run performance tests by using the k6 CLI, or Grafana Cloud k6.
 
 ## Next steps
 
-Now that you learned the basics of how to use k6 Studio, you can:
-
+- Continue to [Run in Grafana Cloud k6](../run-in-grafana-cloud-k6/) to run your exported script.
+- Learn how to [create a browser test](../create-a-browser-test/) from the browser interactions in your recording.
 - Learn how to [install and run a test using the k6 CLI](https://grafana.com/docs/k6/latest/get-started/running-k6/).
-- Learn how to [run your test using Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/get-started/run-cloud-tests-from-the-cli/).

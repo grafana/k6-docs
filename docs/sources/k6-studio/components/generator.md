@@ -17,10 +17,13 @@ You can use it to define a list of hosts to allow or remove from your script, tw
 The Generator window is composed of:
 
 1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
-   - **Validate script**: Opens the [Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
-   - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
-   - **Delete generator**: Deletes the selected test generator.
+2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can:
+   - Click the save icon to save changes to your test generator file.
+   - Click **Export script** to save the generated script to your computer.
+   - Click **Validate** to open the Debugger and run one iteration of the generated script.
+   - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test.
+   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/getting-started/run-in-grafana-cloud-k6/).
+   - Click the menu icon to **Move to Trash** the selected test generator.
 3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
 4. **Generator options**: Below the test generator name, you can see:
    - **Add rule**: Opens a list of rule types that you can add to the generator.
@@ -67,7 +70,7 @@ The think time option lets you configure a fixed or random delay, between groups
 
 {{< admonition type="note" >}}
 
-Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/getting-started/run-in-grafana-cloud-k6/).
 
 {{< /admonition >}}
 
@@ -260,9 +263,9 @@ The configuration fields are:
 - **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be extracted or replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be extracted or replaced.
   - **Regex**: Define the regular expression to match the value to be extracted or replaced.
-  - **JSON**: Define the JSON path to match the value to be extracted or replaced.
+  - **JSON**: Define the JSON property path to match the value to be extracted or replaced.
 
-When creating or editing a correlation rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a correlation rule, k6 Studio shows the **Extracted value** at the bottom of the rule editor, and adds **Match** or **Value extracted** badges to requests in the list, so you can check that your configuration is applied to the correct requests and values in your test script.
 
 ### Parameterization rule
 
@@ -275,14 +278,14 @@ The configuration fields are:
 - **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
   - **Regex**: Define the regular expression to match the value to be replaced.
-  - **JSON**: Define the JSON path to match the value to be replaced.
+  - **JSON**: Define the JSON property path to match the value to be replaced.
 - **Replace with**: Configure how you want to replace the values when a match is found. You can use:
   - **Text value**: Define a text value.
   - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
   - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run. Refer to [Data files](#data-files) for more details.
   - **Custom code**: Use a custom JavaScript code snippet to define a value. You must include a `return` statement with the value you'd like to use.
 
-When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a parameterization rule, k6 Studio adds a **Match** badge to requests in the list, so you can check that your configuration is applied to the correct requests and values in your test script.
 
 ### Custom code rule
 
@@ -384,10 +387,10 @@ The regular expression must include a capturing group `()` to specify the value 
 
 {{< /admonition >}}
 
-## Validate and export script
+## Debug and export script
 
-After you're done configuring the test options and rules for your test generator, you can click the menu icon on the top-right to validate and export your script.
+After you're done configuring the test options and rules for your test generator, you can debug and export your script from the top-right of the Generator.
 
-When clicking on validate script, the Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
+Click **Validate** to open the Debugger and run one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
 
-After validating your script, you can export it so you can run it using the k6 CLI, or using Grafana Cloud k6.
+After validating your script, click **Export script** to save it so you can run it using the k6 CLI, or click **Run in Grafana Cloud** to run it directly from k6 Studio.

@@ -33,7 +33,7 @@ If you choose the **Upstream** mode, you have to configure a **Server URL** valu
 
 ## Telemetry
 
-### Send anonymous usage data
+### Send usage data to Grafana
 
 k6 Studio sends anonymous usage data of the k6 Studio application to Grafana. This is enabled by default, and you can turn it off if you'd like not to send any data. Refer to [Usage collection](https://grafana.com/docs/k6-studio/set-up/usage-collection/) for more details.
 
