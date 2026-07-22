@@ -101,9 +101,10 @@ export function handleSummary(data) {
 
 ### Example: Modify default output
 
-If `handleSummary()` is exported, k6 _does not_ print the default summary.
-However, if you want to keep the default output, you could import `textSummary` from the [K6 JS utilities library](https://jslib.k6.io/).
-For example, you could write a custom HTML report to a file, and use the `textSummary()` function to print the default report to the console.
+If `handleSummary()` is exported, k6 _does not_ print the built-in summary.
+To generate a text report, you can import `textSummary` from the [K6 JS utilities library](https://jslib.k6.io/).
+The utility uses the legacy text layout, which differs from the current built-in compact summary.
+For example, you can write a custom HTML report to a file and use `textSummary()` to print a text report to the console.
 
 You can also use `textSummary()` to make minor modifications to the default end-of-test summary.
 To do so:
@@ -145,13 +146,13 @@ export function handleSummary(data) {
 }
 ```
 
-In the collapsible section, you can compare the default and modified reports.
+In the collapsible section, you can compare the unmodified and modified `textSummary()` reports.
 
-{{< collapse title="Compare the default and modified reports" >}}
+{{< collapse title="Compare the unmodified and modified reports" >}}
 
 For compactness, these outputs were limited with the `summaryTrendStats` option.
 
-The default report would be:
+The unmodified `textSummary()` report would be:
 
 ```
     HTTP
@@ -287,12 +288,27 @@ with external systems and analytics pipelines.
 You can use the new format via the `--new-machine-readable-summary` flag or the `K6_NEW_MACHINE_READABLE_SUMMARY`
 environment variable.
 
-The JSON Schema definition for this object can be found in the [grafana/k6-summary](https://github.com/grafana/k6-summary)
+The JSON Schema definition for this object is in the [grafana/k6-summary](https://github.com/grafana/k6-summary)
 GitHub repository. You can also use these definitions to generate types for the programming language of your preference. For example, [k6 uses it](https://github.com/grafana/k6/blob/f0805f0d90c3f4d3d9d8403edb09bdc32d7314b6/internal/lib/summary/machinereadable/generate.sh) for Go with [cog](https://github.com/grafana/cog).
 
-This new format will become the default in k6 v2.
+The new format remains opt-in. Without the option, k6 passes the legacy data object to
+`handleSummary()` and writes the legacy format for summary exports.
 
 {{< /admonition >}}
+
+### Machine-readable data object
+
+The machine-readable format has these top-level properties:
+
+| Property | Description |
+| -------- | ----------- |
+| `config` | Configuration information about the test execution. |
+| `metadata` | Metadata about the summary generation. |
+| `results` | Test execution results. |
+| `version` | The summary schema version in semantic version format. |
+
+### Legacy data object
+
 Summary data includes information about your test run time and all built-in and custom metrics (including checks).
 
 All metrics are in a top-level `metrics` object.
@@ -300,7 +316,7 @@ In this object, each metric has an object whose key is the name of the metric.
 For example, if your `handleSummary()` argument is called `data`,
 the function can access the object about the `http_req_duration` metric at `data.metrics.http_req_duration`.
 
-### Metric schema
+#### Metric schema
 
 The following table describes the schema for the metrics object.
 The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics):
@@ -313,7 +329,11 @@ The specific values depend on the [metric type](https://grafana.com/docs/k6/<K6_
 | values               | Object with the summary metric values (properties differ for each metric type) |
 | thresholds           | Object with info about the thresholds for the metric (if applicable)           |
 | thresholds.{name}    | Name of threshold (object)                                                     |
-| thresholds.{name}.ok | Whether threshold was crossed (boolean)                                        |
+| thresholds.{name}.ok | Whether the threshold passed (Boolean)                                          |
+
+The legacy `--summary-export` output isn't identical to this `handleSummary()` object.
+In a legacy summary export, each threshold value is a Boolean, where `true` means the
+threshold was crossed.
 
 
 {{< admonition type="note" >}}
@@ -323,7 +343,7 @@ the keys for the values of the trend will change accordingly.
 
 {{< /admonition >}}
 
-### Example summary JSON
+#### Example summary JSON
 
 To see what the summary `data` looks like in your specific test run:
 

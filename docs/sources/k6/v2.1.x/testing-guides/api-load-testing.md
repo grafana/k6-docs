@@ -370,7 +370,7 @@ As an example of a failed test, here's the output for a test with a threshold th
 
 running (0m30.1s), 00/50 VUs, 1501 complete and 0 interrupted iterations
 my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 iters/s
-ERRO[0030] some thresholds have failed
+ERRO[0030] thresholds on metrics 'iterations' have been crossed
 ```
 
 ## Scripting considerations

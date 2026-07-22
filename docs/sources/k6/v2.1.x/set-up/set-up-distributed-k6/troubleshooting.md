@@ -21,24 +21,6 @@ If you're using Private Load Zones in Grafana Cloud k6, refer to [Troubleshoot P
 
 Refer to [Environment variables](https://github.com/grafana/k6-operator/blob/main/docs/env-vars.md) for details on how to pass environment variables to the k6 Operator.
 
-### Tags not working
-
-Tags are a rather common source of errors when using the k6 Operator. For example, the following tags would lead to parsing errors:
-
-```yaml
-  arguments: --tag product_id="Test A"
-  # or
-  arguments: --tag foo=\"bar\"
-```
-
-You can see those errors in the logs of either the initializer or the runner Pod, for example:
-
-```bash
-time="2024-01-11T11:11:27Z" level=error msg="invalid argument \"product_id=\\\"Test\" for \"--tag\" flag: parse error on line 1, column 12: bare \" in non-quoted-field"
-```
-
-This is a common problem with escaping the characters. You can find an [issue](https://github.com/grafana/k6-operator/issues/211) in the k6 Operator repository that can be upvoted.
-
 ### An error on reading output of the initializer Pod
 
 The k6 runners fail to start, and in the k6 Operator logs, you see the `unable to marshal` error. This can happen for several reasons:

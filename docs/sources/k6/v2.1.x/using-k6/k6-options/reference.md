@@ -46,6 +46,7 @@ Each option has its own detailed reference in a separate section.
 | [LogFormat](#logformat)                                      | Specify the format of the log output                                                                                                                                                                                                                                                                                                               |
 | [Max redirects](#max-redirects)                              | The maximum number of HTTP redirects that k6 will follow                                                                                                                                                                                                                                                                                           |
 | [Minimum iteration duration](#minimum-iteration-duration)    | Specify the minimum duration for every single execution                                                                                                                                                                                                                                                                                            |
+| [New machine-readable summary](#new-machine-readable-summary) | Use the new machine-readable format for summary exports and the `handleSummary()` argument                                                                                                                                                                                                                                                        |
 | [No color](#no-color)                                        | A boolean specifying whether colored output is disabled                                                                                                                                                                                                                                                                                            |
 | [No connection reuse](#no-connection-reuse)                  | A boolean specifying whether k6 should disable keep-alive connections                                                                                                                                                                                                                                                                              |
 | [No cookies reset](#no-cookies-reset)                        | This disables resetting the cookie jar after each VU iteration                                                                                                                                                                                                                                                                                     |
@@ -402,7 +403,7 @@ Enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature
 | `K6_FEATURES` | `--features` | `features`         | `null`  |
 
 ```bash
-k6 run --features native-histograms script.js
+k6 run --features <FEATURE_NAME> script.js
 ```
 
 ## Hosts
@@ -992,6 +993,46 @@ k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
+```
+
+{{< /code >}}
+
+## New machine-readable summary
+
+Use the new machine-readable summary format for [`--summary-export`](#summary-export) and
+the object passed to [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary).
+The format is opt-in.
+
+Available in the `k6 run` command.
+
+| Env                               | CLI                             | Code / Config file | Default |
+| --------------------------------- | ------------------------------- | ------------------ | ------- |
+| `K6_NEW_MACHINE_READABLE_SUMMARY` | `--new-machine-readable-summary` | N/A                | `false` |
+
+{{< code >}}
+
+```bash
+k6 run --new-machine-readable-summary script.js
+
+# or...
+
+K6_NEW_MACHINE_READABLE_SUMMARY=true k6 run script.js
+```
+
+```windows
+k6 run --new-machine-readable-summary script.js
+
+# or...
+
+set "K6_NEW_MACHINE_READABLE_SUMMARY=true" && k6 run script.js
+```
+
+```powershell
+k6 run --new-machine-readable-summary script.js
+
+# or...
+
+$env:K6_NEW_MACHINE_READABLE_SUMMARY="true"; k6 run script.js
 ```
 
 {{< /code >}}
