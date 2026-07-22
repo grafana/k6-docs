@@ -87,6 +87,8 @@ The `status` attribute is the numeric execution state:
 
 **PATCH** `http://localhost:6565/v1/status`
 
+{{< code >}}
+
 ```bash
 curl -X PATCH \
   http://localhost:6565/v1/status \
@@ -615,8 +617,6 @@ For more detail about the teardown stage please go to [Test life cycle](https://
 ## Stop Test
 
 **PATCH** `http://localhost:6565/v1/status`
-
-{{< code >}}
 
 ```bash
 curl -X PATCH \
