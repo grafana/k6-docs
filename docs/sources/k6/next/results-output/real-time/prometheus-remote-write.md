@@ -26,28 +26,22 @@ As much as possible, k6 respects the [naming best practices](https://prometheus.
 - All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
 - Trends and rates have the relative suffixes, to make them more discoverable.
 
-| k6      | Prometheus                                                                                                  | Name label           |
-| ------- | ----------------------------------------------------------------------------------------------------------- | -------------------- |
-| Counter | Counter                                                                                                     | `k6_*_total`         |
-| Gauge   | Gauge                                                                                                       | `k6_*_<unit-suffix>` |
-| Rate    | Gauge                                                                                                       | `k6_*_rate`          |
-| Trend   | [Counter and Gauges (default)](#1-counter-and-gauges) or [Native Histogram](#2-prometheus-native-histogram) | `k6_*_<unit-suffix>` |
+| k6      | Prometheus          | Name label           |
+| ------- | ------------------- | -------------------- |
+| Counter | Counter             | `k6_*_total`         |
+| Gauge   | Gauge               | `k6_*_<unit-suffix>` |
+| Rate    | Gauge               | `k6_*_rate`          |
+| Trend   | Counter and Gauges  | `k6_*_<unit-suffix>` |
 
 ## Trend metric conversions
 
-This output provides two distinct mechanisms to send [k6 Trend metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to Prometheus:
-
-1. [Counter and Gauge metrics](#1-counter-and-gauges) (default)
-1. [Prometheus Native histogram](#2-prometheus-native-histogram)
-
-Both options provide efficient storage of test results while providing high-precision queries.
-
-Note that k6 aggregates trend metric data before sending it to Prometheus in both options. The reasons for aggregating data are:
+This output converts [k6 Trend metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/metrics) to Prometheus Counter and Gauge metrics.
+k6 aggregates trend metric data before sending it to Prometheus. The reasons for aggregating data are:
 
 - Prometheus stores data in a millisecond precision (`ms`), but k6 metrics collect data points with higher accuracy, nanosecond (`ns`).
 - A load test could generate vast amounts of data points. High-precision raw data could quickly become expensive and complex to scale and is unnecessary when analyzing performance trends.
 
-### 1. Counter and gauges
+### Counter and gauges
 
 By default, Prometheus supports [Counter and Gauge Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, this option is the default of this output and converts all the k6 `Trend` metrics to Counter and Gauges Prometheus metrics.
 
@@ -67,29 +61,13 @@ This option provides a configurable solution to represent `Trend` metrics in Pro
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
-### 2. Prometheus native histogram
-
-To address the limitations of the previous option, you can convert k6 trend metrics to high-fidelity histograms enabling [Prometheus native histograms](https://prometheus.io/docs/concepts/metric_types/#histogram).
-
-With this option, each k6 trend metric maps to its corresponding Prometheus histogram metric: `k6_*`. You can then query them using Prometheus histogram functions, such as [histogram_quantile()](https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile).
-
-{{< admonition type="note" >}}
-
-🌟 To learn the benefits and outcomes of using Histograms, watch [High-resolution Histograms in Prometheus](https://www.youtube.com/watch?v=F72Tk8iaWeA).
-
-⚠️ Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet. In the future, when Prometheus makes this feature stable, k6 will consider using it as the default conversion method for Trend metrics.
-
-{{< /admonition >}}
-
 ## Send test metrics to a remote write endpoint
 
 To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-remote-write-receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver). For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
 
-1. To send k6 metrics to a **remote write endpoint without native histograms**:
+1. Set up a running remote write endpoint and ensure k6 can reach it.
 
-   - Set up a running remote write endpoint and ensure k6 can reach it.
-
-   - Run your k6 script with the `--out` flag and the URL of the RW endpoint as follows:
+1. Run your k6 script with the `--out` flag and the URL of the remote write endpoint:
 
    **Trend stats**
 
@@ -107,35 +85,11 @@ To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-rem
    k6 run -o experimental-prometheus-rw script.js
    ```
 
-   - Optionally, pass the `K6_PROMETHEUS_RW_TREND_STATS` to gain the ability to query additional stats for trend metrics. The default is `p(99)`.
+1. Optionally, pass `K6_PROMETHEUS_RW_TREND_STATS` to query additional stats for trend metrics. The default is `p(99)`.
 
    ```bash
    K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
    K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),min,max \
-   k6 run -o experimental-prometheus-rw script.js
-   ```
-
-1. To send k6 metrics to a **remote write endpoint with native histograms**:
-
-   - Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus 2.40.0 or higher. Set up a running remote write endpoint and ensure k6 can reach it.
-
-   - Run your k6 script with the `--out` flag, enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` option, and the URL of the RW endpoint as follows:
-
-   **Native Histogram**
-
-   ```bash
-   K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
-   K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
-   k6 run -o experimental-prometheus-rw script.js
-   ```
-
-   **HTTP Basic Authentication**
-
-   ```bash
-   K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
-   K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
-   K6_PROMETHEUS_RW_USERNAME=USERNAME \
-   K6_PROMETHEUS_RW_PASSWORD=PASSWORD \
    k6 run -o experimental-prometheus-rw script.js
    ```
 
@@ -155,8 +109,7 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_HEADERS_<header-key>`      | `string`                             | Additional header to include in the HTTP requests. It can be set using the described format, for example `K6_PROMETHEUS_RW_HEADERS_CUSTOM-HEADER-KEY=custom-header-value`.                                                                                                             |
 | `K6_PROMETHEUS_RW_HTTP_HEADERS`              | A comma-separated list of key-values | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HTTP_HEADERS=key1:value1,key2:value2`.                                                                                                                                                                           |
 | `K6_PROMETHEUS_RW_PUSH_INTERVAL`             | `string`                             | Interval between the metrics' aggregation and upload to the endpoint. Default is `5s`.                                                                                                                                                                                                 |
-| `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean`                            | If true, maps all the defined trend metrics as [Native Histograms](#2-prometheus-native-histogram). Default is `false`.                                                                                                                                                                |
-| `K6_PROMETHEUS_RW_TREND_STATS`               | list of `string`                     | If Native Histogram is not enabled, then it defines the stats functions to map for all of the defined trend metrics. It's a comma-separated list of stats functions to include (e.g. `p(90),avg,sum`). Check the trend section to see the list of supported stats. Default is `p(99)`. |
+| `K6_PROMETHEUS_RW_TREND_STATS`               | list of `string`                     | Defines the stats functions to map for all Trend metrics. It's a comma-separated list of stats functions to include (for example, `p(90),avg,sum`). Refer to the trend section for the supported stats. Default is `p(99)`. |
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY`  | `boolean`                            | If true, the HTTP client skips TLS verification on the endpoint. Default is `false`.                                                                                                                                                                                                   |
 | `K6_PROMETHEUS_RW_TLS_MIN_VERSION`           | `string`                             | Sets the minimum TLS version used by the HTTP client. Available options: `1.2` and `1.3`. Default is `1.3`.                                                                                                                                                                            |
 | `K6_PROMETHEUS_RW_STALE_MARKERS`             | `boolean`                            | If true, the output at the end of the test marks all the seen time series as stale. Default is `false`.                                                                                                                                                                                |
@@ -183,12 +136,11 @@ For details about staleness, refer to the [Prometheus docs](https://prometheus.i
 To visualize time series with Grafana, you can use the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) or import any of the existing pre-built dashboards:
 
 - [k6 Prometheus dashboard by Grafana k6](https://grafana.com/grafana/dashboards/19665-k6-prometheus/)
-- [k6 Prometheus (Native Histograms) dashboard by Grafana k6](https://grafana.com/grafana/dashboards/18030-k6-prometheus-native-histograms/)
 - [Other public dashboards available from the community](https://grafana.com/grafana/dashboards/?search=k6&dataSource=prometheus)
 
 If you are a Grafana Cloud user, please refer to the [Grafana Cloud Prometheus docs](https://grafana.com/docs/k6/<K6_VERSION>/results-output/real-time/grafana-cloud-prometheus).
 
-For a local environment, the [`xk6-output-prometheus-remote` repository](https://github.com/grafana/xk6-output-prometheus-remote) includes a docker-compose setup that provisions the `k6 Prometheus` and `k6 Prometheus (Native Histograms)` dashboards:
+For a local environment, the [`xk6-output-prometheus-remote` repository](https://github.com/grafana/xk6-output-prometheus-remote) includes a Docker Compose setup that provisions the `k6 Prometheus` dashboard:
 
 ![Provisioned k6 Prometheus Dashboards](/media/docs/k6-oss/list-provisioned-prometheus-dashboards.png)
 
@@ -208,7 +160,7 @@ Clone the repository to get started and follow these steps for using the [docker
    Creating xk6-output-prometheus-remote_prometheus_1  ... done
    ```
 
-   Prometheus is started with Native Histogram enabled. You can use the same Prometheus instance to receive k6 trend metrics as native histograms or multiple metric stats.
+   Prometheus starts with the remote write receiver enabled.
 
 1. Run the k6 test with one of the options detailed on [Send test metrics to a remote write endpoint](#send-test-metrics-to-a-remote-write-endpoint).
 
@@ -216,13 +168,6 @@ Clone the repository to get started and follow these steps for using the [docker
 
    ```bash
    K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),min,max \
-   k6 run -o experimental-prometheus-rw script.js
-   ```
-
-   **Native Histograms**
-
-   ```bash
-   K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
    k6 run -o experimental-prometheus-rw script.js
    ```
 
@@ -235,13 +180,6 @@ Clone the repository to get started and follow these steps for using the [docker
    k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> script.js
    ```
 
-   **Native Histograms**
-
-   ```bash
-   K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
-   k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> script.js
-   ```
-
-1. After running the test, visit [http://localhost:3000](http://localhost:3000). If you enabled native histograms, select the **k6 Prometheus (Native Histograms)** dashboard; otherwise, select the **k6 Prometheus** Dashboard.
+1. After running the test, visit [http://localhost:3000](http://localhost:3000) and select the **k6 Prometheus** dashboard.
 
    ![k6 Prometheus Dashboard](/media/docs/k6-oss/k6-prometheus-dashboard.png)

@@ -366,7 +366,7 @@ export default async function () {
 For tests that primarily use assertions to validate system state, such as tests verifying a successful deployment in CI pipelines, run k6 tests with assertions in quiet mode:
 
 ```bash
-k6 run --quiet --no-summary script.ts
+k6 run --quiet --summary-mode=disabled script.ts
 ```
 
 This approach eliminates unnecessary output and focuses on the assertion results, making it ideal for automated testing environments.

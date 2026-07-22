@@ -18,25 +18,10 @@ The set of flags changes across k6 releases: some get promoted to defaults and d
 k6 features
 ```
 
-```
-FEATURE             LIFECYCLE      DESCRIPTION
-native-histograms   Experimental   Use native histograms for trend metrics
-```
-
 Add `--json` to get machine-readable output, useful for scripting — for example, checking in CI whether a specific flag is available before enabling it:
 
 ```bash
 k6 features --json
-```
-
-```json
-[
-  {
-    "feature": "native-histograms",
-    "lifecycle": "Experimental",
-    "description": "Use native histograms for trend metrics"
-  }
-]
 ```
 
 ## Enabling flags
@@ -48,13 +33,13 @@ k6 supports three ways to enable flags. Pick the one that fits your workflow.
 Use `--features` to enable a flag for a single run, without touching your config or environment:
 
 ```bash
-k6 run --features native-histograms script.js
+k6 run --features <FEATURE_NAME> script.js
 ```
 
 Separate multiple flags with commas:
 
 ```bash
-k6 run --features native-histograms,other-flag script.js
+k6 run --features <FEATURE_ONE>,<FEATURE_TWO> script.js
 ```
 
 ### Environment variable
@@ -64,20 +49,20 @@ Use `K6_FEATURES` when your CI pipeline or shell environment controls which feat
 {{< code >}}
 
 ```bash
-K6_FEATURES=native-histograms k6 run script.js
+K6_FEATURES=<FEATURE_NAME> k6 run script.js
 ```
 
 ```windows
-set "K6_FEATURES=native-histograms" && k6 run script.js
+set "K6_FEATURES=<FEATURE_NAME>" && k6 run script.js
 ```
 
 ```powershell
-$env:K6_FEATURES="native-histograms"; k6 run script.js
+$env:K6_FEATURES="<FEATURE_NAME>"; k6 run script.js
 ```
 
 {{< /code >}}
 
-Separate multiple flags with commas: `K6_FEATURES=native-histograms,other-flag`.
+Separate multiple flags with commas: `K6_FEATURES=<FEATURE_ONE>,<FEATURE_TWO>`.
 
 ### JSON config file
 
@@ -85,7 +70,7 @@ Put flags in a config file to version-control them alongside your test suite and
 
 ```json
 {
-  "features": ["native-histograms"]
+  "features": ["<FEATURE_NAME>"]
 }
 ```
 
@@ -111,15 +96,11 @@ A flag's lifecycle stage tells you how stable it is and when to clean it up. Che
 If you pass a flag k6 doesn't recognize (a typo or a flag removed after its grace period), k6 logs an `ERROR` and the run continues. Watch your logs — the flag is not applied.
 {{< /admonition >}}
 
-## Migrate from legacy environment variables
-
-Some features previously used their own environment variables. For example, `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` maps to the `native-histograms` flag. The old variable still works but logs a deprecation warning and will be removed in a future release. Switch to `K6_FEATURES=native-histograms` or `--features native-histograms` to avoid breakage when it's gone.
-
 ## Observability
 
 If you're comparing test results across runs (for example, checking whether a feature improved tail latency), you need to know which features were active. k6 tags every metric sample with the active flags so you can filter and compare in your output.
 
-While a flag is active, every metric sample carries a tag `k6_feature_<name>="true"` (hyphens become underscores, for example `k6_feature_native_histograms="true"`).
+While a flag is active, every metric sample carries a tag `k6_feature_<name>="true"`. Hyphens in the feature name become underscores.
 
 k6 also includes active flags in [usage telemetry](https://grafana.com/docs/k6/<K6_VERSION>/set-up/usage-collection/).
 

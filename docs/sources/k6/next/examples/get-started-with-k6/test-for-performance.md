@@ -298,7 +298,7 @@ k6 run api-test.js
 Did the threshold fail? If not, add another stage with a higher target and try again. Repeat until the threshold aborts the test:
 
 ```bash
-ERRO[0010] thresholds on metrics 'http_req_duration, http_req_failed' were breached; at least one has abortOnFail enabled, stopping test prematurely
+ERRO[0010] thresholds on metrics 'http_req_duration, http_req_failed' were crossed; at least one has abortOnFail enabled, stopping test prematurely
 ```
 
 ## Next steps
