@@ -40,8 +40,6 @@ The recorder uses a proxy to catch requests from the specific browser window, wh
 
 ## Record browser events
 
-{{< docs/public-preview product="Browser recording" >}}
-
 When creating k6 test scripts, there are two main types of tests:
 
 - **Protocol-level tests**: test your application and services by making requests to different protocols such as HTTP, WebSockets, etc.
