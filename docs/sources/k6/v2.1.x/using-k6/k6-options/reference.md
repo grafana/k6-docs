@@ -892,7 +892,7 @@ export const options = {
 
 ## Secret source
 
-Specify [source of secrets](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-sources) to be used within k6 script.
+Specify a [source of secrets](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/secret-source) to use within a k6 script.
 
 | Env | CLI               | Code / Config file | Default |
 | --- | ----------------- | ------------------ | ------- |
