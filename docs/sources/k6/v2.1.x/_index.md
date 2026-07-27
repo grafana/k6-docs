@@ -19,6 +19,10 @@ cards:
       href: ./get-started/
       description: Learn how to install the k6 CLI, run your first k6 test, and view metric results in the terminal.
       height: 24
+    - title: Getting started with k6 performance testing
+      href: https://grafana.com/docs/learning-hub/k6-performance-testing/
+      description: Take a hands-on Learning Hub course from your first script to automated baselines with Grafana Cloud.
+      height: 24
     - title: Using k6
       href: ./using-k6/
       description: Learn about k6 options and concepts such as thresholds, metrics, lifecycle hooks, and more.
