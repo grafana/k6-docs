@@ -16,6 +16,8 @@ Average-load tests simulate the number of concurrent users and requests per seco
 Since “load test” might refer to all types of tests that simulate traffic, this guide uses the name _average-load test_ to avoid confusion.
 In some testing conversation, this test also might be called a day-in-life test or volume test.
 
+{{< docs/learning-paths title="Establish a performance baseline with k6" url="/docs/learning-paths/establish-k6-baseline/" >}}
+
 ## When to run an average-load test
 
 Average-Load testing helps understand whether a system meets performance goals on a typical day (commonplace load). _Typical day_ here means when an average number of users access the application at the same time, doing normal, average work.

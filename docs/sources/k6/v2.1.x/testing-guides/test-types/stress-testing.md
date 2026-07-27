@@ -17,6 +17,8 @@ Similarly, after the test reaches the desired load, it might last for slightly l
 
 In some testing conversation, stress tests might also be called rush-hour, surge, or scale tests.
 
+{{< docs/learning-paths title="Find your system's limits with k6" url="/docs/learning-paths/find-k6-limits/" >}}
+
 ## When to perform a Stress test
 
 Stress tests verify the stability and reliability of the system under conditions of heavy use.

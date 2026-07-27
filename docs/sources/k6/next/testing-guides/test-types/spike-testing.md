@@ -20,6 +20,8 @@ Occasionally, teams should revamp the system to allow or prioritize resources fo
 
 ![Overview of a spike test](/media/docs/k6-oss/chart-spike-test-overview.png)
 
+{{< docs/learning-paths title="Test resilience with k6 spike testing" url="/docs/learning-paths/k6-spike-testing/" >}}
+
 ## When to perform a spike test
 
 This test must be executed when the system expects to receive a sudden rush of activity.
