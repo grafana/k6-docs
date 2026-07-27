@@ -14,7 +14,7 @@ k6 tests are written using the JavaScript or TypeScript programming language, ma
 
 Follow along and learn how to write your first test script, and start testing the reliability of your application.
 
-{{< docs/learning-paths title="Run your first k6 performance test" url="/docs/learning-paths/run-first-k6-test/" >}}
+{{< docs/learning-paths title="Run your first k6 performance test" url="https://grafana.com/docs/learning-paths/run-first-k6-test/" >}}
 
 ## Before you start
 

@@ -21,7 +21,7 @@ This test commonly has to be stopped manually or automatically as thresholds sta
 The breakpoint test is another test type with no clear naming consensus.
 In some testing conversation, it's also known as capacity, point load, and limit testing.
 
-{{< docs/learning-paths title="Find your system's limits with k6" url="/docs/learning-paths/find-k6-limits/" >}}
+{{< docs/learning-paths title="Find your system's limits with k6" url="https://grafana.com/docs/learning-paths/find-k6-limits/" >}}
 
 ## When to run a breakpoint test
 

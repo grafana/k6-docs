@@ -19,7 +19,7 @@ Though the duration is considerably longer, the ramp-up and ramp-down periods of
 
 In some testing conversation, a soak test might be called an endurance, constant high load, or stamina test.
 
-{{< docs/learning-paths title="Test system endurance with k6 soak testing" url="/docs/learning-paths/k6-soak-testing/" >}}
+{{< docs/learning-paths title="Test system endurance with k6 soak testing" url="https://grafana.com/docs/learning-paths/k6-soak-testing/" >}}
 
 ## When to perform a Soak test
 

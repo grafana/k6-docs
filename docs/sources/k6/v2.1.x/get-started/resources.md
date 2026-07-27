@@ -14,8 +14,8 @@ These resources help you write and run k6 tests in a safe environment and explor
 
 ## Learning
 
-- [Getting started with k6 performance testing](/docs/learning-hub/k6-performance-testing/). A Learning Hub course that walks you from your first script to automated baselines with Grafana Cloud.
-- [Run your first k6 performance test](/docs/learning-paths/run-first-k6-test/). A hands-on learning path to write, run, and analyze your first test.
+- [Getting started with k6 performance testing](https://grafana.com/docs/learning-hub/k6-performance-testing/). A Learning Hub course that walks you from your first script to automated baselines with Grafana Cloud.
+- [Run your first k6 performance test](https://grafana.com/docs/learning-paths/run-first-k6-test/). A hands-on learning path to write, run, and analyze your first test.
 - [Get started with k6 tutorial](https://grafana.com/docs/k6/<K6_VERSION>/examples/get-started-with-k6). The getting started tutorial provides some procedures for common real-life uses of k6 and does not require prior knowledge of k6 or JavaScript.
 - [k6 Learn](https://github.com/grafana/k6-learn). A repository with a course and a ton of learning resources.
 - [k6 OSS workshop](https://github.com/grafana/k6-oss-workshop). A 2-3 hour k6 workshop with practical k6 examples using the QuickPizza demo app.
