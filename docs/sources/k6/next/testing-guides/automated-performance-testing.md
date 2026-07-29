@@ -20,9 +20,9 @@ This guide provides general recommendations to help you plan and define a strate
 
 Please note that this guide assumes you are familiar with k6 and already have performance tests. If you are new to performance testing or k6, we recommend looking at our [get-started resources](https://grafana.com/docs/k6/<K6_VERSION>/get-started/resources#learning).
 
-{{< docs/learning-paths title="Establish a performance baseline with k6" url="https://grafana.com/docs/learning-paths/establish-k6-baseline/" >}}
-
 Before we dive in, let's consider the "why" behind automation and how it unlocks the full benefits of your performance testing efforts.
+
+{{< docs/learning-paths title="Establish a performance baseline with k6" url="https://grafana.com/docs/learning-paths/establish-k6-baseline/" >}}
 
 ## Why automate performance tests
 

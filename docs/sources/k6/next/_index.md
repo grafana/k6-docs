@@ -21,7 +21,7 @@ cards:
       height: 24
     - title: Getting started with k6 performance testing
       href: https://grafana.com/docs/learning-hub/k6-performance-testing/
-      description: Take a hands-on Learning Hub course from your first script to automated baselines with Grafana Cloud.
+      description: Take a hands-on Learning Hub course that walks you from your first script to automated baselines with Grafana Cloud.
       height: 24
     - title: Using k6
       href: ./using-k6/
