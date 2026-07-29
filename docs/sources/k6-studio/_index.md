@@ -19,8 +19,8 @@ cards:
       href: ./set-up/install/
       description: Learn how to install k6 Studio.
       height: 24
-    - title: Getting started
-      href: ./getting-started/
+    - title: Get started
+      href: ./get-started/
       description: Get started with k6 Studio by recording a session and generating an HTTP test or a browser test.
       height: 24
     - title: Components

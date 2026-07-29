@@ -25,7 +25,7 @@ To run your test, you can use the [Grafana Cloud k6](https://grafana.com/docs/gr
 
 ## Before you begin
 
-- Complete [Create an HTTP test](../create-an-http-test/) or [Create a browser test](../create-a-browser-test/) to have a test script to run.
+- Complete [Create an HTTP test](https://grafana.com/docs/k6-studio/get-started/create-an-http-test/) or [Create a browser test](https://grafana.com/docs/k6-studio/get-started/create-a-browser-test/) to have a test script to run.
 - A [Grafana Cloud](https://grafana.com/auth/sign-up/create-user) account.
 - A stack that has Grafana Cloud k6 initialized.
 
@@ -71,7 +71,7 @@ After you successfully sign in to Grafana Cloud and select a stack, you can run 
 To run a test script in Grafana Cloud k6:
 
 1. Select a test script from the **Scripts** list.
-   - If you don't have a test script, follow [Create an HTTP test](../create-an-http-test/) or [Create a browser test](../create-a-browser-test/).
+   - If you don't have a test script, follow [Create an HTTP test](https://grafana.com/docs/k6-studio/get-started/create-an-http-test/) or [Create a browser test](../create-a-browser-test/).
 1. **Optional**: Click **Validate script** on the top right, to make sure your script is working correctly.
 1. Click **Run in Grafana Cloud**.
 

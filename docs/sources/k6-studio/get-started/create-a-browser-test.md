@@ -62,5 +62,5 @@ To summarize:
 
 ## Next steps
 
-- Continue to [Run in Grafana Cloud k6](../run-in-grafana-cloud-k6/) to run your exported script.
+- Continue to [Run in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/) to run your exported script.
 - Refer to the [browser test editor](https://grafana.com/docs/k6-studio/components/browser-editor/) reference to learn about all the available actions, assertions, and locators.

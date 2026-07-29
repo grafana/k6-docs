@@ -2,8 +2,6 @@
 title: 'Create an HTTP test'
 description: 'Learn how to generate an HTTP test script from a recording, configure rules, and validate it'
 weight: 200
-aliases:
-  - ./create-an-http-test-generator # docs/k6-studio/getting-started/create-an-http-test-generator
 ---
 
 # Create an HTTP test
@@ -156,6 +154,6 @@ Now you can use the same steps to generate a test script for an application or s
 
 ## Next steps
 
-- Continue to [Run in Grafana Cloud k6](../run-in-grafana-cloud-k6/) to run your exported script.
-- Learn how to [create a browser test](../create-a-browser-test/) from the browser interactions in your recording.
+- Continue to [Run in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/) to run your exported script.  
+- Learn how to [create a browser test](https://grafana.com/docs/k6-studio/get-started/create-a-browser-test/) from the browser interactions in your recording.
 - Learn how to [install and run a test using the k6 CLI](https://grafana.com/docs/k6/latest/get-started/running-k6/).
