@@ -17,7 +17,7 @@ You can use it to define a list of hosts to allow or remove from your script, tw
 The Generator window is composed of:
 
 1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
+2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Configure with Assistant** to let Grafana Assistant propose the hosts, rules, and thresholds for your test (refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/configure-test-with-assistant/)), click **Save Generator** to save changes to your test generator file, or click the menu icon to:
    - **Validate script**: Opens the [Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
    - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
    - **Delete generator**: Deletes the selected test generator.
@@ -237,7 +237,7 @@ The available rules are:
 
 You can add multiple correlation and custom code rules to your test generator.
 
-You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI.
+You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI, or use [guided setup](https://grafana.com/docs/k6-studio/configure-test-with-assistant/) to have Grafana Assistant configure hosts, correlation, parameterization, and thresholds in one flow.
 
 ### Verification rule
 
