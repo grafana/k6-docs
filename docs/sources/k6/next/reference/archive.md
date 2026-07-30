@@ -125,20 +125,15 @@ this:
 
 ```bash
 ├-- data
-├-- files
-|   └-- home
-|       └-- nobody <-- the username has been anonymized (see section further down)
-|           └-- tests
-|               └-- api-test
-|                   └-- data
-|                       └-- users.json
 ├-- metadata.json
-└-- scripts
+└-- file
     └-- home
         └-- nobody <-- the username has been anonymized (see section further down)
             └-- tests
                 └-- api-test
                     ├-- script.js
+                    ├-- data
+                    |   └-- users.json
                     ├-- utils
                     |   └-- common.js
                     ├-- endpoints
@@ -153,12 +148,14 @@ Breaking down the file structure we get:
 
 **data** contains the source code of the main JS file (`script.js` in this example).
 
-**files** contains the full original directory tree of all [`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open)'ed data files.
+**file** contains the full original directory tree of local imported files and files read with
+[`open()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/init-context/open).
+The main script also appears under `file` as a link to **data**.
+
+If a test imports remote modules, the archive stores them in an **https** directory.
 
 **metadata.json** The resolved "default" options for this test based on [CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options),
 [Environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options) and [in-script options](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options).
-
-**_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 
 ```json
 {
@@ -169,9 +166,19 @@ Breaking down the file structure we get:
     "duration": null,
     "iterations": null,
     "stages": null,
+    "scenarios": null,
+    "executionSegment": null,
+    "executionSegmentSequence": null,
+    "noSetup": null,
     "setupTimeout": null,
+    "noTeardown": null,
     "teardownTimeout": null,
     "rps": null,
+    "dns": {
+      "ttl": null,
+      "select": null,
+      "policy": null
+    },
     "maxRedirects": null,
     "userAgent": null,
     "batch": null,
@@ -179,35 +186,57 @@ Breaking down the file structure we get:
     "httpDebug": null,
     "insecureSkipTLSVerify": null,
     "tlsCipherSuites": null,
-    "tlsVersion": {
-      "min": "",
-      "max": ""
-    },
+    "tlsVersion": null,
     "tlsAuth": null,
     "throw": null,
     "thresholds": null,
     "blacklistIPs": null,
+    "blockHostnames": null,
     "hosts": null,
     "noConnectionReuse": null,
+    "noVUConnectionReuse": null,
+    "minIterationDuration": null,
     "ext": null,
-    "summaryTrendStats": null,
+    "summaryTrendStats": [
+      "avg",
+      "min",
+      "med",
+      "max",
+      "p(90)",
+      "p(95)"
+    ],
+    "summaryTimeUnit": null,
     "systemTags": [
-      "url",
-      "name",
       "check",
       "error",
-      "tls_version",
-      "method",
-      "subproto",
-      "status",
+      "error_code",
+      "expected_response",
       "group",
-      "proto"
+      "method",
+      "name",
+      "proto",
+      "scenario",
+      "service",
+      "status",
+      "subproto",
+      "tls_version",
+      "url"
     ],
-    "tags": null
+    "tags": null,
+    "metricSamplesBufferSize": null,
+    "noCookiesReset": null,
+    "discardResponseBodies": null,
+    "features": null
   },
-  "filename": "/home/johndoe/tests/api-test/script.js",
-  "pwd": "/home/johndoe/tests/api-test/",
-  "env": {}
+  "filename": "file:///home/johndoe/tests/api-test/script.js",
+  "pwd": "file:///home/johndoe/tests/api-test",
+  "env": {},
+  "compatibilityMode": "extended",
+  "k6version": "2.1.0",
+  "goos": "linux",
+  "dependencies": {
+    "k6": "*"
+  }
 }
 ```
 

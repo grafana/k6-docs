@@ -196,13 +196,13 @@ export default async () => {
 1. Now, run the test.
 
 ```bash
-./k6 run test.js --secret-source=cli=cool=some,else=console --quiet --no-summary
+./k6 run test.js --secret-source=cli=cool=some,else=console --quiet --summary-mode=disabled
 ```
 
 {{< admonition type="note" >}}
 
 The `--secret-source=cli=cool=some,else=console` argument tells k6 to use your custom secret source and gives its configuration.
-The flag `--quiet --no-summary` configures k6 to show only custom output.
+The flags `--quiet --summary-mode=disabled` configure k6 to show only custom output.
 
 {{< /admonition >}}
 

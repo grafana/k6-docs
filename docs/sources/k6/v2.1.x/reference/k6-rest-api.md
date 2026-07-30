@@ -2,8 +2,8 @@
 aliases:
     - ../misc/k6-rest-api # docs/k6/<K6_VERSION>/misc/archive
 title: 'k6 REST API'
-description: 'With this API you can see and control different execution aspects like
-number of VUs, pause or resume the test, list groups, set and get the
+description: 'With this API you can inspect execution status, pause or resume the test,
+stop the test, list groups, set and get the
 setup data and more.'
 _build:
   list: false
@@ -28,8 +28,8 @@ with `--address=localhost:6565`; if you use a different address, substitute it i
 In earlier versions of k6, this server was on by default and listened on `localhost:6565` unless
 you opted out. The flag itself (`--address`) is unchanged.
 
-With this API you can see and control different execution aspects like number of VUs, Max
-VUs, pause or resume the test, list groups, set and get the setup data and so on.
+With this API you can inspect execution status, pause or resume a test, stop a test, list
+groups, and set or get setup data.
 
 You can also find practical usage examples in
 [this blog post](https://k6.io/blog/how-to-control-a-live-k6-test).
@@ -50,10 +50,13 @@ curl -X GET \
 {
   "data": {
     "attributes": {
+      "status": 7,
       "paused": false,
+      "vus": 1,
+      "vus-max": 1,
+      "stopped": false,
       "running": true,
-      "tainted": false,
-      "vus": 1
+      "tainted": false
     },
     "id": "default",
     "type": "status"
@@ -62,6 +65,23 @@ curl -X GET \
 ```
 
 {{< /code >}}
+
+The `status` attribute is the numeric execution state:
+
+| Value | State |
+| ----- | ----- |
+| `0` | Created |
+| `1` | Initializing VUs |
+| `2` | Initializing executors |
+| `3` | Initialization complete |
+| `4` | Paused before the run |
+| `5` | Started |
+| `6` | Running setup |
+| `7` | Running |
+| `8` | Running teardown |
+| `9` | Ended |
+| `10` | Interrupted |
+| `11` | Marked as failed |
 
 ## Update Status
 
@@ -76,8 +96,7 @@ curl -X PATCH \
   -d '{
     "data": {
         "attributes": {
-            "paused": true,
-            "vus": 1,
+            "paused": true
         },
         "id": "default",
         "type": "status"
@@ -91,8 +110,11 @@ curl -X PATCH \
     "type": "status",
     "id": "default",
     "attributes": {
+      "status": 7,
       "paused": true,
       "vus": 1,
+      "vus-max": 1,
+      "stopped": false,
       "running": true,
       "tainted": false
     }
@@ -102,8 +124,8 @@ curl -X PATCH \
 
 {{< /code >}}
 
-This endpoint lets you pause/resume a running test and set the number of `vus` and `vus-max`
-during the test.
+This endpoint lets you pause, resume, or stop a running test. The `vus` and `vus-max`
+attributes are read-only. k6 doesn't support updating the VU configuration during a run.
 
 ## List Metrics
 
@@ -513,7 +535,7 @@ For more detail about the setup stage please go to [Test life cycle](https://gra
 
 ## Run Setup
 
-**PUT** `http://localhost:6565/v1/setup`
+**POST** `http://localhost:6565/v1/setup`
 
 {{< code >}}
 
@@ -553,18 +575,7 @@ For more detail about the setup stage please go to [Test life cycle](https://gra
 curl -X PUT \
   http://localhost:6565/v1/setup \
   -H 'Content-Type: application/json' \
-  -d '{
-    "data": {
-        "attributes": {
-            "data": {
-                "a": 1,
-                "b": 2
-            }
-        },
-        "id": "default",
-        "type": "setupData"
-    }
-}'
+  -d '{"a": 1, "b": 2}'
 ```
 
 ```json
@@ -588,11 +599,24 @@ This endpoint parses the JSON request body and sets the result as Setup data.
 
 For more detail about the setup stage please go to [Test life cycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
 
+## Run Teardown
+
+**POST** `http://localhost:6565/v1/teardown`
+
+```bash
+curl -X POST \
+  http://localhost:6565/v1/teardown \
+  -H 'Content-Type: application/json'
+```
+
+This endpoint executes the teardown stage. A successful request returns an empty response
+with an HTTP `200` status code.
+
+For more detail about the teardown stage please go to [Test life cycle](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/test-lifecycle).
+
 ## Stop Test
 
 **PATCH** `http://localhost:6565/v1/status`
-
-{{< code >}}
 
 ```bash
 curl -X PATCH \
@@ -609,18 +633,5 @@ curl -X PATCH \
 }'
 ```
 
-```json
-{
-  "data": {
-    "type": "status",
-    "id": "default",
-    "attributes": {
-      "stopped": true
-    }
-  }
-}
-```
-
-{{< /code >}}
-
-This call parses the JSON request body to update the status and stop a running test.
+This call parses the JSON request body to stop a running test. The response contains the
+complete [status object](#get-status), with `stopped` set to `true`.

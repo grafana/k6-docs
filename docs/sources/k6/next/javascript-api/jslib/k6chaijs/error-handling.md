@@ -38,7 +38,7 @@ export default function () {
 This code will work fine when the SUT returns correct responses. But, when the SUT starts to fail, `r.json().length` will throw an exception:
 
 ```bash
-ERRO[0001] cannot parse json due to an error at line 1, character 2 , error: invalid character '<' looking for beginning of value
+ERRO[0001] cannot parse json due to an error at line 1, character 1 , error: invalid character '<' looking for beginning of value
 running at reflect.methodValueCall (native)
 ```
 
