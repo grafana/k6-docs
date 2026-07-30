@@ -22,6 +22,8 @@ Please note that this guide assumes you are familiar with k6 and already have pe
 
 Before we dive in, let's consider the "why" behind automation and how it unlocks the full benefits of your performance testing efforts.
 
+{{< docs/learning-paths title="Establish a performance baseline with k6" url="https://grafana.com/docs/learning-paths/establish-k6-baseline/" >}}
+
 ## Why automate performance tests
 
 Whether it's a website loading in under a second, API responses in milliseconds, or instantaneous fault responses, performance is critical as it directly impacts the end-user experience. However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
