@@ -21,8 +21,8 @@ The Generator window is composed of:
    - Click the save icon to save changes to your test generator file.
    - Click **Export script** to save the generated script to your computer.
    - Click **Validate** to open the Debugger and run one iteration of the generated script.
-   - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test.
-   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/getting-started/run-in-grafana-cloud-k6/).
+   - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) for a step-by-step guide.
+   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/).
    - Click the menu icon to **Move to Trash** the selected test generator.
 3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
 4. **Generator options**: Below the test generator name, you can see:
@@ -240,7 +240,7 @@ The available rules are:
 
 You can add multiple correlation and custom code rules to your test generator.
 
-You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI.
+You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI, or use [guided setup](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) to have Grafana Assistant configure hosts, correlation, parameterization, and thresholds in one flow.
 
 ### Verification rule
 

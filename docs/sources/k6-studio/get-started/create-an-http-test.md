@@ -23,7 +23,7 @@ In this guide, you will:
 
 To generate a script from a test recording:
 
-- If you still have the test recording open from the last step, click **Create test** > **HTTP test** on the top-right.
+- If you still have the test recording open from the last step, click **Create test** > **HTTP test** on the top-right. k6 Studio asks how you want to configure the test. This tutorial configures everything manually, so click **Open generator**. If you'd like Grafana Assistant to propose the configuration for you instead, refer to [Configure a test with Grafana Assistant](../configure-test-with-assistant/).
 - You can also click **New test** next to **Tests** in the sidebar, select **HTTP test**, and then select your recording on the top-right.
 
 A dialog box shows up that lets you select the hosts to use from the recording for generating the script. Select `quickpizza.grafana.com` and press **Continue**.
@@ -157,3 +157,4 @@ Now you can use the same steps to generate a test script for an application or s
 - Continue to [Run in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/) to run your exported script.  
 - Learn how to [create a browser test](https://grafana.com/docs/k6-studio/get-started/create-a-browser-test/) from the browser interactions in your recording.
 - Learn how to [install and run a test using the k6 CLI](https://grafana.com/docs/k6/latest/get-started/running-k6/).
+- Try [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) to have Grafana Assistant propose this configuration for you instead.
