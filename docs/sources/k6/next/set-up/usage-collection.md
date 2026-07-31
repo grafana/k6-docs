@@ -29,7 +29,11 @@ The usage report does not contain any information about what you are testing. Th
 - The number of times `require` was called.
 - Whether `global` was accessed.
 
-> The module and output lists contain only k6 built-in names. An extension is reported only if it's listed in the public [k6 extension catalog](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore/). Private and unlisted extensions are never reported.
+{{< admonition type="note" >}}
+
+The module and output lists contain only k6 built-in names. An extension is reported only if it's listed in the public [k6 extension catalog](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore/). Private and unlisted extensions are never reported.
+
+{{< /admonition >}}
 
 Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
 
