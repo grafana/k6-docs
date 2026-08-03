@@ -39,7 +39,7 @@ To create a test recording:
 1. Type "quickpizza.grafana.com" under **Starting URL**.
 1. Click **Start recording**. You should see a Google Chrome window open after a few seconds, and the **Requests** header in the k6 Studio application.
 
-   {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-1-test-recorder-3.png" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-get-started-record-session-1-start-recording.png" >}}
 
 1. In k6 Studio, click the edit button next to **Default group**, rename it to "Homepage", and press **Enter**.
 1. Next click **Create group**, name it "Generate pizza", and press **Enter**. Groups can help organize your test scripts so they're easier to edit and maintain in the future, and give you timing metrics for each group in your test script.
@@ -48,7 +48,7 @@ To create a test recording:
 
 This will complete the requests for the "Generate pizza" group.
 
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-2-test-api-service-3.png" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-get-started-record-session-2-generate-pizza.png" >}}
 
 ### Log in to the service
 
@@ -60,7 +60,7 @@ In this next step, you'll log in to the service to be able to rate a pizza:
 
 You'll be logged in to the test service, and this will complete the requests for the "Log in" group.
 
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-3-test-api-service-login.png" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-get-started-record-session-3-login.png" >}}
 
 ### Generate and rate a named pizza
 
@@ -71,7 +71,7 @@ In this next step, you'll generate and rate a pizza again, this time with a cust
 1. In the top-right of the page, toggle the `Advanced` input, a form will appear on the page to customize the generated pizza.
 1. In the form, insert "testedpizza" as a name in the **Custom Pizza Name** input, and press the **Pizza, Please!** button. You should see a generated recommendation with the same name.
 
-   {{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-4-test-api-service-generate-pizza.png" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-get-started-record-session-4-custom-pizza.png" >}}
 
 1. Under the recommendation, press the **Love it!** button, a message with "Rated!" will appear.
 1. In k6 Studio, click **Stop recording**.
@@ -92,7 +92,7 @@ After you finish a recording, you can visualize the request and response data fo
 
 To view the request and response data for a request, click on the request you would like to inspect from the **Requests** list.
 
-{{< figure src="/media/docs/k6-studio/tutorial/screenshot-k6-studio-tutorial-5-test-recording-inspector-3.png" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-get-started-record-session-step-5.png" >}}
 
 The Request and Response panels have tabs where you can view the headers, payload, or cookies for a request, and the headers, content, and cookies for a response. For the response content tab, you can also view it in different formats, such as the raw data, or a preview.
 
