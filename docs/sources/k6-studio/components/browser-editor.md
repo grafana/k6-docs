@@ -8,6 +8,8 @@ weight: 250
 
 The browser test editor lets you build and debug a k6 browser test using a visual interface, without writing JavaScript code manually. You can add actions and assertions that interact with elements on a page, debug the test to see how the browser behaves, and export it as a k6 test script.
 
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-browser-test-editor-panels.png" alt="k6 Studio browser test editor window, showing a browser test with a preview of the page on the left, the list of actions on the right, and numbers next to each section of the application" >}}
+
 The browser test editor window is composed of:
 
 1. **Browser test name**: The name of the browser test. This is automatically generated, but you can rename it to help keep your files organized.

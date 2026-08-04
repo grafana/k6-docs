@@ -12,7 +12,7 @@ The Generator takes the output of a test recording and gives you options to cust
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-3.png" alt="k6 Studio Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-test-generator-panels.png" alt="k6 Studio Generator window, showing a test generator with a list of requests grouped by page, four test rules at the bottom, and numbers next to each section of the application" >}}
 
 The Generator window is composed of:
 
@@ -25,12 +25,11 @@ The Generator window is composed of:
    - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/).
    - Click the menu icon to **Move to Trash** the selected test generator.
 3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
-4. **Generator options**: Below the test generator name, you can see:
-   - **Add rule**: Opens a list of rule types that you can add to the generator.
+4. **Generator options**: Next to the tabs, you can see:
    - **Test options**: Configure the load profile, thresholds, think time, and load zones.
    - **Test data**: Define variables, and configure data files that can be used in your test rules.
    - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
-5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
+5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured. Next to the list, you can click **Add rule** to open a list of rule types that you can add to the generator, or **Autocorrelate** to detect and create correlation rules automatically.
 
 ## Test options
 
