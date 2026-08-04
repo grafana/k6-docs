@@ -1,14 +1,22 @@
 ---
-title: 'Run a test in Grafana Cloud k6'
+title: 'Run in Grafana Cloud k6'
 description: 'Learn how to log in to your Grafana Cloud k6 account and run a test script directly from k6 Studio.'
-weight: 375
+weight: 400
+aliases:
+  - ../run-test-in-grafana-cloud # docs/k6-studio/run-test-in-grafana-cloud
 ---
 
-# Run a test script in Grafana Cloud k6
+# Run in Grafana Cloud k6
 
-After you finish creating and validating a test script in k6 Studio, you might want to run it with the scenarios you've configured in the set up phase to simulate a real-world performance test scenario.
+After you create and validate a test script in k6 Studio, you can run it with the scenarios you've configured to simulate a real-world performance test.
 
-To do so, you can use the [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/) integration directly inside of k6 Studio. Running your tests in Grafana Cloud k6 offers several advantages:
+In this guide, you will:
+
+- Log in to Grafana Cloud from k6 Studio.
+- Select a Grafana Cloud stack.
+- Run a test script in Grafana Cloud k6.
+
+To run your test, you can use the [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/) integration directly inside of k6 Studio. Running your tests in Grafana Cloud k6 offers several advantages:
 
 - **Advanced analytics**: Access comprehensive dashboards and visualization tools for test results.
 - **Collaboration**: Share test results with your team members.
@@ -17,8 +25,7 @@ To do so, you can use the [Grafana Cloud k6](https://grafana.com/docs/grafana-cl
 
 ## Before you begin
 
-To run a test script in Grafana Cloud k6, you'll need:
-
+- Complete [Create an HTTP test](https://grafana.com/docs/k6-studio/get-started/create-an-http-test/) or [Create a browser test](https://grafana.com/docs/k6-studio/get-started/create-a-browser-test/) to have a test script to run.
 - A [Grafana Cloud](https://grafana.com/auth/sign-up/create-user) account.
 - A stack that has Grafana Cloud k6 initialized.
 
@@ -59,12 +66,12 @@ To sign out from Grafana Cloud:
 
 ## Run a test in Grafana Cloud
 
-After you successfully sign in to Grafana Cloud and select a stack, you can run your test scripts in Grafana Cloud k6 directly from k6 Studio. You can also configure and launch a test in one guided setup with Grafana Assistant. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/configure-test-with-assistant/).
+After you successfully sign in to Grafana Cloud and select a stack, you can run your test scripts in Grafana Cloud k6 directly from k6 Studio. You can also configure and launch a test in one guided setup with Grafana Assistant. Refer to [Configure a test with Grafana Assistant](../configure-test-with-assistant/).
 
 To run a test script in Grafana Cloud k6:
 
 1. Select a test script from the **Scripts** list.
-   - If you don't have a test script, follow the [Record your first script](https://grafana.com/docs/k6-studio/record-your-first-script/) tutorial.
+   - If you don't have a test script, follow [Create an HTTP test](https://grafana.com/docs/k6-studio/get-started/create-an-http-test/) or [Create a browser test](../create-a-browser-test/).
 1. **Optional**: Click **Validate script** on the top right, to make sure your script is working correctly.
 1. Click **Run in Grafana Cloud**.
 

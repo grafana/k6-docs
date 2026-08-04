@@ -5,7 +5,7 @@ title: Grafana k6 Studio
 
 # Grafana k6 Studio
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-homepage-3.png" alt="Grafana k6 Studio homepage" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-homepage.png" alt="Grafana k6 Studio homepage" >}}
 
 Grafana k6 Studio is a desktop application that can help you:
 

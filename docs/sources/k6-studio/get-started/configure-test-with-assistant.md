@@ -1,12 +1,18 @@
 ---
 title: 'Configure a test with Grafana Assistant'
 description: 'Use guided setup in k6 Studio to select hosts, correlate dynamic values, parameterize requests, and set thresholds with Grafana Assistant, and then run the test in Grafana Cloud.'
-weight: 360
+weight: 250
 ---
 
 # Configure a test with Grafana Assistant
 
 Guided setup is a step-by-step wizard that uses [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/) to turn a recording into a configured HTTP test. At each step, the Assistant analyzes your recording and proposes configuration that you review and adjust: the hosts to include, correlation rules for dynamic values, parameterization rules for hard-coded values, and thresholds based on the response times in your recording. The final step summarizes the test plan and runs the test in [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/testing/k6/).
+
+In this guide, you will:
+
+- Start guided setup from a recording.
+- Review and adjust the hosts, correlation rules, parameterization rules, and thresholds that Grafana Assistant proposes.
+- Run the configured test in Grafana Cloud k6.
 
 {{< admonition type="note" >}}
 
@@ -14,14 +20,14 @@ Guided setup is [experimental](https://grafana.com/docs/release-life-cycle/#expe
 
 {{< /admonition >}}
 
-Guided setup works with HTTP tests. To create a browser test from a recording, refer to [Record browser events](https://grafana.com/docs/k6-studio/record-browser-events/).
+Guided setup works with HTTP tests. To create a browser test from a recording, refer to [Create a browser test](../create-a-browser-test/).
 
 ## Before you begin
 
 To use guided setup, make sure you have:
 
 - **A [Grafana Cloud](https://grafana.com/products/cloud/) account.** Guided setup uses Grafana Assistant, which requires a Grafana Cloud account. You can sign in, or create a free account, when the wizard prompts you.
-- **A recording with requests.** [Create a recording](https://grafana.com/docs/k6-studio/record-your-first-script/) in k6 Studio, or open a HAR file.
+- **A recording with requests.** Complete [Record a browser session](../record-a-browser-session/) to create a test recording, or open a HAR file.
 - **Proxy online.** The Autocorrelation step uses the proxy to validate your script. If the proxy is offline, you can skip that step.
 
 {{< admonition type="note" >}}
@@ -94,10 +100,10 @@ The last step summarizes what your test will do before you launch it:
 
 You can also expand **Edit load options** to adjust the load profile, review the **Configured by Assistant** summary of the earlier steps, and expand **View generated script** to inspect the k6 script.
 
-To launch the test, click **Save and run**. k6 Studio saves the test generator and opens the **Run in Grafana Cloud** dialog box. When the run starts, the test results open in your browser. Refer to [Run a test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/) for more details.
+To launch the test, click **Save and run**. k6 Studio saves the test generator and opens the **Run in Grafana Cloud** dialog box. When the run starts, the test results open in your browser. Refer to [Run in Grafana Cloud k6](../run-in-grafana-cloud-k6/) for more details.
 
 To finish without running the test, click **Open generator**.
 
 ## Next steps
 
-Everything guided setup configures is regular test generator configuration: allowed hosts, correlation and parameterization rules, thresholds, and the load profile. After the wizard, you can keep refining the test in the [Generator](https://grafana.com/docs/k6-studio/components/generator/), validate it with the [Validator](https://grafana.com/docs/k6-studio/components/validator/), or [run it again in Grafana Cloud](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+Everything guided setup configures is regular test generator configuration: allowed hosts, correlation and parameterization rules, thresholds, and the load profile. After the wizard, you can keep refining the test in the [Generator](https://grafana.com/docs/k6-studio/components/generator/), validate it with the [Debugger](https://grafana.com/docs/k6-studio/components/debugger/), or [run it again in Grafana Cloud](../run-in-grafana-cloud-k6/).
