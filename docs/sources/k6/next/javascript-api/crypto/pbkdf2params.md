@@ -12,18 +12,18 @@ PBKDF2 (Password-Based Key Derivation Function 2) is designed to derive cryptogr
 
 ## Properties
 
-| Property   | Type          | Description                                                                    |
-| :--------- | :------------ | :----------------------------------------------------------------------------- |
-| name       | `string`      | Should be set to `PBKDF2`.                                                     |
-| hash       | `string`      | The hash function to use. Can be `SHA-1`, `SHA-256`, `SHA-384`, or `SHA-512`.  |
-| salt       | `ArrayBuffer` | A random or pseudo-random value of at least 16 bytes.                          |
+| Property   | Type          | Description                                                                                                            |
+| :--------- | :------------ | :--------------------------------------------------------------------------------------------------------------------- |
+| name       | `string`      | Should be set to `PBKDF2`.                                                                                             |
+| hash       | `string`      | The hash function to use. Can be `SHA-1`, `SHA-256`, `SHA-384`, or `SHA-512`.                                          |
+| salt       | `ArrayBuffer` | A random or pseudo-random value of at least 16 bytes.                                                                  |
 | iterations | `number`      | The number of iterations to perform. Must be greater than 0. Should be as high as possible (e.g., 310000 for SHA-256). |
 
 ## Example
 
 ```javascript
 export default async function () {
-  const password = stringToArrayBuffer('my secret password');
+  const password = new TextEncoder().encode('my secret password');
 
   // Import the password as a key
   const baseKey = await crypto.subtle.importKey('raw', password, 'PBKDF2', false, [
@@ -47,15 +47,6 @@ export default async function () {
   );
 
   console.log('derived bits: ' + arrayBufferToHex(derivedBits));
-}
-
-function stringToArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2);
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 
 function arrayBufferToHex(buffer) {

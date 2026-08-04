@@ -13,17 +13,18 @@ Only one listener per event type is supported. Calling `on()` for an event that 
 ## Signature
 
 <!-- md-k6:skipall -->
+<!-- eslint-skip -->
 
 ```javascript
-socket.on(event, listener)
+socket.on(event, listener);
 ```
 
 ### Parameters
 
-| Parameter | Type | Description |
-| :-------- | :--- | :---------- |
-| event | string | Event name: `'connect'`, `'data'`, `'close'`, `'error'`, or `'timeout'` |
-| listener | function | Callback invoked when the event fires |
+| Parameter | Type     | Description                                                             |
+| :-------- | :------- | :---------------------------------------------------------------------- |
+| event     | string   | Event name: `'connect'`, `'data'`, `'close'`, `'error'`, or `'timeout'` |
+| listener  | function | Callback invoked when the event fires                                   |
 
 ## Events
 
@@ -33,10 +34,12 @@ Emitted when the socket successfully establishes a connection to the remote serv
 
 #### Signature
 
+<!-- eslint-skip -->
+
 ```javascript
-socket.on("connect", () => {
+socket.on('connect', () => {
   // Connection established
-})
+});
 ```
 
 ### data
@@ -45,17 +48,19 @@ Emitted when data is received from the remote endpoint. The data is provided as 
 
 #### Signature
 
+<!-- eslint-skip -->
+
 ```javascript
-socket.on("data", (data) => {
+socket.on('data', (data) => {
   // data is Uint8Array
-})
+});
 ```
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :-------- | :--- | :---------- |
-| data | Uint8Array | The received data |
+| Parameter | Type       | Description       |
+| :-------- | :--------- | :---------------- |
+| data      | Uint8Array | The received data |
 
 ### close
 
@@ -63,10 +68,12 @@ Emitted when the socket connection is fully closed, either by the local or remot
 
 #### Signature
 
+<!-- eslint-skip -->
+
 ```javascript
-socket.on("close", () => {
+socket.on('close', () => {
   // Connection fully closed
-})
+});
 ```
 
 ### error
@@ -75,17 +82,19 @@ Emitted when a socket error occurs, such as a connection failure or network issu
 
 #### Signature
 
+<!-- eslint-skip -->
+
 ```javascript
-socket.on("error", (error) => {
+socket.on('error', (error) => {
   // Handle error
-})
+});
 ```
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :-------- | :--- | :---------- |
-| error | Error | The error object |
+| Parameter | Type  | Description      |
+| :-------- | :---- | :--------------- |
+| error     | Error | The error object |
 
 ### timeout
 
@@ -93,10 +102,12 @@ Emitted when the socket times out due to inactivity as configured by `setTimeout
 
 #### Signature
 
+<!-- eslint-skip -->
+
 ```javascript
-socket.on("timeout", () => {
+socket.on('timeout', () => {
   // Inactivity timeout reached
-})
+});
 ```
 
 ## Returns
@@ -106,41 +117,44 @@ socket.on("timeout", () => {
 ## Example
 
 ```javascript
-import { Socket } from "k6/x/tcp"
+import { Socket } from 'k6/x/tcp';
 
 export default async function () {
-  const socket = new Socket()
+  const socket = new Socket();
 
   const closed = new Promise((resolve) => {
-    socket.on("close", () => {
-      console.log("Connection closed")
-      resolve()
-    })
-  })
+    socket.on('close', () => {
+      console.log('Connection closed');
+      resolve();
+    });
+  });
 
-  socket.on("connect", () => {
-    console.log("Connected to server")
-  })
+  socket.on('connect', () => {
+    console.log('Connected to server');
+  });
 
-  socket.on("data", (data) => {
-    const str = String.fromCharCode.apply(null, new Uint8Array(data))
-    console.log("Received:", str)
-    socket.destroy()
-  })
+  socket.on('data', (data) => {
+    const str = new TextDecoder().decode(data);
+    console.log('Received:', str);
+    socket.destroy();
+  });
 
-  socket.on("error", (err) => {
-    console.error("Socket error:", err)
-    socket.destroy()
-  })
+  socket.on('error', (err) => {
+    console.error('Socket error:', err);
+    socket.destroy();
+  });
 
-  socket.on("timeout", () => {
-    console.log("Socket timed out")
-    socket.destroy()
-  })
+  socket.on('timeout', () => {
+    console.log('Socket timed out');
+    socket.destroy();
+  });
 
-  await socket.connect(8080, "example.com")
-  await socket.write("Hello, server!")
+  const host = __ENV.TCP_HOST || 'localhost';
+  const port = __ENV.TCP_PORT || '8080';
 
-  await closed
+  await socket.connect(port, host);
+  await socket.write('Hello, server!');
+
+  await closed;
 }
 ```

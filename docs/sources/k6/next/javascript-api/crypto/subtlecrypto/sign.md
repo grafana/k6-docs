@@ -51,7 +51,7 @@ export default async function () {
     ['sign', 'verify']
   );
 
-  const data = string2ArrayBuffer('Hello World');
+  const data = new TextEncoder().encode('Hello World');
 
   /**
    * Signes the encoded data with the provided key using the HMAC algorithm
@@ -65,15 +65,6 @@ export default async function () {
   const verified = await crypto.subtle.verify('HMAC', generatedKey, signature, data);
 
   console.log('verified: ', verified);
-}
-
-function string2ArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 ```
 
@@ -90,7 +81,7 @@ export default async function () {
     ['sign', 'verify']
   );
 
-  const data = string2ArrayBuffer('Hello World');
+  const data = new TextEncoder().encode('Hello World');
 
   const alg = { name: 'ECDSA', hash: { name: 'SHA-256' } };
 
@@ -104,15 +95,6 @@ export default async function () {
 
   console.log('verified: ', verified);
 }
-
-const string2ArrayBuffer = (str) => {
-  const buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
-};
 
 const printArrayBuffer = (buffer) => {
   const view = new Uint8Array(buffer);

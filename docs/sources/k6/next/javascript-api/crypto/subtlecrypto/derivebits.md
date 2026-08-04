@@ -16,11 +16,11 @@ deriveBits(algorithm, baseKey, length)
 
 ## Parameters
 
-| Name        | Type                                                                                                                                                                                                                           | Description                                                                                                              |
-| :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| `algorithm` | [EcdhKeyDeriveParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/ecdhkeyderiveparams/) or [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | An object defining a derivation algorithm to use.                                                                        |
-| `baseKey`   | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/cryptokey)                                                                                                                                          | Represents an input to derivation algorithm. Could be an ECDH private key or a PBKDF2 password imported as a CryptoKey. |
-| `length`    | `number`                                                                                                                                                                                                                       | The length of the bits to derive. Must be a positive number and a multiple of 8.                                         |
+| Name        | Type                                                                                                                                                                                                       | Description                                                                                                             |
+| :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| `algorithm` | [EcdhKeyDeriveParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/ecdhkeyderiveparams/) or [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | An object defining a derivation algorithm to use.                                                                       |
+| `baseKey`   | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/cryptokey)                                                                                                                      | Represents an input to derivation algorithm. Could be an ECDH private key or a PBKDF2 password imported as a CryptoKey. |
+| `length`    | `number`                                                                                                                                                                                                   | The length of the bits to derive. Must be a positive number and a multiple of 8.                                        |
 
 ### Supported algorithms
 
@@ -34,9 +34,9 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the derived bits.
 
 ## Throws
 
-| Type             | Description                                            |
-| :--------------- | :----------------------------------------------------- |
-| `OperationError` | Raised when `length` is 0 or not a multiple of 8.      |
+| Type             | Description                                       |
+| :--------------- | :------------------------------------------------ |
+| `OperationError` | Raised when `length` is 0 or not a multiple of 8. |
 
 ## Examples
 
@@ -95,7 +95,7 @@ const printArrayBuffer = (buffer) => {
 
 ```javascript
 export default async function () {
-  const password = stringToArrayBuffer('my secret password');
+  const password = new TextEncoder().encode('my secret password');
 
   // Import the password as a key
   const baseKey = await crypto.subtle.importKey('raw', password, 'PBKDF2', false, [
@@ -119,15 +119,6 @@ export default async function () {
   );
 
   console.log('derived bits: ' + printArrayBuffer(derivedBits));
-}
-
-function stringToArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2);
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 
 const printArrayBuffer = (buffer) => {

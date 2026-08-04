@@ -11,9 +11,10 @@ Closes the connection and destroys the socket. After you call `destroy()`, the s
 ## Signature
 
 <!-- md-k6:skipall -->
+<!-- eslint-skip -->
 
 ```javascript
-socket.destroy()
+socket.destroy();
 ```
 
 ## Parameters
@@ -27,32 +28,35 @@ None.
 ## Example
 
 ```javascript
-import { Socket } from "k6/x/tcp"
+import { Socket } from 'k6/x/tcp';
 
 export default async function () {
-  const socket = new Socket()
+  const socket = new Socket();
 
   const closed = new Promise((resolve) => {
-    socket.on("close", () => {
-      console.log("Connection closed")
-      resolve()
-    })
-  })
+    socket.on('close', () => {
+      console.log('Connection closed');
+      resolve();
+    });
+  });
 
-  socket.on("data", (data) => {
-    const str = String.fromCharCode.apply(null, new Uint8Array(data))
-    console.log("Received:", str)
-    socket.destroy()
-  })
+  socket.on('data', (data) => {
+    const str = new TextDecoder().decode(data);
+    console.log('Received:', str);
+    socket.destroy();
+  });
 
-  socket.on("error", (err) => {
-    console.error("Error:", err)
-    socket.destroy()
-  })
+  socket.on('error', (err) => {
+    console.error('Error:', err);
+    socket.destroy();
+  });
 
-  await socket.connect(8080, "example.com")
-  await socket.write("Hello, server!")
+  const host = __ENV.TCP_HOST || 'localhost';
+  const port = __ENV.TCP_PORT || '8080';
 
-  await closed
+  await socket.connect(port, host);
+  await socket.write('Hello, server!');
+
+  await closed;
 }
 ```

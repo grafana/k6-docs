@@ -83,6 +83,10 @@ The [`k6/websockets` module](https://grafana.com/docs/k6/<K6_VERSION>/javascript
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-ws.md" version="<K6_VERSION>" >}}
 
+## Text encoding
+
+The [`TextEncoder` and `TextDecoder` APIs](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/text-encoding) convert between JavaScript strings and UTF-8 or UTF-16 encoded bytes. Both constructors are available globally without an import statement.
+
 ## crypto
 
 {{< docs/shared source="k6" lookup="javascript-api/crypto.md" version="<K6_VERSION>" >}}
