@@ -110,5 +110,5 @@ Starting in k6 v2.2.0, `k6 cloud run --local-execution` also streams k6's logs t
 To stop streaming logs to the cloud, pass `--no-cloud-logs`:
 
 ```bash
-K6_CLOUD_TOKEN=<YOUR_API_TOKEN> K6_CLOUD_STACK_ID=<YOUR_STACK_ID> k6 cloud run --local-execution --no-cloud-logs script.js
+k6 cloud run --local-execution --no-cloud-logs script.js
 ```
