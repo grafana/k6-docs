@@ -35,6 +35,7 @@ Each option has its own detailed reference in a separate section.
 | [Exit on running](#exit-on-running)                          | Exits when test reaches the running status                                                                                                                                                                                                                                                                                                         |
 | [Cloud options](#cloud-options)                              | An object used to set configuration options for cloud parameters.                                                                                                                                                                                                                                                                                  |
 | [Features](#features)                                        | Enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags) to opt in to new, not-yet-stable behavior                                                                                                                                                                                                                  |
+| [Handle summary timeout](#handle-summary-timeout)            | Specify how long the [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) function is allowed to run before it's terminated                                                                                                                                                                    |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                         |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                                |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                          |
@@ -403,6 +404,20 @@ Enable [feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature
 
 ```bash
 k6 run --features native-histograms script.js
+```
+
+## Handle summary timeout
+
+Specify how long the [`handleSummary()`](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) function is allowed to run before it's terminated and k6 falls back to the default end-of-test summary. If defined, the value must be positive.
+
+| Env                         | CLI | Code / Config file     | Default  |
+| --------------------------- | --- | ---------------------- | -------- |
+| `K6_HANDLE_SUMMARY_TIMEOUT` | N/A | `handleSummaryTimeout` | `"120s"` |
+
+```javascript
+export const options = {
+  handleSummaryTimeout: '30s',
+};
 ```
 
 ## Hosts
