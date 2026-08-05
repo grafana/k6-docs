@@ -104,9 +104,21 @@ You can set these tags in four ways:
 
 - In the `K6_TAGS` environment variable, using a comma-separated list of `NAME:VALUE` pairs:
 
+  {{< code >}}
+
   ```bash
   K6_TAGS=name:value,other:value k6 run script.js
   ```
+
+  ```windows
+  set "K6_TAGS=name:value,other:value" && k6 run script.js
+  ```
+
+  ```powershell
+  $env:K6_TAGS="name:value,other:value"; k6 run script.js
+  ```
+  {{< /code >}}
+
 
 - In the script itself:
 
@@ -120,13 +132,13 @@ You can set these tags in four ways:
   };
   ```
 
-- In a [JSON config file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to/#configuration-file), under the `tags` key
+- In a [JSON config file](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#set-options-with-the-config-flag), under the `tags` key
 
 ### Combining tags from multiple sources
 
-By default, if you set test-wide tags in more than one place, k6 doesn't merge them: whichever source has the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to/#order-of-precedence) replaces the tags from every lower-priority source entirely. For example, if your script sets `options.tags = { env: 'staging', team: 'backend' }` and you also pass `--tag region=us-east`, the result is only `{ region: 'us-east' }`.
+By default, if you set test-wide tags in more than one place, k6 doesn't merge them: whichever source has the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to#order-of-precedence) replaces the tags from every lower-priority source entirely. For example, if your script sets `options.tags = { env: 'staging', team: 'backend' }` and you also pass `--tag region=us-east`, the result is only `{ region: 'us-east' }`.
 
-To merge tags across sources instead of replacing them, enable the `merge-run-tags` [feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/). With the flag on, k6 combines the tags from the config file, the script, the environment variable, and the CLI, in that order. On a key collision, the higher-priority source wins.
+To merge tags across sources instead of replacing them, enable the `merge-run-tags` [feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags). With the flag on, k6 combines the tags from the config file, the script, the environment variable, and the CLI, in that order. On a key collision, the higher-priority source wins.
 
 ## Code-defined tags
 
