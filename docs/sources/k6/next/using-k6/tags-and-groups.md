@@ -126,13 +126,7 @@ You can set these tags in four ways:
 
 By default, if you set test-wide tags in more than one place, k6 doesn't merge them: whichever source has the highest [order of precedence](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/how-to/#order-of-precedence) replaces the tags from every lower-priority source entirely. For example, if your script sets `options.tags = { env: 'staging', team: 'backend' }` and you also pass `--tag region=us-east`, the result is only `{ region: 'us-east' }`.
 
-To merge tags across sources instead of replacing them, enable the experimental `merge-run-tags` [feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/):
-
-```bash
-k6 run --features merge-run-tags script.js
-```
-
-With the flag on, k6 combines the tags from the config file, the script, the environment variable, and the CLI, in that order. On a key collision, the higher-priority source wins.
+To merge tags across sources instead of replacing them, enable the `merge-run-tags` [feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/). With the flag on, k6 combines the tags from the config file, the script, the environment variable, and the CLI, in that order. On a key collision, the higher-priority source wins.
 
 ## Code-defined tags
 

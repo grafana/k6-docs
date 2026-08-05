@@ -22,6 +22,7 @@ k6 features
 FEATURE             LIFECYCLE      DESCRIPTION
 native-histograms   Experimental   Use native histograms for trend metrics
 merge-run-tags      Experimental   Merge run tags across config layers instead of replacing
+freeze-env          Experimental   Freeze __ENV object to prevent modifications from JS code
 ```
 
 Add `--json` to get machine-readable output, useful for scripting — for example, checking in CI whether a specific flag is available before enabling it:
