@@ -17,18 +17,35 @@ A usage report includes the following information:
 - The k6 Studio version (for example, `1.7.0`).
 - The timestamp of when the data was collected (for example, `2024-10-22T16:02:56.261Z`).
 
-| Event name            | Description                                          | Event payload                                                                       |
-| --------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `app_installed`       | k6 Studio is installed and opened for the first time |                                                                                     |
-| `user_logged_in`      | The user logs in to Grafana Cloud                    |                                                                                     |
-| `recording_created`   | A new recording is created                           |                                                                                     |
-| `recording_imported`  | A recording is imported                              |                                                                                     |
-| `generator_created`   | A new generator is created                           |                                                                                     |
-| `generator_updated`   | An existing generator is updated                     | The total number of test rules per rule type and the total number of disabled rules |
-| `script_copied`       | A script is copied into the clipboard                |                                                                                     |
-| `script_exported`     | A script is exported                                 |                                                                                     |
-| `script_validated`    | A script is validated                                |                                                                                     |
-| `script_run_in_cloud` | A script is run in the cloud                         |                                                                                     |
+| Event name                            | Description                                                                    | Event payload                                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `app_installed`                        | k6 Studio is installed and opened for the first time                            |                                                                                       |
+| `user_logged_in`                       | The user logs in to Grafana Cloud                                               |                                                                                       |
+| `recording_created`                    | A new recording is created                                                      |                                                                                       |
+| `recording_imported`                   | A recording is imported                                                         |                                                                                       |
+| `generator_created`                    | A new generator is created                                                      |                                                                                       |
+| `generator_updated`                    | An existing generator is updated                                                | The total number of test rules per rule type and the total number of disabled rules |
+| `browser_test_created`                 | A new browser test is created                                                   |                                                                                       |
+| `browser_test_updated`                 | An existing browser test is updated                                             |                                                                                       |
+| `script_copied`                        | A script is copied into the clipboard                                          | Whether the script was copied from the Generator or the Debugger                    |
+| `script_exported`                      | A script is exported                                                             | Whether the script is external (not created via k6 Studio)                          |
+| `script_validated`                     | A script is validated                                                           | Whether the script is external (not created via k6 Studio)                          |
+| `script_opened_external`              | A script created outside k6 Studio is opened in the Debugger                    |                                                                                       |
+| `script_run_in_cloud`                  | A script is run in the cloud                                                     |                                                                                       |
+| `assistant_sign_in_succeeded`         | The user signs in to Grafana Assistant                                          |                                                                                       |
+| `autocorrelation_dialog_opened`       | The Autocorrelation dialog is opened                                            |                                                                                       |
+| `autocorrelation_started`             | An Autocorrelation analysis is started                                          |                                                                                       |
+| `autocorrelation_succeeded`           | An Autocorrelation analysis completes successfully                             |                                                                                       |
+| `autocorrelation_partially_succeeded` | An Autocorrelation analysis partially succeeds                                 |                                                                                       |
+| `autocorrelation_failed`              | An Autocorrelation analysis fails                                              |                                                                                       |
+| `autocorrelation_aborted`             | An Autocorrelation analysis is aborted                                         | The status of the analysis when it was aborted                                      |
+| `autocorrelation_errored`             | An Autocorrelation analysis errors                                             |                                                                                       |
+| `test_setup_wizard_opened`            | The test setup wizard is opened                                                 |                                                                                       |
+| `test_setup_wizard_completed`         | The test setup wizard is completed                                             |                                                                                       |
+| `test_setup_wizard_dismissed`         | The user dismisses the test setup wizard to configure the test manually instead |                                                                                       |
+| `test_setup_wizard_step_started`      | A step in the test setup wizard is started                                     | The step name                                                                        |
+| `test_setup_wizard_step_finished`     | A step in the test setup wizard is finished                                    | The step name, outcome, and duration                                                |
+| `test_setup_wizard_sign_up_clicked`   | The user clicks the sign-up link in the test setup wizard                      |                                                                                       |
 
 We use [Sentry](https://sentry.io/) to collect crash reports and error data. That includes:
 
