@@ -7,7 +7,6 @@ weight: 500
 {{< docs/shared source="k6" lookup="preview-feature.md" version="<K6_VERSION>" >}}
 
 # Assertions
-I AM A CHANGE FOR THE NEXT RELEASE!
 
 k6 provides test assertions in the form of the [`expect`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/testing/expect) function. Assertions validate that your application behaves as expected during testing.
 
