@@ -1,6 +1,4 @@
 ---
-aliases:
-  - ../misc/cloud-commands # docs/k6/<K6_VERSION>/misc/cloud-commands
 title: 'Cloud commands'
 description: 'The k6 cloud command and its subcommands run and manage Grafana Cloud k6 tests, projects, and load zones from the command line.'
 weight: 06
