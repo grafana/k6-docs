@@ -23,12 +23,19 @@ The usage report does not contain any information about what you are testing. Th
 - The running program's architecture target (386, amd64, arm, s390x...)
 - The list of JavaScript imported modules (`k6/http`, `k6/experimental/webcrypto`, ...)
 - The list of used outputs (`json`, `influxdb`, ...)
+- The list of used extensions, each with its Go module path, version, and type (`js`, `output`, or `subcommand`)
 - The test run ID if the test was executed in the cloud or was outputed to it
 - The number of parsed files and how many were TypeScript files.
 - The number of times `require` was called.
 - Whether `global` was accessed.
 
-> Only k6 built-in JavaScript modules and outputs are considered. Private modules and custom extensions are excluded.
+{{< admonition type="note" >}}
+
+The module and output lists contain only k6 built-in names. An extension is reported only if it's listed in the public [k6 extension catalog](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explore/). Private and unlisted extensions are never reported.
+
+{{< /admonition >}}
+
+Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
 
 This report is sent to an HTTPS server that collects statistics on k6 usage.
 
