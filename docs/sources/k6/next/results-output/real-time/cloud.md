@@ -102,3 +102,13 @@ This behavior can be deactivated by adding the `--no-archive-upload` option to y
 command: `k6 cloud run --local-execution --no-archive-upload script.js`.
 
 {{< /admonition >}}
+
+## Stream logs to the cloud
+
+Starting in k6 v2.2.0, `k6 cloud run --local-execution` also streams k6's logs to Grafana Cloud k6. You can view them in the test run alongside the results, the same as a test that runs on cloud servers. Your local log output is unaffected.
+
+To stop streaming logs to the cloud, pass `--no-cloud-logs`:
+
+```bash
+K6_CLOUD_TOKEN=<YOUR_API_TOKEN> K6_CLOUD_STACK_ID=<YOUR_STACK_ID> k6 cloud run --local-execution --no-cloud-logs script.js
+```
