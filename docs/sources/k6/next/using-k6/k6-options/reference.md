@@ -75,6 +75,7 @@ Each option has its own detailed reference in a separate section.
 | [Teardown timeout](#teardown-timeout)                        | Specify how long the teardown() function is allowed to run before it's terminated                                                                                                                                                                                                                                                                |
 | [Thresholds](#thresholds)                                    | Configure under what conditions a test is successful or not                                                                                                                                                                                                                                                                                      |
 | [Throw](#throw)                                              | A boolean specifying whether to throw errors on failed HTTP requests                                                                                                                                                                                                                                                                             |
+| [TLS AIA fetch](#tls-aia-fetch)                              | A boolean that lets k6 fetch missing intermediate CA certificates via the Authority Information Access (AIA) extension                                                                                                                                                                                                                           |
 | [TLS auth](#tls-auth)                                        | A list of TLS client certificate configuration objects                                                                                                                                                                                                                                                                                           |
 | [TLS cipher suites](#tls-cipher-suites)                      | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server                                                                                                                                                                                                                                                              |
 | [TLS version](#tls-version)                                  | String or object representing the only SSL/TLS version allowed                                                                                                                                                                                                                                                                                   |
@@ -1265,6 +1266,22 @@ Available in `k6 run` and `k6 cloud` commands.
 ```javascript
 export const options = {
   throw: true,
+};
+```
+
+## TLS AIA fetch
+
+A boolean, true or false. When enabled, k6 follows the Authority Information Access (AIA) extension on server-presented certificates to fetch missing intermediate CA certificates over HTTP. This lets k6 verify TLS chains against servers that don't bundle the full chain in their handshake, which browsers do by default but Go's `crypto/tls` does not.
+
+Fetched intermediates are cached and reused for the lifetime of the test, and AIA fetches respect the same blocking, host override, and DNS rules as regular test traffic. This option has no effect when `insecureSkipTLSVerify` is enabled.
+
+| Env                | CLI | Code / Config file | Default |
+| ------------------ | --- | ------------------ | ------- |
+| `K6_TLS_AIA_FETCH` | N/A | `tlsAIAFetch`      | `false` |
+
+```javascript
+export const options = {
+  tlsAIAFetch: true,
 };
 ```
 
