@@ -4,6 +4,50 @@ aliases:
 title: 'Generator'
 description: 'Understand how the k6 Studio Generator works'
 weight: 200
+image_maps:
+  - key: k6-studio-generator
+    src: https://grafana.com/media/docs/k6-studio/screenshot-k6-studio-2.0-test-generator-panels.png
+    alt: k6 Studio Generator window, showing a test generator with a list of requests grouped by page, and four test rules at the bottom
+    points:
+      - x_coord: 28
+        y_coord: 08
+        content: |
+          **Generator name**
+
+          The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
+      - x_coord: 56
+        y_coord: 08
+        content: |
+          **Generator actions**
+
+          On the top-right you can see the action buttons for the Generator. From here you can:
+            - Click the save icon to save changes to your test generator file.
+            - Click **Export script** to save the generated script to your computer.
+            - Click **Validate** to open the Debugger and run one iteration of the generated script.
+            - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) for a step-by-step guide.
+            - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/).
+            - Click the menu icon to **Move to Trash** the selected test generator.
+      - x_coord: 08
+        y_coord: 12
+        content: |
+          **Requests and Script inspector**
+
+          The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
+      - x_coord: 72
+        y_coord: 12
+        content: |
+          **Generator options**
+
+          Next to the tabs, you can see:
+            - **Test options**: Configure the load profile, thresholds, think time, and load zones.
+            - **Test data**: Define variables, and configure data files that can be used in your test rules.
+            - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
+      - x_coord: 08
+        y_coord: 74
+        content: |
+          **Test rules list**
+
+          The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured. Next to the list, you can click **Add rule** to open a list of rule types that you can add to the generator, or **Autocorrelate** to detect and create correlation rules automatically.
 ---
 
 # Generator
@@ -12,24 +56,9 @@ The Generator takes the output of a test recording and gives you options to cust
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-test-generator-panels.png" alt="k6 Studio Generator window, showing a test generator with a list of requests grouped by page, four test rules at the bottom, and numbers next to each section of the application" >}}
-
 The Generator window is composed of:
 
-1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can:
-   - Click the save icon to save changes to your test generator file.
-   - Click **Export script** to save the generated script to your computer.
-   - Click **Validate** to open the Debugger and run one iteration of the generated script.
-   - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) for a step-by-step guide.
-   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/).
-   - Click the menu icon to **Move to Trash** the selected test generator.
-3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
-4. **Generator options**: Next to the tabs, you can see:
-   - **Test options**: Configure the load profile, thresholds, think time, and load zones.
-   - **Test data**: Define variables, and configure data files that can be used in your test rules.
-   - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
-5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured. Next to the list, you can click **Add rule** to open a list of rule types that you can add to the generator, or **Autocorrelate** to detect and create correlation rules automatically.
+{{< image-map key="k6-studio-generator" >}}
 
 ## Test options
 

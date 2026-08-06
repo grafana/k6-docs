@@ -5,6 +5,50 @@ aliases:
 title: 'Recorder'
 description: 'Understand how the k6 Studio Recorder works'
 weight: 100
+image_maps:
+  - key: k6-studio-recorder
+    src: https://grafana.com/media/docs/k6-studio/screenshot-k6-studio-2.0-test-recorder-panels.png
+    alt: k6 Studio Recorder window, showing a completed test recording with a list of requests grouped by page, and a request and response inspector on the right side
+    points:
+      - x_coord: 39
+        y_coord: 08
+        content: |
+          **Test recording name**
+
+          The name of the test recording and HAR file. This is automatically generated, but you can rename it to help keep your recordings organized.
+      - x_coord: 76
+        y_coord: 08
+        content: |
+          **Recorder actions**
+
+          On the top-right you can see the action buttons for the Recorder. Depending on whether you're starting a recording or inspecting a recording, you might see:
+            - **New recording**: Starts a new recording.
+            - **Stop recording**: Stops the existing recording.
+            - **Discard**: Deletes the existing recording and returns you to the empty Recorder, where you can start a new one.
+            - **Create test**: Opens a menu with two options:
+              - **HTTP test**: Creates a test generator from the selected test recording.
+              - **Browser test**: Creates a browser test script from the recorded browser events.
+      - x_coord: 16
+        y_coord: 15
+        content: |
+          **Recorder options**
+
+          Below the test recording name, you can see:
+            - **Requests**: The total number of requests in the recording
+            - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
+            - **Search**: A search box that lets you search across all request data, such as headers, cookies, payload, and response data. You can also use the toggle to search only by URL, method, or status code.
+      - x_coord: 13
+        y_coord: 10
+        content: |
+          **Requests tab**
+
+          Shows the list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Click on a request to open the request and response inspector on the right side, where you can view the headers, payload, cookies, and content of the request.
+      - x_coord: 22
+        y_coord: 10
+        content: |
+          **Browser events tab**
+
+          Shows the list of browser events recorded during the session, such as clicks, navigation, form inputs, and assertions. Each event shows a short description of the interaction and the element it targeted. Hover over an event to highlight the corresponding element in the browser window, or click a URL in a navigation event to jump the browser to that page.
 ---
 
 # Recorder
@@ -13,24 +57,9 @@ The Recorder is the first component of k6 Studio. With it, you can start a recor
 
 k6 Studio collects every request and response, as well as browser interactions. After you stop the recording, it generates a HAR file including the browser events. You can then inspect every request and response to see if your test recording accurately reflects a user flow, and then use it as the source for your test script.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-test-recorder-panels.png" alt="k6 Studio Recorder window, showing a completed test recording with a list of requests grouped by page, a request and response inspector on the right side, and numbers next to each section of the application" >}}
-
 The Recorder window is composed of:
 
-1. **Test recording name**: The name of the test recording and HAR file. This is automatically generated, but you can rename it to help keep your recordings organized.
-2. **Recorder actions**: On the top-right you can see the action buttons for the Recorder. Depending on whether you're starting a recording or inspecting a recording, you might see:
-   - **New recording**: Starts a new recording.
-   - **Stop recording**: Stops the existing recording.
-   - **Discard**: Deletes the existing recording and returns you to the empty Recorder, where you can start a new one.
-   - **Create test**: Opens a menu with two options:
-     - **HTTP test**: Creates a test generator from the selected test recording.
-     - **Browser test**: Creates a browser test script from the recorded browser events.
-3. **Recorder options**: Below the test recording name, you can see:
-   - **Requests**: The total number of requests in the recording
-   - **Show static assets**: A toggle that controls whether you can see all static assets requests in the Requests list. The static assets requests are hidden by default.
-   - **Search**: A search box that lets you search across all request data, such as headers, cookies, payload, and response data. You can also use the toggle to search only by URL, method, or status code.
-4. **Requests tab**: Shows the list of requests, and groups if any, in the HAR file. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Click on a request to open the request and response inspector on the right side, where you can view the headers, payload, cookies, and content of the request.
-5. **Browser events tab**: Shows the list of browser events recorded during the session, such as clicks, navigation, form inputs, and assertions. Each event shows a short description of the interaction and the element it targeted. Hover over an event to highlight the corresponding element in the browser window, or click a URL in a navigation event to jump the browser to that page.
+{{< image-map key="k6-studio-recorder" >}}
 
 {{< admonition type="note" >}}
 
