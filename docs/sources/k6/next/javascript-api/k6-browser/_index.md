@@ -22,10 +22,11 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 The table below lists the properties you can import from the browser module (`'k6/browser'`).
 
-| Property | Description                                                                                                                                                                          |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| browser  | The browser module API is the entry point for all your tests. See the [example](#example) and the [API](#browser-module-api) below.                                                  |
-| devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
+| Property | Description                                                                                                                                                                                                                                                                                                                       |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| browser  | The browser module API is the entry point for all your tests. See the [example](#example) and the [API](#browser-module-api) below.                                                                                                                                                                                               |
+| chromium | A [Chromium](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/chromium) browser type that can attach to an already running Chromium-based browser instead of one that k6 launches. See [chromium.connectOverCDP()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/chromium/connectovercdp). |
+| devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below.                                                                                                                                              |
 
 ## Browser Module API
 
