@@ -19,13 +19,13 @@ cards:
       href: ./set-up/install/
       description: Learn how to install k6 Studio.
       height: 24
-    - title: Record your first script
-      href: ./record-your-first-script/
-      description: Get started with k6 Studio by recording a test, creating rules, and validating the generated script.
+    - title: Get started
+      href: ./get-started/
+      description: Get started with k6 Studio by recording a session and generating an HTTP test or a browser test.
       height: 24
     - title: Components
       href: ./components/
-      description: Understand how the Recorder, Generator, and Validator components work.
+      description: Understand how the Recorder, Generator, Browser test editor, and Debugger components work.
       height: 24
     - title: Troubleshoot
       href: ./troubleshoot/

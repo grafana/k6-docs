@@ -12,22 +12,24 @@ The Generator takes the output of a test recording and gives you options to cust
 
 You can use it to define a list of hosts to allow or remove from your script, tweak the load profile for your test, include variables in your script, and configure rules to extract values, parameterize requests, and more.
 
-{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-test-generator-panels-3.png" alt="k6 Studio Generator window, showing a test generator with three test rules, the requests panel open on the right side with several requests, and the correlation rule panel open and configured to search for a CSRF token" >}}
+{{< figure src="/media/docs/k6-studio/screenshot-k6-studio-2.0-test-generator-panels.png" alt="k6 Studio Generator window, showing a test generator with a list of requests grouped by page, four test rules at the bottom, and numbers next to each section of the application" >}}
 
 The Generator window is composed of:
 
 1. **Generator name**: The name of the test generator. This is automatically generated, but you can rename it to help keep your files organized.
-2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can select a recording, click **Save Generator** to save changes to your test generator file, or click the menu icon to:
-   - **Validate script**: Opens the [Validator](https://grafana.com/docs/k6-studio/components/test-validator/) and starts a one iteration run of the test script.
-   - **Export script**: Opens the export script dialog box. You can enter a name for your script, and also select whether you want to overwrite a script if one with the same name already exists.
-   - **Delete generator**: Deletes the selected test generator.
+2. **Generator actions**: On the top-right you can see the action buttons for the Generator. From here you can:
+   - Click the save icon to save changes to your test generator file.
+   - Click **Export script** to save the generated script to your computer.
+   - Click **Validate** to open the Debugger and run one iteration of the generated script.
+   - Click **Configure with Assistant** to open the test setup wizard, which guides you through configuring hosts, autocorrelation, parameterization, and thresholds, and then running a test. Refer to [Configure a test with Grafana Assistant](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) for a step-by-step guide.
+   - Click **Run in Grafana Cloud** to [run your test in Grafana Cloud k6](https://grafana.com/docs/k6-studio/get-started/run-in-grafana-cloud-k6/).
+   - Click the menu icon to **Move to Trash** the selected test generator.
 3. **Requests and Script inspector**: The list of requests, and groups if any, from the selected recording. The requests are organized by time, and you can see the method, status code, host, and path for each one. You can also collapse and expand groups to inspect them more easily. Clicking on any request opens the request inspector, where you can view the request and response details.
-4. **Generator options**: Below the test generator name, you can see:
-   - **Add rule**: Opens a list of rule types that you can add to the generator.
+4. **Generator options**: Next to the tabs, you can see:
    - **Test options**: Configure the load profile, thresholds, think time, and load zones.
    - **Test data**: Define variables, and configure data files that can be used in your test rules.
    - **Allowed hosts**: Shows a list of hosts for the recording, and lets you select which ones to include or remove from the script.
-5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured.
+5. **Test rules list**: The list of test rules applied to this particular generator. The rules can be reordered, and you can see some details about how they're configured. Next to the list, you can click **Add rule** to open a list of rule types that you can add to the generator, or **Autocorrelate** to detect and create correlation rules automatically.
 
 ## Test options
 
@@ -67,7 +69,7 @@ The think time option lets you configure a fixed or random delay, between groups
 
 {{< admonition type="note" >}}
 
-Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/run-test-in-grafana-cloud/).
+Load zones only affects tests that are executed in [Grafana Cloud k6](https://grafana.com/docs/k6-studio/getting-started/run-in-grafana-cloud-k6/).
 
 {{< /admonition >}}
 
@@ -131,12 +133,6 @@ For performance testing, it's common to not include static assets, or remove hos
 
 ## Autocorrelation
 
-{{< admonition type="note" >}}
-
-This feature is in public preview and subject to change.
-
-{{< /admonition >}}
-
 Autocorrelation is an AI-powered feature that automatically creates correlation rules for your test scripts. It detects dynamic values, such as session tokens, CSRF tokens, and resource IDs, that change between recording and playback, and creates rules to extract and reuse these values so your scripts work correctly.
 
 When you record a user session, many applications include dynamic values in their requests and responses. These values, like authentication tokens or session IDs, are generated at runtime and differ each time the session is replayed. Without correlation, your test script fails because it uses the original recorded values instead of the new ones.
@@ -169,64 +165,66 @@ To automatically create correlation rules for your recording:
 
 2. In the **Test rules** section, click **Autocorrelate**.
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-button.png" alt="k6 Studio Generator window, highlighting the Autocorrelate button" >}}
 
 3. Sign in if prompted. In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, complete the sign-in in your browser, and select the Grafana Cloud stack you want to use.
 
-
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-sign-in-grafana-cloud-2.png" alt="Autocorrelation dialog prompting the user to sign in to Grafana Cloud" >}}
 
 4. Connect to Grafana Assistant if prompted. Click **Connect to Grafana Assistant** to open your browser. Approve the sign-in, check that the verification code in the browser matches the one shown in k6 Studio, then return to the app. If this is your first time using Grafana Assistant, you're also prompted to review and accept the terms and conditions in the browser before the connection completes.
 
-
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-autocorrelation-approve-assistant.png" alt="Permission approval dialog in Grafana Assistant" >}}
 
 5. Click **Analyze recording** to start the process.
 
-6. **Wait for analysis to complete.** Autocorrelation:
-    - Validates your script to identify mismatches
-    - Analyzes the recording to find dynamic values
-    - Creates correlation rules to handle those values
+6. **Wait for the analysis to complete.** The dialog shows progress in two panels:
 
-7. **Review validation results.** The right panel shows the validation requests, so you can see how the script performed.
+   - The left panel shows an actions log with a timestamped entry for each step: validation progress, the requests Grafana Assistant searches and inspects, and its reasoning.
+   - The right panel shows the **Rules created** list. Rules appear in the list as Grafana Assistant creates them.
 
-8. **Review the suggested rules.** The left panel shows the rules that were created. Each rule is selected by default. You can:
-    - Clear the checkbox next to a rule to exclude it
-    - Use **Select all** to toggle all rules at once
+7. **Review the created rules.** Click a rule to expand or collapse its details. Each rule shows:
 
-9. **Accept or discard the rules:**
-    - Click **Accept** to add the selected rules to your generator
-    - Click **Discard** to close the dialog without adding any rules
-    - Click **Stop** to cancel the analysis while it's running
+   - **Value**: the dynamic value the rule extracts.
+   - **Source**: the request the value is extracted from.
+   - **Reused in**: the requests where the extracted value is reused.
 
-    {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-2.png" alt="k6 Studio autocorrelation dialog with suggested rules" >}}
+   To exclude a rule, click the remove (**×**) icon on the rule.
+
+8. **Add or discard the rules:**
+
+   - Click **Add [number] rules** to add the rules to your test generator. The button label shows how many rules will be added.
+   - Click **Discard** to close the dialog without adding any rules.
+
+   {{< figure src="/media/docs/k6-studio/screenshot-k6-studio-correlation-results-3.png" alt="k6 Studio autocorrelation dialog showing the actions log and created rules" >}}
 
 ### Understand the results
 
-After analysis completes, you see one of these outcomes:
+The last entry in the actions log summarizes the outcome of the analysis.
 
-| Status                    | Description                                                                                                           |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Correlation not needed    | The script validation passed without any rules. Your current configuration handles all requests correctly.            |
-| Autocorrelation completed | Grafana Assistant successfully created rules that resolve all mismatches.                                             |
-| Partially correlated      | Some requests are still failing, but significant progress was made. You might need to add manual rules for edge cases. |
-| Autocorrelation failed    | Grafana Assistant couldn't create rules to fix the mismatches. Consider adding rules manually.                        |
+| Outcome                | How it appears                                                                 | What to do next                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Correlation not needed | The log shows "Validation passed. No additional correlation rules are needed." | Your current configuration already handles all requests. No rules are created.                |
+| Completed              | The final log entry is highlighted green. All mismatches are resolved.         | Review the rules and click **Add [number] rules**.                                            |
+| Partially correlated   | The final log entry is highlighted yellow. Some requests still fail.           | Add the created rules, then create remaining [correlation rules](#correlation-rule) manually. |
+| Failed                 | The final log entry is highlighted red.                                        | Create [correlation rules](#correlation-rule) manually.                                       |
 
 ### Troubleshoot Autocorrelation
 
-| Issue            | Message                                                                   | Solution                                                                                                         |
-| ---------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Not signed in    | Sign in to Grafana Cloud to use the Grafana Assistant.                    | In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, or sign in from the Profile menu in k6 Studio. |
-| Session expired  | Your Grafana Assistant session has expired. Please reconnect to continue. | Click **Reconnect** and approve the sign-in in your browser.                                                      |
-| Proxy offline    | The **Analyze recording** button is disabled.                             | Make sure the proxy is running. Check the proxy status indicator in the application.                             |
-| Unexpected error | An unexpected error occurred during autocorrelation.                      | Click **Retry** to try again. If the problem persists, click **Report issue** to submit a bug report.             |
+| Issue                | Message                                                                                                                                         | Solution                                                                                                                                  |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Not signed in        | Sign in to Grafana Cloud to use the Grafana Assistant.                                                                                          | In the Autocorrelation dialog, click **Sign in to Grafana Cloud**, or sign in from the Profile menu in k6 Studio.                         |
+| Session expired      | Your Grafana Assistant session has expired. Please reconnect to continue.                                                                       | Click **Reconnect** and approve the sign-in in your browser.                                                                              |
+| Proxy offline        | The **Analyze recording** button is disabled.                                                                                                   | Make sure the proxy is running. Check the proxy status indicator in the application.                                                      |
+| Recording too large  | This recording has too many requests for AI analysis. Try filtering out unnecessary requests or splitting your recording into smaller sessions. | Click **Close**, then reduce the number of allowed hosts, work with a smaller recording, or split your recording into smaller sessions.   |
+| Usage limit reached  | You've reached your monthly prompt limit.                                                                                                       | Wait for your monthly limit to reset, or click **Upgrade plan** to review Grafana Cloud plans. Click **Go back** to return to the dialog. |
+| Connection error     | Could not connect to Grafana Assistant. Check your internet connection and try again.                                                           | Check your internet connection and click **Retry**.                                                                                       |
+| Something went wrong | An unexpected error occurred. Click retry to try again or report an issue if the problem persists.                                              | Click **Retry** to try again. If the problem persists, click **Report issue** to submit a bug report.                                     |
 
 ### Considerations
 
-- **Feature preview.** Autocorrelation is in [public preview](https://grafana.com/docs/release-life-cycle/#public-preview). Functionality might change in future releases.
 - **Data processing.** Your recording data is sent to Grafana Assistant for analysis. The generated rules are applied locally in k6 Studio.
 - **Manual rules.** You can still create [correlation rules](#correlation-rule) manually using the **Add rule** menu. Autocorrelation complements manual rule creation; it doesn't replace it.
-- **Large recordings.** Very large recordings might exceed the context available for analysis. Try reducing the number of allowed hosts, working with a smaller recording, or splitting your recording into multiple smaller sessions.
+- **Large recordings.** Very large recordings might exceed the context available for analysis. Try filtering out unnecessary requests, reducing the number of allowed hosts, or splitting your recording into multiple smaller sessions.
 
 ## Rules
 
@@ -241,7 +239,7 @@ The available rules are:
 
 You can add multiple correlation and custom code rules to your test generator.
 
-You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI.
+You can also use [Autocorrelation](#autocorrelation) to automatically create correlation rules using AI, or use [guided setup](https://grafana.com/docs/k6-studio/get-started/configure-test-with-assistant/) to have Grafana Assistant configure hosts, correlation, parameterization, and thresholds in one flow.
 
 ### Verification rule
 
@@ -264,9 +262,9 @@ The configuration fields are:
 - **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be extracted or replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be extracted or replaced.
   - **Regex**: Define the regular expression to match the value to be extracted or replaced.
-  - **JSON**: Define the JSON path to match the value to be extracted or replaced.
+  - **JSON**: Define the JSON property path to match the value to be extracted or replaced.
 
-When creating or editing a correlation rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a correlation rule, k6 Studio shows the **Extracted value** at the bottom of the rule editor, and adds **Match** or **Value extracted** badges to requests in the list, so you can check that your configuration is applied to the correct requests and values in your test script.
 
 ### Parameterization rule
 
@@ -279,14 +277,14 @@ The configuration fields are:
 - **Type**: Select Begin-End, Regex, or JSON as the way to search for the value to be replaced.
   - **Begin-End**: Define the Begin and End values as the strings immediately before and after the value to be replaced.
   - **Regex**: Define the regular expression to match the value to be replaced.
-  - **JSON**: Define the JSON path to match the value to be replaced.
+  - **JSON**: Define the JSON property path to match the value to be replaced.
 - **Replace with**: Configure how you want to replace the values when a match is found. You can use:
   - **Text value**: Define a text value.
   - **Variables**: Use a variable from the drop-down list. Make sure that you configure the variable value to be used under **Test data** -> **Variables**.
   - **Data file**: Select a data file from the drop-down list. After you select a data file, you can select any properties from the **Property name** list. The test script will use a different value for each iteration of the test run. Refer to [Data files](#data-files) for more details.
   - **Custom code**: Use a custom JavaScript code snippet to define a value. You must include a `return` statement with the value you'd like to use.
 
-When creating or editing a parameterization rule, you can use the **Rule preview** panel to check that your configuration options are working as intended, and being applied to the correct requests and values in your test script.
+When creating or editing a parameterization rule, k6 Studio adds a **Match** badge to requests in the list, so you can check that your configuration is applied to the correct requests and values in your test script.
 
 ### Custom code rule
 
@@ -388,10 +386,10 @@ The regular expression must include a capturing group `()` to specify the value 
 
 {{< /admonition >}}
 
-## Validate and export script
+## Debug and export script
 
-After you're done configuring the test options and rules for your test generator, you can click the menu icon on the top-right to validate and export your script.
+After you're done configuring the test options and rules for your test generator, you can debug and export your script from the top-right of the Generator.
 
-When clicking on validate script, the Validator opens and runs one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
+Click **Validate** to open the Debugger and run one iteration of your test script. You can click on each request to inspect the request and response, and view the logs, checks, and script tab to review the output of the test generator.
 
-After validating your script, you can export it so you can run it using the k6 CLI, or using Grafana Cloud k6.
+After validating your script, click **Export script** to save it so you can run it using the k6 CLI, or click **Run in Grafana Cloud** to run it directly from k6 Studio.

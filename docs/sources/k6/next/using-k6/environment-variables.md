@@ -31,6 +31,9 @@ export default function () {
 }
 ```
 
+By default, `__ENV` is a plain, mutable object: assignments like `__ENV.MY_HOSTNAME = 'other'` persist for the rest of the iteration. To make `__ENV` read-only instead, enable the `freeze-env` [feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags).
+Modifying it will then throw a `TypeError` in strict-mode code, or fail silently otherwise.
+
 The recommended option to pass environment variables to your testing script is to use one or more [`-e` / `--env` CLI flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#supply-environment-variables)
 (this command works the same for all platforms):
 
