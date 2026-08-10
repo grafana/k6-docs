@@ -1,0 +1,13 @@
+---
+title: browser/webvital-core-metrics
+---
+
+<!-- vale off -->
+
+| Metric name           | Description                                                                                                                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| browser_web_vital_cls | Measures the visual stability on a webpage by quantifying the amount of unexpected layout shift of visible page content. Refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.                                |
+| browser_web_vital_inp  | A metric that measures a page's responsiveness. Refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.                                                                |
+| browser_web_vital_lcp | Measures the time it takes for the largest content element on a page to become visible. Refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information.                                                                |
+
+<!-- vale on -->
