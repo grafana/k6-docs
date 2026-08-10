@@ -21,17 +21,15 @@ Because you connect from inside the iteration, you can compute the WebSocket end
 
 ### Returns
 
-| Type               | Description                                                                                                                                                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Promise<Browser>` | A Promise that fulfills with a [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) object. It also exposes a `close()` method, as described in [Connection lifecycle](#connection-lifecycle). |
+| Type               | Description                                                                                                                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Promise<Browser>` | A Promise that fulfills with a [Browser](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser) object. Unlike the k6-managed `browser`, it also exposes [`close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/close). |
 
 ### Connection lifecycle
 
-k6 manages the connection for you and closes it at the end of the iteration, the same way it does for a browser it launched itself.
+k6 manages the connection for you and closes it at the end of the iteration, the same way it does for a browser it launched itself. Call [`browser.close()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/close) when you want to release it earlier.
 
-Unlike a k6-managed `browser`, a browser returned by `connectOverCDP` also exposes a `close()` method, so you can release the connection earlier when you no longer need it. Calling `close()` only tears down k6's CDP connection. The browser itself keeps running, because you own its lifecycle.
-
-Using a browser after you close it throws an error, so treat `close()` as the last thing you do with it in the iteration.
+Closing the connection doesn't stop the browser itself. You own its lifecycle, so it keeps running.
 
 ### Examples
 
@@ -95,5 +93,6 @@ export default async function (data) {
 ### Related
 
 - [browser module API](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser#browser-module-api) - The API a connected browser exposes
+- [browser.close()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/close/) - Release the connection before the iteration ends
 - [browser.isConnected](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/isconnected/) - Check whether the CDP connection is still active
 - [Running browser tests](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/running-browser-tests) - Run tests with a browser that k6 launches
