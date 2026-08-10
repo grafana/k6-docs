@@ -35,21 +35,21 @@ The API is designed to feel familiar to users of [MQTT.js](https://github.com/mq
 
 ## API
 
-| Class/Type | Description |
-| ---------- | ----------- |
-| [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client) | MQTT client for connecting to brokers and managing operations |
-| [Client.connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/connect) | Connect to an MQTT broker |
-| [Client.reconnect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/reconnect) | Reconnect to the broker |
-| [Client.subscribe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/subscribe) | Subscribe to MQTT topics |
-| [Client.subscribeAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/subscribe-async) | Subscribe to topics asynchronously |
-| [Client.unsubscribe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/unsubscribe) | Unsubscribe from topics |
-| [Client.unsubscribeAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/unsubscribe-async) | Unsubscribe from topics asynchronously |
-| [Client.publish()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/publish) | Publish messages to MQTT topics |
-| [Client.publishAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/publish-async) | Publish messages asynchronously |
-| [Client.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/on) | Register event handlers |
-| [Client.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/end) | Disconnect from the MQTT broker |
-| [Client.endAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/end-async) | Disconnect asynchronously |
-| [QoS](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client#qos) | Quality of Service enumeration |
+| Class/Type                                                                                                              | Description                                                   |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Client](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client)                                      | MQTT client for connecting to brokers and managing operations |
+| [Client.connect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/connect)                    | Connect to an MQTT broker                                     |
+| [Client.reconnect()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/reconnect)                | Reconnect to the broker                                       |
+| [Client.subscribe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/subscribe)                | Subscribe to MQTT topics                                      |
+| [Client.subscribeAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/subscribe-async)     | Subscribe to topics asynchronously                            |
+| [Client.unsubscribe()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/unsubscribe)            | Unsubscribe from topics                                       |
+| [Client.unsubscribeAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/unsubscribe-async) | Unsubscribe from topics asynchronously                        |
+| [Client.publish()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/publish)                    | Publish messages to MQTT topics                               |
+| [Client.publishAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/publish-async)         | Publish messages asynchronously                               |
+| [Client.on()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/on)                              | Register event handlers                                       |
+| [Client.end()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/end)                            | Disconnect from the MQTT broker                               |
+| [Client.endAsync()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client/end-async)                 | Disconnect asynchronously                                     |
+| [QoS](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-x-mqtt/client#qos)                                     | Quality of Service enumeration                                |
 
 ## Metrics
 
@@ -79,28 +79,28 @@ Comparing HTTP-based tests to MQTT ones, you'll find differences in both structu
 When the MQTT connection is created, the `connect` handler function is immediately called, all code inside it is executed (usually code to set up other event handlers), and then blocked until the MQTT connection is closed (by the remote host or by using `client.end()`).
 
 ```javascript
-import { Client } from "k6/x/mqtt";
+import { Client } from 'k6/x/mqtt';
 
 export default function () {
-  const client = new Client()
+  const client = new Client();
 
-  client.on("connect", async () => {
-    console.log("Connected to MQTT broker")
-    client.subscribe("greeting")
-    client.publish("greeting", "Hello MQTT!")
-  })
+  client.on('connect', async () => {
+    console.log('Connected to MQTT broker');
+    client.subscribe('greeting');
+    client.publish('greeting', 'Hello MQTT!');
+  });
 
-  client.on("message", (topic, message) => {
-    const str = String.fromCharCode.apply(null, new Uint8Array(message))
-    console.info("topic:", topic, "message:", str)
-    client.end()
-  })
+  client.on('message', (topic, message) => {
+    const str = new TextDecoder().decode(message);
+    console.info('topic:', topic, 'message:', str);
+    client.end();
+  });
 
-  client.on("end", () => {
-    console.log("Disconnected from MQTT broker")
-  })
+  client.on('end', () => {
+    console.log('Disconnected from MQTT broker');
+  });
 
-  client.connect(__ENV["MQTT_BROKER_ADDRESS"] || "mqtt://broker.emqx.io:1883")
+  client.connect(__ENV['MQTT_BROKER_ADDRESS'] || 'mqtt://broker.emqx.io:1883');
 }
 ```
 
@@ -109,33 +109,33 @@ export default function () {
 Async and event-based programming is fully supported. You can use [setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout), [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval), and other async patterns with xk6-mqtt event handlers.
 
 ```javascript
-import { Client } from "k6/x/mqtt";
+import { Client } from 'k6/x/mqtt';
 
 export default function () {
-  const client = new Client()
+  const client = new Client();
 
-  client.on("connect", async () => {
-    console.log("Connected to MQTT broker")
-    await client.subscribeAsync("probe")
+  client.on('connect', async () => {
+    console.log('Connected to MQTT broker');
+    await client.subscribeAsync('probe');
 
     const intervalId = setInterval(() => {
-      client.publish("probe", "ping MQTT!")
-    }, 1000)
+      client.publish('probe', 'ping MQTT!');
+    }, 1000);
 
     setTimeout(() => {
-      clearInterval(intervalId)
-      client.end()
-    }, 3100)
-  })
+      clearInterval(intervalId);
+      client.end();
+    }, 3100);
+  });
 
-  client.on("message", (topic, message) => {
-    console.info(String.fromCharCode.apply(null, new Uint8Array(message)))
-  })
+  client.on('message', (topic, message) => {
+    console.info(new TextDecoder().decode(message));
+  });
 
-  client.on("end", () => {
-    console.log("Disconnected from MQTT broker")
-  })
+  client.on('end', () => {
+    console.log('Disconnected from MQTT broker');
+  });
 
-  client.connect(__ENV["MQTT_BROKER_ADDRESS"] || "mqtt://broker.emqx.io:1883")
+  client.connect(__ENV['MQTT_BROKER_ADDRESS'] || 'mqtt://broker.emqx.io:1883');
 }
 ```

@@ -22,6 +22,8 @@ The `enqueue()` method of the [ReadableStreamDefaultController](https://grafana.
 
 ## Example
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { open } from 'k6/experimental/fs';
 import { ReadableStream } from 'k6/experimental/streams';
@@ -41,6 +43,7 @@ export default async function () {
     async start(controller) {
       lineReaderState = {
         buffer: new Uint8Array(1024),
+        decoder: new TextDecoder(),
         remaining: '',
       };
     },
@@ -97,6 +100,7 @@ async function getNextLine(file, state) {
       const bytesRead = await file.read(state.buffer);
       if (bytesRead === null) {
         // EOF
+        state.remaining += state.decoder.decode();
 
         if (state.remaining) {
           const finalLine = state.remaining.trim();
@@ -112,10 +116,9 @@ async function getNextLine(file, state) {
         return null;
       }
 
-      state.remaining += String.fromCharCode.apply(
-        null,
-        new Uint8Array(state.buffer.slice(0, bytesRead))
-      );
+      state.remaining += state.decoder.decode(state.buffer.subarray(0, bytesRead), {
+        stream: true,
+      });
     }
   }
 }

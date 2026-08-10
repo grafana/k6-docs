@@ -13,63 +13,64 @@ The socket _doesn't automatically close_ after a timeout. The connection remains
 ## Signature
 
 <!-- md-k6:skipall -->
+<!-- eslint-skip -->
 
 ```javascript
-socket.setTimeout(timeout)
+socket.setTimeout(timeout);
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-| :-------- | :--- | :---------- |
-| timeout | number | Inactivity timeout in milliseconds. Pass `0` to disable |
+| Parameter | Type   | Description                                             |
+| :-------- | :----- | :------------------------------------------------------ |
+| timeout   | number | Inactivity timeout in milliseconds. Pass `0` to disable |
 
 ## Returns
 
-| Type | Description |
-| :--- | :---------- |
+| Type   | Description                              |
+| :----- | :--------------------------------------- |
 | Socket | The socket instance, for method chaining |
 
 ## Example
 
 ```javascript
-import { Socket } from "k6/x/tcp"
+import { Socket } from 'k6/x/tcp';
 
 export default async function () {
-  const socket = new Socket()
+  const socket = new Socket();
 
   const closed = new Promise((resolve) => {
-    socket.on("close", () => {
-      console.log("Connection closed")
-      resolve()
-    })
-  })
+    socket.on('close', () => {
+      console.log('Connection closed');
+      resolve();
+    });
+  });
 
-  socket.on("data", (data) => {
-    const str = String.fromCharCode.apply(null, new Uint8Array(data))
-    console.log("Received:", str)
+  socket.on('data', (data) => {
+    const str = new TextDecoder().decode(data);
+    console.log('Received:', str);
     // Reset the timeout after each data event
-    socket.setTimeout(5000)
-  })
+    socket.setTimeout(5000);
+  });
 
-  socket.on("timeout", () => {
-    console.log("No data received for 5 seconds — closing")
-    socket.destroy()
-  })
+  socket.on('timeout', () => {
+    console.log('No data received for 5 seconds — closing');
+    socket.destroy();
+  });
 
-  socket.on("error", (err) => {
-    console.error("Error:", err)
-  })
+  socket.on('error', (err) => {
+    console.error('Error:', err);
+  });
 
-  const host = __ENV.TCP_HOST || "localhost"
-  const port = __ENV.TCP_PORT || "8080"
+  const host = __ENV.TCP_HOST || 'localhost';
+  const port = __ENV.TCP_PORT || '8080';
 
-  await socket.connect(port, host)
-  console.log("Connected — waiting for data (5s timeout)")
+  await socket.connect(port, host);
+  console.log('Connected — waiting for data (5s timeout)');
 
   // Set timeout after connecting; no immediate write so the idle timer can fire
-  socket.setTimeout(5000)
+  socket.setTimeout(5000);
 
-  await closed
+  await closed;
 }
 ```

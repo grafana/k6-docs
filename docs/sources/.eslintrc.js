@@ -47,5 +47,7 @@ module.exports = {
     setTimeout: 'readonly',
     clearTimeout: 'readonly',
     crypto: 'readonly',
+    TextEncoder: 'readonly',
+    TextDecoder: 'readonly',
   },
 };

@@ -16,18 +16,18 @@ deriveKey(algorithm, baseKey, derivedKeyType, extractable, keyUsages)
 
 ## Parameters
 
-| Name              | Type                                                                                                 | Description                                                                                                                                                        |
-| :---------------- | :--------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `algorithm`       | [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/)         | An object defining the derivation algorithm to use.                                                                                                                |
-| `baseKey`         | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/cryptokey)                | The base key to derive the new key from. For PBKDF2, this is the password imported as a CryptoKey.                                                                 |
-| `derivedKeyType`  | object with `name` and `length` properties                                                           | An object defining the algorithm the derived key will be used for. Must include `name` (e.g., `AES-GCM`, `AES-CBC`, `AES-CTR`, `AES-KW`) and `length` (e.g., 256). |
-| `extractable`     | `boolean`                                                                                            | Whether the key can be exported using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/exportkey).                          |
-| `keyUsages`       | `Array<string>`                                                                                      | An array indicating what the key can be used for (e.g., `encrypt`, `decrypt`).                                                                                     |
+| Name             | Type                                                                                         | Description                                                                                                                                                        |
+| :--------------- | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `algorithm`      | [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | An object defining the derivation algorithm to use.                                                                                                                |
+| `baseKey`        | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/cryptokey)        | The base key to derive the new key from. For PBKDF2, this is the password imported as a CryptoKey.                                                                 |
+| `derivedKeyType` | object with `name` and `length` properties                                                   | An object defining the algorithm the derived key will be used for. Must include `name` (e.g., `AES-GCM`, `AES-CBC`, `AES-CTR`, `AES-KW`) and `length` (e.g., 256). |
+| `extractable`    | `boolean`                                                                                    | Whether the key can be exported using [exportKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/exportkey).                          |
+| `keyUsages`      | `Array<string>`                                                                              | An array indicating what the key can be used for (e.g., `encrypt`, `decrypt`).                                                                                     |
 
 ### Supported algorithms
 
-| PBKDF2                                                                                              | ECDH | HKDF |
-| :-------------------------------------------------------------------------------------------------- | :--- | :--- |
+| PBKDF2                                                                                          | ECDH | HKDF |
+| :---------------------------------------------------------------------------------------------- | :--- | :--- |
 | ✅ [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | ❌   | ❌   |
 
 ### Supported derived key algorithms
@@ -44,7 +44,7 @@ A `Promise` that resolves to a new [CryptoKey](https://grafana.com/docs/k6/<K6_V
 
 ```javascript
 export default async function () {
-  const password = stringToArrayBuffer('my secret password');
+  const password = new TextEncoder().encode('my secret password');
 
   // Import the password as a key
   const baseKey = await crypto.subtle.importKey('raw', password, 'PBKDF2', false, [
@@ -73,14 +73,5 @@ export default async function () {
   );
 
   console.log('derived key: ' + JSON.stringify(derivedKey));
-}
-
-function stringToArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2);
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 ```

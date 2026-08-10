@@ -3,7 +3,7 @@ title: 'body()'
 description: 'Browser module: Response.body method'
 ---
 
-# allHeaders()
+# body()
 
 Returns the response body.
 
@@ -38,7 +38,8 @@ export default async function () {
     const res = await page.goto('https://test.k6.io/');
 
     const body = await res.body();
-    // Refer to https://github.com/grafana/k6/issues/2440 on decoding the body to a string.
+    const text = new TextDecoder().decode(body);
+    console.log(text);
   } finally {
     await page.close();
   }

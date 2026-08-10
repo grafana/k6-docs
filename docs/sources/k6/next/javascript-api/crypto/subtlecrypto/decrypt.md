@@ -41,7 +41,7 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the decrypted data.
 
 ```javascript
 export default async function () {
-  const plaintext = stringToArrayBuffer('Hello, World!');
+  const plaintext = new TextEncoder().encode('Hello, World!');
 
   /**
    * Generate a symmetric key using the AES-CBC algorithm.
@@ -90,14 +90,5 @@ export default async function () {
 
 function arrayBufferToHex(buffer) {
   return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
-}
-
-function stringToArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 ```

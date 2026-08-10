@@ -139,11 +139,7 @@ const decrypt = async (keyData, transmittedData) => {
     encryptedData
   );
 
-  return arrayBufferToString(plain);
-};
-
-const arrayBufferToString = (buffer) => {
-  return String.fromCharCode.apply(null, new Uint8Array(buffer));
+  return new TextDecoder().decode(plain);
 };
 
 const base64Decode = (base64String) => {
@@ -209,11 +205,7 @@ const decrypt = async (keyData, transmittedData) => {
     encryptedData
   );
 
-  return arrayBufferToString(plain);
-};
-
-const arrayBufferToString = (buffer) => {
-  return String.fromCharCode.apply(null, new Uint8Array(buffer));
+  return new TextDecoder().decode(plain);
 };
 
 const base64Decode = (base64String) => {
@@ -227,7 +219,7 @@ This example demonstrates how to import a password as key material for PBKDF2 ke
 
 ```javascript
 export default async function () {
-  const password = stringToArrayBuffer('my secret password');
+  const password = new TextEncoder().encode('my secret password');
 
   // Import the password as a key for PBKDF2
   // Note: extractable must be false for PBKDF2
@@ -252,15 +244,6 @@ export default async function () {
   );
 
   console.log('derived bits: ' + arrayBufferToHex(derivedBits));
-}
-
-function stringToArrayBuffer(str) {
-  const buf = new ArrayBuffer(str.length * 2);
-  const bufView = new Uint16Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
 }
 
 function arrayBufferToHex(buffer) {

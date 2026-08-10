@@ -35,16 +35,12 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the digest.
 
 ```javascript
 export default async function () {
-  const digest = await crypto.subtle.digest('SHA-256', stringToArrayBuffer('Hello, world!'));
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('Hello, world!'));
 
   console.log(arrayBufferToHex(digest));
 }
 
 function arrayBufferToHex(buffer) {
   return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
-}
-
-function stringToArrayBuffer(s) {
-  return Uint8Array.from(new String(s), (x) => x.charCodeAt(0));
 }
 ```
