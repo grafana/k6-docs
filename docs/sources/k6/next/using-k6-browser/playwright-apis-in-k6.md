@@ -26,7 +26,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | ------ | ------ | ------ | --------- |
 | Browser | addListener | 🟥 | None |
 | Browser | browserType | 🟥 | None |
-| Browser | close | 🟥 | None |
+| Browser | [close](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/close/) | 🟩 | Only on browsers returned by [chromium.connectOverCDP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/chromium/connectovercdp/) |
 | Browser | [closeContext](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browser/closecontext/) | 🟧 | - |
 | Browser | [context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browser/context/) | 🟧 | - |
 | Browser | contexts | 🟥 | [browser.context](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browser/context/) |
@@ -79,6 +79,7 @@ If k6 is missing an API from Playwright that you need for your test, you can [op
 | BrowserContext | unroute | 🟥 | [page.unroute](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/unroute/) |
 | BrowserContext | unrouteAll | 🟥 | [page.unrouteAll](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/unrouteall/) |
 | BrowserContext | [waitForEvent](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/browsercontext/waitforevent/) | 🟩 | - |
+| BrowserType | [connectOverCDP](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/chromium/connectovercdp/) | 🟩 | - |
 | ConsoleMessage | [args](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage/args/) | 🟩 | - |
 | ConsoleMessage | location | 🟥 | None |
 | ConsoleMessage | [page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/consolemessage/page/) | 🟩 | - |
