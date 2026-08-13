@@ -174,7 +174,7 @@ export const options = {
 
 If you need the response body for some requests, override the option with [Params.responseType](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params).
 
-### When streaming, use `--no-thresholds` and `--no-summary`
+### When streaming, use `--no-thresholds` and `--summary-mode=disabled`
 
 If you're running a local test and streaming results to the cloud (`k6 cloud run script.js --local-execution`), you might want to disable the terminal summary and local threshold calculation, because the cloud service will display the summary and calculate the thresholds.
 
@@ -189,7 +189,7 @@ k6 cloud run scripts/website.js \
   --vus=20000 \
   --duration=10m \
   --no-thresholds \
-  --no-summary
+  --summary-mode=disabled
 ```
 
 ## Script optimizations

@@ -204,13 +204,13 @@ export default function () {
 1. Now, run the test.
 
 ```bash
-./k6 run test.js --out logger --quiet --no-summary --iterations 2
+./k6 run test.js --out logger --quiet --summary-mode=disabled --iterations 2
 ```
 
 {{< admonition type="note" >}}
 
 The `--out logger` argument tells k6 to use your custom output. The flag
-`--quiet --no-summary` configures k6 to show only custom output.
+`--quiet --summary-mode=disabled` configures k6 to show only custom output.
 
 {{< /admonition >}}
 
