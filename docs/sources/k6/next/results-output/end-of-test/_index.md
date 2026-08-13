@@ -14,7 +14,7 @@ k6 provides three different ways to display test results through the [`--summary
 
 - **compact** (default): Displays the most relevant test results in a concise format.
 - **full**: Includes everything from the compact format, plus additional k6 metrics and detailed results for each group and scenario.
-- **legacy**: Uses the pre-v1.0.0 summary format for backward compatibility.
+- **disabled**: Disables the end-of-test summary.
 
 ### Compact mode (default)
 
@@ -216,10 +216,11 @@ When using full mode, you'll see additional sections:
 
 Customize the summary output with these options:
 
-- [`--summary-mode`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-mode): Choose between compact, full, or legacy display
-- [`--no-summary`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#no-summary): Disable the end-of-test report
+- [`--summary-mode`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-mode): Choose between compact, full, or disabled display
 - [`--summary-trend-stats`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-trend-stats): Select which statistics to show for Trend metrics
 - [`--summary-time-unit`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#summary-time-unit): Set a consistent time unit for all values
+
+The `--no-summary` flag and the `legacy` summary mode were removed in k6 v2.0.0. Use `--summary-mode=disabled` to disable the summary. There is no direct equivalent for the `legacy` mode; use `compact` or `full` instead.
 
 ## Going further
 
