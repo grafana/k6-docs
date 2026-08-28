@@ -44,6 +44,7 @@ Each option has its own detailed reference in a separate section.
 | [Linger](#linger)                                            | A boolean specifying whether k6 should linger around after test run completion                                                                                                                                                                                                                                                                   |
 | [Local IPs](#local-ips)                                      | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                                                                                                                                                                                                                                                                      |
 | [Log output](#log-output)                                    | Configuration about where logs from k6 should be send                                                                                                                                                                                                                                                                                            |
+| [Log nanosecond timestamps](#log-nanosecond-timestamps)          | A boolean specifying whether log timestamps use nanosecond instead of second precision                                                                                                                                                                                                                                                          |
 | [LogFormat](#logformat)                                      | Specify the format of the log output                                                                                                                                                                                                                                                                                                             |
 | [Max redirects](#max-redirects)                              | The maximum number of HTTP redirects that k6 will follow                                                                                                                                                                                                                                                                                         |
 | [Minimum iteration duration](#minimum-iteration-duration)    | Specify the minimum duration for every single execution                                                                                                                                                                                                                                                                                          |
@@ -622,6 +623,20 @@ A valid file path is the unique mandatory field, the other optional fields liste
 | ----- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
 | level | the minimal level of a message to write out of (in ascending order): trace, debug, info, warning, error, fatal, panic | trace         |
 
+## Log nanosecond timestamps
+
+A boolean specifying whether log timestamps use nanosecond precision instead of the default second precision. This is a global flag, available on every k6 subcommand.
+
+This only affects log output that includes an actual timestamp: [JSON log output](#logformat), and the default text format when combined with [No color](#no-color). It has no effect on colored terminal output, which shows elapsed time instead of a timestamp, and no effect on the `raw` log format, which omits the timestamp entirely.
+
+| Env                    | CLI                    | Code / Config file | Default |
+| ---------------------- | ---------------------- | ------------------- | ------- |
+| `K6_LOG_NS_TIMESTAMPS` | `--log-ns-timestamps`  | N/A                  | `false` |
+
+```bash
+k6 run --log-format=json --log-ns-timestamps script.js
+```
+
 ## LogFormat
 
 A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
@@ -680,6 +695,8 @@ A boolean specifying whether colored output is disabled. Available in `k6 run` a
 ```bash
 k6 run --no-color script.js
 ```
+
+Colored terminal output shows elapsed time instead of a timestamp. Disabling colors switches the default text log format to print an actual timestamp.
 
 ## No connection reuse
 
