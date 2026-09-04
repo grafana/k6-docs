@@ -27,6 +27,7 @@ The usage report does not contain any information about what you are testing. Th
 - The test run ID if the test was executed in the cloud or was outputed to it
 - The number of parsed files and how many were TypeScript files.
 - The number of times `require` was called.
+- The build origin of k6 (`release`, `xk6`, `provisioning`, ...)
 - Whether `global` was accessed.
 
 {{< admonition type="note" >}}
@@ -35,7 +36,7 @@ The module and output lists contain only k6 built-in names. An extension is repo
 
 {{< /admonition >}}
 
-Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
+Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, the build origin, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
 
 This report is sent to an HTTPS server that collects statistics on k6 usage.
 
