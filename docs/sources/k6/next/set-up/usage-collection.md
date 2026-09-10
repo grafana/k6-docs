@@ -40,9 +40,17 @@ Running an extension subcommand (`k6 x <name>`) also sends a usage report. It co
 
 ## Anonymous installation ID
 
-Starting with k6 v2.3.0, usage reports include a random UUID that helps count unique k6 installations over time. The ID does not use machine fingerprinting.
+Starting with k6 v2.3.0, usage reports include a random UUID to help estimate the number of active k6 installations over time. Reusing the ID lets Grafana distinguish repeated runs from the same installation from runs across many installations, which helps guide k6 development. The ID is randomly generated, not derived from a username, hostname, or machine fingerprint.
 
-k6 saves the ID in an `installation-id` file inside the `k6` subdirectory of your operating system's user configuration directory and reuses it between runs. Setting a custom configuration file with `--config` does not change this location. If you delete the ID file, k6 creates a new ID the next time it sends a usage report. If k6 cannot read or save the ID, it sends the report without the ID.
+k6 saves the ID in an `installation-id` file and reuses it between runs:
+
+| Operating system | File location |
+| --- | --- |
+| Linux and other Unix systems | `$XDG_CONFIG_HOME/k6/installation-id`, or `$HOME/.config/k6/installation-id` if `XDG_CONFIG_HOME` is unset or empty. |
+| macOS | `$HOME/Library/Application Support/k6/installation-id` |
+| Windows | `%AppData%/k6/installation-id` |
+
+Setting a custom configuration file with `--config` does not change this location. If you delete the ID file, k6 creates a new ID the next time it sends a usage report. This resets the local identifier; it does not disable reporting or delete reports already sent. If k6 cannot read or save the ID, it sends the report without the ID.
 
 When you disable usage reporting, k6 does not read or create the ID file and sends no report. For example:
 
