@@ -22,7 +22,7 @@ The example command makes k6 connect to a local InfluxDB instance and send the r
 
 ### Use a URL path prefix
 
-If a reverse proxy exposes InfluxDB under a path prefix, include the prefix before the database name:
+A reverse proxy can expose several InfluxDB instances under one hostname, using a different path prefix for each instance. Include that prefix before the database name to send metrics to the correct instance with the built-in InfluxDB v1 output:
 
 ```sh
 k6 run --out influxdb=https://influxdb.example.com/influxdb/myk6db script.js
