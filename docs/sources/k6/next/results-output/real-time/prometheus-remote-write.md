@@ -172,6 +172,8 @@ k6 has special options for remote write output.
 
 ### Add static labels
 
+When several k6 processes send metrics to the same Prometheus endpoint, use a label such as `server` or `job_id` to distinguish their time series. Set a different value for each process or job that you want to identify separately. This lets you configure labels in your deployment or CI job without changing the test script.
+
 Set `K6_PROMETHEUS_RW_LABELS` to add static labels to every time series sent to the remote write endpoint. Use a comma-separated list of `key=value` pairs:
 
 ```sh
