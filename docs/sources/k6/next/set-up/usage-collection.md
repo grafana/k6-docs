@@ -14,6 +14,7 @@ The report can be turned off by setting the [no usage report](https://grafana.co
 
 The usage report does not contain any information about what you are testing. The contents are the following:
 
+- An anonymous installation ID (`installation_id`), described below.
 - The k6 version (string, e.g. "0.17.2")
 - Max VUs configured (number)
 - Test duration (number)
@@ -35,7 +36,21 @@ The module and output lists contain only k6 built-in names. An extension is repo
 
 {{< /admonition >}}
 
-Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
+Running an extension subcommand (`k6 x <name>`) also sends a usage report. It contains the anonymous installation ID, the k6 version, the operating system and architecture targets, whether k6 runs in a CI system, and the invoked extension's entry as described above. The `K6_NO_USAGE_REPORT` environment variable and the `noUsageReport` configuration file option turn this report off too. The `--no-usage-report` flag has no effect here, because `k6 x` passes all flags unchanged to the extension.
+
+## Anonymous installation ID
+
+Starting with k6 v2.3.0, usage reports include a random UUID that helps count unique k6 installations over time. The ID does not use machine fingerprinting.
+
+k6 saves the ID in an `installation-id` file inside the `k6` subdirectory of your operating system's user configuration directory and reuses it between runs. Setting a custom configuration file with `--config` does not change this location. If you delete the ID file, k6 creates a new ID the next time it sends a usage report. If k6 cannot read or save the ID, it sends the report without the ID.
+
+When you disable usage reporting, k6 does not read or create the ID file and sends no report. For example:
+
+```sh
+k6 run --no-usage-report script.js
+```
+
+For extension subcommands, set `K6_NO_USAGE_REPORT=true` instead of passing `--no-usage-report`.
 
 This report is sent to an HTTPS server that collects statistics on k6 usage.
 
