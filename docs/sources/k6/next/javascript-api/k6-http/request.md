@@ -18,12 +18,12 @@ weight: 10
 
 When you pass a JavaScript object as the body without file uploads, k6 encodes it as `application/x-www-form-urlencoded`:
 
-- `null` and `undefined` become empty values, such as `name=`.
+- `null` and `undefined` become empty values, such as `name=`. The field remains in the request.
 - Arrays produce repeated keys, such as `tag=one&tag=two`.
 - Nested objects and nested arrays become empty values and cause k6 to log a warning. This also applies to objects inside arrays.
 
 For example, `{ name: null, tags: ['one', null] }` becomes `name=&tags=one&tags=`.
-To send nested data, serialize the body with `JSON.stringify()` and set the `Content-Type` header to `application/json`.
+To preserve nested data, serialize the body with `JSON.stringify()` and set the `Content-Type` header to `application/json`. Setting the header alone does not convert an object body to JSON.
 
 These rules also apply to methods such as [post()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post).
 
