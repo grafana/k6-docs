@@ -327,6 +327,12 @@ VU will execute the script in a loop. Available in `k6 run` and `k6 cloud run` c
 
 Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus).
 
+{{< admonition type="note" >}}
+
+For a smoke or functional test that runs once, use [`--once`](#once). It runs one iteration with one VU and preserves a single scenario's function and settings, including browser options. `--duration` sets a time-based load and can replace the script's scenario configuration.
+
+{{< /admonition >}}
+
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
 | `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
@@ -364,6 +370,12 @@ These options specify how to partition the test run and which segment to run.
 If defined, k6 will scale the number of VUs and iterations to be run for that
 segment, which is useful in distributed execution. Available in `k6 run` and
 `k6 cloud run` commands.
+
+{{< admonition type="note" >}}
+
+To run the script once with one VU, use [`--once`](#once) instead of dividing the test into execution segments. `--once` preserves a single scenario's behavior and browser settings, and cannot be combined with `--execution-segment` or `--execution-segment-sequence`.
+
+{{< /admonition >}}
 
 | Env | CLI                            | Code / Config file         | Default |
 | --- | ------------------------------ | -------------------------- | ------- |
@@ -511,6 +523,12 @@ Together with the [`vus` option](#vus), `iterations` is a shortcut for a single 
 By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
 
 **Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
+
+{{< admonition type="note" >}}
+
+To run an existing script once, use [`--once`](#once) instead of `--vus 1 --iterations 1`. It preserves a single scenario's function, environment variables, tags, and browser options. The shortcut flags can replace the script's scenarios with a `default` scenario and lose those settings.
+
+{{< /admonition >}}
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -800,7 +818,11 @@ export const options = {
 
 ## Once
 
-Run a script once with one VU, without editing the script. Available in `k6 run`, `k6 cloud run`, and `k6 archive` commands.
+Use `--once` to run a script with one VU and one iteration for a smoke, end-to-end, or functional test. This is the supported single-run mode for scripts with no scenarios or one scenario. You can reuse an existing load test, including a browser test, without editing its scenario configuration.
+
+Use `--once` instead of `--vus 1 --iterations 1` when you want to preserve the scenario's function, environment variables, tags, and browser settings. Those shortcut flags can replace the scenario configuration and remove settings the script needs to run.
+
+Available in `k6 run`, `k6 cloud run`, and `k6 archive` commands.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | --- | --- |
@@ -812,34 +834,41 @@ k6 run --once script.js
 
 If the script defines one scenario, k6 keeps its name, `exec`, `env`, `tags`, and scenario `options`, including browser settings. The scenario uses the `shared-iterations` executor with one VU and one iteration. Its original executor settings and timing are replaced with the executor defaults: `startTime: '0s'`, `maxDuration: '10m'`, and `gracefulStop: '30s'`.
 
-If the script defines no scenarios, k6 runs its `default` function once. Scripts with more than one scenario return an error.
+If the script defines no scenarios, k6 runs its `default` function once. A scenario without `exec` also runs `default`, retaining its settings. The required function must exist. Scripts with more than one scenario return an error. The `setup()` and `teardown()` functions run normally.
 
 You cannot combine `--once` with `--vus`, `--duration`, `--iterations`, `--stage`, `--execution-segment`, or `--execution-segment-sequence`. When these load settings come from the script, a configuration file, or environment variables, k6 overrides them and logs a warning.
+
+For functional tests, configure [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/) to make failed checks produce a nonzero exit status. `--once` changes the load configuration, not how k6 determines whether a test passes. A `checks: ['rate==1.0']` threshold requires every check to pass.
 
 For example, save this script as `script.js`:
 
 <!-- md-k6:arg.--once=true -->
 <!-- md-k6:fixedscenarios -->
 ```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+
 export const options = {
+  thresholds: { checks: ['rate==1.0'] },
   scenarios: {
     checkout: {
       executor: 'constant-vus',
       vus: 10,
       duration: '30s',
       exec: 'checkout',
-      env: { GREETING: 'Hello' },
+      env: { BASE_URL: 'https://quickpizza.grafana.com' },
       tags: { team: 'checkout' },
     },
   },
 };
 
 export function checkout() {
-  console.log(`${__ENV.GREETING} from checkout`);
+  const response = http.get(__ENV.BASE_URL);
+  check(response, { 'status is 200': (r) => r.status === 200 });
 }
 ```
 
-Running `k6 run --once script.js` calls `checkout` once and prints `Hello from checkout`.
+Running `k6 run --once script.js` calls `checkout` once using the scenario's base URL. The test passes when the service responds with HTTP status `200`; a failed check causes the threshold to fail and k6 to exit with a nonzero status.
 
 ## Paused
 
@@ -1022,6 +1051,12 @@ A list of VU `{ target: ..., duration: ... }` objects that specify the target nu
 ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud run` commands.
 
 It is a shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
+
+{{< admonition type="note" >}}
+
+For a single-run smoke or functional test, use [`--once`](#once). It runs one iteration with one VU while preserving a single scenario's behavior and browser settings. `--stage` defines a load ramp and can replace the script's scenario configuration.
+
+{{< /admonition >}}
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -1481,6 +1516,12 @@ An integer value specifying the number of VUs to run concurrently, used together
 
 Available in `k6 run` and `k6 cloud` commands.
 
+{{< admonition type="note" >}}
+
+To run an existing script with one VU and one iteration, use [`--once`](#once). It preserves a single scenario's function and settings, including browser options. Setting `--vus 1` alone does not preserve a script-defined scenario.
+
+{{< /admonition >}}
+
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
 | `K6_VUS` | `--vus`, `-u` | `vus`              | `1`     |
@@ -1492,4 +1533,4 @@ export const options = {
 };
 ```
 
-When you pass `--vus N` on its own (without `--duration`, `--iterations`, or `--stages`), k6 creates a single [shared-iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) scenario with `N` VUs and `N` iterations. This overrides any scenarios defined in the script and prints a warning, consistent with how `--duration`, `--iterations`, and `--stages` behave.
+When you pass `--vus N` on its own (without `--duration`, `--iterations`, or `--stage`), k6 creates a single [shared-iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) scenario with `N` VUs and `N` iterations. This overrides any scenarios defined in the script and prints a warning, consistent with how `--duration`, `--iterations`, and `--stage` behave.
