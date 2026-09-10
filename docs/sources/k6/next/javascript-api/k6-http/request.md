@@ -14,6 +14,19 @@ weight: 10
 | body (optional)   | string / object / ArrayBuffer                                                                   | Request body; Objects will be `x-www-form-urlencoded` encoded.                                                                    |
 | params (optional) | object                                                                                          | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters. |
 
+### Form-encoded request bodies
+
+When you pass a JavaScript object as the body without file uploads, k6 encodes it as `application/x-www-form-urlencoded`:
+
+- `null` and `undefined` become empty values, such as `name=`.
+- Arrays produce repeated keys, such as `tag=one&tag=two`.
+- Nested objects and nested arrays become empty values and cause k6 to log a warning. This also applies to objects inside arrays.
+
+For example, `{ name: null, tags: ['one', null] }` becomes `name=&tags=one&tags=`.
+To send nested data, serialize the body with `JSON.stringify()` and set the `Content-Type` header to `application/json`.
+
+These rules also apply to methods such as [post()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/post).
+
 ### Returns
 
 | Type     | Description                                                                                       |
