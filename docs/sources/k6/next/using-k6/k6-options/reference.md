@@ -838,8 +838,6 @@ If the script defines no scenarios, k6 runs its `default` function once. A scena
 
 You cannot combine `--once` with `--vus`, `--duration`, `--iterations`, `--stage`, `--execution-segment`, or `--execution-segment-sequence`. When these load settings come from the script, a configuration file, or environment variables, k6 overrides them and logs a warning.
 
-For functional tests, configure [thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/) to make failed checks produce a nonzero exit status. `--once` changes the load configuration, not how k6 determines whether a test passes. A `checks: ['rate==1.0']` threshold requires every check to pass.
-
 For example, save this script as `script.js`:
 
 <!-- md-k6:arg.--once=true -->
@@ -849,7 +847,6 @@ import { check } from 'k6';
 import http from 'k6/http';
 
 export const options = {
-  thresholds: { checks: ['rate==1.0'] },
   scenarios: {
     checkout: {
       executor: 'constant-vus',
@@ -868,7 +865,7 @@ export function checkout() {
 }
 ```
 
-Running `k6 run --once script.js` calls `checkout` once using the scenario's base URL. The test passes when the service responds with HTTP status `200`; a failed check causes the threshold to fail and k6 to exit with a nonzero status.
+Running `k6 run --once script.js` calls `checkout` once using the scenario's base URL.
 
 ## Paused
 
