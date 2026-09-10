@@ -56,6 +56,7 @@ Each option has its own detailed reference in a separate section.
 | [No thresholds](#no-thresholds)                              | Disables threshold execution                                                                                                                                                                                                                                                                                                                     |
 | [No usage report](#no-usage-report)                          | A boolean specifying whether k6 should send a usage report                                                                                                                                                                                                                                                                                       |
 | [No VU connection reuse](#no-vu-connection-reuse)            | A boolean specifying whether k6 should reuse TCP connections                                                                                                                                                                                                                                                                                     |
+| [Once](#once) | Run one iteration with one VU while preserving a single scenario's function and settings. |
 | [Paused](#paused)                                            | A boolean specifying whether the test should start in a paused state                                                                                                                                                                                                                                                                             |
 | [Profiling Enabled](#profiling-enabled)                      | Enables profiling endpoints                                                                                                                                                                                                                                                                                                                      |
 | [Quiet](#quiet)                                              | A boolean specifying whether to show the progress update in the console or not                                                                                                                                                                                                                                                                   |
@@ -796,6 +797,49 @@ export const options = {
   noVUConnectionReuse: true,
 };
 ```
+
+## Once
+
+Run a script once with one VU, without editing the script. Available in `k6 run`, `k6 cloud run`, and `k6 archive` commands.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | --- | --- |
+| N/A | `--once` | N/A | `false` |
+
+```sh
+k6 run --once script.js
+```
+
+If the script defines one scenario, k6 keeps its name, `exec`, `env`, `tags`, and scenario `options`, including browser settings. The scenario uses the `shared-iterations` executor with one VU and one iteration. Its original executor settings and timing are replaced with the executor defaults: `startTime: '0s'`, `maxDuration: '10m'`, and `gracefulStop: '30s'`.
+
+If the script defines no scenarios, k6 runs its `default` function once. Scripts with more than one scenario return an error.
+
+You cannot combine `--once` with `--vus`, `--duration`, `--iterations`, `--stage`, `--execution-segment`, or `--execution-segment-sequence`. When these load settings come from the script, a configuration file, or environment variables, k6 overrides them and logs a warning.
+
+For example, save this script as `script.js`:
+
+<!-- md-k6:arg.--once=true -->
+<!-- md-k6:fixedscenarios -->
+```javascript
+export const options = {
+  scenarios: {
+    checkout: {
+      executor: 'constant-vus',
+      vus: 10,
+      duration: '30s',
+      exec: 'checkout',
+      env: { GREETING: 'Hello' },
+      tags: { team: 'checkout' },
+    },
+  },
+};
+
+export function checkout() {
+  console.log(`${__ENV.GREETING} from checkout`);
+}
+```
+
+Running `k6 run --once script.js` calls `checkout` once and prints `Hello from checkout`.
 
 ## Paused
 
