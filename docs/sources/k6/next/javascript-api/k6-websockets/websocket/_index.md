@@ -38,6 +38,7 @@ Compare an instance's `readyState` with these constants to check the connection 
 | `WebSocket.CLOSED` | `3` | The connection is closed or could not be opened. |
 
 The constants are read-only and also available on each instance, for example, `ws.OPEN`.
+Use these constants, as you would in a browser, instead of importing a `ReadyState` enum: k6 does not export a runtime enum.
 
 ### Example
 
