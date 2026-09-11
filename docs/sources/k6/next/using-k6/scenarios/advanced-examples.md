@@ -196,11 +196,11 @@ export function apitest() {
 }
 ```
 
-## Run specific scenario via environment variable
+## Run a specific scenario
 
-k6 runs all [scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#scenarios) listed in a test script by default. But, with some small code changes and using [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/#environment-variables), you can tell k6 to only run a specific scenario via the command-line.
+k6 runs all configured scenarios by default. Use [`--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) to select which scenarios run without changing the script.
 
-The following example shows a test script that uses a `SCENARIO` environment variable, if it exists, to choose which scenario to execute:
+The following script defines two scenarios:
 ```javascript
 import http from 'k6/http';
 
@@ -219,11 +219,8 @@ const scenarios = {
   },
 };
 
-const { SCENARIO } = __ENV;
 export const options = {
-  // if a scenario is passed via a CLI env variable, then run that scenario. Otherwise, run
-  // using the pre-configured scenarios above.
-  scenarios: SCENARIO ? { [SCENARIO]: scenarios[SCENARIO] } : scenarios,
+  scenarios,
   discardResponseBodies: true,
   thresholds: {
     http_req_duration: ['p(95)<250', 'p(99)<350'],
@@ -235,20 +232,14 @@ export default function () {
 }
 ```
 
-Then from the command line, you could run the test script and only execute the `my_web_test` scenario by running:
-
-{{< code >}}
+Run only `my_web_test` with its configured workload:
 
 ```bash
-SCENARIO=my_web_test k6 run script.js
+k6 run --scenario my_web_test script.js
 ```
 
-```windows
-set "SCENARIO=my_web_test" && k6 run script.js
-```
+To select both scenarios, pass their names separated by a comma:
 
-```powershell
-$env:SCENARIO="my_web_test"; k6 run script.js
+```bash
+k6 run --scenario my_web_test,my_api_test script.js
 ```
-
-{{< /code >}}

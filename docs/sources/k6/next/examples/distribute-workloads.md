@@ -71,6 +71,14 @@ export function news() {
 }
 ```
 
+To run only the contacts workload while developing it, [select that scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios):
+
+```bash
+k6 run --scenario contacts script.js
+```
+
+This keeps the contacts scenario's 80 VUs and 100 total iterations. Without `--scenario`, both workloads run.
+
 To view granular results for a specific scenario, you can filter by the built-in scenario [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 
 ## Distribute logic by VU ID
