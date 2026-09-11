@@ -818,7 +818,7 @@ export const options = {
 
 ## Once
 
-Use `--once` to run a script with one VU and one iteration for a smoke, end-to-end, or functional test. This is the supported single-run mode for scripts with no scenarios or one scenario. You can reuse an existing load test, including a browser test, without editing its scenario configuration.
+Use `--once` to run a script with one VU and one iteration for a smoke, end-to-end, or functional test. This is the supported single-run mode for scripts with no scenarios or one scenario, or for scenarios you explicitly select. You can reuse an existing load test, including a browser test, without editing its scenario configuration.
 
 Use `--once` instead of `--vus 1 --iterations 1` when you want to preserve the scenario's function, environment variables, tags, and browser settings. Those shortcut flags can replace the scenario configuration and remove settings the script needs to run.
 
@@ -834,7 +834,7 @@ k6 run --once script.js
 
 If the script defines one scenario, k6 keeps its name, `exec`, `env`, `tags`, and scenario `options`, including browser settings. The scenario uses the `shared-iterations` executor with one VU and one iteration. Its original executor settings and timing are replaced with the executor defaults: `startTime: '0s'`, `maxDuration: '10m'`, and `gracefulStop: '30s'`.
 
-If the script defines no scenarios, k6 runs its `default` function once. A scenario without `exec` also runs `default`, retaining its settings. The required function must exist. Scripts with more than one scenario return an error. The `setup()` and `teardown()` functions run normally.
+If the script defines no scenarios, k6 runs its `default` function once. A scenario without `exec` also runs `default`, retaining its settings. The required function must exist. For scripts with more than one scenario, use [`--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) to choose which ones to run; each selected scenario runs once with one VU. Bare `--once` still returns an error for multiple scenarios. The `setup()` and `teardown()` functions run normally.
 
 You cannot combine `--once` with `--vus`, `--duration`, `--iterations`, `--stage`, `--execution-segment`, or `--execution-segment-sequence`. When these load settings come from the script, a configuration file, or environment variables, k6 overrides them and logs a warning.
 
