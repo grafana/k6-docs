@@ -105,6 +105,8 @@ To do so, follow these steps:
 1. Copy the previous script (`whole-tutorial.js`) and save it as `main.js`.
 1. Extract the `Contacts flow` group function from `main.js` script file and paste it into a new file called `contacts.js`
 
+   <!-- md-k6:skip -->
+
    <!-- eslint-disable no-undef  -->
 
    ```javascript
@@ -131,6 +133,8 @@ To do so, follow these steps:
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
 1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
+
+   <!-- md-k6:skip -->
 
    ```javascript
    import http from 'k6/http';
@@ -322,6 +326,8 @@ To do this, follow these steps:
 
 1. Add the workload settings for configuring the smoke test to `config.js`:
 
+   <!-- md-k6:skip -->
+
    ```javascript
    export const smokeWorkload = {
      executor: 'shared-iterations',
@@ -351,6 +357,8 @@ To do this, follow these steps:
    ```
 
 1. Edit `main.js` to define a named scenario for each workload:
+
+   <!-- md-k6:skip -->
 
    ```javascript
    import { coinflip } from './coinflip.js';

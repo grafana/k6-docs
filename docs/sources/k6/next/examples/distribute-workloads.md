@@ -38,6 +38,8 @@ For example, imagine a social media site that typically receives 100 concurrent 
 Of those, 80 might visit their contacts page, and 20 might view the news.
 To configure such a distribution, make two scenarios with different throughput or VUs:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 
