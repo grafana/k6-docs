@@ -382,7 +382,11 @@ export default function () {
 }
 ```
 
+{{< admonition type="note" >}}
+
 When you [select scenarios with `--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#load-options-and-thresholds), k6 removes thresholds tagged for configured scenarios you exclude and logs a warning. Those thresholds stay skipped even if a selected scenario emits samples with the excluded scenario's tag. Global thresholds and other tag filters remain active.
+
+{{< /admonition >}}
 
 ## Abort a test when a threshold is crossed
 
