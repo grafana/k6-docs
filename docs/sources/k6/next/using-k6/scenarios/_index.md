@@ -53,6 +53,78 @@ export const options = {
 };
 ```
 
+## Run selected scenarios
+
+Use [`--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#scenario-selection) to run part of a multi-scenario script without editing it or adding environment-variable logic. For example, you can run only the checkout workload while developing it, then run all workloads for a load test.
+
+Save this example as `scenarios.js`:
+
+<!-- md-k6:fixedscenarios -->
+```javascript
+export const options = {
+  scenarios: {
+    api: {
+      executor: 'shared-iterations',
+      vus: 1,
+      iterations: 2,
+      exec: 'api',
+    },
+    checkout: {
+      executor: 'shared-iterations',
+      vus: 1,
+      iterations: 3,
+      exec: 'checkout',
+    },
+  },
+  thresholds: {
+    iterations: ['count>0'],
+    'iterations{scenario:api}': ['count>0'],
+    'iterations{scenario:checkout}': ['count>0'],
+  },
+};
+
+export function api() {
+  console.log('API iteration');
+}
+
+export function checkout() {
+  console.log('Checkout iteration');
+}
+```
+
+Select one name, or separate several names with commas:
+
+```sh
+k6 run --scenario checkout scenarios.js
+k6 run --scenario api,checkout scenarios.js
+```
+
+The first command runs three checkout iterations. The second runs both scenarios with their configured iteration counts. Selection preserves each scenario's executor, load, timing, function, environment, tags, and browser settings. Other global options and the normal test lifecycle still apply, including `setup()` and `teardown()`.
+
+Names must exist in the configured `scenarios` object after the script's initialization code runs. A `default` export alone does not define a selectable scenario; `--scenario default` requires an explicitly configured `scenarios.default`. An empty selection or an unknown name returns an error.
+
+### Run each selected scenario once
+
+Add `--once` to run one iteration with one VU for each selected scenario:
+
+```sh
+k6 run --scenario api,checkout --once scenarios.js
+```
+
+This command runs one API iteration and one checkout iteration. Each scenario keeps its function, environment, tags, and browser settings, while `--once` replaces its load and timing settings. Bare `--once` still rejects a script with multiple scenarios; explicit selection tells k6 which ones to run.
+
+### Load options and thresholds
+
+You cannot combine `--scenario` with `--vus`, `--duration`, `--iterations`, or `--stage`. k6 ignores the corresponding top-level settings from the script, a configuration file, or environment variables and logs a warning. Settings inside selected scenarios remain intact. Execution segments remain active unless you also use `--once`, which does not allow them.
+
+Selection removes thresholds whose `scenario` tag names a configured scenario that you excluded, and logs a warning. In the example, selecting `checkout` skips the API threshold and keeps the global and checkout thresholds. Global thresholds, filters without a `scenario` tag, and filters naming a selected or unconfigured scenario remain active. A global count threshold that expects the full workload can still fail a partial run.
+
+A skipped threshold stays skipped even if another scenario emits samples with the excluded scenario's tag. For example, a selected checkout scenario can emit a custom metric tagged `scenario:api`; an API threshold removed by selection will not evaluate those samples. Refer to [thresholds for specific tags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds/#set-thresholds-for-specific-tags) when choosing which assertions should remain shared.
+
+### Cloud runs and archives
+
+The same selection works with `k6 cloud run`, including `--local-execution`, and `k6 archive`. Archives save the selected scenarios and remaining thresholds, so you can replay an archive without repeating `--scenario`. Omitting the flag on replay does not restore excluded scenarios or thresholds.
+
 ## Scenario executors
 
 For each k6 scenario, the VU workload is scheduled by an _executor_.
