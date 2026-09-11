@@ -52,6 +52,69 @@ K6_COMPATIBILITY_MODE=base k6 run script.js
 
 {{< /code >}}
 
+## Built-in byte encoding and Set operations
+
+Starting with k6 v2.3.0, you can use the following JavaScript methods in both compatibility modes without importing a module or adding a polyfill.
+
+### Encode and decode bytes
+
+Use `Uint8Array` methods to convert binary test data to and from Base64 or hexadecimal strings:
+
+| Method | Result |
+| ------ | ------ |
+| `Uint8Array.fromBase64(string, [options])` | Decodes Base64 into a new byte array. |
+| `Uint8Array.fromHex(string)` | Decodes hexadecimal into a new byte array. |
+| `bytes.toBase64([options])` | Encodes the byte array as a Base64 string. |
+| `bytes.toHex()` | Encodes the byte array as a lowercase hexadecimal string. |
+| `bytes.setFromBase64(string, [options])` | Decodes Base64 into an existing byte array. |
+| `bytes.setFromHex(string)` | Decodes hexadecimal into an existing byte array. |
+
+The `setFromBase64()` and `setFromHex()` methods return `{ read, written }`, which counts input characters consumed and bytes written. Check these counts when the destination might be too small for the decoded data.
+
+For Base64, `alphabet` selects `'base64'` (the default) or `'base64url'`. When encoding, `omitPadding: true` removes trailing `=` characters. When decoding, `lastChunkHandling` controls incomplete final chunks: `'loose'` (the default), `'strict'`, or `'stop-before-partial'`.
+
+For example, convert an encoded fixture to bytes and format it for a URL-safe payload:
+
+```javascript
+export default function () {
+  const bytes = Uint8Array.fromHex('fbff');
+  console.log(bytes.toBase64()); // +/8=
+  console.log(bytes.toBase64({ alphabet: 'base64url', omitPadding: true })); // -_8
+
+  const decoded = Uint8Array.fromBase64('-_8', { alphabet: 'base64url' });
+  console.log(decoded.toHex()); // fbff
+}
+```
+
+### Compare sets of values
+
+Use `Set` operations to compare unique values, such as expected and returned IDs:
+
+| Method | Result |
+| ------ | ------ |
+| `set.difference(other)` | A new set of values in `set` but not in `other`. |
+| `set.intersection(other)` | A new set of values present in both sets. |
+| `set.isDisjointFrom(other)` | Whether the sets have no values in common. |
+| `set.isSubsetOf(other)` | Whether every value in `set` is in `other`. |
+| `set.isSupersetOf(other)` | Whether `set` contains every value in `other`. |
+| `set.symmetricDifference(other)` | A new set of values present in exactly one of the sets. |
+| `set.union(other)` | A new set containing the values from both sets. |
+
+These methods do not modify either set. Pass another `Set` or an object with a numeric `size` property and `has()` and `keys()` methods; convert arrays to `Set` first.
+
+For example, find missing IDs and check whether a response contains everything you expected:
+
+```javascript
+export default function () {
+  const expected = new Set(['item-1', 'item-2']);
+  const returned = new Set(['item-2', 'item-3']);
+
+  console.log([...expected.difference(returned)]); // ["item-1"]
+  console.log(expected.isSubsetOf(returned)); // false
+  console.log([...expected.intersection(returned)]); // ["item-2"]
+}
+```
+
 ## Typescript support
 
 {{< code >}}
