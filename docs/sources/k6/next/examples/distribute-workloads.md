@@ -38,6 +38,8 @@ For example, imagine a social media site that typically receives 100 concurrent 
 Of those, 80 might visit their contacts page, and 20 might view the news.
 To configure such a distribution, make two scenarios with different throughput or VUs:
 
+<!-- md-k6:fixedscenarios -->
+
 ```javascript
 import http from 'k6/http';
 
@@ -70,6 +72,14 @@ export function news() {
   http.get('https://test.k6.io/news.php');
 }
 ```
+
+To run only the contacts workload while developing it, [select that scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios):
+
+```bash
+k6 run --scenario contacts script.js
+```
+
+This keeps the contacts scenario's 80 VUs and 100 total iterations. Without `--scenario`, both workloads run.
 
 To view granular results for a specific scenario, you can filter by the built-in scenario [tag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups).
 

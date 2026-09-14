@@ -61,6 +61,7 @@ Each option has its own detailed reference in a separate section.
 | [Quiet](#quiet)                                              | A boolean specifying whether to show the progress update in the console or not                                                                                                                                                                                                                                                                   |
 | [Results output](#results-output)                            | Specify the results output                                                                                                                                                                                                                                                                                                                       |
 | [RPS](#rps)                                                  | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) instead)                                                                                                                                              |
+| [Scenario selection](#scenario-selection) | Select configured scenarios to run without changing their settings. |
 | [Scenarios](#scenarios)                                      | Define advanced execution scenarios                                                                                                                                                                                                                                                                                                              |
 | [Secret Sources](#secret-source)                             | Specify source of secrets to be used within k6.                                                                                                                                                                                                                                                                                                  |
 | [Setup timeout](#setup-timeout)                              | Specify how long the `setup()` function is allow to run before it's terminated                                                                                                                                                                                                                                                                   |
@@ -76,6 +77,7 @@ Each option has its own detailed reference in a separate section.
 | [Teardown timeout](#teardown-timeout)                        | Specify how long the teardown() function is allowed to run before it's terminated                                                                                                                                                                                                                                                                |
 | [Thresholds](#thresholds)                                    | Configure under what conditions a test is successful or not                                                                                                                                                                                                                                                                                      |
 | [Throw](#throw)                                              | A boolean specifying whether to throw errors on failed HTTP requests                                                                                                                                                                                                                                                                             |
+| [TLS AIA fetch](#tls-aia-fetch)                              | A boolean that lets k6 fetch missing intermediate CA certificates via the Authority Information Access (AIA) extension                                                                                                                                                                                                                           |
 | [TLS auth](#tls-auth)                                        | A list of TLS client certificate configuration objects                                                                                                                                                                                                                                                                                           |
 | [TLS cipher suites](#tls-cipher-suites)                      | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server                                                                                                                                                                                                                                                              |
 | [TLS version](#tls-version)                                  | String or object representing the only SSL/TLS version allowed                                                                                                                                                                                                                                                                                   |
@@ -888,6 +890,16 @@ export const options = {
 >
 > The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
 
+## Scenario selection
+
+Select one or more configured scenarios by name with `--scenario`, using commas to separate multiple names. Available in `k6 run`, `k6 cloud run`, and `k6 archive`.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | --- | --- |
+| N/A | `--scenario` | N/A | All configured scenarios |
+
+Selection keeps each selected scenario's settings and skips thresholds tied to excluded scenarios. Refer to [Run selected scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) for examples, load-option restrictions, threshold behavior, and combining selection with `--once`.
+
 ## Scenarios
 
 Define one or more execution patterns, with various VU and iteration scheduling
@@ -1282,6 +1294,22 @@ Available in `k6 run` and `k6 cloud` commands.
 ```javascript
 export const options = {
   throw: true,
+};
+```
+
+## TLS AIA fetch
+
+A boolean, true or false. When enabled, k6 follows the Authority Information Access (AIA) extension on server-presented certificates to fetch missing intermediate CA certificates over HTTP. This lets k6 verify TLS chains against servers that don't bundle the full chain in their handshake, which browsers do by default but Go's `crypto/tls` does not.
+
+Fetched intermediates are cached and reused for the lifetime of the test, and AIA fetches respect the same blocking, host override, and DNS rules as regular test traffic. This option has no effect when `insecureSkipTLSVerify` is enabled.
+
+| Env                | CLI | Code / Config file | Default |
+| ------------------ | --- | ------------------ | ------- |
+| `K6_TLS_AIA_FETCH` | N/A | `tlsAIAFetch`      | `false` |
+
+```javascript
+export const options = {
+  tlsAIAFetch: true,
 };
 ```
 

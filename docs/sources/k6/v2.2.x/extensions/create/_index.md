@@ -22,7 +22,7 @@ But, if you want to create an extension for more than the purposes of demonstrat
 there's some background knowledge you should have:
 
 - You should be familiar with both Go(lang), JavaScript, and their tooling
-- You should understand how the [_Go-to-JavaScript_](https://grafana.com/docs/k6/<K6_VERSION>/extensions/explanations/go-js-bridge) bridge works within k6
+- You should understand how the [_Go-to-JavaScript_](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/go-js-bridge) bridge works within k6
 
 {{< admonition type="note" >}}
 
