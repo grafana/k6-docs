@@ -24,22 +24,48 @@ Run code inside a group. Groups are used to organize results in a test.
 | ---- | ------------------------- |
 | any  | The return value of _fn_. |
 
-## Limitations
+## Asynchronous callbacks
 
-{{< admonition type="warning" >}}
+By default, `group()` rejects an `async` function callback. The error explains that you can enable async callbacks with the `async-metric-context` experimental feature flag by passing `--features async-metric-context` or setting `K6_FEATURES=async-metric-context`.
 
-Avoid using `group` with async functions or asynchronous code.
-If you do, k6 might apply tags in an unreliable or unintuitive way.
+The `async-metric-context` feature is experimental and opt-in. It may change or be removed without notice. When you enable it, `group()` accepts async callbacks and callbacks that return a Promise-like value. Metric samples emitted by the callback keep the tags and metadata active when the async work starts, including the group's `group` tag.
 
-{{< /admonition >}}
+For an async callback, `group_duration` measures from when `group()` invokes the callback until the returned Promise settles, whether it fulfills or rejects. The `group_duration` sample uses the tags and metadata captured when the group starts, including the new `group` tag. Changes to tags or metadata inside the callback don't retag the `group_duration` sample.
 
-If you start promise chains or use `await` within `group`, some code within the group will be waited for and tagged with the proper `group` tag, but others won't be.
+Enable the feature for a single run:
 
-To avoid confusion, `async` functions are forbidden as `group()` arguments. That still lets users make and chain promises within a group, but doing so is unsupported and not recommended.
+```sh
+k6 run --features async-metric-context script.js
+```
 
-For more information, refer to [k6 #2728](https://github.com/grafana/k6/issues/2728), which tracks possible solutions and provides detailed explanations.
+Alternatively, set the `K6_FEATURES=async-metric-context` environment variable. For more information about enabling experimental features, refer to [Feature flags](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags).
 
-### Example
+### Async callback example
+
+The following example emits a custom metric before and after an asynchronous boundary:
+
+<!-- md-k6:arg.--features=async-metric-context -->
+
+```javascript
+import { group } from 'k6';
+import { Counter } from 'k6/metrics';
+
+const events = new Counter('events');
+
+export default async function () {
+  await group('checkout', async function () {
+    events.add(1, { phase: 'started' });
+
+    await new Promise((resolve) => setTimeout(resolve, 10));
+
+    events.add(1, { phase: 'finished' });
+  });
+}
+```
+
+Both `events` samples have the `group` tag `::checkout`. The `group_duration` sample includes the time spent waiting for the timer.
+
+## Synchronous callback example
 
 ```javascript
 import { group } from 'k6';

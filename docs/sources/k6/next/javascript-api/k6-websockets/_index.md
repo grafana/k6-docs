@@ -19,6 +19,14 @@ This module implements the browser [WebSocket API](https://developer.mozilla.org
 The main difference between this module and [`k6/ws`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-ws) is that this module uses a global event loop instead of a local one.
 A global event loop lets a single VU have multiple concurrent connections, which improves performance.
 
+{{< admonition type="note" >}}
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), handlers assigned to WebSocket event properties, such as `onopen` and `onmessage`, and handlers registered with `addEventListener()` capture the tags and metadata active at registration. Metrics emitted by a handler use a copy of that context, and k6 restores the interrupted context after the handler returns or throws. Promise reactions and `await` continuations created by the handler keep its context.
+
+This behavior applies to `k6/websockets`, but not to the legacy `k6/ws` module.
+
+{{< /admonition >}}
+
 | Class/Method                                                                                                                                                          | Description                                                                                                                                                                                                                                                          |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/params)                                                                   | Used for setting various WebSocket connection parameters such as headers, cookie jar, compression, etc.                                                                                                                                                              |

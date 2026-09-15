@@ -81,7 +81,9 @@ As the following example shows, you can also pass in different URLs if you're go
 
 {{< admonition type="caution" >}}
 
-Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
+By default, use URL tags to distinguish pages in thresholds. [Group](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups) tags aren't reliably applied to browser metrics, as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), `browser_data_sent`, `browser_data_received`, `browser_http_req_duration`, and `browser_http_req_failed` keep a best-effort copy of the tags and metadata from the browser operation that initiated the request. This includes the `group` tag. The feature doesn't change group attribution for other browser metrics.
 
 {{< /admonition >}}
 
