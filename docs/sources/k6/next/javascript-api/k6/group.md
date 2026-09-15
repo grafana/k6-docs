@@ -44,7 +44,7 @@ Alternatively, set the `K6_FEATURES=async-metric-context` environment variable. 
 
 The following example emits a custom metric before and after an asynchronous boundary:
 
-<!-- md-k6:arg.--features=async-metric-context -->
+<!-- md-k6:skip -->
 
 ```javascript
 import { group } from 'k6';
