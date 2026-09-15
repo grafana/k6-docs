@@ -26,9 +26,9 @@ jobs:
             docs/sources/k6/next/**/*.md
       - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6
         with:
-          go-version: '1.25'
+          go-version: '1.26'
       - name: Install k6 from github master
-        run: go install go.k6.io/k6@master
+        run: go install go.k6.io/k6/v2@master
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: '3.13'
