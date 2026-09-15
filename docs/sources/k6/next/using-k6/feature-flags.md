@@ -19,10 +19,11 @@ k6 features
 ```
 
 ```
-FEATURE             LIFECYCLE      DESCRIPTION
-native-histograms   Experimental   Use native histograms for trend metrics
-merge-run-tags      Experimental   Merge run tags across config layers instead of replacing
-freeze-env          Experimental   Freeze __ENV object to prevent modifications from JS code
+FEATURE                LIFECYCLE      DESCRIPTION
+async-metric-context   Experimental   Propagate metric context through asynchronous operations
+freeze-env             Experimental   Freeze __ENV object to prevent modifications from JS code
+merge-run-tags         Experimental   Merge run tags across config layers instead of replacing
+native-histograms      Experimental   Use native histograms for trend metrics
 ```
 
 Add `--json` to get machine-readable output, useful for scripting — for example, checking in CI whether a specific flag is available before enabling it:
@@ -40,6 +41,8 @@ k6 features --json
   }
 ]
 ```
+
+The experimental `async-metric-context` flag keeps metric tags and metadata across asynchronous operations and enables [asynchronous groups](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group/#asynchronous-groups).
 
 ## Enabling flags
 
