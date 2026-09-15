@@ -33,6 +33,8 @@ When you enable the experimental [`async-metric-context` feature flag](https://g
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
+<!-- md-k6:skip -->
+
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';
 import { sleep } from 'k6';
