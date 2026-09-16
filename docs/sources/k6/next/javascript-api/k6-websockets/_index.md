@@ -48,6 +48,8 @@ A WebSocket instance also has the following properties:
 
 <!-- vale on -->
 
+Compare `readyState` with the [ready-state constants](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets/websocket#ready-state-constants), such as `WebSocket.OPEN`.
+
 ## Websocket metrics
 
 k6 takes specific measurements for Websockets.
