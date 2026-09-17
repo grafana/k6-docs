@@ -8,6 +8,8 @@ description: 'Browser module: page.screenshot([options]) method'
 Returns the buffer with the captured screenshot from the browser.
 
 
+Screenshot capture uses the page's default timeout of 30 seconds. Change it with [page.setDefaultTimeout()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/setdefaulttimeout/), or set it to `0` to disable the timeout. If capture times out, the promise rejects so your script can handle the error. Restoring temporary viewport or background changes can take additional time.
+
 | Parameter              | Type    | Default | Description                                                                                                                                                                                                                                              |
 | ---------------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | options                | object  | `null`  |                                                                                                                                                                                                                                                          |

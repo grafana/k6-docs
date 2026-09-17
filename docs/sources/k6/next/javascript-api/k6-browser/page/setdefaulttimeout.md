@@ -5,7 +5,7 @@ description: 'Browser module: page.setDefaultTimeout(timeout) method'
 
 # setDefaultTimeout(timeout)
 
-This setting will change the timeout for all the methods accepting a `timeout` option.
+This setting changes the timeout for methods accepting a `timeout` option and for [page.screenshot()](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/screenshot/).
 
 | Parameter | Type   | Default | Description              |
 | --------- | ------ | ------- | ------------------------ |
