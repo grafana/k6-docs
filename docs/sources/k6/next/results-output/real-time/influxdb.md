@@ -20,6 +20,20 @@ k6 run --out influxdb=http://localhost:8086/myk6db script.js
 
 The example command makes k6 connect to a local InfluxDB instance and send the results from the test to a database named `myk6db`. If the database doesn't exist, k6 creates one automatically.
 
+### Use a URL path prefix
+
+A reverse proxy can expose several InfluxDB instances under one hostname, using a different path prefix for each instance. Include that prefix before the database name to send metrics to the correct instance with the built-in InfluxDB v1 output:
+
+```sh
+k6 run --out influxdb=https://influxdb.example.com/influxdb/myk6db script.js
+```
+
+Replace `https://influxdb.example.com/influxdb` with your InfluxDB address and path prefix, `myk6db` with your database name, and `script.js` with your test script.
+
+k6 uses the final URL path segment as the database name and preserves the preceding path as the address prefix. In this example, k6 sends metrics to `/influxdb/write` for the `myk6db` database.
+
+A trailing slash means that the entire path is the prefix and the URL does not specify a database name. For example, `https://influxdb.example.com/influxdb/` uses `/influxdb` as the prefix and keeps the database configured through other options, or the default `k6` database.
+
 ## Send k6 metrics to InfluxDB v2.0
 
 Using the [InfluxDB extension](https://github.com/grafana/xk6-output-influxdb), you can store k6 metrics in [InfluxDB v2.0](https://docs.influxdata.com/influxdb/v2.0/) and analyze your performance results with Grafana or [other tools](https://docs.influxdata.com/influxdb/cloud-serverless/query-data/tools/).
