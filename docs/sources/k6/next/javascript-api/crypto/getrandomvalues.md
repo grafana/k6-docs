@@ -28,6 +28,7 @@ The same array is passed as the `typedArray` parameter with its contents replace
 
 | Type                 | Description                                                               |
 | :------------------- | :------------------------------------------------------------------------ |
+| `TypeError` | Thrown when `typedArray` is missing, `null`, or `undefined`, or its `length` has been overridden with a negative value. |
 | `QuotaExceededError` | Thrown when `typedArray` is too large and its `byteLength` exceeds 65536. |
 
 ## Example
