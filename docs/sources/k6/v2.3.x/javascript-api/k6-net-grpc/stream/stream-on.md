@@ -1,0 +1,77 @@
+---
+title: 'Stream.on()'
+description: 'Set up handler functions for various events on the GRPC stream.'
+weight: 10
+aliases:
+  - ../../k6-experimental/grpc/stream/stream-on/ # docs/k6/<K6_VERSION>/javascript-api/k6-experimental/grpc/stream/stream-on/
+---
+
+# Stream.on()
+
+Set up handler functions for various events on the gRPC stream.
+
+| Parameter | Type                                                                                                       | Description                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| event     | string                                                                                                     | The event name to define a handler for.      |
+| handler   | [`EventHandler`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/event-handler) | The function to call when the event happens. |
+
+Possible events:
+
+| Event name | Description                                                                                                                                                                                     |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data       | Emitted when the server sends data.                                                                                                                                                             |
+| error      | Emitted when an error occurs. In case of the error, an [`Error`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-error) object sends to the handler function. |
+| end        | Emitted when the server closes the incoming stream.                                                                                                                                             |
+
+{{< admonition type="note" >}}
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), each `Stream.on()` handler captures the tags and metadata active when you register it. Metrics emitted by the handler use a copy of that context, and k6 restores the interrupted context after the handler returns or throws. Promise reactions and `await` continuations created by the handler keep its context.
+
+{{< /admonition >}}
+
+### Example
+
+<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+
+<!-- md-k6:skip -->
+
+```javascript
+import { Client, Stream } from 'k6/net/grpc';
+import { sleep } from 'k6';
+
+const client = new Client();
+client.load([], '../../grpc_server/route_guide.proto');
+
+export default () => {
+  if (__ITER == 0) {
+    client.connect('127.0.0.1:10000', { plaintext: true });
+  }
+
+  const stream = new Stream(client, 'main.RouteGuide/RecordRoute');
+
+  // sets up a handler for the data (server sends data) event
+  stream.on('data', (stats) => {
+    console.log('Finished trip with', stats.pointCount, 'points');
+    console.log('Passed', stats.featureCount, 'features');
+    console.log('Traveled', stats.distance, 'meters');
+    console.log('It took', stats.elapsedTime, 'seconds');
+  });
+
+  // sets up a handler for the end event (stream closes)
+  stream.on('end', function () {
+    // The server has finished sending
+    client.close();
+    console.log('All done');
+  });
+
+  // sets up a handler for the error event (an error occurs)
+  stream.on('error', function (e) {
+    // An error has occurred and the stream has been closed.
+    console.log('Error: ' + JSON.stringify(e));
+  });
+
+  sleep(1);
+};
+```
+
+</div>
