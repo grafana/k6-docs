@@ -19,11 +19,16 @@ k6 features
 ```
 
 ```
-FEATURE             LIFECYCLE      DESCRIPTION
-native-histograms   Experimental   Use native histograms for trend metrics
-merge-run-tags      Experimental   Merge run tags across config layers instead of replacing
-freeze-env          Experimental   Freeze __ENV object to prevent modifications from JS code
+FEATURE                LIFECYCLE      DESCRIPTION
+async-metric-context   Experimental   Propagate metric context through asynchronous operations
+freeze-env             Experimental   Freeze __ENV object to prevent modifications from JS code
+merge-run-tags         Experimental   Merge run tags across config layers instead of replacing
+native-histograms      Experimental   Use native histograms for trend metrics
 ```
+
+The `async-metric-context` flag propagates the tags and metadata associated with metric samples through asynchronous operations, including Promise reactions and timer callbacks. It also enables async callbacks for [`group()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group/). This flag is experimental, off by default, and may change or be removed.
+
+Module-specific propagation applies to [`http.asyncRequest()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/asyncrequest), [timers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-timers), [`k6/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets), [gRPC stream handlers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on), and [`k6/browser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser). Refer to each API page for its context-capture boundary and limitations.
 
 Add `--json` to get machine-readable output, useful for scripting — for example, checking in CI whether a specific flag is available before enabling it:
 
