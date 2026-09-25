@@ -23,7 +23,7 @@ Doing this helps group metrics with different URL and name tags that, in fact, r
 | tagMatch.name           | string   | The name value that replaces the current metric's URL and name tag values, if a match is found. Required, and must not be an empty string.                                                                                                                |
 | tagMatch.matches        | object[] | An array of objects containing the matchers which will be used to match against the current metric's URL and name tags. Required.                                                                                                                         |
 | tagMatch.matches.url    | RegExp   | The regular expression used to find matches in the current metric's URL and name tags. Required.                                                                                                                                                          |
-| tagMatch.matches.method | string?  | Used to match the metric's method tag. Valid values are `'GET'`, `'POST'`, `'PUT'`, `'DELETE'`, `'PATCH'`, `'OPTIONS'`, `'HEAD'`, `'TRACE'` and `'CONNECT'`. It's optional, and when it's not set it will group all metrics regardless of the method tag. |
+| tagMatch.matches.method | string?  | Used to match the metric's method tag. Valid values are `'GET'`, `'POST'`, `'PUT'`, `'DELETE'`, `'PATCH'`, `'OPTIONS'`, `'HEAD'`, `'TRACE'`, `'CONNECT'` and `'QUERY'`. It's optional, and when it's not set it will group all metrics regardless of the method tag. |
 
 
 ### Example Usage
