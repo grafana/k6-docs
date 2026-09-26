@@ -22,7 +22,7 @@ Please note that this guide assumes you are familiar with k6 and already have pe
 
 Before we dive in, let's consider the "why" behind automation and how it unlocks the full benefits of your performance testing efforts.
 
-{{< docs/learning-paths title="Establish a performance baseline with k6" url="https://grafana.com/docs/learning-paths/establish-k6-baseline/" >}}
+{{< docs/learning-paths title="Automate k6 in CI/CD pipelines" url="https://grafana.com/docs/learning-paths/automate-k6-cicd/" >}}
 
 ## Why automate performance tests
 
