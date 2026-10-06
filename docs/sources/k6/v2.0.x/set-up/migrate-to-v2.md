@@ -1,7 +1,9 @@
 ---
+aliases:
+  - ../get-started/migrating-to-v2
 title: 'Migrate to k6 v2'
 description: 'A guide covering all breaking changes in k6 v2 and how to update your scripts, extensions, and configuration.'
-weight: 06
+weight: 50
 ---
 
 # Migrate to k6 v2
