@@ -69,6 +69,12 @@ We also have a separate image you can use with `chromium` installed to run k6 br
 docker pull grafana/k6:master-with-browser
 ```
 
+{{< admonition type="note" >}}
+
+The container runs as a non-root user, so `/home/k6` must stay writable for Chromium's cache and config. Bind-mount a subdirectory, like `/home/k6/screenshots`, instead of mounting over `/home/k6` itself. If you must mount over `/home/k6`, set `XDG_CONFIG_HOME` and `XDG_CACHE_HOME` to a writable path, such as `/tmp`.
+
+{{< /admonition >}}
+
 ## Download the k6 binary
 
 Our [GitHub Releases page](https://github.com/grafana/k6/releases) has a standalone binary for all platforms. After downloading and extracting the archive for your platform, place the `k6` or `k6.exe` binary in your `PATH` to run `k6` from any location.
