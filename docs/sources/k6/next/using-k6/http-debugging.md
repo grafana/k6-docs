@@ -12,6 +12,32 @@ Things don't always work as expected. For those cases, enabling the [--http-debu
 
 - `--http-debug` logs the HTTP requests and responses, skipping the body.
 - `--http-debug="full"` logs the HTTP requests and responses, including the full body.
+- `--http-debug="unredacted"` or `--http-debug="full,unredacted"` logs the same output with raw credential values.
+
+The value is a comma-separated list, in any order and case-insensitive. For the full list of values, refer to the [HTTP debug option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug).
+
+## Credential masking
+
+By default, k6 masks the secret part of credential headers in the debug output with `***REDACTED***`. This applies to requests and responses, including the `Authorization` header that k6 adds for URL credentials (`http://user:pass@host`) and digest authentication, and cookies from the cookie jar.
+
+k6 masks these headers, case-insensitive:
+
+- `Authorization` and `Proxy-Authorization`: k6 keeps the auth scheme, for example, `Authorization: Bearer ***REDACTED***`.
+- `Cookie`: k6 keeps the cookie names, for example, `Cookie: session=***REDACTED***; theme=***REDACTED***`.
+- `Set-Cookie`: k6 keeps the cookie name and attributes, for example, `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`.
+- `X-Api-Key`, `X-Auth-Token`, and `X-Amz-Security-Token`: k6 masks the whole value, for example, `X-Api-Key: ***REDACTED***`.
+
+k6 doesn't mask `WWW-Authenticate` and `Proxy-Authenticate`, because they don't carry secrets.
+
+For gRPC, `--http-debug` also controls debug logging, and k6 masks gRPC metadata with the same names, for example, `authorization`. `full` still controls whether k6 logs gRPC payloads.
+
+To see the raw values, add `unredacted`, for example, `k6 run --http-debug=full,unredacted script.js`.
+
+{{< admonition type="caution" >}}
+
+k6 doesn't mask secrets inside request and response bodies, which `full` logs, or in URL query strings. For `k6 cloud run`, k6 also sends the debug output to the cloud logs, so check what your test logs before you share it.
+
+{{< /admonition >}}
 
 ## Example
 
@@ -21,7 +47,9 @@ Given the following script:
 import http from "k6/http";
 
 export default function () {
-      http.get("https://google.com/");
+      http.get("https://google.com/", {
+            headers: { Authorization: "Bearer my-secret-token" },
+      });
 }
 ```
 
@@ -46,6 +74,7 @@ Request: [----------------------------------------------------------] starting
 GET / HTTP/1.1
 Host: google.com
 User-Agent: k6/0.20.0 (https://k6.io/);
+Authorization: Bearer ***REDACTED***
 Accept-Encoding: gzip
 
 
@@ -65,6 +94,7 @@ GET /?gfe_rd=cr&dcr=0&ei=ILKzWqiODOaxX_LBi5AG HTTP/1.1
 Host: www.google.se
 User-Agent: k6/0.19.0 (https://k6.io/);
 Referer: https://google.com/
+Authorization: Bearer ***REDACTED***
 Accept-Encoding: gzip
 
 
@@ -79,8 +109,8 @@ Date: Thu, 22 Mar 2018 13:39:44 GMT
 Expires: -1
 P3p: CP="This is not a P3P policy! See g.co/p3phelp for more info."
 Server: gws
-Set-Cookie: 1P_JAR=2018-03-22-13; expires=Sat, 21-Apr-2018 13:39:44 GMT; path=/; domain=.google.se
-Set-Cookie: NID=126=asTcm5s3-jMa1-pquG09m9lpUrowy-OtzZ9cUomBuKeJePbvwJAZe5wCtiyLITj9_RrlWLf6DTQ8ufpdB39MCRV-zUpfXAUw8XUVMWtgdU1gbtnQ9rssin56333g9Hyo; expires=Fri, 21-Sep-2018 13:39:44 GMT; path=/; domain=.google.se; HttpOnly
+Set-Cookie: 1P_JAR=***REDACTED***; expires=Sat, 21-Apr-2018 13:39:44 GMT; path=/; domain=.google.se
+Set-Cookie: NID=***REDACTED***; expires=Fri, 21-Sep-2018 13:39:44 GMT; path=/; domain=.google.se; HttpOnly
 Vary: Accept-Encoding
 X-Frame-Options: SAMEORIGIN
 X-Xss-Protection: 1; mode=block
