@@ -38,6 +38,7 @@ Each option has its own detailed reference in a separate section.
 | [Handle summary timeout](#handle-summary-timeout)            | Specify how long the [handleSummary()](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) function is allowed to run before it's terminated                                                                                                                                                                    |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                       |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                              |
+| [HTTP debug redact](#http-debug-redact)                      | Mask credential headers in the HTTP debug output                                                                                                                                                                                                                                                                                                 |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                        |
 | [Insecure skip TLS verify](#insecure-skip-tls-verify)        | A boolean specifying whether k6 should ignore TLS verifications for connections established from code                                                                                                                                                                                                                                            |
 | [Iterations](#iterations)                                    | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) |
@@ -483,6 +484,25 @@ Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debuggin
 ```javascript
 export const options = {
   httpDebug: 'full',
+};
+```
+
+## HTTP debug redact
+
+A boolean, true or false. When enabled, k6 masks credential headers, such as `Authorization` and `Cookie`, in the
+[HTTP debug](#http-debug) output. Works with both `--http-debug` and `--http-debug=full`, for example,
+`k6 run --http-debug=full --http-debug-redact script.js`. Available in `k6 run` and `k6 cloud run` commands.
+
+Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging#credential-masking).
+
+| Env                    | CLI                   | Code / Config file | Default |
+| ---------------------- | --------------------- | ------------------ | ------- |
+| `K6_HTTP_DEBUG_REDACT` | `--http-debug-redact` | `httpDebugRedact`  | `false` |
+
+```javascript
+export const options = {
+  httpDebug: 'full',
+  httpDebugRedact: true,
 };
 ```
 
