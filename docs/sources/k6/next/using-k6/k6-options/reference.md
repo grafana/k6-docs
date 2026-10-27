@@ -472,13 +472,25 @@ The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, kee
 ## HTTP debug
 
 Log all HTTP requests and responses. Excludes body by default, to include body use
-`--http-debug=full`. Available in `k6 run` and `k6 cloud run` commands.
+`--http-debug=full`. To mask credential headers, such as `Authorization` and `Cookie`, add
+`redacted`, for example, `--http-debug=full,redacted`. Available in `k6 run` and `k6 cloud run` commands.
 
 Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging).
 
-| Env             | CLI                                     | Code / Config file | Default |
-| --------------- | --------------------------------------- | ------------------ | ------- |
-| `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        | `false` |
+| Env             | CLI                                                                                                     | Code / Config file | Default |
+| --------------- | ------------------------------------------------------------------------------------------------------- | ------------------ | ------- |
+| `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full`,<br/>`--http-debug=redacted`,<br/>`--http-debug=full,redacted` | `httpDebug`        | `""`    |
+
+The value is a comma-separated list of `headers`, `full`, and `redacted`, in any order and case-insensitive. The CLI flag, the environment variable, and the `httpDebug` option accept the same values:
+
+| Value                                  | Body logged | Credential headers masked |
+| -------------------------------------- | ----------- | ------------------------- |
+| `--http-debug` (no value) or `headers` | No          | No                        |
+| `full`                                 | Yes         | No                        |
+| `redacted` or `headers,redacted`       | No          | Yes                       |
+| `full,redacted`                        | Yes         | Yes                       |
+
+k6 treats an unknown value, such as `--http-debug=true`, as `headers` and logs a warning.
 
 ```javascript
 export const options = {

@@ -12,6 +12,36 @@ Things don't always work as expected. For those cases, enabling the [--http-debu
 
 - `--http-debug` logs the HTTP requests and responses, skipping the body.
 - `--http-debug="full"` logs the HTTP requests and responses, including the full body.
+- `--http-debug="redacted"` or `--http-debug="full,redacted"` logs the same output and masks credential headers.
+
+The value is a comma-separated list, in any order and case-insensitive. For the full list of values, refer to the [HTTP debug option](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug).
+
+## Credential masking
+
+By default, the debug output shows credential headers in plain text. To mask them, add `redacted` to the value:
+
+```sh
+k6 run --http-debug=full,redacted script.js
+```
+
+k6 then replaces the secret part of each credential header with `***REDACTED***`. This applies to requests and responses, including the `Authorization` header that k6 adds for URL credentials (`http://user:pass@host`) and digest authentication, and cookies from the cookie jar.
+
+k6 masks these headers, case-insensitive:
+
+- `Authorization` and `Proxy-Authorization`: k6 keeps the auth scheme, for example, `Authorization: Bearer ***REDACTED***`.
+- `Cookie`: k6 keeps the cookie names, for example, `Cookie: session=***REDACTED***; theme=***REDACTED***`.
+- `Set-Cookie`: k6 keeps the cookie name and attributes, for example, `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`.
+- `X-Api-Key`, `X-Auth-Token`, and `X-Amz-Security-Token`: k6 masks the whole value, for example, `X-Api-Key: ***REDACTED***`.
+
+For gRPC, `--http-debug` also controls debug logging, and `redacted` masks gRPC metadata with the same names, for example, `authorization`. `full` still controls whether k6 logs gRPC payloads.
+
+{{< admonition type="caution" >}}
+
+`redacted` doesn't mask secrets inside request and response bodies, which `full` logs, or in URL query strings. For `k6 cloud run`, k6 also sends the debug output to the cloud logs, so check what your test logs before you share it.
+
+Older k6 versions don't know `redacted`. They read `full,redacted` as `headers` and log credentials in plain text.
+
+{{< /admonition >}}
 
 ## Example
 
