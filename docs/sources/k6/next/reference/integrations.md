@@ -34,7 +34,7 @@ Generate a k6 script quickly from an existing file.
 
 - [HAR-to-k6](https://github.com/k6io/har-to-k6) - Convert a HAR file to a k6 script.
 - [Postman-to-k6](https://github.com/apideck-libraries/postman-to-k6) - Convert a Postman collection to a k6 script.
-- [OpenAPI generator](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6) - Convert a Swagger/OpenAPI specification to a k6 script.
+- [xk6-subcommand-openapi](https://github.com/grafana/xk6-subcommand-openapi) - Generate a typed k6 client library from an OpenAPI specification with `k6 x openapi`.
 
 ## Result store and visualization
 
