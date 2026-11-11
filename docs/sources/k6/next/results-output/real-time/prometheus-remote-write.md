@@ -152,6 +152,7 @@ k6 has special options for remote write output.
 | Name                                         | Type                                 | Description                                                                                                                                                                                                                                                                            |
 | -------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `K6_PROMETHEUS_RW_SERVER_URL`                | `string`                             | URL of the Prometheus remote write implementation's endpoint. Default is `http://localhost:9090/api/v1/write`                                                                                                                                                                          |
+| `K6_PROMETHEUS_RW_PROXY`                     | `string`                             | URL of the HTTP proxy for this output's remote write requests, for example `http://proxy.example.com:3128`. When unset or empty, this output does not use a proxy. |
 | `K6_PROMETHEUS_RW_HEADERS_<header-key>`      | `string`                             | Additional header to include in the HTTP requests. It can be set using the described format, for example `K6_PROMETHEUS_RW_HEADERS_CUSTOM-HEADER-KEY=custom-header-value`.                                                                                                             |
 | `K6_PROMETHEUS_RW_HTTP_HEADERS`              | A comma-separated list of key-values | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HTTP_HEADERS=key1:value1,key2:value2`.                                                                                                                                                                           |
 | `K6_PROMETHEUS_RW_LABELS` | A comma-separated list of key-value pairs | Static labels to add to remote write time series, for example `environment=production,server=srv1`. No additional labels by default. Refer to [Add static labels](#add-static-labels). |
@@ -169,6 +170,18 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_SIGV4_REGION`              | `string`                             | Sets the AWS region where the workspace is. Along with the others `K6_PROMETHEUS_RW_SIGV4_*` configurations enables signing requests.                                                                                                                                                  |
 | `K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY`          | `string`                             | Sets the AWS access key.                                                                                                                                                                                                                                                               |
 | `K6_PROMETHEUS_RW_SIGV4_SECRET_KEY`          | `string`                             | Sets the AWS secret key.                                                                                                                                                                                                                                                               |
+
+### Send remote write through a proxy
+
+Set a proxy URL for the Prometheus remote write output:
+
+```sh
+K6_PROMETHEUS_RW_PROXY=http://proxy.example.com:3128 \
+K6_PROMETHEUS_RW_SERVER_URL=https://prometheus.example.com/api/v1/write \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+The proxy URL must be parseable as a URL and identify a usable HTTP proxy. This setting applies to the remote write output, not to HTTP requests made by your test script. You can also set `proxy` in the output's JSON configuration; the environment variable takes precedence. An explicitly empty value disables the proxy. This output does not use `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` for its remote write client, and the `-o experimental-prometheus-rw` argument does not currently accept `proxy=` options.
 
 ### Add static labels
 
