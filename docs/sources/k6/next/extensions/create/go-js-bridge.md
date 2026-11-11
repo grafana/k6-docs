@@ -26,6 +26,22 @@ The bridge has a few features we should highlight:
 
 ## Type conversion and native constructors
 
+### Conversion changes in k6 v2.4.0
+
+If your extension passes Go values to `sobek.Runtime.ToValue()`, review nil slices and pointers when upgrading to k6 v2.4.0. A nil Go slice passed directly to `ToValue()` becomes JavaScript `null`, rather than an empty array. A Go function that returns no value exposes JavaScript `undefined`. Check the actual conversion path before testing for either value. Return a non-nil empty slice when your API promises an empty array:
+
+```go
+package main
+
+import "github.com/grafana/sobek"
+
+func emptyStrings(rt *sobek.Runtime) sobek.Value {
+	return rt.ToValue([]string{})
+}
+```
+
+`ToValue()` now dereferences one pointer level. A pointer to a pointer becomes a generic JavaScript object rather than exposing the inner value's fields and methods. Dereference it yourself when the API should expose the inner value, and handle nil at each level. Audit extension methods that pass nested pointers to `ToValue()` and tests that distinguish `null`, `undefined`, and `[]`. k6 adjusts its affected built-in APIs to keep their documented empty-array results.
+
 The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent.
 For complex types where this is impossible, your script might fail with a `TypeError`, requiring you to explicitly convert
 your object to a [`sobek.Object`](https://pkg.go.dev/github.com/grafana/sobek#Object) or [`sobek.Value`](https://pkg.go.dev/github.com/grafana/sobek#Value).
