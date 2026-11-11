@@ -24,6 +24,8 @@ generateKey(algorithm, extractable, keyUsages)
 
 ### Supported algorithms
 
+`Ed25519` assigns the requested `verify` usage to the public key and `sign` usage to the private key. `X25519` generates a public key with no usages and assigns requested `deriveBits` or `deriveKey` usages to the private key. The public keys are always extractable; the `extractable` argument controls the private key. Each algorithm rejects empty or invalid requested key usages with `SyntaxError`.
+
 {{< docs/shared source="k6" lookup="crypto/supported-key-methods.md" version="<K6_VERSION>" >}}
 
 ## Return Value

@@ -26,6 +26,8 @@ deriveKey(algorithm, baseKey, derivedKeyType, extractable, keyUsages)
 
 ### Supported algorithms
 
+`X25519` supports `deriveBits()` but is not supported by `deriveKey()` in this release. Derive the bits first and import them as a key when needed.
+
 | PBKDF2                                                                                          | ECDH | HKDF |
 | :---------------------------------------------------------------------------------------------- | :--- | :--- |
 | ✅ [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | ❌   | ❌   |
