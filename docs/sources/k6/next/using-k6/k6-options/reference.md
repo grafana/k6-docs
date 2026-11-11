@@ -1379,6 +1379,8 @@ A boolean, true or false. When enabled, k6 follows the Authority Information Acc
 
 Fetched intermediates are cached and reused for the lifetime of the test, and AIA fetches respect the same blocking, host override, and DNS rules as regular test traffic. This option has no effect when `insecureSkipTLSVerify` is enabled.
 
+AIA endpoints can return an individual DER or PEM certificate, or a DER or PEM-armored PKCS#7/CMS certs-only bundle. k6 adds all parseable certificates from a bundle to the intermediate pool and then verifies the chain against your trusted roots. Fetching a certificate does not make it trusted. A bundle with no parseable certificates cannot complete the chain.
+
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
 | `K6_TLS_AIA_FETCH` | N/A | `tlsAIAFetch`      | `false` |
