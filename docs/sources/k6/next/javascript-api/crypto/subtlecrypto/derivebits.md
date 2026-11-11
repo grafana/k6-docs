@@ -20,7 +20,7 @@ deriveBits(algorithm, baseKey, length)
 | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
 | `algorithm` | [EcdhKeyDeriveParams](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/ecdhkeyderiveparams/) or [Pbkdf2Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/pbkdf2params/) | An object defining a derivation algorithm to use.                                                                       |
 | `baseKey`   | [CryptoKey](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/cryptokey)                                                                                                                      | Represents an input to derivation algorithm. Could be an ECDH private key or a PBKDF2 password imported as a CryptoKey. |
-| `length`    | `number`                                                                                                                                                                                                   | The length of the bits to derive. Must be a positive number and a multiple of 8.                                        |
+| `length`    | `number`                                                                                                                                                                                                   | The requested number of bits. It must be greater than zero. PBKDF2 requires a multiple of eight; ECDH also accepts non-byte-aligned lengths. |
 
 ### Supported algorithms
 
@@ -36,9 +36,29 @@ A `Promise` that resolves to a new `ArrayBuffer` containing the derived bits.
 
 | Type             | Description                                       |
 | :--------------- | :------------------------------------------------ |
-| `OperationError` | Raised when `length` is 0 or not a multiple of 8. |
+| `OperationError` | Raised when `length` is zero or negative, when a requested ECDH length exceeds the shared secret, or when a PBKDF2 length is not a multiple of eight. |
+
+For ECDH, the returned `ArrayBuffer` contains `ceil(length / 8)` bytes. k6 clears the unused low bits of the final byte. Provide an explicit positive numeric length. HKDF is not supported by this method.
 
 ## Examples
+
+### Deriving a non-byte-aligned ECDH secret
+
+```javascript
+export default async function () {
+  const alice = await crypto.subtle.generateKey(
+    { name: 'ECDH', namedCurve: 'P-256' }, true, ['deriveBits']
+  );
+  const bob = await crypto.subtle.generateKey(
+    { name: 'ECDH', namedCurve: 'P-256' }, true, ['deriveBits']
+  );
+  const bits = await crypto.subtle.deriveBits(
+    { name: 'ECDH', public: bob.publicKey }, alice.privateKey, 9
+  );
+  const bytes = new Uint8Array(bits);
+  console.log(bytes.length === 2 && (bytes[1] & 0x7f) === 0);
+}
+```
 
 ### Deriving bits using ECDH
 
