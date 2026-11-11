@@ -1459,6 +1459,26 @@ export const options = {
 
 This option specifies where to send traces to. Available in the `k6 run` command.
 
+With the experimental [`native-tracing` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/), an enabled OpenTelemetry output receives spans for the test run, each scenario, each VU activation, and each iteration. The flag alone does not enable an exporter.
+
+```sh
+k6 run --features native-tracing --traces-output=otel script.js
+```
+
+For this command, save the following test as `script.js` and start an OpenTelemetry collector listening for OTLP/gRPC on `127.0.0.1:4317`:
+
+```javascript
+export const options = { vus: 1, iterations: 1 };
+
+export default function () {
+  console.log('traced iteration');
+}
+```
+
+The spans form a `k6.run` → `scenario` → `vu` → `iteration` hierarchy. A VU span covers its activation in a scenario and can contain several iteration spans. Browser spans, when emitted, are children of the iteration. The scenario span includes `test.scenario` and `k6.scenario.executor`; VU and iteration spans include `test.vu`, `k6.vu.id_in_instance`, and `k6.vu.id_in_test`. Iterations also include `test.iteration.number` and `k6.vu.iteration_in_scenario`; scenario iteration counters are present when the executor supplies them.
+
+Script errors mark the affected iteration span as an error. `execution.test.fail()` records its reason on the current iteration span; `execution.test.abort()` interrupts execution and may mark an unfinished iteration as interrupted. An iteration stopped at scenario or test shutdown has `k6.iteration.interrupted=true` instead of an error caused solely by that interruption. The hierarchy does not automatically create a span for each protocol request, and it does not cover `setup()` or `teardown()`.
+
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_TRACES_OUTPUT` | `--traces-output` | N/A                | `none`  |
