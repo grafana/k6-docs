@@ -1421,6 +1421,8 @@ Due to limitations in the underlying [go implementation](https://github.com/gola
 
 {{< /admonition >}}
 
+For TLS 1.2, k6 accepts the standard names `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256` and `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`. The older names without `_SHA256` remain accepted aliases for the same suites. Refer to [SSL/TLS version and ciphers](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/) for the full list.
+
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
 | N/A | N/A | `tlsCipherSuites`  | `null` (Allow all suites) |
