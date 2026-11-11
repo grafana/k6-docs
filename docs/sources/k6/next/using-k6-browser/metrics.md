@@ -45,6 +45,8 @@ To review the complete list of k6 metrics, refer to the [Metrics reference](http
 
 ## Understanding the browser metrics output
 
+In k6 v2.4.0 and later, `browser_data_received` uses the encoded transfer size reported by Chrome DevTools when a response finishes, including responses in a redirect chain. This can differ from the uncompressed response body size, especially for compressed resources. k6 does not add a sample when Chrome reports an unavailable or negative encoded length. Recheck thresholds and baselines that use this metric when upgrading from an earlier version. This metric is not a count of bytes at the network interface and is separate from the HTTP protocol's `data_received` metric.
+
 When a browser test finishes, k6 reports a top-level overview of the aggregated browser metrics output.
 The following snippet is an example:
 
