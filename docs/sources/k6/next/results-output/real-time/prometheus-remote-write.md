@@ -170,6 +170,7 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_SIGV4_REGION`              | `string`                             | Sets the AWS region where the workspace is. Along with the others `K6_PROMETHEUS_RW_SIGV4_*` configurations enables signing requests.                                                                                                                                                  |
 | `K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY`          | `string`                             | Sets the AWS access key.                                                                                                                                                                                                                                                               |
 | `K6_PROMETHEUS_RW_SIGV4_SECRET_KEY`          | `string`                             | Sets the AWS secret key.                                                                                                                                                                                                                                                               |
+| `K6_PROMETHEUS_RW_SIGV4_TOKEN`               | `string`                             | AWS session token for temporary SigV4 credentials. Optional with long-lived credentials. |
 
 ### Send remote write through a proxy
 
@@ -182,6 +183,21 @@ k6 run -o experimental-prometheus-rw script.js
 ```
 
 The proxy URL must be parseable as a URL and identify a usable HTTP proxy. This setting applies to the remote write output, not to HTTP requests made by your test script. You can also set `proxy` in the output's JSON configuration; the environment variable takes precedence. An explicitly empty value disables the proxy. This output does not use `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` for its remote write client, and the `-o experimental-prometheus-rw` argument does not currently accept `proxy=` options.
+
+### Sign remote write with temporary AWS credentials
+
+For SigV4, set the region, access key, and secret key together. When the credentials are temporary, also set their session token. k6 includes a nonempty token in the signed `X-Amz-Security-Token` header. A token without all three required settings is an error; k6 does not discover credentials from the AWS environment or credential files for this output.
+
+```sh
+K6_PROMETHEUS_RW_SIGV4_REGION="$AWS_REGION" \
+K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY="$AWS_ACCESS_KEY_ID" \
+K6_PROMETHEUS_RW_SIGV4_SECRET_KEY="$AWS_SECRET_ACCESS_KEY" \
+K6_PROMETHEUS_RW_SIGV4_TOKEN="$AWS_SESSION_TOKEN" \
+K6_PROMETHEUS_RW_SERVER_URL="$PROMETHEUS_REMOTE_WRITE_URL" \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+Set these variables in your shell or secret manager before running the command. The same settings are available as `sigV4Region`, `sigV4AccessKey`, `sigV4SecretKey`, and `sigV4Token` in the output's JSON configuration. Environment values take precedence over JSON values.
 
 ### Add static labels
 
