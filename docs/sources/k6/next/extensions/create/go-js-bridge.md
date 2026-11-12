@@ -26,9 +26,25 @@ The bridge has a few features we should highlight:
 
 ## Type conversion and native constructors
 
-### Conversion changes in k6 v2.4.0
+The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent.
+For complex types where this is impossible, your script might fail with a `TypeError`, requiring you to explicitly convert
+your object to a [`sobek.Object`](https://pkg.go.dev/github.com/grafana/sobek#Object) or [`sobek.Value`](https://pkg.go.dev/github.com/grafana/sobek#Value).
 
-If your extension passes Go values to `sobek.Runtime.ToValue()`, review nil slices and pointers when upgrading to k6 v2.4.0. A nil Go slice passed directly to `ToValue()` becomes JavaScript `null`, rather than an empty array. A Go function that returns no value exposes JavaScript `undefined`. Check the actual conversion path before testing for either value. Return a non-nil empty slice when your API promises an empty array:
+When you pass a nil Go slice to `sobek.Runtime.ToValue()`, JavaScript receives `null`. A Go function with no return value exposes `undefined`. `ToValue()` dereferences one pointer level; a pointer to a pointer becomes a generic JavaScript object rather than exposing the inner value's fields and methods.
+
+```go
+func (*Compare) XComparator(call sobek.ConstructorCall, rt *sobek.Runtime) *sobek.Object {
+	return rt.ToValue(&Compare{}).ToObject(rt)
+}
+```
+
+The preceding snippet also demonstrates the _native constructors_ feature from sobek, where methods can become JS constructors.
+Methods with this signature can create `Comparator` instances in JS with `new compare.Comparator()`.
+While this is more idiomatic to JS, it still has the benefit of receiving the `sobek.Runtime`.
+
+### Upgrade extensions to k6 v2.4.0
+
+Sobek changed how `ToValue()` converts nil slices and nested pointers in k6 v2.4.0. If your extension relied on a nil slice becoming an empty JavaScript array, return a non-nil empty slice instead:
 
 ```go
 package main
@@ -40,18 +56,4 @@ func emptyStrings(rt *sobek.Runtime) sobek.Value {
 }
 ```
 
-`ToValue()` now dereferences one pointer level. A pointer to a pointer becomes a generic JavaScript object rather than exposing the inner value's fields and methods. Dereference it yourself when the API should expose the inner value, and handle nil at each level. Audit extension methods that pass nested pointers to `ToValue()` and tests that distinguish `null`, `undefined`, and `[]`. k6 adjusts its affected built-in APIs to keep their documented empty-array results.
-
-The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent.
-For complex types where this is impossible, your script might fail with a `TypeError`, requiring you to explicitly convert
-your object to a [`sobek.Object`](https://pkg.go.dev/github.com/grafana/sobek#Object) or [`sobek.Value`](https://pkg.go.dev/github.com/grafana/sobek#Value).
-
-```go
-func (*Compare) XComparator(call sobek.ConstructorCall, rt *sobek.Runtime) *sobek.Object {
-	return rt.ToValue(&Compare{}).ToObject(rt)
-}
-```
-
-The preceding snippet also demonstrates the _native constructors_ feature from sobek, where methods can become JS constructors.
-Methods with this signature can create `Comparator` instances in JS with `new compare.Comparator()`.
-While this is more idiomatic to JS, it still has the benefit of receiving the `sobek.Runtime`.
+If your extension passes a pointer to a pointer to `ToValue()`, dereference it before conversion when JavaScript should access the inner value's fields or methods. Handle nil at each level, and test the values your API returns for `null`, `undefined`, and `[]`. k6 preserves empty-array results in its affected built-in APIs.
