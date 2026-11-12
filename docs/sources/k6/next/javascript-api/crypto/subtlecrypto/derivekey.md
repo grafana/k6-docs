@@ -26,7 +26,7 @@ deriveKey(algorithm, baseKey, derivedKeyType, extractable, keyUsages)
 
 ### Supported algorithms
 
-`X25519` supports `deriveBits()` but is not supported by `deriveKey()` in this release. Derive the bits first and import them as a key when needed.
+`X25519` supports `deriveBits()` but is not supported by `deriveKey()`. Derive the bits first and import them as a key when needed.
 
 | PBKDF2                                                                                          | ECDH | HKDF |
 | :---------------------------------------------------------------------------------------------- | :--- | :--- |
