@@ -16,31 +16,39 @@ Things don't always work as expected. For those cases, enabling the [--http-debu
 
 ## Credential masking
 
-By default, the debug output shows credential headers in plain text. To mask them, add the [`--http-debug-redact`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug-redact) option:
+By default, the debug output shows credential headers in plain text. To mask them, add the [`--http-debug-redact`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference#http-debug-redact) option to your command:
 
 ```sh
 k6 run --http-debug=full --http-debug-redact script.js
 ```
 
-You can also set `K6_HTTP_DEBUG_REDACT=true` or the `httpDebugRedact: true` script option.
+You can also set the `K6_HTTP_DEBUG_REDACT` environment variable to `true`, or the `httpDebugRedact` option in your script.
 
-k6 then replaces the secret part of each credential header with `***REDACTED***`. This applies to requests and responses, including the `Authorization` header that k6 adds for URL credentials (`http://user:pass@host`) and digest authentication, and cookies from the cookie jar.
+k6 replaces the secret part of each credential header with `***REDACTED***`. This applies to both requests and responses, including:
 
-k6 masks these headers, case-insensitive:
+- The `Authorization` header that k6 adds for URL credentials (`http://user:pass@host`) and digest authentication.
+- Cookies from the cookie jar.
 
-- `Authorization` and `Proxy-Authorization`: k6 keeps the auth scheme, for example, `Authorization: Bearer ***REDACTED***`.
-- `Cookie`: k6 keeps the cookie names, for example, `Cookie: session=***REDACTED***; theme=***REDACTED***`.
-- `Set-Cookie`: k6 keeps the cookie name and attributes, for example, `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`.
-- If k6 can't parse a cookie value, it masks the whole value.
-- `X-Api-Key`, `X-Auth-Token`, and `X-Amz-Security-Token`: k6 masks the whole value, for example, `X-Api-Key: ***REDACTED***`.
+### Masked headers
 
-For gRPC, `--http-debug` also controls debug logging, and `--http-debug-redact` masks gRPC metadata with the same names, for example, `authorization`. `full` still controls whether k6 logs gRPC payloads.
+k6 masks the following headers. Header names are case-insensitive.
+
+| Header                                              | What k6 masks                                                                                                                                | Example                                                |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `Authorization`, `Proxy-Authorization`              | The credentials. k6 keeps the auth scheme if it's a standard one, such as `Bearer` or `Basic`. Otherwise, k6 masks the whole value.         | `Authorization: Bearer ***REDACTED***`                 |
+| `Cookie`                                            | The cookie values. k6 keeps the cookie names.                                                                                                | `Cookie: session=***REDACTED***; theme=***REDACTED***` |
+| `Set-Cookie`                                        | The cookie value. k6 keeps the cookie name and attributes.                                                                                   | `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`     |
+| `X-Api-Key`, `X-Auth-Token`, `X-Amz-Security-Token` | The whole value.                                                                                                                             | `X-Api-Key: ***REDACTED***`                            |
+
+If k6 can't parse a cookie value, it masks the whole value.
+
+### gRPC
+
+For gRPC, `--http-debug` also controls debug logging, and `--http-debug-redact` masks gRPC metadata with the same names, for example, `authorization`.`full` still controls whether k6 logs gRPC payloads.
 
 {{< admonition type="caution" >}}
 
-`--http-debug-redact` doesn't mask secrets inside request and response bodies, which `full` logs, or in URL query strings. For `k6 cloud run`, k6 also sends the debug output to the cloud logs, so check what your test logs before you share it.
-
-Older k6 versions ignore `httpDebugRedact`. If you run an archive with this option on an older version, k6 logs credentials in plain text.
+`--http-debug-redact` only masks headers. It doesn't mask secrets in URL query strings or in request and response bodies, which k6 logs when you use `--http-debug=full`. For `k6 cloud run`, k6 also sends the debug output to the cloud logs, so check what your test logs before you share it.
 
 {{< /admonition >}}
 

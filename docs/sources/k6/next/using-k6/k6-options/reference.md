@@ -492,7 +492,7 @@ export const options = {
 A boolean, true or false. When enabled, k6 masks credential headers, such as `Authorization` and `Cookie`, in the
 [HTTP debug](#http-debug) output. Works with both `--http-debug` and `--http-debug=full`, for example,
 `k6 run --http-debug=full --http-debug-redact script.js`. Available in `k6 run` and `k6 cloud run` commands.
-
+Mask credential headers, such as `Authorization` and `Cookie`, in the [HTTP debug](#http-debug) output. Works with both `--http-debug` and `--http-debug=full`. Available in `k6 run` and `k6 cloud run` commands.
 Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging#credential-masking).
 
 | Env                    | CLI                   | Code / Config file | Default |
