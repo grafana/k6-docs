@@ -42,7 +42,7 @@ The preceding snippet also demonstrates the _native constructors_ feature from s
 Methods with this signature can create `Comparator` instances in JS with `new compare.Comparator()`.
 While this is more idiomatic to JS, it still has the benefit of receiving the `sobek.Runtime`.
 
-### Upgrade extensions to k6 v2.4.0
+### Upgrade extensions to k6 v2.4.0+
 
 Sobek changed how `ToValue()` converts nil slices and nested pointers in k6 v2.4.0. If your extension relied on a nil slice becoming an empty JavaScript array, return a non-nil empty slice instead:
 

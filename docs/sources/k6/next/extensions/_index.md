@@ -8,7 +8,7 @@ weight: 700
 
 With k6 extensions, you can extend the core k6 functionality with new features to support your specific reliability-testing needs.
 
-If you maintain an extension and plan to upgrade it to k6 v2.4.0, review the [Sobek conversion changes](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/go-js-bridge/#upgrade-extensions-to-k6-v240). Nil slices and nested pointers can produce different JavaScript values after the upgrade.
+If you maintain an extension and plan to upgrade it to k6 v2.4.0+, review the [Sobek conversion changes](https://grafana.com/docs/k6/<K6_VERSION>/extensions/create/go-js-bridge/#upgrade-extensions-to-k6-v240). Nil slices and nested pointers can produce different JavaScript values after the upgrade.
 
 k6 supports four types of extensions:
 
