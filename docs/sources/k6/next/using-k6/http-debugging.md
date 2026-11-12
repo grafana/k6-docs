@@ -33,18 +33,18 @@ k6 replaces the secret part of each credential header with `***REDACTED***`. Thi
 
 k6 masks the following headers. Header names are case-insensitive.
 
-| Header                                              | What k6 masks                                                                                                                                | Example                                                |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `Authorization`, `Proxy-Authorization`              | The credentials. k6 keeps the auth scheme if it's a standard one, such as `Bearer` or `Basic`. Otherwise, k6 masks the whole value.         | `Authorization: Bearer ***REDACTED***`                 |
-| `Cookie`                                            | The cookie values. k6 keeps the cookie names.                                                                                                | `Cookie: session=***REDACTED***; theme=***REDACTED***` |
-| `Set-Cookie`                                        | The cookie value. k6 keeps the cookie name and attributes.                                                                                   | `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`     |
-| `X-Api-Key`, `X-Auth-Token`, `X-Amz-Security-Token` | The whole value.                                                                                                                             | `X-Api-Key: ***REDACTED***`                            |
+| Header                                              | What k6 masks                                                                                                                       | Example                                                |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `Authorization`, `Proxy-Authorization`              | The credentials. k6 keeps the auth scheme if it's a standard one, such as `Bearer` or `Basic`. Otherwise, k6 masks the whole value. | `Authorization: Bearer ***REDACTED***`                 |
+| `Cookie`                                            | The cookie values. k6 keeps the cookie names.                                                                                       | `Cookie: session=***REDACTED***; theme=***REDACTED***` |
+| `Set-Cookie`                                        | The cookie value. k6 keeps the cookie name and attributes.                                                                          | `Set-Cookie: sid=***REDACTED***; Path=/; HttpOnly`     |
+| `X-Api-Key`, `X-Auth-Token`, `X-Amz-Security-Token` | The whole value.                                                                                                                    | `X-Api-Key: ***REDACTED***`                            |
 
 If k6 can't parse a cookie value, it masks the whole value.
 
 ### gRPC
 
-For gRPC, `--http-debug` also controls debug logging, and `--http-debug-redact` masks gRPC metadata with the same names, for example, `authorization`.`full` still controls whether k6 logs gRPC payloads.
+For gRPC, `--http-debug` also controls debug logging, and `--http-debug-redact` masks gRPC metadata with the same names, for example, `authorization`. `full` still controls whether k6 logs gRPC payloads.
 
 {{< admonition type="caution" >}}
 
