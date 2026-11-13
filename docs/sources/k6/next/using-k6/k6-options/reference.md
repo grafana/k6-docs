@@ -38,6 +38,7 @@ Each option has its own detailed reference in a separate section.
 | [Handle summary timeout](#handle-summary-timeout)            | Specify how long the [handleSummary()](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) function is allowed to run before it's terminated                                                                                                                                                                    |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                       |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                              |
+| [HTTP debug redact](#http-debug-redact)                      | Mask credential headers in the HTTP debug output                                                                                                                                                                                                                                                                                                 |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                        |
 | [Insecure skip TLS verify](#insecure-skip-tls-verify)        | A boolean specifying whether k6 should ignore TLS verifications for connections established from code                                                                                                                                                                                                                                            |
 | [Iterations](#iterations)                                    | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) |
@@ -483,6 +484,23 @@ Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debuggin
 ```javascript
 export const options = {
   httpDebug: 'full',
+};
+```
+
+## HTTP debug redact
+
+Mask credential headers, such as `Authorization` and `Cookie`, in the [HTTP debug](#http-debug) output. Works with both `--http-debug` and `--http-debug=full`. Without HTTP debug, the option has no effect and k6 logs a warning. Available in `k6 run` and `k6 cloud run` commands.
+
+Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging#credential-masking).
+
+| Env                    | CLI                   | Code / Config file | Default |
+| ---------------------- | --------------------- | ------------------ | ------- |
+| `K6_HTTP_DEBUG_REDACT` | `--http-debug-redact` | `httpDebugRedact`  | `false` |
+
+```javascript
+export const options = {
+  httpDebug: 'full',
+  httpDebugRedact: true,
 };
 ```
 
@@ -1379,6 +1397,8 @@ A boolean, true or false. When enabled, k6 follows the Authority Information Acc
 
 Fetched intermediates are cached and reused for the lifetime of the test, and AIA fetches respect the same blocking, host override, and DNS rules as regular test traffic. This option has no effect when `insecureSkipTLSVerify` is enabled.
 
+AIA endpoints can return an individual DER or PEM certificate, or a DER or PEM-armored PKCS#7/CMS certs-only bundle. k6 adds all parseable certificates from a bundle to the intermediate pool and then verifies the chain against your trusted roots. Fetching a certificate does not make it trusted. A bundle with no parseable certificates cannot complete the chain.
+
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
 | `K6_TLS_AIA_FETCH` | N/A | `tlsAIAFetch`      | `false` |
@@ -1421,6 +1441,8 @@ Due to limitations in the underlying [go implementation](https://github.com/gola
 
 {{< /admonition >}}
 
+For TLS 1.2, k6 accepts the standard names `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256` and `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`. The older names without `_SHA256` remain accepted aliases for the same suites. Refer to [SSL/TLS version and ciphers](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/) for the full list.
+
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
 | N/A | N/A | `tlsCipherSuites`  | `null` (Allow all suites) |
@@ -1458,6 +1480,26 @@ export const options = {
 ## Traces output
 
 This option specifies where to send traces to. Available in the `k6 run` command.
+
+With the experimental [`native-tracing` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/), an enabled OpenTelemetry output receives spans for the test run, each scenario, each VU activation, and each iteration. The flag alone does not enable an exporter.
+
+```sh
+k6 run --features native-tracing --traces-output=otel script.js
+```
+
+For this command, save the following test as `script.js` and start an OpenTelemetry collector listening for OTLP/gRPC on `127.0.0.1:4317`:
+
+```javascript
+export const options = { vus: 1, iterations: 1 };
+
+export default function () {
+  console.log('traced iteration');
+}
+```
+
+The spans form a `k6.run` → `scenario` → `vu` → `iteration` hierarchy. A VU span covers its activation in a scenario and can contain several iteration spans. Browser spans, when emitted, are children of the iteration. The scenario span includes `test.scenario` and `k6.scenario.executor`; VU and iteration spans include `test.vu`, `k6.vu.id_in_instance`, and `k6.vu.id_in_test`. Iterations also include `test.iteration.number` and `k6.vu.iteration_in_scenario`; scenario iteration counters are present when the executor supplies them.
+
+Script errors mark the affected iteration span as an error. `execution.test.fail()` records its reason on the current iteration span; `execution.test.abort()` interrupts execution and may mark an unfinished iteration as interrupted. An iteration stopped at scenario or test shutdown has `k6.iteration.interrupted=true` instead of an error caused solely by that interruption. The hierarchy does not automatically create a span for each protocol request, and it does not cover `setup()` or `teardown()`.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |

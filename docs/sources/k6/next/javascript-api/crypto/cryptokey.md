@@ -6,6 +6,8 @@ weight: 02
 
 # CryptoKey
 
+For `Ed25519` and `X25519` key pairs, a generated public key is extractable. The `extractable` argument to `generateKey()` controls the private key. `Ed25519` private keys can have `sign` usage and public keys can have `verify` usage. `X25519` private keys can have `deriveBits` or `deriveKey` usage; public keys have no usages.
+
 The `CryptoKey` object represents a cryptographic key used for [encryption](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/encrypt),[decryption](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/decrypt),[signing](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/sign), or [verification](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/verify) within the webcrypto module. The `CryptoKey` object is created using the SubtleCrypto.generateKey() or SubtleCrypto.importKey() methods.
 
 ## Properties

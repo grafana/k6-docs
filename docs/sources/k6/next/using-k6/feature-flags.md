@@ -24,9 +24,12 @@ async-metric-context   Experimental   Propagate metric context through asynchron
 freeze-env             Experimental   Freeze __ENV object to prevent modifications from JS code
 merge-run-tags         Experimental   Merge run tags across config layers instead of replacing
 native-histograms      Experimental   Use native histograms for trend metrics
+native-tracing         Experimental   Trace the test run, scenarios, VUs and iterations as spans
 ```
 
 The `async-metric-context` flag propagates the tags and metadata associated with metric samples through asynchronous operations, including Promise reactions and timer callbacks. It also enables async callbacks for [`group()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group/). This flag is experimental, off by default, and may change or be removed.
+
+The `native-tracing` flag emits execution spans when you also enable an [OpenTelemetry traces output](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/k6-options/reference/#traces-output). It is experimental and off by default. Refer to the traces output reference for the span hierarchy and attributes.
 
 Module-specific propagation applies to [`http.asyncRequest()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/asyncrequest), [timers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-timers), [`k6/websockets`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-websockets), [gRPC stream handlers](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-on), and [`k6/browser`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser). Refer to each API page for its context-capture boundary and limitations.
 
