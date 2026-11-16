@@ -10,6 +10,8 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 
 ## Methods
 
+Starting with k6 v2.4.0, you can use `Ed25519` for signing and verification and `X25519` for key agreement. Both algorithms support key generation, import, and export. `X25519` supports `deriveBits()`; `deriveKey()` does not currently accept `X25519`. The methods below describe their parameters and supported formats.
+
 | Method                                                                                                 | Description                                                                                                          |
 | :----------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
 | [encrypt](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/encrypt)         | Encrypts the given plaintext data using the specified algorithm and key.                                             |

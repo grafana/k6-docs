@@ -95,6 +95,8 @@ export default function () {
 
 ## Cipher suites available to choose from
 
+For TLS 1.2, the standard ChaCha20 names are `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256` and `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`. The names without `_SHA256` are still accepted aliases. Configuring `tlsCipherSuites` does not select TLS 1.3 suites.
+
 Here's a list of available SSL/TLS cipher suites:
 
 - `TLS_RSA_WITH_RC4_128_SHA`
@@ -114,6 +116,10 @@ Here's a list of available SSL/TLS cipher suites:
 - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
 - `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+- `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256`
+- `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`
+- `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305` (alias)
+- `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305` (alias)
 
 > ### ⚠️ Differences depending on k6 build
 >

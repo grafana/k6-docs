@@ -26,6 +26,19 @@ The following events can close the connection:
 | --------- | -------------------------------- |
 | WebSocket | An instance of WebSocket object. |
 
+### Ready-state constants
+
+Compare an instance's `readyState` with these constants to check the connection state:
+
+| Constant | Value | Description |
+| -------- | ----- | ----------- |
+| `WebSocket.CONNECTING` | `0` | The connection is not yet open. |
+| `WebSocket.OPEN` | `1` | The connection is open and ready to communicate. |
+| `WebSocket.CLOSING` | `2` | The connection is closing. |
+| `WebSocket.CLOSED` | `3` | The connection is closed or could not be opened. |
+
+The constants are read-only and also available on each instance, for example, `ws.OPEN`.
+
 ### Example
 
 _A k6 script that initiates a WebSocket connection._
@@ -34,17 +47,16 @@ _A k6 script that initiates a WebSocket connection._
 import { WebSocket } from 'k6/websockets';
 
 export default function () {
-  const ws = new WebSocket('ws://localhost:10000');
+  const ws = new WebSocket('wss://quickpizza.grafana.com/ws');
 
   ws.onopen = () => {
-    console.log('WebSocket connection established!');
+    console.log(ws.readyState === WebSocket.OPEN); // true
+    console.log(ws.OPEN === WebSocket.OPEN); // true
     ws.close();
   };
+
+  ws.onclose = () => {
+    console.log(ws.readyState === WebSocket.CLOSED); // true
+  };
 }
-```
-
-The preceding example uses a WebSocket echo server, which you can run with the following command:
-
-```bash
-docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
 ```

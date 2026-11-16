@@ -5,14 +5,7 @@ description: 'Returns a list of pages inside this BrowserContext.'
 
 # pages()
 
-{{< admonition type="caution" >}}
-
-This feature has **known issues**. For details, refer to
-[#444](https://github.com/grafana/xk6-browser/issues/444).
-
-{{< /admonition >}}
-
-Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/)s in the `BrowserContext`.
+Returns all open [Page](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-browser/page/)s in the `BrowserContext` in the order they were attached. Closing a page removes it without changing the order of the remaining pages. A newly attached page appears at the end.
 
 ### Returns
 

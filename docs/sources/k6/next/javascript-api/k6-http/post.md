@@ -13,6 +13,8 @@ weight: 10
 | `body`              | string / object / ArrayBuffer                                                                   | Request body; objects will be `x-www-form-urlencoded`.                                                                           |
 | `params` (optional) | object                                                                                          | [Params](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/params) object containing additional request parameters |
 
+For object bodies without file uploads, refer to the [form encoding rules](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/request#form-encoded-request-bodies).
+
 ### Returns
 
 | Type       | Description                                                                                       |

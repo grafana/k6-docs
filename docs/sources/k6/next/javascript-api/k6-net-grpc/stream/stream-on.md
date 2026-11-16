@@ -23,9 +23,17 @@ Possible events:
 | error      | Emitted when an error occurs. In case of the error, an [`Error`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-net-grpc/stream/stream-error) object sends to the handler function. |
 | end        | Emitted when the server closes the incoming stream.                                                                                                                                             |
 
+{{< admonition type="note" >}}
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), each `Stream.on()` handler captures the tags and metadata active when you register it. Metrics emitted by the handler use a copy of that context, and k6 restores the interrupted context after the handler returns or throws. Promise reactions and `await` continuations created by the handler keep its context.
+
+{{< /admonition >}}
+
 ### Example
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+
+<!-- md-k6:skip -->
 
 ```javascript
 import { Client, Stream } from 'k6/net/grpc';

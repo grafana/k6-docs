@@ -190,6 +190,12 @@ export default function () {
 }
 ```
 
+### Tags and metadata in asynchronous code
+
+Metric context is the set of tags and metadata applied to emitted metric samples, including the current `group` tag. By default, this context is only reliable in synchronous code. Samples emitted after an asynchronous boundary, such as in an `await` continuation, a Promise reaction, or a timer callback, might not keep the context that was active when the asynchronous work started.
+
+To propagate metric context through asynchronous operations, enable the experimental and opt-in [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags). With the feature enabled, k6 captures the current metric context when asynchronous work is registered and applies it when that work runs. It also enables [async callbacks in `group()`](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6/group/).
+
 ## Tagging stages
 
 Thanks to some helper functions in the [k6-jslib-utils](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/jslib/utils) project, if an executor supports the `stages` option, you can add tags with the current ongoing stage.

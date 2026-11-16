@@ -129,6 +129,32 @@ Once the VU reaches the end of the function, it loops back to the start and exec
 As part of this "restart" process, k6 resets the VU.
 Cookies are cleared, and TCP connections might be torn down (depending on your test configuration options).
 
+## Pending promises in lifecycle functions
+
+When an invoked script function returns a Promise, k6 waits for its registered asynchronous work to finish. If the event loop has no work left but the Promise is still pending, k6 reports that the function `did not finish: it is still awaiting an operation that never completed`. This can happen in `setup()`, `teardown()`, `handleSummary()`, or a complete VU iteration. A `setup()` error prevents VUs from starting; a `teardown()` error is reported after VUs finish. A `handleSummary()` error is logged and k6 uses the default summary. An iteration error affects that iteration; it does not by itself stop every later iteration.
+
+For example, this iteration cannot complete because nothing resolves its Promise:
+
+<!-- md-k6:skip -->
+
+```javascript
+export default async function () {
+  await new Promise(() => {});
+}
+```
+
+Make sure asynchronous operations have a path to resolution or rejection. For example, a timer gives the event loop work that settles the Promise:
+
+```javascript
+import { setTimeout } from 'k6/timers';
+
+export default async function () {
+  await new Promise((resolve) => setTimeout(resolve, 100));
+}
+```
+
+A Promise with registered work can continue waiting; the pending-Promise error applies only after that work is exhausted. A timeout or a scenario ending can interrupt a function for a different reason. k6 does not report this error merely because a Promise remains pending when an iteration is cut short at scenario or test shutdown. An unhandled Promise rejection is a script error; handle it with `await` and `try`/`catch` when you expect a failure.
+
 ## Setup and teardown stages
 
 Like `default`, `setup` and `teardown` functions must be exported functions.

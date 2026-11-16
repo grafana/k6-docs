@@ -38,12 +38,14 @@ Each option has its own detailed reference in a separate section.
 | [Handle summary timeout](#handle-summary-timeout)            | Specify how long the [handleSummary()](https://grafana.com/docs/k6/<K6_VERSION>/results-output/end-of-test/custom-summary) function is allowed to run before it's terminated                                                                                                                                                                    |
 | [Hosts](#hosts)                                              | An object with overrides to DNS resolution                                                                                                                                                                                                                                                                                                       |
 | [HTTP debug](#http-debug)                                    | Log all HTTP requests and responses                                                                                                                                                                                                                                                                                                              |
+| [HTTP debug redact](#http-debug-redact)                      | Mask credential headers in the HTTP debug output                                                                                                                                                                                                                                                                                                 |
 | [Include system Env vars](#include-system-env-vars)          | Pass the real system environment variables to the runtime                                                                                                                                                                                                                                                                                        |
 | [Insecure skip TLS verify](#insecure-skip-tls-verify)        | A boolean specifying whether k6 should ignore TLS verifications for connections established from code                                                                                                                                                                                                                                            |
 | [Iterations](#iterations)                                    | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [shared iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                            | A boolean specifying whether k6 should linger around after test run completion                                                                                                                                                                                                                                                                   |
 | [Local IPs](#local-ips)                                      | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                                                                                                                                                                                                                                                                      |
 | [Log output](#log-output)                                    | Configuration about where logs from k6 should be send                                                                                                                                                                                                                                                                                            |
+| [Log nanosecond timestamps](#log-nanosecond-timestamps)          | A boolean specifying whether log timestamps use nanosecond instead of second precision                                                                                                                                                                                                                                                          |
 | [LogFormat](#logformat)                                      | Specify the format of the log output                                                                                                                                                                                                                                                                                                             |
 | [Max redirects](#max-redirects)                              | The maximum number of HTTP redirects that k6 will follow                                                                                                                                                                                                                                                                                         |
 | [Minimum iteration duration](#minimum-iteration-duration)    | Specify the minimum duration for every single execution                                                                                                                                                                                                                                                                                          |
@@ -55,11 +57,13 @@ Each option has its own detailed reference in a separate section.
 | [No thresholds](#no-thresholds)                              | Disables threshold execution                                                                                                                                                                                                                                                                                                                     |
 | [No usage report](#no-usage-report)                          | A boolean specifying whether k6 should send a usage report                                                                                                                                                                                                                                                                                       |
 | [No VU connection reuse](#no-vu-connection-reuse)            | A boolean specifying whether k6 should reuse TCP connections                                                                                                                                                                                                                                                                                     |
+| [Once](#once) | Run one iteration with one VU while preserving a single scenario's function and settings. |
 | [Paused](#paused)                                            | A boolean specifying whether the test should start in a paused state                                                                                                                                                                                                                                                                             |
 | [Profiling Enabled](#profiling-enabled)                      | Enables profiling endpoints                                                                                                                                                                                                                                                                                                                      |
 | [Quiet](#quiet)                                              | A boolean specifying whether to show the progress update in the console or not                                                                                                                                                                                                                                                                   |
 | [Results output](#results-output)                            | Specify the results output                                                                                                                                                                                                                                                                                                                       |
 | [RPS](#rps)                                                  | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/concepts/open-vs-closed) instead)                                                                                                                                              |
+| [Scenario selection](#scenario-selection) | Select configured scenarios to run without changing their settings. |
 | [Scenarios](#scenarios)                                      | Define advanced execution scenarios                                                                                                                                                                                                                                                                                                              |
 | [Secret Sources](#secret-source)                             | Specify source of secrets to be used within k6.                                                                                                                                                                                                                                                                                                  |
 | [Setup timeout](#setup-timeout)                              | Specify how long the `setup()` function is allow to run before it's terminated                                                                                                                                                                                                                                                                   |
@@ -75,6 +79,7 @@ Each option has its own detailed reference in a separate section.
 | [Teardown timeout](#teardown-timeout)                        | Specify how long the teardown() function is allowed to run before it's terminated                                                                                                                                                                                                                                                                |
 | [Thresholds](#thresholds)                                    | Configure under what conditions a test is successful or not                                                                                                                                                                                                                                                                                      |
 | [Throw](#throw)                                              | A boolean specifying whether to throw errors on failed HTTP requests                                                                                                                                                                                                                                                                             |
+| [TLS AIA fetch](#tls-aia-fetch)                              | A boolean that lets k6 fetch missing intermediate CA certificates via the Authority Information Access (AIA) extension                                                                                                                                                                                                                           |
 | [TLS auth](#tls-auth)                                        | A list of TLS client certificate configuration objects                                                                                                                                                                                                                                                                                           |
 | [TLS cipher suites](#tls-cipher-suites)                      | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server                                                                                                                                                                                                                                                              |
 | [TLS version](#tls-version)                                  | String or object representing the only SSL/TLS version allowed                                                                                                                                                                                                                                                                                   |
@@ -324,6 +329,12 @@ VU will execute the script in a loop. Available in `k6 run` and `k6 cloud run` c
 
 Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [constant VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/constant-vus).
 
+{{< admonition type="note" >}}
+
+For a smoke or functional test that runs once, use [`--once`](#once). It runs one iteration with one VU and preserves a single scenario's function and settings, including browser options. `--duration` sets a time-based load and can replace the script's scenario configuration.
+
+{{< /admonition >}}
+
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
 | `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
@@ -361,6 +372,12 @@ These options specify how to partition the test run and which segment to run.
 If defined, k6 will scale the number of VUs and iterations to be run for that
 segment, which is useful in distributed execution. Available in `k6 run` and
 `k6 cloud run` commands.
+
+{{< admonition type="note" >}}
+
+To run the script once with one VU, use [`--once`](#once) instead of dividing the test into execution segments. `--once` preserves a single scenario's behavior and browser settings, and cannot be combined with `--execution-segment` or `--execution-segment-sequence`.
+
+{{< /admonition >}}
 
 | Env | CLI                            | Code / Config file         | Default |
 | --- | ------------------------------ | -------------------------- | ------- |
@@ -470,6 +487,23 @@ export const options = {
 };
 ```
 
+## HTTP debug redact
+
+Mask credential headers, such as `Authorization` and `Cookie`, in the [HTTP debug](#http-debug) output. Works with both `--http-debug` and `--http-debug=full`. Without HTTP debug, the option has no effect and k6 logs a warning. Available in `k6 run` and `k6 cloud run` commands.
+
+Read more [here](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/http-debugging#credential-masking).
+
+| Env                    | CLI                   | Code / Config file | Default |
+| ---------------------- | --------------------- | ------------------ | ------- |
+| `K6_HTTP_DEBUG_REDACT` | `--http-debug-redact` | `httpDebugRedact`  | `false` |
+
+```javascript
+export const options = {
+  httpDebug: 'full',
+  httpDebugRedact: true,
+};
+```
+
 ## Include system env vars
 
 Pass the real system [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud run` commands.
@@ -508,6 +542,12 @@ Together with the [`vus` option](#vus), `iterations` is a shortcut for a single 
 By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
 
 **Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/per-vu-iterations).
+
+{{< admonition type="note" >}}
+
+To run an existing script once, use [`--once`](#once) instead of `--vus 1 --iterations 1`. It preserves a single scenario's function, environment variables, tags, and browser options. The shortcut flags can replace the script's scenarios with a `default` scenario and lose those settings.
+
+{{< /admonition >}}
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -622,6 +662,20 @@ A valid file path is the unique mandatory field, the other optional fields liste
 | ----- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
 | level | the minimal level of a message to write out of (in ascending order): trace, debug, info, warning, error, fatal, panic | trace         |
 
+## Log nanosecond timestamps
+
+A boolean specifying whether log timestamps use nanosecond precision instead of the default second precision. This is a global flag, available on every k6 subcommand.
+
+This only affects log output that includes an actual timestamp: [JSON log output](#logformat), and the default text format when combined with [No color](#no-color). It has no effect on colored terminal output, which shows elapsed time instead of a timestamp, and no effect on the `raw` log format, which omits the timestamp entirely.
+
+| Env                    | CLI                    | Code / Config file | Default |
+| ---------------------- | ---------------------- | ------------------- | ------- |
+| `K6_LOG_NS_TIMESTAMPS` | `--log-ns-timestamps`  | N/A                  | `false` |
+
+```bash
+k6 run --log-format=json --log-ns-timestamps script.js
+```
+
 ## LogFormat
 
 A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
@@ -680,6 +734,8 @@ A boolean specifying whether colored output is disabled. Available in `k6 run` a
 ```bash
 k6 run --no-color script.js
 ```
+
+Colored terminal output shows elapsed time instead of a timestamp. Disabling colors switches the default text log format to print an actual timestamp.
 
 ## No connection reuse
 
@@ -779,6 +835,57 @@ export const options = {
 };
 ```
 
+## Once
+
+Use `--once` to run a script with one VU and one iteration for a smoke, end-to-end, or functional test. This is the supported single-run mode for scripts with no scenarios or one scenario, or for scenarios you explicitly select. You can reuse an existing load test, including a browser test, without editing its scenario configuration.
+
+Use `--once` instead of `--vus 1 --iterations 1` when you want to preserve the scenario's function, environment variables, tags, and browser settings. Those shortcut flags can replace the scenario configuration and remove settings the script needs to run.
+
+Available in `k6 run`, `k6 cloud run`, and `k6 archive` commands.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | --- | --- |
+| N/A | `--once` | N/A | `false` |
+
+```sh
+k6 run --once script.js
+```
+
+If the script defines one scenario, k6 keeps its name, `exec`, `env`, `tags`, and scenario `options`, including browser settings. The scenario uses the `shared-iterations` executor with one VU and one iteration. Its original executor settings and timing are replaced with the executor defaults: `startTime: '0s'`, `maxDuration: '10m'`, and `gracefulStop: '30s'`.
+
+If the script defines no scenarios, k6 runs its `default` function once. A scenario without `exec` also runs `default`, retaining its settings. The required function must exist. For scripts with more than one scenario, use [`--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) to choose which ones to run; each selected scenario runs once with one VU. Bare `--once` still returns an error for multiple scenarios. The `setup()` and `teardown()` functions run normally.
+
+You cannot combine `--once` with `--vus`, `--duration`, `--iterations`, `--stage`, `--execution-segment`, or `--execution-segment-sequence`. When these load settings come from the script, a configuration file, or environment variables, k6 overrides them and logs a warning.
+
+For example, save this script as `script.js`:
+
+<!-- md-k6:arg.--once=true -->
+<!-- md-k6:fixedscenarios -->
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+
+export const options = {
+  scenarios: {
+    checkout: {
+      executor: 'constant-vus',
+      vus: 10,
+      duration: '30s',
+      exec: 'checkout',
+      env: { BASE_URL: 'https://quickpizza.grafana.com' },
+      tags: { team: 'checkout' },
+    },
+  },
+};
+
+export function checkout() {
+  const response = http.get(__ENV.BASE_URL);
+  check(response, { 'status is 200': (r) => r.status === 200 });
+}
+```
+
+Running `k6 run --once script.js` calls `checkout` once using the scenario's base URL.
+
 ## Paused
 
 A boolean, true or false, specifying whether the test should start in a paused state. Available in `k6 run` and `k6 cloud run` commands.
@@ -871,6 +978,16 @@ export const options = {
 >
 > The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
 
+## Scenario selection
+
+Select one or more configured scenarios by name with `--scenario`, using commas to separate multiple names. Available in `k6 run`, `k6 cloud run`, and `k6 archive`.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | --- | --- |
+| N/A | `--scenario` | N/A | All configured scenarios |
+
+Selection keeps each selected scenario's settings and skips thresholds tied to excluded scenarios. Refer to [Run selected scenarios](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) for examples, load-option restrictions, threshold behavior, and combining selection with `--once`.
+
 ## Scenarios
 
 Define one or more execution patterns, with various VU and iteration scheduling
@@ -960,6 +1077,12 @@ A list of VU `{ target: ..., duration: ... }` objects that specify the target nu
 ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud run` commands.
 
 It is a shortcut option for a single [scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios) with a [ramping VUs executor](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
+
+{{< admonition type="note" >}}
+
+For a single-run smoke or functional test, use [`--once`](#once). It runs one iteration with one VU while preserving a single scenario's behavior and browser settings. `--stage` defines a load ramp and can replace the script's scenario configuration.
+
+{{< /admonition >}}
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -1268,6 +1391,24 @@ export const options = {
 };
 ```
 
+## TLS AIA fetch
+
+A boolean, true or false. When enabled, k6 follows the Authority Information Access (AIA) extension on server-presented certificates to fetch missing intermediate CA certificates over HTTP. This lets k6 verify TLS chains against servers that don't bundle the full chain in their handshake, which browsers do by default but Go's `crypto/tls` does not.
+
+Fetched intermediates are cached and reused for the lifetime of the test, and AIA fetches respect the same blocking, host override, and DNS rules as regular test traffic. This option has no effect when `insecureSkipTLSVerify` is enabled.
+
+AIA endpoints can return an individual DER or PEM certificate, or a DER or PEM-armored PKCS#7/CMS certs-only bundle. k6 adds all parseable certificates from a bundle to the intermediate pool and then verifies the chain against your trusted roots. Fetching a certificate does not make it trusted. A bundle with no parseable certificates cannot complete the chain.
+
+| Env                | CLI | Code / Config file | Default |
+| ------------------ | --- | ------------------ | ------- |
+| `K6_TLS_AIA_FETCH` | N/A | `tlsAIAFetch`      | `false` |
+
+```javascript
+export const options = {
+  tlsAIAFetch: true,
+};
+```
+
 ## TLS auth
 
 A list of TLS client certificate configuration objects. `domains` and `password` are optional, but `cert` and `key` are required.
@@ -1299,6 +1440,8 @@ For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/
 Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349), changing the ciphers for TLS 1.3 is _not_ supported and will do nothing.
 
 {{< /admonition >}}
+
+For TLS 1.2, k6 accepts the standard names `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256` and `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256`. The older names without `_SHA256` remain accepted aliases for the same suites. Refer to [SSL/TLS version and ciphers](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/) for the full list.
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
@@ -1337,6 +1480,26 @@ export const options = {
 ## Traces output
 
 This option specifies where to send traces to. Available in the `k6 run` command.
+
+With the experimental [`native-tracing` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags/), an enabled OpenTelemetry output receives spans for the test run, each scenario, each VU activation, and each iteration. The flag alone does not enable an exporter.
+
+```sh
+k6 run --features native-tracing --traces-output=otel script.js
+```
+
+For this command, save the following test as `script.js` and start an OpenTelemetry collector listening for OTLP/gRPC on `127.0.0.1:4317`:
+
+```javascript
+export const options = { vus: 1, iterations: 1 };
+
+export default function () {
+  console.log('traced iteration');
+}
+```
+
+The spans form a `k6.run` → `scenario` → `vu` → `iteration` hierarchy. A VU span covers its activation in a scenario and can contain several iteration spans. Browser spans, when emitted, are children of the iteration. The scenario span includes `test.scenario` and `k6.scenario.executor`; VU and iteration spans include `test.vu`, `k6.vu.id_in_instance`, and `k6.vu.id_in_test`. Iterations also include `test.iteration.number` and `k6.vu.iteration_in_scenario`; scenario iteration counters are present when the executor supplies them.
+
+Script errors mark the affected iteration span as an error. `execution.test.fail()` records its reason on the current iteration span; `execution.test.abort()` interrupts execution and may mark an unfinished iteration as interrupted. An iteration stopped at scenario or test shutdown has `k6.iteration.interrupted=true` instead of an error caused solely by that interruption. The hierarchy does not automatically create a span for each protocol request, and it does not cover `setup()` or `teardown()`.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -1403,6 +1566,12 @@ An integer value specifying the number of VUs to run concurrently, used together
 
 Available in `k6 run` and `k6 cloud` commands.
 
+{{< admonition type="note" >}}
+
+To run an existing script with one VU and one iteration, use [`--once`](#once). It preserves a single scenario's function and settings, including browser options. Setting `--vus 1` alone does not preserve a script-defined scenario.
+
+{{< /admonition >}}
+
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
 | `K6_VUS` | `--vus`, `-u` | `vus`              | `1`     |
@@ -1414,4 +1583,4 @@ export const options = {
 };
 ```
 
-When you pass `--vus N` on its own (without `--duration`, `--iterations`, or `--stages`), k6 creates a single [shared-iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) scenario with `N` VUs and `N` iterations. This overrides any scenarios defined in the script and prints a warning, consistent with how `--duration`, `--iterations`, and `--stages` behave.
+When you pass `--vus N` on its own (without `--duration`, `--iterations`, or `--stage`), k6 creates a single [shared-iterations](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/executors/shared-iterations) scenario with `N` VUs and `N` iterations. This overrides any scenarios defined in the script and prints a warning, consistent with how `--duration`, `--iterations`, and `--stage` behave.

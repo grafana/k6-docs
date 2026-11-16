@@ -29,6 +29,8 @@ exportKey(format, key)
 
 ### Supported formats
 
+`Ed25519` and `X25519` public keys can be exported as `raw`, `spki`, or `jwk`; private keys can be exported as `pkcs8` or `jwk`. Export requires an extractable key. A JWK export includes `kty: 'OKP'`, `crv`, `x`, `key_ops`, and `ext`; private keys also include `d`.
+
 {{< docs/shared source="k6" lookup="crypto/supported-key-methods-formats.md" version="<K6_VERSION>" >}}
 
 ## Return Value

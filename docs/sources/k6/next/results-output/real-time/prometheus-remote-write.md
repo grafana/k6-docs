@@ -152,8 +152,10 @@ k6 has special options for remote write output.
 | Name                                         | Type                                 | Description                                                                                                                                                                                                                                                                            |
 | -------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `K6_PROMETHEUS_RW_SERVER_URL`                | `string`                             | URL of the Prometheus remote write implementation's endpoint. Default is `http://localhost:9090/api/v1/write`                                                                                                                                                                          |
+| `K6_PROMETHEUS_RW_PROXY`                     | `string`                             | URL of the HTTP proxy for this output's remote write requests, for example `http://proxy.example.com:3128`. When unset or empty, this output does not use a proxy. |
 | `K6_PROMETHEUS_RW_HEADERS_<header-key>`      | `string`                             | Additional header to include in the HTTP requests. It can be set using the described format, for example `K6_PROMETHEUS_RW_HEADERS_CUSTOM-HEADER-KEY=custom-header-value`.                                                                                                             |
 | `K6_PROMETHEUS_RW_HTTP_HEADERS`              | A comma-separated list of key-values | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HTTP_HEADERS=key1:value1,key2:value2`.                                                                                                                                                                           |
+| `K6_PROMETHEUS_RW_LABELS` | A comma-separated list of key-value pairs | Static labels to add to remote write time series, for example `environment=production,server=srv1`. No additional labels by default. Refer to [Add static labels](#add-static-labels). |
 | `K6_PROMETHEUS_RW_PUSH_INTERVAL`             | `string`                             | Interval between the metrics' aggregation and upload to the endpoint. Default is `5s`.                                                                                                                                                                                                 |
 | `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean`                            | If true, maps all the defined trend metrics as [Native Histograms](#2-prometheus-native-histogram). Default is `false`.                                                                                                                                                                |
 | `K6_PROMETHEUS_RW_TREND_STATS`               | list of `string`                     | If Native Histogram is not enabled, then it defines the stats functions to map for all of the defined trend metrics. It's a comma-separated list of stats functions to include (e.g. `p(90),avg,sum`). Check the trend section to see the list of supported stats. Default is `p(99)`. |
@@ -168,6 +170,72 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_SIGV4_REGION`              | `string`                             | Sets the AWS region where the workspace is. Along with the others `K6_PROMETHEUS_RW_SIGV4_*` configurations enables signing requests.                                                                                                                                                  |
 | `K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY`          | `string`                             | Sets the AWS access key.                                                                                                                                                                                                                                                               |
 | `K6_PROMETHEUS_RW_SIGV4_SECRET_KEY`          | `string`                             | Sets the AWS secret key.                                                                                                                                                                                                                                                               |
+| `K6_PROMETHEUS_RW_SIGV4_TOKEN`               | `string`                             | AWS session token for temporary SigV4 credentials. Optional with long-lived credentials. |
+
+### Send remote write through a proxy
+
+Set a proxy URL for the Prometheus remote write output:
+
+```sh
+K6_PROMETHEUS_RW_PROXY=http://proxy.example.com:3128 \
+K6_PROMETHEUS_RW_SERVER_URL=https://prometheus.example.com/api/v1/write \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+The proxy URL must be parseable as a URL and identify a usable HTTP proxy. This setting applies to the remote write output, not to HTTP requests made by your test script. You can also set `proxy` in the output's JSON configuration; the environment variable takes precedence. An explicitly empty value disables the proxy. This output does not use `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` for its remote write client, and the `-o experimental-prometheus-rw` argument does not currently accept `proxy=` options.
+
+### Sign remote write with temporary AWS credentials
+
+For SigV4, set the region, access key, and secret key together. When the credentials are temporary, also set their session token. k6 includes a nonempty token in the signed `X-Amz-Security-Token` header. A token without all three required settings is an error; k6 does not discover credentials from the AWS environment or credential files for this output.
+
+```sh
+K6_PROMETHEUS_RW_SIGV4_REGION="$AWS_REGION" \
+K6_PROMETHEUS_RW_SIGV4_ACCESS_KEY="$AWS_ACCESS_KEY_ID" \
+K6_PROMETHEUS_RW_SIGV4_SECRET_KEY="$AWS_SECRET_ACCESS_KEY" \
+K6_PROMETHEUS_RW_SIGV4_TOKEN="$AWS_SESSION_TOKEN" \
+K6_PROMETHEUS_RW_SERVER_URL="$PROMETHEUS_REMOTE_WRITE_URL" \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+Set these variables in your shell or secret manager before running the command. The same settings are available as `sigV4Region`, `sigV4AccessKey`, `sigV4SecretKey`, and `sigV4Token` in the output's JSON configuration. Environment values take precedence over JSON values.
+
+### Add static labels
+
+When several k6 processes send metrics to the same Prometheus endpoint, use a label such as `server` or `job_id` to distinguish their time series. Set a different value for each process or job that you want to identify separately. This lets you configure labels in your deployment or CI job without changing the test script.
+
+Set `K6_PROMETHEUS_RW_LABELS` to add static labels to every time series sent to the remote write endpoint. Use a comma-separated list of `key=value` pairs:
+
+```sh
+K6_PROMETHEUS_RW_LABELS="environment=production,server=srv1" \
+k6 run -o experimental-prometheus-rw script.js
+```
+
+Replace `script.js` with your test script and configure your remote write endpoint as described in [Send test metrics to a remote write endpoint](#send-test-metrics-to-a-remote-write-endpoint).
+
+You can also set `collectors.experimental-prometheus-rw.labels` in a JSON configuration file:
+
+```json
+{
+  "collectors": {
+    "experimental-prometheus-rw": {
+      "labels": {
+        "environment": "production",
+        "server": "srv1"
+      }
+    }
+  }
+}
+```
+
+Save this as `config.json` and run your test:
+
+```sh
+k6 run --config config.json -o experimental-prometheus-rw script.js
+```
+
+If you configure the same label in both places, `K6_PROMETHEUS_RW_LABELS` takes precedence over the JSON configuration.
+
+These labels apply only to the remote write output. Existing time-series labels, including labels from script tags, take precedence over static labels with the same name. k6 ignores labels with an empty name or value, and ignores the reserved `__name__` label.
 
 ### Stale trend metrics
 

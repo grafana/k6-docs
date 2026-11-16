@@ -124,6 +124,15 @@ If you save that script to a local file named `test.js`, you can run it with:
 k6 run test.js
 ```
 
+To work on one part of the hybrid test, [select its scenario](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios) without editing the script:
+
+```sh
+k6 run --scenario load test.js
+k6 run --scenario browser test.js
+```
+
+The `load` selection keeps its ramping stages and delayed start. The `browser` selection keeps its browser settings and runs with one VU for 30 seconds. The example's thresholds have no `scenario` filter, so all remain active when you select either scenario; selection does not remove thresholds merely because their metrics come from the excluded workload.
+
 The script also includes a common best practice by defining a `BASE_URL` variable, and using the [environment variable](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables/) value `__ENV.BASE_URL` if it exists. That's useful if you want to use the same script for multiple environments, such as staging and production, and you could pass that value to your script with the command:
 
 ```bash

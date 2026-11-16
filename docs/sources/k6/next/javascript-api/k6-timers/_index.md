@@ -10,6 +10,14 @@ weight: 11
 
 {{< docs/shared source="k6" lookup="javascript-api/k6-timers.md" version="<K6_VERSION>" >}}
 
+{{< admonition type="note" >}}
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), `setTimeout()` and `setInterval()` capture the tags and metadata active when you register their callbacks. Each callback runs with a copy of that context. Repeating intervals reuse the original registration context for every invocation, so changes made by one invocation don't leak into the next one or into the calling code.
+
+Promise reactions and `await` continuations created inside a timer callback keep any context changes made by that callback.
+
+{{< /admonition >}}
+
 ## Example
 
 ```javascript

@@ -18,6 +18,17 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 {{< /admonition >}}
 
+## Asynchronous metric context
+
+The experimental and opt-in [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags) changes how the browser module assigns tags and metadata across asynchronous operations:
+
+- Page event handlers, predicates passed to `page.waitForEvent()` and `browserContext.waitForEvent()`, and route handlers run with the metric context active when you register them. Promise reactions and `await` continuations created by a callback keep any context changes made by that callback.
+- Browser network requests copy the context of the browser operation that most likely initiated them. Request and response metrics keep that context for the request's lifetime, including redirects.
+
+Browser network attribution is best-effort because the Chrome DevTools Protocol doesn't always identify the JavaScript operation that caused a request. k6 uses frame and loader information when available, followed by the active or most recently completed page operation, the page's creation or opener context, and finally the live VU context. Without the feature flag, browser metrics continue to use the context active when k6 emits them.
+
+For details about the affected network metrics and group tags, refer to [Browser metrics](https://grafana.com/docs/k6/<K6_VERSION>/using-k6-browser/metrics).
+
 ## Properties
 
 The table below lists the properties you can import from the browser module (`'k6/browser'`).

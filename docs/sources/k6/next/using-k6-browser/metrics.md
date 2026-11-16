@@ -45,6 +45,8 @@ To review the complete list of k6 metrics, refer to the [Metrics reference](http
 
 ## Understanding the browser metrics output
 
+`browser_data_received` uses the encoded transfer size reported by Chrome DevTools when a response finishes, including responses in a redirect chain. This can differ from the uncompressed response body size, especially for compressed resources. k6 does not add a sample when Chrome reports an unavailable or negative encoded length. This metric is not a count of bytes at the network interface and is separate from the HTTP protocol's `data_received` metric.
+
 When a browser test finishes, k6 reports a top-level overview of the aggregated browser metrics output.
 The following snippet is an example:
 
@@ -68,6 +70,16 @@ As Google also recommends measuring the 75th percentile for each web vital metri
 
 You can also visualize these results in different ways depending on your team's needs. For more information, check out our blog post on [visualizing k6 results](https://k6.io/blog/ways-to-visualize-k6-results/).
 
+### Web vitals across page navigations
+
+Starting with k6 v2.3.0, browser web vital aggregates include measurements from intermediate pages when a test navigates between documents in the same tab. For example, a flow that visits a login page, an account page, and a detail page can report web vitals for each page, even if you close the tab only at the end. Earlier versions could lose LCP, CLS, and INP measurements from the intermediate pages.
+
+Each page contributes one sample for each web vital it reports. k6 records the latest available value when the main frame navigates to another document or the page closes. Not every page reports every metric: for example, INP requires a qualifying user interaction. This improvement covers navigations that load a new document; it does not add support for measuring client-side route changes within a single-page application.
+
+The additional intermediate-page samples can change averages and percentiles after you upgrade, even if the application's performance has not changed. Use [URL-specific thresholds](#set-thresholds-for-your-browser-metrics) to evaluate individual pages instead of only the aggregate across the flow.
+
+Always await `page.close()` in a `finally` block, as shown in the [custom metrics example](#measure-custom-metrics), so the last page can finish reporting its measurements. An abrupt test termination can discard measurements that have not yet been emitted.
+
 ## Set thresholds for your browser metrics
 
 The browser module can use all key k6 functionalities, such as [Thresholds](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/thresholds).
@@ -81,7 +93,9 @@ As the following example shows, you can also pass in different URLs if you're go
 
 {{< admonition type="caution" >}}
 
-Currently, you can only use URLs to specify thresholds for different pages. If you use [Groups](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups), the metrics are not correctly grouped as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
+By default, use URL tags to distinguish pages in thresholds. [Group](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/tags-and-groups/#groups) tags aren't reliably applied to browser metrics, as described in [#721](https://github.com/grafana/xk6-browser/issues/721).
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), `browser_data_sent`, `browser_data_received`, `browser_http_req_duration`, and `browser_http_req_failed` keep a best-effort copy of the tags and metadata from the browser operation that initiated the request. This includes the `group` tag. The feature doesn't change group attribution for other browser metrics.
 
 {{< /admonition >}}
 

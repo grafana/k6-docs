@@ -20,6 +20,12 @@ weight: 10
 | --------------------- | ------------------------------------------------------------------------------------------------- |
 | Promise with Response | HTTP [Response](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/k6-http/response) object. |
 
+{{< admonition type="note" >}}
+
+When you enable the experimental [`async-metric-context` feature flag](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/feature-flags), Promise reactions created by `await` or `.then()` keep the metric context active when you register them. If you call `asyncRequest()` from an async group, its HTTP metrics and metrics emitted after `await` keep the group's tags and metadata.
+
+{{< /admonition >}}
+
 ### Examples
 
 Using http.asyncRequest() to issue a POST request:

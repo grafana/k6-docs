@@ -50,6 +50,7 @@ curl -X GET \
 {
   "data": {
     "attributes": {
+      "execution_result": null,
       "paused": false,
       "running": true,
       "tainted": false,
@@ -62,6 +63,8 @@ curl -X GET \
 ```
 
 {{< /code >}}
+
+The `execution_result` attribute is `null` until the test execution result is known. It then contains an `exit_code`, for example `{"exit_code": 108}` when the script aborts with `exec.test.abort()`. This lets API clients inspect the result while k6 stays alive with `--linger`, without waiting for the process to exit.
 
 ## Update Status
 

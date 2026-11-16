@@ -105,6 +105,8 @@ To do so, follow these steps:
 1. Copy the previous script (`whole-tutorial.js`) and save it as `main.js`.
 1. Extract the `Contacts flow` group function from `main.js` script file and paste it into a new file called `contacts.js`
 
+   <!-- md-k6:skip -->
+
    <!-- eslint-disable no-undef  -->
 
    ```javascript
@@ -131,6 +133,8 @@ To do so, follow these steps:
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
 1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
+
+   <!-- md-k6:skip -->
 
    ```javascript
    import http from 'k6/http';
@@ -314,17 +318,15 @@ Besides shortness, this modularity lets you compose scripts from many parts, or 
 
 ## Mix and match logic
 
-With modularized configuration and logic, you can mix and match logic.
-An easy way to configure this is through [environment variables](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/environment-variables).
+With modularized configuration and logic, you can define named scenarios for different workloads and [select one with `--scenario`](https://grafana.com/docs/k6/<K6_VERSION>/using-k6/scenarios/#run-selected-scenarios).
 
-Change `main.js` and `config.js` so that it:
-
-- _By default_ runs a smoke test with 5 iterations
-- With the right environment variable value, runs a breaking test
+Change `main.js` and `config.js` to define a smoke test with five iterations and a breaking test, then choose the workload when you run the script.
 
 To do this, follow these steps:
 
 1. Add the workload settings for configuring the smoke test to `config.js`:
+
+   <!-- md-k6:skip -->
 
    ```javascript
    export const smokeWorkload = {
@@ -354,7 +356,9 @@ To do this, follow these steps:
    };
    ```
 
-1. Edit `main.js` to choose the workload settings depending on the `WORKLOAD` environment variable. For example:
+1. Edit `main.js` to define a named scenario for each workload:
+
+   <!-- md-k6:skip -->
 
    ```javascript
    import { coinflip } from './coinflip.js';
@@ -363,7 +367,8 @@ To do this, follow these steps:
 
    export const options = {
      scenarios: {
-       my_scenario: __ENV.WORKLOAD === 'breaking' ? breakingWorkload : smokeWorkload,
+       smoke: smokeWorkload,
+       breaking: breakingWorkload,
      },
      thresholds: thresholdsSettings,
    };
@@ -376,10 +381,19 @@ To do this, follow these steps:
    }
    ```
 
-1. Run the script with and without the `-e` flag.
+1. Select the smoke test:
 
-   - What happens when you run `k6 run main.js`?
-   - What about `k6 run main.js -e WORKLOAD=breaking`?
+   ```bash
+   k6 run --scenario smoke main.js
+   ```
+
+1. When you want to run the breaking test, select that workload instead:
+
+   ```bash
+   k6 run --scenario breaking main.js
+   ```
+
+   Always select the intended workload for this example. Without `--scenario`, k6 runs both scenarios, including the breaking test.
 
 This was a simple example to showcase how you can modularize a test.
 As your test suite grows and more people are involved in performance testing, your modularization strategy becomes essential to building and maintaining an efficient testing suite.

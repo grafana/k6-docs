@@ -25,6 +25,8 @@ verify(algorithm, key, signature, data)
 
 ### Supported algorithms
 
+Use `Ed25519` with a public key that has the `verify` usage. The algorithm argument is `'Ed25519'` or `{ name: 'Ed25519' }`, without a hash parameter. `verify()` resolves to `false` for an invalid signature, including one with the wrong length. Refer to the [Ed25519 sign example](https://grafana.com/docs/k6/<K6_VERSION>/javascript-api/crypto/subtlecrypto/sign/) for a complete sign and verify script.
+
 {{< docs/shared source="k6" lookup="crypto/supported-sign-verify.md" version="<K6_VERSION>" >}}
 
 ## Return Value

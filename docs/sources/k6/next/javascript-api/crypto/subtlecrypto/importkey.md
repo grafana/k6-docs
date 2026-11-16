@@ -30,6 +30,8 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 
 ### Supported formats
 
+For `Ed25519` and `X25519`, import public keys as `raw`, `spki`, or `jwk`, and private keys as `pkcs8` or `jwk`. Use `verify` only for Ed25519 public keys, `sign` only for Ed25519 private keys, no usages for X25519 public keys, and `deriveBits` or `deriveKey` for X25519 private keys. An OKP JWK requires `kty: 'OKP'`, the matching `crv` (`Ed25519` or `X25519`), and the public `x` value. A private JWK also includes `d`. If present, `key_ops`, `use`, and `ext` must agree with the requested usages and extractability. Invalid formats raise `NotSupportedError`; malformed key data raises `DataError`.
+
 {{< docs/shared source="k6" lookup="crypto/supported-key-methods-formats.md" version="<K6_VERSION>" >}}
 
 ### PBKDF2 constraints
