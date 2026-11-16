@@ -132,7 +132,14 @@ To run a simple local script:
 
    When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](https://grafana.com/docs/k6/<K6_VERSION>/set-up/install-k6#docker) for more information.
 
-   The container also runs as a non-root user, so `/home/k6` must stay writable for Chromium's cache and config. Bind-mount a subdirectory, like `/home/k6/screenshots` above, instead of mounting over `/home/k6` itself. If you must mount over `/home/k6`, set `XDG_CONFIG_HOME` and `XDG_CACHE_HOME` to a writable path, such as `/tmp`.
+   The container also runs as a non-root user, so `/home/k6` must stay writable for Chromium's cache and config.
+   If you mount over `/home/k6`, Chromium fails to start and the test fails.
+   Bind-mount a subdirectory, like `/home/k6/screenshots` above, instead of mounting over `/home/k6` itself.
+   If you must mount over `/home/k6`, set `XDG_CONFIG_HOME` and `XDG_CACHE_HOME` to a writable path, such as `/tmp`:
+
+   ```bash
+   docker run --rm -i -v $(pwd):/home/k6 -e XDG_CONFIG_HOME=/tmp -e XDG_CACHE_HOME=/tmp grafana/k6:master-with-browser run - <script.js
+   ```
 
    {{< /admonition >}}
 
