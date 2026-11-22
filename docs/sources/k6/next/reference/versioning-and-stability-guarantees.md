@@ -258,6 +258,23 @@ The development team is responsible for deciding what the reasonable level is ba
 
 Experimental APIs, features, and modules may eventually become stable. When that happens, it will lead to a new minor version of k6 in most cases. The experimental module import path becomes deprecated and will be removed in a couple of minor releases with a future notice.
 
+## Current release and support lifecycle
+
+The table below shows which k6 versions are supported today and when that support is expected to end.
+
+| State | Version | Released | End of Life |
+|---|---|---|---|---|
+| {{< badge text="Under development" style="support" >}} | v3.x | Q2 2027 | — |
+| {{< badge text="Actively maintained" style="product-general" >}} | v2.x | May 2026 | Q2 2028 |
+| {{< badge text="Supported (maintenance)" style="stage" >}} | v1.x | May 2025 | Q2 2027 |
+| {{< badge text="Deprecated" style="product-cloud" >}} | v0.x | Legacy | Q2 2026 |
+
+### Legend
+
+- {{< badge text="Actively maintained" style="product-general" >}} receives updates that include features, bug fixes and security.
+- {{< badge text="Supported (maintenance)" style="stage" >}} receives updates related to critical bugs or security only.
+- {{< badge text="Deprecated" style="product-cloud" >}} No longer receives updates.
+
 ## Versioning policy
 
 We reserve ourselves the right to modify the versioning strategy and policies as part of a major release, under the constraints that:
